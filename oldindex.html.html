@@ -1,0 +1,2091 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- Primary Meta Tags -->
+    <title>SyneticX | Enterprise Regulatory Intelligence Platform for Life Sciences</title>
+    <meta name="title" content="SyneticX | Enterprise Regulatory Intelligence Platform for Life Sciences">
+    <meta name="description" content="Transform regulatory compliance with AI-driven intelligence. Monitor FDA submissions, track competitor activities, and accelerate approval timelines. Trusted by Fortune 500 pharmaceutical and medical device companies.">
+    <meta name="keywords" content="regulatory intelligence platform, FDA compliance software, pharmaceutical regulatory tracking, medical device approval monitoring, clinical trial intelligence, competitive intelligence life sciences, FDA submission management, regulatory affairs automation">
+    <meta name="robots" content="index, follow">
+    <meta name="language" content="English">
+    <meta name="author" content="SyneticX Corporation">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://syneticx.com/">
+    <meta property="og:title" content="SyneticX | Enterprise Regulatory Intelligence Platform">
+    <meta property="og:description" content="Transform regulatory compliance with AI-driven intelligence. Monitor FDA submissions and accelerate approval timelines.">
+    <meta property="og:image" content="https://syneticx.com/assets/og-image.jpg">
+    <meta property="og:site_name" content="SyneticX">
+    
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image">
+    <meta property="twitter:url" content="https://syneticx.com/">
+    <meta property="twitter:title" content="SyneticX | Enterprise Regulatory Intelligence Platform">
+    <meta property="twitter:description" content="Transform regulatory compliance with AI-driven intelligence.">
+    <meta property="twitter:image" content="https://syneticx.com/assets/twitter-card.jpg">
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://syneticx.com/">
+    
+    <!-- Structured Data -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "SyneticX",
+        "url": "https://syneticx.com",
+        "logo": "https://syneticx.com/logo.png",
+        "description": "Enterprise regulatory intelligence platform for pharmaceutical and medical device companies",
+        "address": {
+            "@type": "PostalAddress",
+            "addressLocality": "Boston",
+            "addressRegion": "MA",
+            "addressCountry": "US"
+        },
+        "contactPoint": {
+            "@type": "ContactPoint",
+            "telephone": "+1-617-555-0100",
+            "contactType": "sales",
+            "availableLanguage": "English"
+        },
+        "sameAs": [
+            "https://www.linkedin.com/company/syneticx",
+            "https://twitter.com/syneticx"
+        ]
+    }
+    </script>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+    <link rel="manifest" href="/site.webmanifest">
+    
+    <!-- Preconnect to External Resources -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="dns-prefetch" href="https://cdn.jsdelivr.net">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js for Interactions -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        'display': ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        'brand': {
+                            50: '#f0f7ff',
+                            100: '#e0effe',
+                            200: '#bae0fd',
+                            300: '#7cc4fa',
+                            400: '#36a5f5',
+                            500: '#0c87e6',
+                            600: '#0068c4',
+                            700: '#01539f',
+                            800: '#064782',
+                            900: '#0b3d6c',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        :root {
+            --color-brand: #0068c4;
+            --color-brand-dark: #01539f;
+            --color-accent: #f59e0b;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+        
+        /* Professional Typography */
+        .gradient-text {
+            background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-brand-dark) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        /* Button Styles */
+        .btn-primary {
+            background: linear-gradient(135deg, var(--color-brand) 0%, var(--color-brand-dark) 100%);
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-1px);
+            box-shadow: 0 10px 25px rgba(0, 104, 196, 0.25);
+        }
+        
+        .btn-primary:active {
+            transform: translateY(0);
+        }
+        
+        .btn-secondary {
+            border: 1px solid #e5e7eb;
+            background: white;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .btn-secondary:hover {
+            border-color: var(--color-brand);
+            background: #f0f7ff;
+        }
+        
+        /* Navigation */
+        .nav-fixed {
+            backdrop-filter: blur(12px);
+            background: rgba(255, 255, 255, 0.95);
+        }
+        
+        /* Cards */
+        .card-elevated {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .card-elevated:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Form Inputs */
+        .form-input {
+            border: 1px solid #e5e7eb;
+            transition: all 0.2s;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: var(--color-brand);
+            box-shadow: 0 0 0 3px rgba(0, 104, 196, 0.1);
+        }
+        
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .animate-fade-in-up {
+            animation: fadeInUp 0.6s ease-out;
+        }
+        
+        /* Loading States */
+        .skeleton {
+            background: linear-gradient(90deg, #f3f4f6 25%, #e5e7eb 50%, #f3f4f6 75%);
+            background-size: 200% 100%;
+            animation: loading 1.5s infinite;
+        }
+        
+        @keyframes loading {
+            0% { background-position: 200% 0; }
+            100% { background-position: -200% 0; }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f3f4f6;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #9ca3af;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #6b7280;
+        }
+    </style>
+    
+    <!-- Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXX"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-XXXXXXXXX');
+    </script>
+    
+<style>
+/* Additional styles for the molecule viewer */
+#molecule-viewer canvas {
+    border-radius: 0.5rem;
+}
+
+.molecule-btn.active {
+    background: rgba(255, 255, 255, 0.2);
+    border-color: var(--color-brand);
+}
+</style>
+<!-- Include 3Dmol.js library -->
+<script src="https://3dmol.org/build/3Dmol-min.js"></script>
+
+</head>
+<body class="font-sans text-gray-900 bg-white">
+
+    <!-- Navigation -->
+    <nav class="nav-fixed fixed top-0 left-0 right-0 z-50 border-b border-gray-100" x-data="{ mobileMenu: false, scrolled: false }" @scroll.window="scrolled = window.pageYOffset > 20">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <!-- Logo -->
+                <div class="flex items-center">
+                    <a href="/" class="flex items-center">
+                        <svg class="w-8 h-8 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        <span class="ml-2 text-xl font-display font-bold text-gray-900">SyneticX</span>
+                    </a>
+                </div>
+                
+                <!-- Desktop Navigation -->
+                <div class="hidden lg:flex items-center space-x-8">
+                    <div class="relative group">
+                        <button class="text-gray-700 hover:text-brand-600 font-medium transition-colors py-2">
+                            Platform
+                            <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div class="absolute top-full left-0 w-56 bg-white shadow-lg rounded-lg py-3 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 mt-2">
+                            <a href="#regulatory-intelligence" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-brand-600">Regulatory Intelligence</a>
+                            <a href="#competitive-monitoring" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-brand-600">Competitive Monitoring</a>
+                            <a href="#clinical-analytics" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-brand-600">Clinical Analytics</a>
+                            <a href="#compliance-tracking" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-brand-600">Compliance Tracking</a>
+                        </div>
+                    </div>
+                    
+                    <div class="relative group">
+                        <button class="text-gray-700 hover:text-brand-600 font-medium transition-colors py-2">
+                            Industries
+                            <svg class="w-4 h-4 inline-block ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <div class="absolute top-full left-0 w-64 bg-white shadow-lg rounded-lg py-3 invisible group-hover:visible opacity-0 group-hover:opacity-100 transition-all duration-200 mt-2">
+                            <a href="/pharmaceutical" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-brand-600">Pharmaceutical</a>
+                            <a href="/medical-devices" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-brand-600">Medical Devices</a>
+                            <a href="/biotechnology" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-brand-600">Biotechnology</a>
+                            <a href="/diagnostics" class="block px-4 py-2 text-gray-700 hover:bg-gray-50 hover:text-brand-600">Diagnostics</a>
+                        </div>
+                    </div>
+                    
+                    <a href="/resources" class="text-gray-700 hover:text-brand-600 font-medium transition-colors">Resources</a>
+                    <a href="/company" class="text-gray-700 hover:text-brand-600 font-medium transition-colors">Company</a>
+                </div>
+                
+                <!-- CTAs -->
+                <div class="hidden lg:flex items-center space-x-4">
+                    <a href="/contact" class="text-gray-700 hover:text-brand-600 font-medium transition-colors">Contact Sales</a>
+                    <a href="/demo.html" class="btn-primary px-5 py-2.5 rounded-lg text-white font-semibold">
+                        Request Demo
+                    </a>
+                </div>
+                
+                <!-- Mobile Menu Button -->
+                <button @click="mobileMenu = !mobileMenu" class="lg:hidden p-2 rounded-lg hover:bg-gray-100">
+                    <svg x-show="!mobileMenu" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                    </svg>
+                    <svg x-show="mobileMenu" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Menu -->
+        <div x-show="mobileMenu" x-transition class="lg:hidden bg-white border-t">
+            <div class="container mx-auto px-6 py-4">
+                <a href="#platform" class="block py-2 text-gray-700 hover:text-brand-600">Platform</a>
+                <a href="#industries" class="block py-2 text-gray-700 hover:text-brand-600">Industries</a>
+                <a href="#resources" class="block py-2 text-gray-700 hover:text-brand-600">Resources</a>
+                <a href="#company" class="block py-2 text-gray-700 hover:text-brand-600">Company</a>
+                <div class="pt-4 mt-4 border-t">
+                    <a href="/demo.html" class="btn-primary block text-center py-3 rounded-lg text-white font-semibold">
+                        Request Demo
+                    </a>
+                </div>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Hero Section -->
+    <section class="relative pt-24 pb-20 overflow-hidden">
+        <div class="absolute inset-0 bg-gradient-to-br from-blue-50 via-white to-indigo-50"></div>
+        
+        <div class="relative container mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Content -->
+                <div class="animate-fade-in-up">
+                    <div class="inline-flex items-center px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-sm font-medium mb-6">
+                        <span class="w-2 h-2 rounded-full bg-brand-600 mr-2"></span>
+                        Trusted by Fortune 500 Life Sciences Companies
+                    </div>
+                    
+                    <h1 class="text-5xl lg:text-6xl font-display font-bold text-gray-900 leading-tight mb-6">
+                        Accelerate Regulatory Approval with
+                        <span class="gradient-text"> Intelligent Automation</span>
+                    </h1>
+                    
+                    <p class="text-xl text-gray-600 leading-relaxed mb-8">
+                        Transform your regulatory operations with real-time FDA intelligence, comprehensive competitor monitoring, and predictive compliance analytics. Reduce submission timelines by 40% while ensuring complete regulatory adherence.
+                    </p>
+                    
+                    <div class="flex flex-col sm:flex-row gap-4 mb-12">
+                        <a href="/demo.html" class="btn-primary px-8 py-4 rounded-lg text-white font-semibold text-center">
+                            Schedule Executive Briefing
+                        </a>
+                        <button onclick="playProductDemo()" class="btn-secondary px-8 py-4 rounded-lg font-semibold flex items-center justify-center">
+                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                            </svg>
+                            View Product Demo
+                        </button>
+                    </div>
+                    
+                    <!-- Metrics -->
+                    <div class="grid grid-cols-3 gap-8">
+                        <div>
+                            <div class="text-3xl font-bold text-gray-900">40%</div>
+                            <div class="text-sm text-gray-600 mt-1">Faster Approvals</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-gray-900">85%</div>
+                            <div class="text-sm text-gray-600 mt-1">Time Reduction</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold text-gray-900">100%</div>
+                            <div class="text-sm text-gray-600 mt-1">Compliance Rate</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Visual -->
+                <div class="relative">
+                    <div class="relative rounded-xl overflow-hidden shadow-2xl">
+                        <div id="demo-video-container" class="aspect-video bg-gradient-to-br from-brand-600 to-brand-800 flex items-center justify-center cursor-pointer" onclick="playProductDemo()">
+                            <div class="text-center text-white">
+                                <svg class="w-20 h-20 mx-auto mb-4" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                                <p class="text-lg font-semibold">Platform Overview</p>
+                                <p class="text-sm opacity-80 mt-1">3-minute demonstration</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating badges -->
+                    <div class="absolute -top-4 -right-4 px-4 py-2 bg-green-500 text-white rounded-full text-sm font-semibold">
+                        FDA 21 CFR Part 11 Compliant
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Client Logos -->
+    <section class="py-12 bg-gray-50 border-y">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="flex flex-wrap justify-center items-center gap-12 opacity-60">
+                <img src="/assets/client-pfizer.svg" alt="Pfizer" class="h-8">
+                <img src="/assets/client-jnj.svg" alt="Johnson & Johnson" class="h-8">
+                <img src="/assets/client-merck.svg" alt="Merck" class="h-8">
+                <img src="/assets/client-abbott.svg" alt="Abbott" class="h-8">
+                <img src="/assets/client-medtronic.svg" alt="Medtronic" class="h-8">
+            </div>
+        </div>
+    </section>
+    
+    <!-- Platform Features -->
+    <section class="py-20">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display font-bold text-gray-900 mb-4">
+                    Comprehensive Regulatory Intelligence Platform
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Unify your regulatory operations with our integrated suite of intelligent monitoring and analytics capabilities
+                </p>
+            </div>
+            
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                <!-- Feature 1 -->
+                <div class="card-elevated p-8">
+                    <div class="w-12 h-12 rounded-lg bg-brand-100 flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">FDA Submission Tracking</h3>
+                    <p class="text-gray-600 mb-4">
+                        Monitor all FDA submissions, amendments, and correspondence in real-time. Automated alerts for critical deadlines and regulatory changes.
+                    </p>
+                    <a href="/features/fda-tracking" class="text-brand-600 font-medium hover:text-brand-700">
+                        Explore capabilities →
+                    </a>
+                </div>
+                
+                <!-- Feature 2 -->
+                <div class="card-elevated p-8">
+                    <div class="w-12 h-12 rounded-lg bg-purple-100 flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Competitive Intelligence</h3>
+                    <p class="text-gray-600 mb-4">
+                        Track competitor regulatory activities, product pipelines, and market positioning. Predictive analytics for strategic planning.
+                    </p>
+                    <a href="/features/competitive-intelligence" class="text-brand-600 font-medium hover:text-brand-700">
+                        Explore capabilities →
+                    </a>
+                </div>
+                
+                <!-- Feature 3 -->
+                <div class="card-elevated p-8">
+                    <div class="w-12 h-12 rounded-lg bg-green-100 flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Clinical Trial Analytics</h3>
+                    <p class="text-gray-600 mb-4">
+                        Comprehensive analysis of global clinical trials, enrollment metrics, and protocol optimization recommendations.
+                    </p>
+                    <a href="/features/clinical-analytics" class="text-brand-600 font-medium hover:text-brand-700">
+                        Explore capabilities →
+                    </a>
+                </div>
+                
+                <!-- Feature 4 -->
+                <div class="card-elevated p-8">
+                    <div class="w-12 h-12 rounded-lg bg-amber-100 flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-amber-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Real-Time Alerts</h3>
+                    <p class="text-gray-600 mb-4">
+                        Customizable alert system for regulatory changes, competitor activities, and compliance deadlines across all jurisdictions.
+                    </p>
+                    <a href="/features/alerts" class="text-brand-600 font-medium hover:text-brand-700">
+                        Explore capabilities →
+                    </a>
+                </div>
+                
+                <!-- Feature 5 -->
+                <div class="card-elevated p-8">
+                    <div class="w-12 h-12 rounded-lg bg-indigo-100 flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Predictive Analytics</h3>
+                    <p class="text-gray-600 mb-4">
+                        Machine learning models predict approval timelines, identify potential compliance risks, and optimize submission strategies.
+                    </p>
+                    <a href="/features/analytics" class="text-brand-600 font-medium hover:text-brand-700">
+                        Explore capabilities →
+                    </a>
+                </div>
+                
+                <!-- Feature 6 -->
+                <div class="card-elevated p-8">
+                    <div class="w-12 h-12 rounded-lg bg-rose-100 flex items-center justify-center mb-4">
+                        <svg class="w-6 h-6 text-rose-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-xl font-semibold text-gray-900 mb-3">Collaboration Hub</h3>
+                    <p class="text-gray-600 mb-4">
+                        Centralized workspace for cross-functional teams with role-based access, audit trails, and integrated workflow management.
+                    </p>
+                    <a href="/features/collaboration" class="text-brand-600 font-medium hover:text-brand-700">
+                        Explore capabilities →
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Add these sections after the Case Studies section and before the CTA Section -->
+
+<!-- Team Section -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-display font-bold text-gray-900 mb-4">
+                Leadership Team
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Industry experts dedicated to transforming regulatory intelligence
+            </p>
+        </div>
+        
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Team Member 1 -->
+            <div class="text-center">
+                <div class="relative mb-4 rounded-lg overflow-hidden aspect-square bg-gradient-to-br from-brand-100 to-brand-200">
+                    <img src="/assets/team-ceo.jpg" alt="CEO" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900">Dr. Sarah Chen</h3>
+                <p class="text-sm text-brand-600 mb-2">CEO & Co-Founder</p>
+                <p class="text-sm text-gray-600">Former VP Regulatory, Pfizer. 20+ years in pharmaceutical compliance.</p>
+                <div class="flex justify-center mt-3 space-x-3">
+                    <a href="#" class="text-gray-400 hover:text-brand-600">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Team Member 2 -->
+            <div class="text-center">
+                <div class="relative mb-4 rounded-lg overflow-hidden aspect-square bg-gradient-to-br from-purple-100 to-purple-200">
+                    <img src="/assets/team-cto.jpg" alt="CTO" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900">Michael Rodriguez</h3>
+                <p class="text-sm text-brand-600 mb-2">CTO & Co-Founder</p>
+                <p class="text-sm text-gray-600">Ex-Google AI researcher. Pioneer in regulatory NLP applications.</p>
+                <div class="flex justify-center mt-3 space-x-3">
+                    <a href="#" class="text-gray-400 hover:text-brand-600">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Team Member 3 -->
+            <div class="text-center">
+                <div class="relative mb-4 rounded-lg overflow-hidden aspect-square bg-gradient-to-br from-green-100 to-green-200">
+                    <img src="/assets/team-vp-sales.jpg" alt="VP Sales" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900">Jennifer Park</h3>
+                <p class="text-sm text-brand-600 mb-2">VP of Sales</p>
+                <p class="text-sm text-gray-600">Previously at Veeva Systems. Expert in life sciences enterprise solutions.</p>
+                <div class="flex justify-center mt-3 space-x-3">
+                    <a href="#" class="text-gray-400 hover:text-brand-600">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Team Member 4 -->
+            <div class="text-center">
+                <div class="relative mb-4 rounded-lg overflow-hidden aspect-square bg-gradient-to-br from-amber-100 to-amber-200">
+                    <img src="/assets/team-head-regulatory.jpg" alt="Head of Regulatory" class="w-full h-full object-cover">
+                </div>
+                <h3 class="text-lg font-semibold text-gray-900">Dr. James Wu</h3>
+                <p class="text-sm text-brand-600 mb-2">Head of Regulatory Affairs</p>
+                <p class="text-sm text-gray-600">Former FDA reviewer. 15+ years in medical device regulation.</p>
+                <div class="flex justify-center mt-3 space-x-3">
+                    <a href="#" class="text-gray-400 hover:text-brand-600">
+                        <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Solutions Section (Redesigned) -->
+<section class="py-20 bg-gray-50">
+    <div class="container mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-display font-bold text-gray-900 mb-4">
+                Industry-Specific Solutions
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Tailored intelligence solutions designed for your specific regulatory challenges
+            </p>
+        </div>
+        
+        <div class="grid lg:grid-cols-3 gap-8">
+            <!-- Solution 1 -->
+            <div class="card-elevated p-8 border-t-4 border-brand-600">
+                <div class="w-14 h-14 rounded-lg bg-brand-100 flex items-center justify-center mb-6">
+                    <svg class="w-7 h-7 text-brand-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-3">Time-Saving Intelligence</h3>
+                <p class="text-gray-600 mb-6">Cut research time with automated data collection and analysis across multiple sources, freeing your team for strategic decision-making.</p>
+                <ul class="space-y-3 mb-6">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span class="text-gray-700">Automated data aggregation</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span class="text-gray-700">AI-powered trend detection</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span class="text-gray-700">Real-time data visualization</span>
+                    </li>
+                </ul>
+                <a href="/solutions/time-saving" class="inline-flex items-center text-brand-600 font-semibold hover:text-brand-700">
+                    Learn more
+                    <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- Solution 2 -->
+            <div class="card-elevated p-8 border-t-4 border-purple-600">
+                <div class="w-14 h-14 rounded-lg bg-purple-100 flex items-center justify-center mb-6">
+                    <svg class="w-7 h-7 text-purple-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-3">Regulatory Intelligence</h3>
+                <p class="text-gray-600 mb-6">Stay ahead of regulatory changes with real-time monitoring of FDA approvals, compliance requirements, and warning letters.</p>
+                <ul class="space-y-3 mb-6">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span class="text-gray-700">FDA approval tracking</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span class="text-gray-700">Warning letters analysis</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span class="text-gray-700">Compliance risk assessment</span>
+                    </li>
+                </ul>
+                <a href="/solutions/regulatory" class="inline-flex items-center text-purple-600 font-semibold hover:text-purple-700">
+                    Learn more
+                    <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+            
+            <!-- Solution 3 -->
+            <div class="card-elevated p-8 border-t-4 border-green-600">
+                <div class="w-14 h-14 rounded-lg bg-green-100 flex items-center justify-center mb-6">
+                    <svg class="w-7 h-7 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                    </svg>
+                </div>
+                <h3 class="text-2xl font-bold text-gray-900 mb-3">Competitive Intelligence</h3>
+                <p class="text-gray-600 mb-6">Gain vital insights into competitor activities, market positioning, and strategic movements to identify opportunities faster.</p>
+                <ul class="space-y-3 mb-6">
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span class="text-gray-700">Patent analytics</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span class="text-gray-700">Product pipeline tracking</span>
+                    </li>
+                    <li class="flex items-start">
+                        <svg class="w-5 h-5 text-green-500 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                        <span class="text-gray-700">Market share analysis</span>
+                    </li>
+                </ul>
+                <a href="/solutions/competitive" class="inline-flex items-center text-green-600 font-semibold hover:text-green-700">
+                    Learn more
+                    <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                    </svg>
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+<!-- Add this section after the Platform Features or before the ROI Section -->
+
+<section class="py-20 bg-gradient-to-br from-gray-900 via-brand-900 to-gray-900 text-white relative overflow-hidden">
+    <!-- Animated background particles -->
+    <div class="absolute inset-0">
+        <div class="absolute top-20 left-10 w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
+        <div class="absolute top-40 right-20 w-3 h-3 bg-purple-400 rounded-full animate-pulse" style="animation-delay: 1s;"></div>
+        <div class="absolute bottom-20 left-1/3 w-2 h-2 bg-green-400 rounded-full animate-pulse" style="animation-delay: 2s;"></div>
+        <div class="absolute bottom-40 right-1/3 w-4 h-4 bg-brand-400 rounded-full animate-pulse" style="animation-delay: 0.5s;"></div>
+    </div>
+    
+    <div class="relative container mx-auto px-6 lg:px-8">
+        <div class="grid lg:grid-cols-2 gap-12 items-center">
+            <!-- Left: Content -->
+            <div>
+                <div class="inline-flex items-center px-3 py-1 rounded-full bg-brand-500/20 text-brand-300 text-sm font-medium mb-6 border border-brand-500/30">
+                    <span class="w-2 h-2 rounded-full bg-brand-400 mr-2 animate-pulse"></span>
+                    Powered by ChEMBL Database
+                </div>
+                
+                <h2 class="text-4xl lg:text-5xl font-display font-bold mb-6">
+                    Molecular Intelligence
+                    <span class="block text-transparent bg-clip-text bg-gradient-to-r from-brand-300 to-purple-300">
+                        at the Atomic Level
+                    </span>
+                </h2>
+                
+                <p class="text-lg text-gray-300 mb-8 leading-relaxed">
+                    Track drug development from molecule to market. Our platform integrates ChEMBL's 
+                    comprehensive molecular database with real-time regulatory intelligence, providing 
+                    unprecedented insights into competitive drug landscapes.
+                </p>
+                
+                <!-- Molecule Selector -->
+                <div class="mb-8">
+                    <label class="block text-sm font-medium text-gray-400 mb-3">Explore Featured Molecules</label>
+                    <div class="flex flex-wrap gap-2">
+                        <button onclick="loadMolecule('CHEMBL25')" class="molecule-btn px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm font-medium transition-all border border-white/20 hover:border-brand-400">
+                            Aspirin
+                        </button>
+                        <button onclick="loadMolecule('CHEMBL1201631')" class="molecule-btn px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm font-medium transition-all border border-white/20 hover:border-purple-400">
+                            Remdesivir
+                        </button>
+                        <button onclick="loadMolecule('CHEMBL4297436')" class="molecule-btn px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm font-medium transition-all border border-white/20 hover:border-green-400">
+                            Molnupiravir
+                        </button>
+                        <button onclick="loadMolecule('CHEMBL1200499')" class="molecule-btn px-4 py-2 bg-white/10 hover:bg-white/20 rounded-lg text-sm font-medium transition-all border border-white/20 hover:border-amber-400">
+                            Pembrolizumab
+                        </button>
+                    </div>
+                </div>
+                
+                <!-- Stats -->
+                <div class="grid grid-cols-2 gap-6">
+                    <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+                        <div class="text-3xl font-bold text-brand-300 mb-1">2.4M+</div>
+                        <div class="text-sm text-gray-400">Molecular Structures</div>
+                    </div>
+                    <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+                        <div class="text-3xl font-bold text-green-300 mb-1">15K+</div>
+                        <div class="text-sm text-gray-400">Clinical Compounds</div>
+                    </div>
+                    <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+                        <div class="text-3xl font-bold text-purple-300 mb-1">8.5K+</div>
+                        <div class="text-sm text-gray-400">Approved Drugs</div>
+                    </div>
+                    <div class="bg-white/5 rounded-lg p-4 border border-white/10">
+                        <div class="text-3xl font-bold text-amber-300 mb-1">Real-time</div>
+                        <div class="text-sm text-gray-400">FDA Updates</div>
+                    </div>
+                </div>
+                
+                <!-- CTA -->
+                <div class="mt-8">
+                    <a href="/demo.html" class="inline-flex items-center px-6 py-3 bg-brand-600 text-white rounded-lg font-semibold hover:bg-brand-700 transition shadow-lg shadow-brand-500/30">
+                        Explore Drug Intelligence Platform
+                        <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+            
+            <!-- Right: 3D Molecule Viewer -->
+            <div>
+                <div class="relative">
+                    <!-- Molecule Container -->
+                    <div class="bg-black/30 rounded-2xl p-6 backdrop-blur-sm border border-white/10">
+                        <!-- Controls Bar -->
+                        <div class="flex items-center justify-between mb-4">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-sm text-gray-400">View Mode:</span>
+                                <button onclick="changeStyle('stick')" class="px-3 py-1 text-xs bg-white/10 hover:bg-white/20 rounded transition">Stick</button>
+                                <button onclick="changeStyle('sphere')" class="px-3 py-1 text-xs bg-white/10 hover:bg-white/20 rounded transition">Sphere</button>
+                                <button onclick="changeStyle('cartoon')" class="px-3 py-1 text-xs bg-white/10 hover:bg-white/20 rounded transition">Cartoon</button>
+                            </div>
+                            <button onclick="toggleRotation()" class="p-2 bg-white/10 hover:bg-white/20 rounded-lg transition">
+                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
+                                </svg>
+                            </button>
+                        </div>
+                        
+                        <!-- 3D Viewer -->
+                        <div id="molecule-viewer" class="h-[400px] bg-gray-900/50 rounded-lg relative">
+                            <!-- Loading state -->
+                            <div id="molecule-loading" class="absolute inset-0 flex items-center justify-center">
+                                <div class="text-center">
+                                    <svg class="animate-spin h-8 w-8 text-brand-400 mx-auto mb-4" fill="none" viewBox="0 0 24 24">
+                                        <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                        <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                    </svg>
+                                    <p class="text-sm text-gray-400">Loading molecular structure...</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Molecule Info -->
+                        <div id="molecule-info" class="mt-4 p-4 bg-white/5 rounded-lg border border-white/10">
+                            <div class="flex items-start justify-between">
+                                <div>
+                                    <h3 id="molecule-name" class="font-semibold text-lg mb-1">Remdesivir</h3>
+                                    <p id="molecule-formula" class="text-sm text-gray-400 font-mono">C27H35N6O8P</p>
+                                </div>
+                                <span id="molecule-status" class="px-3 py-1 bg-green-500/20 text-green-300 text-xs rounded-full font-medium">
+                                    FDA Approved
+                                </span>
+                            </div>
+                            <div class="grid grid-cols-3 gap-4 mt-4 text-sm">
+                                <div>
+                                    <p class="text-gray-400">MW</p>
+                                    <p id="molecule-weight" class="font-medium">602.6 Da</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400">Phase</p>
+                                    <p id="molecule-phase" class="font-medium">Marketed</p>
+                                </div>
+                                <div>
+                                    <p class="text-gray-400">Targets</p>
+                                    <p id="molecule-targets" class="font-medium">RNA Pol</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Floating decoration -->
+                    <div class="absolute -top-4 -right-4 px-3 py-1 bg-gradient-to-r from-brand-500 to-purple-500 rounded-full text-xs font-bold">
+                        Interactive 3D
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- How It Works Section (Redesigned) -->
+<section class="py-20 bg-white">
+    <div class="container mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-display font-bold text-gray-900 mb-4">
+                How SyneticX Works
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Our proven implementation process ensures rapid time-to-value
+            </p>
+        </div>
+        
+        <div class="max-w-5xl mx-auto">
+            <!-- Timeline -->
+            <div class="relative">
+                <!-- Vertical Line -->
+                <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-300"></div>
+                
+                <!-- Step 1 -->
+                <div class="relative flex items-start mb-12">
+                    <div class="absolute left-0 w-16 h-16 rounded-full bg-brand-600 text-white flex items-center justify-center text-xl font-bold z-10">
+                        01
+                    </div>
+                    <div class="ml-24 card-elevated p-6">
+                        <span class="inline-block px-3 py-1 rounded-full bg-brand-50 text-brand-700 text-sm font-medium mb-3">Week 1</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Discovery & Assessment</h3>
+                        <p class="text-gray-600 mb-4">We conduct a comprehensive analysis of your regulatory workflows, data sources, and compliance requirements to design a tailored solution.</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Workflow mapping
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Requirements gathering
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Integration planning
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 2 -->
+                <div class="relative flex items-start mb-12">
+                    <div class="absolute left-0 w-16 h-16 rounded-full bg-purple-600 text-white flex items-center justify-center text-xl font-bold z-10">
+                        02
+                    </div>
+                    <div class="ml-24 card-elevated p-6">
+                        <span class="inline-block px-3 py-1 rounded-full bg-purple-50 text-purple-700 text-sm font-medium mb-3">Week 2-3</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Custom Configuration</h3>
+                        <p class="text-gray-600 mb-4">We configure the platform to match your specific needs, including custom dashboards, alert rules, and automated workflows.</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Dashboard customization
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Alert configuration
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Data source integration
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 3 -->
+                <div class="relative flex items-start mb-12">
+                    <div class="absolute left-0 w-16 h-16 rounded-full bg-green-600 text-white flex items-center justify-center text-xl font-bold z-10">
+                        03
+                    </div>
+                    <div class="ml-24 card-elevated p-6">
+                        <span class="inline-block px-3 py-1 rounded-full bg-green-50 text-green-700 text-sm font-medium mb-3">Week 4</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Training & Deployment</h3>
+                        <p class="text-gray-600 mb-4">Comprehensive training for your team and phased deployment to ensure smooth adoption across your organization.</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                User training sessions
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Documentation delivery
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Go-live support
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Step 4 -->
+                <div class="relative flex items-start">
+                    <div class="absolute left-0 w-16 h-16 rounded-full bg-amber-600 text-white flex items-center justify-center text-xl font-bold z-10">
+                        04
+                    </div>
+                    <div class="ml-24 card-elevated p-6">
+                        <span class="inline-block px-3 py-1 rounded-full bg-amber-50 text-amber-700 text-sm font-medium mb-3">Ongoing</span>
+                        <h3 class="text-xl font-bold text-gray-900 mb-2">Continuous Optimization</h3>
+                        <p class="text-gray-600 mb-4">Regular reviews and updates to ensure the platform continues to deliver maximum value as your needs evolve.</p>
+                        <ul class="space-y-2 text-sm text-gray-600">
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Quarterly business reviews
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Performance optimization
+                            </li>
+                            <li class="flex items-center">
+                                <svg class="w-4 h-4 text-green-500 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                </svg>
+                                Feature updates
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+
+<!-- Enhanced Webinar Section - Add after Case Studies -->
+<section class="py-20 bg-gradient-to-br from-brand-50 via-white to-purple-50 relative overflow-hidden">
+    <!-- Background decoration -->
+    <div class="absolute top-0 right-0 w-96 h-96 bg-brand-100 rounded-full filter blur-3xl opacity-20"></div>
+    <div class="absolute bottom-0 left-0 w-96 h-96 bg-purple-100 rounded-full filter blur-3xl opacity-20"></div>
+    
+    <div class="relative container mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-display font-bold text-gray-900 mb-4">
+                Upcoming Webinars & Events
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Join industry leaders and regulatory experts for insights that drive innovation
+            </p>
+        </div>
+        
+        <!-- Featured Webinar -->
+        <div class="max-w-6xl mx-auto mb-12">
+            <div class="card-elevated rounded-2xl overflow-hidden bg-gradient-to-r from-brand-600 to-brand-800">
+                <div class="grid lg:grid-cols-2">
+                    <!-- Left Content -->
+                    <div class="p-8 lg:p-12 text-white">
+                        <div class="flex items-center mb-6">
+                            <span class="px-4 py-2 bg-red-500 text-white rounded-full text-sm font-bold animate-pulse">
+                                FEATURED EVENT
+                            </span>
+                            <span class="ml-auto text-white/80">Limited Seats Available</span>
+                        </div>
+                        
+                        <h3 class="text-3xl lg:text-4xl font-bold mb-4">
+                            Cracking the FDA Code II
+                        </h3>
+                        <p class="text-lg text-white/90 mb-6">
+                            How Regulatory Intelligence Helps Pharma Leaders Move Faster in 2025
+                        </p>
+                        
+                        <div class="space-y-3 mb-8">
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-brand-200 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                                </svg>
+                                <span>Wednesday, September 3rd, 2025</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-brand-200 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>2:00 PM EST (45 minutes + Q&A)</span>
+                            </div>
+                            <div class="flex items-center">
+                                <svg class="w-5 h-5 text-brand-200 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                <span>500+ Regulatory Professionals Registered</span>
+                            </div>
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <a href="/webinar/register" class="inline-flex items-center justify-center px-6 py-3 bg-white text-brand-700 rounded-lg font-semibold hover:bg-gray-100 transition">
+                                Register Free
+                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7l5 5m0 0l-5 5m5-5H6" />
+                                </svg>
+                            </a>
+                            <button class="inline-flex items-center justify-center px-6 py-3 border-2 border-white/30 text-white rounded-lg font-semibold hover:bg-white/10 transition">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m9.032 4.026a9.001 9.001 0 01-7.432 0m9.032-4.026A9.001 9.001 0 0112 3c-4.474 0-8.268 3.12-9.032 7.326m0 0A9.001 9.001 0 0012 21c4.474 0 8.268-3.12 9.032-7.326" />
+                                </svg>
+                                Add to Calendar
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Content - Countdown/Visual -->
+                    <div class="relative bg-gradient-to-br from-white/10 to-white/5 p-8 lg:p-12 flex items-center justify-center">
+                        <div class="text-center">
+                            <p class="text-white/80 text-sm uppercase tracking-wider mb-6">Registration Closes In</p>
+                            <div class="flex justify-center space-x-4">
+                                <div class="bg-white/20 backdrop-blur rounded-lg p-4 min-w-[70px]">
+                                    <div class="text-3xl font-bold text-white">12</div>
+                                    <div class="text-xs text-white/80 mt-1">Days</div>
+                                </div>
+                                <div class="bg-white/20 backdrop-blur rounded-lg p-4 min-w-[70px]">
+                                    <div class="text-3xl font-bold text-white">08</div>
+                                    <div class="text-xs text-white/80 mt-1">Hours</div>
+                                </div>
+                                <div class="bg-white/20 backdrop-blur rounded-lg p-4 min-w-[70px]">
+                                    <div class="text-3xl font-bold text-white">34</div>
+                                    <div class="text-xs text-white/80 mt-1">Minutes</div>
+                                </div>
+                            </div>
+                            
+                            <div class="mt-8 space-y-2">
+                                <p class="text-white/90 font-semibold">What You'll Learn:</p>
+                                <ul class="text-left text-white/80 space-y-1 text-sm">
+                                    <li class="flex items-start">
+                                        <svg class="w-4 h-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                        Reduce submission risks by 40%
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="w-4 h-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                        Predict approval timelines with AI
+                                    </li>
+                                    <li class="flex items-start">
+                                        <svg class="w-4 h-4 text-green-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                                        </svg>
+                                        Track competitor submissions
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Upcoming Events Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <!-- Event 1 -->
+            <div class="card-elevated p-6 hover:shadow-xl transition-all">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="px-3 py-1 bg-purple-100 text-purple-700 rounded-full text-xs font-semibold">Workshop</span>
+                    <span class="text-sm text-gray-500">Sept 15</span>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">
+                    EU MDR Compliance Workshop
+                </h3>
+                <p class="text-gray-600 text-sm mb-4">
+                    Navigate the complexities of European medical device regulation with expert guidance.
+                </p>
+                <a href="/events/eu-mdr" class="text-brand-600 font-medium text-sm hover:text-brand-700">
+                    Learn more →
+                </a>
+            </div>
+            
+            <!-- Event 2 -->
+            <div class="card-elevated p-6 hover:shadow-xl transition-all">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="px-3 py-1 bg-green-100 text-green-700 rounded-full text-xs font-semibold">Panel Discussion</span>
+                    <span class="text-sm text-gray-500">Sept 22</span>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">
+                    AI in Clinical Trials: Future Outlook
+                </h3>
+                <p class="text-gray-600 text-sm mb-4">
+                    Industry leaders discuss the transformative role of AI in accelerating clinical development.
+                </p>
+                <a href="/events/ai-panel" class="text-brand-600 font-medium text-sm hover:text-brand-700">
+                    Learn more →
+                </a>
+            </div>
+            
+            <!-- Event 3 -->
+            <div class="card-elevated p-6 hover:shadow-xl transition-all">
+                <div class="flex items-center justify-between mb-4">
+                    <span class="px-3 py-1 bg-amber-100 text-amber-700 rounded-full text-xs font-semibold">Masterclass</span>
+                    <span class="text-sm text-gray-500">Sept 29</span>
+                </div>
+                <h3 class="text-lg font-bold text-gray-900 mb-2">
+                    Competitive Intelligence Masterclass
+                </h3>
+                <p class="text-gray-600 text-sm mb-4">
+                    Advanced techniques for tracking and analyzing competitor regulatory activities.
+                </p>
+                <a href="/events/masterclass" class="text-brand-600 font-medium text-sm hover:text-brand-700">
+                    Learn more →
+                </a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Enhanced Blog Section -->
+<section class="py-20 bg-white relative overflow-hidden">
+    <!-- Decorative elements -->
+    <div class="absolute top-0 left-0 w-72 h-72 bg-gradient-to-br from-brand-100 to-purple-100 rounded-full filter blur-3xl opacity-20"></div>
+    <div class="absolute bottom-0 right-0 w-96 h-96 bg-gradient-to-tr from-green-100 to-brand-100 rounded-full filter blur-3xl opacity-20"></div>
+    
+    <div class="relative container mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl lg:text-5xl font-display font-bold text-gray-900 mb-4">
+                Latest Insights in
+                <span class="text-gradient">Healthcare Innovation</span>
+            </h2>
+            <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                Explore cutting-edge developments in medical AI, regulatory updates, and transformative technologies shaping the future of healthcare
+            </p>
+        </div>
+        
+        <!-- Featured Article -->
+        <div class="mb-16">
+            <div class="card-elevated rounded-2xl overflow-hidden hover:shadow-2xl transition-all">
+                <div class="grid lg:grid-cols-2">
+                    <div class="aspect-video lg:aspect-auto relative">
+                        <img src="https://images.unsplash.com/photo-1576091160399-112ba8d25d1d?w=800&h=600&fit=crop" 
+                             alt="Featured Article" 
+                             class="w-full h-full object-cover">
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                        <span class="absolute top-6 left-6 px-4 py-2 bg-red-500 text-white rounded-full text-sm font-bold">
+                            Featured Story
+                        </span>
+                    </div>
+                    <div class="p-8 lg:p-12">
+                        <div class="flex items-center text-sm text-gray-500 mb-4">
+                            <span class="px-3 py-1 bg-brand-100 text-brand-700 rounded-full text-xs font-semibold mr-3">
+                                AI & Machine Learning
+                            </span>
+                            <time datetime="2025-08-28">August 28, 2025</time>
+                        </div>
+                        <h3 class="text-3xl font-bold text-gray-900 mb-4">
+                            How AI is Revolutionizing Drug Discovery: A Deep Dive into Next-Gen Pharmaceutical R&D
+                        </h3>
+                        <p class="text-gray-600 mb-6 text-lg leading-relaxed">
+                            Discover how artificial intelligence is transforming the pharmaceutical landscape, from target identification to clinical trial optimization. Leading companies are achieving 10x improvements in discovery timelines while reducing costs by billions.
+                        </p>
+                        <div class="flex items-center justify-between">
+                            <div class="flex items-center">
+                                <img src="https://images.unsplash.com/photo-1472099645785-5658abf4ff4e?w=40&h=40&fit=crop" 
+                                     alt="Author" 
+                                     class="w-10 h-10 rounded-full mr-3">
+                                <div>
+                                    <p class="font-semibold text-gray-900">Dr. Michael Chen</p>
+                                    <p class="text-sm text-gray-500">Chief Medical Officer</p>
+                                </div>
+                            </div>
+                            <a href="/blog/ai-drug-discovery" class="inline-flex items-center text-brand-600 font-semibold hover:text-brand-700">
+                                Read Full Article
+                                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Blog Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
+            <!-- Blog Card 1 -->
+            <article class="group card-elevated rounded-xl overflow-hidden hover:shadow-2xl transition-all">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=200&fit=crop" 
+                         alt="AI Diagnostics" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <span class="absolute top-4 left-4 px-3 py-1 bg-brand-600 text-white text-xs font-semibold rounded-full">
+                        AI & Diagnostics
+                    </span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <time datetime="2025-08-20">Aug 20, 2025</time>
+                        <span class="mx-2">•</span>
+                        <span>5 min read</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-600 transition-colors">
+                        AI Revolutionizes Medical Diagnostics: From Theory to Clinical Practice
+                    </h3>
+                    <p class="text-gray-600 mb-4 line-clamp-3">
+                        Discover how artificial intelligence is transforming diagnostic accuracy across radiology, pathology, and genomics, enabling earlier disease detection.
+                    </p>
+                    <a href="/blog/ai-diagnostics" class="inline-flex items-center text-brand-600 font-semibold group-hover:text-brand-700">
+                        Read Article
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Blog Card 2 -->
+            <article class="group card-elevated rounded-xl overflow-hidden hover:shadow-2xl transition-all">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400&h=200&fit=crop" 
+                         alt="FDA Regulatory" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <span class="absolute top-4 left-4 px-3 py-1 bg-purple-600 text-white text-xs font-semibold rounded-full">
+                        Regulatory Update
+                    </span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <time datetime="2025-08-18">Aug 18, 2025</time>
+                        <span class="mx-2">•</span>
+                        <span>7 min read</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-600 transition-colors">
+                        Navigating FDA's Evolving AI/ML Medical Device Framework
+                    </h3>
+                    <p class="text-gray-600 mb-4 line-clamp-3">
+                        An in-depth analysis of the current regulatory landscape for AI-powered medical devices and what companies need to know for successful approvals.
+                    </p>
+                    <a href="/blog/fda-framework" class="inline-flex items-center text-brand-600 font-semibold group-hover:text-brand-700">
+                        Read Article
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Blog Card 3 -->
+            <article class="group card-elevated rounded-xl overflow-hidden hover:shadow-2xl transition-all">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400&h=200&fit=crop" 
+                         alt="Predictive Analytics" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <span class="absolute top-4 left-4 px-3 py-1 bg-green-600 text-white text-xs font-semibold rounded-full">
+                        Data Analytics
+                    </span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <time datetime="2025-08-15">Aug 15, 2025</time>
+                        <span class="mx-2">•</span>
+                        <span>6 min read</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-600 transition-colors">
+                        Predictive Analytics: Transforming Hospital Operations
+                    </h3>
+                    <p class="text-gray-600 mb-4 line-clamp-3">
+                        Learn how leading healthcare institutions leverage predictive models to optimize resource allocation and improve patient outcomes.
+                    </p>
+                    <a href="/blog/predictive-analytics" class="inline-flex items-center text-brand-600 font-semibold group-hover:text-brand-700">
+                        Read Article
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Blog Card 4 -->
+            <article class="group card-elevated rounded-xl overflow-hidden hover:shadow-2xl transition-all">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1576091160550-2173dba999ef?w=400&h=200&fit=crop" 
+                         alt="Clinical Trials" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <span class="absolute top-4 left-4 px-3 py-1 bg-amber-600 text-white text-xs font-semibold rounded-full">
+                        Clinical Research
+                    </span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <time datetime="2025-08-12">Aug 12, 2025</time>
+                        <span class="mx-2">•</span>
+                        <span>8 min read</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-600 transition-colors">
+                        Decentralized Clinical Trials: The New Normal
+                    </h3>
+                    <p class="text-gray-600 mb-4 line-clamp-3">
+                        Exploring how virtual and hybrid trial models are reshaping clinical research, improving patient access and accelerating drug development.
+                    </p>
+                    <a href="/blog/decentralized-trials" class="inline-flex items-center text-brand-600 font-semibold group-hover:text-brand-700">
+                        Read Article
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Blog Card 5 -->
+            <article class="group card-elevated rounded-xl overflow-hidden hover:shadow-2xl transition-all">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1579154204601-01588f351e67?w=400&h=200&fit=crop" 
+                         alt="Digital Therapeutics" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <span class="absolute top-4 left-4 px-3 py-1 bg-indigo-600 text-white text-xs font-semibold rounded-full">
+                        Digital Health
+                    </span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <time datetime="2025-08-10">Aug 10, 2025</time>
+                        <span class="mx-2">•</span>
+                        <span>5 min read</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-600 transition-colors">
+                        Digital Therapeutics: Regulatory Pathways and Market Access
+                    </h3>
+                    <p class="text-gray-600 mb-4 line-clamp-3">
+                        A comprehensive guide to navigating regulatory approval and reimbursement strategies for digital therapeutic solutions.
+                    </p>
+                    <a href="/blog/digital-therapeutics" class="inline-flex items-center text-brand-600 font-semibold group-hover:text-brand-700">
+                        Read Article
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+
+            <!-- Blog Card 6 -->
+            <article class="group card-elevated rounded-xl overflow-hidden hover:shadow-2xl transition-all">
+                <div class="relative h-48 overflow-hidden">
+                    <img src="https://images.unsplash.com/photo-1581595220892-b0739db3ba8c?w=400&h=200&fit=crop" 
+                         alt="Cybersecurity" 
+                         class="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent"></div>
+                    <span class="absolute top-4 left-4 px-3 py-1 bg-rose-600 text-white text-xs font-semibold rounded-full">
+                        Cybersecurity
+                    </span>
+                </div>
+                <div class="p-6">
+                    <div class="flex items-center text-sm text-gray-500 mb-3">
+                        <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path>
+                        </svg>
+                        <time datetime="2025-08-08">Aug 8, 2025</time>
+                        <span class="mx-2">•</span>
+                        <span>6 min read</span>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3 group-hover:text-brand-600 transition-colors">
+                        Cybersecurity in Medical Devices: 2025 Requirements
+                    </h3>
+                    <p class="text-gray-600 mb-4 line-clamp-3">
+                        Essential cybersecurity considerations for medical device manufacturers, including FDA's latest premarket and postmarket requirements.
+                    </p>
+                    <a href="/blog/cybersecurity" class="inline-flex items-center text-brand-600 font-semibold group-hover:text-brand-700">
+                        Read Article
+                        <svg class="w-4 h-4 ml-2 group-hover:translate-x-2 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"></path>
+                        </svg>
+                    </a>
+                </div>
+            </article>
+        </div>
+        
+        <!-- Blog CTA -->
+        <div class="text-center">
+            <a href="/blog" class="btn-secondary inline-flex items-center px-8 py-4 rounded-lg font-semibold border-2 border-gray-300 hover:border-brand-600 hover:bg-brand-50 transition">
+                View All Articles
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div>
+        
+        <!-- Newsletter Signup -->
+        <div class="mt-16 bg-gradient-to-r from-brand-600 to-brand-800 rounded-2xl p-8 md:p-12 text-white relative overflow-hidden">
+            <div class="absolute inset-0 bg-pattern opacity-10"></div>
+            <div class="relative z-10 max-w-3xl mx-auto text-center">
+                <h3 class="text-3xl font-bold mb-4">Stay Ahead of Healthcare Innovation</h3>
+                <p class="text-lg mb-8 opacity-90">Get weekly insights on AI in healthcare, regulatory updates, and market intelligence delivered to your inbox</p>
+                <form class="flex flex-col sm:flex-row gap-4 max-w-md mx-auto">
+                    <input type="email" 
+                           placeholder="Enter your email" 
+                           class="flex-1 px-6 py-3 rounded-lg text-gray-900 placeholder-gray-500 focus:outline-none focus:ring-4 focus:ring-white/30">
+                    <button type="submit" 
+                            class="px-8 py-3 bg-white text-brand-600 rounded-lg font-semibold hover:bg-gray-100 transition">
+                        Subscribe
+                    </button>
+                </form>
+                <p class="text-sm opacity-80 mt-4">Join 10,000+ regulatory professionals. No spam, unsubscribe anytime.</p>
+            </div>
+        </div>
+    </div>
+</section>
+    
+    <!-- ROI Section -->
+    <section class="py-20 bg-gradient-to-br from-brand-600 to-brand-800 text-white">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <div>
+                    <h2 class="text-4xl font-display font-bold mb-6">
+                        Measurable Impact on Regulatory Operations
+                    </h2>
+                    <p class="text-xl opacity-90 mb-8">
+                        Our platform delivers quantifiable improvements across all regulatory functions, with typical ROI realized within the first quarter of implementation.
+                    </p>
+                    
+                    <div class="space-y-6">
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 mr-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-2">40% Reduction in Approval Timelines</h3>
+                                <p class="opacity-80">Accelerate market entry through optimized submission strategies and proactive regulatory planning.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 mr-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-2">$2.5M Average Annual Savings</h3>
+                                <p class="opacity-80">Reduce operational costs through automation and elimination of redundant research activities.</p>
+                            </div>
+                        </div>
+                        
+                        <div class="flex items-start">
+                            <div class="w-12 h-12 rounded-lg bg-white/10 flex items-center justify-center flex-shrink-0 mr-4">
+                                <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-semibold mb-2">100% Audit Readiness</h3>
+                                <p class="opacity-80">Maintain complete compliance documentation and ensure inspection readiness at all times.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-white/10 backdrop-blur rounded-xl p-8">
+                    <h3 class="text-2xl font-semibold mb-6">Calculate Your ROI</h3>
+                    <form class="space-y-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Number of Annual Submissions</label>
+                            <input type="number" class="form-input w-full px-4 py-2 rounded-lg bg-white/20 border-white/30 text-white placeholder-white/60" placeholder="e.g., 25">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Average Submission Value ($M)</label>
+                            <input type="number" class="form-input w-full px-4 py-2 rounded-lg bg-white/20 border-white/30 text-white placeholder-white/60" placeholder="e.g., 50">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-2">Team Size</label>
+                            <input type="number" class="form-input w-full px-4 py-2 rounded-lg bg-white/20 border-white/30 text-white placeholder-white/60" placeholder="e.g., 15">
+                        </div>
+                        <button type="button" onclick="calculateROI()" class="w-full py-3 bg-white text-brand-600 rounded-lg font-semibold hover:bg-gray-100 transition">
+                            Calculate Potential Savings
+                        </button>
+                    </form>
+                    
+                    <div id="roi-result" class="hidden mt-6 p-4 bg-white/20 rounded-lg">
+                        <p class="text-sm opacity-80">Estimated Annual Savings</p>
+                        <p class="text-3xl font-bold mt-1">$<span id="savings-amount">0</span>M</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Case Studies -->
+    <section class="py-20">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display font-bold text-gray-900 mb-4">
+                    Client Success Stories
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Leading life sciences organizations trust SyneticX to transform their regulatory operations
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <!-- Case Study 1 -->
+                <div class="card-elevated p-8">
+                    <div class="flex items-center mb-4">
+                        <img src="/assets/logo-pharma.svg" alt="Client Logo" class="h-8 mr-3">
+                        <div>
+                            <p class="font-semibold text-gray-900">Global Pharmaceutical</p>
+                            <p class="text-sm text-gray-600">Top 10 Pharma</p>
+                        </div>
+                    </div>
+                    <blockquote class="text-gray-600 mb-4">
+                        "SyneticX reduced our NDA preparation time by 45% and helped us identify critical competitive intelligence that shaped our market entry strategy."
+                    </blockquote>
+                    <div class="pt-4 border-t">
+                        <div class="flex justify-between text-sm">
+                            <div>
+                                <p class="text-gray-500">Time Saved</p>
+                                <p class="font-semibold text-gray-900">45%</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500">ROI</p>
+                                <p class="font-semibold text-gray-900">320%</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Case Study 2 -->
+                <div class="card-elevated p-8">
+                    <div class="flex items-center mb-4">
+                        <img src="/assets/logo-device.svg" alt="Client Logo" class="h-8 mr-3">
+                        <div>
+                            <p class="font-semibold text-gray-900">Medical Device Leader</p>
+                            <p class="text-sm text-gray-600">Class III Devices</p>
+                        </div>
+                    </div>
+                    <blockquote class="text-gray-600 mb-4">
+                        "The platform's predictive analytics helped us avoid two potential CRLs by identifying issues months before submission."
+                    </blockquote>
+                    <div class="pt-4 border-t">
+                        <div class="flex justify-between text-sm">
+                            <div>
+                                <p class="text-gray-500">CRLs Avoided</p>
+                                <p class="font-semibold text-gray-900">2</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500">Value Saved</p>
+                                <p class="font-semibold text-gray-900">$8M</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Case Study 3 -->
+                <div class="card-elevated p-8">
+                    <div class="flex items-center mb-4">
+                        <img src="/assets/logo-biotech.svg" alt="Client Logo" class="h-8 mr-3">
+                        <div>
+                            <p class="font-semibold text-gray-900">Biotech Innovator</p>
+                            <p class="text-sm text-gray-600">Oncology Focus</p>
+                        </div>
+                    </div>
+                    <blockquote class="text-gray-600 mb-4">
+                        "SyneticX's competitive intelligence capabilities gave us crucial insights that accelerated our breakthrough therapy designation."
+                    </blockquote>
+                    <div class="pt-4 border-t">
+                        <div class="flex justify-between text-sm">
+                            <div>
+                                <p class="text-gray-500">Time to BTD</p>
+                                <p class="font-semibold text-gray-900">-3 months</p>
+                            </div>
+                            <div>
+                                <p class="text-gray-500">Market Advantage</p>
+                                <p class="font-semibold text-gray-900">First-in-class</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Integration Partners -->
+    <section class="py-20 bg-gray-50">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display font-bold text-gray-900 mb-4">
+                    Enterprise-Ready Integration Ecosystem
+                </h2>
+                <p class="text-xl text-gray-600 max-w-3xl mx-auto">
+                    Seamlessly integrate with your existing regulatory and quality management systems
+                </p>
+            </div>
+            
+            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
+                <div class="bg-white rounded-lg p-6 flex items-center justify-center h-24">
+                    <img src="/assets/integration-veeva.svg" alt="Veeva" class="max-h-12">
+                </div>
+                <div class="bg-white rounded-lg p-6 flex items-center justify-center h-24">
+                    <img src="/assets/integration-oracle.svg" alt="Oracle" class="max-h-12">
+                </div>
+                <div class="bg-white rounded-lg p-6 flex items-center justify-center h-24">
+                    <img src="/assets/integration-salesforce.svg" alt="Salesforce" class="max-h-12">
+                </div>
+                <div class="bg-white rounded-lg p-6 flex items-center justify-center h-24">
+                    <img src="/assets/integration-sap.svg" alt="SAP" class="max-h-12">
+                </div>
+                <div class="bg-white rounded-lg p-6 flex items-center justify-center h-24">
+                    <img src="/assets/integration-microsoft.svg" alt="Microsoft" class="max-h-12">
+                </div>
+                <div class="bg-white rounded-lg p-6 flex items-center justify-center h-24">
+                    <img src="/assets/integration-aws.svg" alt="AWS" class="max-h-12">
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- CTA Section -->
+    <section class="py-20 bg-gradient-to-br from-gray-900 to-gray-800">
+        <div class="container mx-auto px-6 lg:px-8 text-center">
+            <h2 class="text-4xl font-display font-bold text-white mb-6">
+                Ready to Transform Your Regulatory Operations?
+            </h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                Schedule an executive briefing to explore how SyneticX can accelerate your regulatory timelines and reduce compliance risk.
+            </p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <a href="/demo.html" class="btn-primary px-8 py-4 rounded-lg text-white font-semibold bg-white text-gray-900 hover:bg-gray-100">
+                    Schedule Executive Briefing
+                </a>
+                <a href="/contact" class="px-8 py-4 rounded-lg font-semibold text-white border border-white/30 hover:bg-white/10 transition">
+                    Contact Sales Team
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="bg-white border-t">
+        <div class="container mx-auto px-6 lg:px-8 py-12">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <svg class="w-8 h-8 text-brand-600" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                        <span class="ml-2 text-xl font-display font-bold">SyneticX</span>
+                    </div>
+                    <p class="text-gray-600 mb-4">Enterprise regulatory intelligence platform for life sciences organizations.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="text-gray-400 hover:text-gray-600">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
+                            </svg>
+                        </a>
+                        <a href="#" class="text-gray-400 hover:text-gray-600">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4">Platform</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/features" class="text-gray-600 hover:text-brand-600">Features</a></li>
+                        <li><a href="/integrations" class="text-gray-600 hover:text-brand-600">Integrations</a></li>
+                        <li><a href="/security" class="text-gray-600 hover:text-brand-600">Security</a></li>
+                        <li><a href="/pricing" class="text-gray-600 hover:text-brand-600">Pricing</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/resources/whitepapers" class="text-gray-600 hover:text-brand-600">Whitepapers</a></li>
+                        <li><a href="/resources/webinars" class="text-gray-600 hover:text-brand-600">Webinars</a></li>
+                        <li><a href="/resources/case-studies" class="text-gray-600 hover:text-brand-600">Case Studies</a></li>
+                        <li><a href="/blog" class="text-gray-600 hover:text-brand-600">Blog</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-gray-900 mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/about" class="text-gray-600 hover:text-brand-600">About Us</a></li>
+                        <li><a href="/careers" class="text-gray-600 hover:text-brand-600">Careers</a></li>
+                        <li><a href="/partners" class="text-gray-600 hover:text-brand-600">Partners</a></li>
+                        <li><a href="/contact" class="text-gray-600 hover:text-brand-600">Contact</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="border-t mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-600 text-sm mb-4 md:mb-0">
+                    © 2025 SyneticX Corporation. All rights reserved.
+                </p>
+                <div class="flex space-x-6">
+                    <a href="/privacy" class="text-gray-600 text-sm hover:text-brand-600">Privacy Policy</a>
+                    <a href="/terms" class="text-gray-600 text-sm hover:text-brand-600">Terms of Service</a>
+                    <a href="/security" class="text-gray-600 text-sm hover:text-brand-600">Security</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Scripts -->
+    <script>
+        // Product Demo
+        function playProductDemo() {
+            const container = document.getElementById('demo-video-container');
+            // Implementation for video player
+            console.log('Playing product demo');
+        }
+        
+        // ROI Calculator
+        function calculateROI() {
+            const submissions = document.querySelector('input[placeholder*="25"]').value || 25;
+            const value = document.querySelector('input[placeholder*="50"]').value || 50;
+            const team = document.querySelector('input[placeholder*="15"]').value || 15;
+            
+            const savings = (submissions * value * 0.15 + team * 0.2).toFixed(1);
+            
+            document.getElementById('roi-result').classList.remove('hidden');
+            document.getElementById('savings-amount').textContent = savings;
+        }
+        
+        // Smooth scroll for navigation
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            });
+        });
+
+
+// Initialize 3D molecule viewer
+let viewer;
+let isRotating = true;
+let currentMolecule = 'CHEMBL1201631'; // Default to Remdesivir
+
+// Molecule data (in production, this would come from your API)
+const moleculeData = {
+    'CHEMBL25': {
+        name: 'Aspirin',
+        formula: 'C9H8O4',
+        weight: '180.2 Da',
+        phase: 'Marketed',
+        targets: 'COX',
+        status: 'FDA Approved',
+        cid: '2244', // PubChem Compound ID
+        smiles: 'CC(=O)OC1=CC=CC=C1C(=O)O'
+    },
+    'CHEMBL1201631': {
+        name: 'Remdesivir',
+        formula: 'C27H35N6O8P',
+        weight: '602.6 Da',
+        phase: 'Marketed',
+        targets: 'RNA Pol',
+        status: 'FDA Approved',
+        cid: '121304016'
+    },
+    'CHEMBL4297436': {
+        name: 'Molnupiravir',
+        formula: 'C13H19N3O7',
+        weight: '329.3 Da',
+        phase: 'Marketed',
+        targets: 'RNA Pol',
+        status: 'EUA',
+        cid: '145996610'
+    },
+    'CHEMBL1200499': {
+        name: 'Pembrolizumab',
+        formula: 'Monoclonal Ab',
+        weight: '149 kDa',
+        phase: 'Marketed',
+        targets: 'PD-1',
+        status: 'FDA Approved',
+        cid: '2244' // Using aspirin as fallback for antibody
+    }
+};
+
+// Initialize viewer when DOM is ready
+document.addEventListener('DOMContentLoaded', function() {
+    setTimeout(initViewer, 100);
+});
+async function fetchSDFByCID(cid, want3D = true) {
+  const kind = want3D ? '3d' : '2d';
+  const url = `https://pubchem.ncbi.nlm.nih.gov/rest/pug/compound/cid/${cid}/SDF?record_type=${kind}`;
+  const res = await fetch(url);
+  if (!res.ok) throw new Error('PubChem fetch failed');
+  return await res.text();
+}
+function initViewer() {
+    const element = document.getElementById('molecule-viewer');
+    if (element && typeof $3Dmol !== 'undefined') {
+        viewer = $3Dmol.createViewer(element, {
+            backgroundColor: 'black',
+            antialias: true
+        });
+        // Load default molecule
+        loadMolecule(currentMolecule);
+    } else {
+        // Fallback if 3Dmol doesn't load
+        console.log('3Dmol.js not loaded, retrying...');
+        setTimeout(initViewer, 500);
+    }
+}
+
+async function loadMolecule(chemblId, buttonElement) {
+    if (!viewer) {
+        initViewer();
+        return;
+    }
+
+    currentMolecule = chemblId;
+    const data = moleculeData[chemblId];
+
+    // Update molecule info
+    if (data) {
+        document.getElementById('molecule-name').textContent = data.name || '';
+        document.getElementById('molecule-formula').textContent = data.formula || '';
+        document.getElementById('molecule-weight').textContent = data.weight || '';
+        document.getElementById('molecule-phase').textContent = data.phase || '';
+        document.getElementById('molecule-targets').textContent = data.targets || '';
+        document.getElementById('molecule-status').textContent = data.status || '';
+
+        // Update status badge color
+        const statusBadge = document.getElementById('molecule-status');
+        if (statusBadge) {
+            if (data.status === 'FDA Approved') {
+                statusBadge.className = 'px-3 py-1 bg-green-500/20 text-green-300 text-xs rounded-full font-medium';
+            } else if (data.status === 'EUA') {
+                statusBadge.className = 'px-3 py-1 bg-amber-500/20 text-amber-300 text-xs rounded-full font-medium';
+            } else {
+                statusBadge.className = 'px-3 py-1 bg-white/10 text-white/80 text-xs rounded-full font-medium';
+            }
+        }
+    }
+
+    // Show loading state
+  const loadingEl = document.getElementById('molecule-loading');
+  if (loadingEl) loadingEl.style.display = 'flex';
+
+  viewer.clear();
+
+  let loaded = false;
+  if (data && data.cid) {
+    try {
+      let sdf = await fetchSDFByCID(data.cid, true);     // try 3D first
+      viewer.addModel(sdf, 'sdf');
+      loaded = true;
+    } catch {
+      try {
+        let sdf2d = await fetchSDFByCID(data.cid, false); // fallback to 2D if 3D missing
+        viewer.addModel(sdf2d, 'sdf');
+        loaded = true;
+      } catch {}
+    }
+  }
+
+  // Optional fallback to local SMILES if you add them later
+  if (!loaded && data && data.smiles) {
+    viewer.addModel(data.smiles, 'smi');
+    loaded = true;
+  }
+
+  if (!loaded) {
+    console.warn('No structure available for', chemblId);
+  }
+
+  // Styling + render
+  viewer.setStyle({}, { stick: { colorscheme: 'Jmol' }, sphere: { scale: 0.25, colorscheme: 'Jmol' } });
+  viewer.zoomTo();
+  viewer.render();
+
+  if (loadingEl) loadingEl.style.display = 'none';
+
+  if (isRotating) viewer.animate({ loop: 'forward', reps: 0 });
+
+    // Update active button styling (if a button element was passed)
+    document.querySelectorAll('.molecule-btn').forEach(btn => {
+        btn.classList.remove('bg-white/20', 'border-brand-400');
+        btn.classList.add('bg-white/10', 'border-white/20');
+    });
+    if (buttonElement) {
+        buttonElement.classList.remove('bg-white/10', 'border-white/20');
+        buttonElement.classList.add('bg-white/20', 'border-brand-400');
+    }
+}
+function changeStyle(style) {
+    if (!viewer) return;
+    
+    viewer.setStyle({}, {});
+    
+    switch(style) {
+        case 'stick':
+            viewer.setStyle({}, {stick: {colorscheme: 'Jmol'}, sphere: {scale: 0.25, colorscheme: 'Jmol'}});
+            break;
+        case 'sphere':
+            viewer.setStyle({}, {sphere: {colorscheme: 'Jmol'}});
+            break;
+        case 'cartoon':
+            viewer.setStyle({}, {cartoon: {color: 'spectrum'}});
+            break;
+    }
+    
+    viewer.render();
+}
+
+function toggleRotation() {
+    if (!viewer) return;
+    
+    isRotating = !isRotating;
+    if (isRotating) {
+        viewer.animate({loop: "forward", reps: 0});
+    } else {
+        viewer.animate({loop: "forward", reps: 1});
+    }
+}
+
+// Add mouse interaction hint
+document.addEventListener('DOMContentLoaded', function() {
+    const viewerElement = document.getElementById('molecule-viewer');
+    if (viewerElement) {
+        viewerElement.title = 'Click and drag to rotate, scroll to zoom';
+    }
+});
+</script>
+
+</body>
+</html>

@@ -1,0 +1,1609 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    
+    <!-- SEO Meta Tags -->
+    <title>Regulatory Intelligence Software for MedTech & Pharma | SyneticX</title>
+    <meta name="description" content="Monitor FDA approvals, CRLs, warning letters, and labeling shifts. See how Leaf Intelligence cuts research time by 70%.">
+    <meta name="keywords" content="regulatory intelligence software, FDA CRL monitoring tool, FDA warning letter analytics, labeling change tracking">
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Alpine.js -->
+    <script defer src="https://cdn.jsdelivr.net/npm/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        'sans': ['Inter', 'system-ui', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+                        'display': ['Plus Jakarta Sans', 'Inter', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        /* Glassmorphism card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(40px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .glass-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px) scale(1.02);
+            border-color: rgba(147, 51, 234, 0.3);
+            box-shadow: 0 20px 40px rgba(147, 51, 234, 0.2);
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #c471ed 75%, #12c2e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 8s ease infinite;
+            background-size: 400% 400%;
+        }
+        
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) translateX(10px) rotate(1deg); }
+            66% { transform: translateY(10px) translateX(-5px) rotate(-1deg); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Parallax cards */
+        .parallax-card {
+            transition: transform 0.1s ease-out;
+        }
+        
+        /* Pulse animation */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.5), 0 0 40px rgba(102, 126, 234, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(102, 126, 234, 0.8), 0 0 60px rgba(102, 126, 234, 0.4); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        /* Mesh gradient background */
+        .mesh-gradient {
+            background: radial-gradient(at 40% 20%, hsla(280, 100%, 74%, 0.3) 0px, transparent 50%),
+                        radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 0.3) 0px, transparent 50%),
+                        radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 0.3) 0px, transparent 50%),
+                        radial-gradient(at 80% 100%, hsla(340, 100%, 76%, 0.3) 0px, transparent 50%),
+                        radial-gradient(at 0% 100%, hsla(22, 100%, 77%, 0.3) 0px, transparent 50%),
+                        radial-gradient(at 0% 0%, hsla(242, 100%, 70%, 0.3) 0px, transparent 50%);
+        }
+        
+        /* Noise overlay */
+        .noise-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0.03;
+            z-index: 1;
+            pointer-events: none;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIGJhc2VGcmVxdWVuY3k9Ii43NSIgbnVtT2N0YXZlcz0iMTAiLz48ZmVDb2xvck1hdHJpeCB2YWx1ZXM9IjAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDAgMCAwIDEgMCIvPjwvZmlsdGVyPjxyZWN0IHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiIGZpbHRlcj0idXJsKCNhKSIgb3BhY2l0eT0iMC4wNSIvPjwvc3ZnPg==');
+        }
+        
+        /* Hover states */
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-4px) scale(1.02);
+        }
+        
+        /* Glow orbs */
+        .glow-orb {
+            filter: blur(40px);
+            opacity: 0.6;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 0 20px rgba(102, 126, 234, 0.4);
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-2px) scale(1.05);
+            box-shadow: 0 0 30px rgba(102, 126, 234, 0.6);
+        }
+        
+        /* Navigation */
+        .nav-glass {
+            background: rgba(0, 0, 0, 0.85);
+            backdrop-filter: blur(20px);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        
+        /* Form inputs */
+        .form-input-dark {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: white;
+            transition: all 0.2s;
+        }
+        
+        .form-input-dark:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+            background: rgba(255, 255, 255, 0.08);
+        }
+    </style>
+        <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            background: #000;
+            color: #fff;
+            overflow-x: hidden;
+        }
+        
+        /* Glassmorphism card */
+        .glass-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(40px) saturate(150%);
+            border: 1px solid rgba(255, 255, 255, 0.18);
+        }
+        
+        .glass-card-hover {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .glass-card-hover:hover {
+            background: rgba(255, 255, 255, 0.08);
+            transform: translateY(-4px) scale(1.02);
+            border-color: rgba(147, 51, 234, 0.3);
+            box-shadow: 0 20px 40px rgba(147, 51, 234, 0.2);
+        }
+        
+        /* Gradient text */
+        .gradient-text {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #c471ed 75%, #12c2e9 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            animation: gradient-shift 8s ease infinite;
+            background-size: 400% 400%;
+        }
+        
+        @keyframes gradient-shift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+        
+        /* Floating animation */
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) translateX(0px) rotate(0deg); }
+            33% { transform: translateY(-20px) translateX(10px) rotate(1deg); }
+            66% { transform: translateY(10px) translateX(-5px) rotate(-1deg); }
+        }
+        
+        .floating {
+            animation: float 6s ease-in-out infinite;
+        }
+        
+        /* Pulse animation */
+        @keyframes pulse-glow {
+            0%, 100% { box-shadow: 0 0 20px rgba(102, 126, 234, 0.5), 0 0 40px rgba(102, 126, 234, 0.3); }
+            50% { box-shadow: 0 0 30px rgba(102, 126, 234, 0.8), 0 0 60px rgba(102, 126, 234, 0.4); }
+        }
+        
+        .pulse-glow {
+            animation: pulse-glow 2s ease-in-out infinite;
+        }
+        
+        /* Mesh gradient background */
+        .mesh-gradient {
+            background: radial-gradient(at 40% 20%, hsla(280, 100%, 74%, 0.3) 0px, transparent 50%),
+                        radial-gradient(at 80% 0%, hsla(189, 100%, 56%, 0.3) 0px, transparent 50%),
+                        radial-gradient(at 0% 50%, hsla(355, 100%, 93%, 0.3) 0px, transparent 50%),
+                        radial-gradient(at 80% 100%, hsla(340, 100%, 76%, 0.3) 0px, transparent 50%),
+                        radial-gradient(at 0% 100%, hsla(22, 100%, 77%, 0.3) 0px, transparent 50%),
+                        radial-gradient(at 0% 0%, hsla(242, 100%, 70%, 0.3) 0px, transparent 50%);
+        }
+        
+        /* Hover states */
+        .hover-lift {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .hover-lift:hover {
+            transform: translateY(-4px) scale(1.02);
+        }
+        
+        /* Glow orbs */
+        .glow-orb {
+            filter: blur(40px);
+            opacity: 0.6;
+        }
+    </style>
+</head>
+<body>
+    <!-- Noise overlay -->
+    <div class="noise-overlay"></div>
+    
+    <!-- Navigation -->
+   <nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/30 border-b border-white/10" x-data="{ mobileMenu: false }">
+  <div class="mx-auto max-w-7xl px-6 lg:px-8">
+    <div class="flex h-16 items-center justify-between">
+
+      <!-- Brand -->
+      <a href="/" class="flex items-center gap-3">
+        <img src="syneticx.png"
+             alt="SyneticX Logo"
+             class="h-8 w-8 object-contain" />
+        <span class="text-lg md:text-xl font-extrabold tracking-tight
+                     bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500
+                     bg-clip-text text-transparent">
+          SyneticX
+        </span>
+      </a>
+
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center gap-8">
+        <a href="/head.html" class="nav-link">Leaf Intelligence</a>
+        <a href="/competitive.html" class="nav-link">Business Intelligence</a>
+        <!-- <a href="#resources" class="nav-link">Resources</a> -->
+      </div>
+
+      <!-- CTAs -->
+      <div class="hidden lg:flex items-center gap-4">
+        <a href="/contact" class="text-gray-300 hover:text-white transition-colors">Contact Sales</a>
+        <a href="/demo.html"
+           class="rounded-lg px-4 py-2 font-semibold text-white
+                  bg-gradient-to-r from-blue-500 to-purple-500
+                  hover:from-purple-500 hover:to-blue-500 transition-all shadow-md">
+          Request Demo
+        </a>
+      </div>
+
+      <!-- Mobile Menu Button -->
+      <button @click="mobileMenu = !mobileMenu"
+              class="lg:hidden p-2 rounded-md hover:bg-white/10">
+        <svg x-show="!mobileMenu" class="h-6 w-6 text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M4 6h16M4 12h16M4 18h16"/>
+        </svg>
+        <svg x-show="mobileMenu" class="h-6 w-6 text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                d="M6 18L18 6M6 6l12 12"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <!-- Mobile Menu -->
+  <div x-show="mobileMenu" x-transition
+       class="lg:hidden bg-black/90 backdrop-blur-md border-t border-white/10">
+    <div class="px-6 py-4 space-y-2">
+      <a href="/head.html" class="mobile-link">Leaf Intelligence</a>
+      <a href="/competitive.html" class="mobile-link">Business Intelligence</a>
+      <a href="#resources" class="mobile-link">Resources</a>
+      <a href="/contact" class="mobile-link">Contact Sales</a>
+      <a href="/demo.html"
+         class="block w-full text-center rounded-lg px-4 py-2 font-semibold text-white
+                bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 transition-all">
+        Request Demo
+      </a>
+    </div>
+  </div>
+</nav>
+       <section class="relative min-h-screen flex items-center justify-center overflow-hidden pt-16">
+        <!-- Mesh gradient background -->
+        <div class="absolute inset-0 mesh-gradient opacity-40"></div>
+        
+        <!-- Floating glow orbs -->
+        <div class="absolute top-20 left-10 w-64 h-64 bg-purple-500 rounded-full glow-orb floating"></div>
+        <div class="absolute bottom-20 right-20 w-96 h-96 bg-blue-500 rounded-full glow-orb floating" style="animation-delay: 3s;"></div>
+        <div class="absolute top-1/2 left-1/2 w-80 h-80 bg-pink-500 rounded-full glow-orb floating" style="animation-delay: 1.5s;"></div>
+        
+        <!-- Main content -->
+        <div class="relative z-10 container mx-auto px-6 lg:px-8">
+            <div class="grid lg:grid-cols-2 gap-12 items-center">
+                <!-- Left: Content -->
+                <div class="space-y-8">
+                    <!-- Pill badge -->
+                    <div class="inline-flex items-center px-4 py-2 rounded-full glass-card">
+                        <span class="w-2 h-2 bg-green-400 rounded-full mr-2 animate-pulse"></span>
+                        <span class="text-sm font-medium">AI-Powered Regulatory Intelligence</span>
+                    </div>
+                    
+                    <!-- Main heading -->
+                    <h1 class="text-6xl lg:text-7xl font-display font-bold leading-tight">
+                        <span class="block text-white">Regulatory Intel</span>
+                        <span class="block gradient-text">Without Limits</span>
+                    </h1>
+                    
+                    <!-- Description -->
+                    <p class="text-xl text-gray-300 leading-relaxed max-w-xl">
+                        Real-time FDA tracking, CRL analysis, and competitive intelligence—unified in one intelligent platform.
+                    </p>
+                    
+                    <!-- CTA Buttons -->
+                    <div class="flex flex-wrap gap-4">
+                        <button onclick="openDemoForm()" class="px-8 py-4 bg-white text-black rounded-full font-semibold hover-lift pulse-glow">
+                            Start Free Trial
+                        </button>
+                        <button onclick="openVideoModal()" class="px-8 py-4 glass-card rounded-full font-semibold hover-lift border border-white/20">
+                            Watch Demo
+                        </button>
+                    </div>
+                    
+                    <!-- Stats row -->
+                    <div class="flex gap-8 pt-8 border-t border-white/10">
+                        <div>
+                            <div class="text-3xl font-bold gradient-text">70%</div>
+                            <div class="text-sm text-gray-400">Time Saved</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold gradient-text">500+</div>
+                            <div class="text-sm text-gray-400">Data Sources</div>
+                        </div>
+                        <div>
+                            <div class="text-3xl font-bold gradient-text">24/7</div>
+                            <div class="text-sm text-gray-400">Monitoring</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Right: Dashboard Preview with Clinical Trials Interface -->
+                <div class="relative lg:h-[600px] perspective-1000">
+                    <!-- Main dashboard card -->
+                    <div class="absolute inset-0 transform rotate-y-5 rotate-x-5" id="mainCard">
+                        <div class="glass-card rounded-2xl p-1 h-full hover-lift">
+                            <div class="bg-gradient-to-br from-gray-900/80 to-black/80 rounded-xl p-6 h-full">
+                                <!-- Dashboard header -->
+                                <div class="flex items-center justify-between mb-6">
+                                   <div class="flex items-center space-x-3">
+                    <div class="flex items-center">
+                        <!-- Beautiful gradient leaf icon -->
+                        <div class="relative">
+                            <!-- <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8" viewBox="0 0 24 24" fill="none">
+                                <defs>
+                                    <linearGradient id="leaf-gradient" x1="0%" y1="0%" x2="100%" y2="100%">
+                                        <stop offset="0%" stop-color="#10b981" /> 
+                                        <stop offset="50%" stop-color="#06b6d4" /> 
+                                        <stop offset="100%" stop-color="#8b5cf6" /> 
+                                    </linearGradient>
+                                </defs>
+                                
+                                <path d="M12 2C8 2 5 5 5 9c0 2.5 1 4.5 2.5 6L12 22l4.5-7C18 13.5 19 11.5 19 9c0-4-3-7-7-7z" 
+                                      fill="url(#leaf-gradient)" 
+                                      stroke="url(#leaf-gradient)" 
+                                      stroke-width="0.5"/>
+                               
+                                <path d="M12 6v10M10 8l4 2M10 12l4 2" 
+                                      stroke="white" 
+                                      stroke-width="1" 
+                                      stroke-linecap="round" 
+                                      opacity="0.6"/>
+                            </svg> -->
+                            <img src="leaf.png" alt="Leaf Intelligence" class="h-14 w-14 object-contain">
+                            <!-- Subtle glow effect -->
+                            <div class="absolute inset-0 bg-gradient-to-r from-emerald-400 to-cyan-400 opacity-20 blur-lg rounded-full"></div>
+                        </div>
+                        <div class="ml-3">
+                            <span class="text-xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent">
+                                Leaf Intelligence
+                            </span>
+                            <div class="text-xs text-gray-600 font-medium tracking-wide">AI Research Platform</div>
+                        </div>
+                    </div>
+                </div>
+
+                                    <div class="flex gap-2">
+                                        <div class="w-3 h-3 rounded-full bg-red-500"></div>
+                                        <div class="w-3 h-3 rounded-full bg-yellow-500"></div>
+                                        <div class="w-3 h-3 rounded-full bg-green-500"></div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Clinical Trials Search Interface Content -->
+                                <div class="relative h-[calc(100%-60px)] overflow-hidden rounded-lg bg-gray-900/50">
+                                    <div class="w-full h-full bg-gradient-to-br from-gray-900 to-gray-800 p-4">
+                                        <!-- Search Header -->
+                                        <div class="mb-3">
+                                            <h3 class="text-sm font-semibold mb-2">Search for Clinical Trials</h3>
+                                            <div class="flex gap-2">
+                                                <div class="flex-1 bg-gray-800/50 rounded-lg px-3 py-2 flex items-center gap-2">
+                                                    <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z" />
+                                                    </svg>
+                                                    <input type="text" placeholder="Drug Name" class="bg-transparent text-xs outline-none flex-1" value="Ketamine">
+                                                </div>
+                                                <div class="flex-1 bg-gray-800/50 rounded-lg px-3 py-2 flex items-center gap-2">
+                                                    <svg class="w-4 h-4 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
+                                                    </svg>
+                                                    <input type="text" placeholder="Condition" class="bg-transparent text-xs outline-none flex-1">
+                                                </div>
+                                                <button class="px-4 py-2 bg-blue-600 rounded-lg text-xs font-medium hover:bg-blue-700 transition-colors">
+                                                    Search
+                                                </button>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Timeline Slider -->
+                                        <div class="mb-3">
+                                            <div class="flex items-center justify-between text-xs text-gray-500 mb-1">
+                                                <span>Timeline: 7 years back</span>
+                                                <span>from 2018 to 2025</span>
+                                            </div>
+                                            <div class="relative h-8 bg-gray-800/30 rounded-lg">
+                                                <div class="absolute inset-0 flex items-center px-2">
+                                                    <div class="h-1 w-full bg-gray-700 rounded-full">
+                                                        <div class="h-full w-3/5 bg-gradient-to-r from-blue-500 to-purple-500 rounded-full relative">
+                                                            <div class="absolute right-0 top-1/2 transform -translate-y-1/2 w-4 h-4 bg-white rounded-full shadow-lg"></div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                                <div class="absolute inset-x-0 bottom-0 flex justify-between text-xs text-gray-600 px-2">
+                                                    <span>2024</span>
+                                                    <span>2018</span>
+                                                    <span>2015</span>
+                                                    <span>2011</span>
+                                                    <span>2010</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- Action Buttons -->
+                                        <div class="flex gap-2 mb-3">
+                                            <button class="px-3 py-1.5 bg-gray-800/50 rounded-lg text-xs flex items-center gap-1 hover:bg-gray-700/50">
+                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                                                </svg>
+                                                Advanced Search
+                                            </button>
+                                            <button class="px-3 py-1.5 bg-gray-800/50 rounded-lg text-xs flex items-center gap-1 hover:bg-gray-700/50">
+                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+                                                </svg>
+                                                Watch Drug
+                                            </button>
+                                            <button class="px-3 py-1.5 bg-purple-600/80 rounded-lg text-xs flex items-center gap-1 hover:bg-purple-600">
+                                                <svg class="w-3 h-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 3v4M3 5h4M6 17v4m-2-2h4m5-16l2.286 6.857L21 12l-5.714 2.143L13 21l-2.286-6.857L5 12l5.714-2.143L13 3z" />
+                                                </svg>
+                                                Save Search
+                                            </button>
+                                        </div>
+                                        
+                                        <!-- Results Preview -->
+                                        <div class="bg-gray-800/30 rounded p-2">
+                                            <div class="flex items-center justify-center py-4">
+                                                <div class="text-center">
+                                                    <svg class="w-8 h-8 mx-auto mb-2 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                                                    </svg>
+                                                    <p class="text-xs text-gray-500">Enter a drug name and click "Search" to analyze clinical trials</p>
+                                                    <p class="text-xs text-gray-600 mt-1">Example: Ketamine, Psilocybin, Esketamine, PCN-101, COMP360</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Overlay gradient -->
+                                    <div class="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent"></div>
+                                    
+                                    <!-- Floating data cards -->
+                                    <!-- <div class="absolute top-4 left-4 glass-card rounded-lg p-3 floating" style="animation-delay: 0.5s;">
+                                        <div class="text-xs text-green-400 mb-1">FDA Approval</div>
+                                        <div class="text-sm font-semibold">Device XYZ Cleared</div>
+                                    </div>
+                                    
+                                    <div class="absolute top-4 right-4 glass-card rounded-lg p-3 floating" style="animation-delay: 1s;">
+                                        <div class="text-xs text-blue-400 mb-1">CRL Analysis</div>
+                                        <div class="text-sm font-semibold">3 New Patterns</div>
+                                    </div> -->
+                                    
+                                    <div class="absolute bottom-4 left-4 glass-card rounded-lg p-3 floating" style="animation-delay: 1.5s;">
+                                        <div class="text-xs text-purple-400 mb-1">Competitor Update</div>
+                                        <div class="text-sm font-semibold">Label Change Detected</div>
+                                    </div> 
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Secondary floating cards -->
+                    <!-- <div class="absolute -top-10 -right-10 w-48 h-32 glass-card rounded-xl p-4 floating opacity-60" style="animation-delay: 2s;">
+                        <div class="text-xs text-gray-400 mb-2">Weekly Report</div>
+                        <div class="h-16 bg-gradient-to-r from-purple-500/20 to-blue-500/20 rounded"></div>
+                    </div> -->
+                    
+                   
+                </div>
+            </div>
+        </div>
+        
+        <!-- Scroll indicator -->
+        <div class="absolute bottom-8 left-1/2 transform -translate-x-1/2 animate-bounce">
+            <svg class="w-6 h-6 text-white/50" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path>
+            </svg>
+        </div>
+    </section>
+    
+    <!-- Quick Value Props -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="glass-card glass-card-hover rounded-2xl p-6 text-center">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-white font-semibold mb-2">Spot CRL Risks</h3>
+                    <p class="text-sm text-gray-400">Early detection of regulatory issues</p>
+                </div>
+                
+                <div class="glass-card glass-card-hover rounded-2xl p-6 text-center">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-white font-semibold mb-2">Faster Response</h3>
+                    <p class="text-sm text-gray-400">Precedent evidence at your fingertips</p>
+                </div>
+                
+                <div class="glass-card glass-card-hover rounded-2xl p-6 text-center">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                        </svg>
+                    </div>
+                    <h3 class="text-white font-semibold mb-2">Track Changes</h3>
+                    <p class="text-sm text-gray-400">Monitor competitor labeling shifts</p>
+                </div>
+                
+                <div class="glass-card glass-card-hover rounded-2xl p-6 text-center">
+                    <div class="w-14 h-14 mx-auto mb-4 rounded-xl bg-gradient-to-br from-pink-400 to-blue-500 flex items-center justify-center">
+                        <svg class="w-7 h-7 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-white font-semibold mb-2">Audit-Ready</h3>
+                    <p class="text-sm text-gray-400">Defend strategy with evidence</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Product Video -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-display font-bold text-white mb-4">
+                    See <span class="gradient-text">Leaf Intelligence</span> in Action
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Watch how our AI-powered platform transforms regulatory operations
+                </p>
+            </div>
+            
+            <div class="max-w-4xl mx-auto">
+                <div class="glass-card rounded-2xl p-2 hover-lift">
+                    <div class="aspect-video bg-gradient-to-br from-gray-900/90 to-black/90 rounded-xl relative group cursor-pointer overflow-hidden" onclick="openVideoModal()">
+                        <!-- Fake video preview interface -->
+                        <div class="w-full h-full bg-gradient-to-br from-gray-900 to-gray-800 p-6">
+                            <!-- Video player UI mockup -->
+                            <div class="h-full flex flex-col">
+                                <!-- Top bar -->
+                                <div class="flex items-center justify-between mb-4">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-8 h-8 rounded bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center">
+                                            <span class="text-white font-bold text-sm">L</span>
+                                        </div>
+                                        <span class="text-sm font-medium">Leaf Intelligence Demo</span>
+                                    </div>
+                                    <div class="flex gap-2">
+                                        <div class="w-6 h-6 rounded bg-gray-700/50 flex items-center justify-center">
+                                            <svg class="w-3 h-3 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                                <path d="M12 3v18m9-9H3"/>
+                                            </svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Content area with gradient overlay suggesting video content -->
+                                <div class="flex-1 relative rounded-lg overflow-hidden bg-gradient-to-br from-purple-900/20 to-blue-900/20">
+                                    <!-- Simulated video frame -->
+                                    <div class="absolute inset-0 flex items-center justify-center">
+                                        <!-- Animated rings -->
+                                        <div class="absolute w-32 h-32 rounded-full border border-purple-500/20 animate-ping"></div>
+                                        <div class="absolute w-24 h-24 rounded-full border border-blue-500/20 animate-ping" style="animation-delay: 0.5s"></div>
+                                        <div class="absolute w-16 h-16 rounded-full border border-pink-500/20 animate-ping" style="animation-delay: 1s"></div>
+                                    </div>
+                                    
+                                    <!-- Grid pattern overlay -->
+                                    <div class="absolute inset-0" style="background-image: repeating-linear-gradient(0deg, transparent, transparent 35px, rgba(255,255,255,0.03) 35px, rgba(255,255,255,0.03) 70px), repeating-linear-gradient(90deg, transparent, transparent 35px, rgba(255,255,255,0.03) 35px, rgba(255,255,255,0.03) 70px);"></div>
+                                </div>
+                                
+                                <!-- Bottom controls -->
+                                <div class="mt-4 flex items-center gap-3">
+                                    <div class="h-1 flex-1 bg-gray-700 rounded-full overflow-hidden">
+                                        <div class="h-full w-1/3 bg-gradient-to-r from-purple-500 to-blue-500 rounded-full"></div>
+                                    </div>
+                                    <span class="text-xs text-gray-400">0:30 / 1:30</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Play button overlay -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <div class="w-20 h-20 rounded-full bg-white/10 backdrop-blur flex items-center justify-center group-hover:bg-white/20 transition-all group-hover:scale-110">
+                                <svg class="w-10 h-10 text-white ml-1" fill="currentColor" viewBox="0 0 24 24">
+                                    <path d="M8 5v14l11-7z"/>
+                                </svg>
+                            </div>
+                        </div>
+                        
+                        <div class="absolute bottom-4 right-4 px-3 py-1 glass-card rounded-full">
+                            <span class="text-sm font-medium">1:30</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+
+
+    
+    <!-- How It Works -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 mesh-gradient opacity-20"></div>
+        
+        <div class="relative container mx-auto px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-4xl font-display font-bold text-white mb-4">
+                    How <span class="gradient-text">Leaf Intelligence</span> Works
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Our AI-powered platform transforms raw regulatory data into actionable insights
+                </p>
+            </div>
+            
+            <!-- Process Steps -->
+            <div class="grid lg:grid-cols-4 gap-8">
+                <div class="text-center group">
+                    <div class="relative mb-6">
+                        <div class="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center text-white font-bold text-2xl group-hover:scale-110 transition-transform">
+                            1
+                        </div>
+                        <div class="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-blue-500 to-purple-500"></div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Ingest</h3>
+                    <p class="text-sm text-gray-400">FDA/EMA, ClinicalTrials.gov, Orange Book, PubMed</p>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="relative mb-6">
+                        <div class="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center text-white font-bold text-2xl group-hover:scale-110 transition-transform">
+                            2
+                        </div>
+                        <div class="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-purple-500 to-pink-500"></div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Normalize</h3>
+                    <p class="text-sm text-gray-400">Entity resolution, deduplication, quality assurance</p>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="relative mb-6">
+                        <div class="w-20 h-20 mx-auto rounded-2xl bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center text-white font-bold text-2xl group-hover:scale-110 transition-transform">
+                            3
+                        </div>
+                        <div class="hidden lg:block absolute top-10 left-full w-full h-0.5 bg-gradient-to-r from-pink-500 to-blue-500"></div>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Analyze</h3>
+                    <p class="text-sm text-gray-400">AI pattern detection for risks & anomalies</p>
+                </div>
+                
+                <div class="text-center group">
+                    <div class="w-20 h-20 mx-auto mb-6 rounded-2xl bg-gradient-to-br from-pink-400 to-blue-500 flex items-center justify-center text-white font-bold text-2xl group-hover:scale-110 transition-transform">
+                        4
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Deliver</h3>
+                    <p class="text-sm text-gray-400">Dashboards, alerts, exportable evidence</p>
+                </div>
+            </div>
+            
+            <div class="text-center mt-12">
+                <button onclick="openDemoForm()" class="btn-primary px-8 py-3 rounded-full text-white font-semibold">
+                    See Your Category Live → Book a Demo
+                </button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Data Sources -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-display font-bold text-white mb-4">
+                    Comprehensive, <span class="gradient-text">Verifiable Sources</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    We aggregate public sources with validation methods documented in exports
+                </p>
+            </div>
+            
+            <div class="flex flex-wrap justify-center gap-4">
+                <div class="glass-card rounded-full px-6 py-3 hover-lift">
+                    <span class="text-white font-medium">FDA.gov</span>
+                </div>
+                <div class="glass-card rounded-full px-6 py-3 hover-lift">
+                    <span class="text-white font-medium">ClinicalTrials.gov</span>
+                </div>
+                <div class="glass-card rounded-full px-6 py-3 hover-lift">
+                    <span class="text-white font-medium">Orange Book</span>
+                </div>
+                <div class="glass-card rounded-full px-6 py-3 hover-lift">
+                    <span class="text-white font-medium">DailyMed</span>
+                </div>
+                <div class="glass-card rounded-full px-6 py-3 hover-lift">
+                    <span class="text-white font-medium">PubMed</span>
+                </div>
+                <div class="glass-card rounded-full px-6 py-3 hover-lift">
+                    <span class="text-white font-medium">USPTO</span>
+                </div>
+                <div class="glass-card rounded-full px-6 py-3 hover-lift">
+                    <span class="text-white font-medium">EMA</span>
+                </div>
+                <div class="glass-card rounded-full px-6 py-3 hover-lift">
+                    <span class="text-white font-medium">+ 500 more</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Role-Based Value -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0">
+            <div class="absolute top-20 right-20 w-72 h-72 bg-purple-500 rounded-full glow-orb"></div>
+        </div>
+        
+        <div class="relative container mx-auto px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-display font-bold text-white mb-4">
+                    Tailored for <span class="gradient-text">Your Role</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Customized insights and workflows for every team member
+                </p>
+            </div>
+            
+            <div x-data="{ activeTab: 'regulatory' }" class="max-w-4xl mx-auto">
+                <!-- Tab Navigation -->
+                <div class="flex flex-wrap justify-center gap-2 mb-8">
+                    <button @click="activeTab = 'regulatory'" 
+                            :class="activeTab === 'regulatory' ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white' : 'glass-card text-gray-300'" 
+                            class="px-6 py-3 rounded-full font-medium transition-all">
+                        Regulatory Affairs
+                    </button>
+                    <button @click="activeTab = 'clinical'" 
+                            :class="activeTab === 'clinical' ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white' : 'glass-card text-gray-300'" 
+                            class="px-6 py-3 rounded-full font-medium transition-all">
+                        Clinical/Medical
+                    </button>
+                    <button @click="activeTab = 'rd'" 
+                            :class="activeTab === 'rd' ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white' : 'glass-card text-gray-300'" 
+                            class="px-6 py-3 rounded-full font-medium transition-all">
+                        R&D
+                    </button>
+                    <button @click="activeTab = 'business'" 
+                            :class="activeTab === 'business' ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white' : 'glass-card text-gray-300'" 
+                            class="px-6 py-3 rounded-full font-medium transition-all">
+                        Business/BD
+                    </button>
+                </div>
+                
+                <!-- Tab Content -->
+                <div class="glass-card rounded-2xl p-8">
+                    <div x-show="activeTab === 'regulatory'">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-green-400 to-blue-500 flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-white">Regulatory Affairs</h3>
+                        </div>
+                        <p class="text-gray-300 mb-6">Spot precedent, respond to CRLs with evidence, monitor labeling risks across your portfolio.</p>
+                        <button onclick="openDemoForm('?role=RA')" class="btn-primary px-6 py-3 rounded-full text-white font-semibold">
+                            Book a Role-Specific Demo
+                        </button>
+                    </div>
+                    
+                    <div x-show="activeTab === 'clinical'" style="display: none;">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-blue-400 to-purple-500 flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-white">Clinical/Medical</h3>
+                        </div>
+                        <p class="text-gray-300 mb-6">Identify design levers to reduce trial burden; track endpoints & acceptance patterns.</p>
+                        <button onclick="openDemoForm('?role=Clinical')" class="btn-primary px-6 py-3 rounded-full text-white font-semibold">
+                            Book a Role-Specific Demo
+                        </button>
+                    </div>
+                    
+                    <div x-show="activeTab === 'rd'" style="display: none;">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-white">R&D</h3>
+                        </div>
+                        <p class="text-gray-300 mb-6">See tech trends, patents, failure modes early to inform product development.</p>
+                        <button onclick="openDemoForm('?role=RD')" class="btn-primary px-6 py-3 rounded-full text-white font-semibold">
+                            Book a Role-Specific Demo
+                        </button>
+                    </div>
+                    
+                    <div x-show="activeTab === 'business'" style="display: none;">
+                        <div class="flex items-center mb-4">
+                            <div class="w-12 h-12 rounded-xl bg-gradient-to-br from-pink-400 to-blue-500 flex items-center justify-center mr-4">
+                                <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-semibold text-white">Business/BD</h3>
+                        </div>
+                        <p class="text-gray-300 mb-6">Track pipelines, deals, and timing signals for strategic partnerships.</p>
+                        <button onclick="openDemoForm('?role=BD')" class="btn-primary px-6 py-3 rounded-full text-white font-semibold">
+                            Book a Role-Specific Demo
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- ROI Calculator -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="max-w-2xl mx-auto">
+                <div class="text-center mb-12">
+                    <h2 class="text-4xl font-display font-bold text-white mb-4">
+                        Calculate Your <span class="gradient-text">Time Savings</span>
+                    </h2>
+                    <p class="text-gray-400">
+                        See how much time and money you could save with Leaf Intelligence
+                    </p>
+                </div>
+                
+                <div class="glass-card rounded-2xl p-8">
+                    <div class="space-y-6">
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">
+                                Hours/week on regulatory monitoring
+                            </label>
+                            <input type="number" id="hoursPerWeek" placeholder="20" 
+                                   class="form-input-dark w-full px-4 py-3 rounded-xl">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">
+                                Team size
+                            </label>
+                            <input type="number" id="teamSize" placeholder="5" 
+                                   class="form-input-dark w-full px-4 py-3 rounded-xl">
+                        </div>
+                        
+                        <div>
+                            <label class="block text-sm font-medium text-gray-300 mb-2">
+                                Average hourly rate ($)
+                            </label>
+                            <input type="number" id="hourlyRate" placeholder="75" 
+                                   class="form-input-dark w-full px-4 py-3 rounded-xl">
+                        </div>
+                        
+                        <button onclick="calculateROI()" class="w-full btn-primary py-3 rounded-full font-semibold text-white">
+                            Calculate Savings
+                        </button>
+                        
+                        <div id="roiResult" class="hidden">
+                            <div class="glass-card rounded-xl p-6 border-2 border-purple-500/30">
+                                <p class="text-sm text-gray-400 mb-2">Estimated Monthly Savings</p>
+                                <p class="text-4xl font-bold gradient-text">$<span id="monthlySavings">0</span></p>
+                                <p class="text-sm text-gray-300 mt-2">Based on 70% time reduction</p>
+                            </div>
+                            
+                            <button onclick="openDemoForm()" class="w-full btn-primary py-3 rounded-full font-semibold text-white mt-4">
+                                See It With Your Data — Book Demo
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Screenshots Gallery -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-display font-bold text-white mb-4">
+                    Platform <span class="gradient-text">Screenshots</span>
+                </h2>
+                <p class="text-gray-400 max-w-2xl mx-auto">
+                    Explore the different modules and features of Leaf Intelligence
+                </p>
+            </div>
+            
+            <div class="grid lg:grid-cols-3 gap-8">
+                <div class="glass-card rounded-2xl overflow-hidden hover-lift">
+                    <div class="bg-gradient-to-br from-gray-900/90 to-gray-800/90 p-6">
+                        <div class="text-sm text-green-400 mb-3 font-semibold">CRL Analysis Library</div>
+                        <div class="aspect-video bg-gray-900/50 rounded-lg overflow-hidden">
+                            <!-- Fake CRL Library Interface -->
+                            <div class="w-full h-full bg-gradient-to-br from-gray-900 to-gray-800 p-3">
+                                <div class="flex items-center justify-between mb-2">
+                                    <div class="flex gap-2">
+                                        <div class="px-2 py-1 bg-green-500/20 rounded text-xs text-green-400">Active</div>
+                                        <div class="px-2 py-1 bg-gray-700/50 rounded text-xs">Filter</div>
+                                    </div>
+                                    <div class="text-xs text-gray-500">248 Results</div>
+                                </div>
+                                <div class="space-y-1">
+                                    <div class="bg-gray-800/50 rounded p-2">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <div class="text-xs font-medium">Manufacturing Controls</div>
+                                            <div class="w-2 h-2 bg-yellow-400 rounded-full"></div>
+                                        </div>
+                                        <div class="h-1 bg-gray-700 rounded-full overflow-hidden">
+                                            <div class="h-full w-3/4 bg-gradient-to-r from-green-500 to-green-400"></div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-800/50 rounded p-2">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <div class="text-xs font-medium">Clinical Data</div>
+                                            <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                                        </div>
+                                        <div class="h-1 bg-gray-700 rounded-full overflow-hidden">
+                                            <div class="h-full w-1/2 bg-gradient-to-r from-blue-500 to-blue-400"></div>
+                                        </div>
+                                    </div>
+                                    <div class="bg-gray-800/50 rounded p-2">
+                                        <div class="flex items-center justify-between mb-1">
+                                            <div class="text-xs font-medium">Device Testing</div>
+                                            <div class="w-2 h-2 bg-red-400 rounded-full"></div>
+                                        </div>
+                                        <div class="h-1 bg-gray-700 rounded-full overflow-hidden">
+                                            <div class="h-full w-5/6 bg-gradient-to-r from-purple-500 to-purple-400"></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-400 mt-3">Access historical CRL patterns and precedents</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card rounded-2xl overflow-hidden hover-lift">
+                    <div class="bg-gradient-to-br from-gray-900/90 to-gray-800/90 p-6">
+                        <div class="text-sm text-blue-400 mb-3 font-semibold">Approval Timeline</div>
+                        <div class="aspect-video bg-gray-900/50 rounded-lg overflow-hidden">
+                            <!-- Fake Timeline Interface -->
+                            <div class="w-full h-full bg-gradient-to-br from-gray-900 to-gray-800 p-3">
+                                <div class="h-full flex flex-col justify-between">
+                                    <!-- Timeline header -->
+                                    <div class="flex justify-between text-xs text-gray-500 mb-2">
+                                        <span>Q1 2024</span>
+                                        <span>Q2 2024</span>
+                                        <span>Q3 2024</span>
+                                        <span>Q4 2024</span>
+                                    </div>
+                                    
+                                    <!-- Timeline tracks -->
+                                    <div class="flex-1 space-y-2">
+                                        <div class="relative h-6 bg-gray-800/50 rounded">
+                                            <div class="absolute left-0 top-0 h-full w-1/3 bg-gradient-to-r from-blue-500 to-blue-400 rounded flex items-center px-1">
+                                                <span class="text-xs truncate">FDA Review</span>
+                                            </div>
+                                        </div>
+                                        <div class="relative h-6 bg-gray-800/50 rounded">
+                                            <div class="absolute left-1/4 top-0 h-full w-1/2 bg-gradient-to-r from-purple-500 to-purple-400 rounded flex items-center px-1">
+                                                <span class="text-xs truncate">EMA Process</span>
+                                            </div>
+                                        </div>
+                                        <div class="relative h-6 bg-gray-800/50 rounded">
+                                            <div class="absolute left-1/2 top-0 h-full w-1/4 bg-gradient-to-r from-green-500 to-green-400 rounded flex items-center px-1">
+                                                <span class="text-xs truncate">PMDA</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <!-- Legend -->
+                                    <div class="flex gap-3 mt-2">
+                                        <div class="flex items-center gap-1">
+                                            <div class="w-2 h-2 bg-blue-500 rounded-full"></div>
+                                            <span class="text-xs text-gray-500">Pending</span>
+                                        </div>
+                                        <div class="flex items-center gap-1">
+                                            <div class="w-2 h-2 bg-green-500 rounded-full"></div>
+                                            <span class="text-xs text-gray-500">Approved</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-400 mt-3">Track approval progress across agencies</p>
+                    </div>
+                </div>
+                
+                <div class="glass-card rounded-2xl overflow-hidden hover-lift">
+                    <div class="bg-gradient-to-br from-gray-900/90 to-gray-800/90 p-6">
+                        <div class="text-sm text-purple-400 mb-3 font-semibold">Labeling Watch</div>
+                        <div class="aspect-video bg-gray-900/50 rounded-lg overflow-hidden">
+                            <!-- Fake Labeling Watch Interface -->
+                            <div class="w-full h-full bg-gradient-to-br from-gray-900 to-gray-800 p-3">
+                                <div class="mb-2 flex items-center justify-between">
+                                    <div class="text-xs text-gray-400">Recent Changes</div>
+                                    <div class="flex gap-1">
+                                        <div class="w-4 h-4 bg-purple-500/20 rounded flex items-center justify-center">
+                                            <span class="text-xs">7</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <!-- Change list -->
+                                <div class="space-y-1 text-xs">
+                                    <div class="bg-gray-800/50 rounded p-1.5 flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-1 h-4 bg-red-500 rounded-full"></div>
+                                            <span>Contraindications Added</span>
+                                        </div>
+                                        <span class="text-gray-500">2d</span>
+                                    </div>
+                                    <div class="bg-gray-800/50 rounded p-1.5 flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-1 h-4 bg-yellow-500 rounded-full"></div>
+                                            <span>Dosage Updated</span>
+                                        </div>
+                                        <span class="text-gray-500">5d</span>
+                                    </div>
+                                    <div class="bg-gray-800/50 rounded p-1.5 flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-1 h-4 bg-green-500 rounded-full"></div>
+                                            <span>New Indication</span>
+                                        </div>
+                                        <span class="text-gray-500">1w</span>
+                                    </div>
+                                    <div class="bg-gray-800/50 rounded p-1.5 flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-1 h-4 bg-purple-500 rounded-full"></div>
+                                            <span>Safety Information</span>
+                                        </div>
+                                        <span class="text-gray-500">2w</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <p class="text-sm text-gray-400 mt-3">Monitor competitor labeling changes</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- FAQs -->
+    <section class="py-20 relative">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-4xl font-display font-bold text-white mb-4">
+                    Frequently Asked <span class="gradient-text">Questions</span>
+                </h2>
+            </div>
+            
+            <div class="max-w-3xl mx-auto space-y-6">
+                <div class="glass-card rounded-2xl p-6 hover-lift">
+                    <h3 class="text-lg font-semibold text-white mb-3">How do you validate data?</h3>
+                    <p class="text-gray-300">We cross-check against primary sources and maintain link-backs and changelogs for auditability.</p>
+                </div>
+                
+                <div class="glass-card rounded-2xl p-6 hover-lift">
+                    <h3 class="text-lg font-semibold text-white mb-3">What security controls are available?</h3>
+                    <p class="text-gray-300">SSO (SAML/OAuth), role-based access, encryption in transit and at rest, SOC 2 Type II certified.</p>
+                </div>
+                
+                <div class="glass-card rounded-2xl p-6 hover-lift">
+                    <h3 class="text-lg font-semibold text-white mb-3">What does onboarding look like?</h3>
+                    <p class="text-gray-300">A free MVP using your category's data, a live demo with revisions, and then production rollout with training.</p>
+                </div>
+                
+                <div class="glass-card rounded-2xl p-6 hover-lift">
+                    <h3 class="text-lg font-semibold text-white mb-3">What's the pricing model?</h3>
+                    <p class="text-gray-300">Tiered by users and data scope. Contact us for a customized quote based on your needs.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Final CTA -->
+    <section class="py-20 relative overflow-hidden">
+        <div class="absolute inset-0 mesh-gradient opacity-30"></div>
+        
+        <div class="relative container mx-auto px-6 lg:px-8 text-center">
+            <h2 class="text-4xl lg:text-5xl font-display font-bold text-white mb-6">
+                Ready to Transform Your <span class="gradient-text">Regulatory Operations?</span>
+            </h2>
+            <p class="text-xl text-gray-300 mb-8 max-w-2xl mx-auto">
+                See how Leaf Intelligence works with real data from your therapeutic areas
+            </p>
+            
+            <div class="flex flex-col sm:flex-row gap-4 justify-center">
+                <button onclick="openDemoForm()" class="px-8 py-4 bg-white text-black rounded-full font-semibold hover-lift pulse-glow">
+                    📅 Book My Regulatory Demo
+                </button>
+                <button onclick="openConsultation()" class="px-8 py-4 glass-card rounded-full font-semibold text-white hover-lift border border-white/20">
+                    Talk to a Consultant
+                </button>
+            </div>
+            
+            <div class="mt-12 flex justify-center gap-8">
+                <div class="text-center">
+                    <div class="text-3xl font-bold gradient-text">500+</div>
+                    <div class="text-sm text-gray-400">Data Sources</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold gradient-text">70%</div>
+                    <div class="text-sm text-gray-400">Time Saved</div>
+                </div>
+                <div class="text-center">
+                    <div class="text-3xl font-bold gradient-text">24/7</div>
+                    <div class="text-sm text-gray-400">Monitoring</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer class="py-12 border-t border-white/10 relative">
+        <div class="container mx-auto px-6 lg:px-8">
+            <div class="grid md:grid-cols-4 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <div class="w-10 h-10 rounded-lg bg-gradient-to-br from-purple-500 to-blue-500 flex items-center justify-center mr-3">
+                            <span class="text-white font-bold text-lg">L</span>
+                        </div>
+                        <span class="text-xl font-display font-bold gradient-text">SyneticX</span>
+                    </div>
+                    <p class="text-sm text-gray-400">
+                        AI-powered regulatory intelligence for MedTech & Pharma
+                    </p>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Products</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/leaf" class="text-gray-400 hover:text-white transition-colors">Leaf Intelligence</a></li>
+                        <li><a href="/competitive" class="text-gray-400 hover:text-white transition-colors">Business Intelligence</a></li>
+                        <li><a href="/api" class="text-gray-400 hover:text-white transition-colors">API Access</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Resources</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/docs" class="text-gray-400 hover:text-white transition-colors">Documentation</a></li>
+                        <li><a href="/blog" class="text-gray-400 hover:text-white transition-colors">Blog</a></li>
+                        <li><a href="/case-studies" class="text-gray-400 hover:text-white transition-colors">Case Studies</a></li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h4 class="font-semibold text-white mb-4">Company</h4>
+                    <ul class="space-y-2">
+                        <li><a href="/about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="/contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
+                        <li><a href="/privacy" class="text-gray-400 hover:text-white transition-colors">Privacy Policy</a></li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-white/10 text-center text-sm text-gray-400">
+                © 2025 SyneticX. All rights reserved.
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Demo Form Modal -->
+    <div id="demoFormModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/80 backdrop-blur" onclick="closeDemoForm()"></div>
+        <div class="relative flex items-center justify-center min-h-screen p-4">
+            <div class="glass-card rounded-2xl max-w-md w-full p-8 relative">
+                <button onclick="closeDemoForm()" class="absolute top-4 right-4 text-gray-400 hover:text-white">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                
+                <h3 class="text-2xl font-bold text-white mb-6">Schedule Your Demo</h3>
+                
+                <form id="demoForm" class="space-y-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-1">First Name*</label>
+                        <input type="text" required class="form-input-dark w-full px-4 py-2 rounded-xl">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-1">Last Name*</label>
+                        <input type="text" required class="form-input-dark w-full px-4 py-2 rounded-xl">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-1">Work Email*</label>
+                        <input type="email" required class="form-input-dark w-full px-4 py-2 rounded-xl">
+                    </div>
+                    
+                    <div>
+                        <label class="block text-sm font-medium text-gray-300 mb-1">Company*</label>
+                        <input type="text" required class="form-input-dark w-full px-4 py-2 rounded-xl">
+                    </div>
+                    
+                    <button type="submit" class="w-full btn-primary py-3 rounded-full font-semibold text-white">
+                        Schedule Demo
+                    </button>
+                </form>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Video Modal -->
+    <div id="videoModal" class="fixed inset-0 z-50 hidden">
+        <div class="absolute inset-0 bg-black/90 backdrop-blur" onclick="closeVideoModal()"></div>
+        <div class="relative flex items-center justify-center min-h-screen p-4">
+            <div class="relative max-w-4xl w-full">
+                <button onclick="closeVideoModal()" class="absolute -top-12 right-0 text-white hover:text-gray-300">
+                    <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                    </svg>
+                </button>
+                <div class="aspect-video bg-black rounded-lg">
+                    <video id="productVideo" controls class="w-full h-full rounded-lg">
+                        <source src="/videos/leaf-overview.mp4" type="video/mp4">
+                        Your browser does not support the video tag.
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+
+    <!-- Scripts -->
+    <script>
+        // Parallax effect
+        document.addEventListener('mousemove', (e) => {
+            const cards = document.querySelectorAll('.parallax-card, #mainCard');
+            const x = e.clientX / window.innerWidth - 0.5;
+            const y = e.clientY / window.innerHeight - 0.5;
+            
+            cards.forEach((card, index) => {
+                const depth = (index + 1) * 2;
+                const moveX = x * depth;
+                const moveY = y * depth;
+                
+                if (card.id === 'mainCard') {
+                    card.style.transform = `rotateY(${5 + moveX}deg) rotateX(${5 - moveY}deg)`;
+                } else {
+                    card.style.transform = `translateX(${moveX}px) translateY(${moveY}px)`;
+                }
+            });
+        });
+        
+        // Entrance animations
+        window.addEventListener('load', () => {
+            const elements = document.querySelectorAll('.floating, .glass-card');
+            elements.forEach((el, index) => {
+                el.style.opacity = '0';
+                el.style.transform = 'translateY(20px)';
+                
+                setTimeout(() => {
+                    el.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                    el.style.opacity = '';
+                    el.style.transform = '';
+                }, index * 100);
+            });
+        });
+        
+        // Smooth scroll observer
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.addEventListener('DOMContentLoaded', () => {
+            const sections = document.querySelectorAll('section');
+            sections.forEach(section => {
+                section.style.opacity = '0';
+                section.style.transform = 'translateY(20px)';
+                section.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
+                observer.observe(section);
+            });
+        });
+        
+        // Demo form functions
+        function openDemoForm(params = '') {
+            document.getElementById('demoFormModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_start', {
+                    'event_category': 'engagement',
+                    'event_label': 'demo_form' + params
+                });
+            }
+        }
+        
+        function closeDemoForm() {
+            document.getElementById('demoFormModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+        }
+        
+        // Video modal functions
+        function openVideoModal() {
+            document.getElementById('videoModal').classList.remove('hidden');
+            document.body.style.overflow = 'hidden';
+            
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'video_play', {
+                    'event_category': 'engagement',
+                    'event_label': 'product_overview'
+                });
+            }
+        }
+        
+        function closeVideoModal() {
+            document.getElementById('videoModal').classList.add('hidden');
+            document.body.style.overflow = 'auto';
+            const video = document.getElementById('productVideo');
+            video.pause();
+        }
+        
+        // ROI Calculator
+        function calculateROI() {
+            const hours = parseFloat(document.getElementById('hoursPerWeek').value) || 20;
+            const team = parseFloat(document.getElementById('teamSize').value) || 5;
+            const rate = parseFloat(document.getElementById('hourlyRate').value) || 75;
+            
+            const weeklyHours = hours * team;
+            const weeklyCost = weeklyHours * rate;
+            const monthlyCost = weeklyCost * 4.33;
+            const savings = monthlyCost * 0.7;
+            
+            document.getElementById('monthlySavings').textContent = Math.round(savings).toLocaleString();
+            document.getElementById('roiResult').classList.remove('hidden');
+            
+            // Animate result
+            document.getElementById('roiResult').style.opacity = '0';
+            document.getElementById('roiResult').style.transform = 'scale(0.95)';
+            setTimeout(() => {
+                document.getElementById('roiResult').style.transition = 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)';
+                document.getElementById('roiResult').style.opacity = '1';
+                document.getElementById('roiResult').style.transform = 'scale(1)';
+            }, 100);
+            
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'roi_calc_submit', {
+                    'event_category': 'engagement',
+                    'hours': hours,
+                    'team': team,
+                    'rate': rate,
+                    'savings': Math.round(savings)
+                });
+            }
+        }
+        
+        // Consultation function
+        function openConsultation() {
+            openDemoForm('?type=consultation');
+        }
+        
+        // Form submission
+        document.getElementById('demoForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'form_submit', {
+                    'event_category': 'lead',
+                    'event_label': 'demo_request'
+                });
+            }
+            
+            alert('Thank you! We will contact you within 24 hours to schedule your demo.');
+            closeDemoForm();
+            this.reset();
+        });
+        
+        // Video tracking
+        document.getElementById('productVideo').addEventListener('timeupdate', function() {
+            const video = this;
+            const percent = (video.currentTime / video.duration) * 100;
+            
+            if (percent >= 25 && !video.dataset.quarter) {
+                video.dataset.quarter = true;
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'video_25', { 'event_category': 'engagement' });
+                }
+            }
+            if (percent >= 50 && !video.dataset.half) {
+                video.dataset.half = true;
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'video_50', { 'event_category': 'engagement' });
+                }
+            }
+            if (percent >= 75 && !video.dataset.threequarter) {
+                video.dataset.threequarter = true;
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'video_75', { 'event_category': 'engagement' });
+                }
+            }
+        });
+        
+        document.getElementById('productVideo').addEventListener('ended', function() {
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'video_complete', { 'event_category': 'engagement' });
+            }
+        });
+        
+        // Keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeDemoForm();
+                closeVideoModal();
+            }
+        });
+        
+        // Smooth scroll for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+    
+    <!-- Schema.org Structured Data -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "SoftwareApplication",
+      "name": "Leaf Intelligence",
+      "applicationCategory": "BusinessApplication",
+      "operatingSystem": "Web",
+      "description": "AI-powered regulatory intelligence platform for MedTech and Pharma companies",
+      "offers": {
+        "@type": "Offer",
+        "price": "Contact for pricing"
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "SyneticX",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://www.syneticx.com/logo.png"
+        }
+      }
+    }
+    </script>
+    
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "How do you validate data?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "We cross-check against primary sources and maintain link-backs and changelogs for auditability."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What security controls are available?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "SSO (SAML/OAuth), role-based access, encryption in transit and at rest, SOC 2 Type II certified."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What does onboarding look like?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "A free MVP using your category's data, a live demo with revisions, and then production rollout with training."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "What's the pricing model?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Tiered by users and data scope. Contact us for a customized quote based on your needs."
+          }
+        }
+      ]
+    }
+    </script>
+</body>
+</html>

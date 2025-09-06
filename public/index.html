@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FDA Warning Letters</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: #f5f5f5;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        header {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        h1 {
+            font-size: 24px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+        
+        .stats {
+            display: flex;
+            gap: 20px;
+            margin: 20px 0;
+        }
+        
+        .stat-card {
+            background: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            flex: 1;
+        }
+        
+        .stat-number {
+            font-size: 32px;
+            font-weight: bold;
+            color: #2563eb;
+        }
+        
+        .stat-label {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+        }
+        
+        .controls {
+            display: flex;
+            gap: 10px;
+            align-items: center;
+            margin: 20px 0;
+        }
+        
+        button {
+            background: #2563eb;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            font-weight: 500;
+        }
+        
+        button:hover {
+            background: #1d4ed8;
+        }
+        
+        select {
+            padding: 10px;
+            border: 1px solid #ddd;
+            border-radius: 6px;
+            font-size: 14px;
+        }
+        
+        .letters-container {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        
+        .letter-item {
+            padding: 15px;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+        }
+        
+        .letter-item:last-child {
+            border-bottom: none;
+        }
+        
+        .letter-item:hover {
+            background: #f9fafb;
+        }
+        
+        .letter-info {
+            flex: 1;
+        }
+        
+        .letter-title {
+            font-size: 16px;
+            color: #111;
+            margin-bottom: 5px;
+            font-weight: 500;
+        }
+        
+        .letter-company {
+            color: #2563eb;
+            font-weight: 600;
+        }
+        
+        .letter-meta {
+            font-size: 13px;
+            color: #666;
+        }
+        
+        .letter-link {
+            background: #eff6ff;
+            color: #2563eb;
+            text-decoration: none;
+            padding: 8px 16px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+            white-space: nowrap;
+        }
+        
+        .letter-link:hover {
+            background: #dbeafe;
+        }
+        
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        .error {
+            background: #fee2e2;
+            color: #991b1b;
+            padding: 15px;
+            border-radius: 6px;
+            margin: 20px 0;
+        }
+        
+        .empty {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        #status {
+            font-size: 14px;
+            color: #666;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>FDA Warning Letters Monitor</h1>
+            <div id="status">Loading...</div>
+        </header>
+
+        <div class="stats">
+            <div class="stat-card">
+                <div class="stat-number" id="total">0</div>
+                <div class="stat-label">Total Found</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="last24h">0</div>
+                <div class="stat-label">Last 24 Hours</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="last7days">0</div>
+                <div class="stat-label">Last 7 Days</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-number" id="last30days">0</div>
+                <div class="stat-label">Last 30 Days</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <button onclick="refresh()">🔄 Refresh Data</button>
+            <select id="timeframe" onchange="loadLetters()">
+                <option value="7">Last 7 days</option>
+                <option value="30" selected>Last 30 days</option>
+                <option value="60">Last 60 days</option>
+                <option value="90">Last 90 days</option>
+                <option value="365">Last year</option>
+            </select>
+            <span id="resultCount" style="margin-left: auto; color: #666; font-size: 14px;"></span>
+        </div>
+
+        <div class="letters-container">
+            <div id="lettersList" class="loading">Loading warning letters...</div>
+        </div>
+    </div>
+
+    <script>
+        let currentLetters = [];
+
+        // Load data on page load
+        window.addEventListener('DOMContentLoaded', () => {
+            loadStats();
+            loadLetters();
+        });
+
+        async function loadStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const stats = await response.json();
+                
+                document.getElementById('total').textContent = stats.total || 0;
+                document.getElementById('last24h').textContent = stats.last24h || 0;
+                document.getElementById('last7days').textContent = stats.last7days || 0;
+                document.getElementById('last30days').textContent = stats.last30days || 0;
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+
+        async function loadLetters() {
+            const container = document.getElementById('lettersList');
+            container.innerHTML = '<div class="loading">Loading...</div>';
+            
+            try {
+                const days = document.getElementById('timeframe').value;
+                const response = await fetch(`/api/letters?days=${days}`);
+                const data = await response.json();
+                
+                if (!data.success) {
+                    throw new Error(data.error || 'Failed to load letters');
+                }
+                
+                currentLetters = data.letters;
+                document.getElementById('status').textContent = `Last updated: ${new Date().toLocaleString()}`;
+                document.getElementById('resultCount').textContent = `Showing ${data.total} letters from last ${data.timeframe}`;
+                
+                if (currentLetters.length === 0) {
+                    container.innerHTML = '<div class="empty">No warning letters found in this timeframe</div>';
+                    return;
+                }
+                
+                container.innerHTML = currentLetters.map(letter => `
+                    <div class="letter-item">
+                        <div class="letter-info">
+                            <div class="letter-title">
+                                <span class="letter-company">${letter.company}</span>
+                            </div>
+                            <div class="letter-meta">
+                                ${letter.dateFormatted} • ${letter.source}
+                                ${letter.summary ? `<br><span style="color: #888; font-size: 12px;">${letter.summary.substring(0, 150)}...</span>` : ''}
+                            </div>
+                        </div>
+                        <a href="${letter.link}" target="_blank" class="letter-link">
+                            View Letter →
+                        </a>
+                    </div>
+                `).join('');
+                
+            } catch (error) {
+                console.error('Error:', error);
+                container.innerHTML = `<div class="error">Error loading letters: ${error.message}</div>`;
+                document.getElementById('status').textContent = 'Error loading data';
+            }
+        }
+
+        async function refresh() {
+            const btn = event.target;
+            btn.disabled = true;
+            btn.textContent = '⏳ Refreshing...';
+            
+            try {
+                const response = await fetch('/api/refresh', { method: 'POST' });
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert(`Success! Found ${data.count} warning letters`);
+                    loadStats();
+                    loadLetters();
+                } else {
+                    alert('Error: ' + data.error);
+                }
+            } catch (error) {
+                alert('Error refreshing data: ' + error.message);
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '🔄 Refresh Data';
+            }
+        }
+    </script>
+</body>
+</html>
