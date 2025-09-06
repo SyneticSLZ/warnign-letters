@@ -774,7 +774,8 @@
     </section>
     
     <!-- Data Sources -->
-    <section class="py-20 relative">
+<!-- Data Sources -->
+    <section class="py-20 relative" x-data="{ activeSource: 'clinicaltrials' }">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-4xl font-display font-bold text-white mb-4">
@@ -785,30 +786,833 @@
                 </p>
             </div>
             
-            <div class="flex flex-wrap justify-center gap-4">
-                <div class="glass-card rounded-full px-6 py-3 hover-lift">
-                    <span class="text-white font-medium">FDA.gov</span>
+            <!-- Source Selector Pills -->
+            <div class="flex flex-wrap justify-center gap-4 mb-12">
+                <button @click="activeSource = 'fda'" 
+                        :class="activeSource === 'fda' ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white' : 'glass-card text-gray-300'"
+                        class="rounded-full px-6 py-3 hover-lift font-medium transition-all">
+                    FDA.gov
+                </button>
+                <button @click="activeSource = 'clinicaltrials'" 
+                        :class="activeSource === 'clinicaltrials' ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white' : 'glass-card text-gray-300'"
+                        class="rounded-full px-6 py-3 hover-lift font-medium transition-all">
+                    ClinicalTrials.gov
+                </button>
+                <button @click="activeSource = 'orangebook'" 
+                        :class="activeSource === 'orangebook' ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white' : 'glass-card text-gray-300'"
+                        class="rounded-full px-6 py-3 hover-lift font-medium transition-all">
+                    Orange Book
+                </button>
+                <button @click="activeSource = 'dailymed'" 
+                        :class="activeSource === 'dailymed' ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white' : 'glass-card text-gray-300'"
+                        class="rounded-full px-6 py-3 hover-lift font-medium transition-all">
+                    DailyMed
+                </button>
+                <button @click="activeSource = 'pubmed'" 
+                        :class="activeSource === 'pubmed' ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white' : 'glass-card text-gray-300'"
+                        class="rounded-full px-6 py-3 hover-lift font-medium transition-all">
+                    PubMed
+                </button>
+                <button @click="activeSource = 'uspto'" 
+                        :class="activeSource === 'uspto' ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white' : 'glass-card text-gray-300'"
+                        class="rounded-full px-6 py-3 hover-lift font-medium transition-all">
+                    USPTO
+                </button>
+                <button @click="activeSource = 'ema'" 
+                        :class="activeSource === 'ema' ? 'bg-gradient-to-r from-purple-500 to-blue-500 text-white' : 'glass-card text-gray-300'"
+                        class="rounded-full px-6 py-3 hover-lift font-medium transition-all">
+                    EMA
+                </button>
+                <button class="glass-card rounded-full px-6 py-3 hover-lift text-gray-300 font-medium">
+                    + 500 more
+                </button>
+            </div>
+            
+            <!-- Source Preview Container -->
+            <div class="max-w-7xl mx-auto">
+                <!-- ClinicalTrials.gov Preview -->
+                <div x-show="activeSource === 'clinicaltrials'" x-transition 
+                     class="glass-card rounded-2xl p-2 hover-lift">
+                    <div class="bg-gradient-to-br from-gray-900/90 to-black/90 rounded-xl p-8">
+                        <!-- Header -->
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-2xl font-bold text-white">Trial Analysis</h3>
+                            <span class="text-sm text-gray-400">Drug: albuterol • 212 trials analyzed</span>
+                        </div>
+                        
+                        <!-- Tabs -->
+                        <div class="flex gap-4 mb-6 border-b border-gray-700">
+                            <button class="pb-3 px-1 text-sm font-medium text-white border-b-2 border-blue-500">Trial Design</button>
+                            <button class="pb-3 px-1 text-sm font-medium text-gray-400 hover:text-white">Enrollment & Demographics</button>
+                            <button class="pb-3 px-1 text-sm font-medium text-gray-400 hover:text-white">Endpoints & Outcomes</button>
+                        </div>
+                        
+                        <!-- Stats Grid -->
+                        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
+                            <div class="glass-card rounded-xl p-4 border border-blue-500/20">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs text-gray-400">Total Enrolled</span>
+                                    <div class="w-8 h-8 rounded-lg bg-blue-500/20 flex items-center justify-center">
+                                        <svg class="w-4 h-4 text-blue-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="text-2xl font-bold text-white">460,235</div>
+                            </div>
+                            
+                            <div class="glass-card rounded-xl p-4 border border-green-500/20">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs text-gray-400">Average per Trial</span>
+                                    <div class="w-8 h-8 rounded-lg bg-green-500/20 flex items-center justify-center">
+                                        <svg class="w-4 h-4 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="text-2xl font-bold text-white">2,301</div>
+                            </div>
+                            
+                            <div class="glass-card rounded-xl p-4 border border-purple-500/20">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs text-gray-400">Median Size</span>
+                                    <div class="w-8 h-8 rounded-lg bg-purple-500/20 flex items-center justify-center">
+                                        <svg class="w-4 h-4 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="text-2xl font-bold text-white">70</div>
+                            </div>
+                            
+                            <div class="glass-card rounded-xl p-4 border border-orange-500/20">
+                                <div class="flex items-center justify-between mb-2">
+                                    <span class="text-xs text-gray-400">Size Range</span>
+                                    <div class="w-8 h-8 rounded-lg bg-orange-500/20 flex items-center justify-center">
+                                        <svg class="w-4 h-4 text-orange-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7h12m0 0l-4-4m4 4l-4 4m0 6H4m0 0l4 4m-4-4l4-4"></path>
+                                        </svg>
+                                    </div>
+                                </div>
+                                <div class="text-2xl font-bold text-white">1 - 12,417</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Trial Size Distribution -->
+                        <div class="mb-8">
+                            <h4 class="text-lg font-semibold text-white mb-4">Trial Size Distribution</h4>
+                            <div class="grid grid-cols-2 md:grid-cols-6 gap-3">
+                                <div class="text-center">
+                                    <div class="glass-card rounded-xl p-4 mb-2 border border-pink-500/20">
+                                        <div class="text-2xl font-bold text-white">81</div>
+                                    </div>
+                                    <div class="text-xs text-gray-400">Very Small</div>
+                                    <div class="text-xs text-pink-400">&lt; 50</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="glass-card rounded-xl p-4 mb-2 border border-yellow-500/20">
+                                        <div class="text-2xl font-bold text-white">47</div>
+                                    </div>
+                                    <div class="text-xs text-gray-400">Small</div>
+                                    <div class="text-xs text-yellow-400">50-100</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="glass-card rounded-xl p-4 mb-2 border border-amber-500/20">
+                                        <div class="text-2xl font-bold text-white">46</div>
+                                    </div>
+                                    <div class="text-xs text-gray-400">Medium</div>
+                                    <div class="text-xs text-amber-400">100-500</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="glass-card rounded-xl p-4 mb-2 border border-cyan-500/20">
+                                        <div class="text-2xl font-bold text-white">8</div>
+                                    </div>
+                                    <div class="text-xs text-gray-400">Large</div>
+                                    <div class="text-xs text-cyan-400">500-1K</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="glass-card rounded-xl p-4 mb-2 border border-blue-500/20">
+                                        <div class="text-2xl font-bold text-white">12</div>
+                                    </div>
+                                    <div class="text-xs text-gray-400">Very Large</div>
+                                    <div class="text-xs text-blue-400">1K-5K</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="glass-card rounded-xl p-4 mb-2 border border-purple-500/20">
+                                        <div class="text-2xl font-bold text-white">6</div>
+                                    </div>
+                                    <div class="text-xs text-gray-400">Mega Trial</div>
+                                    <div class="text-xs text-purple-400">&gt; 5K</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Demographics Section -->
+                        <div class="grid md:grid-cols-2 gap-6">
+                            <!-- Age Demographics -->
+                            <div class="glass-card rounded-xl p-6">
+                                <h4 class="text-lg font-semibold text-white mb-4">Age Demographics</h4>
+                                <div class="space-y-4">
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-400">Average Min Age</span>
+                                        <span class="text-lg font-bold text-blue-400">17 years</span>
+                                    </div>
+                                    <div class="flex justify-between items-center">
+                                        <span class="text-sm text-gray-400">Average Max Age</span>
+                                        <span class="text-lg font-bold text-blue-400">52 years</span>
+                                    </div>
+                                    <div class="mt-4 pt-4 border-t border-gray-700">
+                                        <div class="text-sm text-gray-400 mb-3">Age Group Distribution</div>
+                                        <div class="space-y-2">
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-xs text-gray-300">Children (&lt;18)</span>
+                                                <div class="flex items-center gap-2">
+                                                    <div class="w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
+                                                        <div class="h-full bg-gradient-to-r from-blue-500 to-blue-400" style="width: 29%"></div>
+                                                    </div>
+                                                    <span class="text-xs text-gray-400">41 (29%)</span>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-xs text-gray-300">Adults (18-65)</span>
+                                                <div class="flex items-center gap-2">
+                                                    <div class="w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
+                                                        <div class="h-full bg-gradient-to-r from-blue-500 to-blue-400" style="width: 71%"></div>
+                                                    </div>
+                                                    <span class="text-xs text-gray-400">102 (71%)</span>
+                                                </div>
+                                            </div>
+                                            <div class="flex items-center justify-between">
+                                                <span class="text-xs text-gray-300">Mixed Ages</span>
+                                                <div class="flex items-center gap-2">
+                                                    <div class="w-24 h-2 bg-gray-700 rounded-full overflow-hidden">
+                                                        <div class="h-full bg-gradient-to-r from-blue-500 to-blue-400" style="width: 48%"></div>
+                                                    </div>
+                                                    <span class="text-xs text-gray-400">68 (48%)</span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Gender & Special Populations -->
+                            <div class="glass-card rounded-xl p-6">
+                                <h4 class="text-lg font-semibold text-white mb-4">Gender & Special Populations</h4>
+                                <div class="space-y-4">
+                                    <div class="text-sm text-gray-400 mb-2">Gender Distribution</div>
+                                    <div class="space-y-2">
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-xs text-gray-300">Male Only</span>
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-32 h-2 bg-gray-700 rounded-full overflow-hidden">
+                                                    <div class="h-full bg-gradient-to-r from-blue-500 to-blue-400" style="width: 1%"></div>
+                                                </div>
+                                                <span class="text-xs text-gray-400">2 (1%)</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-xs text-gray-300">Female Only</span>
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-32 h-2 bg-gray-700 rounded-full overflow-hidden">
+                                                    <div class="h-full bg-gradient-to-r from-pink-500 to-pink-400" style="width: 1%"></div>
+                                                </div>
+                                                <span class="text-xs text-gray-400">2 (1%)</span>
+                                            </div>
+                                        </div>
+                                        <div class="flex items-center justify-between">
+                                            <span class="text-xs text-gray-300">All Genders</span>
+                                            <div class="flex items-center gap-2">
+                                                <div class="w-32 h-2 bg-gray-700 rounded-full overflow-hidden">
+                                                    <div class="h-full bg-gradient-to-r from-green-500 to-green-400" style="width: 98%"></div>
+                                                </div>
+                                                <span class="text-xs text-gray-400">208 (98%)</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4 pt-4 border-t border-gray-700">
+                                        <div class="text-sm text-gray-400 mb-3">Special Populations</div>
+                                        <div class="grid grid-cols-2 gap-3">
+                                            <div class="glass-card rounded-lg p-3 text-center">
+                                                <div class="text-xl font-bold text-white">73</div>
+                                                <div class="text-xs text-gray-400">Pediatric</div>
+                                            </div>
+                                            <div class="glass-card rounded-lg p-3 text-center">
+                                                <div class="text-xl font-bold text-white">112</div>
+                                                <div class="text-xs text-gray-400">Geriatric</div>
+                                            </div>
+                                            <div class="glass-card rounded-lg p-3 text-center">
+                                                <div class="text-xl font-bold text-white">73</div>
+                                                <div class="text-xs text-gray-400">Renal</div>
+                                            </div>
+                                            <div class="glass-card rounded-lg p-3 text-center">
+                                                <div class="text-xl font-bold text-white">69</div>
+                                                <div class="text-xs text-gray-400">Hepatic</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="glass-card rounded-full px-6 py-3 hover-lift">
-                    <span class="text-white font-medium">ClinicalTrials.gov</span>
+                
+                <!-- Orange Book Preview -->
+                <div x-show="activeSource === 'orangebook'" x-transition 
+                     class="glass-card rounded-2xl p-2 hover-lift">
+                    <div class="bg-gradient-to-br from-gray-900/90 to-black/90 rounded-xl p-8">
+                        <!-- Header -->
+                        <div class="flex items-center justify-between mb-6">
+                            <h3 class="text-2xl font-bold text-white">Orange Book Information</h3>
+                            <span class="text-sm text-orange-400">165 Products | 45 Patents | 1 Exclusivity | Page 1 of 4</span>
+                        </div>
+                        
+                        <!-- Overview Stats -->
+                        <div class="glass-card rounded-xl p-6 mb-6 border border-blue-500/10">
+                            <h4 class="text-lg font-semibold text-white mb-4">Orange Book Overview</h4>
+                            <div class="grid grid-cols-5 gap-4">
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold gradient-text">165</div>
+                                    <div class="text-xs text-gray-400">Products</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-green-400">45</div>
+                                    <div class="text-xs text-gray-400">Patents</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-orange-400">1</div>
+                                    <div class="text-xs text-gray-400">Exclusivity</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-purple-400">43</div>
+                                    <div class="text-xs text-gray-400">Applications</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="text-3xl font-bold text-red-400">5</div>
+                                    <div class="text-xs text-gray-400">Orphan Patents</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Products List -->
+                        <div class="space-y-4">
+                            <h4 class="text-lg font-semibold text-white">Products (Sorted by Importance)</h4>
+                            
+                            <!-- Product 1: AIRSUPRA -->
+                            <div class="glass-card rounded-xl p-6 border border-purple-500/20">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div>
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <h5 class="text-xl font-bold text-white">AIRSUPRA</h5>
+                                            <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Patents: 1</span>
+                                            <span class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs rounded-full">Exclusivity: 1</span>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-4 text-sm">
+                                            <div>
+                                                <span class="text-gray-400">Form:</span>
+                                                <span class="text-gray-300 ml-2">AEROSOL, METERED;INHALATION</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Strength:</span>
+                                                <span class="text-gray-300 ml-2">EQ 0.09MG BASE/INH;0.08MG/INH</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Application:</span>
+                                                <span class="text-blue-400 ml-2">N 214070</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Product #:</span>
+                                                <span class="text-gray-300 ml-2">001</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full font-medium">ANDA</span>
+                                </div>
+                                <div class="flex gap-3">
+                                    <button class="px-4 py-2 glass-card rounded-lg text-sm hover:bg-white/10 transition-colors">
+                                        View Patents (1)
+                                    </button>
+                                    <button class="px-4 py-2 glass-card rounded-lg text-sm hover:bg-white/10 transition-colors">
+                                        View Exclusivity (1)
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Product 2: PROAIR HFA -->
+                            <div class="glass-card rounded-xl p-6 border border-blue-500/20">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div>
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <h5 class="text-xl font-bold text-white">PROAIR HFA</h5>
+                                            <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Patents: 9</span>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-4 text-sm">
+                                            <div>
+                                                <span class="text-gray-400">Form:</span>
+                                                <span class="text-gray-300 ml-2">AEROSOL, METERED;INHALATION</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Strength:</span>
+                                                <span class="text-gray-300 ml-2">EQ 0.09MG BASE/INH</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Application:</span>
+                                                <span class="text-blue-400 ml-2">N 021457</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Product #:</span>
+                                                <span class="text-gray-300 ml-2">001</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full font-medium">ANDA</span>
+                                </div>
+                                <button class="px-4 py-2 glass-card rounded-lg text-sm hover:bg-white/10 transition-colors">
+                                    View Patents (9)
+                                </button>
+                            </div>
+                            
+                            <!-- Product 3: PROAIR DIGIHALER -->
+                            <div class="glass-card rounded-xl p-6 border border-cyan-500/20">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div>
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <h5 class="text-xl font-bold text-white">PROAIR DIGIHALER</h5>
+                                            <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Patents: 21</span>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-4 text-sm">
+                                            <div>
+                                                <span class="text-gray-400">Form:</span>
+                                                <span class="text-gray-300 ml-2">POWDER, METERED;INHALATION</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Strength:</span>
+                                                <span class="text-gray-300 ml-2">EQ 0.09MG BASE/INH</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Application:</span>
+                                                <span class="text-blue-400 ml-2">N 205636</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Product #:</span>
+                                                <span class="text-gray-300 ml-2">002</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full font-medium">ANDA</span>
+                                </div>
+                                <button class="px-4 py-2 glass-card rounded-lg text-sm hover:bg-white/10 transition-colors">
+                                    View Patents (21)
+                                </button>
+                            </div>
+                            
+                            <!-- Product 4: PROAIR RESPICLICK -->
+                            <div class="glass-card rounded-xl p-6 border border-pink-500/20">
+                                <div class="flex items-start justify-between mb-4">
+                                    <div>
+                                        <div class="flex items-center gap-3 mb-2">
+                                            <h5 class="text-xl font-bold text-white">PROAIR RESPICLICK</h5>
+                                            <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">Patents: 9</span>
+                                        </div>
+                                        <div class="grid grid-cols-2 gap-4 text-sm">
+                                            <div>
+                                                <span class="text-gray-400">Form:</span>
+                                                <span class="text-gray-300 ml-2">POWDER, METERED;INHALATION</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Strength:</span>
+                                                <span class="text-gray-300 ml-2">EQ 0.09MG BASE/INH</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Application:</span>
+                                                <span class="text-blue-400 ml-2">N 205636</span>
+                                            </div>
+                                            <div>
+                                                <span class="text-gray-400">Product #:</span>
+                                                <span class="text-gray-300 ml-2">001</span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <span class="px-3 py-1 bg-green-500/20 text-green-400 text-xs rounded-full font-medium">ANDA</span>
+                                </div>
+                                <button class="px-4 py-2 glass-card rounded-lg text-sm hover:bg-white/10 transition-colors">
+                                    View Patents (9)
+                                </button>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="glass-card rounded-full px-6 py-3 hover-lift">
-                    <span class="text-white font-medium">Orange Book</span>
+                
+                <!-- DailyMed Preview -->
+                <div x-show="activeSource === 'dailymed'" x-transition 
+                     class="glass-card rounded-2xl p-2 hover-lift">
+                    <div class="bg-gradient-to-br from-gray-900/90 to-black/90 rounded-xl p-8">
+                        <!-- Header with Tabs -->
+                        <div class="mb-6">
+                            <div class="flex items-center justify-between mb-4">
+                                <h3 class="text-2xl font-bold text-white">Drug Labeling Information</h3>
+                                <button class="px-4 py-2 bg-blue-600 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+                                    Export Report
+                                </button>
+                            </div>
+                            
+                            <!-- Navigation Tabs -->
+                            <div class="flex gap-2 flex-wrap">
+                                <button class="px-4 py-2 glass-card rounded-lg text-sm font-medium text-gray-300 hover:bg-white/10">
+                                    📄 Summary
+                                </button>
+                                <button class="px-4 py-2 glass-card rounded-lg text-sm font-medium text-gray-300 hover:bg-white/10">
+                                    👥 Clinical Trials
+                                </button>
+                                <button class="px-4 py-2 glass-card rounded-lg text-sm font-medium text-gray-300 hover:bg-white/10">
+                                    🏭 FDA Data
+                                </button>
+                                <button class="px-4 py-2 glass-card rounded-lg text-sm font-medium text-gray-300 hover:bg-white/10">
+                                    📧 Response Letters <span class="ml-1 px-2 py-0.5 bg-gray-700 rounded-full text-xs">0</span>
+                                </button>
+                                <button class="px-4 py-2 glass-card rounded-lg text-sm font-medium text-gray-300 hover:bg-white/10">
+                                    ⚖️ Compliance
+                                </button>
+                                <button class="px-4 py-2 glass-card rounded-lg text-sm font-medium text-gray-300 hover:bg-white/10">
+                                    📙 Orangebook
+                                </button>
+                                <button class="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg text-sm font-medium text-white">
+                                    ✓ Labeling
+                                </button>
+                                <button class="px-4 py-2 glass-card rounded-lg text-sm font-medium text-gray-300 hover:bg-white/10">
+                                    🇪🇺 EMA Data
+                                </button>
+                                <button class="px-4 py-2 glass-card rounded-lg text-sm font-medium text-gray-300 hover:bg-white/10">
+                                    📚 PubMed
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Stats Overview -->
+                        <div class="grid grid-cols-5 gap-4 mb-6">
+                            <div class="glass-card rounded-xl p-4 text-center border border-blue-500/20">
+                                <div class="text-2xl font-bold text-white">71</div>
+                                <div class="text-xs text-gray-400">APPLICATIONS</div>
+                            </div>
+                            <div class="glass-card rounded-xl p-4 text-center border border-purple-500/20">
+                                <div class="text-2xl font-bold text-white">89</div>
+                                <div class="text-xs text-gray-400">COMPANIES</div>
+                            </div>
+                            <div class="glass-card rounded-xl p-4 text-center border border-green-500/20">
+                                <div class="text-2xl font-bold text-white">106</div>
+                                <div class="text-xs text-gray-400">LABEL VERSIONS</div>
+                            </div>
+                            <div class="glass-card rounded-xl p-4 text-center border border-orange-500/20">
+                                <div class="text-2xl font-bold text-white">331</div>
+                                <div class="text-xs text-gray-400">CHANGES</div>
+                            </div>
+                            <div class="glass-card rounded-xl p-4 text-center border border-red-500/20">
+                                <div class="text-xs text-gray-400">LATEST UPDATE</div>
+                                <div class="text-sm font-bold text-white">Sep 4, 2025</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Action Bar -->
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="flex items-center gap-4">
+                                <button class="px-4 py-2 glass-card rounded-lg text-sm hover:bg-white/10 transition-colors">
+                                    📊 Overview
+                                </button>
+                                <button class="px-4 py-2 glass-card rounded-lg text-sm hover:bg-white/10 transition-colors">
+                                    ⏱️ Timeline
+                                </button>
+                                <button class="px-4 py-2 glass-card rounded-lg text-sm hover:bg-white/10 transition-colors">
+                                    🏢 Companies
+                                </button>
+                                <button class="px-4 py-2 bg-gradient-to-r from-blue-500 to-purple-500 rounded-lg text-sm font-medium text-white">
+                                    🔄 Compare
+                                </button>
+                                <button class="px-4 py-2 glass-card rounded-lg text-sm hover:bg-white/10 transition-colors">
+                                    🏷️ Labels
+                                </button>
+                            </div>
+                            <div class="flex gap-2">
+                                <button class="px-4 py-2 bg-green-600 rounded-lg text-sm font-medium hover:bg-green-700 transition-colors">
+                                    ⬆️ Upload
+                                </button>
+                                <button class="px-4 py-2 bg-purple-600 rounded-lg text-sm font-medium hover:bg-purple-700 transition-colors">
+                                    🔄 Compare Labels
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Label Selection -->
+                        <div class="grid md:grid-cols-2 gap-4 mb-6">
+                            <div class="glass-card rounded-xl p-4">
+                                <label class="text-sm text-gray-400 mb-2 block">Reference Label</label>
+                                <select class="w-full bg-gray-800/50 rounded-lg px-3 py-2 text-sm text-white border border-gray-700">
+                                    <option>VENTOLIN HFA - v1 (Jul 3, 2024)</option>
+                                </select>
+                            </div>
+                            <div class="glass-card rounded-xl p-4">
+                                <label class="text-sm text-gray-400 mb-2 block">Compare With</label>
+                                <select class="w-full bg-gray-800/50 rounded-lg px-3 py-2 text-sm text-white border border-gray-700">
+                                    <option>Albuterol Sulfate - v1 (May 16, 2025)</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <!-- Label Comparison Header -->
+                        <div class="glass-card rounded-xl p-6 mb-6 bg-gradient-to-r from-blue-600/20 to-purple-600/20 border border-purple-500/30">
+                            <div class="flex items-center justify-between mb-4">
+                                <h4 class="text-xl font-bold text-white flex items-center gap-2">
+                                    ⚖️ Label Comparison
+                                </h4>
+                                <div class="flex gap-2">
+                                    <button class="px-3 py-1 glass-card rounded-lg text-xs hover:bg-white/10">
+                                        🔄 Sync Scrolling
+                                    </button>
+                                    <button class="px-3 py-1 glass-card rounded-lg text-xs hover:bg-white/10">
+                                        ↔️ Swap Labels
+                                    </button>
+                                </div>
+                            </div>
+                            
+                            <!-- Label Headers -->
+                            <div class="grid md:grid-cols-2 gap-4">
+                                <div class="text-center">
+                                    <div class="px-3 py-1 bg-blue-500/20 text-blue-400 text-sm rounded-full inline-block mb-2">Label 1</div>
+                                    <div class="text-xs text-gray-500">1c50cca5-7c4d-d3de-e0b3-0394a90aebb6</div>
+                                </div>
+                                <div class="text-center">
+                                    <div class="px-3 py-1 bg-purple-500/20 text-purple-400 text-sm rounded-full inline-block mb-2">Label 2</div>
+                                    <div class="text-xs text-gray-500">1c72fd84-7dbc-4500-db88-fb4221ce369f</div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Pharmaceutical Product Cards -->
+                        <div class="grid md:grid-cols-2 gap-4">
+                            <div class="glass-card rounded-xl p-6 bg-gradient-to-br from-blue-900/30 to-blue-800/20 border border-blue-500/30">
+                                <h5 class="text-2xl font-bold text-white mb-4">Pharmaceutical Product</h5>
+                                <p class="text-sm text-gray-300 leading-relaxed">
+                                    These highlights do not include all the information needed to use VENTOLIN HFA safely and effectively. See full prescribing information for VENTOLIN HFA.
+                                </p>
+                                <p class="text-sm text-gray-300 mt-3">
+                                    VENTOLIN HFA (albuterol sulfate inhalation aerosol), for oral inhalation use
+                                </p>
+                            </div>
+                            
+                            <div class="glass-card rounded-xl p-6 bg-gradient-to-br from-purple-900/30 to-purple-800/20 border border-purple-500/30">
+                                <h5 class="text-2xl font-bold text-white mb-4">Pharmaceutical Product</h5>
+                                <p class="text-sm text-gray-300 leading-relaxed">
+                                    ALBUTEROL SULFATE Inhalation Aerosol, with Dose Indicator FOR ORAL INHALATION ONLY Prescribing Information
+                                </p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="glass-card rounded-full px-6 py-3 hover-lift">
-                    <span class="text-white font-medium">DailyMed</span>
+                
+                <!-- PubMed Preview -->
+                <div x-show="activeSource === 'pubmed'" x-transition 
+                     class="glass-card rounded-2xl p-2 hover-lift">
+                    <div class="bg-gradient-to-br from-gray-900/90 to-black/90 rounded-xl p-8">
+                        <!-- Header -->
+                        <div class="flex items-center justify-between mb-6">
+                            <div>
+                                <h3 class="text-2xl font-bold text-white flex items-center gap-3">
+                                    👥 PubMed Comprehensive Drug Analysis
+                                </h3>
+                                <p class="text-sm text-gray-400 mt-1">Advanced multi-dimensional analysis covering pivotal trials, approval pathways, RWE, and more</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-sm text-gray-400">5 Analysis Categories</div>
+                                <div class="text-sm text-purple-400">AI-Powered Insights</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Analysis Categories Grid -->
+                        <div class="grid md:grid-cols-2 gap-4 mb-6">
+                            <!-- Pivotal Trials -->
+                            <div class="glass-card rounded-xl p-6 hover:bg-white/5 transition-colors cursor-pointer border border-red-500/20">
+                                <div class="flex items-start justify-between mb-3">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-lg bg-red-500/20 flex items-center justify-center">
+                                            <span class="text-lg">🧪</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-lg font-semibold text-white">Pivotal Trials</h4>
+                                            <p class="text-xs text-gray-400">Registration studies & regulatory endpoints</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Approval Pathways -->
+                            <div class="glass-card rounded-xl p-6 hover:bg-white/5 transition-colors cursor-pointer border border-green-500/20">
+                                <div class="flex items-start justify-between mb-3">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-lg bg-green-500/20 flex items-center justify-center">
+                                            <span class="text-lg">✅</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-lg font-semibold text-white">Approval Pathways</h4>
+                                            <p class="text-xs text-gray-400">FDA designations & regulatory strategies</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Real-World Evidence -->
+                            <div class="glass-card rounded-xl p-6 hover:bg-white/5 transition-colors cursor-pointer border border-amber-500/20">
+                                <div class="flex items-start justify-between mb-3">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-lg bg-amber-500/20 flex items-center justify-center">
+                                            <span class="text-lg">📊</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-lg font-semibold text-white">Real-World Evidence</h4>
+                                            <p class="text-xs text-gray-400">Post-market studies & registry data</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <!-- Recovery Strategies -->
+                            <div class="glass-card rounded-xl p-6 hover:bg-white/5 transition-colors cursor-pointer border border-yellow-500/20">
+                                <div class="flex items-start justify-between mb-3">
+                                    <div class="flex items-center gap-3">
+                                        <div class="w-10 h-10 rounded-lg bg-yellow-500/20 flex items-center justify-center">
+                                            <span class="text-lg">💡</span>
+                                        </div>
+                                        <div>
+                                            <h4 class="text-lg font-semibold text-white">Recovery Strategies</h4>
+                                            <p class="text-xs text-gray-400">Failed trial recovery & post-hoc analyses</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Advanced Options -->
+                        <div class="mb-6">
+                            <button class="text-sm text-gray-400 hover:text-white transition-colors">
+                                ▼ Advanced Options
+                            </button>
+                        </div>
+                        
+                        <!-- Search Bar -->
+                        <div class="glass-card rounded-xl p-4 mb-6">
+                            <div class="flex gap-2">
+                                <input type="text" placeholder="Search within results..." 
+                                       class="flex-1 bg-gray-800/50 rounded-lg px-4 py-2 text-sm text-white border border-gray-700 focus:border-blue-500 focus:outline-none">
+                                <button class="px-6 py-2 bg-blue-600 rounded-lg text-sm font-medium hover:bg-blue-700 transition-colors">
+                                    🔍
+                                </button>
+                            </div>
+                        </div>
+                        
+                        <!-- Results Count -->
+                        <div class="text-sm text-gray-400 mb-4">
+                            14789 articles found (showing page 1 of 2)
+                        </div>
+                        
+                        <!-- Sample Article -->
+                        <div class="glass-card rounded-xl p-6 border border-blue-500/20">
+                            <div class="flex items-start gap-3 mb-3">
+                                <input type="checkbox" class="mt-1">
+                                <div class="flex-1">
+                                    <h5 class="text-lg font-semibold text-white mb-2">
+                                        Levalbuterol versus albuterol.
+                                    </h5>
+                                    <div class="text-sm text-gray-400 mb-3">
+                                        Ameredes BT, Calhoun WJ
+                                    </div>
+                                    <div class="flex gap-4 text-xs text-gray-500 mb-3">
+                                        <span>Curr Allergy Asthma Rep</span>
+                                        <span>•</span>
+                                        <span>Sep 1, 2009</span>
+                                        <span>•</span>
+                                        <span>PMID: 19671384</span>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <span class="text-sm font-medium text-gray-300">Design:</span>
+                                        <span class="text-sm text-gray-400 ml-2">Superiority, Treatment: Albuterol, Corticosteroid, Condition: Asthma, Finding:</span>
+                                    </div>
+                                    
+                                    <p class="text-sm text-gray-300 leading-relaxed mb-3">
+                                        With inhalation of racemic albuterol, circulating (S)-albuterol persists 12 times longer than levalbuterol, suggesting potential for paradoxical effects observed clinically. Although mainly consistent with basic findings, clinical studies suggest no overwhelming superiority of levalbuterol over racemic albuterol; however, levalbuterol's effects may be greatest in moderate to severe asthma patients, especially with racemic albuterol overuse.
+                                    </p>
+                                    
+                                    <button class="text-sm text-blue-400 hover:text-blue-300 transition-colors">
+                                        ▼ Hide Full Abstract
+                                    </button>
+                                    
+                                    <div class="mt-3 pt-3 border-t border-gray-700">
+                                        <p class="text-sm text-gray-300 leading-relaxed">
+                                            <span class="text-green-400">Albuterol</span> has been used for more than 40 years to treat acute 
+                                            <span class="text-yellow-400">asthma</span> exacerbations as a racemic mixture of isomers...
+                                        </p>
+                                        <div class="mt-3 flex flex-wrap gap-2">
+                                            <span class="px-2 py-1 bg-blue-500/20 text-blue-400 text-xs rounded-full">asthma</span>
+                                            <span class="px-2 py-1 bg-green-500/20 text-green-400 text-xs rounded-full">albuterol</span>
+                                            <span class="px-2 py-1 bg-purple-500/20 text-purple-400 text-xs rounded-full">corticosteroid</span>
+                                            <span class="px-2 py-1 bg-yellow-500/20 text-yellow-400 text-xs rounded-full">cost</span>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mt-4 text-right">
+                                        <button class="text-xs text-gray-500 hover:text-gray-300">Hide Annotations</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <div class="glass-card rounded-full px-6 py-3 hover-lift">
-                    <span class="text-white font-medium">PubMed</span>
+                
+                <!-- FDA Preview (placeholder) -->
+                <div x-show="activeSource === 'fda'" x-transition 
+                     class="glass-card rounded-2xl p-2 hover-lift">
+                    <div class="bg-gradient-to-br from-gray-900/90 to-black/90 rounded-xl p-8">
+                        <div class="text-center py-16">
+                            <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-blue-500 to-purple-500 flex items-center justify-center">
+                                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">FDA.gov Integration</h3>
+                            <p class="text-gray-400 max-w-md mx-auto">Real-time FDA approvals, CRLs, warning letters, and regulatory updates</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="glass-card rounded-full px-6 py-3 hover-lift">
-                    <span class="text-white font-medium">USPTO</span>
+                
+                <!-- USPTO Preview (placeholder) -->
+                <div x-show="activeSource === 'uspto'" x-transition 
+                     class="glass-card rounded-2xl p-2 hover-lift">
+                    <div class="bg-gradient-to-br from-gray-900/90 to-black/90 rounded-xl p-8">
+                        <div class="text-center py-16">
+                            <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center">
+                                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">USPTO Patent Database</h3>
+                            <p class="text-gray-400 max-w-md mx-auto">Patent landscapes, expiry tracking, and competitive intelligence</p>
+                        </div>
+                    </div>
                 </div>
-                <div class="glass-card rounded-full px-6 py-3 hover-lift">
-                    <span class="text-white font-medium">EMA</span>
-                </div>
-                <div class="glass-card rounded-full px-6 py-3 hover-lift">
-                    <span class="text-white font-medium">+ 500 more</span>
+                
+                <!-- EMA Preview (placeholder) -->
+                <div x-show="activeSource === 'ema'" x-transition 
+                     class="glass-card rounded-2xl p-2 hover-lift">
+                    <div class="bg-gradient-to-br from-gray-900/90 to-black/90 rounded-xl p-8">
+                        <div class="text-center py-16">
+                            <div class="w-20 h-20 mx-auto mb-4 rounded-2xl bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center">
+                                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                                </svg>
+                            </div>
+                            <h3 class="text-2xl font-bold text-white mb-2">EMA Database</h3>
+                            <p class="text-gray-400 max-w-md mx-auto">European Medicines Agency approvals and regulatory guidance</p>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
