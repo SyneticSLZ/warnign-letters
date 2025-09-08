@@ -251,71 +251,89 @@
 <body class="font-sans text-gray-100 bg-gray-900">
 
     <!-- Navigation -->
-<nav class="fixed top-0 left-0 right-0 z-50 backdrop-blur-md bg-black/30 border-b border-white/10" x-data="{ mobileMenu: false }">
-  <div class="mx-auto max-w-7xl px-6 lg:px-8">
-    <div class="flex h-16 items-center justify-between">
-
+<!-- Big & Bold Glass Navbar (Synetic colors) -->
+<nav x-data="{ mobileMenu:false }" class="fixed inset-x-0 top-0 z-50 nav-glass">
+  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+    <div class="flex h-20 items-center justify-between">
       <!-- Brand -->
-      <a href="./" class="flex items-center gap-3">
-        <img src="syneticx.png"
-             alt="SyneticX Logo"
-             class="h-8 w-8 object-contain" />
-        <span class="text-lg md:text-xl font-extrabold tracking-tight
-                     bg-gradient-to-r from-cyan-400 via-blue-400 to-purple-500
-                     bg-clip-text text-transparent">
-          SyneticX
-        </span>
+      <a href="./" class="flex items-center gap-3 shrink-0">
+        <img src="syneticx.png" alt="SyneticX" class="h-9 w-9 object-contain" />
+        <span class="text-2xl font-extrabold tracking-tight gradient-text">SyneticX</span>
       </a>
 
-      <!-- Desktop Navigation -->
+      <!-- Desktop nav -->
       <div class="hidden lg:flex items-center gap-8">
-        <a href="./head.html" class="nav-link">Leaf Intelligence</a>
-        <a href="./competitive.html" class="nav-link">Business Intelligence</a>
-        <!-- <a href="#resources" class="nav-link">Resources</a> -->
+        <a href="./head.html" class="px-1 text-lg font-semibold text-white/85 hover:text-white transition-colors">
+          Leaf Intelligence
+        </a>
+        <a href="./competitive.html" class="px-1 text-lg font-semibold text-white/85 hover:text-white transition-colors">
+          Business Intelligence
+        </a>
       </div>
 
-      <!-- CTAs -->
+      <!-- Desktop CTAs -->
       <div class="hidden lg:flex items-center gap-4">
-        <a href="/contact" class="text-gray-300 hover:text-white transition-colors">Contact Sales</a>
-        <a href="/demo.html"
-           class="rounded-lg px-4 py-2 font-semibold text-white
-                  bg-gradient-to-r from-blue-500 to-purple-500
-                  hover:from-purple-500 hover:to-blue-500 transition-all shadow-md">
+        <a href="/contact" class="btn-secondary-dark text-base font-semibold">
+          Contact Sales
+        </a>
+        <a href="/demo.html" class="btn-glow rounded-xl text-base font-semibold px-5 py-3">
           Request Demo
         </a>
       </div>
 
-      <!-- Mobile Menu Button -->
-      <button @click="mobileMenu = !mobileMenu"
-              class="lg:hidden p-2 rounded-md hover:bg-white/10">
-        <svg x-show="!mobileMenu" class="h-6 w-6 text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M4 6h16M4 12h16M4 18h16"/>
+      <!-- Mobile menu button -->
+      <button
+        @click="mobileMenu = !mobileMenu"
+        :aria-expanded="mobileMenu"
+        aria-controls="primary-mobile-menu"
+        class="lg:hidden inline-flex items-center justify-center rounded-xl p-3 text-white/85 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
+      >
+        <svg x-show="!mobileMenu" class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"/>
         </svg>
-        <svg x-show="mobileMenu" class="h-6 w-6 text-gray-200" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                d="M6 18L18 6M6 6l12 12"/>
+        <svg x-show="mobileMenu" class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
         </svg>
       </button>
     </div>
   </div>
 
-  <!-- Mobile Menu -->
-  <div x-show="mobileMenu" x-transition
-       class="lg:hidden bg-black/90 backdrop-blur-md border-t border-white/10">
-    <div class="px-6 py-4 space-y-2">
-      <a href="/head.html" class="mobile-link">Leaf Intelligence</a>
-      <a href="/competitive.html" class="mobile-link">Business Intelligence</a>
-      <a href="#resources" class="mobile-link">Resources</a>
-      <a href="/contact" class="mobile-link">Contact Sales</a>
-      <a href="/demo.html"
-         class="block w-full text-center rounded-lg px-4 py-2 font-semibold text-white
-                bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 transition-all">
+  <!-- Mobile menu -->
+  <div
+    x-show="mobileMenu"
+    x-transition
+    x-cloak
+    id="primary-mobile-menu"
+    class="lg:hidden border-t border-white/10 bg-[rgba(10,14,39,0.92)] backdrop-blur-md"
+  >
+    <div class="px-4 py-4 space-y-2">
+      <a href="/head.html" class="block rounded-lg px-4 py-3 text-base font-semibold text-white/90 hover:text-white hover:bg-white/10">
+        Leaf Intelligence
+      </a>
+      <a href="/competitive.html" class="block rounded-lg px-4 py-3 text-base font-semibold text-white/90 hover:text-white hover:bg-white/10">
+        Business Intelligence
+      </a>
+      <div class="h-px bg-white/10 my-2"></div>
+      <a href="/contact" class="block rounded-lg px-4 py-3 text-base font-semibold text-white/90 hover:text-white hover:bg-white/10">
+        Contact Sales
+      </a>
+      <a href="/demo.html" class="block rounded-xl px-4 py-3 text-center btn-glow text-base font-semibold">
         Request Demo
       </a>
     </div>
   </div>
 </nav>
+
+<!-- Spacer to offset fixed nav height -->
+<div class="h-20"></div>
+
+
+<!-- Spacer so content clears the fixed nav -->
+<div class="h-20"></div>
+
+
+<!-- Spacer to offset fixed nav height -->
+<div class="h-14"></div>
 
 
 
@@ -519,7 +537,7 @@
                             <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                             </svg>
-                            <span class="text-gray-300">Patent analytics</span>
+                            <span class="text-gray-300">Clinical trial monitoring</span>
                         </li>
                         <li class="flex items-start">
                             <svg class="w-5 h-5 text-green-400 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">

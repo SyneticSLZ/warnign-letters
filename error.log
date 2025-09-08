@@ -1,0 +1,24 @@
+{"level":"error","message":"✗ FDA scraping: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ FiercePharma: Cannot convert object to primitive value"}
+{"level":"error","message":"✗ FierceBiotech: Cannot convert object to primitive value"}
+{"level":"error","message":"✗ FDA Press Releases: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ FDA CBER Updates: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ FDA CDER Updates: Status code 404"}
+{"level":"error","message":"✗ STAT News Pharma: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ RAPS Regulatory Focus: Attribute without value\nLine: 0\nColumn: 1891\nChar: s"}
+{"level":"error","message":"✗ Google News - Form 483: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ Google News - CRLs: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ Pink Sheet: Status code 404"}
+{"level":"error","message":"✗ Google News - Warning Letters: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ FDA scraping: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ FDA Press Releases: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ FDA CBER Updates: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ FiercePharma: Cannot convert object to primitive value"}
+{"level":"error","message":"✗ FDA CDER Updates: Status code 404"}
+{"level":"error","message":"✗ FierceBiotech: Cannot convert object to primitive value"}
+{"level":"error","message":"✗ STAT News Pharma: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ Google News - CRLs: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ Google News - Form 483: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ RAPS Regulatory Focus: Attribute without value\nLine: 0\nColumn: 1891\nChar: s"}
+{"level":"error","message":"✗ Pink Sheet: Status code 404"}
+{"level":"error","message":"✗ Google News - Warning Letters: companyIntel.extractCompany is not a function"}

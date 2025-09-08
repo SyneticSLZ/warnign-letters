@@ -1,0 +1,14 @@
+[
+  {
+    "company": "stealth bio",
+    "added": "2025-09-07T14:48:01.633Z",
+    "criteria": {
+      "alert_on_any": true,
+      "alert_on_warning": true,
+      "alert_on_crl": true,
+      "alert_on_483": true,
+      "email": null,
+      "webhook": null
+    }
+  }
+]

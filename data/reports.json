@@ -1,0 +1,2444 @@
+[
+  {
+    "id": "report-weekly-1757267206462",
+    "type": "weekly",
+    "period": {
+      "from": "2025-08-31T17:46:46.459Z",
+      "to": "2025-09-07T17:46:46.462Z"
+    },
+    "summary": {
+      "total_alerts": 192,
+      "high_severity": 192,
+      "companies_affected": 40,
+      "top_violation_types": [
+        "crl"
+      ]
+    },
+    "details": {
+      "alerts_by_company": {
+        "Unknown": [
+          {
+            "id": "alert-high-1757266612925-vbsu4iq4r",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-06-30T07:00:00.000Z",
+            "title": "FDA issues complete response letter for Unicycive’s kidney drug - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNek9uUkVPNnlxOWU1Ykdia3RQaDFUTjVXc1FUeHYwMHBGNENSUVlhR3RZUEFoLWhRZlRzUHVwMVowOV9MV1V2Z3UzWHVqaUhDdkx3bXBWTjhDQkRPb0hibllsVnV4MDJVeC1aWkp0eW9rNVQwcVd5UEtUR1ZPSlh2aW5wLW5JR1hOaER5NnMxZ3JtMllGcmZZaHBhTUhLZ0hET1gycEw2WWhfbXVFVkxURXJqVEx3VXBRS2cw?oc=5",
+            "summary": "FDA issues complete response letter for Unicycive’s kidney drug  Investing.com",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757266612925-k8k4n18lu",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-20T18:08:52.000Z",
+            "title": "FDA Issues Complete Response Letter to PTC Therapeutics Over Insufficient Efficacy Data for Vatiquinone in Treating Friedreich’s Ataxia - geneonline.com",
+            "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxQdEhEZjBoaVlxbHNHc0drWWxWdzd6cVBIdkhNd2FYeXpyZ0NISnI5Y2VVT3FqSGlVOUdIZ3Rqc0hxeUhja1UwSk9QeEFiZjJkbVB3ZlluaVFyMEkzendEZC10UWZNLWpGTzFkYXpKSmxDMnE0cUdtV05XSzJCRXZvWFEzVUxKUVJIemFJVnNNUHhOX0NINmxiRnFGX1Y2ckF5dmVsX1phVmphbkFtbmU2MW5LTURFbkdVMzh5UmhXYTZLZHR6VG04UUZkSlhwUUR3REZuU29EMGR2RnhMMlRNX2tlT2FBNDVvS292cnBNUlk2ZWIy?oc=5",
+            "summary": "FDA Issues Complete Response Letter to PTC Therapeutics Over Insufficient Efficacy Data for Vatiquinone in Treating Friedreich’s Ataxia  geneonline.com",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757266612925-ctloseh5v",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "FDA issues complete response letter for Ultragenyx’s MPS IIIA therapy - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOdV90QmVuOUpBcXoyc01JNWFHYXVRdFktRDBHNndBM09EbmlFOUtrdy1qR1BQSHp2MnN3MUpiNHozZk4yNWphRzFlcjJPSDJXMkd1X1p3QzFsRHp2SzlJMkltbm5zMERJRjcwVlpHSDh4VTRSYkRNTEU5dm0yMUwyWjV1WGNsNFRrcUtUenhiU0Y0THpLMS1PbEphcC1GSnlzLW1sUmpUcGxFTV9qY1ZkdzAyS1QxM2dSRFkyVl9SMFNtWHM?oc=5",
+            "summary": "FDA issues complete response letter for Ultragenyx’s MPS IIIA therapy  Investing.com",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757266612925-r1enqwk9t",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-21T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Johnson & Johnson’s sBLA on Darzalex Faspro - geneonline.com",
+            "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNSHMyWmRFQ0VxOUE2VW9zdkg3MzQ1S0NnWldQNTcxeV9UM3RERjNKNFZSdzFFZnF2OHRHTThPWDN5cm40Nk1STTNoTkZWUTNwc1BNbkRDTnRaT0F0VzJWUVVTbjMtWEtKanVjRnkwNHZ2ZVM2S1BpUFZhS3FjNnAyVElJRXozdkxGanp4ZHdOdmxQS0FjbEVSaFVvVnk3eUJiYzlURGZEbFh4WW5p?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Johnson & Johnson’s sBLA on Darzalex Faspro  geneonline.com",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757266612925-2d6r9w1z0",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2024-12-17T08:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter to Subcutaneous Amivantamab BLA in EGFR+ NSCLC - OncLive",
+            "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNcDhYRTAzSEdTSzI5OGJ5UGFnWGxWMERJME9Vam1vUTdmYkZtNnJua082QVJaQnB1UEEzbWVDVVpaMGJPaWZrZ1o4YnE0aFVWUzBaai1rVGVwLUFQbWFkRkRpaUd6RTA0aG9GUXRnd1NJQlVYSFRrdEFlSVRXdjdEUUpDSzdpZHplT2ljdGlkOXBjNDdndi1tbk1XOWNscWhSUXpwXy1rZkpuRXFMUmQw?oc=5",
+            "summary": "FDA Issues Complete Response Letter to Subcutaneous Amivantamab BLA in EGFR+ NSCLC  OncLive",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757266612925-yt3ytxu5r",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-10T07:00:00.000Z",
+            "title": "Just how radical is the FDA's complete response letter move? - pharmaphorum",
+            "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOQlpqYUp3SmJZY2JTam1VUGhNdHh3YWFjdXN3OWYxYkhDbnNLWVJqUWoySHpqWnlwdnRlNXJYWGwwclBwOW9NdllJX1c0RWRjaHpleDVpbHlMVkFkM0NxUzA4N0wwU0FUQXNBMWpIWnpWMVV1OUl2U1liY3luODUzQzRUcG9NNmxs?oc=5",
+            "summary": "Just how radical is the FDA's complete response letter move?  pharmaphorum",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757266612925-0xqiezolb",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-19T13:56:19.000Z",
+            "title": "FDA Issues Complete Response Letter for PTC’s Vatiquinone NDA - Contract Pharma",
+            "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPN1Zpanp6WWlzNWUzRnl4NXRpOFdWWVRRRE1laGZZdGRJbDVzWFZ6Q0N5T1F0MkRQbEgwc1FmNzB3X1Jqc1lTa3VEMm1vMExiRUFtNENZRUNabWR4anQzMWJGcXZHcXV5NUI5QjZBQmxINnQxMnJlN0JOTEh2aXJpUGVqczFPTU01N1QtUFdBNjhzNHN1VVlFOTZ0WjdtcUlTSWxBWA?oc=5",
+            "summary": "FDA Issues Complete Response Letter for PTC’s Vatiquinone NDA  Contract Pharma",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757266612924-zldpaj9vl",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-02T17:28:42.000Z",
+            "title": "Telix Pharmaceuticals (ASX:TLX) Falls 24% in a Week After FDA Complete Response Letter - Yahoo Finance",
+            "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPZmF0a0F4VGs4MjA3QlpBRGJxcjlzODF4dlN6XzVYbnN4OElBWFdxNUpNOTBvZG9ya2JWWWVDV1VfdjNyUkpLSW41QmYxSGdGSWZESzA3emJGQUROcnpfU0JKa3RvT1JHN0JLaEc0SlJBSHlSU1ZwcHZZcFpfVHd6Q3NfYmxzSkh1?oc=5",
+            "summary": "Telix Pharmaceuticals (ASX:TLX) Falls 24% in a Week After FDA Complete Response Letter  Yahoo Finance",
+            "created": "2025-09-07T17:36:52.924Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757266612924-b6f7dw123",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-21T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Glofitamab in R/R DLBCL Combination Therapy - Targeted Oncology",
+            "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOZXlhSFNScVd3dFNhSDBQemMyMVpNUExDeXRYNDlYeFNhZ1F5RGlFcmhPbURGX05tZUhkNFpNdVVrYzRQWnpFS0pyZFFabnNZUXRjNzdRazBZdmV4RS1ZLVFUNFVlbjI1ZVZTQ1RZTzJ3NU9hbzZJZ1dDZ1lremdyUENyU2tlRkZwSVNsTHJweWlXLWtXRVZjRVNSYnNMVW1xTUFMZXlHZllZVHFWR3c4MkptbFpjTGM?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Glofitamab in R/R DLBCL Combination Therapy  Targeted Oncology",
+            "created": "2025-09-07T17:36:52.924Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806502-m5pzssxja",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-06-30T07:00:00.000Z",
+            "title": "FDA issues complete response letter for Unicycive’s kidney drug - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNek9uUkVPNnlxOWU1Ykdia3RQaDFUTjVXc1FUeHYwMHBGNENSUVlhR3RZUEFoLWhRZlRzUHVwMVowOV9MV1V2Z3UzWHVqaUhDdkx3bXBWTjhDQkRPb0hibllsVnV4MDJVeC1aWkp0eW9rNVQwcVd5UEtUR1ZPSlh2aW5wLW5JR1hOaER5NnMxZ3JtMllGcmZZaHBhTUhLZ0hET1gycEw2WWhfbXVFVkxURXJqVEx3VXBRS2cw?oc=5",
+            "summary": "FDA issues complete response letter for Unicycive’s kidney drug  Investing.com",
+            "created": "2025-09-07T15:10:06.502Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806502-69dtd8gap",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-20T18:08:52.000Z",
+            "title": "FDA Issues Complete Response Letter to PTC Therapeutics Over Insufficient Efficacy Data for Vatiquinone in Treating Friedreich’s Ataxia - geneonline.com",
+            "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxQdEhEZjBoaVlxbHNHc0drWWxWdzd6cVBIdkhNd2FYeXpyZ0NISnI5Y2VVT3FqSGlVOUdIZ3Rqc0hxeUhja1UwSk9QeEFiZjJkbVB3ZlluaVFyMEkzendEZC10UWZNLWpGTzFkYXpKSmxDMnE0cUdtV05XSzJCRXZvWFEzVUxKUVJIemFJVnNNUHhOX0NINmxiRnFGX1Y2ckF5dmVsX1phVmphbkFtbmU2MW5LTURFbkdVMzh5UmhXYTZLZHR6VG04UUZkSlhwUUR3REZuU29EMGR2RnhMMlRNX2tlT2FBNDVvS292cnBNUlk2ZWIy?oc=5",
+            "summary": "FDA Issues Complete Response Letter to PTC Therapeutics Over Insufficient Efficacy Data for Vatiquinone in Treating Friedreich’s Ataxia  geneonline.com",
+            "created": "2025-09-07T15:10:06.502Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806502-bcfuhma52",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "FDA issues complete response letter for Ultragenyx’s MPS IIIA therapy - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOdV90QmVuOUpBcXoyc01JNWFHYXVRdFktRDBHNndBM09EbmlFOUtrdy1qR1BQSHp2MnN3MUpiNHozZk4yNWphRzFlcjJPSDJXMkd1X1p3QzFsRHp2SzlJMkltbm5zMERJRjcwVlpHSDh4VTRSYkRNTEU5dm0yMUwyWjV1WGNsNFRrcUtUenhiU0Y0THpLMS1PbEphcC1GSnlzLW1sUmpUcGxFTV9qY1ZkdzAyS1QxM2dSRFkyVl9SMFNtWHM?oc=5",
+            "summary": "FDA issues complete response letter for Ultragenyx’s MPS IIIA therapy  Investing.com",
+            "created": "2025-09-07T15:10:06.502Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806502-3ithkgtfm",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-21T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Johnson & Johnson’s sBLA on Darzalex Faspro - geneonline.com",
+            "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNSHMyWmRFQ0VxOUE2VW9zdkg3MzQ1S0NnWldQNTcxeV9UM3RERjNKNFZSdzFFZnF2OHRHTThPWDN5cm40Nk1STTNoTkZWUTNwc1BNbkRDTnRaT0F0VzJWUVVTbjMtWEtKanVjRnkwNHZ2ZVM2S1BpUFZhS3FjNnAyVElJRXozdkxGanp4ZHdOdmxQS0FjbEVSaFVvVnk3eUJiYzlURGZEbFh4WW5p?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Johnson & Johnson’s sBLA on Darzalex Faspro  geneonline.com",
+            "created": "2025-09-07T15:10:06.502Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-z1pecbp9r",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2024-12-17T08:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter to Subcutaneous Amivantamab BLA in EGFR+ NSCLC - OncLive",
+            "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNcDhYRTAzSEdTSzI5OGJ5UGFnWGxWMERJME9Vam1vUTdmYkZtNnJua082QVJaQnB1UEEzbWVDVVpaMGJPaWZrZ1o4YnE0aFVWUzBaai1rVGVwLUFQbWFkRkRpaUd6RTA0aG9GUXRnd1NJQlVYSFRrdEFlSVRXdjdEUUpDSzdpZHplT2ljdGlkOXBjNDdndi1tbk1XOWNscWhSUXpwXy1rZkpuRXFMUmQw?oc=5",
+            "summary": "FDA Issues Complete Response Letter to Subcutaneous Amivantamab BLA in EGFR+ NSCLC  OncLive",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-ghtoze4yo",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-10T07:00:00.000Z",
+            "title": "Just how radical is the FDA's complete response letter move? - pharmaphorum",
+            "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOQlpqYUp3SmJZY2JTam1VUGhNdHh3YWFjdXN3OWYxYkhDbnNLWVJqUWoySHpqWnlwdnRlNXJYWGwwclBwOW9NdllJX1c0RWRjaHpleDVpbHlMVkFkM0NxUzA4N0wwU0FUQXNBMWpIWnpWMVV1OUl2U1liY3luODUzQzRUcG9NNmxs?oc=5",
+            "summary": "Just how radical is the FDA's complete response letter move?  pharmaphorum",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-px2atypb9",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-19T13:56:19.000Z",
+            "title": "FDA Issues Complete Response Letter for PTC’s Vatiquinone NDA - Contract Pharma",
+            "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPN1Zpanp6WWlzNWUzRnl4NXRpOFdWWVRRRE1laGZZdGRJbDVzWFZ6Q0N5T1F0MkRQbEgwc1FmNzB3X1Jqc1lTa3VEMm1vMExiRUFtNENZRUNabWR4anQzMWJGcXZHcXV5NUI5QjZBQmxINnQxMnJlN0JOTEh2aXJpUGVqczFPTU01N1QtUFdBNjhzNHN1VVlFOTZ0WjdtcUlTSWxBWA?oc=5",
+            "summary": "FDA Issues Complete Response Letter for PTC’s Vatiquinone NDA  Contract Pharma",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-2z5s3p9mi",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-02T17:28:42.000Z",
+            "title": "Telix Pharmaceuticals (ASX:TLX) Falls 24% in a Week After FDA Complete Response Letter - Yahoo Finance",
+            "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPZmF0a0F4VGs4MjA3QlpBRGJxcjlzODF4dlN6XzVYbnN4OElBWFdxNUpNOTBvZG9ya2JWWWVDV1VfdjNyUkpLSW41QmYxSGdGSWZESzA3emJGQUROcnpfU0JKa3RvT1JHN0JLaEc0SlJBSHlSU1ZwcHZZcFpfVHd6Q3NfYmxzSkh1?oc=5",
+            "summary": "Telix Pharmaceuticals (ASX:TLX) Falls 24% in a Week After FDA Complete Response Letter  Yahoo Finance",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-b4nr0en6s",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-21T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Glofitamab in R/R DLBCL Combination Therapy - Targeted Oncology",
+            "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOZXlhSFNScVd3dFNhSDBQemMyMVpNUExDeXRYNDlYeFNhZ1F5RGlFcmhPbURGX05tZUhkNFpNdVVrYzRQWnpFS0pyZFFabnNZUXRjNzdRazBZdmV4RS1ZLVFUNFVlbjI1ZVZTQ1RZTzJ3NU9hbzZJZ1dDZ1lremdyUENyU2tlRkZwSVNsTHJweWlXLWtXRVZjRVNSYnNMVW1xTUFMZXlHZllZVHFWR3c4MkptbFpjTGM?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Glofitamab in R/R DLBCL Combination Therapy  Targeted Oncology",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-nz2vo3u0g",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-06-30T07:00:00.000Z",
+            "title": "FDA issues complete response letter for Unicycive’s kidney drug - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNek9uUkVPNnlxOWU1Ykdia3RQaDFUTjVXc1FUeHYwMHBGNENSUVlhR3RZUEFoLWhRZlRzUHVwMVowOV9MV1V2Z3UzWHVqaUhDdkx3bXBWTjhDQkRPb0hibllsVnV4MDJVeC1aWkp0eW9rNVQwcVd5UEtUR1ZPSlh2aW5wLW5JR1hOaER5NnMxZ3JtMllGcmZZaHBhTUhLZ0hET1gycEw2WWhfbXVFVkxURXJqVEx3VXBRS2cw?oc=5",
+            "summary": "FDA issues complete response letter for Unicycive’s kidney drug  Investing.com",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-mqyygcb3a",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-20T18:08:52.000Z",
+            "title": "FDA Issues Complete Response Letter to PTC Therapeutics Over Insufficient Efficacy Data for Vatiquinone in Treating Friedreich’s Ataxia - geneonline.com",
+            "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxQdEhEZjBoaVlxbHNHc0drWWxWdzd6cVBIdkhNd2FYeXpyZ0NISnI5Y2VVT3FqSGlVOUdIZ3Rqc0hxeUhja1UwSk9QeEFiZjJkbVB3ZlluaVFyMEkzendEZC10UWZNLWpGTzFkYXpKSmxDMnE0cUdtV05XSzJCRXZvWFEzVUxKUVJIemFJVnNNUHhOX0NINmxiRnFGX1Y2ckF5dmVsX1phVmphbkFtbmU2MW5LTURFbkdVMzh5UmhXYTZLZHR6VG04UUZkSlhwUUR3REZuU29EMGR2RnhMMlRNX2tlT2FBNDVvS292cnBNUlk2ZWIy?oc=5",
+            "summary": "FDA Issues Complete Response Letter to PTC Therapeutics Over Insufficient Efficacy Data for Vatiquinone in Treating Friedreich’s Ataxia  geneonline.com",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-w7a4bev97",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "FDA issues complete response letter for Ultragenyx’s MPS IIIA therapy - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOdV90QmVuOUpBcXoyc01JNWFHYXVRdFktRDBHNndBM09EbmlFOUtrdy1qR1BQSHp2MnN3MUpiNHozZk4yNWphRzFlcjJPSDJXMkd1X1p3QzFsRHp2SzlJMkltbm5zMERJRjcwVlpHSDh4VTRSYkRNTEU5dm0yMUwyWjV1WGNsNFRrcUtUenhiU0Y0THpLMS1PbEphcC1GSnlzLW1sUmpUcGxFTV9qY1ZkdzAyS1QxM2dSRFkyVl9SMFNtWHM?oc=5",
+            "summary": "FDA issues complete response letter for Ultragenyx’s MPS IIIA therapy  Investing.com",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-imafyjyuu",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-21T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Johnson & Johnson’s sBLA on Darzalex Faspro - geneonline.com",
+            "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNSHMyWmRFQ0VxOUE2VW9zdkg3MzQ1S0NnWldQNTcxeV9UM3RERjNKNFZSdzFFZnF2OHRHTThPWDN5cm40Nk1STTNoTkZWUTNwc1BNbkRDTnRaT0F0VzJWUVVTbjMtWEtKanVjRnkwNHZ2ZVM2S1BpUFZhS3FjNnAyVElJRXozdkxGanp4ZHdOdmxQS0FjbEVSaFVvVnk3eUJiYzlURGZEbFh4WW5p?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Johnson & Johnson’s sBLA on Darzalex Faspro  geneonline.com",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-xlgvgexyv",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2024-12-17T08:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter to Subcutaneous Amivantamab BLA in EGFR+ NSCLC - OncLive",
+            "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNcDhYRTAzSEdTSzI5OGJ5UGFnWGxWMERJME9Vam1vUTdmYkZtNnJua082QVJaQnB1UEEzbWVDVVpaMGJPaWZrZ1o4YnE0aFVWUzBaai1rVGVwLUFQbWFkRkRpaUd6RTA0aG9GUXRnd1NJQlVYSFRrdEFlSVRXdjdEUUpDSzdpZHplT2ljdGlkOXBjNDdndi1tbk1XOWNscWhSUXpwXy1rZkpuRXFMUmQw?oc=5",
+            "summary": "FDA Issues Complete Response Letter to Subcutaneous Amivantamab BLA in EGFR+ NSCLC  OncLive",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-bcky5o5v7",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-10T07:00:00.000Z",
+            "title": "Just how radical is the FDA's complete response letter move? - pharmaphorum",
+            "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOQlpqYUp3SmJZY2JTam1VUGhNdHh3YWFjdXN3OWYxYkhDbnNLWVJqUWoySHpqWnlwdnRlNXJYWGwwclBwOW9NdllJX1c0RWRjaHpleDVpbHlMVkFkM0NxUzA4N0wwU0FUQXNBMWpIWnpWMVV1OUl2U1liY3luODUzQzRUcG9NNmxs?oc=5",
+            "summary": "Just how radical is the FDA's complete response letter move?  pharmaphorum",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-5mhbrm12o",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-19T13:56:19.000Z",
+            "title": "FDA Issues Complete Response Letter for PTC’s Vatiquinone NDA - Contract Pharma",
+            "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPN1Zpanp6WWlzNWUzRnl4NXRpOFdWWVRRRE1laGZZdGRJbDVzWFZ6Q0N5T1F0MkRQbEgwc1FmNzB3X1Jqc1lTa3VEMm1vMExiRUFtNENZRUNabWR4anQzMWJGcXZHcXV5NUI5QjZBQmxINnQxMnJlN0JOTEh2aXJpUGVqczFPTU01N1QtUFdBNjhzNHN1VVlFOTZ0WjdtcUlTSWxBWA?oc=5",
+            "summary": "FDA Issues Complete Response Letter for PTC’s Vatiquinone NDA  Contract Pharma",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-7dh1gp4pv",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-02T17:28:42.000Z",
+            "title": "Telix Pharmaceuticals (ASX:TLX) Falls 24% in a Week After FDA Complete Response Letter - Yahoo Finance",
+            "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPZmF0a0F4VGs4MjA3QlpBRGJxcjlzODF4dlN6XzVYbnN4OElBWFdxNUpNOTBvZG9ya2JWWWVDV1VfdjNyUkpLSW41QmYxSGdGSWZESzA3emJGQUROcnpfU0JKa3RvT1JHN0JLaEc0SlJBSHlSU1ZwcHZZcFpfVHd6Q3NfYmxzSkh1?oc=5",
+            "summary": "Telix Pharmaceuticals (ASX:TLX) Falls 24% in a Week After FDA Complete Response Letter  Yahoo Finance",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-mvjsujzyi",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-21T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Glofitamab in R/R DLBCL Combination Therapy - Targeted Oncology",
+            "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOZXlhSFNScVd3dFNhSDBQemMyMVpNUExDeXRYNDlYeFNhZ1F5RGlFcmhPbURGX05tZUhkNFpNdVVrYzRQWnpFS0pyZFFabnNZUXRjNzdRazBZdmV4RS1ZLVFUNFVlbjI1ZVZTQ1RZTzJ3NU9hbzZJZ1dDZ1lremdyUENyU2tlRkZwSVNsTHJweWlXLWtXRVZjRVNSYnNMVW1xTUFMZXlHZllZVHFWR3c4MkptbFpjTGM?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Glofitamab in R/R DLBCL Combination Therapy  Targeted Oncology",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-baoc1kvs1",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-06-30T07:00:00.000Z",
+            "title": "FDA issues complete response letter for Unicycive’s kidney drug - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNek9uUkVPNnlxOWU1Ykdia3RQaDFUTjVXc1FUeHYwMHBGNENSUVlhR3RZUEFoLWhRZlRzUHVwMVowOV9MV1V2Z3UzWHVqaUhDdkx3bXBWTjhDQkRPb0hibllsVnV4MDJVeC1aWkp0eW9rNVQwcVd5UEtUR1ZPSlh2aW5wLW5JR1hOaER5NnMxZ3JtMllGcmZZaHBhTUhLZ0hET1gycEw2WWhfbXVFVkxURXJqVEx3VXBRS2cw?oc=5",
+            "summary": "FDA issues complete response letter for Unicycive’s kidney drug  Investing.com",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-cd0n7jhim",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-20T18:08:52.000Z",
+            "title": "FDA Issues Complete Response Letter to PTC Therapeutics Over Insufficient Efficacy Data for Vatiquinone in Treating Friedreich’s Ataxia - geneonline.com",
+            "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxQdEhEZjBoaVlxbHNHc0drWWxWdzd6cVBIdkhNd2FYeXpyZ0NISnI5Y2VVT3FqSGlVOUdIZ3Rqc0hxeUhja1UwSk9QeEFiZjJkbVB3ZlluaVFyMEkzendEZC10UWZNLWpGTzFkYXpKSmxDMnE0cUdtV05XSzJCRXZvWFEzVUxKUVJIemFJVnNNUHhOX0NINmxiRnFGX1Y2ckF5dmVsX1phVmphbkFtbmU2MW5LTURFbkdVMzh5UmhXYTZLZHR6VG04UUZkSlhwUUR3REZuU29EMGR2RnhMMlRNX2tlT2FBNDVvS292cnBNUlk2ZWIy?oc=5",
+            "summary": "FDA Issues Complete Response Letter to PTC Therapeutics Over Insufficient Efficacy Data for Vatiquinone in Treating Friedreich’s Ataxia  geneonline.com",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-mj38i6dfd",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "FDA issues complete response letter for Ultragenyx’s MPS IIIA therapy - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxOdV90QmVuOUpBcXoyc01JNWFHYXVRdFktRDBHNndBM09EbmlFOUtrdy1qR1BQSHp2MnN3MUpiNHozZk4yNWphRzFlcjJPSDJXMkd1X1p3QzFsRHp2SzlJMkltbm5zMERJRjcwVlpHSDh4VTRSYkRNTEU5dm0yMUwyWjV1WGNsNFRrcUtUenhiU0Y0THpLMS1PbEphcC1GSnlzLW1sUmpUcGxFTV9qY1ZkdzAyS1QxM2dSRFkyVl9SMFNtWHM?oc=5",
+            "summary": "FDA issues complete response letter for Ultragenyx’s MPS IIIA therapy  Investing.com",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-je7504fku",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-21T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Johnson & Johnson’s sBLA on Darzalex Faspro - geneonline.com",
+            "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxNSHMyWmRFQ0VxOUE2VW9zdkg3MzQ1S0NnWldQNTcxeV9UM3RERjNKNFZSdzFFZnF2OHRHTThPWDN5cm40Nk1STTNoTkZWUTNwc1BNbkRDTnRaT0F0VzJWUVVTbjMtWEtKanVjRnkwNHZ2ZVM2S1BpUFZhS3FjNnAyVElJRXozdkxGanp4ZHdOdmxQS0FjbEVSaFVvVnk3eUJiYzlURGZEbFh4WW5p?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Johnson & Johnson’s sBLA on Darzalex Faspro  geneonline.com",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-yfvpuw7cj",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2024-12-17T08:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter to Subcutaneous Amivantamab BLA in EGFR+ NSCLC - OncLive",
+            "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxNcDhYRTAzSEdTSzI5OGJ5UGFnWGxWMERJME9Vam1vUTdmYkZtNnJua082QVJaQnB1UEEzbWVDVVpaMGJPaWZrZ1o4YnE0aFVWUzBaai1rVGVwLUFQbWFkRkRpaUd6RTA0aG9GUXRnd1NJQlVYSFRrdEFlSVRXdjdEUUpDSzdpZHplT2ljdGlkOXBjNDdndi1tbk1XOWNscWhSUXpwXy1rZkpuRXFMUmQw?oc=5",
+            "summary": "FDA Issues Complete Response Letter to Subcutaneous Amivantamab BLA in EGFR+ NSCLC  OncLive",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-tyg9ullju",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-10T07:00:00.000Z",
+            "title": "Just how radical is the FDA's complete response letter move? - pharmaphorum",
+            "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxOQlpqYUp3SmJZY2JTam1VUGhNdHh3YWFjdXN3OWYxYkhDbnNLWVJqUWoySHpqWnlwdnRlNXJYWGwwclBwOW9NdllJX1c0RWRjaHpleDVpbHlMVkFkM0NxUzA4N0wwU0FUQXNBMWpIWnpWMVV1OUl2U1liY3luODUzQzRUcG9NNmxs?oc=5",
+            "summary": "Just how radical is the FDA's complete response letter move?  pharmaphorum",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-5vrgwjicx",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-19T13:56:19.000Z",
+            "title": "FDA Issues Complete Response Letter for PTC’s Vatiquinone NDA - Contract Pharma",
+            "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPN1Zpanp6WWlzNWUzRnl4NXRpOFdWWVRRRE1laGZZdGRJbDVzWFZ6Q0N5T1F0MkRQbEgwc1FmNzB3X1Jqc1lTa3VEMm1vMExiRUFtNENZRUNabWR4anQzMWJGcXZHcXV5NUI5QjZBQmxINnQxMnJlN0JOTEh2aXJpUGVqczFPTU01N1QtUFdBNjhzNHN1VVlFOTZ0WjdtcUlTSWxBWA?oc=5",
+            "summary": "FDA Issues Complete Response Letter for PTC’s Vatiquinone NDA  Contract Pharma",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-p81jjlkxl",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-02T17:28:42.000Z",
+            "title": "Telix Pharmaceuticals (ASX:TLX) Falls 24% in a Week After FDA Complete Response Letter - Yahoo Finance",
+            "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPZmF0a0F4VGs4MjA3QlpBRGJxcjlzODF4dlN6XzVYbnN4OElBWFdxNUpNOTBvZG9ya2JWWWVDV1VfdjNyUkpLSW41QmYxSGdGSWZESzA3emJGQUROcnpfU0JKa3RvT1JHN0JLaEc0SlJBSHlSU1ZwcHZZcFpfVHd6Q3NfYmxzSkh1?oc=5",
+            "summary": "Telix Pharmaceuticals (ASX:TLX) Falls 24% in a Week After FDA Complete Response Letter  Yahoo Finance",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-2y5k2y0nd",
+            "company": "Unknown",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-21T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Glofitamab in R/R DLBCL Combination Therapy - Targeted Oncology",
+            "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxOZXlhSFNScVd3dFNhSDBQemMyMVpNUExDeXRYNDlYeFNhZ1F5RGlFcmhPbURGX05tZUhkNFpNdVVrYzRQWnpFS0pyZFFabnNZUXRjNzdRazBZdmV4RS1ZLVFUNFVlbjI1ZVZTQ1RZTzJ3NU9hbzZJZ1dDZ1lremdyUENyU2tlRkZwSVNsTHJweWlXLWtXRVZjRVNSYnNMVW1xTUFMZXlHZllZVHFWR3c4MkptbFpjTGM?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Glofitamab in R/R DLBCL Combination Therapy  Targeted Oncology",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "Replimune receives complete response letter from FDA for RP1 BLA": [
+          {
+            "id": "alert-high-1757266612925-qr1p9gn55",
+            "company": "Replimune receives complete response letter from FDA for RP1 BLA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-15T13:11:52.000Z",
+            "title": "Replimune receives complete response letter from FDA for RP1 BLA - MSN",
+            "link": "https://news.google.com/rss/articles/CBMiygJBVV95cUxNNUIxb2dzdnM4OC1ERlo2MFpMOFZzZl9IaUNJcVhtSFc5cTd0Nkl4Qmd0T1RXanh0alZDQS12MWlwRDZGdWd1WEo1VHRSUFlXZTF0VElxOUdaVDdUQmE2WUJWZzhoSVFORm1BTmdlZFN0S3VzYy1NZWl5dnZ4RWxpSzF2WWQzT1IwOWN6OTVqUDhJck01VGljOVhvM1VhVGI1WnlOSExhNWV1Nnp5SG1xam9DZjZmZWVDdEFUT3owNnltSUdfM0pnREhxVDhCY01GaFlaLTVOdkhsNlhENlRfUzBEa3BZQXJnelRPWl9MMWVyRlVER093blRHV1JObnJBclRSOWRVem83elV4WE1TVElwb2l3REY3WWxINGtYVm03dS1DWE8tUlRBaHlnaXBVUDdwWVEtV2hUS1I0Z3VqQmhHeTBwVjd1UFE?oc=5",
+            "summary": "Replimune receives complete response letter from FDA for RP1 BLA  MSN",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806502-1vnb9kmg2",
+            "company": "Replimune receives complete response letter from FDA for RP1 BLA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-15T13:11:52.000Z",
+            "title": "Replimune receives complete response letter from FDA for RP1 BLA - MSN",
+            "link": "https://news.google.com/rss/articles/CBMiygJBVV95cUxNNUIxb2dzdnM4OC1ERlo2MFpMOFZzZl9IaUNJcVhtSFc5cTd0Nkl4Qmd0T1RXanh0alZDQS12MWlwRDZGdWd1WEo1VHRSUFlXZTF0VElxOUdaVDdUQmE2WUJWZzhoSVFORm1BTmdlZFN0S3VzYy1NZWl5dnZ4RWxpSzF2WWQzT1IwOWN6OTVqUDhJck01VGljOVhvM1VhVGI1WnlOSExhNWV1Nnp5SG1xam9DZjZmZWVDdEFUT3owNnltSUdfM0pnREhxVDhCY01GaFlaLTVOdkhsNlhENlRfUzBEa3BZQXJnelRPWl9MMWVyRlVER093blRHV1JObnJBclRSOWRVem83elV4WE1TVElwb2l3REY3WWxINGtYVm03dS1DWE8tUlRBaHlnaXBVUDdwWVEtV2hUS1I0Z3VqQmhHeTBwVjd1UFE?oc=5",
+            "summary": "Replimune receives complete response letter from FDA for RP1 BLA  MSN",
+            "created": "2025-09-07T15:10:06.502Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-f92hktg7r",
+            "company": "Replimune receives complete response letter from FDA for RP1 BLA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-15T13:11:52.000Z",
+            "title": "Replimune receives complete response letter from FDA for RP1 BLA - MSN",
+            "link": "https://news.google.com/rss/articles/CBMiygJBVV95cUxNNUIxb2dzdnM4OC1ERlo2MFpMOFZzZl9IaUNJcVhtSFc5cTd0Nkl4Qmd0T1RXanh0alZDQS12MWlwRDZGdWd1WEo1VHRSUFlXZTF0VElxOUdaVDdUQmE2WUJWZzhoSVFORm1BTmdlZFN0S3VzYy1NZWl5dnZ4RWxpSzF2WWQzT1IwOWN6OTVqUDhJck01VGljOVhvM1VhVGI1WnlOSExhNWV1Nnp5SG1xam9DZjZmZWVDdEFUT3owNnltSUdfM0pnREhxVDhCY01GaFlaLTVOdkhsNlhENlRfUzBEa3BZQXJnelRPWl9MMWVyRlVER093blRHV1JObnJBclRSOWRVem83elV4WE1TVElwb2l3REY3WWxINGtYVm03dS1DWE8tUlRBaHlnaXBVUDdwWVEtV2hUS1I0Z3VqQmhHeTBwVjd1UFE?oc=5",
+            "summary": "Replimune receives complete response letter from FDA for RP1 BLA  MSN",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-zysmbggvd",
+            "company": "Replimune receives complete response letter from FDA for RP1 BLA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-15T13:11:52.000Z",
+            "title": "Replimune receives complete response letter from FDA for RP1 BLA - MSN",
+            "link": "https://news.google.com/rss/articles/CBMiygJBVV95cUxNNUIxb2dzdnM4OC1ERlo2MFpMOFZzZl9IaUNJcVhtSFc5cTd0Nkl4Qmd0T1RXanh0alZDQS12MWlwRDZGdWd1WEo1VHRSUFlXZTF0VElxOUdaVDdUQmE2WUJWZzhoSVFORm1BTmdlZFN0S3VzYy1NZWl5dnZ4RWxpSzF2WWQzT1IwOWN6OTVqUDhJck01VGljOVhvM1VhVGI1WnlOSExhNWV1Nnp5SG1xam9DZjZmZWVDdEFUT3owNnltSUdfM0pnREhxVDhCY01GaFlaLTVOdkhsNlhENlRfUzBEa3BZQXJnelRPWl9MMWVyRlVER093blRHV1JObnJBclRSOWRVem83elV4WE1TVElwb2l3REY3WWxINGtYVm03dS1DWE8tUlRBaHlnaXBVUDdwWVEtV2hUS1I0Z3VqQmhHeTBwVjd1UFE?oc=5",
+            "summary": "Replimune receives complete response letter from FDA for RP1 BLA  MSN",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "Unicycive stock falls as FDA plans complete response letter for OLC": [
+          {
+            "id": "alert-high-1757266612925-cnxp07awr",
+            "company": "Unicycive stock falls as FDA plans complete response letter for OLC",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-01T07:00:00.000Z",
+            "title": "Unicycive stock falls as FDA plans complete response letter for OLC - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNbWJhY2x1N1FEYVBlMktadHBUWE1mSUpMdVRQa21zWVZ6dG5oZ0t1c1ZhYktWZHdiOTEwTzdGQUNPVFhqT3V4UUhrS1huU0M2czZNOFBoNUlWb0x5ZFBzVFJVUkpOM3lZUDRwMHNydmJSZk1kRzBiWFVBcHZ4OGdvaDloWVJ1bXZic2RjY1Zvclh1MUhZc2p2NjVMVDNET2hPajBoU3lXX3FBTk95MVJCQnQ4dENTaU9JMUFGWjJxbUEwc2xWQWc?oc=5",
+            "summary": "Unicycive stock falls as FDA plans complete response letter for OLC  Investing.com",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806502-pqy3qsj9d",
+            "company": "Unicycive stock falls as FDA plans complete response letter for OLC",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-01T07:00:00.000Z",
+            "title": "Unicycive stock falls as FDA plans complete response letter for OLC - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNbWJhY2x1N1FEYVBlMktadHBUWE1mSUpMdVRQa21zWVZ6dG5oZ0t1c1ZhYktWZHdiOTEwTzdGQUNPVFhqT3V4UUhrS1huU0M2czZNOFBoNUlWb0x5ZFBzVFJVUkpOM3lZUDRwMHNydmJSZk1kRzBiWFVBcHZ4OGdvaDloWVJ1bXZic2RjY1Zvclh1MUhZc2p2NjVMVDNET2hPajBoU3lXX3FBTk95MVJCQnQ4dENTaU9JMUFGWjJxbUEwc2xWQWc?oc=5",
+            "summary": "Unicycive stock falls as FDA plans complete response letter for OLC  Investing.com",
+            "created": "2025-09-07T15:10:06.502Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-h3hcabhr8",
+            "company": "Unicycive stock falls as FDA plans complete response letter for OLC",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-01T07:00:00.000Z",
+            "title": "Unicycive stock falls as FDA plans complete response letter for OLC - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNbWJhY2x1N1FEYVBlMktadHBUWE1mSUpMdVRQa21zWVZ6dG5oZ0t1c1ZhYktWZHdiOTEwTzdGQUNPVFhqT3V4UUhrS1huU0M2czZNOFBoNUlWb0x5ZFBzVFJVUkpOM3lZUDRwMHNydmJSZk1kRzBiWFVBcHZ4OGdvaDloWVJ1bXZic2RjY1Zvclh1MUhZc2p2NjVMVDNET2hPajBoU3lXX3FBTk95MVJCQnQ4dENTaU9JMUFGWjJxbUEwc2xWQWc?oc=5",
+            "summary": "Unicycive stock falls as FDA plans complete response letter for OLC  Investing.com",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-85r8eoe9u",
+            "company": "Unicycive stock falls as FDA plans complete response letter for OLC",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-01T07:00:00.000Z",
+            "title": "Unicycive stock falls as FDA plans complete response letter for OLC - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxNbWJhY2x1N1FEYVBlMktadHBUWE1mSUpMdVRQa21zWVZ6dG5oZ0t1c1ZhYktWZHdiOTEwTzdGQUNPVFhqT3V4UUhrS1huU0M2czZNOFBoNUlWb0x5ZFBzVFJVUkpOM3lZUDRwMHNydmJSZk1kRzBiWFVBcHZ4OGdvaDloWVJ1bXZic2RjY1Zvclh1MUhZc2p2NjVMVDNET2hPajBoU3lXX3FBTk95MVJCQnQ4dENTaU9JMUFGWjJxbUEwc2xWQWc?oc=5",
+            "summary": "Unicycive stock falls as FDA plans complete response letter for OLC  Investing.com",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "FDA Issues Complete Response Letter to Manufacturer of Reproxalap, Treatment for Dry Eye Disease, Allergic Conjunctivitis": [
+          {
+            "id": "alert-high-1757266612925-uqo6zq9p1",
+            "company": "FDA Issues Complete Response Letter to Manufacturer of Reproxalap, Treatment for Dry Eye Disease, Allergic Conjunctivitis",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-04-03T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter to Manufacturer of Reproxalap, Treatment for Dry Eye Disease, Allergic Conjunctivitis - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNLTlmaDFOclA3OUhtMkdzQjBtQXk3S1JKbl93VzJBM3R2bGRDRUpWQWQxQnZhY05qS0pOTXhNcnJpZE5jTVJnbmlvR1pGa1EweWc2aFkxTldEUEQ2RDZOaTZsS184ZUYxVHN0YmNEOXZlUUt1N3hqNl9VVjJNQ3BKZ19HQkxYbFBRNWdMYnZ1aWJVdlJxb2RweTBfendMM2NQU2I4NVd0MUo1M21Kc3FqS1oyVWwxWE5pZVVzVHVuZUk2dHJiSmhVcGRicDMyMlNVRVE5b1YyRmRIT3BXRzBCOEZDRzA4TWtFNGc?oc=5",
+            "summary": "FDA Issues Complete Response Letter to Manufacturer of Reproxalap, Treatment for Dry Eye Disease, Allergic Conjunctivitis  Pharmacy Times",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806502-0mgpolpmo",
+            "company": "FDA Issues Complete Response Letter to Manufacturer of Reproxalap, Treatment for Dry Eye Disease, Allergic Conjunctivitis",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-04-03T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter to Manufacturer of Reproxalap, Treatment for Dry Eye Disease, Allergic Conjunctivitis - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNLTlmaDFOclA3OUhtMkdzQjBtQXk3S1JKbl93VzJBM3R2bGRDRUpWQWQxQnZhY05qS0pOTXhNcnJpZE5jTVJnbmlvR1pGa1EweWc2aFkxTldEUEQ2RDZOaTZsS184ZUYxVHN0YmNEOXZlUUt1N3hqNl9VVjJNQ3BKZ19HQkxYbFBRNWdMYnZ1aWJVdlJxb2RweTBfendMM2NQU2I4NVd0MUo1M21Kc3FqS1oyVWwxWE5pZVVzVHVuZUk2dHJiSmhVcGRicDMyMlNVRVE5b1YyRmRIT3BXRzBCOEZDRzA4TWtFNGc?oc=5",
+            "summary": "FDA Issues Complete Response Letter to Manufacturer of Reproxalap, Treatment for Dry Eye Disease, Allergic Conjunctivitis  Pharmacy Times",
+            "created": "2025-09-07T15:10:06.502Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-orli8o4h8",
+            "company": "FDA Issues Complete Response Letter to Manufacturer of Reproxalap, Treatment for Dry Eye Disease, Allergic Conjunctivitis",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-04-03T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter to Manufacturer of Reproxalap, Treatment for Dry Eye Disease, Allergic Conjunctivitis - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNLTlmaDFOclA3OUhtMkdzQjBtQXk3S1JKbl93VzJBM3R2bGRDRUpWQWQxQnZhY05qS0pOTXhNcnJpZE5jTVJnbmlvR1pGa1EweWc2aFkxTldEUEQ2RDZOaTZsS184ZUYxVHN0YmNEOXZlUUt1N3hqNl9VVjJNQ3BKZ19HQkxYbFBRNWdMYnZ1aWJVdlJxb2RweTBfendMM2NQU2I4NVd0MUo1M21Kc3FqS1oyVWwxWE5pZVVzVHVuZUk2dHJiSmhVcGRicDMyMlNVRVE5b1YyRmRIT3BXRzBCOEZDRzA4TWtFNGc?oc=5",
+            "summary": "FDA Issues Complete Response Letter to Manufacturer of Reproxalap, Treatment for Dry Eye Disease, Allergic Conjunctivitis  Pharmacy Times",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-ngcbgbin3",
+            "company": "FDA Issues Complete Response Letter to Manufacturer of Reproxalap, Treatment for Dry Eye Disease, Allergic Conjunctivitis",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-04-03T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter to Manufacturer of Reproxalap, Treatment for Dry Eye Disease, Allergic Conjunctivitis - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNLTlmaDFOclA3OUhtMkdzQjBtQXk3S1JKbl93VzJBM3R2bGRDRUpWQWQxQnZhY05qS0pOTXhNcnJpZE5jTVJnbmlvR1pGa1EweWc2aFkxTldEUEQ2RDZOaTZsS184ZUYxVHN0YmNEOXZlUUt1N3hqNl9VVjJNQ3BKZ19HQkxYbFBRNWdMYnZ1aWJVdlJxb2RweTBfendMM2NQU2I4NVd0MUo1M21Kc3FqS1oyVWwxWE5pZVVzVHVuZUk2dHJiSmhVcGRicDMyMlNVRVE5b1YyRmRIT3BXRzBCOEZDRzA4TWtFNGc?oc=5",
+            "summary": "FDA Issues Complete Response Letter to Manufacturer of Reproxalap, Treatment for Dry Eye Disease, Allergic Conjunctivitis  Pharmacy Times",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "PTC Therapeutics Receives FDA Complete Response Letter": [
+          {
+            "id": "alert-high-1757266612925-etpt3e2gs",
+            "company": "PTC Therapeutics Receives FDA Complete Response Letter",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-19T07:00:00.000Z",
+            "title": "PTC Therapeutics Receives FDA Complete Response Letter - TipRanks",
+            "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNN0lZVHJyMzNVT2duUjBScTZ3SEQzeDZ6UXc4NjNnNmt6bGJDZENoOUxJc09HeEZXcGR5UW11Z1pxdVUteDR4dWFjV1ZxYXE4UzhSZU1JTUdXamtmbFBkTU1iX0xINHpPalV5clNleDZGVXlib0l6aDJRbkRFT1l6aFV0NzBycXlkemdnZmpXbnlMdFViT2MzbG40Z1dBRkRfRmVZRlJ3RkxGdw?oc=5",
+            "summary": "PTC Therapeutics Receives FDA Complete Response Letter  TipRanks",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806502-tzqoas019",
+            "company": "PTC Therapeutics Receives FDA Complete Response Letter",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-19T07:00:00.000Z",
+            "title": "PTC Therapeutics Receives FDA Complete Response Letter - TipRanks",
+            "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNN0lZVHJyMzNVT2duUjBScTZ3SEQzeDZ6UXc4NjNnNmt6bGJDZENoOUxJc09HeEZXcGR5UW11Z1pxdVUteDR4dWFjV1ZxYXE4UzhSZU1JTUdXamtmbFBkTU1iX0xINHpPalV5clNleDZGVXlib0l6aDJRbkRFT1l6aFV0NzBycXlkemdnZmpXbnlMdFViT2MzbG40Z1dBRkRfRmVZRlJ3RkxGdw?oc=5",
+            "summary": "PTC Therapeutics Receives FDA Complete Response Letter  TipRanks",
+            "created": "2025-09-07T15:10:06.502Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-oyeyoj18y",
+            "company": "PTC Therapeutics Receives FDA Complete Response Letter",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-19T07:00:00.000Z",
+            "title": "PTC Therapeutics Receives FDA Complete Response Letter - TipRanks",
+            "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNN0lZVHJyMzNVT2duUjBScTZ3SEQzeDZ6UXc4NjNnNmt6bGJDZENoOUxJc09HeEZXcGR5UW11Z1pxdVUteDR4dWFjV1ZxYXE4UzhSZU1JTUdXamtmbFBkTU1iX0xINHpPalV5clNleDZGVXlib0l6aDJRbkRFT1l6aFV0NzBycXlkemdnZmpXbnlMdFViT2MzbG40Z1dBRkRfRmVZRlJ3RkxGdw?oc=5",
+            "summary": "PTC Therapeutics Receives FDA Complete Response Letter  TipRanks",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-xloriow7a",
+            "company": "PTC Therapeutics Receives FDA Complete Response Letter",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-19T07:00:00.000Z",
+            "title": "PTC Therapeutics Receives FDA Complete Response Letter - TipRanks",
+            "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxNN0lZVHJyMzNVT2duUjBScTZ3SEQzeDZ6UXc4NjNnNmt6bGJDZENoOUxJc09HeEZXcGR5UW11Z1pxdVUteDR4dWFjV1ZxYXE4UzhSZU1JTUdXamtmbFBkTU1iX0xINHpPalV5clNleDZGVXlib0l6aDJRbkRFT1l6aFV0NzBycXlkemdnZmpXbnlMdFViT2MzbG40Z1dBRkRfRmVZRlJ3RkxGdw?oc=5",
+            "summary": "PTC Therapeutics Receives FDA Complete Response Letter  TipRanks",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "Astellas receives Complete Response Letter from FDA for Izervay sNDA": [
+          {
+            "id": "alert-high-1757266612925-0dtdbk9on",
+            "company": "Astellas receives Complete Response Letter from FDA for Izervay sNDA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-04T15:41:33.000Z",
+            "title": "Astellas receives Complete Response Letter from FDA for Izervay sNDA - MSN",
+            "link": "https://news.google.com/rss/articles/CBMi0gJBVV95cUxQNDV4NGotbFBTUmlpWXlhWUFNSTRsMENiSmlTcENtODNFRllNRlRCdF9IcmhMWTdfNndEcXlHMi12cXNkcnN3MFdQSDhDb25hTE1OQ1VTaWw2MFRiQ01xSGJHem9SZ1Jzb3N0SmI2dV9HVDlRV19FdFVSLTE0NEpaRDNsejQ5OW5icmd6WmJFOC1HUVNWbzMzM2FOOFVsdmV4NGFkUTJQWE9ZbFh4QlJTb1B1cjBBQ0RNdmdBUTRDTS1rZDkwQk9yQUN0MjgzU0U2ZDdlcFZqbGc5OFBtVG0wSGhLU2FLUUw3ZXZUZ0JJZzMxcS1yQTFRVFJSZUxnc3QycmR1MGMzNDl3ZWpIbVhBaHc3Uk9JdDBPSzc5MXIxLWFaWlpFckhvRk1EWDlTZE9mWHU1ZU5Tdl9udzY4cWtDajRzZGFfZjdtRV9RZmc5VGZHUQ?oc=5",
+            "summary": "Astellas receives Complete Response Letter from FDA for Izervay sNDA  MSN",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806502-x1ksmzogp",
+            "company": "Astellas receives Complete Response Letter from FDA for Izervay sNDA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-04T15:41:33.000Z",
+            "title": "Astellas receives Complete Response Letter from FDA for Izervay sNDA - MSN",
+            "link": "https://news.google.com/rss/articles/CBMi0gJBVV95cUxQNDV4NGotbFBTUmlpWXlhWUFNSTRsMENiSmlTcENtODNFRllNRlRCdF9IcmhMWTdfNndEcXlHMi12cXNkcnN3MFdQSDhDb25hTE1OQ1VTaWw2MFRiQ01xSGJHem9SZ1Jzb3N0SmI2dV9HVDlRV19FdFVSLTE0NEpaRDNsejQ5OW5icmd6WmJFOC1HUVNWbzMzM2FOOFVsdmV4NGFkUTJQWE9ZbFh4QlJTb1B1cjBBQ0RNdmdBUTRDTS1rZDkwQk9yQUN0MjgzU0U2ZDdlcFZqbGc5OFBtVG0wSGhLU2FLUUw3ZXZUZ0JJZzMxcS1yQTFRVFJSZUxnc3QycmR1MGMzNDl3ZWpIbVhBaHc3Uk9JdDBPSzc5MXIxLWFaWlpFckhvRk1EWDlTZE9mWHU1ZU5Tdl9udzY4cWtDajRzZGFfZjdtRV9RZmc5VGZHUQ?oc=5",
+            "summary": "Astellas receives Complete Response Letter from FDA for Izervay sNDA  MSN",
+            "created": "2025-09-07T15:10:06.502Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-ud3ikiqn4",
+            "company": "Astellas receives Complete Response Letter from FDA for Izervay sNDA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-04T15:41:33.000Z",
+            "title": "Astellas receives Complete Response Letter from FDA for Izervay sNDA - MSN",
+            "link": "https://news.google.com/rss/articles/CBMi0gJBVV95cUxQNDV4NGotbFBTUmlpWXlhWUFNSTRsMENiSmlTcENtODNFRllNRlRCdF9IcmhMWTdfNndEcXlHMi12cXNkcnN3MFdQSDhDb25hTE1OQ1VTaWw2MFRiQ01xSGJHem9SZ1Jzb3N0SmI2dV9HVDlRV19FdFVSLTE0NEpaRDNsejQ5OW5icmd6WmJFOC1HUVNWbzMzM2FOOFVsdmV4NGFkUTJQWE9ZbFh4QlJTb1B1cjBBQ0RNdmdBUTRDTS1rZDkwQk9yQUN0MjgzU0U2ZDdlcFZqbGc5OFBtVG0wSGhLU2FLUUw3ZXZUZ0JJZzMxcS1yQTFRVFJSZUxnc3QycmR1MGMzNDl3ZWpIbVhBaHc3Uk9JdDBPSzc5MXIxLWFaWlpFckhvRk1EWDlTZE9mWHU1ZU5Tdl9udzY4cWtDajRzZGFfZjdtRV9RZmc5VGZHUQ?oc=5",
+            "summary": "Astellas receives Complete Response Letter from FDA for Izervay sNDA  MSN",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-1wtj0ygim",
+            "company": "Astellas receives Complete Response Letter from FDA for Izervay sNDA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-04T15:41:33.000Z",
+            "title": "Astellas receives Complete Response Letter from FDA for Izervay sNDA - MSN",
+            "link": "https://news.google.com/rss/articles/CBMi0gJBVV95cUxQNDV4NGotbFBTUmlpWXlhWUFNSTRsMENiSmlTcENtODNFRllNRlRCdF9IcmhMWTdfNndEcXlHMi12cXNkcnN3MFdQSDhDb25hTE1OQ1VTaWw2MFRiQ01xSGJHem9SZ1Jzb3N0SmI2dV9HVDlRV19FdFVSLTE0NEpaRDNsejQ5OW5icmd6WmJFOC1HUVNWbzMzM2FOOFVsdmV4NGFkUTJQWE9ZbFh4QlJTb1B1cjBBQ0RNdmdBUTRDTS1rZDkwQk9yQUN0MjgzU0U2ZDdlcFZqbGc5OFBtVG0wSGhLU2FLUUw3ZXZUZ0JJZzMxcS1yQTFRVFJSZUxnc3QycmR1MGMzNDl3ZWpIbVhBaHc3Uk9JdDBPSzc5MXIxLWFaWlpFckhvRk1EWDlTZE9mWHU1ZU5Tdl9udzY4cWtDajRzZGFfZjdtRV9RZmc5VGZHUQ?oc=5",
+            "summary": "Astellas receives Complete Response Letter from FDA for Izervay sNDA  MSN",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "Capricor": [
+          {
+            "id": "alert-high-1757266612925-tlkw13bud",
+            "company": "Capricor",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-14T07:00:00.000Z",
+            "title": "Capricor Therapeutics: Buying Opportunity Following FDA's Complete Response Letter - Seeking Alpha",
+            "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQNk02ME02b1NUMHltNGRvNHl4eTRVcTBsZzVVc1NXVEFMX1RCN1lZczg4T2NDNm13VmxWWGpUdFhGNk1rSmlMNS1NcHkxZEREdk5sZ1lwcU9hV2NhQTg4RUo0WGxTLWdZYk1zdm1Jb1FGS0hxRXB1Vi1Kd3ZjVzhxeWQtVlFxeHliZ1FjOTZPVi16eXdFMzJlQmRMRjVpNjhNc0l1aC03T1hPbE43UjBhejRrQXRRNnFITF84TXpEX2haMDJ0?oc=5",
+            "summary": "Capricor Therapeutics: Buying Opportunity Following FDA's Complete Response Letter  Seeking Alpha",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806502-r6lvun0mq",
+            "company": "Capricor",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-14T07:00:00.000Z",
+            "title": "Capricor Therapeutics: Buying Opportunity Following FDA's Complete Response Letter - Seeking Alpha",
+            "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQNk02ME02b1NUMHltNGRvNHl4eTRVcTBsZzVVc1NXVEFMX1RCN1lZczg4T2NDNm13VmxWWGpUdFhGNk1rSmlMNS1NcHkxZEREdk5sZ1lwcU9hV2NhQTg4RUo0WGxTLWdZYk1zdm1Jb1FGS0hxRXB1Vi1Kd3ZjVzhxeWQtVlFxeHliZ1FjOTZPVi16eXdFMzJlQmRMRjVpNjhNc0l1aC03T1hPbE43UjBhejRrQXRRNnFITF84TXpEX2haMDJ0?oc=5",
+            "summary": "Capricor Therapeutics: Buying Opportunity Following FDA's Complete Response Letter  Seeking Alpha",
+            "created": "2025-09-07T15:10:06.502Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-obq1eqrmf",
+            "company": "Capricor",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-14T07:00:00.000Z",
+            "title": "Capricor Therapeutics: Buying Opportunity Following FDA's Complete Response Letter - Seeking Alpha",
+            "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQNk02ME02b1NUMHltNGRvNHl4eTRVcTBsZzVVc1NXVEFMX1RCN1lZczg4T2NDNm13VmxWWGpUdFhGNk1rSmlMNS1NcHkxZEREdk5sZ1lwcU9hV2NhQTg4RUo0WGxTLWdZYk1zdm1Jb1FGS0hxRXB1Vi1Kd3ZjVzhxeWQtVlFxeHliZ1FjOTZPVi16eXdFMzJlQmRMRjVpNjhNc0l1aC03T1hPbE43UjBhejRrQXRRNnFITF84TXpEX2haMDJ0?oc=5",
+            "summary": "Capricor Therapeutics: Buying Opportunity Following FDA's Complete Response Letter  Seeking Alpha",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-ru0phabcu",
+            "company": "Capricor",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-14T07:00:00.000Z",
+            "title": "Capricor Therapeutics: Buying Opportunity Following FDA's Complete Response Letter - Seeking Alpha",
+            "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxQNk02ME02b1NUMHltNGRvNHl4eTRVcTBsZzVVc1NXVEFMX1RCN1lZczg4T2NDNm13VmxWWGpUdFhGNk1rSmlMNS1NcHkxZEREdk5sZ1lwcU9hV2NhQTg4RUo0WGxTLWdZYk1zdm1Jb1FGS0hxRXB1Vi1Kd3ZjVzhxeWQtVlFxeHliZ1FjOTZPVi16eXdFMzJlQmRMRjVpNjhNc0l1aC03T1hPbE43UjBhejRrQXRRNnFITF84TXpEX2haMDJ0?oc=5",
+            "summary": "Capricor Therapeutics: Buying Opportunity Following FDA's Complete Response Letter  Seeking Alpha",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "FDA Issues Complete Response Letter for Much": [
+          {
+            "id": "alert-high-1757266612925-fxm0ig8cs",
+            "company": "FDA Issues Complete Response Letter for Much",
+            "type": "crl",
+            "severity": 9,
+            "date": "2024-12-21T08:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Much-Anticipated GLP-2 Analog - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPWWFneWJYcGkyU3JDOTJtd0s0RERBdGVTenhmRnc3ZEZyWk1jd2V1akNTLU5Ka190WEtVd1NQdHgzTVVxR3NjeVpZWnl0SmtOZ2dkcnhpZHhIMmRNdTlDME1aekJmQkk5SVB4ZE8wclBHd2YzUm5FalY5eDFhamhMY05JUDR4NE8yNkI4enVMZFZTczIxVWhUdlRUMDBqRnFaaFhmdDdXUQ?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Much-Anticipated GLP-2 Analog  Pharmacy Times",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806502-3q899gopg",
+            "company": "FDA Issues Complete Response Letter for Much",
+            "type": "crl",
+            "severity": 9,
+            "date": "2024-12-21T08:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Much-Anticipated GLP-2 Analog - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPWWFneWJYcGkyU3JDOTJtd0s0RERBdGVTenhmRnc3ZEZyWk1jd2V1akNTLU5Ka190WEtVd1NQdHgzTVVxR3NjeVpZWnl0SmtOZ2dkcnhpZHhIMmRNdTlDME1aekJmQkk5SVB4ZE8wclBHd2YzUm5FalY5eDFhamhMY05JUDR4NE8yNkI4enVMZFZTczIxVWhUdlRUMDBqRnFaaFhmdDdXUQ?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Much-Anticipated GLP-2 Analog  Pharmacy Times",
+            "created": "2025-09-07T15:10:06.502Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-5qn28h1z6",
+            "company": "FDA Issues Complete Response Letter for Much",
+            "type": "crl",
+            "severity": 9,
+            "date": "2024-12-21T08:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Much-Anticipated GLP-2 Analog - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPWWFneWJYcGkyU3JDOTJtd0s0RERBdGVTenhmRnc3ZEZyWk1jd2V1akNTLU5Ka190WEtVd1NQdHgzTVVxR3NjeVpZWnl0SmtOZ2dkcnhpZHhIMmRNdTlDME1aekJmQkk5SVB4ZE8wclBHd2YzUm5FalY5eDFhamhMY05JUDR4NE8yNkI4enVMZFZTczIxVWhUdlRUMDBqRnFaaFhmdDdXUQ?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Much-Anticipated GLP-2 Analog  Pharmacy Times",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-92qaoi3mb",
+            "company": "FDA Issues Complete Response Letter for Much",
+            "type": "crl",
+            "severity": 9,
+            "date": "2024-12-21T08:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Much-Anticipated GLP-2 Analog - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPWWFneWJYcGkyU3JDOTJtd0s0RERBdGVTenhmRnc3ZEZyWk1jd2V1akNTLU5Ka190WEtVd1NQdHgzTVVxR3NjeVpZWnl0SmtOZ2dkcnhpZHhIMmRNdTlDME1aekJmQkk5SVB4ZE8wclBHd2YzUm5FalY5eDFhamhMY05JUDR4NE8yNkI4enVMZFZTczIxVWhUdlRUMDBqRnFaaFhmdDdXUQ?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Much-Anticipated GLP-2 Analog  Pharmacy Times",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "Ultragenyx Pharmaceutical Inc. Receives Complete Response Letter from FDA for UX111 Gene Therapy for Sanfilippo Syndrome Type A": [
+          {
+            "id": "alert-high-1757266612925-l4difhu5t",
+            "company": "Ultragenyx Pharmaceutical Inc. Receives Complete Response Letter from FDA for UX111 Gene Therapy for Sanfilippo Syndrome Type A",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "Ultragenyx Pharmaceutical Inc. Receives Complete Response Letter from FDA for UX111 Gene Therapy for Sanfilippo Syndrome Type A - Quiver Quantitative",
+            "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNM0Z0cGZfaXhxSDVIRU5MazJHU1ZQZGV2UHdLeGR0bFhOMHZuRDZ4V0w0MjZlamlIeDcwbkxOeWFwWEtVdWVtQTRBcnZtVmpjVGk4OUhsRWRfWU9JcEQ3VlVTY1YwRkpMX3RncmVlbXBwbkJhS0NVNFV3QTY0VWJ3WnJ4MW5heGVQd3I0QjdfZzZnX2E4UnRrRHFvVWgxS1p3UzNKVWgxZGRDUlpnUkU5S3dpblk5cDBfeFZaRk9sWTBEcy1OeEI0RVNoOW1SdmpfNmV4eDFGaTAzb0ZObkxuN2RSWS1uQVg0dkp4eFJwN2c1dw?oc=5",
+            "summary": "Ultragenyx Pharmaceutical Inc. Receives Complete Response Letter from FDA for UX111 Gene Therapy for Sanfilippo Syndrome Type A  Quiver Quantitative",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806502-6hn64gh49",
+            "company": "Ultragenyx Pharmaceutical Inc. Receives Complete Response Letter from FDA for UX111 Gene Therapy for Sanfilippo Syndrome Type A",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "Ultragenyx Pharmaceutical Inc. Receives Complete Response Letter from FDA for UX111 Gene Therapy for Sanfilippo Syndrome Type A - Quiver Quantitative",
+            "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNM0Z0cGZfaXhxSDVIRU5MazJHU1ZQZGV2UHdLeGR0bFhOMHZuRDZ4V0w0MjZlamlIeDcwbkxOeWFwWEtVdWVtQTRBcnZtVmpjVGk4OUhsRWRfWU9JcEQ3VlVTY1YwRkpMX3RncmVlbXBwbkJhS0NVNFV3QTY0VWJ3WnJ4MW5heGVQd3I0QjdfZzZnX2E4UnRrRHFvVWgxS1p3UzNKVWgxZGRDUlpnUkU5S3dpblk5cDBfeFZaRk9sWTBEcy1OeEI0RVNoOW1SdmpfNmV4eDFGaTAzb0ZObkxuN2RSWS1uQVg0dkp4eFJwN2c1dw?oc=5",
+            "summary": "Ultragenyx Pharmaceutical Inc. Receives Complete Response Letter from FDA for UX111 Gene Therapy for Sanfilippo Syndrome Type A  Quiver Quantitative",
+            "created": "2025-09-07T15:10:06.502Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-7rncq7y5x",
+            "company": "Ultragenyx Pharmaceutical Inc. Receives Complete Response Letter from FDA for UX111 Gene Therapy for Sanfilippo Syndrome Type A",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "Ultragenyx Pharmaceutical Inc. Receives Complete Response Letter from FDA for UX111 Gene Therapy for Sanfilippo Syndrome Type A - Quiver Quantitative",
+            "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNM0Z0cGZfaXhxSDVIRU5MazJHU1ZQZGV2UHdLeGR0bFhOMHZuRDZ4V0w0MjZlamlIeDcwbkxOeWFwWEtVdWVtQTRBcnZtVmpjVGk4OUhsRWRfWU9JcEQ3VlVTY1YwRkpMX3RncmVlbXBwbkJhS0NVNFV3QTY0VWJ3WnJ4MW5heGVQd3I0QjdfZzZnX2E4UnRrRHFvVWgxS1p3UzNKVWgxZGRDUlpnUkU5S3dpblk5cDBfeFZaRk9sWTBEcy1OeEI0RVNoOW1SdmpfNmV4eDFGaTAzb0ZObkxuN2RSWS1uQVg0dkp4eFJwN2c1dw?oc=5",
+            "summary": "Ultragenyx Pharmaceutical Inc. Receives Complete Response Letter from FDA for UX111 Gene Therapy for Sanfilippo Syndrome Type A  Quiver Quantitative",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-h67xyr7cf",
+            "company": "Ultragenyx Pharmaceutical Inc. Receives Complete Response Letter from FDA for UX111 Gene Therapy for Sanfilippo Syndrome Type A",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "Ultragenyx Pharmaceutical Inc. Receives Complete Response Letter from FDA for UX111 Gene Therapy for Sanfilippo Syndrome Type A - Quiver Quantitative",
+            "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxNM0Z0cGZfaXhxSDVIRU5MazJHU1ZQZGV2UHdLeGR0bFhOMHZuRDZ4V0w0MjZlamlIeDcwbkxOeWFwWEtVdWVtQTRBcnZtVmpjVGk4OUhsRWRfWU9JcEQ3VlVTY1YwRkpMX3RncmVlbXBwbkJhS0NVNFV3QTY0VWJ3WnJ4MW5heGVQd3I0QjdfZzZnX2E4UnRrRHFvVWgxS1p3UzNKVWgxZGRDUlpnUkU5S3dpblk5cDBfeFZaRk9sWTBEcy1OeEI0RVNoOW1SdmpfNmV4eDFGaTAzb0ZObkxuN2RSWS1uQVg0dkp4eFJwN2c1dw?oc=5",
+            "summary": "Ultragenyx Pharmaceutical Inc. Receives Complete Response Letter from FDA for UX111 Gene Therapy for Sanfilippo Syndrome Type A  Quiver Quantitative",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "FDA Issues Complete Response Letter for Etripamil for PSVT": [
+          {
+            "id": "alert-high-1757266612925-ur2z6twlf",
+            "company": "FDA Issues Complete Response Letter for Etripamil for PSVT",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-03-28T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Etripamil for PSVT - Yahoo Finance",
+            "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPRTF1MV9aZ28xSjc4c2dMQ1ZEaFlqa0tHQUZBMkhnY1R6Y0x6eC1aVnQtVV9rQVpWeFpPOFo4MldTRlgwN3MtMWdJZ1pLVVJsUFBWeFBqejVPQTBkMEdrUDNKYURTeTBaR3RLVlBqdTZmWkJIdWhDMDdiTEIxUDBRNGVfUENPeHJM?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Etripamil for PSVT  Yahoo Finance",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-g6dig3iu2",
+            "company": "FDA Issues Complete Response Letter for Etripamil for PSVT",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-03-28T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Etripamil for PSVT - Yahoo Finance",
+            "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPRTF1MV9aZ28xSjc4c2dMQ1ZEaFlqa0tHQUZBMkhnY1R6Y0x6eC1aVnQtVV9rQVpWeFpPOFo4MldTRlgwN3MtMWdJZ1pLVVJsUFBWeFBqejVPQTBkMEdrUDNKYURTeTBaR3RLVlBqdTZmWkJIdWhDMDdiTEIxUDBRNGVfUENPeHJM?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Etripamil for PSVT  Yahoo Finance",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-ykbetr168",
+            "company": "FDA Issues Complete Response Letter for Etripamil for PSVT",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-03-28T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Etripamil for PSVT - Yahoo Finance",
+            "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPRTF1MV9aZ28xSjc4c2dMQ1ZEaFlqa0tHQUZBMkhnY1R6Y0x6eC1aVnQtVV9rQVpWeFpPOFo4MldTRlgwN3MtMWdJZ1pLVVJsUFBWeFBqejVPQTBkMEdrUDNKYURTeTBaR3RLVlBqdTZmWkJIdWhDMDdiTEIxUDBRNGVfUENPeHJM?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Etripamil for PSVT  Yahoo Finance",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-a980pvu21",
+            "company": "FDA Issues Complete Response Letter for Etripamil for PSVT",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-03-28T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Etripamil for PSVT - Yahoo Finance",
+            "link": "https://news.google.com/rss/articles/CBMiiAFBVV95cUxPRTF1MV9aZ28xSjc4c2dMQ1ZEaFlqa0tHQUZBMkhnY1R6Y0x6eC1aVnQtVV9rQVpWeFpPOFo4MldTRlgwN3MtMWdJZ1pLVVJsUFBWeFBqejVPQTBkMEdrUDNKYURTeTBaR3RLVlBqdTZmWkJIdWhDMDdiTEIxUDBRNGVfUENPeHJM?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Etripamil for PSVT  Yahoo Finance",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "Milestone submits response to FDA Complete Response Letter over Cardamyst": [
+          {
+            "id": "alert-high-1757266612925-lwqyii5us",
+            "company": "Milestone submits response to FDA Complete Response Letter over Cardamyst",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-06-16T07:00:00.000Z",
+            "title": "Milestone submits response to FDA Complete Response Letter over Cardamyst - Seeking Alpha",
+            "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxONHV4ZmJtTkl4X21OZVFyU0t4VkpBVTFmMWZVS3JSd3BBa1Y3Zzk1OHo3NFNwNldHUjBSU1BoRlhnZWpRWFQ0Y3lDRlYyWk1QVUhlaHZaX0tXbFNyMnFxeTZKMmw2LTBfalF2ZFRQRmdMd19vMklBRkZiQkFjTWZBTGZCbWcta21MNGIzVUpOOXFPT3FzenNrMUJabTNfS3RmWEZ3MzVR?oc=5",
+            "summary": "Milestone submits response to FDA Complete Response Letter over Cardamyst  Seeking Alpha",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-d48ecesih",
+            "company": "Milestone submits response to FDA Complete Response Letter over Cardamyst",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-06-16T07:00:00.000Z",
+            "title": "Milestone submits response to FDA Complete Response Letter over Cardamyst - Seeking Alpha",
+            "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxONHV4ZmJtTkl4X21OZVFyU0t4VkpBVTFmMWZVS3JSd3BBa1Y3Zzk1OHo3NFNwNldHUjBSU1BoRlhnZWpRWFQ0Y3lDRlYyWk1QVUhlaHZaX0tXbFNyMnFxeTZKMmw2LTBfalF2ZFRQRmdMd19vMklBRkZiQkFjTWZBTGZCbWcta21MNGIzVUpOOXFPT3FzenNrMUJabTNfS3RmWEZ3MzVR?oc=5",
+            "summary": "Milestone submits response to FDA Complete Response Letter over Cardamyst  Seeking Alpha",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-19627wqcj",
+            "company": "Milestone submits response to FDA Complete Response Letter over Cardamyst",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-06-16T07:00:00.000Z",
+            "title": "Milestone submits response to FDA Complete Response Letter over Cardamyst - Seeking Alpha",
+            "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxONHV4ZmJtTkl4X21OZVFyU0t4VkpBVTFmMWZVS3JSd3BBa1Y3Zzk1OHo3NFNwNldHUjBSU1BoRlhnZWpRWFQ0Y3lDRlYyWk1QVUhlaHZaX0tXbFNyMnFxeTZKMmw2LTBfalF2ZFRQRmdMd19vMklBRkZiQkFjTWZBTGZCbWcta21MNGIzVUpOOXFPT3FzenNrMUJabTNfS3RmWEZ3MzVR?oc=5",
+            "summary": "Milestone submits response to FDA Complete Response Letter over Cardamyst  Seeking Alpha",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-anbs3j058",
+            "company": "Milestone submits response to FDA Complete Response Letter over Cardamyst",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-06-16T07:00:00.000Z",
+            "title": "Milestone submits response to FDA Complete Response Letter over Cardamyst - Seeking Alpha",
+            "link": "https://news.google.com/rss/articles/CBMipgFBVV95cUxONHV4ZmJtTkl4X21OZVFyU0t4VkpBVTFmMWZVS3JSd3BBa1Y3Zzk1OHo3NFNwNldHUjBSU1BoRlhnZWpRWFQ0Y3lDRlYyWk1QVUhlaHZaX0tXbFNyMnFxeTZKMmw2LTBfalF2ZFRQRmdMd19vMklBRkZiQkFjTWZBTGZCbWcta21MNGIzVUpOOXFPT3FzenNrMUJabTNfS3RmWEZ3MzVR?oc=5",
+            "summary": "Milestone submits response to FDA Complete Response Letter over Cardamyst  Seeking Alpha",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "Reproxalap Receives Complete Response Letter From FDA for Use in Dry Eye Disease": [
+          {
+            "id": "alert-high-1757266612925-x77x7ukts",
+            "company": "Reproxalap Receives Complete Response Letter From FDA for Use in Dry Eye Disease",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-04-03T07:00:00.000Z",
+            "title": "Reproxalap Receives Complete Response Letter From FDA for Use in Dry Eye Disease - AJMC",
+            "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPTVJjUHd1RjA1bWxfSGppdGtNZ1RwcVlOTEY0VGR2S3J6NFd0bFdHUy04VlNKMk9aMU5NOTMzc3dta2ZBZENwT0gyNzdmdUJnenR5em1ZTUNSVVMwTUNyMW9WX1JMRlh2TUxDdVc5eVJaRmFYMEg5b2VuSHpfYnM1WHUtMzJoQQ?oc=5",
+            "summary": "Reproxalap Receives Complete Response Letter From FDA for Use in Dry Eye Disease  AJMC",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-y4ezstths",
+            "company": "Reproxalap Receives Complete Response Letter From FDA for Use in Dry Eye Disease",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-04-03T07:00:00.000Z",
+            "title": "Reproxalap Receives Complete Response Letter From FDA for Use in Dry Eye Disease - AJMC",
+            "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPTVJjUHd1RjA1bWxfSGppdGtNZ1RwcVlOTEY0VGR2S3J6NFd0bFdHUy04VlNKMk9aMU5NOTMzc3dta2ZBZENwT0gyNzdmdUJnenR5em1ZTUNSVVMwTUNyMW9WX1JMRlh2TUxDdVc5eVJaRmFYMEg5b2VuSHpfYnM1WHUtMzJoQQ?oc=5",
+            "summary": "Reproxalap Receives Complete Response Letter From FDA for Use in Dry Eye Disease  AJMC",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-4kiihwsvt",
+            "company": "Reproxalap Receives Complete Response Letter From FDA for Use in Dry Eye Disease",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-04-03T07:00:00.000Z",
+            "title": "Reproxalap Receives Complete Response Letter From FDA for Use in Dry Eye Disease - AJMC",
+            "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPTVJjUHd1RjA1bWxfSGppdGtNZ1RwcVlOTEY0VGR2S3J6NFd0bFdHUy04VlNKMk9aMU5NOTMzc3dta2ZBZENwT0gyNzdmdUJnenR5em1ZTUNSVVMwTUNyMW9WX1JMRlh2TUxDdVc5eVJaRmFYMEg5b2VuSHpfYnM1WHUtMzJoQQ?oc=5",
+            "summary": "Reproxalap Receives Complete Response Letter From FDA for Use in Dry Eye Disease  AJMC",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-2c7ek2xcj",
+            "company": "Reproxalap Receives Complete Response Letter From FDA for Use in Dry Eye Disease",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-04-03T07:00:00.000Z",
+            "title": "Reproxalap Receives Complete Response Letter From FDA for Use in Dry Eye Disease - AJMC",
+            "link": "https://news.google.com/rss/articles/CBMihgFBVV95cUxPTVJjUHd1RjA1bWxfSGppdGtNZ1RwcVlOTEY0VGR2S3J6NFd0bFdHUy04VlNKMk9aMU5NOTMzc3dta2ZBZENwT0gyNzdmdUJnenR5em1ZTUNSVVMwTUNyMW9WX1JMRlh2TUxDdVc5eVJaRmFYMEg5b2VuSHpfYnM1WHUtMzJoQQ?oc=5",
+            "summary": "Reproxalap Receives Complete Response Letter From FDA for Use in Dry Eye Disease  AJMC",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "Ultragenyx stock falls after FDA issues complete response letter for gene therapy": [
+          {
+            "id": "alert-high-1757266612925-kx38vuj8q",
+            "company": "Ultragenyx stock falls after FDA issues complete response letter for gene therapy",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "Ultragenyx stock falls after FDA issues complete response letter for gene therapy - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPWmFTT2hrVEZfZ0NuZ2x0aWFmSmNDMEQ4Nk1XYUFpc3lJTHAtOEFYS2R5SkhOc19vX05MUkpGVmNucEFrdTZqVERncEg2ejlTWjU0cnVRUllNWGt2N0lQM1NaV2puaERWZVNFMXYwbDA3M2tFSDc3b3MwakhLYlA4TkZnbThXUm1XQTFjVFZkVjYzMnZXbW1SanZWRGlmNlF3SnpINndMdlhqb3VPXy1LaGNudkFoWGdVUjF3cWhfeF9FY21vUktJNUtlOWJucklqb1gzWWcxU2pxbEU?oc=5",
+            "summary": "Ultragenyx stock falls after FDA issues complete response letter for gene therapy  Investing.com",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-z0yljc4kn",
+            "company": "Ultragenyx stock falls after FDA issues complete response letter for gene therapy",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "Ultragenyx stock falls after FDA issues complete response letter for gene therapy - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPWmFTT2hrVEZfZ0NuZ2x0aWFmSmNDMEQ4Nk1XYUFpc3lJTHAtOEFYS2R5SkhOc19vX05MUkpGVmNucEFrdTZqVERncEg2ejlTWjU0cnVRUllNWGt2N0lQM1NaV2puaERWZVNFMXYwbDA3M2tFSDc3b3MwakhLYlA4TkZnbThXUm1XQTFjVFZkVjYzMnZXbW1SanZWRGlmNlF3SnpINndMdlhqb3VPXy1LaGNudkFoWGdVUjF3cWhfeF9FY21vUktJNUtlOWJucklqb1gzWWcxU2pxbEU?oc=5",
+            "summary": "Ultragenyx stock falls after FDA issues complete response letter for gene therapy  Investing.com",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-tjd8za6qo",
+            "company": "Ultragenyx stock falls after FDA issues complete response letter for gene therapy",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "Ultragenyx stock falls after FDA issues complete response letter for gene therapy - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPWmFTT2hrVEZfZ0NuZ2x0aWFmSmNDMEQ4Nk1XYUFpc3lJTHAtOEFYS2R5SkhOc19vX05MUkpGVmNucEFrdTZqVERncEg2ejlTWjU0cnVRUllNWGt2N0lQM1NaV2puaERWZVNFMXYwbDA3M2tFSDc3b3MwakhLYlA4TkZnbThXUm1XQTFjVFZkVjYzMnZXbW1SanZWRGlmNlF3SnpINndMdlhqb3VPXy1LaGNudkFoWGdVUjF3cWhfeF9FY21vUktJNUtlOWJucklqb1gzWWcxU2pxbEU?oc=5",
+            "summary": "Ultragenyx stock falls after FDA issues complete response letter for gene therapy  Investing.com",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-pxmn0w7vu",
+            "company": "Ultragenyx stock falls after FDA issues complete response letter for gene therapy",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "Ultragenyx stock falls after FDA issues complete response letter for gene therapy - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMi2wFBVV95cUxPWmFTT2hrVEZfZ0NuZ2x0aWFmSmNDMEQ4Nk1XYUFpc3lJTHAtOEFYS2R5SkhOc19vX05MUkpGVmNucEFrdTZqVERncEg2ejlTWjU0cnVRUllNWGt2N0lQM1NaV2puaERWZVNFMXYwbDA3M2tFSDc3b3MwakhLYlA4TkZnbThXUm1XQTFjVFZkVjYzMnZXbW1SanZWRGlmNlF3SnpINndMdlhqb3VPXy1LaGNudkFoWGdVUjF3cWhfeF9FY21vUktJNUtlOWJucklqb1gzWWcxU2pxbEU?oc=5",
+            "summary": "Ultragenyx stock falls after FDA issues complete response letter for gene therapy  Investing.com",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "Replimune Schedules Meeting With FDA for RP1 Complete Response Letter to Treat Melanoma": [
+          {
+            "id": "alert-high-1757266612925-vechl0xw2",
+            "company": "Replimune Schedules Meeting With FDA for RP1 Complete Response Letter to Treat Melanoma",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-02T12:56:17.000Z",
+            "title": "Replimune Schedules Meeting With FDA for RP1 Complete Response Letter to Treat Melanoma - MarketScreener",
+            "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQcjNUVWlfM2wxTnQ1RTlLU0wyYVAtZWNiQnpITDN0Z1dIeTNUS3ZYTXY4SnppYmpReWdpWUI5TlgzUWtMQVVMd0tzVGFYTUE3ZThyMjZPWEM4ZWhDMGJHajZrZDJ1LTZ0VUJNUlZkRDhCWmFOakVjZVJzY1BRTG04U3B5WEl4MlZYSzFiWWdLUmtiVEZabXZ6cHZ3ZmNVTjFTanNQTktvUExmbnJaa3RDUUFCN3A2Q3pxQlJYRE1HVVprdFFVZlVPYldCSm1KaUlnQ1FIQU55aw?oc=5",
+            "summary": "Replimune Schedules Meeting With FDA for RP1 Complete Response Letter to Treat Melanoma  MarketScreener",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-rub7j8ohq",
+            "company": "Replimune Schedules Meeting With FDA for RP1 Complete Response Letter to Treat Melanoma",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-02T12:56:17.000Z",
+            "title": "Replimune Schedules Meeting With FDA for RP1 Complete Response Letter to Treat Melanoma - MarketScreener",
+            "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQcjNUVWlfM2wxTnQ1RTlLU0wyYVAtZWNiQnpITDN0Z1dIeTNUS3ZYTXY4SnppYmpReWdpWUI5TlgzUWtMQVVMd0tzVGFYTUE3ZThyMjZPWEM4ZWhDMGJHajZrZDJ1LTZ0VUJNUlZkRDhCWmFOakVjZVJzY1BRTG04U3B5WEl4MlZYSzFiWWdLUmtiVEZabXZ6cHZ3ZmNVTjFTanNQTktvUExmbnJaa3RDUUFCN3A2Q3pxQlJYRE1HVVprdFFVZlVPYldCSm1KaUlnQ1FIQU55aw?oc=5",
+            "summary": "Replimune Schedules Meeting With FDA for RP1 Complete Response Letter to Treat Melanoma  MarketScreener",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-4xv3i9bcd",
+            "company": "Replimune Schedules Meeting With FDA for RP1 Complete Response Letter to Treat Melanoma",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-02T12:56:17.000Z",
+            "title": "Replimune Schedules Meeting With FDA for RP1 Complete Response Letter to Treat Melanoma - MarketScreener",
+            "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQcjNUVWlfM2wxTnQ1RTlLU0wyYVAtZWNiQnpITDN0Z1dIeTNUS3ZYTXY4SnppYmpReWdpWUI5TlgzUWtMQVVMd0tzVGFYTUE3ZThyMjZPWEM4ZWhDMGJHajZrZDJ1LTZ0VUJNUlZkRDhCWmFOakVjZVJzY1BRTG04U3B5WEl4MlZYSzFiWWdLUmtiVEZabXZ6cHZ3ZmNVTjFTanNQTktvUExmbnJaa3RDUUFCN3A2Q3pxQlJYRE1HVVprdFFVZlVPYldCSm1KaUlnQ1FIQU55aw?oc=5",
+            "summary": "Replimune Schedules Meeting With FDA for RP1 Complete Response Letter to Treat Melanoma  MarketScreener",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-uyma85sqe",
+            "company": "Replimune Schedules Meeting With FDA for RP1 Complete Response Letter to Treat Melanoma",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-02T12:56:17.000Z",
+            "title": "Replimune Schedules Meeting With FDA for RP1 Complete Response Letter to Treat Melanoma - MarketScreener",
+            "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQcjNUVWlfM2wxTnQ1RTlLU0wyYVAtZWNiQnpITDN0Z1dIeTNUS3ZYTXY4SnppYmpReWdpWUI5TlgzUWtMQVVMd0tzVGFYTUE3ZThyMjZPWEM4ZWhDMGJHajZrZDJ1LTZ0VUJNUlZkRDhCWmFOakVjZVJzY1BRTG04U3B5WEl4MlZYSzFiWWdLUmtiVEZabXZ6cHZ3ZmNVTjFTanNQTktvUExmbnJaa3RDUUFCN3A2Q3pxQlJYRE1HVVprdFFVZlVPYldCSm1KaUlnQ1FIQU55aw?oc=5",
+            "summary": "Replimune Schedules Meeting With FDA for RP1 Complete Response Letter to Treat Melanoma  MarketScreener",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "Ultragenyx Receives Complete Response Letter from FDA for": [
+          {
+            "id": "alert-high-1757266612925-be41130vc",
+            "company": "Ultragenyx Receives Complete Response Letter from FDA for",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "Ultragenyx Receives Complete Response Letter from FDA for - GlobeNewswire",
+            "link": "https://news.google.com/rss/articles/CBMiqAJBVV95cUxQenU5QmFnQWU2bXNmUGZrM2pZVkhXLUw5RHBQc2huSFc0UlFQdkhMVVJyM2FwdmNvTHRYR2RWbVRtWGNxeVdoOFZvX1gwWmdDX2ZBVzVKVTdOenNOMHh0X0tEa3Vxa3lDQmFGUGlPTThFSUxINFNBeGIyQmMyeW5HdFF6WGNmNHJIU3ZGc05GX1hiMEFnYXA1aERGdEhDNTdfc0gxVV9laS1YOHZ0Z3Y3NV9MdFNkaC1RQzNpMUtaYXZKT3Z3bUV1YVBBXy1HZDk5cGhlYW1udkZVQmVnTGtJWGp4bFlnMkFSQnlGSWg3YjB4eXB3b2M1R05YaE5FdUU1V1VxczBGX0V2aV82STZiMDFOQ0loSVZPNF9XQXM4dmhHWlpzZDVKUw?oc=5",
+            "summary": "Ultragenyx Receives Complete Response Letter from FDA for  GlobeNewswire",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-ejhkrsjy6",
+            "company": "Ultragenyx Receives Complete Response Letter from FDA for",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "Ultragenyx Receives Complete Response Letter from FDA for - GlobeNewswire",
+            "link": "https://news.google.com/rss/articles/CBMiqAJBVV95cUxQenU5QmFnQWU2bXNmUGZrM2pZVkhXLUw5RHBQc2huSFc0UlFQdkhMVVJyM2FwdmNvTHRYR2RWbVRtWGNxeVdoOFZvX1gwWmdDX2ZBVzVKVTdOenNOMHh0X0tEa3Vxa3lDQmFGUGlPTThFSUxINFNBeGIyQmMyeW5HdFF6WGNmNHJIU3ZGc05GX1hiMEFnYXA1aERGdEhDNTdfc0gxVV9laS1YOHZ0Z3Y3NV9MdFNkaC1RQzNpMUtaYXZKT3Z3bUV1YVBBXy1HZDk5cGhlYW1udkZVQmVnTGtJWGp4bFlnMkFSQnlGSWg3YjB4eXB3b2M1R05YaE5FdUU1V1VxczBGX0V2aV82STZiMDFOQ0loSVZPNF9XQXM4dmhHWlpzZDVKUw?oc=5",
+            "summary": "Ultragenyx Receives Complete Response Letter from FDA for  GlobeNewswire",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-h2w8dokj6",
+            "company": "Ultragenyx Receives Complete Response Letter from FDA for",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "Ultragenyx Receives Complete Response Letter from FDA for - GlobeNewswire",
+            "link": "https://news.google.com/rss/articles/CBMiqAJBVV95cUxQenU5QmFnQWU2bXNmUGZrM2pZVkhXLUw5RHBQc2huSFc0UlFQdkhMVVJyM2FwdmNvTHRYR2RWbVRtWGNxeVdoOFZvX1gwWmdDX2ZBVzVKVTdOenNOMHh0X0tEa3Vxa3lDQmFGUGlPTThFSUxINFNBeGIyQmMyeW5HdFF6WGNmNHJIU3ZGc05GX1hiMEFnYXA1aERGdEhDNTdfc0gxVV9laS1YOHZ0Z3Y3NV9MdFNkaC1RQzNpMUtaYXZKT3Z3bUV1YVBBXy1HZDk5cGhlYW1udkZVQmVnTGtJWGp4bFlnMkFSQnlGSWg3YjB4eXB3b2M1R05YaE5FdUU1V1VxczBGX0V2aV82STZiMDFOQ0loSVZPNF9XQXM4dmhHWlpzZDVKUw?oc=5",
+            "summary": "Ultragenyx Receives Complete Response Letter from FDA for  GlobeNewswire",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-ckuq9j5ri",
+            "company": "Ultragenyx Receives Complete Response Letter from FDA for",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "Ultragenyx Receives Complete Response Letter from FDA for - GlobeNewswire",
+            "link": "https://news.google.com/rss/articles/CBMiqAJBVV95cUxQenU5QmFnQWU2bXNmUGZrM2pZVkhXLUw5RHBQc2huSFc0UlFQdkhMVVJyM2FwdmNvTHRYR2RWbVRtWGNxeVdoOFZvX1gwWmdDX2ZBVzVKVTdOenNOMHh0X0tEa3Vxa3lDQmFGUGlPTThFSUxINFNBeGIyQmMyeW5HdFF6WGNmNHJIU3ZGc05GX1hiMEFnYXA1aERGdEhDNTdfc0gxVV9laS1YOHZ0Z3Y3NV9MdFNkaC1RQzNpMUtaYXZKT3Z3bUV1YVBBXy1HZDk5cGhlYW1udkZVQmVnTGtJWGp4bFlnMkFSQnlGSWg3YjB4eXB3b2M1R05YaE5FdUU1V1VxczBGX0V2aV82STZiMDFOQ0loSVZPNF9XQXM4dmhHWlpzZDVKUw?oc=5",
+            "summary": "Ultragenyx Receives Complete Response Letter from FDA for  GlobeNewswire",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "FDA Issues Complete Response Letter for Tab": [
+          {
+            "id": "alert-high-1757266612925-isvhw2lf8",
+            "company": "FDA Issues Complete Response Letter for Tab",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-01-16T08:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Tab-cel in EBV+ PTLD - Targeted Oncology",
+            "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPRWpwOHNXTXU1SnYwOElkLXphQ010LWtqUWFva2Z0bjVLS1p0d0Z1VGpLRnlaUTVFRDZpQWlBME9xZURmaWlGNWdfMTZiMl9KN3FJbTRlbEQzODhXWHMyRnd5cGQ4d2E1N3p4WVQ0a05FQzRES0pZUGtjanpyZDhLMVNSUTZ6V2lQQTZxNkphOEtGMkdlb2Q4?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Tab-cel in EBV+ PTLD  Targeted Oncology",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-i8nn7atlq",
+            "company": "FDA Issues Complete Response Letter for Tab",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-01-16T08:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Tab-cel in EBV+ PTLD - Targeted Oncology",
+            "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPRWpwOHNXTXU1SnYwOElkLXphQ010LWtqUWFva2Z0bjVLS1p0d0Z1VGpLRnlaUTVFRDZpQWlBME9xZURmaWlGNWdfMTZiMl9KN3FJbTRlbEQzODhXWHMyRnd5cGQ4d2E1N3p4WVQ0a05FQzRES0pZUGtjanpyZDhLMVNSUTZ6V2lQQTZxNkphOEtGMkdlb2Q4?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Tab-cel in EBV+ PTLD  Targeted Oncology",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-swvfvfll8",
+            "company": "FDA Issues Complete Response Letter for Tab",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-01-16T08:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Tab-cel in EBV+ PTLD - Targeted Oncology",
+            "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPRWpwOHNXTXU1SnYwOElkLXphQ010LWtqUWFva2Z0bjVLS1p0d0Z1VGpLRnlaUTVFRDZpQWlBME9xZURmaWlGNWdfMTZiMl9KN3FJbTRlbEQzODhXWHMyRnd5cGQ4d2E1N3p4WVQ0a05FQzRES0pZUGtjanpyZDhLMVNSUTZ6V2lQQTZxNkphOEtGMkdlb2Q4?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Tab-cel in EBV+ PTLD  Targeted Oncology",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-aublchxqo",
+            "company": "FDA Issues Complete Response Letter for Tab",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-01-16T08:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Tab-cel in EBV+ PTLD - Targeted Oncology",
+            "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxPRWpwOHNXTXU1SnYwOElkLXphQ010LWtqUWFva2Z0bjVLS1p0d0Z1VGpLRnlaUTVFRDZpQWlBME9xZURmaWlGNWdfMTZiMl9KN3FJbTRlbEQzODhXWHMyRnd5cGQ4d2E1N3p4WVQ0a05FQzRES0pZUGtjanpyZDhLMVNSUTZ6V2lQQTZxNkphOEtGMkdlb2Q4?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Tab-cel in EBV+ PTLD  Targeted Oncology",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "FDA issues complete response letter for Ultragenyx gene therapy application": [
+          {
+            "id": "alert-high-1757266612925-4baadbd1l",
+            "company": "FDA issues complete response letter for Ultragenyx gene therapy application",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "FDA issues complete response letter for Ultragenyx gene therapy application - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQdS1qUDhaaDlELTdWRElCUG1mT0RlNDVLc1ZmSndvNEVMSlk2ZjVoSjk0cENpTV9lRU1SQ1V5SzMwckxLck51N2VkQ3ZkSUFEeTNESjZjLUREOTVaV3VHa3VDOWNfS0VxaXpWTk1pRUdQaWZkdi1BdlRORGRaaWdXeExBWmk5am4xUXBpWkFDNWg5bmZmUTUxeEhMSE1zZUVIS29YWmV2VHB3VnRvOW51WVctODF2dW5iMVBxdzFPcnpyZGUtNk1aSktEYw?oc=5",
+            "summary": "FDA issues complete response letter for Ultragenyx gene therapy application  Investing.com",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-857pipc4n",
+            "company": "FDA issues complete response letter for Ultragenyx gene therapy application",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "FDA issues complete response letter for Ultragenyx gene therapy application - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQdS1qUDhaaDlELTdWRElCUG1mT0RlNDVLc1ZmSndvNEVMSlk2ZjVoSjk0cENpTV9lRU1SQ1V5SzMwckxLck51N2VkQ3ZkSUFEeTNESjZjLUREOTVaV3VHa3VDOWNfS0VxaXpWTk1pRUdQaWZkdi1BdlRORGRaaWdXeExBWmk5am4xUXBpWkFDNWg5bmZmUTUxeEhMSE1zZUVIS29YWmV2VHB3VnRvOW51WVctODF2dW5iMVBxdzFPcnpyZGUtNk1aSktEYw?oc=5",
+            "summary": "FDA issues complete response letter for Ultragenyx gene therapy application  Investing.com",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-fdp0s9e51",
+            "company": "FDA issues complete response letter for Ultragenyx gene therapy application",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "FDA issues complete response letter for Ultragenyx gene therapy application - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQdS1qUDhaaDlELTdWRElCUG1mT0RlNDVLc1ZmSndvNEVMSlk2ZjVoSjk0cENpTV9lRU1SQ1V5SzMwckxLck51N2VkQ3ZkSUFEeTNESjZjLUREOTVaV3VHa3VDOWNfS0VxaXpWTk1pRUdQaWZkdi1BdlRORGRaaWdXeExBWmk5am4xUXBpWkFDNWg5bmZmUTUxeEhMSE1zZUVIS29YWmV2VHB3VnRvOW51WVctODF2dW5iMVBxdzFPcnpyZGUtNk1aSktEYw?oc=5",
+            "summary": "FDA issues complete response letter for Ultragenyx gene therapy application  Investing.com",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-i1p66oh80",
+            "company": "FDA issues complete response letter for Ultragenyx gene therapy application",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "FDA issues complete response letter for Ultragenyx gene therapy application - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMiywFBVV95cUxQdS1qUDhaaDlELTdWRElCUG1mT0RlNDVLc1ZmSndvNEVMSlk2ZjVoSjk0cENpTV9lRU1SQ1V5SzMwckxLck51N2VkQ3ZkSUFEeTNESjZjLUREOTVaV3VHa3VDOWNfS0VxaXpWTk1pRUdQaWZkdi1BdlRORGRaaWdXeExBWmk5am4xUXBpWkFDNWg5bmZmUTUxeEhMSE1zZUVIS29YWmV2VHB3VnRvOW51WVctODF2dW5iMVBxdzFPcnpyZGUtNk1aSktEYw?oc=5",
+            "summary": "FDA issues complete response letter for Ultragenyx gene therapy application  Investing.com",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "Telix stock plunges after FDA issues Complete Response Letter": [
+          {
+            "id": "alert-high-1757266612925-xrk9y9ilu",
+            "company": "Telix stock plunges after FDA issues Complete Response Letter",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-28T21:22:30.000Z",
+            "title": "Telix stock plunges after FDA issues Complete Response Letter - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNQzhRQXF1ZTZPeVg1NDFjUndCMGNWWEYyYlFkb2tuMnR3cnNvWGlrdjQzZkUxQklENG16UTJjU2VyVXlNTzRMTXpzOHJLVE1BaHFDcUV4YzdOUWFUUHR5b1JjTVZ1Q0htZ0tqSFN1SXE4RjI5N0FkcTRucWlGcU1CSGE1TTZTRFhYWjJmQ2R2MWpqRkRDLUFCenRiS2F1emVEQmxPTzBoaEo4MkFvd3RGSXZuS1A2d0FGWC16bWZxU1o?oc=5",
+            "summary": "Telix stock plunges after FDA issues Complete Response Letter  Investing.com",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-0y7pjiazm",
+            "company": "Telix stock plunges after FDA issues Complete Response Letter",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-28T21:22:30.000Z",
+            "title": "Telix stock plunges after FDA issues Complete Response Letter - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNQzhRQXF1ZTZPeVg1NDFjUndCMGNWWEYyYlFkb2tuMnR3cnNvWGlrdjQzZkUxQklENG16UTJjU2VyVXlNTzRMTXpzOHJLVE1BaHFDcUV4YzdOUWFUUHR5b1JjTVZ1Q0htZ0tqSFN1SXE4RjI5N0FkcTRucWlGcU1CSGE1TTZTRFhYWjJmQ2R2MWpqRkRDLUFCenRiS2F1emVEQmxPTzBoaEo4MkFvd3RGSXZuS1A2d0FGWC16bWZxU1o?oc=5",
+            "summary": "Telix stock plunges after FDA issues Complete Response Letter  Investing.com",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-dac6fwdg5",
+            "company": "Telix stock plunges after FDA issues Complete Response Letter",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-28T21:22:30.000Z",
+            "title": "Telix stock plunges after FDA issues Complete Response Letter - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNQzhRQXF1ZTZPeVg1NDFjUndCMGNWWEYyYlFkb2tuMnR3cnNvWGlrdjQzZkUxQklENG16UTJjU2VyVXlNTzRMTXpzOHJLVE1BaHFDcUV4YzdOUWFUUHR5b1JjTVZ1Q0htZ0tqSFN1SXE4RjI5N0FkcTRucWlGcU1CSGE1TTZTRFhYWjJmQ2R2MWpqRkRDLUFCenRiS2F1emVEQmxPTzBoaEo4MkFvd3RGSXZuS1A2d0FGWC16bWZxU1o?oc=5",
+            "summary": "Telix stock plunges after FDA issues Complete Response Letter  Investing.com",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-t05shb29f",
+            "company": "Telix stock plunges after FDA issues Complete Response Letter",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-28T21:22:30.000Z",
+            "title": "Telix stock plunges after FDA issues Complete Response Letter - Investing.com",
+            "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxNQzhRQXF1ZTZPeVg1NDFjUndCMGNWWEYyYlFkb2tuMnR3cnNvWGlrdjQzZkUxQklENG16UTJjU2VyVXlNTzRMTXpzOHJLVE1BaHFDcUV4YzdOUWFUUHR5b1JjTVZ1Q0htZ0tqSFN1SXE4RjI5N0FkcTRucWlGcU1CSGE1TTZTRFhYWjJmQ2R2MWpqRkRDLUFCenRiS2F1emVEQmxPTzBoaEo4MkFvd3RGSXZuS1A2d0FGWC16bWZxU1o?oc=5",
+            "summary": "Telix stock plunges after FDA issues Complete Response Letter  Investing.com",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "Unapproved Drugs": [
+          {
+            "id": "alert-high-1757266612925-0rbswmqdn",
+            "company": "Unapproved Drugs",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-05T02:37:30.000Z",
+            "title": "89 Complete Response Letters For Unapproved Drugs, One Huge Leap For US FDA Transparency - insights.citeline.com",
+            "link": "https://news.google.com/rss/articles/CBMipAJBVV95cUxOcEZXX3lHVGtLX3BPSXR1UHBOdldTRzdJU0lhRlVHRDRETko2X3ZVU3pweklvQjk4cW1GWDJpeE0xbjdScVBGa2lUNWQtbGZJWHlYMkZXQmRwQVhRRnlDZkpfVklENVN3ZUNXMUExRGdNWjNwV0lJemQwZ2FZMHR3TFRadUlwYnF1TjJPQlhKdEw1cHZDSV9MS0JpckVhemtSRlJBNlJFV25IZ1dEQk9mSHUweVExYVExczlVY01ER3pqak1weWpXX2VrbjRjUVFNTEZHdXVkUnc5SldtZ2ZrUmxjVVhCX3ZFaXNNYnY0Wmhwd0VEQnhnb3hSMVRONVRzWGdwVHJuQjNTX1c3VV9VY2wtX0NhOEJXSGVYcExfd2JOVmpV?oc=5",
+            "summary": "89 Complete Response Letters For Unapproved Drugs, One Huge Leap For US FDA Transparency  insights.citeline.com",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-ngzc24u8e",
+            "company": "Unapproved Drugs",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-05T02:37:30.000Z",
+            "title": "89 Complete Response Letters For Unapproved Drugs, One Huge Leap For US FDA Transparency - insights.citeline.com",
+            "link": "https://news.google.com/rss/articles/CBMipAJBVV95cUxOcEZXX3lHVGtLX3BPSXR1UHBOdldTRzdJU0lhRlVHRDRETko2X3ZVU3pweklvQjk4cW1GWDJpeE0xbjdScVBGa2lUNWQtbGZJWHlYMkZXQmRwQVhRRnlDZkpfVklENVN3ZUNXMUExRGdNWjNwV0lJemQwZ2FZMHR3TFRadUlwYnF1TjJPQlhKdEw1cHZDSV9MS0JpckVhemtSRlJBNlJFV25IZ1dEQk9mSHUweVExYVExczlVY01ER3pqak1weWpXX2VrbjRjUVFNTEZHdXVkUnc5SldtZ2ZrUmxjVVhCX3ZFaXNNYnY0Wmhwd0VEQnhnb3hSMVRONVRzWGdwVHJuQjNTX1c3VV9VY2wtX0NhOEJXSGVYcExfd2JOVmpV?oc=5",
+            "summary": "89 Complete Response Letters For Unapproved Drugs, One Huge Leap For US FDA Transparency  insights.citeline.com",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-3lzm4zg1k",
+            "company": "Unapproved Drugs",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-05T02:37:30.000Z",
+            "title": "89 Complete Response Letters For Unapproved Drugs, One Huge Leap For US FDA Transparency - insights.citeline.com",
+            "link": "https://news.google.com/rss/articles/CBMipAJBVV95cUxOcEZXX3lHVGtLX3BPSXR1UHBOdldTRzdJU0lhRlVHRDRETko2X3ZVU3pweklvQjk4cW1GWDJpeE0xbjdScVBGa2lUNWQtbGZJWHlYMkZXQmRwQVhRRnlDZkpfVklENVN3ZUNXMUExRGdNWjNwV0lJemQwZ2FZMHR3TFRadUlwYnF1TjJPQlhKdEw1cHZDSV9MS0JpckVhemtSRlJBNlJFV25IZ1dEQk9mSHUweVExYVExczlVY01ER3pqak1weWpXX2VrbjRjUVFNTEZHdXVkUnc5SldtZ2ZrUmxjVVhCX3ZFaXNNYnY0Wmhwd0VEQnhnb3hSMVRONVRzWGdwVHJuQjNTX1c3VV9VY2wtX0NhOEJXSGVYcExfd2JOVmpV?oc=5",
+            "summary": "89 Complete Response Letters For Unapproved Drugs, One Huge Leap For US FDA Transparency  insights.citeline.com",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-sqewfed8g",
+            "company": "Unapproved Drugs",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-05T02:37:30.000Z",
+            "title": "89 Complete Response Letters For Unapproved Drugs, One Huge Leap For US FDA Transparency - insights.citeline.com",
+            "link": "https://news.google.com/rss/articles/CBMipAJBVV95cUxOcEZXX3lHVGtLX3BPSXR1UHBOdldTRzdJU0lhRlVHRDRETko2X3ZVU3pweklvQjk4cW1GWDJpeE0xbjdScVBGa2lUNWQtbGZJWHlYMkZXQmRwQVhRRnlDZkpfVklENVN3ZUNXMUExRGdNWjNwV0lJemQwZ2FZMHR3TFRadUlwYnF1TjJPQlhKdEw1cHZDSV9MS0JpckVhemtSRlJBNlJFV25IZ1dEQk9mSHUweVExYVExczlVY01ER3pqak1weWpXX2VrbjRjUVFNTEZHdXVkUnc5SldtZ2ZrUmxjVVhCX3ZFaXNNYnY0Wmhwd0VEQnhnb3hSMVRONVRzWGdwVHJuQjNTX1c3VV9VY2wtX0NhOEJXSGVYcExfd2JOVmpV?oc=5",
+            "summary": "89 Complete Response Letters For Unapproved Drugs, One Huge Leap For US FDA Transparency  insights.citeline.com",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "FDA Issues Complete Response Letter for Glofit": [
+          {
+            "id": "alert-high-1757266612925-be3c6x0uk",
+            "company": "FDA Issues Complete Response Letter for Glofit",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-18T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Glofit-GemOx in R/R DLBCL - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPOEp5QUp6MFBYajNKQlptc0lpeWc2MGZYb3E1ckR5MW1GUUhDS2w0TWhWdjFpeVpUbWh3THZPRWJaeDZQWFloem5sZnJUaHh1cTFtWDd4dnJBb2h3MTdWTDBHVnd6cjdtREt0MGFiWjJWcEF5dldvajV5ZlFyQjRKRDBxYTNtUGg3ZHljdnBhdEo5UmFibE1CcVFnNFVBaWhnaHc?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Glofit-GemOx in R/R DLBCL  Pharmacy Times",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-0xlgnwlez",
+            "company": "FDA Issues Complete Response Letter for Glofit",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-18T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Glofit-GemOx in R/R DLBCL - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPOEp5QUp6MFBYajNKQlptc0lpeWc2MGZYb3E1ckR5MW1GUUhDS2w0TWhWdjFpeVpUbWh3THZPRWJaeDZQWFloem5sZnJUaHh1cTFtWDd4dnJBb2h3MTdWTDBHVnd6cjdtREt0MGFiWjJWcEF5dldvajV5ZlFyQjRKRDBxYTNtUGg3ZHljdnBhdEo5UmFibE1CcVFnNFVBaWhnaHc?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Glofit-GemOx in R/R DLBCL  Pharmacy Times",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-g9yf96yzh",
+            "company": "FDA Issues Complete Response Letter for Glofit",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-18T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Glofit-GemOx in R/R DLBCL - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPOEp5QUp6MFBYajNKQlptc0lpeWc2MGZYb3E1ckR5MW1GUUhDS2w0TWhWdjFpeVpUbWh3THZPRWJaeDZQWFloem5sZnJUaHh1cTFtWDd4dnJBb2h3MTdWTDBHVnd6cjdtREt0MGFiWjJWcEF5dldvajV5ZlFyQjRKRDBxYTNtUGg3ZHljdnBhdEo5UmFibE1CcVFnNFVBaWhnaHc?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Glofit-GemOx in R/R DLBCL  Pharmacy Times",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-0i4z0tydn",
+            "company": "FDA Issues Complete Response Letter for Glofit",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-18T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter for Glofit-GemOx in R/R DLBCL - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPOEp5QUp6MFBYajNKQlptc0lpeWc2MGZYb3E1ckR5MW1GUUhDS2w0TWhWdjFpeVpUbWh3THZPRWJaeDZQWFloem5sZnJUaHh1cTFtWDd4dnJBb2h3MTdWTDBHVnd6cjdtREt0MGFiWjJWcEF5dldvajV5ZlFyQjRKRDBxYTNtUGg3ZHljdnBhdEo5UmFibE1CcVFnNFVBaWhnaHc?oc=5",
+            "summary": "FDA Issues Complete Response Letter for Glofit-GemOx in R/R DLBCL  Pharmacy Times",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "PTC Therapeutics Receives Complete Response Letter for Vatiquinone NDA": [
+          {
+            "id": "alert-high-1757266612925-liy4ol5y8",
+            "company": "PTC Therapeutics Receives Complete Response Letter for Vatiquinone NDA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-19T07:00:00.000Z",
+            "title": "PTC Therapeutics Receives Complete Response Letter for Vatiquinone NDA - Yahoo Finance",
+            "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxObE5VdV8wSVA2X2owbDVmal8tUEptWW1FNmpEQjRWU3BMb0dSOXgyaUJuRmRsWFd0TU13bWJnZ2FTLWRDdUphdmxJUUVRYldOb1l6aUxXN0lKSWtOWXhiLWVFdmVwbUJYTVgzdTl2VkgtdDFXY3g3QWhyU1JRdWRFZlBkV0Y4NElDeWN6RVEwMkRPSWM?oc=5",
+            "summary": "PTC Therapeutics Receives Complete Response Letter for Vatiquinone NDA  Yahoo Finance",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-06mvek5n7",
+            "company": "PTC Therapeutics Receives Complete Response Letter for Vatiquinone NDA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-19T07:00:00.000Z",
+            "title": "PTC Therapeutics Receives Complete Response Letter for Vatiquinone NDA - Yahoo Finance",
+            "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxObE5VdV8wSVA2X2owbDVmal8tUEptWW1FNmpEQjRWU3BMb0dSOXgyaUJuRmRsWFd0TU13bWJnZ2FTLWRDdUphdmxJUUVRYldOb1l6aUxXN0lKSWtOWXhiLWVFdmVwbUJYTVgzdTl2VkgtdDFXY3g3QWhyU1JRdWRFZlBkV0Y4NElDeWN6RVEwMkRPSWM?oc=5",
+            "summary": "PTC Therapeutics Receives Complete Response Letter for Vatiquinone NDA  Yahoo Finance",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-t7fgs5qar",
+            "company": "PTC Therapeutics Receives Complete Response Letter for Vatiquinone NDA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-19T07:00:00.000Z",
+            "title": "PTC Therapeutics Receives Complete Response Letter for Vatiquinone NDA - Yahoo Finance",
+            "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxObE5VdV8wSVA2X2owbDVmal8tUEptWW1FNmpEQjRWU3BMb0dSOXgyaUJuRmRsWFd0TU13bWJnZ2FTLWRDdUphdmxJUUVRYldOb1l6aUxXN0lKSWtOWXhiLWVFdmVwbUJYTVgzdTl2VkgtdDFXY3g3QWhyU1JRdWRFZlBkV0Y4NElDeWN6RVEwMkRPSWM?oc=5",
+            "summary": "PTC Therapeutics Receives Complete Response Letter for Vatiquinone NDA  Yahoo Finance",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-7j7mvrnf3",
+            "company": "PTC Therapeutics Receives Complete Response Letter for Vatiquinone NDA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-19T07:00:00.000Z",
+            "title": "PTC Therapeutics Receives Complete Response Letter for Vatiquinone NDA - Yahoo Finance",
+            "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxObE5VdV8wSVA2X2owbDVmal8tUEptWW1FNmpEQjRWU3BMb0dSOXgyaUJuRmRsWFd0TU13bWJnZ2FTLWRDdUphdmxJUUVRYldOb1l6aUxXN0lKSWtOWXhiLWVFdmVwbUJYTVgzdTl2VkgtdDFXY3g3QWhyU1JRdWRFZlBkV0Y4NElDeWN6RVEwMkRPSWM?oc=5",
+            "summary": "PTC Therapeutics Receives Complete Response Letter for Vatiquinone NDA  Yahoo Finance",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "TLX101": [
+          {
+            "id": "alert-high-1757266612925-ghtxeuo4i",
+            "company": "TLX101",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-05-06T07:00:00.000Z",
+            "title": "TLX101-CDx Given Complete Response Letter for Glioma Imaging - Oncology Nursing News",
+            "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOZjdnbUFDSFlpQkV5UkFOcTVxYThqYWJhNm9OMEEwdlJfem9JS3dYcEZ6cXBxNnN0UkZvZ3QxQ0xVLVB2V0E1eWRmUkxJUm1lMUcxbXBnMzJFaWJVQkM0WlFUeW04R0pCSmlDbE5VOWRPYmVISWpqSGtRdi1XMlRMUnZoOG5idEdVVUhxT2FpYmJyMmprR05tc3JsaHc?oc=5",
+            "summary": "TLX101-CDx Given Complete Response Letter for Glioma Imaging  Oncology Nursing News",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-r4xvt8yhf",
+            "company": "TLX101",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-05-06T07:00:00.000Z",
+            "title": "TLX101-CDx Given Complete Response Letter for Glioma Imaging - Oncology Nursing News",
+            "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOZjdnbUFDSFlpQkV5UkFOcTVxYThqYWJhNm9OMEEwdlJfem9JS3dYcEZ6cXBxNnN0UkZvZ3QxQ0xVLVB2V0E1eWRmUkxJUm1lMUcxbXBnMzJFaWJVQkM0WlFUeW04R0pCSmlDbE5VOWRPYmVISWpqSGtRdi1XMlRMUnZoOG5idEdVVUhxT2FpYmJyMmprR05tc3JsaHc?oc=5",
+            "summary": "TLX101-CDx Given Complete Response Letter for Glioma Imaging  Oncology Nursing News",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-12jgj6ral",
+            "company": "TLX101",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-05-06T07:00:00.000Z",
+            "title": "TLX101-CDx Given Complete Response Letter for Glioma Imaging - Oncology Nursing News",
+            "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOZjdnbUFDSFlpQkV5UkFOcTVxYThqYWJhNm9OMEEwdlJfem9JS3dYcEZ6cXBxNnN0UkZvZ3QxQ0xVLVB2V0E1eWRmUkxJUm1lMUcxbXBnMzJFaWJVQkM0WlFUeW04R0pCSmlDbE5VOWRPYmVISWpqSGtRdi1XMlRMUnZoOG5idEdVVUhxT2FpYmJyMmprR05tc3JsaHc?oc=5",
+            "summary": "TLX101-CDx Given Complete Response Letter for Glioma Imaging  Oncology Nursing News",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-qach9rdpt",
+            "company": "TLX101",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-05-06T07:00:00.000Z",
+            "title": "TLX101-CDx Given Complete Response Letter for Glioma Imaging - Oncology Nursing News",
+            "link": "https://news.google.com/rss/articles/CBMinAFBVV95cUxOZjdnbUFDSFlpQkV5UkFOcTVxYThqYWJhNm9OMEEwdlJfem9JS3dYcEZ6cXBxNnN0UkZvZ3QxQ0xVLVB2V0E1eWRmUkxJUm1lMUcxbXBnMzJFaWJVQkM0WlFUeW04R0pCSmlDbE5VOWRPYmVISWpqSGtRdi1XMlRMUnZoOG5idEdVVUhxT2FpYmJyMmprR05tc3JsaHc?oc=5",
+            "summary": "TLX101-CDx Given Complete Response Letter for Glioma Imaging  Oncology Nursing News",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "FDA hits Unicycive with manufacturing": [
+          {
+            "id": "alert-high-1757266612925-gdvryppmc",
+            "company": "FDA hits Unicycive with manufacturing",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-06-30T07:00:00.000Z",
+            "title": "FDA hits Unicycive with manufacturing-related complete response letter, delaying hopes for kidney disease prospect - Fierce Pharma",
+            "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPcHNsMWNuaTNURmo2SVJ0MkZwczNsNkREY2g1bG1XRnRZREUyTlFreVZNYXdlNkJYMjZBV3FwQ2twZmQtOHRPUzNvR2tRNVpFbWxVT01paU9VcGFSQjhMblpFZzg3U25iRlNIZGxaQXFVUTBYb1R6dTVrbzYxamZtUERSazFfS2xIY0g5dGR5ekI0RndTM0lyN3pPc2pnTGhPaklOUVJpZ0FfbW04eUNwVW1kMDAxSmh6QnhRYXlkS18?oc=5",
+            "summary": "FDA hits Unicycive with manufacturing-related complete response letter, delaying hopes for kidney disease prospect  Fierce Pharma",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-a15ehcbxk",
+            "company": "FDA hits Unicycive with manufacturing",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-06-30T07:00:00.000Z",
+            "title": "FDA hits Unicycive with manufacturing-related complete response letter, delaying hopes for kidney disease prospect - Fierce Pharma",
+            "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPcHNsMWNuaTNURmo2SVJ0MkZwczNsNkREY2g1bG1XRnRZREUyTlFreVZNYXdlNkJYMjZBV3FwQ2twZmQtOHRPUzNvR2tRNVpFbWxVT01paU9VcGFSQjhMblpFZzg3U25iRlNIZGxaQXFVUTBYb1R6dTVrbzYxamZtUERSazFfS2xIY0g5dGR5ekI0RndTM0lyN3pPc2pnTGhPaklOUVJpZ0FfbW04eUNwVW1kMDAxSmh6QnhRYXlkS18?oc=5",
+            "summary": "FDA hits Unicycive with manufacturing-related complete response letter, delaying hopes for kidney disease prospect  Fierce Pharma",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-o2yis5zcy",
+            "company": "FDA hits Unicycive with manufacturing",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-06-30T07:00:00.000Z",
+            "title": "FDA hits Unicycive with manufacturing-related complete response letter, delaying hopes for kidney disease prospect - Fierce Pharma",
+            "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPcHNsMWNuaTNURmo2SVJ0MkZwczNsNkREY2g1bG1XRnRZREUyTlFreVZNYXdlNkJYMjZBV3FwQ2twZmQtOHRPUzNvR2tRNVpFbWxVT01paU9VcGFSQjhMblpFZzg3U25iRlNIZGxaQXFVUTBYb1R6dTVrbzYxamZtUERSazFfS2xIY0g5dGR5ekI0RndTM0lyN3pPc2pnTGhPaklOUVJpZ0FfbW04eUNwVW1kMDAxSmh6QnhRYXlkS18?oc=5",
+            "summary": "FDA hits Unicycive with manufacturing-related complete response letter, delaying hopes for kidney disease prospect  Fierce Pharma",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-pratn3j61",
+            "company": "FDA hits Unicycive with manufacturing",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-06-30T07:00:00.000Z",
+            "title": "FDA hits Unicycive with manufacturing-related complete response letter, delaying hopes for kidney disease prospect - Fierce Pharma",
+            "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPcHNsMWNuaTNURmo2SVJ0MkZwczNsNkREY2g1bG1XRnRZREUyTlFreVZNYXdlNkJYMjZBV3FwQ2twZmQtOHRPUzNvR2tRNVpFbWxVT01paU9VcGFSQjhMblpFZzg3U25iRlNIZGxaQXFVUTBYb1R6dTVrbzYxamZtUERSazFfS2xIY0g5dGR5ekI0RndTM0lyN3pPc2pnTGhPaklOUVJpZ0FfbW04eUNwVW1kMDAxSmh6QnhRYXlkS18?oc=5",
+            "summary": "FDA hits Unicycive with manufacturing-related complete response letter, delaying hopes for kidney disease prospect  Fierce Pharma",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "Outlook Therapeutics Receives Complete Response Letter from FDA for ONS": [
+          {
+            "id": "alert-high-1757266612925-3ayuw5f83",
+            "company": "Outlook Therapeutics Receives Complete Response Letter from FDA for ONS",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-28T07:00:00.000Z",
+            "title": "Outlook Therapeutics Receives Complete Response Letter from FDA for ONS-5010 BLA Resubmission - Quiver Quantitative",
+            "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOejFVV01XY3BDalhBT3lkQU9OSE1icjl3dkJWRjI3aDNxeHNjTXhBdXl5c19DMTh1S3FpM1ZtTFRBX2FDZFltbGRkVEt5VlVDLWF1SEJCdDZKNFZfeWozX00wQTZ2UTBFRXZWeDdoRzcySldnRHZrZ21EcVpQd0dSaXVDVEdxOUlmUm1mNWZpMXJORUNYVnBrN0dwUkxJRzlzVHlCNm1jM2xRRWQ4SWpOY3BabDVJT2N3S3NFal8xOU94U3ZG?oc=5",
+            "summary": "Outlook Therapeutics Receives Complete Response Letter from FDA for ONS-5010 BLA Resubmission  Quiver Quantitative",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-u5vyqmorc",
+            "company": "Outlook Therapeutics Receives Complete Response Letter from FDA for ONS",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-28T07:00:00.000Z",
+            "title": "Outlook Therapeutics Receives Complete Response Letter from FDA for ONS-5010 BLA Resubmission - Quiver Quantitative",
+            "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOejFVV01XY3BDalhBT3lkQU9OSE1icjl3dkJWRjI3aDNxeHNjTXhBdXl5c19DMTh1S3FpM1ZtTFRBX2FDZFltbGRkVEt5VlVDLWF1SEJCdDZKNFZfeWozX00wQTZ2UTBFRXZWeDdoRzcySldnRHZrZ21EcVpQd0dSaXVDVEdxOUlmUm1mNWZpMXJORUNYVnBrN0dwUkxJRzlzVHlCNm1jM2xRRWQ4SWpOY3BabDVJT2N3S3NFal8xOU94U3ZG?oc=5",
+            "summary": "Outlook Therapeutics Receives Complete Response Letter from FDA for ONS-5010 BLA Resubmission  Quiver Quantitative",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-e9a5sgbpr",
+            "company": "Outlook Therapeutics Receives Complete Response Letter from FDA for ONS",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-28T07:00:00.000Z",
+            "title": "Outlook Therapeutics Receives Complete Response Letter from FDA for ONS-5010 BLA Resubmission - Quiver Quantitative",
+            "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOejFVV01XY3BDalhBT3lkQU9OSE1icjl3dkJWRjI3aDNxeHNjTXhBdXl5c19DMTh1S3FpM1ZtTFRBX2FDZFltbGRkVEt5VlVDLWF1SEJCdDZKNFZfeWozX00wQTZ2UTBFRXZWeDdoRzcySldnRHZrZ21EcVpQd0dSaXVDVEdxOUlmUm1mNWZpMXJORUNYVnBrN0dwUkxJRzlzVHlCNm1jM2xRRWQ4SWpOY3BabDVJT2N3S3NFal8xOU94U3ZG?oc=5",
+            "summary": "Outlook Therapeutics Receives Complete Response Letter from FDA for ONS-5010 BLA Resubmission  Quiver Quantitative",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-im66pij8h",
+            "company": "Outlook Therapeutics Receives Complete Response Letter from FDA for ONS",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-28T07:00:00.000Z",
+            "title": "Outlook Therapeutics Receives Complete Response Letter from FDA for ONS-5010 BLA Resubmission - Quiver Quantitative",
+            "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOejFVV01XY3BDalhBT3lkQU9OSE1icjl3dkJWRjI3aDNxeHNjTXhBdXl5c19DMTh1S3FpM1ZtTFRBX2FDZFltbGRkVEt5VlVDLWF1SEJCdDZKNFZfeWozX00wQTZ2UTBFRXZWeDdoRzcySldnRHZrZ21EcVpQd0dSaXVDVEdxOUlmUm1mNWZpMXJORUNYVnBrN0dwUkxJRzlzVHlCNm1jM2xRRWQ4SWpOY3BabDVJT2N3S3NFal8xOU94U3ZG?oc=5",
+            "summary": "Outlook Therapeutics Receives Complete Response Letter from FDA for ONS-5010 BLA Resubmission  Quiver Quantitative",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "Ultragenyx gets FDA complete response letter for Sanfilippo gene therapy": [
+          {
+            "id": "alert-high-1757266612925-hvms7628i",
+            "company": "Ultragenyx gets FDA complete response letter for Sanfilippo gene therapy",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "Ultragenyx gets FDA complete response letter for Sanfilippo gene therapy - FirstWord Pharma",
+            "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBBalJyWmlNZjQzUWxrRFpsVm9XTGhwMlFBWVd6QUw3S280U1JWX0NQbWZVTEEyVVhvVHF6VHBlenJoOTFHTlB2UnhNOHZqSW9Cck5v?oc=5",
+            "summary": "Ultragenyx gets FDA complete response letter for Sanfilippo gene therapy  FirstWord Pharma",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-hzfufefxg",
+            "company": "Ultragenyx gets FDA complete response letter for Sanfilippo gene therapy",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "Ultragenyx gets FDA complete response letter for Sanfilippo gene therapy - FirstWord Pharma",
+            "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBBalJyWmlNZjQzUWxrRFpsVm9XTGhwMlFBWVd6QUw3S280U1JWX0NQbWZVTEEyVVhvVHF6VHBlenJoOTFHTlB2UnhNOHZqSW9Cck5v?oc=5",
+            "summary": "Ultragenyx gets FDA complete response letter for Sanfilippo gene therapy  FirstWord Pharma",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-ogwpt52d1",
+            "company": "Ultragenyx gets FDA complete response letter for Sanfilippo gene therapy",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "Ultragenyx gets FDA complete response letter for Sanfilippo gene therapy - FirstWord Pharma",
+            "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBBalJyWmlNZjQzUWxrRFpsVm9XTGhwMlFBWVd6QUw3S280U1JWX0NQbWZVTEEyVVhvVHF6VHBlenJoOTFHTlB2UnhNOHZqSW9Cck5v?oc=5",
+            "summary": "Ultragenyx gets FDA complete response letter for Sanfilippo gene therapy  FirstWord Pharma",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-f4ij3i6d4",
+            "company": "Ultragenyx gets FDA complete response letter for Sanfilippo gene therapy",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "Ultragenyx gets FDA complete response letter for Sanfilippo gene therapy - FirstWord Pharma",
+            "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBBalJyWmlNZjQzUWxrRFpsVm9XTGhwMlFBWVd6QUw3S280U1JWX0NQbWZVTEEyVVhvVHF6VHBlenJoOTFHTlB2UnhNOHZqSW9Cck5v?oc=5",
+            "summary": "Ultragenyx gets FDA complete response letter for Sanfilippo gene therapy  FirstWord Pharma",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "FDA Hands Capricor Complete Response Letter for Deramiocel as DMD Cardiomyopathy Treatment": [
+          {
+            "id": "alert-high-1757266612925-kav1kg7oi",
+            "company": "FDA Hands Capricor Complete Response Letter for Deramiocel as DMD Cardiomyopathy Treatment",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-30T07:00:00.000Z",
+            "title": "FDA Hands Capricor Complete Response Letter for Deramiocel as DMD Cardiomyopathy Treatment - Neurology live",
+            "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQSEJkaW1DYnZ3THRNTWdpc2hNMFh6dXNPUHdFUXoyRjlwWnRQVzZybXNGMmtDOHdsVnA1M0NIU0UxVUlGQTYxLWVIM0FmcGlFMWY2VFlXMTZINVNfRmppWjMxRlY1VWVXUE1GVjJubTRZTEdrOE1GZXNqV1QwbEZLcFBNYTFYTVNRTno5UUhibG04QW5LUUNuTFZTdFcxTERoYWo3Y2tLQ3lvV1ZkS0EzcUY4Ulp5LXd5V0E?oc=5",
+            "summary": "FDA Hands Capricor Complete Response Letter for Deramiocel as DMD Cardiomyopathy Treatment  Neurology live",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-zjgeqy8gd",
+            "company": "FDA Hands Capricor Complete Response Letter for Deramiocel as DMD Cardiomyopathy Treatment",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-30T07:00:00.000Z",
+            "title": "FDA Hands Capricor Complete Response Letter for Deramiocel as DMD Cardiomyopathy Treatment - Neurology live",
+            "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQSEJkaW1DYnZ3THRNTWdpc2hNMFh6dXNPUHdFUXoyRjlwWnRQVzZybXNGMmtDOHdsVnA1M0NIU0UxVUlGQTYxLWVIM0FmcGlFMWY2VFlXMTZINVNfRmppWjMxRlY1VWVXUE1GVjJubTRZTEdrOE1GZXNqV1QwbEZLcFBNYTFYTVNRTno5UUhibG04QW5LUUNuTFZTdFcxTERoYWo3Y2tLQ3lvV1ZkS0EzcUY4Ulp5LXd5V0E?oc=5",
+            "summary": "FDA Hands Capricor Complete Response Letter for Deramiocel as DMD Cardiomyopathy Treatment  Neurology live",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-9pyf51xzm",
+            "company": "FDA Hands Capricor Complete Response Letter for Deramiocel as DMD Cardiomyopathy Treatment",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-30T07:00:00.000Z",
+            "title": "FDA Hands Capricor Complete Response Letter for Deramiocel as DMD Cardiomyopathy Treatment - Neurology live",
+            "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQSEJkaW1DYnZ3THRNTWdpc2hNMFh6dXNPUHdFUXoyRjlwWnRQVzZybXNGMmtDOHdsVnA1M0NIU0UxVUlGQTYxLWVIM0FmcGlFMWY2VFlXMTZINVNfRmppWjMxRlY1VWVXUE1GVjJubTRZTEdrOE1GZXNqV1QwbEZLcFBNYTFYTVNRTno5UUhibG04QW5LUUNuTFZTdFcxTERoYWo3Y2tLQ3lvV1ZkS0EzcUY4Ulp5LXd5V0E?oc=5",
+            "summary": "FDA Hands Capricor Complete Response Letter for Deramiocel as DMD Cardiomyopathy Treatment  Neurology live",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-kbpqpgtdd",
+            "company": "FDA Hands Capricor Complete Response Letter for Deramiocel as DMD Cardiomyopathy Treatment",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-30T07:00:00.000Z",
+            "title": "FDA Hands Capricor Complete Response Letter for Deramiocel as DMD Cardiomyopathy Treatment - Neurology live",
+            "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQSEJkaW1DYnZ3THRNTWdpc2hNMFh6dXNPUHdFUXoyRjlwWnRQVzZybXNGMmtDOHdsVnA1M0NIU0UxVUlGQTYxLWVIM0FmcGlFMWY2VFlXMTZINVNfRmppWjMxRlY1VWVXUE1GVjJubTRZTEdrOE1GZXNqV1QwbEZLcFBNYTFYTVNRTno5UUhibG04QW5LUUNuTFZTdFcxTERoYWo3Y2tLQ3lvV1ZkS0EzcUY4Ulp5LXd5V0E?oc=5",
+            "summary": "FDA Hands Capricor Complete Response Letter for Deramiocel as DMD Cardiomyopathy Treatment  Neurology live",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "Ultragenyx receives complete response letter for UX111 BLA": [
+          {
+            "id": "alert-high-1757266612925-py71bm6jm",
+            "company": "Ultragenyx receives complete response letter for UX111 BLA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-14T07:00:00.000Z",
+            "title": "Ultragenyx receives complete response letter for UX111 BLA - Pharmaceutical Technology",
+            "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOVUszb2g2NjVsalpmZlZPTmpybFNBVHBiWFRvNHY3NVJhRm1LaTNiMkdjTklkMndSWmFUMDFFTkt6ZXFNYU1ZYkM5QzZEa2NCN1g0MzlmLVRaN1VYdVdCbkdOVzlJRlBXYUVjM3U5Yk5WbEFVVl9KV0NZZjkwSkpMQWc4UDVkekJDUmRTNVFqWllYTHM?oc=5",
+            "summary": "Ultragenyx receives complete response letter for UX111 BLA  Pharmaceutical Technology",
+            "created": "2025-09-07T17:36:52.925Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-x8b8lxgo4",
+            "company": "Ultragenyx receives complete response letter for UX111 BLA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-14T07:00:00.000Z",
+            "title": "Ultragenyx receives complete response letter for UX111 BLA - Pharmaceutical Technology",
+            "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOVUszb2g2NjVsalpmZlZPTmpybFNBVHBiWFRvNHY3NVJhRm1LaTNiMkdjTklkMndSWmFUMDFFTkt6ZXFNYU1ZYkM5QzZEa2NCN1g0MzlmLVRaN1VYdVdCbkdOVzlJRlBXYUVjM3U5Yk5WbEFVVl9KV0NZZjkwSkpMQWc4UDVkekJDUmRTNVFqWllYTHM?oc=5",
+            "summary": "Ultragenyx receives complete response letter for UX111 BLA  Pharmaceutical Technology",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-m65l5ias2",
+            "company": "Ultragenyx receives complete response letter for UX111 BLA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-14T07:00:00.000Z",
+            "title": "Ultragenyx receives complete response letter for UX111 BLA - Pharmaceutical Technology",
+            "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOVUszb2g2NjVsalpmZlZPTmpybFNBVHBiWFRvNHY3NVJhRm1LaTNiMkdjTklkMndSWmFUMDFFTkt6ZXFNYU1ZYkM5QzZEa2NCN1g0MzlmLVRaN1VYdVdCbkdOVzlJRlBXYUVjM3U5Yk5WbEFVVl9KV0NZZjkwSkpMQWc4UDVkekJDUmRTNVFqWllYTHM?oc=5",
+            "summary": "Ultragenyx receives complete response letter for UX111 BLA  Pharmaceutical Technology",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-czvzww1b2",
+            "company": "Ultragenyx receives complete response letter for UX111 BLA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-14T07:00:00.000Z",
+            "title": "Ultragenyx receives complete response letter for UX111 BLA - Pharmaceutical Technology",
+            "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxOVUszb2g2NjVsalpmZlZPTmpybFNBVHBiWFRvNHY3NVJhRm1LaTNiMkdjTklkMndSWmFUMDFFTkt6ZXFNYU1ZYkM5QzZEa2NCN1g0MzlmLVRaN1VYdVdCbkdOVzlJRlBXYUVjM3U5Yk5WbEFVVl9KV0NZZjkwSkpMQWc4UDVkekJDUmRTNVFqWllYTHM?oc=5",
+            "summary": "Ultragenyx receives complete response letter for UX111 BLA  Pharmaceutical Technology",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "FDA received complete response letter from FDA for Columvi in DLBCL": [
+          {
+            "id": "alert-high-1757266612924-bpg5smjl8",
+            "company": "FDA received complete response letter from FDA for Columvi in DLBCL",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-27T22:51:27.000Z",
+            "title": "FDA received complete response letter from FDA for Columvi in DLBCL - PPF Group",
+            "link": "https://news.google.com/rss/articles/CBMioAJBVV95cUxNWXhMcURoaGVLOVlfV2lBN01uc2VuRTU1TVlxcE1kdkFQekNETjRFRW83M3huT3lIRFMxY0xCOWtCVzFKd0JSczc2TV94bXN5TlVWWjVKQm5nMkUzRWhwdDZPYWdrZ3l0d2JUYWFSQXNCeE44aTNQTGVBRG5vVWhvRExPUnhUMzBibUFJTFIyWGFjOGpGblR0Y0hHUy1oTDQ3RjdTY29jS0VzX1hzWF9QYktyaHlPR2RmMGVCX0xGSVRMNC1iUjlacnRlZndmeG5qVVl6ZFdMRkRBUGhpd3BFbjhhWVZWQlRoNFloYWYyQ25jTUZRZXhkSGFzY0ljODVxbjBCZHhKN2pCSmloR3oxSzdxRXJCbGNlaXVwOGVlNnU?oc=5",
+            "summary": "FDA received complete response letter from FDA for Columvi in DLBCL  PPF Group",
+            "created": "2025-09-07T17:36:52.924Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-f8jrql5es",
+            "company": "FDA received complete response letter from FDA for Columvi in DLBCL",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-27T22:51:27.000Z",
+            "title": "FDA received complete response letter from FDA for Columvi in DLBCL - PPF Group",
+            "link": "https://news.google.com/rss/articles/CBMioAJBVV95cUxNWXhMcURoaGVLOVlfV2lBN01uc2VuRTU1TVlxcE1kdkFQekNETjRFRW83M3huT3lIRFMxY0xCOWtCVzFKd0JSczc2TV94bXN5TlVWWjVKQm5nMkUzRWhwdDZPYWdrZ3l0d2JUYWFSQXNCeE44aTNQTGVBRG5vVWhvRExPUnhUMzBibUFJTFIyWGFjOGpGblR0Y0hHUy1oTDQ3RjdTY29jS0VzX1hzWF9QYktyaHlPR2RmMGVCX0xGSVRMNC1iUjlacnRlZndmeG5qVVl6ZFdMRkRBUGhpd3BFbjhhWVZWQlRoNFloYWYyQ25jTUZRZXhkSGFzY0ljODVxbjBCZHhKN2pCSmloR3oxSzdxRXJCbGNlaXVwOGVlNnU?oc=5",
+            "summary": "FDA received complete response letter from FDA for Columvi in DLBCL  PPF Group",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-9epzrvn9i",
+            "company": "FDA received complete response letter from FDA for Columvi in DLBCL",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-27T22:51:27.000Z",
+            "title": "FDA received complete response letter from FDA for Columvi in DLBCL - PPF Group",
+            "link": "https://news.google.com/rss/articles/CBMioAJBVV95cUxNWXhMcURoaGVLOVlfV2lBN01uc2VuRTU1TVlxcE1kdkFQekNETjRFRW83M3huT3lIRFMxY0xCOWtCVzFKd0JSczc2TV94bXN5TlVWWjVKQm5nMkUzRWhwdDZPYWdrZ3l0d2JUYWFSQXNCeE44aTNQTGVBRG5vVWhvRExPUnhUMzBibUFJTFIyWGFjOGpGblR0Y0hHUy1oTDQ3RjdTY29jS0VzX1hzWF9QYktyaHlPR2RmMGVCX0xGSVRMNC1iUjlacnRlZndmeG5qVVl6ZFdMRkRBUGhpd3BFbjhhWVZWQlRoNFloYWYyQ25jTUZRZXhkSGFzY0ljODVxbjBCZHhKN2pCSmloR3oxSzdxRXJCbGNlaXVwOGVlNnU?oc=5",
+            "summary": "FDA received complete response letter from FDA for Columvi in DLBCL  PPF Group",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-bmn5vnvin",
+            "company": "FDA received complete response letter from FDA for Columvi in DLBCL",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-27T22:51:27.000Z",
+            "title": "FDA received complete response letter from FDA for Columvi in DLBCL - PPF Group",
+            "link": "https://news.google.com/rss/articles/CBMioAJBVV95cUxNWXhMcURoaGVLOVlfV2lBN01uc2VuRTU1TVlxcE1kdkFQekNETjRFRW83M3huT3lIRFMxY0xCOWtCVzFKd0JSczc2TV94bXN5TlVWWjVKQm5nMkUzRWhwdDZPYWdrZ3l0d2JUYWFSQXNCeE44aTNQTGVBRG5vVWhvRExPUnhUMzBibUFJTFIyWGFjOGpGblR0Y0hHUy1oTDQ3RjdTY29jS0VzX1hzWF9QYktyaHlPR2RmMGVCX0xGSVRMNC1iUjlacnRlZndmeG5qVVl6ZFdMRkRBUGhpd3BFbjhhWVZWQlRoNFloYWYyQ25jTUZRZXhkSGFzY0ljODVxbjBCZHhKN2pCSmloR3oxSzdxRXJCbGNlaXVwOGVlNnU?oc=5",
+            "summary": "FDA received complete response letter from FDA for Columvi in DLBCL  PPF Group",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "FDA Gives Complete Response Letter for Darzalex Faspro Quadruplet Regimen": [
+          {
+            "id": "alert-high-1757266612924-0ceaeovxj",
+            "company": "FDA Gives Complete Response Letter for Darzalex Faspro Quadruplet Regimen",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-20T07:00:00.000Z",
+            "title": "FDA Gives Complete Response Letter for Darzalex Faspro Quadruplet Regimen - Curetoday",
+            "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPNi0yMDRsekFtZmMwZFB3cjdOekF6WGxiUnJPWnBPMU5RQVBkaVZCVlh3SlJKSGgtaXdTcjZraTNJSVpzMXBNUDR5aHJZUlF4YzNQUk85VVpsRFRKNzZmOTFKNWcwc21oeGQ1dkY5UDBpZWdpaUdLbFhBdkdIVkF0VUdfZXd5ek5PQklmM2dQU1Rtb2hQQUE?oc=5",
+            "summary": "FDA Gives Complete Response Letter for Darzalex Faspro Quadruplet Regimen  Curetoday",
+            "created": "2025-09-07T17:36:52.924Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-4lxk4xvpj",
+            "company": "FDA Gives Complete Response Letter for Darzalex Faspro Quadruplet Regimen",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-20T07:00:00.000Z",
+            "title": "FDA Gives Complete Response Letter for Darzalex Faspro Quadruplet Regimen - Curetoday",
+            "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPNi0yMDRsekFtZmMwZFB3cjdOekF6WGxiUnJPWnBPMU5RQVBkaVZCVlh3SlJKSGgtaXdTcjZraTNJSVpzMXBNUDR5aHJZUlF4YzNQUk85VVpsRFRKNzZmOTFKNWcwc21oeGQ1dkY5UDBpZWdpaUdLbFhBdkdIVkF0VUdfZXd5ek5PQklmM2dQU1Rtb2hQQUE?oc=5",
+            "summary": "FDA Gives Complete Response Letter for Darzalex Faspro Quadruplet Regimen  Curetoday",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-jiwe341c4",
+            "company": "FDA Gives Complete Response Letter for Darzalex Faspro Quadruplet Regimen",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-20T07:00:00.000Z",
+            "title": "FDA Gives Complete Response Letter for Darzalex Faspro Quadruplet Regimen - Curetoday",
+            "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPNi0yMDRsekFtZmMwZFB3cjdOekF6WGxiUnJPWnBPMU5RQVBkaVZCVlh3SlJKSGgtaXdTcjZraTNJSVpzMXBNUDR5aHJZUlF4YzNQUk85VVpsRFRKNzZmOTFKNWcwc21oeGQ1dkY5UDBpZWdpaUdLbFhBdkdIVkF0VUdfZXd5ek5PQklmM2dQU1Rtb2hQQUE?oc=5",
+            "summary": "FDA Gives Complete Response Letter for Darzalex Faspro Quadruplet Regimen  Curetoday",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-vphfegfao",
+            "company": "FDA Gives Complete Response Letter for Darzalex Faspro Quadruplet Regimen",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-20T07:00:00.000Z",
+            "title": "FDA Gives Complete Response Letter for Darzalex Faspro Quadruplet Regimen - Curetoday",
+            "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPNi0yMDRsekFtZmMwZFB3cjdOekF6WGxiUnJPWnBPMU5RQVBkaVZCVlh3SlJKSGgtaXdTcjZraTNJSVpzMXBNUDR5aHJZUlF4YzNQUk85VVpsRFRKNzZmOTFKNWcwc21oeGQ1dkY5UDBpZWdpaUdLbFhBdkdIVkF0VUdfZXd5ek5PQklmM2dQU1Rtb2hQQUE?oc=5",
+            "summary": "FDA Gives Complete Response Letter for Darzalex Faspro Quadruplet Regimen  Curetoday",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "FDA Issues Complete Response Letter to Manufacturer of OLC, Treatment for CKD": [
+          {
+            "id": "alert-high-1757266612924-ke1nedgd6",
+            "company": "FDA Issues Complete Response Letter to Manufacturer of OLC, Treatment for CKD",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-02T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter to Manufacturer of OLC, Treatment for CKD-Related Hyperphosphatemia - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQMWtoZlFGel9acHZOWlQyMm9sS3FhYUpjd240RVZRTGY3WmZkNENTZndFSGVfSUx2UWRBcHJybzlyZWZQTHMxZmNRNWZaWTVJeXBRYmhnM3gxTVA2bFBLY1RRLWNtRFF6dTJjdHpsajh4UXE0aU9PeGtjV1Fsclc1QUNTRWNZZG4zRjVzQWFxd1BhQjhWN1pwODNicXY1VERZYWZTMFBheTBuY2FDMVlXZjFwU0dTSnI4RGd5dllFbGZEYjczemlyRXdKMHBRTVotQXVB?oc=5",
+            "summary": "FDA Issues Complete Response Letter to Manufacturer of OLC, Treatment for CKD-Related Hyperphosphatemia  Pharmacy Times",
+            "created": "2025-09-07T17:36:52.924Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-s2fjdqwi4",
+            "company": "FDA Issues Complete Response Letter to Manufacturer of OLC, Treatment for CKD",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-02T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter to Manufacturer of OLC, Treatment for CKD-Related Hyperphosphatemia - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQMWtoZlFGel9acHZOWlQyMm9sS3FhYUpjd240RVZRTGY3WmZkNENTZndFSGVfSUx2UWRBcHJybzlyZWZQTHMxZmNRNWZaWTVJeXBRYmhnM3gxTVA2bFBLY1RRLWNtRFF6dTJjdHpsajh4UXE0aU9PeGtjV1Fsclc1QUNTRWNZZG4zRjVzQWFxd1BhQjhWN1pwODNicXY1VERZYWZTMFBheTBuY2FDMVlXZjFwU0dTSnI4RGd5dllFbGZEYjczemlyRXdKMHBRTVotQXVB?oc=5",
+            "summary": "FDA Issues Complete Response Letter to Manufacturer of OLC, Treatment for CKD-Related Hyperphosphatemia  Pharmacy Times",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-jztaxak48",
+            "company": "FDA Issues Complete Response Letter to Manufacturer of OLC, Treatment for CKD",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-02T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter to Manufacturer of OLC, Treatment for CKD-Related Hyperphosphatemia - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQMWtoZlFGel9acHZOWlQyMm9sS3FhYUpjd240RVZRTGY3WmZkNENTZndFSGVfSUx2UWRBcHJybzlyZWZQTHMxZmNRNWZaWTVJeXBRYmhnM3gxTVA2bFBLY1RRLWNtRFF6dTJjdHpsajh4UXE0aU9PeGtjV1Fsclc1QUNTRWNZZG4zRjVzQWFxd1BhQjhWN1pwODNicXY1VERZYWZTMFBheTBuY2FDMVlXZjFwU0dTSnI4RGd5dllFbGZEYjczemlyRXdKMHBRTVotQXVB?oc=5",
+            "summary": "FDA Issues Complete Response Letter to Manufacturer of OLC, Treatment for CKD-Related Hyperphosphatemia  Pharmacy Times",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-42vbj126h",
+            "company": "FDA Issues Complete Response Letter to Manufacturer of OLC, Treatment for CKD",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-02T07:00:00.000Z",
+            "title": "FDA Issues Complete Response Letter to Manufacturer of OLC, Treatment for CKD-Related Hyperphosphatemia - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQMWtoZlFGel9acHZOWlQyMm9sS3FhYUpjd240RVZRTGY3WmZkNENTZndFSGVfSUx2UWRBcHJybzlyZWZQTHMxZmNRNWZaWTVJeXBRYmhnM3gxTVA2bFBLY1RRLWNtRFF6dTJjdHpsajh4UXE0aU9PeGtjV1Fsclc1QUNTRWNZZG4zRjVzQWFxd1BhQjhWN1pwODNicXY1VERZYWZTMFBheTBuY2FDMVlXZjFwU0dTSnI4RGd5dllFbGZEYjczemlyRXdKMHBRTVotQXVB?oc=5",
+            "summary": "FDA Issues Complete Response Letter to Manufacturer of OLC, Treatment for CKD-Related Hyperphosphatemia  Pharmacy Times",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "FDA Issues Complete Response Letter to Outlook": [
+          {
+            "id": "alert-high-1757266612924-g9fg6gc71",
+            "company": "FDA Issues Complete Response Letter to Outlook",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-02T21:45:00.000Z",
+            "title": "FDA Issues Complete Response Letter to Outlook Therapeutics - TipRanks",
+            "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPVzdiX0sxNnREVi0tSHBPaDhrZngtQkRYRnE4c1VKVFRzcHVtSVZRN3l2TW53a19QeUlEdlROaHd3cWxITVdFODM2bWV4LW5mclVYLWFHNlRIYnpTSHpMUkJ6ZjFDMG5DSVd6ZDk1V2R3LUg1ZzE1eFFfUHNpVFRUY01POTVveHRtTl9lWlczdUZkNHVRd0o0cFptT3JJSnpBMWdCSllEWEI5Sk4wX2lYZA?oc=5",
+            "summary": "FDA Issues Complete Response Letter to Outlook Therapeutics  TipRanks",
+            "created": "2025-09-07T17:36:52.924Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-tvpwlpg13",
+            "company": "FDA Issues Complete Response Letter to Outlook",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-02T21:45:00.000Z",
+            "title": "FDA Issues Complete Response Letter to Outlook Therapeutics - TipRanks",
+            "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPVzdiX0sxNnREVi0tSHBPaDhrZngtQkRYRnE4c1VKVFRzcHVtSVZRN3l2TW53a19QeUlEdlROaHd3cWxITVdFODM2bWV4LW5mclVYLWFHNlRIYnpTSHpMUkJ6ZjFDMG5DSVd6ZDk1V2R3LUg1ZzE1eFFfUHNpVFRUY01POTVveHRtTl9lWlczdUZkNHVRd0o0cFptT3JJSnpBMWdCSllEWEI5Sk4wX2lYZA?oc=5",
+            "summary": "FDA Issues Complete Response Letter to Outlook Therapeutics  TipRanks",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-gz4pwvibb",
+            "company": "FDA Issues Complete Response Letter to Outlook",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-02T21:45:00.000Z",
+            "title": "FDA Issues Complete Response Letter to Outlook Therapeutics - TipRanks",
+            "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPVzdiX0sxNnREVi0tSHBPaDhrZngtQkRYRnE4c1VKVFRzcHVtSVZRN3l2TW53a19QeUlEdlROaHd3cWxITVdFODM2bWV4LW5mclVYLWFHNlRIYnpTSHpMUkJ6ZjFDMG5DSVd6ZDk1V2R3LUg1ZzE1eFFfUHNpVFRUY01POTVveHRtTl9lWlczdUZkNHVRd0o0cFptT3JJSnpBMWdCSllEWEI5Sk4wX2lYZA?oc=5",
+            "summary": "FDA Issues Complete Response Letter to Outlook Therapeutics  TipRanks",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-lab8lrewp",
+            "company": "FDA Issues Complete Response Letter to Outlook",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-02T21:45:00.000Z",
+            "title": "FDA Issues Complete Response Letter to Outlook Therapeutics - TipRanks",
+            "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxPVzdiX0sxNnREVi0tSHBPaDhrZngtQkRYRnE4c1VKVFRzcHVtSVZRN3l2TW53a19QeUlEdlROaHd3cWxITVdFODM2bWV4LW5mclVYLWFHNlRIYnpTSHpMUkJ6ZjFDMG5DSVd6ZDk1V2R3LUg1ZzE1eFFfUHNpVFRUY01POTVveHRtTl9lWlczdUZkNHVRd0o0cFptT3JJSnpBMWdCSllEWEI5Sk4wX2lYZA?oc=5",
+            "summary": "FDA Issues Complete Response Letter to Outlook Therapeutics  TipRanks",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "FDA Publishes Hundreds of Complete Response Letters From First Half of the Decade": [
+          {
+            "id": "alert-high-1757266612924-r5q4e4pfd",
+            "company": "FDA Publishes Hundreds of Complete Response Letters From First Half of the Decade",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "FDA Publishes Hundreds of Complete Response Letters From First Half of the Decade - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQbF8zbDVUalRyb19zVnJOMmMxWVZWc1U3UEgtRWpWTHhUOTVzemwyQ3A3Ykw0dHlqTl92VWVRWkphZ3ZaUVEwVXd6RHIxSFZKbUw1ZDNRN0d6b2k2cl9xbmZ6UDVUTDAwcnJ2U0w1XzI4blhzMVlCQjRjX2RlVVE4V0J3bXUzRHhFOExDR1N2V09pWlZ0SU0tRGx0ckJWVDA1STh4QXJIQUdDazFMRFYzTHhObTNLQTQ?oc=5",
+            "summary": "FDA Publishes Hundreds of Complete Response Letters From First Half of the Decade  Pharmacy Times",
+            "created": "2025-09-07T17:36:52.924Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-kgtqznc0b",
+            "company": "FDA Publishes Hundreds of Complete Response Letters From First Half of the Decade",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "FDA Publishes Hundreds of Complete Response Letters From First Half of the Decade - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQbF8zbDVUalRyb19zVnJOMmMxWVZWc1U3UEgtRWpWTHhUOTVzemwyQ3A3Ykw0dHlqTl92VWVRWkphZ3ZaUVEwVXd6RHIxSFZKbUw1ZDNRN0d6b2k2cl9xbmZ6UDVUTDAwcnJ2U0w1XzI4blhzMVlCQjRjX2RlVVE4V0J3bXUzRHhFOExDR1N2V09pWlZ0SU0tRGx0ckJWVDA1STh4QXJIQUdDazFMRFYzTHhObTNLQTQ?oc=5",
+            "summary": "FDA Publishes Hundreds of Complete Response Letters From First Half of the Decade  Pharmacy Times",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-d32sla60h",
+            "company": "FDA Publishes Hundreds of Complete Response Letters From First Half of the Decade",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "FDA Publishes Hundreds of Complete Response Letters From First Half of the Decade - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQbF8zbDVUalRyb19zVnJOMmMxWVZWc1U3UEgtRWpWTHhUOTVzemwyQ3A3Ykw0dHlqTl92VWVRWkphZ3ZaUVEwVXd6RHIxSFZKbUw1ZDNRN0d6b2k2cl9xbmZ6UDVUTDAwcnJ2U0w1XzI4blhzMVlCQjRjX2RlVVE4V0J3bXUzRHhFOExDR1N2V09pWlZ0SU0tRGx0ckJWVDA1STh4QXJIQUdDazFMRFYzTHhObTNLQTQ?oc=5",
+            "summary": "FDA Publishes Hundreds of Complete Response Letters From First Half of the Decade  Pharmacy Times",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-1w9b63zv8",
+            "company": "FDA Publishes Hundreds of Complete Response Letters From First Half of the Decade",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-11T07:00:00.000Z",
+            "title": "FDA Publishes Hundreds of Complete Response Letters From First Half of the Decade - Pharmacy Times",
+            "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxQbF8zbDVUalRyb19zVnJOMmMxWVZWc1U3UEgtRWpWTHhUOTVzemwyQ3A3Ykw0dHlqTl92VWVRWkphZ3ZaUVEwVXd6RHIxSFZKbUw1ZDNRN0d6b2k2cl9xbmZ6UDVUTDAwcnJ2U0w1XzI4blhzMVlCQjRjX2RlVVE4V0J3bXUzRHhFOExDR1N2V09pWlZ0SU0tRGx0ckJWVDA1STh4QXJIQUdDazFMRFYzTHhObTNLQTQ?oc=5",
+            "summary": "FDA Publishes Hundreds of Complete Response Letters From First Half of the Decade  Pharmacy Times",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "FDA Gives RP1 Combo Complete Response Letter in Advanced Melanoma": [
+          {
+            "id": "alert-high-1757266612924-iygwatalg",
+            "company": "FDA Gives RP1 Combo Complete Response Letter in Advanced Melanoma",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-22T07:00:00.000Z",
+            "title": "FDA Gives RP1 Combo Complete Response Letter in Advanced Melanoma - CancerNetwork",
+            "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPeUpKUXVENG1XWnEtZHRPR0ttTkdJOUNidUMwMUJvY3pTY3ctS1VNeUd6Wi1TaS1KVks5REdYTERpcUxmTndpVnk5VGtfd2pqUGZvSUFvT2JJTGxOWHpKczh2LUl5ai1NSG9IV1VsLVg0aHlwRThsOXpVZUFiNlBtVVdRUjJ0Skk0eTRkU0g4d3FGQVJRSnFSLUV4OTVxRDVHOHc?oc=5",
+            "summary": "FDA Gives RP1 Combo Complete Response Letter in Advanced Melanoma  CancerNetwork",
+            "created": "2025-09-07T17:36:52.924Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-p5bf5gr7y",
+            "company": "FDA Gives RP1 Combo Complete Response Letter in Advanced Melanoma",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-22T07:00:00.000Z",
+            "title": "FDA Gives RP1 Combo Complete Response Letter in Advanced Melanoma - CancerNetwork",
+            "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPeUpKUXVENG1XWnEtZHRPR0ttTkdJOUNidUMwMUJvY3pTY3ctS1VNeUd6Wi1TaS1KVks5REdYTERpcUxmTndpVnk5VGtfd2pqUGZvSUFvT2JJTGxOWHpKczh2LUl5ai1NSG9IV1VsLVg0aHlwRThsOXpVZUFiNlBtVVdRUjJ0Skk0eTRkU0g4d3FGQVJRSnFSLUV4OTVxRDVHOHc?oc=5",
+            "summary": "FDA Gives RP1 Combo Complete Response Letter in Advanced Melanoma  CancerNetwork",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-4vr3p5zp5",
+            "company": "FDA Gives RP1 Combo Complete Response Letter in Advanced Melanoma",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-22T07:00:00.000Z",
+            "title": "FDA Gives RP1 Combo Complete Response Letter in Advanced Melanoma - CancerNetwork",
+            "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPeUpKUXVENG1XWnEtZHRPR0ttTkdJOUNidUMwMUJvY3pTY3ctS1VNeUd6Wi1TaS1KVks5REdYTERpcUxmTndpVnk5VGtfd2pqUGZvSUFvT2JJTGxOWHpKczh2LUl5ai1NSG9IV1VsLVg0aHlwRThsOXpVZUFiNlBtVVdRUjJ0Skk0eTRkU0g4d3FGQVJRSnFSLUV4OTVxRDVHOHc?oc=5",
+            "summary": "FDA Gives RP1 Combo Complete Response Letter in Advanced Melanoma  CancerNetwork",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-s4sx0oqxe",
+            "company": "FDA Gives RP1 Combo Complete Response Letter in Advanced Melanoma",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-07-22T07:00:00.000Z",
+            "title": "FDA Gives RP1 Combo Complete Response Letter in Advanced Melanoma - CancerNetwork",
+            "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPeUpKUXVENG1XWnEtZHRPR0ttTkdJOUNidUMwMUJvY3pTY3ctS1VNeUd6Wi1TaS1KVks5REdYTERpcUxmTndpVnk5VGtfd2pqUGZvSUFvT2JJTGxOWHpKczh2LUl5ai1NSG9IV1VsLVg0aHlwRThsOXpVZUFiNlBtVVdRUjJ0Skk0eTRkU0g4d3FGQVJRSnFSLUV4OTVxRDVHOHc?oc=5",
+            "summary": "FDA Gives RP1 Combo Complete Response Letter in Advanced Melanoma  CancerNetwork",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "Outlook Therapeutics Requests Type A Meeting with FDA to Address Complete Response Letter for ONS": [
+          {
+            "id": "alert-high-1757266612924-cp9atm5vj",
+            "company": "Outlook Therapeutics Requests Type A Meeting with FDA to Address Complete Response Letter for ONS",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-02T12:44:00.000Z",
+            "title": "Outlook Therapeutics Requests Type A Meeting with FDA to Address Complete Response Letter for ONS-5010 Biologics License Application - Quiver Quantitative",
+            "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxNcWk5bGNVVFJRbTlzZnJ0VFp0SFVHcVUyZkZxdS1TSS1aTjBkRlAteTNXbTJYN3dwcDNxYjlrMzFVc2dyX0dLRzdMNmhoVm9hajY0U0xrM3dWaDJfX2UxdkNQVVIxTENQclM1VzJPN0NVdnFXYzZaLUEtbmlNTmxXV05rdEMtVjJxMFhIRmJrZjhtWUtrX2J0cFAwdl9YcFl6cHZqdTFPRGEtb1A1ZXZ3eXJQa1REazdPYWkxZXp6bFE5RkktMXFScjdyWVMtZFM3V2QwVjlsZ1p5WlM1Q2lkM1gyc0dGc3FUTmR0Vk1wQ2dzeXBVaG9TTw?oc=5",
+            "summary": "Outlook Therapeutics Requests Type A Meeting with FDA to Address Complete Response Letter for ONS-5010 Biologics License Application  Quiver Quantitative",
+            "created": "2025-09-07T17:36:52.924Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-vz5sxqv0c",
+            "company": "Outlook Therapeutics Requests Type A Meeting with FDA to Address Complete Response Letter for ONS",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-02T12:44:00.000Z",
+            "title": "Outlook Therapeutics Requests Type A Meeting with FDA to Address Complete Response Letter for ONS-5010 Biologics License Application - Quiver Quantitative",
+            "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxNcWk5bGNVVFJRbTlzZnJ0VFp0SFVHcVUyZkZxdS1TSS1aTjBkRlAteTNXbTJYN3dwcDNxYjlrMzFVc2dyX0dLRzdMNmhoVm9hajY0U0xrM3dWaDJfX2UxdkNQVVIxTENQclM1VzJPN0NVdnFXYzZaLUEtbmlNTmxXV05rdEMtVjJxMFhIRmJrZjhtWUtrX2J0cFAwdl9YcFl6cHZqdTFPRGEtb1A1ZXZ3eXJQa1REazdPYWkxZXp6bFE5RkktMXFScjdyWVMtZFM3V2QwVjlsZ1p5WlM1Q2lkM1gyc0dGc3FUTmR0Vk1wQ2dzeXBVaG9TTw?oc=5",
+            "summary": "Outlook Therapeutics Requests Type A Meeting with FDA to Address Complete Response Letter for ONS-5010 Biologics License Application  Quiver Quantitative",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-hb1efr3bb",
+            "company": "Outlook Therapeutics Requests Type A Meeting with FDA to Address Complete Response Letter for ONS",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-02T12:44:00.000Z",
+            "title": "Outlook Therapeutics Requests Type A Meeting with FDA to Address Complete Response Letter for ONS-5010 Biologics License Application - Quiver Quantitative",
+            "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxNcWk5bGNVVFJRbTlzZnJ0VFp0SFVHcVUyZkZxdS1TSS1aTjBkRlAteTNXbTJYN3dwcDNxYjlrMzFVc2dyX0dLRzdMNmhoVm9hajY0U0xrM3dWaDJfX2UxdkNQVVIxTENQclM1VzJPN0NVdnFXYzZaLUEtbmlNTmxXV05rdEMtVjJxMFhIRmJrZjhtWUtrX2J0cFAwdl9YcFl6cHZqdTFPRGEtb1A1ZXZ3eXJQa1REazdPYWkxZXp6bFE5RkktMXFScjdyWVMtZFM3V2QwVjlsZ1p5WlM1Q2lkM1gyc0dGc3FUTmR0Vk1wQ2dzeXBVaG9TTw?oc=5",
+            "summary": "Outlook Therapeutics Requests Type A Meeting with FDA to Address Complete Response Letter for ONS-5010 Biologics License Application  Quiver Quantitative",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-8ps9v27uu",
+            "company": "Outlook Therapeutics Requests Type A Meeting with FDA to Address Complete Response Letter for ONS",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-02T12:44:00.000Z",
+            "title": "Outlook Therapeutics Requests Type A Meeting with FDA to Address Complete Response Letter for ONS-5010 Biologics License Application - Quiver Quantitative",
+            "link": "https://news.google.com/rss/articles/CBMi-AFBVV95cUxNcWk5bGNVVFJRbTlzZnJ0VFp0SFVHcVUyZkZxdS1TSS1aTjBkRlAteTNXbTJYN3dwcDNxYjlrMzFVc2dyX0dLRzdMNmhoVm9hajY0U0xrM3dWaDJfX2UxdkNQVVIxTENQclM1VzJPN0NVdnFXYzZaLUEtbmlNTmxXV05rdEMtVjJxMFhIRmJrZjhtWUtrX2J0cFAwdl9YcFl6cHZqdTFPRGEtb1A1ZXZ3eXJQa1REazdPYWkxZXp6bFE5RkktMXFScjdyWVMtZFM3V2QwVjlsZ1p5WlM1Q2lkM1gyc0dGc3FUTmR0Vk1wQ2dzeXBVaG9TTw?oc=5",
+            "summary": "Outlook Therapeutics Requests Type A Meeting with FDA to Address Complete Response Letter for ONS-5010 Biologics License Application  Quiver Quantitative",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "FDA issues complete response letter for 89Zr": [
+          {
+            "id": "alert-high-1757266612924-84raml7ea",
+            "company": "FDA issues complete response letter for 89Zr",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-28T07:00:00.000Z",
+            "title": "FDA issues complete response letter for 89Zr-DFO-girentuximab in ccRCC - Urology Times",
+            "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQTENaRm5KN0ZXT2V2dUpYWWRiTU5RSDA1R18xcU5IcWplcms4b0VxYU8zTllCQUJJU2RJZDNCWGxGS0VUZXhPMGEwTmV0M2gxbXRBMHZFTHlJVC1iZzhTWXlkYnVySWJtZUI1aVN5eFp1R0JGOVhFRlkxcTFIaTU1LUJfaUY2VUxPWXJkd3RqYWVXdk10U3Uya2lvYnUwNWRvTVh6Wm03QQ?oc=5",
+            "summary": "FDA issues complete response letter for 89Zr-DFO-girentuximab in ccRCC  Urology Times",
+            "created": "2025-09-07T17:36:52.924Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-xnak67q0p",
+            "company": "FDA issues complete response letter for 89Zr",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-28T07:00:00.000Z",
+            "title": "FDA issues complete response letter for 89Zr-DFO-girentuximab in ccRCC - Urology Times",
+            "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQTENaRm5KN0ZXT2V2dUpYWWRiTU5RSDA1R18xcU5IcWplcms4b0VxYU8zTllCQUJJU2RJZDNCWGxGS0VUZXhPMGEwTmV0M2gxbXRBMHZFTHlJVC1iZzhTWXlkYnVySWJtZUI1aVN5eFp1R0JGOVhFRlkxcTFIaTU1LUJfaUY2VUxPWXJkd3RqYWVXdk10U3Uya2lvYnUwNWRvTVh6Wm03QQ?oc=5",
+            "summary": "FDA issues complete response letter for 89Zr-DFO-girentuximab in ccRCC  Urology Times",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-a09md8k1f",
+            "company": "FDA issues complete response letter for 89Zr",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-28T07:00:00.000Z",
+            "title": "FDA issues complete response letter for 89Zr-DFO-girentuximab in ccRCC - Urology Times",
+            "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQTENaRm5KN0ZXT2V2dUpYWWRiTU5RSDA1R18xcU5IcWplcms4b0VxYU8zTllCQUJJU2RJZDNCWGxGS0VUZXhPMGEwTmV0M2gxbXRBMHZFTHlJVC1iZzhTWXlkYnVySWJtZUI1aVN5eFp1R0JGOVhFRlkxcTFIaTU1LUJfaUY2VUxPWXJkd3RqYWVXdk10U3Uya2lvYnUwNWRvTVh6Wm03QQ?oc=5",
+            "summary": "FDA issues complete response letter for 89Zr-DFO-girentuximab in ccRCC  Urology Times",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-teipit7p6",
+            "company": "FDA issues complete response letter for 89Zr",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-28T07:00:00.000Z",
+            "title": "FDA issues complete response letter for 89Zr-DFO-girentuximab in ccRCC - Urology Times",
+            "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxQTENaRm5KN0ZXT2V2dUpYWWRiTU5RSDA1R18xcU5IcWplcms4b0VxYU8zTllCQUJJU2RJZDNCWGxGS0VUZXhPMGEwTmV0M2gxbXRBMHZFTHlJVC1iZzhTWXlkYnVySWJtZUI1aVN5eFp1R0JGOVhFRlkxcTFIaTU1LUJfaUY2VUxPWXJkd3RqYWVXdk10U3Uya2lvYnUwNWRvTVh6Wm03QQ?oc=5",
+            "summary": "FDA issues complete response letter for 89Zr-DFO-girentuximab in ccRCC  Urology Times",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "MDMA": [
+          {
+            "id": "alert-high-1757266612924-p1e76pmii",
+            "company": "MDMA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-05T00:09:00.000Z",
+            "title": "MAPS Statement on FDA’s Public Release of Complete Response Letter for MDMA-assisted Therapy - GlobeNewswire",
+            "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxPbTRkZFdNRi1Sb0tNQUhQYjFuVnZZVTdJWDJYb2hpOTNLcFRBb0liQmdna1N4amdGak03bHpHVzJ1cUhXMDNyLWJKYmR0QlJGdlk5QmYzYTBpVEVJRFNSSnQzUk1oSWFvNngwZTl1SDFMZTE4VzRZcFp5X2hTRkJ1V0U0aGs4WGtRa0VocHJ3M0l4Zm5acjZNMThaQ0k5QUxrekFoUFVMSWZZTUZrUnJqakZiQTJTUXZ6dWdJOG9fTENFeE5SdGxpUmFWWUJSRlUyZlFFQWZla3l4OHNZU18xal9XWVBwR0o5VUdVbDZQWGdwcWg2dnB3?oc=5",
+            "summary": "MAPS Statement on FDA’s Public Release of Complete Response Letter for MDMA-assisted Therapy  GlobeNewswire",
+            "created": "2025-09-07T17:36:52.924Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-eivws6uqv",
+            "company": "MDMA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-05T00:09:00.000Z",
+            "title": "MAPS Statement on FDA’s Public Release of Complete Response Letter for MDMA-assisted Therapy - GlobeNewswire",
+            "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxPbTRkZFdNRi1Sb0tNQUhQYjFuVnZZVTdJWDJYb2hpOTNLcFRBb0liQmdna1N4amdGak03bHpHVzJ1cUhXMDNyLWJKYmR0QlJGdlk5QmYzYTBpVEVJRFNSSnQzUk1oSWFvNngwZTl1SDFMZTE4VzRZcFp5X2hTRkJ1V0U0aGs4WGtRa0VocHJ3M0l4Zm5acjZNMThaQ0k5QUxrekFoUFVMSWZZTUZrUnJqakZiQTJTUXZ6dWdJOG9fTENFeE5SdGxpUmFWWUJSRlUyZlFFQWZla3l4OHNZU18xal9XWVBwR0o5VUdVbDZQWGdwcWg2dnB3?oc=5",
+            "summary": "MAPS Statement on FDA’s Public Release of Complete Response Letter for MDMA-assisted Therapy  GlobeNewswire",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-trg8oxfpt",
+            "company": "MDMA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-05T00:09:00.000Z",
+            "title": "MAPS Statement on FDA’s Public Release of Complete Response Letter for MDMA-assisted Therapy - GlobeNewswire",
+            "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxPbTRkZFdNRi1Sb0tNQUhQYjFuVnZZVTdJWDJYb2hpOTNLcFRBb0liQmdna1N4amdGak03bHpHVzJ1cUhXMDNyLWJKYmR0QlJGdlk5QmYzYTBpVEVJRFNSSnQzUk1oSWFvNngwZTl1SDFMZTE4VzRZcFp5X2hTRkJ1V0U0aGs4WGtRa0VocHJ3M0l4Zm5acjZNMThaQ0k5QUxrekFoUFVMSWZZTUZrUnJqakZiQTJTUXZ6dWdJOG9fTENFeE5SdGxpUmFWWUJSRlUyZlFFQWZla3l4OHNZU18xal9XWVBwR0o5VUdVbDZQWGdwcWg2dnB3?oc=5",
+            "summary": "MAPS Statement on FDA’s Public Release of Complete Response Letter for MDMA-assisted Therapy  GlobeNewswire",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-c0av9iwyz",
+            "company": "MDMA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-05T00:09:00.000Z",
+            "title": "MAPS Statement on FDA’s Public Release of Complete Response Letter for MDMA-assisted Therapy - GlobeNewswire",
+            "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxPbTRkZFdNRi1Sb0tNQUhQYjFuVnZZVTdJWDJYb2hpOTNLcFRBb0liQmdna1N4amdGak03bHpHVzJ1cUhXMDNyLWJKYmR0QlJGdlk5QmYzYTBpVEVJRFNSSnQzUk1oSWFvNngwZTl1SDFMZTE4VzRZcFp5X2hTRkJ1V0U0aGs4WGtRa0VocHJ3M0l4Zm5acjZNMThaQ0k5QUxrekFoUFVMSWZZTUZrUnJqakZiQTJTUXZ6dWdJOG9fTENFeE5SdGxpUmFWWUJSRlUyZlFFQWZla3l4OHNZU18xal9XWVBwR0o5VUdVbDZQWGdwcWg2dnB3?oc=5",
+            "summary": "MAPS Statement on FDA’s Public Release of Complete Response Letter for MDMA-assisted Therapy  GlobeNewswire",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "FDA issues complete response letter to Outlook Therapeutics for resubmitted BLA for ONS": [
+          {
+            "id": "alert-high-1757266612924-y7251gmjz",
+            "company": "FDA issues complete response letter to Outlook Therapeutics for resubmitted BLA for ONS",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-28T07:00:00.000Z",
+            "title": "FDA issues complete response letter to Outlook Therapeutics for resubmitted BLA for ONS-5010 - Ophthalmology Times",
+            "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPbHdlN1pFRHhxazgxN1dwTWVOY3B6Uk9tM1hqQ19KNDNOSlNkZE5RUk9qMVZtSDA2WWpfeWFlaDJCOHdlMWgta09FMnU0RkwwQ05fODRpbFpOUDgtNE0zcnJOMUN3b1AtNUk5TzRzdVNnMEdJb2ZjU09KNzRjcURfdU1ZbXE5aHRXMk9fUjNTSzFJT3ZrQVRIdzlIc0dvWXE1dWswUjAxTm5ISHBxSGctU1IxSW81a0FiLVowOGRFLVlUbHlORGdmVlhJRm4?oc=5",
+            "summary": "FDA issues complete response letter to Outlook Therapeutics for resubmitted BLA for ONS-5010  Ophthalmology Times",
+            "created": "2025-09-07T17:36:52.924Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-hgh1ytceq",
+            "company": "FDA issues complete response letter to Outlook Therapeutics for resubmitted BLA for ONS",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-28T07:00:00.000Z",
+            "title": "FDA issues complete response letter to Outlook Therapeutics for resubmitted BLA for ONS-5010 - Ophthalmology Times",
+            "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPbHdlN1pFRHhxazgxN1dwTWVOY3B6Uk9tM1hqQ19KNDNOSlNkZE5RUk9qMVZtSDA2WWpfeWFlaDJCOHdlMWgta09FMnU0RkwwQ05fODRpbFpOUDgtNE0zcnJOMUN3b1AtNUk5TzRzdVNnMEdJb2ZjU09KNzRjcURfdU1ZbXE5aHRXMk9fUjNTSzFJT3ZrQVRIdzlIc0dvWXE1dWswUjAxTm5ISHBxSGctU1IxSW81a0FiLVowOGRFLVlUbHlORGdmVlhJRm4?oc=5",
+            "summary": "FDA issues complete response letter to Outlook Therapeutics for resubmitted BLA for ONS-5010  Ophthalmology Times",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-bmd0repiq",
+            "company": "FDA issues complete response letter to Outlook Therapeutics for resubmitted BLA for ONS",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-28T07:00:00.000Z",
+            "title": "FDA issues complete response letter to Outlook Therapeutics for resubmitted BLA for ONS-5010 - Ophthalmology Times",
+            "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPbHdlN1pFRHhxazgxN1dwTWVOY3B6Uk9tM1hqQ19KNDNOSlNkZE5RUk9qMVZtSDA2WWpfeWFlaDJCOHdlMWgta09FMnU0RkwwQ05fODRpbFpOUDgtNE0zcnJOMUN3b1AtNUk5TzRzdVNnMEdJb2ZjU09KNzRjcURfdU1ZbXE5aHRXMk9fUjNTSzFJT3ZrQVRIdzlIc0dvWXE1dWswUjAxTm5ISHBxSGctU1IxSW81a0FiLVowOGRFLVlUbHlORGdmVlhJRm4?oc=5",
+            "summary": "FDA issues complete response letter to Outlook Therapeutics for resubmitted BLA for ONS-5010  Ophthalmology Times",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-r54sw0ao2",
+            "company": "FDA issues complete response letter to Outlook Therapeutics for resubmitted BLA for ONS",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-08-28T07:00:00.000Z",
+            "title": "FDA issues complete response letter to Outlook Therapeutics for resubmitted BLA for ONS-5010 - Ophthalmology Times",
+            "link": "https://news.google.com/rss/articles/CBMizAFBVV95cUxPbHdlN1pFRHhxazgxN1dwTWVOY3B6Uk9tM1hqQ19KNDNOSlNkZE5RUk9qMVZtSDA2WWpfeWFlaDJCOHdlMWgta09FMnU0RkwwQ05fODRpbFpOUDgtNE0zcnJOMUN3b1AtNUk5TzRzdVNnMEdJb2ZjU09KNzRjcURfdU1ZbXE5aHRXMk9fUjNTSzFJT3ZrQVRIdzlIc0dvWXE1dWswUjAxTm5ISHBxSGctU1IxSW81a0FiLVowOGRFLVlUbHlORGdmVlhJRm4?oc=5",
+            "summary": "FDA issues complete response letter to Outlook Therapeutics for resubmitted BLA for ONS-5010  Ophthalmology Times",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "FDA Releases Complete Response Letter on Declining MDMA": [
+          {
+            "id": "alert-high-1757266612924-ptqarl671",
+            "company": "FDA Releases Complete Response Letter on Declining MDMA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-05T18:56:15.000Z",
+            "title": "FDA Releases Complete Response Letter on Declining MDMA-Assisted Therapy for PTSD - Psychiatric Times",
+            "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOZHRsazkyS0JNOFlrbU1kTHBZYkxkZlR6Y05vMlFwRGZYVHdFR1RoM1ppc0dRd0ZaWFZ5YmU5Vi03Mi03cE5aWHlPc1R0aDNmUmZJZXFyQ3pmWmszUkpremFMNWljNTdmQVZWLWlhbU5JM3hfT3ZJOWstUVFjamlBWTIxZUdYUUd4WFNQNWttNVlJcXVCbGhNRmNFaC1KR05NQXZlQXNWMmZ5SzBTVUR0VTJIUzBiOVMxNWZF?oc=5",
+            "summary": "FDA Releases Complete Response Letter on Declining MDMA-Assisted Therapy for PTSD  Psychiatric Times",
+            "created": "2025-09-07T17:36:52.924Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-a4pqojsc9",
+            "company": "FDA Releases Complete Response Letter on Declining MDMA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-05T18:56:15.000Z",
+            "title": "FDA Releases Complete Response Letter on Declining MDMA-Assisted Therapy for PTSD - Psychiatric Times",
+            "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOZHRsazkyS0JNOFlrbU1kTHBZYkxkZlR6Y05vMlFwRGZYVHdFR1RoM1ppc0dRd0ZaWFZ5YmU5Vi03Mi03cE5aWHlPc1R0aDNmUmZJZXFyQ3pmWmszUkpremFMNWljNTdmQVZWLWlhbU5JM3hfT3ZJOWstUVFjamlBWTIxZUdYUUd4WFNQNWttNVlJcXVCbGhNRmNFaC1KR05NQXZlQXNWMmZ5SzBTVUR0VTJIUzBiOVMxNWZF?oc=5",
+            "summary": "FDA Releases Complete Response Letter on Declining MDMA-Assisted Therapy for PTSD  Psychiatric Times",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-42ttubnc6",
+            "company": "FDA Releases Complete Response Letter on Declining MDMA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-05T18:56:15.000Z",
+            "title": "FDA Releases Complete Response Letter on Declining MDMA-Assisted Therapy for PTSD - Psychiatric Times",
+            "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOZHRsazkyS0JNOFlrbU1kTHBZYkxkZlR6Y05vMlFwRGZYVHdFR1RoM1ppc0dRd0ZaWFZ5YmU5Vi03Mi03cE5aWHlPc1R0aDNmUmZJZXFyQ3pmWmszUkpremFMNWljNTdmQVZWLWlhbU5JM3hfT3ZJOWstUVFjamlBWTIxZUdYUUd4WFNQNWttNVlJcXVCbGhNRmNFaC1KR05NQXZlQXNWMmZ5SzBTVUR0VTJIUzBiOVMxNWZF?oc=5",
+            "summary": "FDA Releases Complete Response Letter on Declining MDMA-Assisted Therapy for PTSD  Psychiatric Times",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-cyawtg00i",
+            "company": "FDA Releases Complete Response Letter on Declining MDMA",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-05T18:56:15.000Z",
+            "title": "FDA Releases Complete Response Letter on Declining MDMA-Assisted Therapy for PTSD - Psychiatric Times",
+            "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxOZHRsazkyS0JNOFlrbU1kTHBZYkxkZlR6Y05vMlFwRGZYVHdFR1RoM1ppc0dRd0ZaWFZ5YmU5Vi03Mi03cE5aWHlPc1R0aDNmUmZJZXFyQ3pmWmszUkpremFMNWljNTdmQVZWLWlhbU5JM3hfT3ZJOWstUVFjamlBWTIxZUdYUUd4WFNQNWttNVlJcXVCbGhNRmNFaC1KR05NQXZlQXNWMmZ5SzBTVUR0VTJIUzBiOVMxNWZF?oc=5",
+            "summary": "FDA Releases Complete Response Letter on Declining MDMA-Assisted Therapy for PTSD  Psychiatric Times",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "BREAKING": [
+          {
+            "id": "alert-high-1757266612924-k92xvhelr",
+            "company": "BREAKING",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-05T13:49:44.000Z",
+            "title": "BREAKING: FDA Publishes Lykos Therapeutics’ MDMA Complete Response Letter (CRL) - Psychedelic Alpha",
+            "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPLTd0czdNWWo3UkdpTTNsT2FLUmZpVTlWZFBjUU9oRkRwMjFQdGcyZ2pPUmRuQkNkM0M1ZjBocTBFVWtvaTR3ZUVlYU1odjBtbF93dXJEbGI1dnVWM0k3TUJkdHlPYktNRlRSLXpuZXBnY0czZjdtcnZtYXBEWXJkQnZHTjRQYjhqZjZzS2M2RnFlNTF3c3Jzc1VneklDVTVsakhEcS16ZUU5RWhBbUE?oc=5",
+            "summary": "BREAKING: FDA Publishes Lykos Therapeutics’ MDMA Complete Response Letter (CRL)  Psychedelic Alpha",
+            "created": "2025-09-07T17:36:52.924Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-qxsojraep",
+            "company": "BREAKING",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-05T13:49:44.000Z",
+            "title": "BREAKING: FDA Publishes Lykos Therapeutics’ MDMA Complete Response Letter (CRL) - Psychedelic Alpha",
+            "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPLTd0czdNWWo3UkdpTTNsT2FLUmZpVTlWZFBjUU9oRkRwMjFQdGcyZ2pPUmRuQkNkM0M1ZjBocTBFVWtvaTR3ZUVlYU1odjBtbF93dXJEbGI1dnVWM0k3TUJkdHlPYktNRlRSLXpuZXBnY0czZjdtcnZtYXBEWXJkQnZHTjRQYjhqZjZzS2M2RnFlNTF3c3Jzc1VneklDVTVsakhEcS16ZUU5RWhBbUE?oc=5",
+            "summary": "BREAKING: FDA Publishes Lykos Therapeutics’ MDMA Complete Response Letter (CRL)  Psychedelic Alpha",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-esrdo01zk",
+            "company": "BREAKING",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-05T13:49:44.000Z",
+            "title": "BREAKING: FDA Publishes Lykos Therapeutics’ MDMA Complete Response Letter (CRL) - Psychedelic Alpha",
+            "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPLTd0czdNWWo3UkdpTTNsT2FLUmZpVTlWZFBjUU9oRkRwMjFQdGcyZ2pPUmRuQkNkM0M1ZjBocTBFVWtvaTR3ZUVlYU1odjBtbF93dXJEbGI1dnVWM0k3TUJkdHlPYktNRlRSLXpuZXBnY0czZjdtcnZtYXBEWXJkQnZHTjRQYjhqZjZzS2M2RnFlNTF3c3Jzc1VneklDVTVsakhEcS16ZUU5RWhBbUE?oc=5",
+            "summary": "BREAKING: FDA Publishes Lykos Therapeutics’ MDMA Complete Response Letter (CRL)  Psychedelic Alpha",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-ft8hv0ny7",
+            "company": "BREAKING",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-05T13:49:44.000Z",
+            "title": "BREAKING: FDA Publishes Lykos Therapeutics’ MDMA Complete Response Letter (CRL) - Psychedelic Alpha",
+            "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPLTd0czdNWWo3UkdpTTNsT2FLUmZpVTlWZFBjUU9oRkRwMjFQdGcyZ2pPUmRuQkNkM0M1ZjBocTBFVWtvaTR3ZUVlYU1odjBtbF93dXJEbGI1dnVWM0k3TUJkdHlPYktNRlRSLXpuZXBnY0czZjdtcnZtYXBEWXJkQnZHTjRQYjhqZjZzS2M2RnFlNTF3c3Jzc1VneklDVTVsakhEcS16ZUU5RWhBbUE?oc=5",
+            "summary": "BREAKING: FDA Publishes Lykos Therapeutics’ MDMA Complete Response Letter (CRL)  Psychedelic Alpha",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ],
+        "FDA Announces Real": [
+          {
+            "id": "alert-high-1757266612919-w3h5o988l",
+            "company": "FDA Announces Real",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-04T13:23:32.000Z",
+            "title": "FDA Announces Real-Time Release of Complete Response Letters, Posts Previously Unpublished Batch of 89",
+            "link": "http://www.fda.gov/news-events/press-announcements/fda-announces-real-time-release-complete-response-letters-posts-previously-unpublished-batch-89",
+            "summary": "The U.S. Food and Drug Administration today announced that it will release future complete response letters (CRLs) promptly after they are issued to sponsors.",
+            "created": "2025-09-07T17:36:52.919Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257806501-4ni48tmji",
+            "company": "FDA Announces Real",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-04T13:23:32.000Z",
+            "title": "FDA Announces Real-Time Release of Complete Response Letters, Posts Previously Unpublished Batch of 89",
+            "link": "http://www.fda.gov/news-events/press-announcements/fda-announces-real-time-release-complete-response-letters-posts-previously-unpublished-batch-89",
+            "summary": "The U.S. Food and Drug Administration today announced that it will release future complete response letters (CRLs) promptly after they are issued to sponsors.",
+            "created": "2025-09-07T15:10:06.501Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757257201780-f7jwyasfm",
+            "company": "FDA Announces Real",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-04T13:23:32.000Z",
+            "title": "FDA Announces Real-Time Release of Complete Response Letters, Posts Previously Unpublished Batch of 89",
+            "link": "http://www.fda.gov/news-events/press-announcements/fda-announces-real-time-release-complete-response-letters-posts-previously-unpublished-batch-89",
+            "summary": "The U.S. Food and Drug Administration today announced that it will release future complete response letters (CRLs) promptly after they are issued to sponsors.",
+            "created": "2025-09-07T15:00:01.780Z",
+            "high_severity": true
+          },
+          {
+            "id": "alert-high-1757256367396-4jzpq11o7",
+            "company": "FDA Announces Real",
+            "type": "crl",
+            "severity": 9,
+            "date": "2025-09-04T13:23:32.000Z",
+            "title": "FDA Announces Real-Time Release of Complete Response Letters, Posts Previously Unpublished Batch of 89",
+            "link": "http://www.fda.gov/news-events/press-announcements/fda-announces-real-time-release-complete-response-letters-posts-previously-unpublished-batch-89",
+            "summary": "The U.S. Food and Drug Administration today announced that it will release future complete response letters (CRLs) promptly after they are issued to sponsors.",
+            "created": "2025-09-07T14:46:07.396Z",
+            "high_severity": true
+          }
+        ]
+      },
+      "hotspots": [
+        {
+          "company": "Unknown",
+          "count": 41,
+          "types": [
+            "form_483",
+            "regulatory_news",
+            "crl"
+          ]
+        },
+        {
+          "company": "kidney cancer",
+          "count": 2,
+          "types": [
+            "regulatory_news"
+          ]
+        }
+      ],
+      "escalating": [],
+      "repeat_offenders": [
+        {
+          "company": "Unknown",
+          "total_violations": 50,
+          "types": [
+            "form_483",
+            "regulatory_news",
+            "crl"
+          ],
+          "risk_score": 100
+        }
+      ]
+    },
+    "recommendations": [
+      {
+        "title": "High Severity Alert Spike",
+        "description": "192 high-severity alerts this period. Review for industry-wide compliance trends."
+      }
+    ],
+    "generated": "2025-09-07T17:46:46.463Z"
+  }
+]

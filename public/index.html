@@ -3,313 +3,2591 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FDA Warning Letters</title>
+    <title>FDA Regulatory Intelligence Platform v5.0</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/moment@2.29.4/moment.min.js"></script>
     <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
+        
         * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
         }
         
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f5f5f5;
-            padding: 20px;
+        /* Professional gradient backgrounds */
+        .gradient-primary {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
         }
         
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
+        .gradient-success {
+            background: linear-gradient(135deg, #84fab0 0%, #8fd3f4 100%);
         }
         
-        header {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        .gradient-danger {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
         }
         
-        h1 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 10px;
+        .gradient-warning {
+            background: linear-gradient(135deg, #fa709a 0%, #fee140 100%);
         }
         
-        .stats {
-            display: flex;
-            gap: 20px;
-            margin: 20px 0;
+        .gradient-info {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
         }
         
-        .stat-card {
-            background: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            flex: 1;
+        /* Glass morphism effects */
+        .glass {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
         }
         
-        .stat-number {
-            font-size: 32px;
-            font-weight: bold;
-            color: #2563eb;
+        .glass-dark {
+            background: rgba(31, 41, 55, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
         
-        .stat-label {
-            font-size: 14px;
-            color: #666;
-            margin-top: 5px;
+        /* Professional animations */
+        @keyframes slideInUp {
+            from {
+                transform: translateY(30px);
+                opacity: 0;
+            }
+            to {
+                transform: translateY(0);
+                opacity: 1;
+            }
         }
         
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            margin: 20px 0;
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
-        button {
-            background: #2563eb;
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
+        }
+        
+        .animate-slide-up {
+            animation: slideInUp 0.3s ease-out;
+        }
+        
+        .animate-fade {
+            animation: fadeIn 0.3s ease-out;
+        }
+        
+        .animate-pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        
+        /* Professional table styling */
+        .data-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+        }
+        
+        .data-table thead {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
         }
         
-        button:hover {
-            background: #1d4ed8;
-        }
-        
-        select {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 14px;
-        }
-        
-        .letters-container {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .letter-item {
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-        }
-        
-        .letter-item:last-child {
-            border-bottom: none;
-        }
-        
-        .letter-item:hover {
-            background: #f9fafb;
-        }
-        
-        .letter-info {
-            flex: 1;
-        }
-        
-        .letter-title {
-            font-size: 16px;
-            color: #111;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-        
-        .letter-company {
-            color: #2563eb;
+        .data-table thead th {
+            padding: 16px;
+            text-align: left;
             font-weight: 600;
+            text-transform: uppercase;
+            font-size: 12px;
+            letter-spacing: 0.05em;
         }
         
-        .letter-meta {
-            font-size: 13px;
-            color: #666;
+        .data-table tbody tr {
+            background: white;
+            border-bottom: 1px solid #e5e7eb;
+            transition: all 0.2s ease;
         }
         
-        .letter-link {
-            background: #eff6ff;
-            color: #2563eb;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 6px;
+        .data-table tbody tr:hover {
+            background: #f9fafb;
+            transform: translateX(4px);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+        }
+        
+        .data-table tbody td {
+            padding: 16px;
             font-size: 14px;
-            font-weight: 500;
+        }
+        
+        /* Severity indicators */
+        .severity-critical {
+            background: linear-gradient(135deg, #ef4444 0%, #dc2626 100%);
+            color: white;
+        }
+        
+        .severity-high {
+            background: linear-gradient(135deg, #f97316 0%, #ea580c 100%);
+            color: white;
+        }
+        
+        .severity-medium {
+            background: linear-gradient(135deg, #eab308 0%, #ca8a04 100%);
+            color: white;
+        }
+        
+        .severity-low {
+            background: linear-gradient(135deg, #22c55e 0%, #16a34a 100%);
+            color: white;
+        }
+        
+        /* Card hover effects */
+        .card-hover {
+            transition: all 0.3s ease;
+        }
+        
+        .card-hover:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+        }
+        
+        /* Professional loader */
+        .loader {
+            width: 40px;
+            height: 40px;
+            border: 3px solid #f3f4f6;
+            border-top: 3px solid #6366f1;
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        /* Modal backdrop */
+        .modal-backdrop {
+            background: rgba(0, 0, 0, 0.6);
+            backdrop-filter: blur(8px);
+        }
+        
+        /* Custom scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #f1f1f1;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+        }
+        
+        /* Badge animations */
+        .badge-glow {
+            box-shadow: 0 0 0 0 rgba(236, 72, 153, 1);
+            animation: badge-pulse 2s infinite;
+        }
+        
+        @keyframes badge-pulse {
+            0% {
+                box-shadow: 0 0 0 0 rgba(236, 72, 153, 0.7);
+            }
+            70% {
+                box-shadow: 0 0 0 10px rgba(236, 72, 153, 0);
+            }
+            100% {
+                box-shadow: 0 0 0 0 rgba(236, 72, 153, 0);
+            }
+        }
+        
+        /* Professional tooltips */
+        .tooltip {
+            position: relative;
+        }
+        
+        .tooltip .tooltip-text {
+            visibility: hidden;
+            background: #1f2937;
+            color: white;
+            text-align: center;
+            border-radius: 6px;
+            padding: 8px 12px;
+            position: absolute;
+            z-index: 1000;
+            bottom: 125%;
+            left: 50%;
+            transform: translateX(-50%);
             white-space: nowrap;
+            font-size: 12px;
+            opacity: 0;
+            transition: opacity 0.3s;
         }
         
-        .letter-link:hover {
-            background: #dbeafe;
+        .tooltip:hover .tooltip-text {
+            visibility: visible;
+            opacity: 1;
         }
         
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #666;
+        /* Tab styling */
+        .tab-active {
+            border-bottom: 3px solid #6366f1;
+            color: #6366f1;
         }
         
-        .error {
-            background: #fee2e2;
-            color: #991b1b;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 20px 0;
+        /* Chart container responsive */
+        .chart-container {
+            position: relative;
+            height: 300px;
+            width: 100%;
         }
         
-        .empty {
-            text-align: center;
-            padding: 40px;
-            color: #666;
+        /* Type badge styles from rss.html */
+        .type-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 4px;
         }
         
-        #status {
-            font-size: 14px;
-            color: #666;
+        /* Loading spinner */
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3b82f6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        
+        /* Notification toast */
+        .notification-toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 9999;
+            animation: slideIn 0.3s ease-out;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(400px); }
+            to { transform: translateX(0); }
         }
     </style>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1>FDA Warning Letters Monitor</h1>
-            <div id="status">Loading...</div>
-        </header>
+<body class="bg-gray-50">
+    <!-- Toast Notification -->
+    <div id="toast" class="notification-toast"></div>
 
-        <div class="stats">
-            <div class="stat-card">
-                <div class="stat-number" id="total">0</div>
-                <div class="stat-label">Total Found</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="last24h">0</div>
-                <div class="stat-label">Last 24 Hours</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="last7days">0</div>
-                <div class="stat-label">Last 7 Days</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="last30days">0</div>
-                <div class="stat-label">Last 30 Days</div>
+    <!-- Professional Header -->
+    <header class="gradient-primary text-white shadow-lg">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div class="flex items-center space-x-4">
+                    <div class="bg-white/20 p-2 rounded-lg">
+                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
+                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
+                        </svg>
+                    </div>
+                    <div>
+                        <h1 class="text-2xl font-bold">FDA Regulatory Intelligence Platform</h1>
+                        <p class="text-white/80 text-sm">Real-time Monitoring • AI-Powered Analysis • Instant Alerts</p>
+                    </div>
+                </div>
+                <div class="flex items-center space-x-3">
+                    <div id="connection-status" class="flex items-center space-x-2 bg-white/20 px-3 py-1 rounded-full">
+                        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                        <span class="text-sm">Live</span>
+                        <span id="last-updated" class="text-xs opacity-75"></span>
+                    </div>
+                    <button onclick="openNotifications()" class="relative bg-white/20 p-2 rounded-lg hover:bg-white/30 transition">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                        </svg>
+                        <span id="notification-badge" class="hidden absolute -top-1 -right-1 bg-red-500 text-white text-xs rounded-full w-5 h-5 flex items-center justify-center">0</span>
+                    </button>
+                    <button onclick="openSettings()" class="bg-white/20 px-4 py-2 rounded-lg hover:bg-white/30 transition flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/>
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        </svg>
+                        <span>Settings</span>
+                    </button>
+                </div>
             </div>
         </div>
+    </header>
 
-        <div class="controls">
-            <button onclick="refresh()">🔄 Refresh Data</button>
-            <select id="timeframe" onchange="loadLetters()">
-                <option value="7">Last 7 days</option>
-                <option value="30" selected>Last 30 days</option>
-                <option value="60">Last 60 days</option>
-                <option value="90">Last 90 days</option>
-                <option value="365">Last year</option>
-            </select>
-            <span id="resultCount" style="margin-left: auto; color: #666; font-size: 14px;"></span>
-        </div>
-
-        <div class="letters-container">
-            <div id="lettersList" class="loading">Loading warning letters...</div>
+    <!-- Tutorial Banner (Dismissible) -->
+    <div id="tutorial-banner" class="bg-indigo-600 text-white px-4 py-3">
+        <div class="max-w-7xl mx-auto flex items-center justify-between">
+            <div class="flex items-center space-x-2">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+                <span class="text-sm">Welcome! Click on any row to see details. Use AI Enhance for comprehensive analysis. Configure notifications in Settings.</span>
+            </div>
+            <button onclick="dismissTutorial()" class="text-white/80 hover:text-white">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
         </div>
     </div>
 
-    <script>
-        let currentLetters = [];
+    <!-- Main Dashboard -->
+    <div class="max-w-7xl mx-auto px-4 py-6">
+        <!-- Key Metrics Dashboard -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
+            <!-- Total Items Card -->
+            <div class="bg-white rounded-xl shadow-lg card-hover overflow-hidden">
+                <div class="gradient-info p-1"></div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <div>
+                            <p class="text-gray-600 text-sm font-medium">Total Items (30d)</p>
+                            <p class="text-3xl font-bold text-gray-900" id="stat-total">-</p>
+                        </div>
+                        <div class="bg-blue-100 p-3 rounded-lg">
+                            <svg class="w-8 h-8 text-blue-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-sm">
+                        <span class="text-green-600 font-semibold" id="stat-total-change">↑ 0</span>
+                        <span class="text-gray-500 ml-2">new today</span>
+                    </div>
+                </div>
+            </div>
 
-        // Load data on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            loadStats();
-            loadLetters();
-        });
+            <!-- Warning Letters Card -->
+            <div class="bg-white rounded-xl shadow-lg card-hover overflow-hidden">
+                <div class="gradient-danger p-1"></div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <div>
+                            <p class="text-gray-600 text-sm font-medium">Warning Letters</p>
+                            <p class="text-3xl font-bold text-gray-900" id="stat-warning">-</p>
+                        </div>
+                        <div class="bg-red-100 p-3 rounded-lg">
+                            <svg class="w-8 h-8 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-sm">
+                        <span class="text-red-600 font-semibold" id="stat-warning-change">0</span>
+                        <span class="text-gray-500 ml-2">this week</span>
+                    </div>
+                </div>
+            </div>
 
-        async function loadStats() {
-            try {
-                const response = await fetch('/api/stats');
-                const stats = await response.json();
+            <!-- Form 483s Card -->
+            <div class="bg-white rounded-xl shadow-lg card-hover overflow-hidden">
+                <div class="gradient-warning p-1"></div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <div>
+                            <p class="text-gray-600 text-sm font-medium">Form 483s</p>
+                            <p class="text-3xl font-bold text-gray-900" id="stat-483">-</p>
+                        </div>
+                        <div class="bg-orange-100 p-3 rounded-lg">
+                            <svg class="w-8 h-8 text-orange-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-sm">
+                        <span class="text-orange-600 font-semibold" id="stat-483-change">0</span>
+                        <span class="text-gray-500 ml-2">this week</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Companies Tracked Card -->
+            <div class="bg-white rounded-xl shadow-lg card-hover overflow-hidden">
+                <div class="gradient-success p-1"></div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <div>
+                            <p class="text-gray-600 text-sm font-medium">Companies</p>
+                            <p class="text-3xl font-bold text-gray-900" id="stat-companies">-</p>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-lg">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <div class="flex items-center text-sm">
+                        <span class="text-green-600 font-semibold" id="stat-companies-change">0</span>
+                        <span class="text-gray-500 ml-2">unique companies</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Advanced Filters -->
+        <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
+            <div class="flex items-center justify-between mb-4">
+                <h2 class="text-lg font-semibold text-gray-900">Advanced Filters</h2>
+                <button onclick="resetFilters()" class="text-sm text-gray-600 hover:text-gray-900 transition">
+                    Reset All
+                </button>
+            </div>
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4">
+                <select id="filter-source" onchange="applyFilters()" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                    <option value="">All Sources</option>
+                    <option value="official">FDA Official</option>
+                    <option value="trade">Trade Press</option>
+                    <option value="google">Google News</option>
+                    <option value="sec">SEC Filings</option>
+                </select>
                 
-                document.getElementById('total').textContent = stats.total || 0;
-                document.getElementById('last24h').textContent = stats.last24h || 0;
-                document.getElementById('last7days').textContent = stats.last7days || 0;
-                document.getElementById('last30days').textContent = stats.last30days || 0;
-            } catch (error) {
-                console.error('Error loading stats:', error);
-            }
-        }
-
-        async function loadLetters() {
-            const container = document.getElementById('lettersList');
-            container.innerHTML = '<div class="loading">Loading...</div>';
+                <select id="filter-type" onchange="applyFilters()" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                    <option value="">All Types</option>
+                    <option value="warning_letter">Warning Letters</option>
+                    <option value="form_483">Form 483s</option>
+                    <option value="crl">Complete Response Letters</option>
+                    <option value="opdp">OPDP Letters</option>
+                    <option value="import_alert">Import Alerts</option>
+                    <option value="consent_decree">Consent Decrees</option>
+                    <option value="recall">Recalls</option>
+                    <option value="clinical_hold">Clinical Holds</option>
+                </select>
+                
+                <select id="filter-severity" onchange="applyFilters()" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                    <option value="">All Severities</option>
+                    <option value="9">Critical (9+)</option>
+                    <option value="7">High (7+)</option>
+                    <option value="5">Medium (5+)</option>
+                    <option value="0">All</option>
+                </select>
+                
+                <select id="filter-days" onchange="applyFilters()" class="px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+                    <option value="7">Last 7 Days</option>
+                    <option value="14">Last 14 Days</option>
+                    <option value="30" selected>Last 30 Days</option>
+                </select>
+                
+                <div class="relative">
+                    <input type="text" id="search-input" placeholder="Search companies..." 
+                           class="w-full px-4 py-2 pl-10 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500"
+                           onkeyup="searchItems(event)">
+                    <svg class="absolute left-3 top-2.5 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+                    </svg>
+                </div>
+            </div>
             
-            try {
-                const days = document.getElementById('timeframe').value;
-                const response = await fetch(`/api/letters?days=${days}`);
-                const data = await response.json();
+            <!-- Quick Action Buttons -->
+            <div class="flex flex-wrap gap-2 mt-4">
+                <button onclick="viewByCompany()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition flex items-center space-x-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                    </svg>
+                    <span>View by Company</span>
+                </button>
+                <button onclick="openAnalytics()" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition flex items-center space-x-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/>
+                    </svg>
+                    <span>Analytics</span>
+                </button>
+                <button onclick="exportData()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition flex items-center space-x-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                    </svg>
+                    <span>Export</span>
+                </button>
+                <button onclick="refreshData()" id="refresh-btn" class="px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 transition flex items-center space-x-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                    </svg>
+                    <span>Refresh</span>
+                </button>
+            </div>
+        </div>
+
+        <!-- Data Visualization Row -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
+            <!-- Trend Chart -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Violation Trends (Last 30 Days)</h3>
+                <div class="chart-container">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+            
+            <!-- Type Distribution -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Type Distribution</h3>
+                <div class="chart-container">
+                    <canvas id="typeChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Data Table -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            <div class="gradient-primary px-6 py-4 flex justify-between items-center">
+                <h2 class="text-xl font-semibold text-white">Regulatory Actions</h2>
+                <div class="text-white text-sm">
+                    <span id="items-count">0</span> items found
+                </div>
+            </div>
+            <div class="overflow-x-auto">
+                <table class="data-table">
+                    <thead>
+                        <tr>
+                            <th onclick="sortTable('date')" class="cursor-pointer">Date ↓</th>
+                            <th onclick="sortTable('company')" class="cursor-pointer">Company</th>
+                            <th>Type</th>
+                            <th onclick="sortTable('severity')" class="cursor-pointer">Severity</th>
+                            <th>Title</th>
+                            <th>Source</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="items-tbody">
+                        <tr>
+                            <td colspan="7" class="text-center py-12">
+                                <div class="loader mx-auto mb-4"></div>
+                                <p class="text-gray-500">Loading regulatory data...</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <!-- Pagination -->
+            <div class="px-6 py-4 bg-gray-50 border-t flex items-center justify-between">
+                <div class="text-sm text-gray-700">
+                    Showing <span id="pagination-start">0</span> to <span id="pagination-end">0</span> of <span id="pagination-total">0</span> results
+                </div>
+                <div class="flex space-x-2">
+                    <button onclick="previousPage()" class="px-3 py-1 bg-white border rounded-lg hover:bg-gray-50 transition disabled:opacity-50 disabled:cursor-not-allowed" id="prev-btn" disabled>
+                        Previous
+                    </button>
+                    <div id="page-numbers" class="flex space-x-1">
+                        <!-- Page numbers will be inserted here -->
+                    </div>
+                    <button onclick="nextPage()" class="px-3 py-1 bg-white border rounded-lg hover:bg-gray-50 transition disabled:opacity-50 disabled:cursor-not-allowed" id="next-btn" disabled>
+                        Next
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Detail Modal -->
+    <div id="detail-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity modal-backdrop" onclick="closeDetailModal()">
+                <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
+            </div>
+            
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full animate-slide-up">
+                <div class="gradient-primary px-6 py-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-white" id="modal-title">Item Details</h3>
+                        <button onclick="closeDetailModal()" class="text-white hover:text-gray-200">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
                 
-                if (!data.success) {
-                    throw new Error(data.error || 'Failed to load letters');
-                }
-                
-                currentLetters = data.letters;
-                document.getElementById('status').textContent = `Last updated: ${new Date().toLocaleString()}`;
-                document.getElementById('resultCount').textContent = `Showing ${data.total} letters from last ${data.timeframe}`;
-                
-                if (currentLetters.length === 0) {
-                    container.innerHTML = '<div class="empty">No warning letters found in this timeframe</div>';
-                    return;
-                }
-                
-                container.innerHTML = currentLetters.map(letter => `
-                    <div class="letter-item">
-                        <div class="letter-info">
-                            <div class="letter-title">
-                                <span class="letter-company">${letter.company}</span>
-                            </div>
-                            <div class="letter-meta">
-                                ${letter.dateFormatted} • ${letter.source}
-                                ${letter.summary ? `<br><span style="color: #888; font-size: 12px;">${letter.summary.substring(0, 150)}...</span>` : ''}
+                <div class="bg-white px-6 pt-5 pb-4">
+                    <!-- Tabs -->
+                    <div class="border-b border-gray-200 mb-4">
+                        <nav class="-mb-px flex space-x-8">
+                            <button onclick="switchTab('details')" class="tab-btn py-2 px-1 border-b-2 font-medium text-sm tab-active" data-tab="details">
+                                Details
+                            </button>
+                            <button onclick="switchTab('company')" class="tab-btn py-2 px-1 border-b-2 font-medium text-sm" data-tab="company">
+                                Company Info
+                            </button>
+                            <button onclick="switchTab('contacts')" class="tab-btn py-2 px-1 border-b-2 font-medium text-sm" data-tab="contacts">
+                                Contacts
+                            </button>
+                            <button onclick="switchTab('ai')" class="tab-btn py-2 px-1 border-b-2 font-medium text-sm" data-tab="ai">
+                                AI Analysis
+                            </button>
+                        </nav>
+                    </div>
+                    
+                    <!-- Tab Content -->
+                    <div id="tab-content" class="space-y-4 max-h-96 overflow-y-auto">
+                        <!-- Details Tab -->
+                        <div id="details-tab" class="tab-panel">
+                            <div id="details-content">
+                                <!-- Details will be inserted here -->
                             </div>
                         </div>
-                        <a href="${letter.link}" target="_blank" class="letter-link">
-                            View Letter →
-                        </a>
+                        
+                        <!-- Company Tab -->
+                        <div id="company-tab" class="tab-panel hidden">
+                            <div id="company-content">
+                                <div class="text-center py-8">
+                                    <div class="loader mx-auto mb-4"></div>
+                                    <p class="text-gray-500">Loading company information...</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Contacts Tab -->
+                        <div id="contacts-tab" class="tab-panel hidden">
+                            <div id="contacts-content">
+                                <div class="text-center py-8">
+                                    <div class="loader mx-auto mb-4"></div>
+                                    <p class="text-gray-500">Searching for contacts...</p>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- AI Analysis Tab -->
+                        <div id="ai-tab" class="tab-panel hidden">
+                            <div id="ai-content">
+                                <div class="text-center py-8">
+                                    <p class="text-gray-500">Click "AI Enhance" to generate analysis</p>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                `).join('');
+                </div>
                 
-            } catch (error) {
-                console.error('Error:', error);
-                container.innerHTML = `<div class="error">Error loading letters: ${error.message}</div>`;
-                document.getElementById('status').textContent = 'Error loading data';
-            }
-        }
+                <div class="bg-gray-50 px-6 py-3 flex justify-between">
+                    <div class="flex space-x-2">
+                        <button onclick="aiEnhance()" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition flex items-center space-x-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                            </svg>
+                            <span>AI Enhance</span>
+                        </button>
+                        <button onclick="getCompanyInfo()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition flex items-center space-x-2">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                            </svg>
+                            <span>Get Company Info</span>
+                        </button>
+                    </div>
+                    <button onclick="exportModalToEmail()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition flex items-center space-x-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                        </svg>
+                        <span>Export to Email</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
 
-        async function refresh() {
-            const btn = event.target;
-            btn.disabled = true;
-            btn.textContent = '⏳ Refreshing...';
+    <!-- Company View Modal -->
+    <div id="company-view-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity modal-backdrop" onclick="closeCompanyView()">
+                <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
+            </div>
             
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-6xl sm:w-full animate-slide-up">
+                <div class="gradient-primary px-6 py-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-white">Company View</h3>
+                        <button onclick="closeCompanyView()" class="text-white hover:text-gray-200">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-white px-6 pt-5 pb-4">
+                    <div id="company-view-content" class="space-y-6">
+                        <!-- Company view content will be inserted here -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Modal -->
+    <div id="settings-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+        <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+            <div class="fixed inset-0 transition-opacity modal-backdrop" onclick="closeSettings()">
+                <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
+            </div>
+            
+            <div class="inline-block align-bottom bg-white rounded-lg text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-2xl sm:w-full animate-slide-up">
+                <div class="gradient-primary px-6 py-4">
+                    <div class="flex justify-between items-center">
+                        <h3 class="text-lg font-semibold text-white">Settings & Notifications</h3>
+                        <button onclick="closeSettings()" class="text-white hover:text-gray-200">
+                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+                
+                <div class="bg-white px-6 pt-5 pb-4">
+                    <div class="space-y-6">
+                        <!-- User Information -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-3">User Information</h4>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Email</label>
+                                    <input type="email" id="settings-email" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" placeholder="your@email.com">
+                                </div>
+                                <div>
+                                    <label class="block text-sm font-medium text-gray-700 mb-1">Timezone</label>
+                                    <select id="settings-timezone" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500">
+                                        <option value="Europe/London">Europe/London</option>
+                                        <option value="America/New_York">America/New York</option>
+                                        <option value="America/Chicago">America/Chicago</option>
+                                        <option value="America/Los_Angeles">America/Los Angeles</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Notification Preferences -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-3">Notification Preferences</h4>
+                            <div class="space-y-3">
+                                <label class="flex items-center">
+                                    <input type="checkbox" id="settings-instant" class="rounded text-indigo-600 focus:ring-indigo-500">
+                                    <span class="ml-2">Instant notifications for new items</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" id="settings-weekly" class="rounded text-indigo-600 focus:ring-indigo-500">
+                                    <span class="ml-2">Weekly digest</span>
+                                </label>
+                                <div class="ml-6 grid grid-cols-2 gap-4">
+                                    <div>
+                                        <label class="block text-sm text-gray-600 mb-1">Day of Week</label>
+                                        <select id="settings-digest-day" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                                            <option value="1">Monday</option>
+                                            <option value="2">Tuesday</option>
+                                            <option value="3">Wednesday</option>
+                                            <option value="4">Thursday</option>
+                                            <option value="5">Friday</option>
+                                        </select>
+                                    </div>
+                                    <div>
+                                        <label class="block text-sm text-gray-600 mb-1">Time</label>
+                                        <select id="settings-digest-hour" class="w-full px-3 py-2 border border-gray-300 rounded-lg text-sm">
+                                            <option value="9">9:00 AM</option>
+                                            <option value="12">12:00 PM</option>
+                                            <option value="17">5:00 PM</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Report Recipients -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-3">Report Recipients</h4>
+                            <div class="space-y-2">
+                                <textarea id="settings-report-emails" rows="3" class="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-indigo-500" placeholder="Enter email addresses (one per line)"></textarea>
+                                <p class="text-sm text-gray-600">These emails will receive reports and exports</p>
+                            </div>
+                        </div>
+                        
+                        <!-- Watched Companies -->
+                        <div>
+                            <h4 class="text-lg font-semibold text-gray-900 mb-3">Watched Companies</h4>
+                            <div id="watched-companies-list" class="space-y-2 max-h-40 overflow-y-auto">
+                                <!-- Watched companies will be listed here -->
+                            </div>
+                            <div class="mt-3 flex space-x-2">
+                                <input type="text" id="add-watched-company" class="flex-1 px-3 py-2 border border-gray-300 rounded-lg" placeholder="Company name">
+                                <button onclick="addWatchedCompany()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">Add</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="bg-gray-50 px-6 py-3 flex justify-between">
+                    <button onclick="sendDigestNow()" class="px-4 py-2 bg-purple-600 text-white rounded-lg hover:bg-purple-700 transition">
+                        Send Digest Now
+                    </button>
+                    <button onclick="saveSettings()" class="px-4 py-2 bg-green-600 text-white rounded-lg hover:bg-green-700 transition">
+                        Save Settings
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- JavaScript -->
+    <script>
+        // Global variables
+        let allItems = [];
+        let filteredItems = [];
+        let currentPage = 1;
+        const itemsPerPage = 20;
+        let currentItem = null;
+        let currentSort = { column: 'date', order: 'desc' };
+        let trendChart = null;
+        let typeChart = null;
+        let userSettings = {
+            email: localStorage.getItem('userEmail') || '',
+            notificationPrefs: {
+                instant: true,
+                weekly: true
+            },
+            digestDayOfWeek: 1,
+            digestHour: 9,
+            timezone: 'Europe/London',
+            reportEmails: [],
+            watchedCompanies: []
+        };
+
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            console.log('Initializing FDA Dashboard...');
+            
+            // Check for tutorial
+            if (!localStorage.getItem('tutorialDismissed')) {
+                document.getElementById('tutorial-banner').classList.remove('hidden');
+            } else {
+                document.getElementById('tutorial-banner').classList.add('hidden');
+            }
+            
+            // Load user settings
+            await loadUserSettings();
+
+                 // Initialize charts
+            initializeCharts();
+            
+            // Load initial data
+            await loadData();
+            
+            // Setup auto-refresh
+            setInterval(updateLastUpdated, 60000);
+            setInterval(checkForNewItems, 300000); // Check every 5 minutes
+            
+       
+        });
+
+        // Load data from backend
+        async function loadData() {
             try {
-                const response = await fetch('/api/refresh', { method: 'POST' });
+                showLoader();
+                
+                const filters = {
+                    days: document.getElementById('filter-days').value || 30,
+                    type: document.getElementById('filter-type').value,
+                    source: document.getElementById('filter-source').value,
+                    severity_min: document.getElementById('filter-severity').value,
+                    limit: 500
+                };
+                
+                const params = new URLSearchParams(filters);
+                const response = await fetch(`/api/items?${params}`);
                 const data = await response.json();
                 
                 if (data.success) {
-                    alert(`Success! Found ${data.count} warning letters`);
-                    loadStats();
-                    loadLetters();
-                } else {
-                    alert('Error: ' + data.error);
+                    allItems = data.items;
+                    filteredItems = allItems;
+                    updateStats();
+                    renderTable();
+                    updateCharts();
+                    document.getElementById('items-count').textContent = filteredItems.length;
                 }
             } catch (error) {
-                alert('Error refreshing data: ' + error.message);
+                console.error('Error loading data:', error);
+                showToast('Error loading data', 'error');
+            } finally {
+                hideLoader();
+            }
+        }
+
+        // Update statistics
+        async function updateStats() {
+            try {
+                // Calculate stats from loaded items
+                const total = filteredItems.length;
+                const warningLetters = filteredItems.filter(i => i.types.includes('warning_letter')).length;
+                const form483s = filteredItems.filter(i => i.types.includes('form_483')).length;
+                
+                // Get unique companies
+                const companies = new Set(filteredItems.map(i => i.company));
+                
+                // Calculate changes
+                const today = new Date();
+                const weekAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+                const todayItems = filteredItems.filter(i => new Date(i.date).toDateString() === today.toDateString()).length;
+                const weekWarnings = filteredItems.filter(i => 
+                    i.types.includes('warning_letter') && new Date(i.date) >= weekAgo
+                ).length;
+                const week483s = filteredItems.filter(i => 
+                    i.types.includes('form_483') && new Date(i.date) >= weekAgo
+                ).length;
+                
+                // Update UI
+                document.getElementById('stat-total').textContent = total;
+                document.getElementById('stat-warning').textContent = warningLetters;
+                document.getElementById('stat-483').textContent = form483s;
+                document.getElementById('stat-companies').textContent = companies.size;
+                
+                document.getElementById('stat-total-change').textContent = `↑ ${todayItems}`;
+                document.getElementById('stat-warning-change').textContent = weekWarnings;
+                document.getElementById('stat-483-change').textContent = week483s;
+                document.getElementById('stat-companies-change').textContent = companies.size;
+                
+                // Also fetch backend metrics for additional data
+                const metricsResponse = await fetch('/api/metrics');
+                const metrics = await metricsResponse.json();
+                
+                if (metrics.success) {
+                    // Update with more detailed metrics if available
+                    console.log('Backend metrics:', metrics);
+                }
+            } catch (error) {
+                console.error('Error updating stats:', error);
+            }
+        }
+
+        // Render table
+        function renderTable() {
+            const tbody = document.getElementById('items-tbody');
+            
+            if (filteredItems.length === 0) {
+                tbody.innerHTML = `
+                    <tr>
+                        <td colspan="7" class="text-center py-12 text-gray-500">
+                            No items found for the selected filters
+                        </td>
+                    </tr>
+                `;
+                updatePagination();
+                return;
+            }
+            
+            // Sort items
+            const sorted = [...filteredItems].sort((a, b) => {
+                let aVal = a[currentSort.column];
+                let bVal = b[currentSort.column];
+                
+                if (currentSort.column === 'date') {
+                    aVal = new Date(aVal);
+                    bVal = new Date(bVal);
+                }
+                
+                if (currentSort.order === 'asc') {
+                    return aVal > bVal ? 1 : -1;
+                } else {
+                    return aVal < bVal ? 1 : -1;
+                }
+            });
+            
+            // Paginate
+            const start = (currentPage - 1) * itemsPerPage;
+            const end = start + itemsPerPage;
+            const pageItems = sorted.slice(start, end);
+            
+            // Render rows
+            tbody.innerHTML = pageItems.map(item => `
+                <tr class="hover:bg-gray-50 cursor-pointer" onclick="openDetailModal('${item.id}')">
+                    <td class="whitespace-nowrap">${formatDate(item.date)}</td>
+                    <td class="font-medium">${item.company}</td>
+                    <td>${getTypeBadges(item.types)}</td>
+                    <td>${getSeverityBadge(item.severity)}</td>
+                    <td class="max-w-xs truncate" title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</td>
+                    <td class="text-sm text-gray-600">${item.source}</td>
+                    <td>
+                        <button onclick="event.stopPropagation(); window.open('${item.link}', '_blank')" class="text-indigo-600 hover:text-indigo-900">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                            </svg>
+                        </button>
+                    </td>
+                </tr>
+            `).join('');
+            
+            updatePagination();
+        }
+
+        // Format date
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            const today = new Date();
+            const diffDays = Math.floor((today - date) / (1000 * 60 * 60 * 24));
+            
+            if (diffDays === 0) return 'Today';
+            if (diffDays === 1) return 'Yesterday';
+            if (diffDays < 7) return `${diffDays} days ago`;
+            
+            return date.toLocaleDateString('en-US', { 
+                month: 'short', 
+                day: 'numeric', 
+                year: 'numeric' 
+            });
+        }
+
+        // Get type badges
+        function getTypeBadges(types) {
+            const badgeColors = {
+                'warning_letter': 'bg-red-100 text-red-700',
+                'form_483': 'bg-orange-100 text-orange-700',
+                'crl': 'bg-purple-100 text-purple-700',
+                'opdp': 'bg-blue-100 text-blue-700',
+                'import_alert': 'bg-yellow-100 text-yellow-700',
+                'consent_decree': 'bg-pink-100 text-pink-700',
+                'recall': 'bg-indigo-100 text-indigo-700',
+                'clinical_hold': 'bg-gray-100 text-gray-700'
+            };
+            
+            return types.map(type => {
+                const color = badgeColors[type] || 'bg-gray-100 text-gray-700';
+                const label = type.replace(/_/g, ' ').toUpperCase();
+                return `<span class="type-badge ${color}">${label}</span>`;
+            }).join('');
+        }
+
+        // Get severity badge
+        function getSeverityBadge(severity) {
+            let className = '';
+            let label = '';
+            
+            if (severity >= 9) {
+                className = 'severity-critical';
+                label = 'Critical';
+            } else if (severity >= 7) {
+                className = 'severity-high';
+                label = 'High';
+            } else if (severity >= 5) {
+                className = 'severity-medium';
+                label = 'Medium';
+            } else {
+                className = 'severity-low';
+                label = 'Low';
+            }
+            
+            return `<span class="px-2 py-1 rounded text-xs font-bold ${className}">${label} (${severity})</span>`;
+        }
+
+        // Open detail modal
+        async function openDetailModal(itemId) {
+            currentItem = allItems.find(i => i.id === itemId);
+            if (!currentItem) return;
+            
+            document.getElementById('modal-title').textContent = currentItem.title;
+            document.getElementById('detail-modal').classList.remove('hidden');
+            
+            // Show details tab by default
+            switchTab('details');
+            
+            // Load details content
+            const detailsContent = document.getElementById('details-content');
+            detailsContent.innerHTML = `
+                <div class="space-y-4">
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="text-sm font-semibold text-gray-700 mb-1">Company</h4>
+                            <p class="text-lg font-medium">${currentItem.company}</p>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-gray-700 mb-1">Date</h4>
+                            <p class="text-lg">${new Date(currentItem.date).toLocaleDateString()}</p>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-gray-700 mb-1">Type</h4>
+                            <div>${getTypeBadges(currentItem.types)}</div>
+                        </div>
+                        <div>
+                            <h4 class="text-sm font-semibold text-gray-700 mb-1">Severity</h4>
+                            <div>${getSeverityBadge(currentItem.severity)}</div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-sm font-semibold text-gray-700 mb-1">Title</h4>
+                        <p class="text-gray-900">${currentItem.title}</p>
+                    </div>
+                    
+                    ${currentItem.summary ? `
+                        <div>
+                            <h4 class="text-sm font-semibold text-gray-700 mb-1">Summary</h4>
+                            <p class="text-gray-700">${currentItem.summary}</p>
+                        </div>
+                    ` : ''}
+                    
+                    <div>
+                        <h4 class="text-sm font-semibold text-gray-700 mb-1">Source</h4>
+                        <p class="text-gray-700">${currentItem.source} (${currentItem.sourceCategory})</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="text-sm font-semibold text-gray-700 mb-1">Link</h4>
+                        <a href="${currentItem.link}" target="_blank" class="text-indigo-600 hover:text-indigo-900 break-all">
+                            ${currentItem.link}
+                        </a>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Close detail modal
+        function closeDetailModal() {
+            document.getElementById('detail-modal').classList.add('hidden');
+            currentItem = null;
+        }
+
+        // Switch tabs
+        function switchTab(tabName) {
+            // Update tab buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('tab-active', 'border-indigo-600', 'text-indigo-600');
+                btn.classList.add('border-transparent', 'text-gray-500');
+                
+                if (btn.dataset.tab === tabName) {
+                    btn.classList.add('tab-active', 'border-indigo-600', 'text-indigo-600');
+                    btn.classList.remove('border-transparent', 'text-gray-500');
+                }
+            });
+            
+            // Hide all panels
+            document.querySelectorAll('.tab-panel').forEach(panel => {
+                panel.classList.add('hidden');
+            });
+            
+            // Show selected panel
+            document.getElementById(`${tabName}-tab`).classList.remove('hidden');
+            
+            // Load content if needed
+            if (tabName === 'company' && currentItem) {
+                getCompanyInfo();
+            } else if (tabName === 'contacts' && currentItem) {
+                loadContacts();
+            }
+        }
+
+        // AI Enhance functionality - COMPREHENSIVE VERSION
+        async function aiEnhance() {
+            if (!currentItem) return;
+            
+            const aiContent = document.getElementById('ai-content');
+            aiContent.innerHTML = `
+                <div class="text-center py-8">
+                    <div class="loader mx-auto mb-4"></div>
+                    <p class="text-gray-500">Running comprehensive AI analysis...</p>
+                    <p class="text-xs text-gray-400 mt-2">Analyzing with GPT-4, searching Hunter.io & Apollo.io...</p>
+                </div>
+            `;
+            
+            switchTab('ai');
+            
+            try {
+                // Call the AI enhance endpoint
+                const response = await fetch('/api/ai/enhance', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ sourceItemId: currentItem.id })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Store canonical name for future use
+                    if (data.canonical_company_name) {
+                        currentItem.canonical_company = data.canonical_company_name;
+                    }
+                    
+                    // Now get comprehensive company data with the canonical name
+                    const companyResponse = await fetch(`/api/company/${encodeURIComponent(data.canonical_company_name || currentItem.company)}`);
+                    const companyData = await companyResponse.json();
+                    
+                    // Combine all data sources
+                    const allEmails = new Set();
+                    
+                    // Add emails from AI analysis
+                    if (data.emails && data.emails.length > 0) {
+                        data.emails.forEach(email => allEmails.add(email));
+                    }
+                    
+                    // Add emails from company contacts (Hunter/Apollo)
+                    if (companyData.success && companyData.contacts) {
+                        if (companyData.contacts.emails) {
+                            companyData.contacts.emails.forEach(e => allEmails.add(e.email || e));
+                        }
+                        if (companyData.contacts.regulatory_contacts) {
+                            companyData.contacts.regulatory_contacts.forEach(c => {
+                                if (c.email) allEmails.add(c.email);
+                            });
+                        }
+                        if (companyData.contacts.executives) {
+                            companyData.contacts.executives.forEach(e => {
+                                if (e.email) allEmails.add(e.email);
+                            });
+                        }
+                        if (companyData.contacts.general_email) {
+                            allEmails.add(companyData.contacts.general_email);
+                        }
+                    }
+                    
+                    // Build comprehensive display
+                    aiContent.innerHTML = `
+                        <div class="space-y-4">
+                            <!-- Company Intelligence Header -->
+                            <div class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-lg p-4">
+                                <h3 class="text-lg font-bold mb-2">🤖 AI-Enhanced Company Intelligence</h3>
+                                <p class="text-sm opacity-90">Powered by GPT-4, Hunter.io, and Apollo.io</p>
+                            </div>
+                            
+                            <!-- Canonical Company Name -->
+                            <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+                                <h4 class="font-semibold text-indigo-900 mb-2">✅ Verified Company Name</h4>
+                                <p class="text-indigo-700 font-medium text-lg">${data.canonical_company_name || currentItem.company}</p>
+                                ${companyData.company && companyData.company.aliases && companyData.company.aliases.length > 1 ? `
+                                    <div class="mt-2">
+                                        <p class="text-xs text-indigo-600 mb-1">Also known as:</p>
+                                        <div class="flex flex-wrap gap-1">
+                                            ${companyData.company.aliases.filter(a => a !== data.canonical_company_name).map(alias => 
+                                                `<span class="text-xs bg-white px-2 py-1 rounded">${alias}</span>`
+                                            ).join('')}
+                                        </div>
+                                    </div>
+                                ` : ''}
+                            </div>
+                            
+                            <!-- AI Summary -->
+                            <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                                <h4 class="font-semibold text-gray-900 mb-2">📝 AI Executive Summary</h4>
+                                <p class="text-gray-700">${data.summary || 'No summary available'}</p>
+                            </div>
+                            
+                            <!-- Company Metrics -->
+                            ${companyData.success && companyData.company ? `
+                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                    <h4 class="font-semibold text-blue-900 mb-3">📊 Company Metrics</h4>
+                                    <div class="grid grid-cols-2 gap-3">
+                                        <div>
+                                            <p class="text-xs text-blue-600">Total Violations</p>
+                                            <p class="text-2xl font-bold text-blue-900">${companyData.metrics?.total_violations || 0}</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-blue-600">Compliance Score</p>
+                                            <p class="text-2xl font-bold text-blue-900">${companyData.company.compliance_score || 0}/100</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-blue-600">Recent (30d)</p>
+                                            <p class="text-2xl font-bold text-blue-900">${companyData.metrics?.recent_violations || 0}</p>
+                                        </div>
+                                        <div>
+                                            <p class="text-xs text-blue-600">Risk Level</p>
+                                            <p class="text-2xl font-bold ${companyData.metrics?.risk_score >= 70 ? 'text-red-600' : companyData.metrics?.risk_score >= 40 ? 'text-orange-600' : 'text-green-600'}">
+                                                ${companyData.metrics?.risk_score >= 70 ? 'High' : companyData.metrics?.risk_score >= 40 ? 'Medium' : 'Low'}
+                                            </p>
+                                        </div>
+                                    </div>
+                                    ${companyData.company.ticker ? `
+                                        <div class="mt-3 pt-3 border-t border-blue-200">
+                                            <p class="text-sm"><span class="font-medium">Stock Ticker:</span> ${companyData.company.ticker}</p>
+                                        </div>
+                                    ` : ''}
+                                    ${companyData.company.domain ? `
+                                        <div class="mt-1">
+                                            <p class="text-sm"><span class="font-medium">Website:</span> 
+                                                <a href="https://${companyData.company.domain}" target="_blank" class="text-blue-600 hover:text-blue-800">
+                                                    ${companyData.company.domain}
+                                                </a>
+                                            </p>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            ` : ''}
+                            
+                            <!-- Public Context -->
+                            ${data.public_context ? `
+                                <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+                                    <h4 class="font-semibold text-amber-900 mb-2">🌐 Public Context & Background</h4>
+                                    <p class="text-amber-700">${data.public_context}</p>
+                                </div>
+                            ` : ''}
+                            
+                            <!-- FDA Precedents -->
+                            ${data.precedent_refs && data.precedent_refs.length > 0 ? `
+                                <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                                    <h4 class="font-semibold text-purple-900 mb-2">⚖️ Related FDA Precedents</h4>
+                                    <ul class="space-y-1">
+                                        ${data.precedent_refs.map(ref => `
+                                            <li class="text-purple-700 text-sm flex items-start">
+                                                <span class="mr-2">•</span>
+                                                <span>${ref}</span>
+                                            </li>
+                                        `).join('')}
+                                    </ul>
+                                </div>
+                            ` : ''}
+                            
+                            <!-- Comprehensive Email Contacts -->
+                            ${allEmails.size > 0 ? `
+                                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                                    <h4 class="font-semibold text-green-900 mb-3">📧 All Discovered Email Contacts (${allEmails.size})</h4>
+                                    <div class="space-y-2 max-h-60 overflow-y-auto">
+                                        ${Array.from(allEmails).map(email => `
+                                            <div class="flex items-center justify-between bg-white p-2 rounded">
+                                                <span class="text-green-700 text-sm font-mono">${email}</span>
+                                                <div class="flex gap-2">
+                                                    <button onclick="copyToClipboard('${email}')" 
+                                                            class="text-green-600 hover:text-green-800" title="Copy">
+                                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                                                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                                        </svg>
+                                                    </button>
+                                                    <a href="mailto:${email}" class="text-green-600 hover:text-green-800" title="Send Email">
+                                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                                                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                                        </svg>
+                                                    </a>
+                                                </div>
+                                            </div>
+                                        `).join('')}
+                                    </div>
+                                    <div class="mt-3 pt-3 border-t border-green-200">
+                                        <button onclick="copyAllEmails()" class="w-full bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+                                            Copy All Emails
+                                        </button>
+                                    </div>
+                                </div>
+                            ` : `
+                                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                                    <p class="text-yellow-700">No email contacts found. Hunter.io and Apollo.io may require API keys to be configured.</p>
+                                </div>
+                            `}
+                            
+                            <!-- Key Personnel (from Apollo/Hunter) -->
+                            ${companyData.contacts && (companyData.contacts.regulatory_contacts?.length > 0 || companyData.contacts.executives?.length > 0) ? `
+                                <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+                                    <h4 class="font-semibold text-indigo-900 mb-3">👥 Key Personnel</h4>
+                                    ${companyData.contacts.regulatory_contacts?.length > 0 ? `
+                                        <div class="mb-3">
+                                            <p class="text-sm font-medium text-indigo-700 mb-2">Regulatory Contacts:</p>
+                                            <div class="space-y-2">
+                                                ${companyData.contacts.regulatory_contacts.slice(0, 5).map(contact => `
+                                                    <div class="bg-white p-2 rounded text-sm">
+                                                        <p class="font-medium">${contact.name}</p>
+                                                        <p class="text-gray-600">${contact.title}</p>
+                                                        ${contact.email ? `<p class="text-indigo-600">${contact.email}</p>` : ''}
+                                                    </div>
+                                                `).join('')}
+                                            </div>
+                                        </div>
+                                    ` : ''}
+                                    ${companyData.contacts.executives?.length > 0 ? `
+                                        <div>
+                                            <p class="text-sm font-medium text-indigo-700 mb-2">Executive Team:</p>
+                                            <div class="space-y-2">
+                                                ${companyData.contacts.executives.slice(0, 5).map(exec => `
+                                                    <div class="bg-white p-2 rounded text-sm">
+                                                        <p class="font-medium">${exec.name}</p>
+                                                        <p class="text-gray-600">${exec.title}</p>
+                                                        ${exec.email ? `<p class="text-indigo-600">${exec.email}</p>` : ''}
+                                                    </div>
+                                                `).join('')}
+                                            </div>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            ` : ''}
+                            
+                            <!-- Facilities & Products -->
+                            ${companyData.company && (companyData.company.facilities?.length > 0 || companyData.company.products?.length > 0) ? `
+                                <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                                    ${companyData.company.facilities?.length > 0 ? `
+                                        <div class="mb-3">
+                                            <h4 class="font-semibold text-gray-900 mb-2">🏭 Facilities</h4>
+                                            <div class="flex flex-wrap gap-2">
+                                                ${companyData.company.facilities.map(facility => 
+                                                    `<span class="text-xs bg-white px-2 py-1 rounded border">${facility}</span>`
+                                                ).join('')}
+                                            </div>
+                                        </div>
+                                    ` : ''}
+                                    ${companyData.company.products?.length > 0 ? `
+                                        <div>
+                                            <h4 class="font-semibold text-gray-900 mb-2">💊 Products</h4>
+                                            <div class="flex flex-wrap gap-2">
+                                                ${companyData.company.products.map(product => 
+                                                    `<span class="text-xs bg-white px-2 py-1 rounded border">${product}</span>`
+                                                ).join('')}
+                                            </div>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            ` : ''}
+                            
+                            <!-- Action Buttons -->
+                            <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-4">
+                                <div class="grid grid-cols-2 gap-3">
+                                    <button onclick="exportAIAnalysis()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
+                                        Export Analysis
+                                    </button>
+                                    <button onclick="refreshAIAnalysis()" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
+                                        Refresh Analysis
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Store all emails for easy access
+                    window.currentAnalysisEmails = Array.from(allEmails);
+                    
+                } else {
+                    throw new Error(data.error || 'AI enhancement failed');
+                }
+            } catch (error) {
+                console.error('AI enhance error:', error);
+                aiContent.innerHTML = `
+                    <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                        <p class="text-red-700">Error: ${error.message}</p>
+                        <p class="text-red-600 text-sm mt-2">Make sure Hunter.io, Apollo.io, and OpenAI API keys are configured in your backend.</p>
+                        <button onclick="aiEnhance()" class="mt-3 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+                            Try Again
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        // Helper function to copy all emails
+        function copyAllEmails() {
+            if (window.currentAnalysisEmails && window.currentAnalysisEmails.length > 0) {
+                const emailText = window.currentAnalysisEmails.join(', ');
+                copyToClipboard(emailText);
+                showToast(`Copied ${window.currentAnalysisEmails.length} emails to clipboard`, 'success');
+            }
+        }
+
+        // Helper function to export AI analysis
+        async function exportAIAnalysis() {
+            const content = document.getElementById('ai-content').innerHTML;
+            const email = prompt('Enter email address to send AI analysis to:', userSettings.email);
+            if (!email) return;
+            
+            try {
+                const response = await fetch('/api/report/export-modal', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        html: content,
+                        toEmail: email
+                    })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    showToast(`AI analysis sent to ${email}`, 'success');
+                }
+            } catch (error) {
+                showToast('Error exporting analysis', 'error');
+            }
+        }
+
+        // Helper function to refresh AI analysis
+        function refreshAIAnalysis() {
+            aiEnhance();
+        }
+
+        // Get company info
+        async function getCompanyInfo() {
+            if (!currentItem) return;
+            
+            switchTab('company');
+            const companyContent = document.getElementById('company-content');
+            
+            companyContent.innerHTML = `
+                <div class="text-center py-8">
+                    <div class="loader mx-auto mb-4"></div>
+                    <p class="text-gray-500">Loading company information...</p>
+                </div>
+            `;
+            
+            try {
+                const companyName = encodeURIComponent(currentItem.canonical_company || currentItem.company);
+                const response = await fetch(`/api/company/${companyName}`);
+                const data = await response.json();
+                
+                if (data.success && data.company) {
+                    const company = data.company;
+                    companyContent.innerHTML = `
+                        <div class="space-y-6">
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h4 class="font-semibold text-gray-900 mb-3">Company Overview</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    <div>
+                                        <p class="text-sm text-gray-600">Name</p>
+                                        <p class="font-medium">${company.name}</p>
+                                    </div>
+                                    ${company.domain ? `
+                                        <div>
+                                            <p class="text-sm text-gray-600">Website</p>
+                                            <a href="https://${company.domain}" target="_blank" class="text-indigo-600 hover:text-indigo-900">
+                                                ${company.domain}
+                                            </a>
+                                        </div>
+                                    ` : ''}
+                                    ${company.ticker ? `
+                                        <div>
+                                            <p class="text-sm text-gray-600">Stock Ticker</p>
+                                            <p class="font-medium">${company.ticker}</p>
+                                        </div>
+                                    ` : ''}
+                                    <div>
+                                        <p class="text-sm text-gray-600">Compliance Score</p>
+                                        <p class="font-medium">${company.compliance_score}/100</p>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            ${company.aliases && company.aliases.length > 1 ? `
+                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                    <h4 class="font-semibold text-blue-900 mb-2">Also Known As</h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        ${company.aliases.map(alias => 
+                                            `<span class="px-2 py-1 bg-white rounded text-sm">${alias}</span>`
+                                        ).join('')}
+                                    </div>
+                                </div>
+                            ` : ''}
+                            
+                            ${company.facilities && company.facilities.length > 0 ? `
+                                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                                    <h4 class="font-semibold text-green-900 mb-2">Facilities</h4>
+                                    <ul class="list-disc list-inside text-green-700">
+                                        ${company.facilities.map(facility => `<li>${facility}</li>`).join('')}
+                                    </ul>
+                                </div>
+                            ` : ''}
+                            
+                            ${company.products && company.products.length > 0 ? `
+                                <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                                    <h4 class="font-semibold text-purple-900 mb-2">Products</h4>
+                                    <div class="flex flex-wrap gap-2">
+                                        ${company.products.map(product => 
+                                            `<span class="px-2 py-1 bg-white rounded text-sm">${product}</span>`
+                                        ).join('')}
+                                    </div>
+                                </div>
+                            ` : ''}
+                            
+                            <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                                <h4 class="font-semibold text-red-900 mb-3">Recent Violations</h4>
+                                <div class="space-y-2">
+                                    ${company.violations.slice(0, 5).map(v => `
+                                        <div class="bg-white p-2 rounded">
+                                            <div class="flex justify-between items-start">
+                                                <div>
+                                                    <p class="font-medium text-sm">${v.title}</p>
+                                                    <p class="text-xs text-gray-600">${formatDate(v.date)} • ${v.type.replace(/_/g, ' ')}</p>
+                                                </div>
+                                                <span class="text-xs px-2 py-1 rounded severity-${v.severity >= 7 ? 'high' : 'medium'}">
+                                                    Severity: ${v.severity}
+                                                </span>
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                    ${company.violations.length > 5 ? 
+                                        `<p class="text-sm text-gray-600 text-center">... and ${company.violations.length - 5} more</p>` 
+                                        : ''
+                                    }
+                                </div>
+                            </div>
+                            
+                            <div class="text-center">
+                                <button onclick="viewFullCompany('${encodeURIComponent(company.name)}')" 
+                                        class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+                                    View Full Company Profile
+                                </button>
+                            </div>
+                        </div>
+                    `;
+                } else {
+                    throw new Error('Company not found');
+                }
+            } catch (error) {
+                console.error('Company info error:', error);
+                companyContent.innerHTML = `
+                    <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                        <p class="text-red-700">Error loading company information: ${error.message}</p>
+                        <button onclick="getCompanyInfo()" class="mt-2 text-red-600 hover:text-red-800">Try Again</button>
+                    </div>
+                `;
+            }
+        }
+
+        // Load contacts
+        async function loadContacts() {
+            if (!currentItem) return;
+            
+            const contactsContent = document.getElementById('contacts-content');
+            contactsContent.innerHTML = `
+                <div class="text-center py-8">
+                    <div class="loader mx-auto mb-4"></div>
+                    <p class="text-gray-500">Searching for contacts...</p>
+                </div>
+            `;
+            
+            try {
+                const companyName = encodeURIComponent(currentItem.canonical_company || currentItem.company);
+                const response = await fetch(`/api/company/${companyName}`);
+                const data = await response.json();
+                
+                if (data.success && data.contacts) {
+                    const contacts = data.contacts;
+                    
+                    let html = '<div class="space-y-4">';
+                    
+                    // General company info
+                    if (contacts.domain || contacts.website || contacts.phone || contacts.address) {
+                        html += `
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h4 class="font-semibold text-gray-900 mb-3">Company Contact Information</h4>
+                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                    ${contacts.website ? `
+                                        <div>
+                                            <p class="text-sm text-gray-600">Website</p>
+                                            <a href="${contacts.website}" target="_blank" class="text-indigo-600 hover:text-indigo-900">
+                                                ${contacts.website}
+                                            </a>
+                                        </div>
+                                    ` : ''}
+                                    ${contacts.phone ? `
+                                        <div>
+                                            <p class="text-sm text-gray-600">Phone</p>
+                                            <p class="font-medium">${contacts.phone}</p>
+                                        </div>
+                                    ` : ''}
+                                    ${contacts.address ? `
+                                        <div>
+                                            <p class="text-sm text-gray-600">Address</p>
+                                            <p class="font-medium">${contacts.address}</p>
+                                        </div>
+                                    ` : ''}
+                                    ${contacts.linkedin ? `
+                                        <div>
+                                            <p class="text-sm text-gray-600">LinkedIn</p>
+                                            <a href="${contacts.linkedin}" target="_blank" class="text-indigo-600 hover:text-indigo-900">
+                                                View Profile
+                                            </a>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    // Regulatory contacts
+                    if (contacts.regulatory_contacts && contacts.regulatory_contacts.length > 0) {
+                        html += `
+                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+                                <h4 class="font-semibold text-blue-900 mb-3">Regulatory Contacts</h4>
+                                <div class="space-y-3">
+                                    ${contacts.regulatory_contacts.map(contact => `
+                                        <div class="bg-white p-3 rounded">
+                                            <div class="flex justify-between items-start">
+                                                <div>
+                                                    <p class="font-medium">${contact.name}</p>
+                                                    <p class="text-sm text-gray-600">${contact.title}</p>
+                                                    ${contact.email ? `
+                                                        <div class="flex items-center mt-1">
+                                                            <span class="text-sm text-blue-600">${contact.email}</span>
+                                                            <button onclick="copyToClipboard('${contact.email}')" 
+                                                                    class="ml-2 text-gray-400 hover:text-gray-600">
+                                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                                                          d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                                                </svg>
+                                                            </button>
+                                                        </div>
+                                                    ` : ''}
+                                                </div>
+                                                ${contact.verified ? 
+                                                    '<span class="text-green-600"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg></span>' 
+                                                    : ''
+                                                }
+                                            </div>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    // Executive contacts
+                    if (contacts.executives && contacts.executives.length > 0) {
+                        html += `
+                            <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+                                <h4 class="font-semibold text-purple-900 mb-3">Executive Contacts</h4>
+                                <div class="space-y-3">
+                                    ${contacts.executives.map(exec => `
+                                        <div class="bg-white p-3 rounded">
+                                            <p class="font-medium">${exec.name}</p>
+                                            <p class="text-sm text-gray-600">${exec.title}</p>
+                                            ${exec.email ? `
+                                                <div class="flex items-center mt-1">
+                                                    <span class="text-sm text-purple-600">${exec.email}</span>
+                                                    <button onclick="copyToClipboard('${exec.email}')" 
+                                                            class="ml-2 text-gray-400 hover:text-gray-600">
+                                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                                                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                                        </svg>
+                                                    </button>
+                                                </div>
+                                            ` : ''}
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    // General emails
+                    if (contacts.emails && contacts.emails.length > 0) {
+                        html += `
+                            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+                                <h4 class="font-semibold text-green-900 mb-3">Additional Email Contacts</h4>
+                                <div class="space-y-2">
+                                    ${contacts.emails.map(emailObj => `
+                                        <div class="flex items-center justify-between bg-white p-2 rounded">
+                                            <div>
+                                                ${emailObj.name ? `<p class="font-medium text-sm">${emailObj.name}</p>` : ''}
+                                                <span class="text-sm text-green-600">${emailObj.email}</span>
+                                            </div>
+                                            <button onclick="copyToClipboard('${emailObj.email}')" 
+                                                    class="text-gray-400 hover:text-gray-600">
+                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                                          d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                                </svg>
+                                            </button>
+                                        </div>
+                                    `).join('')}
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    if (contacts.general_email) {
+                        html += `
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <p class="text-sm text-gray-600 mb-1">General Contact Email</p>
+                                <div class="flex items-center">
+                                    <span class="font-medium">${contacts.general_email}</span>
+                                    <button onclick="copyToClipboard('${contacts.general_email}')" 
+                                            class="ml-2 text-gray-400 hover:text-gray-600">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        `;
+                    }
+                    
+                    html += '</div>';
+                    contactsContent.innerHTML = html;
+                    
+                } else {
+                    contactsContent.innerHTML = `
+                        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+                            <p class="text-yellow-700">No contact information found. Try using AI Enhance to search for contacts.</p>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Contacts error:', error);
+                contactsContent.innerHTML = `
+                    <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                        <p class="text-red-700">Error loading contacts: ${error.message}</p>
+                        <button onclick="loadContacts()" class="mt-2 text-red-600 hover:text-red-800">Try Again</button>
+                    </div>
+                `;
+            }
+        }
+
+        // Export modal to email
+        async function exportModalToEmail() {
+            if (!currentItem) return;
+            
+            const email = prompt('Enter email address to send report to:', userSettings.email);
+            if (!email) return;
+            
+            try {
+                // Get all modal content
+                const modalContent = document.getElementById('tab-content').innerHTML;
+                
+                const response = await fetch('/api/report/export-modal', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        html: modalContent,
+                        toEmail: email
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showToast(`Report sent to ${email}`, 'success');
+                } else {
+                    throw new Error(data.error || 'Failed to send email');
+                }
+            } catch (error) {
+                console.error('Export error:', error);
+                showToast(`Error: ${error.message}`, 'error');
+            }
+        }
+
+        // View by company
+        function viewByCompany() {
+            // Group items by company
+            const companiesMap = new Map();
+            
+            allItems.forEach(item => {
+                const company = item.canonical_company || item.company;
+                if (!companiesMap.has(company)) {
+                    companiesMap.set(company, []);
+                }
+                companiesMap.get(company).push(item);
+            });
+            
+            // Sort companies by violation count
+            const sortedCompanies = Array.from(companiesMap.entries())
+                .sort((a, b) => b[1].length - a[1].length);
+            
+            // Show in modal
+            const modal = document.getElementById('company-view-modal');
+            const content = document.getElementById('company-view-content');
+            
+            content.innerHTML = `
+                <div class="space-y-4">
+                    <div class="flex justify-between items-center mb-4">
+                        <h3 class="text-lg font-semibold">Companies Overview</h3>
+                        <span class="text-sm text-gray-600">${sortedCompanies.length} companies found</span>
+                    </div>
+                    
+                    ${sortedCompanies.map(([company, items]) => `
+                        <div class="border border-gray-200 rounded-lg p-4">
+                            <div class="flex justify-between items-start mb-3">
+                                <div>
+                                    <h4 class="font-semibold text-lg">${company}</h4>
+                                    <p class="text-sm text-gray-600">${items.length} violation${items.length !== 1 ? 's' : ''}</p>
+                                </div>
+                                <button onclick="viewFullCompany('${encodeURIComponent(company)}')" 
+                                        class="px-3 py-1 bg-indigo-600 text-white rounded hover:bg-indigo-700">
+                                    View Details
+                                </button>
+                            </div>
+                            
+                            <div class="space-y-2">
+                                ${items.slice(0, 3).map(item => `
+                                    <div class="bg-gray-50 p-2 rounded text-sm">
+                                        <div class="flex justify-between items-start">
+                                            <div>
+                                                <span class="font-medium">${formatDate(item.date)}</span>
+                                                <span class="mx-2">•</span>
+                                                ${getTypeBadges(item.types)}
+                                            </div>
+                                            <button onclick="openDetailModal('${item.id}')" 
+                                                    class="text-indigo-600 hover:text-indigo-900">
+                                                View
+                                            </button>
+                                        </div>
+                                        <p class="text-gray-700 mt-1">${item.title}</p>
+                                    </div>
+                                `).join('')}
+                                ${items.length > 3 ? 
+                                    `<p class="text-sm text-gray-500 text-center">... and ${items.length - 3} more</p>` 
+                                    : ''
+                                }
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            `;
+            
+            modal.classList.remove('hidden');
+        }
+
+        // View full company profile
+        async function viewFullCompany(companyName) {
+            closeCompanyView();
+            
+            try {
+                const response = await fetch(`/api/company/${companyName}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Show detailed company view
+                    const modal = document.getElementById('company-view-modal');
+                    const content = document.getElementById('company-view-content');
+                    
+                    const company = data.company;
+                    const relatedItems = data.relatedItems || [];
+                    
+                    content.innerHTML = `
+                        <div class="space-y-6">
+                            <div class="border-b pb-4">
+                                <h2 class="text-2xl font-bold">${company.name}</h2>
+                                <div class="flex items-center space-x-4 mt-2">
+                                    ${company.ticker ? `<span class="text-sm bg-gray-100 px-2 py-1 rounded">Ticker: ${company.ticker}</span>` : ''}
+                                    ${company.domain ? `<a href="https://${company.domain}" target="_blank" class="text-sm text-indigo-600 hover:text-indigo-900">${company.domain}</a>` : ''}
+                                    <span class="text-sm">Compliance Score: ${company.compliance_score}/100</span>
+                                </div>
+                            </div>
+                            
+                            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                                <div class="lg:col-span-2 space-y-4">
+                                    <div>
+                                        <h3 class="font-semibold mb-3">Violation Timeline</h3>
+                                        <div class="space-y-2">
+                                            ${relatedItems.map(item => `
+                                                <div class="border-l-4 border-indigo-500 pl-4 py-2">
+                                                    <div class="flex justify-between items-start">
+                                                        <div>
+                                                            <p class="font-medium">${formatDate(item.date)}</p>
+                                                            <p class="text-sm text-gray-700">${item.title}</p>
+                                                            <div class="mt-1">${getTypeBadges(item.types)}</div>
+                                                        </div>
+                                                        <button onclick="openDetailModal('${item.id}')" 
+                                                                class="text-indigo-600 hover:text-indigo-900">
+                                                            Details
+                                                        </button>
+                                                    </div>
+                                                </div>
+                                            `).join('')}
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                                <div class="space-y-4">
+                                    ${company.facilities && company.facilities.length > 0 ? `
+                                        <div class="bg-gray-50 rounded-lg p-4">
+                                            <h4 class="font-semibold mb-2">Facilities</h4>
+                                            <ul class="text-sm space-y-1">
+                                                ${company.facilities.map(f => `<li>• ${f}</li>`).join('')}
+                                            </ul>
+                                        </div>
+                                    ` : ''}
+                                    
+                                    ${company.products && company.products.length > 0 ? `
+                                        <div class="bg-gray-50 rounded-lg p-4">
+                                            <h4 class="font-semibold mb-2">Products</h4>
+                                            <div class="flex flex-wrap gap-1">
+                                                ${company.products.map(p => 
+                                                    `<span class="text-xs bg-white px-2 py-1 rounded">${p}</span>`
+                                                ).join('')}
+                                            </div>
+                                        </div>
+                                    ` : ''}
+                                    
+                                    ${data.contacts ? `
+                                        <div class="bg-blue-50 rounded-lg p-4">
+                                            <h4 class="font-semibold mb-2">Contact Info</h4>
+                                            <div class="text-sm space-y-1">
+                                                ${data.contacts.phone ? `<p>📞 ${data.contacts.phone}</p>` : ''}
+                                                ${data.contacts.general_email ? `<p>✉️ ${data.contacts.general_email}</p>` : ''}
+                                                ${data.contacts.website ? `<p>🌐 <a href="${data.contacts.website}" target="_blank" class="text-indigo-600">${data.contacts.website}</a></p>` : ''}
+                                            </div>
+                                        </div>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    
+                    modal.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Error loading company details:', error);
+                showToast('Error loading company details', 'error');
+            }
+        }
+
+        // Close company view
+        function closeCompanyView() {
+            document.getElementById('company-view-modal').classList.add('hidden');
+        }
+
+        // Settings functions
+        function openSettings() {
+            loadSettingsForm();
+            document.getElementById('settings-modal').classList.remove('hidden');
+        }
+
+        function closeSettings() {
+            document.getElementById('settings-modal').classList.add('hidden');
+        }
+
+        async function loadUserSettings() {
+            const email = localStorage.getItem('userEmail');
+            if (!email) return;
+            
+            try {
+                const response = await fetch(`/api/user/wluserleaf?email=${email}`);
+                const data = await response.json();
+                
+                if (data.success && data.user) {
+                    userSettings = data.user;
+                }
+            } catch (error) {
+                console.error('Error loading user settings:', error);
+            }
+        }
+
+        function loadSettingsForm() {
+            document.getElementById('settings-email').value = userSettings.email || '';
+            document.getElementById('settings-timezone').value = userSettings.timezone || 'Europe/London';
+            document.getElementById('settings-instant').checked = userSettings.notificationPrefs?.instant || false;
+            document.getElementById('settings-weekly').checked = userSettings.notificationPrefs?.weekly || false;
+            document.getElementById('settings-digest-day').value = userSettings.digestDayOfWeek || 1;
+            document.getElementById('settings-digest-hour').value = userSettings.digestHour || 9;
+            document.getElementById('settings-report-emails').value = (userSettings.reportEmails || []).join('\n');
+            
+            // Load watched companies
+            const watchedList = document.getElementById('watched-companies-list');
+            if (userSettings.watchedCompanies && userSettings.watchedCompanies.length > 0) {
+                watchedList.innerHTML = userSettings.watchedCompanies.map(wc => `
+                    <div class="flex justify-between items-center bg-gray-50 p-2 rounded">
+                        <span>${wc.name}</span>
+                        <button onclick="removeWatchedCompany('${wc.name}')" class="text-red-600 hover:text-red-800">
+                            Remove
+                        </button>
+                    </div>
+                `).join('');
+            } else {
+                watchedList.innerHTML = '<p class="text-gray-500 text-sm">No watched companies</p>';
+            }
+        }
+
+        async function saveSettings() {
+            const settings = {
+                email: document.getElementById('settings-email').value,
+                timezone: document.getElementById('settings-timezone').value,
+                notificationPrefs: {
+                    instant: document.getElementById('settings-instant').checked,
+                    weekly: document.getElementById('settings-weekly').checked
+                },
+                digestDayOfWeek: parseInt(document.getElementById('settings-digest-day').value),
+                digestHour: parseInt(document.getElementById('settings-digest-hour').value),
+                reportEmails: document.getElementById('settings-report-emails').value
+                    .split('\n')
+                    .filter(e => e.trim())
+            };
+            
+            try {
+                const response = await fetch('/api/user/wluserleaf', {
+                    method: 'PUT',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify(settings)
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    userSettings = data.user;
+                    localStorage.setItem('userEmail', settings.email);
+                    showToast('Settings saved successfully', 'success');
+                    closeSettings();
+                } else {
+                    throw new Error(data.error || 'Failed to save settings');
+                }
+            } catch (error) {
+                console.error('Error saving settings:', error);
+                showToast(`Error: ${error.message}`, 'error');
+            }
+        }
+
+        async function addWatchedCompany() {
+            const companyName = document.getElementById('add-watched-company').value.trim();
+            if (!companyName) return;
+            
+            try {
+                const response = await fetch('/api/user/watch-company', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: userSettings.email,
+                        company: companyName
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    userSettings.watchedCompanies = data.watchedCompanies;
+                    document.getElementById('add-watched-company').value = '';
+                    loadSettingsForm();
+                    showToast(`${companyName} added to watchlist`, 'success');
+                }
+            } catch (error) {
+                console.error('Error adding watched company:', error);
+                showToast('Error adding company', 'error');
+            }
+        }
+
+        async function removeWatchedCompany(companyName) {
+            try {
+                const response = await fetch('/api/user/watch-company', {
+                    method: 'DELETE',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: userSettings.email,
+                        company: companyName
+                    })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    userSettings.watchedCompanies = data.watchedCompanies;
+                    loadSettingsForm();
+                    showToast(`${companyName} removed from watchlist`, 'success');
+                }
+            } catch (error) {
+                console.error('Error removing watched company:', error);
+                showToast('Error removing company', 'error');
+            }
+        }
+
+        async function sendDigestNow() {
+            if (!userSettings.email) {
+                showToast('Please save your email first', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/user/send-digest-now', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ email: userSettings.email })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showToast('Digest sent successfully', 'success');
+                } else {
+                    throw new Error(data.error || 'Failed to send digest');
+                }
+            } catch (error) {
+                console.error('Error sending digest:', error);
+                showToast(`Error: ${error.message}`, 'error');
+            }
+        }
+
+        // Filters and search
+        function applyFilters() {
+            loadData();
+        }
+
+        function resetFilters() {
+            document.getElementById('filter-source').value = '';
+            document.getElementById('filter-type').value = '';
+            document.getElementById('filter-severity').value = '';
+            document.getElementById('filter-days').value = '30';
+            document.getElementById('search-input').value = '';
+            loadData();
+        }
+
+        async function searchItems(event) {
+            const query = event.target.value.trim();
+            
+            if (query.length === 0) {
+                filteredItems = allItems;
+                renderTable();
+                return;
+            }
+            
+            if (query.length < 2) return;
+            
+            // Search locally first
+            filteredItems = allItems.filter(item => 
+                item.company.toLowerCase().includes(query.toLowerCase()) ||
+                item.title.toLowerCase().includes(query.toLowerCase()) ||
+                (item.summary && item.summary.toLowerCase().includes(query.toLowerCase()))
+            );
+            
+            renderTable();
+            
+            // Also search backend for more results
+            if (event.key === 'Enter') {
+                try {
+                    const response = await fetch(`/api/search?q=${encodeURIComponent(query)}&limit=100`);
+                    const data = await response.json();
+                    
+                    if (data.success) {
+                        filteredItems = data.items;
+                        renderTable();
+                    }
+                } catch (error) {
+                    console.error('Search error:', error);
+                }
+            }
+        }
+
+        // Sorting
+        function sortTable(column) {
+            if (currentSort.column === column) {
+                currentSort.order = currentSort.order === 'asc' ? 'desc' : 'asc';
+            } else {
+                currentSort.column = column;
+                currentSort.order = column === 'date' ? 'desc' : 'asc';
+            }
+            renderTable();
+        }
+
+        // Pagination
+        function updatePagination() {
+            const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+            const start = (currentPage - 1) * itemsPerPage + 1;
+            const end = Math.min(currentPage * itemsPerPage, filteredItems.length);
+            
+            document.getElementById('pagination-start').textContent = filteredItems.length > 0 ? start : 0;
+            document.getElementById('pagination-end').textContent = end;
+            document.getElementById('pagination-total').textContent = filteredItems.length;
+            
+            // Update buttons
+            document.getElementById('prev-btn').disabled = currentPage === 1;
+            document.getElementById('next-btn').disabled = currentPage === totalPages || totalPages === 0;
+            
+            // Update page numbers
+            const pageNumbers = document.getElementById('page-numbers');
+            pageNumbers.innerHTML = '';
+            
+            const maxPages = 5;
+            let startPage = Math.max(1, currentPage - 2);
+            let endPage = Math.min(totalPages, startPage + maxPages - 1);
+            
+            if (endPage - startPage < maxPages - 1) {
+                startPage = Math.max(1, endPage - maxPages + 1);
+            }
+            
+            for (let i = startPage; i <= endPage; i++) {
+                const btn = document.createElement('button');
+                btn.textContent = i;
+                btn.className = `px-3 py-1 ${i === currentPage ? 'bg-indigo-600 text-white' : 'bg-white border'} rounded-lg hover:bg-gray-50 transition`;
+                btn.onclick = () => goToPage(i);
+                pageNumbers.appendChild(btn);
+            }
+        }
+
+        function previousPage() {
+            if (currentPage > 1) {
+                currentPage--;
+                renderTable();
+            }
+        }
+
+        function nextPage() {
+            const totalPages = Math.ceil(filteredItems.length / itemsPerPage);
+            if (currentPage < totalPages) {
+                currentPage++;
+                renderTable();
+            }
+        }
+
+        function goToPage(page) {
+            currentPage = page;
+            renderTable();
+        }
+
+        // Charts
+        function initializeCharts() {
+            // Trend chart
+            const trendCtx = document.getElementById('trendChart').getContext('2d');
+            trendChart = new Chart(trendCtx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Violations per Day',
+                        data: [],
+                        borderColor: 'rgb(99, 102, 241)',
+                        backgroundColor: 'rgba(99, 102, 241, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            ticks: {
+                                stepSize: 1
+                            }
+                        }
+                    }
+                }
+            });
+            
+            // Type distribution chart
+            const typeCtx = document.getElementById('typeChart').getContext('2d');
+            typeChart = new Chart(typeCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        data: [],
+                        backgroundColor: [
+                            'rgb(239, 68, 68)',
+                            'rgb(249, 115, 22)',
+                            'rgb(236, 72, 153)',
+                            'rgb(59, 130, 246)',
+                            'rgb(34, 197, 94)',
+                            'rgb(168, 85, 247)',
+                            'rgb(251, 191, 36)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateCharts() {
+            // Check if charts are initialized
+            if (!trendChart || !typeChart) {
+                console.warn('Charts not initialized yet');
+                return;
+            }
+            
+            // Update trend chart
+            const last30Days = [];
+            const counts = [];
+            const today = new Date();
+            
+            for (let i = 29; i >= 0; i--) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                const dateStr = date.toISOString().split('T')[0];
+                last30Days.push(date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }));
+                
+                const count = filteredItems.filter(item => 
+                    item.date.startsWith(dateStr)
+                ).length;
+                counts.push(count);
+            }
+            
+            trendChart.data.labels = last30Days;
+            trendChart.data.datasets[0].data = counts;
+            trendChart.update();
+            
+            // Update type chart
+            const typeCounts = {};
+            filteredItems.forEach(item => {
+                item.types.forEach(type => {
+                    typeCounts[type] = (typeCounts[type] || 0) + 1;
+                });
+            });
+            
+            const labels = Object.keys(typeCounts).map(type => 
+                type.replace(/_/g, ' ').toUpperCase()
+            );
+            const data = Object.values(typeCounts);
+            
+            typeChart.data.labels = labels;
+            typeChart.data.datasets[0].data = data;
+            typeChart.update();
+        }
+
+        // Refresh data
+        async function refreshData() {
+            const btn = document.getElementById('refresh-btn');
+            btn.disabled = true;
+            btn.innerHTML = `
+                <svg class="w-5 h-5 animate-spin" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                </svg>
+                <span>Refreshing...</span>
+            `;
+            
+            try {
+                const response = await fetch('/api/refresh', { 
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ force: false })
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    showToast(`Data refreshed! ${data.stats.new_violations || 0} new items found`, 'success');
+                    await loadData();
+                } else {
+                    throw new Error(data.message || 'Refresh failed');
+                }
+            } catch (error) {
+                console.error('Refresh error:', error);
+                showToast(`Error: ${error.message}`, 'error');
             } finally {
                 btn.disabled = false;
-                btn.textContent = '🔄 Refresh Data';
+                btn.innerHTML = `
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+                    </svg>
+                    <span>Refresh</span>
+                `;
             }
+        }
+
+        // Analytics
+        function openAnalytics() {
+            window.location.href = '/analytics';
+        }
+
+        // Export data
+        function exportData() {
+            const csv = convertToCSV(filteredItems);
+            downloadCSV(csv, `fda-data-${new Date().toISOString().split('T')[0]}.csv`);
+        }
+
+        function convertToCSV(items) {
+            const headers = ['Date', 'Company', 'Type', 'Severity', 'Title', 'Source', 'Link'];
+            const rows = items.map(item => [
+                item.date,
+                item.company,
+                item.types.join('; '),
+                item.severity,
+                item.title.replace(/,/g, ';'),
+                item.source,
+                item.link
+            ]);
+            
+            return [headers, ...rows].map(row => row.join(',')).join('\n');
+        }
+
+        function downloadCSV(csv, filename) {
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = filename;
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        // Notifications
+        function openNotifications() {
+            // This would open a notifications panel
+            showToast('Notifications feature coming soon', 'info');
+        }
+
+        async function checkForNewItems() {
+            try {
+                const response = await fetch('/api/items?days=1&limit=10');
+                const data = await response.json();
+                
+                if (data.success && data.items.length > 0) {
+                    const badge = document.getElementById('notification-badge');
+                    badge.textContent = data.items.length;
+                    badge.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Error checking for new items:', error);
+            }
+        }
+
+        // Utility functions
+        function showLoader() {
+            const tbody = document.getElementById('items-tbody');
+            tbody.innerHTML = `
+                <tr>
+                    <td colspan="7" class="text-center py-12">
+                        <div class="loader mx-auto mb-4"></div>
+                        <p class="text-gray-500">Loading regulatory data...</p>
+                    </td>
+                </tr>
+            `;
+        }
+
+        function hideLoader() {
+            // Loader is replaced by table content
+        }
+
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.background = type === 'error' ? '#ef4444' : 
+                                     type === 'info' ? '#3b82f6' : '#10b981';
+            toast.style.display = 'block';
+            
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        function copyToClipboard(text) {
+            navigator.clipboard.writeText(text).then(() => {
+                showToast('Copied to clipboard', 'success');
+            }).catch(err => {
+                console.error('Copy failed:', err);
+                showToast('Copy failed', 'error');
+            });
+        }
+
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
+        function updateLastUpdated() {
+            const now = new Date();
+            const timeStr = now.toLocaleTimeString('en-US', { 
+                hour: '2-digit', 
+                minute: '2-digit' 
+            });
+            document.getElementById('last-updated').textContent = `(${timeStr})`;
+        }
+
+        function dismissTutorial() {
+            localStorage.setItem('tutorialDismissed', 'true');
+            document.getElementById('tutorial-banner').classList.add('hidden');
         }
     </script>
 </body>

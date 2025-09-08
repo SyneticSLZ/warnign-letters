@@ -1,0 +1,960 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FDA Regulatory Intelligence Platform</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        * { box-sizing: border-box; }
+        .notification-toast {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #10b981;
+            color: white;
+            padding: 16px 24px;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            display: none;
+            z-index: 9999;
+            animation: slideIn 0.3s ease-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(400px); }
+            to { transform: translateX(0); }
+        }
+        .tab-active {
+            border-bottom: 3px solid #3b82f6;
+            color: #3b82f6;
+        }
+        .loading-spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3b82f6;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Toast Notification -->
+    <div id="toast" class="notification-toast"></div>
+
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900">FDA Regulatory Intelligence Platform</h1>
+                    <p class="text-sm text-gray-600">Real-time monitoring & contact discovery</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <span id="last-updated" class="text-sm text-gray-500"></span>
+                    <button onclick="openReportManager()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                        Email Reports
+                    </button>
+                    <button onclick="exportAllContacts()" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
+                        Export Contacts
+                    </button>
+                    <button onclick="refreshData()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                        Refresh Data
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <div class="max-w-7xl mx-auto px-4 py-6">
+        <!-- Stats Bar -->
+        <div class="grid grid-cols-4 gap-4 mb-6">
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-sm text-gray-600">Total Companies</div>
+                <div class="text-2xl font-bold" id="stat-companies">-</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-sm text-gray-600">This Week</div>
+                <div class="text-2xl font-bold" id="stat-week">-</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-sm text-gray-600">Contacts Found</div>
+                <div class="text-2xl font-bold" id="stat-contacts">-</div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="text-sm text-gray-600">Watchlist</div>
+                <div class="text-2xl font-bold" id="stat-watchlist">-</div>
+            </div>
+        </div>
+
+        <!-- Filter Bar -->
+        <div class="bg-white rounded-lg shadow p-4 mb-6">
+            <div class="flex items-center gap-4">
+                <select id="violation-filter" onchange="applyFilters()" class="px-3 py-2 border rounded-lg">
+                    <option value="">All Violations</option>
+                    <option value="warning_letter">Warning Letters</option>
+                    <option value="crl">Complete Response Letters</option>
+                    <option value="form_483">Form 483s</option>
+                    <option value="import_alert">Import Alerts</option>
+                </select>
+                
+                <select id="time-filter" onchange="applyFilters()" class="px-3 py-2 border rounded-lg">
+                    <option value="7">Last 7 Days</option>
+                    <option value="30">Last 30 Days</option>
+                    <option value="90">Last 90 Days</option>
+                    <option value="all">All Time</option>
+                </select>
+
+                <input type="text" id="search-input" placeholder="Search company..." 
+                       class="flex-1 px-3 py-2 border rounded-lg" onkeyup="searchCompanies(event)">
+                
+                <label class="flex items-center gap-2">
+                    <input type="checkbox" id="watchlist-only" onchange="applyFilters()" class="rounded">
+                    <span>Watchlist Only</span>
+                </label>
+            </div>
+        </div>
+
+        <!-- Company List -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="border-b px-4 py-3">
+                <h2 class="text-lg font-semibold">Companies & Violations</h2>
+            </div>
+            <div id="companies-list" class="divide-y divide-gray-200 max-h-[600px] overflow-y-auto">
+                <div class="p-8 text-center text-gray-500">Loading...</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Company Detail Modal -->
+    <div id="company-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg max-w-5xl w-full mx-4 max-h-[90vh] overflow-hidden">
+            <div class="p-6 border-b">
+                <div class="flex justify-between items-center">
+                    <h2 id="modal-company-name" class="text-xl font-bold">Company Details</h2>
+                    <button onclick="closeCompanyModal()" class="text-gray-400 hover:text-gray-600 text-2xl">×</button>
+                </div>
+            </div>
+            
+            <!-- Tabs -->
+            <div class="border-b flex">
+                <button onclick="showTab('violations')" class="tab-btn px-6 py-3 font-medium tab-active" data-tab="violations">
+                    Violations
+                </button>
+                <button onclick="showTab('contacts')" class="tab-btn px-6 py-3 font-medium" data-tab="contacts">
+                    Contacts
+                </button>
+                <button onclick="showTab('actions')" class="tab-btn px-6 py-3 font-medium" data-tab="actions">
+                    Actions
+                </button>
+            </div>
+            
+            <!-- Tab Content -->
+            <div class="p-6 overflow-y-auto max-h-[500px]">
+                <div id="violations-tab" class="tab-content">
+                    <!-- Violations content -->
+                </div>
+                
+                <div id="contacts-tab" class="tab-content hidden">
+                    <!-- Contacts content -->
+                </div>
+                
+                <div id="actions-tab" class="tab-content hidden">
+                    <!-- Actions content -->
+                </div>
+            </div>
+            
+            <div class="p-4 border-t flex justify-between">
+                <button id="watchlist-toggle" onclick="toggleWatchlist()" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
+                    Add to Watchlist
+                </button>
+                <button onclick="findContacts()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                    Find Contacts
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Manager Modal -->
+    <div id="report-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg max-w-4xl w-full mx-4 max-h-[80vh] overflow-hidden">
+            <div class="p-6 border-b">
+                <h2 class="text-xl font-bold">Email Report Management</h2>
+            </div>
+            
+            <div class="p-6 overflow-y-auto max-h-[500px]">
+                <!-- Email Configuration -->
+                <div class="mb-6 p-4 bg-gray-50 rounded-lg">
+                    <h3 class="font-semibold mb-3">Email Configuration</h3>
+                    <div class="grid grid-cols-2 gap-4">
+                        <div>
+                            <label class="block text-sm font-medium mb-1">From Email</label>
+                            <input type="email" id="from-email" class="w-full px-3 py-2 border rounded-lg" 
+                                   placeholder="your@email.com">
+                        </div>
+                        <div>
+                            <label class="block text-sm font-medium mb-1">Reply-To Email</label>
+                            <input type="email" id="reply-email" class="w-full px-3 py-2 border rounded-lg" 
+                                   placeholder="replies@email.com">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Daily Reports -->
+                <div class="mb-6 p-4 bg-blue-50 rounded-lg">
+                    <h3 class="font-semibold mb-3">Daily Reports</h3>
+                    <div class="flex items-center gap-4 mb-3">
+                        <input type="checkbox" id="daily-enabled" class="rounded">
+                        <label for="daily-enabled">Enable Daily Reports</label>
+                        <input type="time" id="daily-time" value="09:00" class="px-2 py-1 border rounded">
+                    </div>
+                    <textarea id="daily-recipients" placeholder="Recipient emails (one per line)" 
+                              class="w-full px-3 py-2 border rounded-lg h-20"></textarea>
+                </div>
+
+                <!-- Weekly Reports -->
+                <div class="mb-6 p-4 bg-green-50 rounded-lg">
+                    <h3 class="font-semibold mb-3">Weekly Reports</h3>
+                    <div class="flex items-center gap-4 mb-3">
+                        <input type="checkbox" id="weekly-enabled" class="rounded">
+                        <label for="weekly-enabled">Enable Weekly Reports</label>
+                        <select id="weekly-day" class="px-2 py-1 border rounded">
+                            <option value="monday">Monday</option>
+                            <option value="tuesday">Tuesday</option>
+                            <option value="wednesday">Wednesday</option>
+                            <option value="thursday">Thursday</option>
+                            <option value="friday">Friday</option>
+                        </select>
+                        <input type="time" id="weekly-time" value="09:00" class="px-2 py-1 border rounded">
+                    </div>
+                    <textarea id="weekly-recipients" placeholder="Recipient emails (one per line)" 
+                              class="w-full px-3 py-2 border rounded-lg h-20"></textarea>
+                </div>
+
+                <!-- Custom Report -->
+                <div class="mb-6 p-4 bg-purple-50 rounded-lg">
+                    <h3 class="font-semibold mb-3">Send Custom Report</h3>
+                    <div class="grid grid-cols-2 gap-4 mb-3">
+                        <select id="custom-period" class="px-3 py-2 border rounded-lg">
+                            <option value="1">Last 24 Hours</option>
+                            <option value="7">Last 7 Days</option>
+                            <option value="30">Last 30 Days</option>
+                            <option value="90">Last 90 Days</option>
+                        </select>
+                        <select id="custom-format" class="px-3 py-2 border rounded-lg">
+                            <option value="summary">Summary Report</option>
+                            <option value="detailed">Detailed Report</option>
+                            <option value="contacts">Contacts Report</option>
+                        </select>
+                    </div>
+                    <input type="email" id="custom-recipient" placeholder="Recipient email" 
+                           class="w-full px-3 py-2 border rounded-lg mb-3">
+                    <button onclick="sendCustomReport()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                        Send Report Now
+                    </button>
+                </div>
+
+                <!-- Report History -->
+                <div class="p-4 bg-gray-50 rounded-lg">
+                    <h3 class="font-semibold mb-3">Recent Reports</h3>
+                    <div id="report-history" class="space-y-2">
+                        <!-- Report history will be loaded here -->
+                    </div>
+                </div>
+            </div>
+            
+            <div class="p-4 border-t flex justify-between">
+                <button onclick="saveReportSettings()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                    Save Settings
+                </button>
+                <button onclick="closeReportManager()" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global state
+        let companies = [];
+        let currentCompany = null;
+        let watchlist = [];
+        let allContacts = {};
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCompanies();
+            loadWatchlist();
+            updateLastUpdated();
+            setInterval(updateLastUpdated, 60000);
+        });
+
+        // Load companies
+        async function loadCompanies() {
+            try {
+                const response = await fetch('/api/companies?days=30');
+                const data = await response.json();
+                
+                if (data.success) {
+                    companies = data.companies;
+                    displayCompanies(companies);
+                    updateStats();
+                    
+                    // Load contacts for each company
+                    loadAllContacts();
+                }
+            } catch (error) {
+                console.error('Error loading companies:', error);
+                showToast('Error loading companies', 'error');
+            }
+        }
+
+        // Display companies
+        function displayCompanies(companyList) {
+            const container = document.getElementById('companies-list');
+            
+            if (companyList.length === 0) {
+                container.innerHTML = '<div class="p-8 text-center text-gray-500">No companies found</div>';
+                return;
+            }
+            
+            container.innerHTML = companyList.map(company => {
+                const recentViolation = company.violations[0];
+                const isWatchlisted = watchlist.some(w => w.company === company.name);
+                
+                return `
+                    <div class="p-4 hover:bg-gray-50 cursor-pointer" onclick="openCompanyModal('${company.name}')">
+                        <div class="flex justify-between items-start">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-3 mb-2">
+                                    <h3 class="font-semibold text-gray-900">${company.name}</h3>
+                                    ${isWatchlisted ? '<span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs rounded">Watchlist</span>' : ''}
+                                    <span class="px-2 py-1 bg-gray-100 text-gray-700 text-xs rounded">
+                                        ${company.violations.length} violation${company.violations.length !== 1 ? 's' : ''}
+                                    </span>
+                                </div>
+                                ${recentViolation ? `
+                                    <div class="text-sm text-gray-600">
+                                        <span class="font-medium">${formatDate(recentViolation.date)}</span>
+                                        <span class="mx-2">•</span>
+                                        <span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded text-xs">
+                                            ${formatViolationType(recentViolation.type)}
+                                        </span>
+                                    </div>
+                                    <div class="text-sm text-gray-500 mt-1">${recentViolation.title}</div>
+                                ` : ''}
+                            </div>
+                            <button class="text-blue-600 hover:text-blue-800">
+                                View Details →
+                            </button>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Open company modal
+        async function openCompanyModal(companyName) {
+            currentCompany = companies.find(c => c.name === companyName);
+            if (!currentCompany) return;
+            
+            document.getElementById('modal-company-name').textContent = currentCompany.name;
+            
+            // Update watchlist button
+            const isWatchlisted = watchlist.some(w => w.company === currentCompany.name);
+            const watchBtn = document.getElementById('watchlist-toggle');
+            watchBtn.textContent = isWatchlisted ? 'Remove from Watchlist' : 'Add to Watchlist';
+            watchBtn.className = isWatchlisted ? 
+                'bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700' : 
+                'bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700';
+            
+            // Load company details
+            await loadCompanyDetails(companyName);
+            
+            // Show violations tab by default
+            showTab('violations');
+            
+            document.getElementById('company-modal').classList.remove('hidden');
+        }
+
+        // Load company details
+        async function loadCompanyDetails(companyName) {
+            try {
+                const response = await fetch(`/api/companies/${encodeURIComponent(companyName)}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    const company = data.data;
+                    
+                    // Update violations tab
+                    const violationsTab = document.getElementById('violations-tab');
+                    violationsTab.innerHTML = `
+                        <div class="space-y-4">
+                            ${company.timeline.map(violation => `
+                                <div class="border-l-4 border-blue-500 pl-4">
+                                    <div class="flex items-center gap-3 mb-1">
+                                        <span class="font-medium">${formatDate(violation.date)}</span>
+                                        <span class="px-2 py-1 bg-blue-100 text-blue-700 text-xs rounded">
+                                            ${formatViolationType(violation.type)}
+                                        </span>
+                                    </div>
+                                    <a href="${violation.link}" target="_blank" class="text-blue-600 hover:text-blue-800">
+                                        ${violation.title}
+                                    </a>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                    
+                    // Update contacts tab
+                    updateContactsTab(company);
+                    
+                    // Update actions tab
+                    updateActionsTab(company);
+                }
+            } catch (error) {
+                console.error('Error loading company details:', error);
+            }
+        }
+
+        // Update contacts tab
+        function updateContactsTab(company) {
+            const contactsTab = document.getElementById('contacts-tab');
+            const contacts = company.contacts || allContacts[company.company];
+            
+            if (!contacts) {
+                contactsTab.innerHTML = `
+                    <div class="text-center py-8">
+                        <p class="text-gray-500 mb-4">No contacts found yet</p>
+                        <button onclick="findContacts()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                            Search for Contacts
+                        </button>
+                    </div>
+                `;
+                return;
+            }
+            
+            contactsTab.innerHTML = `
+                <div class="space-y-6">
+                    ${contacts.website || contacts.domain ? `
+                        <div class="p-4 bg-gray-50 rounded-lg">
+                            <h4 class="font-semibold mb-2">Company Information</h4>
+                            <div class="grid grid-cols-2 gap-4 text-sm">
+                                ${contacts.website ? `<div><span class="text-gray-600">Website:</span> <a href="${contacts.website}" target="_blank" class="text-blue-600">${contacts.website}</a></div>` : ''}
+                                ${contacts.phone ? `<div><span class="text-gray-600">Phone:</span> ${contacts.phone}</div>` : ''}
+                                ${contacts.address ? `<div><span class="text-gray-600">Address:</span> ${contacts.address}</div>` : ''}
+                                ${contacts.linkedin ? `<div><span class="text-gray-600">LinkedIn:</span> <a href="${contacts.linkedin}" target="_blank" class="text-blue-600">View Profile</a></div>` : ''}
+                            </div>
+                        </div>
+                    ` : ''}
+                    
+                    ${contacts.regulatory_contacts && contacts.regulatory_contacts.length > 0 ? `
+                        <div>
+                            <h4 class="font-semibold mb-3">Regulatory Contacts</h4>
+                            <div class="space-y-2">
+                                ${contacts.regulatory_contacts.map(contact => `
+                                    <div class="p-3 bg-blue-50 rounded-lg">
+                                        <div class="font-medium">${contact.name}</div>
+                                        <div class="text-sm text-gray-600">${contact.title}</div>
+                                        ${contact.email ? `<div class="text-sm text-blue-600">${contact.email}</div>` : ''}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                    
+                    ${contacts.executives && contacts.executives.length > 0 ? `
+                        <div>
+                            <h4 class="font-semibold mb-3">Executive Contacts</h4>
+                            <div class="space-y-2">
+                                ${contacts.executives.map(contact => `
+                                    <div class="p-3 bg-green-50 rounded-lg">
+                                        <div class="font-medium">${contact.name}</div>
+                                        <div class="text-sm text-gray-600">${contact.title}</div>
+                                        ${contact.email ? `<div class="text-sm text-blue-600">${contact.email}</div>` : ''}
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                    
+                    ${(!contacts.regulatory_contacts || contacts.regulatory_contacts.length === 0) && 
+                      (!contacts.executives || contacts.executives.length === 0) ? `
+                        <div class="text-center py-4">
+                            <p class="text-gray-500 mb-4">Limited contact information available</p>
+                            <button onclick="findContacts()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                                Search for More Contacts
+                            </button>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        // Update actions tab
+        function updateActionsTab(company) {
+            const actionsTab = document.getElementById('actions-tab');
+            const recentViolation = company.timeline[0];
+            
+            actionsTab.innerHTML = `
+                <div class="space-y-6">
+                    <div class="p-4 bg-yellow-50 rounded-lg">
+                        <h4 class="font-semibold mb-2">Recommended Actions</h4>
+                        <ul class="space-y-2 text-sm">
+                            <li class="flex items-start">
+                                <span class="text-yellow-600 mr-2">•</span>
+                                <span>Contact within 48 hours of violation (${recentViolation ? formatDate(recentViolation.date) : 'N/A'})</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-yellow-600 mr-2">•</span>
+                                <span>Offer compliance audit and remediation services</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="text-yellow-600 mr-2">•</span>
+                                <span>Schedule executive briefing on regulatory requirements</span>
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="p-4 bg-blue-50 rounded-lg">
+                        <h4 class="font-semibold mb-2">Email Template</h4>
+                        <div class="bg-white p-3 rounded border text-sm">
+                            <div class="mb-2"><strong>Subject:</strong> FDA ${recentViolation ? formatViolationType(recentViolation.type) : 'Violation'} - Compliance Support Available</div>
+                            <div class="whitespace-pre-wrap">Dear [Contact Name],
+
+I noticed ${company.company} recently received an FDA ${recentViolation ? formatViolationType(recentViolation.type) : 'regulatory action'} dated ${recentViolation ? formatDate(recentViolation.date) : '[date]'}.
+
+Our firm specializes in helping pharmaceutical companies navigate FDA compliance challenges and implement corrective actions efficiently. We've successfully guided numerous companies through similar situations.
+
+I'd appreciate the opportunity to discuss how we can support ${company.company} in:
+• Developing comprehensive responses to FDA observations
+• Implementing sustainable quality systems
+• Preventing future compliance issues
+
+Would you be available for a brief call this week to discuss your current priorities?
+
+Best regards,
+[Your Name]</div>
+                        </div>
+                        <button onclick="copyEmailTemplate()" class="mt-3 bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                            Copy Template
+                        </button>
+                    </div>
+                    
+                    <div class="grid grid-cols-2 gap-4">
+                        <button onclick="addToCallList()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700">
+                            Add to Call List
+                        </button>
+                        <button onclick="scheduleFollowUp()" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
+                            Schedule Follow-up
+                        </button>
+                    </div>
+                </div>
+            `;
+        }
+
+        // Find contacts
+        async function findContacts() {
+            if (!currentCompany) return;
+            
+            const btn = event.target;
+            btn.disabled = true;
+            btn.innerHTML = '<div class="loading-spinner inline-block w-4 h-4 mr-2"></div>Searching...';
+            
+            try {
+                const response = await fetch(`/api/companies/${encodeURIComponent(currentCompany.name)}/contacts`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    allContacts[currentCompany.name] = data.contacts;
+                    await loadCompanyDetails(currentCompany.name);
+                    showToast('Contact search complete');
+                    showTab('contacts');
+                }
+            } catch (error) {
+                console.error('Error finding contacts:', error);
+                showToast('Error finding contacts', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Find Contacts';
+            }
+        }
+
+        // Load all contacts
+        async function loadAllContacts() {
+            let totalContacts = 0;
+            for (const company of companies.slice(0, 10)) { // Load first 10 for performance
+                try {
+                    const response = await fetch(`/api/companies/${encodeURIComponent(company.name)}/contacts`);
+                    const data = await response.json();
+                    if (data.success && data.contacts) {
+                        allContacts[company.name] = data.contacts;
+                        const contacts = data.contacts;
+                        totalContacts += (contacts.emails ? contacts.emails.length : 0) +
+                                       (contacts.regulatory_contacts ? contacts.regulatory_contacts.length : 0) +
+                                       (contacts.executives ? contacts.executives.length : 0);
+                    }
+                } catch (error) {
+                    console.error(`Error loading contacts for ${company.name}:`, error);
+                }
+            }
+            document.getElementById('stat-contacts').textContent = totalContacts;
+        }
+
+        // Load watchlist
+        async function loadWatchlist() {
+            try {
+                const response = await fetch('/api/watchlist');
+                const data = await response.json();
+                if (data.success) {
+                    watchlist = data.watchlist;
+                    document.getElementById('stat-watchlist').textContent = watchlist.length;
+                }
+            } catch (error) {
+                console.error('Error loading watchlist:', error);
+            }
+        }
+
+        // Toggle watchlist
+        async function toggleWatchlist() {
+            if (!currentCompany) return;
+            
+            const isWatchlisted = watchlist.some(w => w.company === currentCompany.name);
+            
+            try {
+                if (isWatchlisted) {
+                    const response = await fetch(`/api/watchlist/${encodeURIComponent(currentCompany.name)}`, {
+                        method: 'DELETE'
+                    });
+                    if (response.ok) {
+                        showToast('Removed from watchlist');
+                        await loadWatchlist();
+                    }
+                } else {
+                    const response = await fetch('/api/watchlist', {
+                        method: 'POST',
+                        headers: { 'Content-Type': 'application/json' },
+                        body: JSON.stringify({
+                            company: currentCompany.name,
+                            criteria: { alert_on_any: true }
+                        })
+                    });
+                    if (response.ok) {
+                        showToast('Added to watchlist');
+                        await loadWatchlist();
+                    }
+                }
+                
+                // Update button
+                const watchBtn = document.getElementById('watchlist-toggle');
+                const newIsWatchlisted = !isWatchlisted;
+                watchBtn.textContent = newIsWatchlisted ? 'Remove from Watchlist' : 'Add to Watchlist';
+                watchBtn.className = newIsWatchlisted ? 
+                    'bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700' : 
+                    'bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700';
+                    
+            } catch (error) {
+                console.error('Error updating watchlist:', error);
+                showToast('Error updating watchlist', 'error');
+            }
+        }
+
+        // Show tab
+        function showTab(tabName) {
+            // Update buttons
+            document.querySelectorAll('.tab-btn').forEach(btn => {
+                btn.classList.remove('tab-active');
+                if (btn.dataset.tab === tabName) {
+                    btn.classList.add('tab-active');
+                }
+            });
+            
+            // Update content
+            document.querySelectorAll('.tab-content').forEach(content => {
+                content.classList.add('hidden');
+            });
+            document.getElementById(`${tabName}-tab`).classList.remove('hidden');
+        }
+
+        // Apply filters
+        function applyFilters() {
+            const violationType = document.getElementById('violation-filter').value;
+            const timePeriod = document.getElementById('time-filter').value;
+            const watchlistOnly = document.getElementById('watchlist-only').checked;
+            
+            let filtered = [...companies];
+            
+            // Filter by violation type
+            if (violationType) {
+                filtered = filtered.filter(company => 
+                    company.violations.some(v => v.type === violationType)
+                );
+            }
+            
+            // Filter by time period
+            if (timePeriod !== 'all') {
+                const days = parseInt(timePeriod);
+                const cutoff = new Date();
+                cutoff.setDate(cutoff.getDate() - days);
+                filtered = filtered.filter(company => 
+                    company.violations.some(v => new Date(v.date) >= cutoff)
+                );
+            }
+            
+            // Filter by watchlist
+            if (watchlistOnly) {
+                filtered = filtered.filter(company => 
+                    watchlist.some(w => w.company === company.name)
+                );
+            }
+            
+            displayCompanies(filtered);
+        }
+
+        // Search companies
+        function searchCompanies(event) {
+            const query = event.target.value.toLowerCase();
+            if (query === '') {
+                displayCompanies(companies);
+                return;
+            }
+            
+            const filtered = companies.filter(company => 
+                company.name.toLowerCase().includes(query) ||
+                (company.aliases && company.aliases.some(alias => alias.toLowerCase().includes(query)))
+            );
+            displayCompanies(filtered);
+        }
+
+        // Export all contacts
+        async function exportAllContacts() {
+            try {
+                window.location.href = '/api/export/contacts?format=csv';
+                showToast('Contacts exported successfully');
+            } catch (error) {
+                console.error('Error exporting contacts:', error);
+                showToast('Error exporting contacts', 'error');
+            }
+        }
+
+        // Refresh data
+        async function refreshData() {
+            const btn = event.target;
+            btn.disabled = true;
+            btn.innerHTML = '<div class="loading-spinner inline-block w-4 h-4 mr-2"></div>Refreshing...';
+            
+            try {
+                const response = await fetch('/api/refresh', { method: 'POST' });
+                const data = await response.json();
+                
+                if (data.success) {
+                    showToast(`Data refreshed! Found ${data.stats.new_violations} new violations`);
+                    await loadCompanies();
+                    await loadWatchlist();
+                }
+            } catch (error) {
+                console.error('Refresh error:', error);
+                showToast('Error refreshing data', 'error');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = 'Refresh Data';
+            }
+        }
+
+        // Open report manager
+        function openReportManager() {
+            loadReportHistory();
+            document.getElementById('report-modal').classList.remove('hidden');
+        }
+
+        // Close report manager
+        function closeReportManager() {
+            document.getElementById('report-modal').classList.add('hidden');
+        }
+
+        // Load report history
+        async function loadReportHistory() {
+            try {
+                const response = await fetch('/api/reports');
+                const data = await response.json();
+                
+                if (data.success) {
+                    const historyDiv = document.getElementById('report-history');
+                    if (data.reports.length === 0) {
+                        historyDiv.innerHTML = '<p class="text-gray-500">No reports sent yet</p>';
+                    } else {
+                        historyDiv.innerHTML = data.reports.slice(0, 5).map(report => `
+                            <div class="p-2 bg-white rounded border">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <span class="font-medium">${report.type === 'weekly' ? 'Weekly' : 'Daily'} Report</span>
+                                        <span class="text-sm text-gray-500 ml-2">${formatDate(report.generated)}</span>
+                                    </div>
+                                    <span class="text-sm text-gray-600">${report.summary.total_alerts} alerts</span>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                }
+            } catch (error) {
+                console.error('Error loading report history:', error);
+            }
+        }
+
+        // Save report settings
+        async function saveReportSettings() {
+            const dailySettings = {
+                enabled: document.getElementById('daily-enabled').checked,
+                time: document.getElementById('daily-time').value,
+                recipients: document.getElementById('daily-recipients').value.split('\n').filter(e => e.trim())
+            };
+            
+            const weeklySettings = {
+                enabled: document.getElementById('weekly-enabled').checked,
+                day: document.getElementById('weekly-day').value,
+                time: document.getElementById('weekly-time').value,
+                recipients: document.getElementById('weekly-recipients').value.split('\n').filter(e => e.trim())
+            };
+            
+            try {
+                await fetch('/api/report-settings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ frequency: 'daily', settings: dailySettings })
+                });
+                
+                await fetch('/api/report-settings', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ frequency: 'weekly', settings: weeklySettings })
+                });
+                
+                showToast('Report settings saved');
+            } catch (error) {
+                console.error('Error saving settings:', error);
+                showToast('Error saving settings', 'error');
+            }
+        }
+
+        // Send custom report
+        async function sendCustomReport() {
+            const period = document.getElementById('custom-period').value;
+            const format = document.getElementById('custom-format').value;
+            const recipient = document.getElementById('custom-recipient').value;
+            
+            if (!recipient) {
+                showToast('Please enter recipient email', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/reports/generate', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        type: 'custom',
+                        period: period,
+                        format: format,
+                        recipient: recipient
+                    })
+                });
+                
+                if (response.ok) {
+                    showToast('Report sent successfully');
+                    document.getElementById('custom-recipient').value = '';
+                    loadReportHistory();
+                }
+            } catch (error) {
+                console.error('Error sending report:', error);
+                showToast('Error sending report', 'error');
+            }
+        }
+
+        // Copy email template
+        function copyEmailTemplate() {
+            const template = document.querySelector('#actions-tab .bg-white.p-3').innerText;
+            navigator.clipboard.writeText(template);
+            showToast('Template copied to clipboard');
+        }
+
+        // Add to call list
+        function addToCallList() {
+            // In production, this would integrate with CRM
+            showToast('Added to call list');
+        }
+
+        // Schedule follow-up
+        function scheduleFollowUp() {
+            // In production, this would integrate with calendar
+            showToast('Follow-up scheduled');
+        }
+
+        // Update stats
+        function updateStats() {
+            document.getElementById('stat-companies').textContent = companies.length;
+            
+            // Count this week's violations
+            const oneWeekAgo = new Date();
+            oneWeekAgo.setDate(oneWeekAgo.getDate() - 7);
+            let weekCount = 0;
+            companies.forEach(company => {
+                weekCount += company.violations.filter(v => new Date(v.date) >= oneWeekAgo).length;
+            });
+            document.getElementById('stat-week').textContent = weekCount;
+        }
+
+        // Update last updated time
+        function updateLastUpdated() {
+            const now = new Date();
+            document.getElementById('last-updated').textContent = `Last updated: ${now.toLocaleTimeString()}`;
+        }
+
+        // Close company modal
+        function closeCompanyModal() {
+            document.getElementById('company-modal').classList.add('hidden');
+        }
+
+        // Show toast notification
+        function showToast(message, type = 'success') {
+            const toast = document.getElementById('toast');
+            toast.textContent = message;
+            toast.style.background = type === 'error' ? '#ef4444' : '#10b981';
+            toast.style.display = 'block';
+            setTimeout(() => {
+                toast.style.display = 'none';
+            }, 3000);
+        }
+
+        // Format date
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            const days = Math.floor((Date.now() - date) / (1000 * 60 * 60 * 24));
+            
+            if (days === 0) return 'Today';
+            if (days === 1) return 'Yesterday';
+            if (days < 7) return `${days} days ago`;
+            if (days < 30) return `${Math.floor(days / 7)} weeks ago`;
+            
+            return date.toLocaleDateString();
+        }
+
+        // Format violation type
+        function formatViolationType(type) {
+            const types = {
+                'warning_letter': 'Warning Letter',
+                'crl': 'Complete Response Letter',
+                'form_483': 'Form 483',
+                'opdp': 'OPDP Letter',
+                'import_alert': 'Import Alert',
+                'consent_decree': 'Consent Decree'
+            };
+            return types[type] || type.replace(/_/g, ' ').toUpperCase();
+        }
+    </script>
+</body>
+</html>

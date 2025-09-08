@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FDA Regulatory Monitor Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+    <style>
+        .loader {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #3490dc;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        .type-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 4px;
+        }
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-sm border-b">
+        <div class="max-w-7xl mx-auto px-4 py-4">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900">🏥 FDA Regulatory Monitor</h1>
+                    <p class="text-sm text-gray-600 mt-1">Real-time tracking of Warning Letters, CRLs, 483s & Enforcement Actions</p>
+                </div>
+                <div class="flex gap-2">
+                    <button onclick="refreshData()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700 transition">
+                        🔄 Refresh
+                    </button>
+                    <button onclick="showSources()" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700 transition">
+                        📡 Sources
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Stats Cards -->
+    <div class="max-w-7xl mx-auto px-4 py-6">
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Total Items</p>
+                        <p class="text-3xl font-bold text-gray-900" id="stat-total">-</p>
+                    </div>
+                    <span class="text-3xl">📑</span>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Warning Letters</p>
+                        <p class="text-3xl font-bold text-red-600" id="stat-warning">-</p>
+                    </div>
+                    <span class="text-3xl">⚠️</span>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">CRLs</p>
+                        <p class="text-3xl font-bold text-orange-600" id="stat-crl">-</p>
+                    </div>
+                    <span class="text-3xl">📋</span>
+                </div>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-600">Form 483s</p>
+                        <p class="text-3xl font-bold text-purple-600" id="stat-483">-</p>
+                    </div>
+                    <span class="text-3xl">🔍</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Filters and Search -->
+        <div class="bg-white rounded-lg shadow p-4 mb-6">
+            <div class="grid grid-cols-1 md:grid-cols-5 gap-4">
+                <select id="filter-type" class="border rounded-lg px-3 py-2">
+                    <option value="">All Types</option>
+                    <option value="warning_letter">Warning Letters</option>
+                    <option value="crl">CRLs</option>
+                    <option value="form_483">Form 483s</option>
+                    <option value="opdp">OPDP Letters</option>
+                    <option value="enforcement">Enforcement</option>
+                </select>
+                <select id="filter-days" class="border rounded-lg px-3 py-2">
+                    <option value="7">Last 7 Days</option>
+                    <option value="30" selected>Last 30 Days</option>
+                    <option value="90">Last 90 Days</option>
+                    <option value="365">Last Year</option>
+                    <option value="all">All Time</option>
+                </select>
+                <select id="filter-source" class="border rounded-lg px-3 py-2">
+                    <option value="">All Sources</option>
+                    <option value="official">FDA Official</option>
+                    <option value="trade">Trade Press</option>
+                    <option value="google">Google News</option>
+                </select>
+                <input type="text" id="search-input" placeholder="Search companies, titles..." class="border rounded-lg px-3 py-2">
+                <button onclick="applyFilters()" class="bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition">
+                    Apply Filters
+                </button>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-lg font-semibold mb-4">Items by Type</h3>
+                <canvas id="typeChart"></canvas>
+            </div>
+            <div class="bg-white rounded-lg shadow p-6">
+                <h3 class="text-lg font-semibold mb-4">Timeline (Last 30 Days)</h3>
+                <canvas id="timelineChart"></canvas>
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="bg-white rounded-lg shadow">
+            <div class="border-b px-6 py-3">
+                <h2 class="text-lg font-semibold">Recent Regulatory Items</h2>
+            </div>
+            <div id="loading" class="flex justify-center py-8">
+                <div class="loader"></div>
+            </div>
+            <div id="items-container" class="divide-y divide-gray-200 hidden">
+                <!-- Items will be inserted here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Sources Modal -->
+    <div id="sources-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+        <div class="bg-white rounded-lg max-w-4xl w-full mx-4 max-h-[80vh] overflow-y-auto">
+            <div class="p-6 border-b">
+                <h2 class="text-xl font-bold">Data Sources</h2>
+            </div>
+            <div id="sources-content" class="p-6">
+                <!-- Sources will be loaded here -->
+            </div>
+            <div class="p-6 border-t">
+                <button onclick="closeSources()" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700">
+                    Close
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let allItems = [];
+        let typeChart = null;
+        let timelineChart = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadData();
+            setInterval(loadStats, 60000); // Refresh stats every minute
+        });
+
+        // Load main data
+        async function loadData() {
+            try {
+                const filters = {
+                    type: document.getElementById('filter-type').value,
+                    days: document.getElementById('filter-days').value,
+                    source: document.getElementById('filter-source').value,
+                    limit: 100
+                };
+
+                const params = new URLSearchParams(filters);
+                const response = await fetch(`/api/items?${params}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    allItems = data.items;
+                    displayItems(data.items);
+                    loadStats();
+                }
+            } catch (error) {
+                console.error('Error loading data:', error);
+            }
+        }
+
+        // Load statistics
+        async function loadStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const stats = await response.json();
+                
+                // Update stat cards
+                document.getElementById('stat-total').textContent = stats.total || 0;
+                document.getElementById('stat-warning').textContent = stats.byType?.warning_letter || 0;
+                document.getElementById('stat-crl').textContent = stats.byType?.crl || 0;
+                document.getElementById('stat-483').textContent = stats.byType?.form_483 || 0;
+                
+                // Update charts
+                updateCharts(stats);
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+
+        // Display items
+        function displayItems(items) {
+            const container = document.getElementById('items-container');
+            const loading = document.getElementById('loading');
+            
+            loading.classList.add('hidden');
+            container.classList.remove('hidden');
+            
+            if (items.length === 0) {
+                container.innerHTML = '<div class="p-8 text-center text-gray-500">No items found</div>';
+                return;
+            }
+            
+            container.innerHTML = items.map(item => `
+                <div class="p-6 hover:bg-gray-50 fade-in">
+                    <div class="flex justify-between items-start mb-2">
+                        <div class="flex-1">
+                            <h3 class="text-lg font-semibold text-gray-900 mb-1">
+                                <a href="${item.link}" target="_blank" class="hover:text-blue-600">
+                                    ${item.title}
+                                </a>
+                            </h3>
+                            <div class="flex items-center gap-2 text-sm text-gray-600 mb-2">
+                                <span>🏢 ${item.company}</span>
+                                <span>•</span>
+                                <span>📅 ${item.dateFormatted}</span>
+                                <span>•</span>
+                                <span>📡 ${item.source}</span>
+                            </div>
+                        </div>
+                        <div class="flex flex-col gap-1">
+                            ${item.types.map(type => getTypeBadge(type)).join('')}
+                        </div>
+                    </div>
+                    ${item.summary ? `<p class="text-gray-700 text-sm">${item.summary.substring(0, 200)}...</p>` : ''}
+                </div>
+            `).join('');
+        }
+
+        // Get type badge HTML
+        function getTypeBadge(type) {
+            const badges = {
+                'warning_letter': '<span class="type-badge bg-red-100 text-red-700">Warning Letter</span>',
+                'crl': '<span class="type-badge bg-orange-100 text-orange-700">CRL</span>',
+                'form_483': '<span class="type-badge bg-purple-100 text-purple-700">Form 483</span>',
+                'opdp': '<span class="type-badge bg-blue-100 text-blue-700">OPDP</span>',
+                'enforcement': '<span class="type-badge bg-yellow-100 text-yellow-700">Enforcement</span>',
+                'regulatory_news': '<span class="type-badge bg-gray-100 text-gray-700">News</span>'
+            };
+            return badges[type] || badges['regulatory_news'];
+        }
+
+        // Update charts
+        function updateCharts(stats) {
+            // Type chart
+            const typeCtx = document.getElementById('typeChart').getContext('2d');
+            if (typeChart) typeChart.destroy();
+            
+            typeChart = new Chart(typeCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Warning Letters', 'CRLs', 'Form 483s', 'OPDP', 'Other'],
+                    datasets: [{
+                        data: [
+                            stats.byType?.warning_letter || 0,
+                            stats.byType?.crl || 0,
+                            stats.byType?.form_483 || 0,
+                            stats.byType?.opdp || 0,
+                            stats.byType?.enforcement || 0
+                        ],
+                        backgroundColor: [
+                            '#dc2626',
+                            '#ea580c',
+                            '#9333ea',
+                            '#2563eb',
+                            '#eab308'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            // Timeline chart
+            const timelineCtx = document.getElementById('timelineChart').getContext('2d');
+            if (timelineChart) timelineChart.destroy();
+            
+            // Create timeline data
+            const last30Days = [];
+            const counts = [];
+            const today = new Date();
+            
+            for (let i = 29; i >= 0; i--) {
+                const date = new Date(today);
+                date.setDate(date.getDate() - i);
+                const dateStr = date.toLocaleDateString();
+                last30Days.push(dateStr);
+                
+                // Count items for this day
+                const dayStart = new Date(date.setHours(0, 0, 0, 0));
+                const dayEnd = new Date(date.setHours(23, 59, 59, 999));
+                const count = allItems.filter(item => {
+                    const itemDate = new Date(item.date);
+                    return itemDate >= dayStart && itemDate <= dayEnd;
+                }).length;
+                counts.push(count);
+            }
+            
+            timelineChart = new Chart(timelineCtx, {
+                type: 'line',
+                data: {
+                    labels: last30Days,
+                    datasets: [{
+                        label: 'Items per Day',
+                        data: counts,
+                        borderColor: '#2563eb',
+                        backgroundColor: 'rgba(37, 99, 235, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: true,
+                    plugins: {
+                        legend: {
+                            display: false
+                        }
+                    },
+                    scales: {
+                        x: {
+                            display: false
+                        }
+                    }
+                }
+            });
+        }
+
+        // Apply filters
+        async function applyFilters() {
+            const searchTerm = document.getElementById('search-input').value;
+            
+            if (searchTerm) {
+                // Use search endpoint
+                try {
+                    const response = await fetch(`/api/search?q=${encodeURIComponent(searchTerm)}`);
+                    const data = await response.json();
+                    if (data.success) {
+                        displayItems(data.items);
+                    }
+                } catch (error) {
+                    console.error('Search error:', error);
+                }
+            } else {
+                // Regular filter
+                loadData();
+            }
+        }
+
+        // Refresh data
+        async function refreshData() {
+            const btn = event.target;
+            btn.disabled = true;
+            btn.textContent = '⏳ Refreshing...';
+            
+            try {
+                const response = await fetch('/api/refresh', { method: 'POST' });
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert(`Data refreshed! Found ${data.stats.total} items.`);
+                    loadData();
+                }
+            } catch (error) {
+                console.error('Refresh error:', error);
+                alert('Error refreshing data');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '🔄 Refresh';
+            }
+        }
+
+        // Show sources modal
+        async function showSources() {
+            const modal = document.getElementById('sources-modal');
+            const content = document.getElementById('sources-content');
+            
+            try {
+                const response = await fetch('/api/sources');
+                const sources = await response.json();
+                
+                content.innerHTML = `
+                    <div class="space-y-6">
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">FDA Official Feeds</h3>
+                            <div class="space-y-2">
+                                ${sources.official.map(s => `
+                                    <div class="p-3 bg-gray-50 rounded">
+                                        <div class="font-medium">${s.name}</div>
+                                        <div class="text-sm text-gray-600 break-all">${s.url}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">Trade Press</h3>
+                            <div class="space-y-2">
+                                ${sources.trade_press.map(s => `
+                                    <div class="p-3 bg-gray-50 rounded">
+                                        <div class="font-medium">${s.name}</div>
+                                        <div class="text-sm text-gray-600 break-all">${s.url}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                        <div>
+                            <h3 class="font-semibold text-lg mb-2">Google News Queries</h3>
+                            <div class="space-y-2">
+                                ${sources.google_news.map(s => `
+                                    <div class="p-3 bg-gray-50 rounded">
+                                        <div class="font-medium">${s.name}</div>
+                                        <div class="text-sm text-blue-600">${s.type ? `Type: ${s.type}` : ''}</div>
+                                        <div class="text-sm text-gray-600 break-all">${s.url}</div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    </div>
+                `;
+                
+                modal.classList.remove('hidden');
+            } catch (error) {
+                console.error('Error loading sources:', error);
+            }
+        }
+
+        // Close sources modal
+        function closeSources() {
+            document.getElementById('sources-modal').classList.add('hidden');
+        }
+
+        // Add keyboard shortcuts
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                closeSources();
+            }
+            if (e.key === 'Enter' && document.activeElement.id === 'search-input') {
+                applyFilters();
+            }
+        });
+    </script>
+</body>
+</html>

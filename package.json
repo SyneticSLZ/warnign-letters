@@ -1,18 +1,53 @@
-
 {
-  "name": "fda-warning-letters",
-  "version": "1.0.0",
-  "description": "Simple FDA Warning Letters Monitor",
+  "name": "fda-regulatory-monitor",
+  "version": "2.0.0",
+  "description": "Comprehensive FDA regulatory monitoring system for Warning Letters, CRLs, 483s, and enforcement actions",
   "main": "server.js",
   "scripts": {
-    "start": "node server.js"
+    "start": "node server.js",
+    "dev": "nodemon server.js",
+    "refresh": "node -e \"require('axios').post('http://localhost:3000/api/refresh').then(r => console.log(r.data))\"",
+    "test": "node -e \"require('axios').get('http://localhost:3000/api/health').then(r => console.log('✅ Server healthy'))\"",
+    "clean": "rm -rf data/*.json && npm start"
   },
+  "keywords": [
+    "FDA",
+    "regulatory",
+    "compliance",
+    "warning letters",
+    "CRL",
+    "483",
+    "pharmaceutical",
+    "monitoring"
+  ],
+  "author": "",
+  "license": "MIT",
   "dependencies": {
-    "express": "^4.18.2",
-    "axios": "^1.6.0",
-    "cheerio": "^1.0.0-rc.12",
+    "axios": "^1.11.0",
+    "bcryptjs": "^3.0.2",
+    "cheerio": "^1.1.2",
+    "compression": "^1.8.1",
+    "cors": "^2.8.5",
+    "csv-writer": "^1.6.0",
+    "exceljs": "^4.4.0",
+    "express": "^4.21.2",
+    "express-rate-limit": "^8.1.0",
+    "helmet": "^8.1.0",
+    "jsonwebtoken": "^9.0.2",
+    "moment-timezone": "^0.6.0",
+    "node-cron": "^3.0.3",
+    "nodemailer": "^7.0.6",
+    "openai": "^5.19.1",
+    "pdfkit": "^0.17.2",
     "rss-parser": "^3.13.0",
-    "cors": "^2.8.5"
+    "string-similarity": "^4.0.4",
+    "web-push": "^3.6.7",
+    "winston": "^3.17.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=14.0.0"
   }
 }
-

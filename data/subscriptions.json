@@ -1,0 +1,18 @@
+{
+  "subscriptions": [],
+  "reportSettings": {
+    "daily": {
+      "enabled": true,
+      "time": "09:00",
+      "recipients": [
+        "rohanmehmi72@gmail.com"
+      ]
+    },
+    "weekly": {
+      "enabled": false,
+      "day": "monday",
+      "time": "09:00",
+      "recipients": []
+    }
+  }
+}

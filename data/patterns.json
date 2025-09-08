@@ -1,0 +1,758 @@
+{
+  "updated": "2025-09-08T11:30:01.661Z",
+  "patterns": {
+    "hotspots": [
+      {
+        "company": "Unknown",
+        "count": 41,
+        "types": [
+          "form_483",
+          "regulatory_news",
+          "crl"
+        ]
+      },
+      {
+        "company": "re",
+        "count": 50,
+        "types": [
+          "crl",
+          "regulatory_news",
+          "warning_letter"
+        ]
+      },
+      {
+        "company": "kidney cancer",
+        "count": 2,
+        "types": [
+          "regulatory_news"
+        ]
+      },
+      {
+        "company": "FDA Denies Approval",
+        "count": 2,
+        "types": [
+          "regulatory_news"
+        ]
+      },
+      {
+        "company": "Capricor",
+        "count": 2,
+        "types": [
+          "regulatory_news",
+          "crl"
+        ]
+      },
+      {
+        "company": "PTC Therapeutics Receives FDA Complete Response Letter",
+        "count": 2,
+        "types": [
+          "crl"
+        ]
+      },
+      {
+        "company": "FDA",
+        "count": 18,
+        "types": [
+          "form_483",
+          "regulatory_news"
+        ]
+      },
+      {
+        "company": "Granules India receives Form 483 with 1 observation from USFDA for Bonthapally API unit 1",
+        "count": 2,
+        "types": [
+          "form_483"
+        ]
+      },
+      {
+        "company": "STAT",
+        "count": 3,
+        "types": [
+          "regulatory_news"
+        ]
+      },
+      {
+        "company": "Outlook",
+        "count": 3,
+        "types": [
+          "crl"
+        ]
+      },
+      {
+        "company": "RP1",
+        "count": 3,
+        "types": [
+          "regulatory_news"
+        ]
+      },
+      {
+        "company": "Ultragenyx",
+        "count": 2,
+        "types": [
+          "crl"
+        ]
+      },
+      {
+        "company": "Glofitamab",
+        "count": 2,
+        "types": [
+          "regulatory_news"
+        ]
+      },
+      {
+        "company": "Replimune",
+        "count": 3,
+        "types": [
+          "crl",
+          "regulatory_news"
+        ]
+      },
+      {
+        "company": "Odronextamab",
+        "count": 2,
+        "types": [
+          "regulatory_news"
+        ]
+      },
+      {
+        "company": "PTC",
+        "count": 2,
+        "types": [
+          "crl"
+        ]
+      },
+      {
+        "company": "Bonthapally API unit 1",
+        "count": 2,
+        "types": [
+          "form_483"
+        ]
+      }
+    ],
+    "escalating": [],
+    "manufacturing": [
+      {
+        "company": "FDA Urges Nicotine Pouch Manufacturers To Use Child",
+        "violation": {
+          "id": "FDA Press Announcements-1757256366574-p1r35wt6w",
+          "type": "regulatory_news",
+          "date": "2025-09-02T14:59:10.000Z",
+          "title": "FDA Urges Nicotine Pouch Manufacturers To Use Child-Resistant Packaging Following Increasing Reports of Accidental Exposure  ",
+          "link": "http://www.fda.gov/news-events/press-announcements/fda-urges-nicotine-pouch-manufacturers-use-child-resistant-packaging-following-increasing-reports",
+          "source": "FDA Press Announcements",
+          "summary": "The U.S. Food and Drug Administration calls on nicotine pouch manufacturers to use child-resistant packaging to protect American children from accidental, harmful exposure.",
+          "severity": 5
+        }
+      },
+      {
+        "company": "FDA Begins Real",
+        "violation": {
+          "id": "FDA Press Announcements-1757256366574-snmqby5ot",
+          "type": "regulatory_news",
+          "date": "2025-08-22T15:46:16.000Z",
+          "title": "FDA Begins Real-Time Reporting of Adverse Event Data",
+          "link": "http://www.fda.gov/news-events/press-announcements/fda-begins-real-time-reporting-adverse-event-data",
+          "source": "FDA Press Announcements",
+          "summary": "The U.S. Food and Drug Administration (FDA) today began publishing adverse event data on a daily basis, giving the public faster access to information on serious medication errors and product quality complaints for prescription drugs and therapeutic biologics.",
+          "severity": 5
+        }
+      },
+      {
+        "company": "Boost U.S. Drug Manufacturing",
+        "violation": {
+          "id": "FDA Press Announcements-1757256366574-7r2txqa2f",
+          "type": "regulatory_news",
+          "date": "2025-08-07T13:32:05.000Z",
+          "title": "FDA Announces New FDA PreCheck Program to Boost U.S. Drug Manufacturing",
+          "link": "http://www.fda.gov/news-events/press-announcements/fda-announces-new-fda-precheck-program-boost-us-drug-manufacturing",
+          "source": "FDA Press Announcements",
+          "summary": "The U.S. Food and Drug Administration today announced FDA PreCheck, a new program to strengthen the domestic pharmaceutical supply chain by increasing regulatory predictability and facilitating the construction of manufacturing sites in the United States.",
+          "severity": 5
+        }
+      },
+      {
+        "company": "FDA Issues Complete Response Letter to Manufacturer of OLC, Treatment for CKD",
+        "violation": {
+          "id": "Google News - CRLs-1757256367385-i6c46nkim",
+          "type": "crl",
+          "date": "2025-07-02T07:00:00.000Z",
+          "title": "FDA Issues Complete Response Letter to Manufacturer of OLC, Treatment for CKD-Related Hyperphosphatemia - Pharmacy Times",
+          "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQMWtoZlFGel9acHZOWlQyMm9sS3FhYUpjd240RVZRTGY3WmZkNENTZndFSGVfSUx2UWRBcHJybzlyZWZQTHMxZmNRNWZaWTVJeXBRYmhnM3gxTVA2bFBLY1RRLWNtRFF6dTJjdHpsajh4UXE0aU9PeGtjV1Fsclc1QUNTRWNZZG4zRjVzQWFxd1BhQjhWN1pwODNicXY1VERZYWZTMFBheTBuY2FDMVlXZjFwU0dTSnI4RGd5dllFbGZEYjczemlyRXdKMHBRTVotQXVB?oc=5",
+          "source": "Google News - CRLs",
+          "summary": "FDA Issues Complete Response Letter to Manufacturer of OLC, Treatment for CKD-Related Hyperphosphatemia  Pharmacy Times",
+          "severity": 9
+        }
+      },
+      {
+        "company": "FDA hits Unicycive with manufacturing",
+        "violation": {
+          "id": "Google News - CRLs-1757256367385-8q7mhuxla",
+          "type": "crl",
+          "date": "2025-06-30T07:00:00.000Z",
+          "title": "FDA hits Unicycive with manufacturing-related complete response letter, delaying hopes for kidney disease prospect - Fierce Pharma",
+          "link": "https://news.google.com/rss/articles/CBMiwAFBVV95cUxPcHNsMWNuaTNURmo2SVJ0MkZwczNsNkREY2g1bG1XRnRZREUyTlFreVZNYXdlNkJYMjZBV3FwQ2twZmQtOHRPUzNvR2tRNVpFbWxVT01paU9VcGFSQjhMblpFZzg3U25iRlNIZGxaQXFVUTBYb1R6dTVrbzYxamZtUERSazFfS2xIY0g5dGR5ekI0RndTM0lyN3pPc2pnTGhPaklOUVJpZ0FfbW04eUNwVW1kMDAxSmh6QnhRYXlkS18?oc=5",
+          "source": "Google News - CRLs",
+          "summary": "FDA hits Unicycive with manufacturing-related complete response letter, delaying hopes for kidney disease prospect  Fierce Pharma",
+          "severity": 9
+        }
+      },
+      {
+        "company": "Ultragenyx takes another hit as FDA snubs AAV gene therapy over manufacturing issues",
+        "violation": {
+          "id": "Google News - CRLs-1757256367385-wvouar6rf",
+          "type": "regulatory_news",
+          "date": "2025-07-14T07:00:00.000Z",
+          "title": "Ultragenyx takes another hit as FDA snubs AAV gene therapy over manufacturing issues - Fierce Pharma",
+          "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPRktpSHB2MXBlSHhSUGhMdVpISE55Z0MtZl9iV1BwaUpmbEdHVjBBUU44R0pMcDQtMDdxZk9xcjRwNUwxV1ZKeHFlYWhubzQ1ZXNyZjFRUXg4QTFrN0c3Z1ZBcG5mUHpkdDVydDRfUHZlSm4zQzQzRTI5MXRfZ04yaHVoTzYzUm1OczJzQWs5WDJVNWRPY1hTdXkzVkp6S1B2YW5lWmRjQS0tQVZ1Q3UtUGxQUkc5cjFJ?oc=5",
+          "source": "Google News - CRLs",
+          "summary": "Ultragenyx takes another hit as FDA snubs AAV gene therapy over manufacturing issues  Fierce Pharma",
+          "severity": 5
+        }
+      },
+      {
+        "company": "FDA Issues Complete Response Letter to Manufacturer of Reproxalap, Treatment for Dry Eye Disease, Allergic Conjunctivitis",
+        "violation": {
+          "id": "Google News - CRLs-1757256367385-ff6cgfif5",
+          "type": "crl",
+          "date": "2025-04-03T07:00:00.000Z",
+          "title": "FDA Issues Complete Response Letter to Manufacturer of Reproxalap, Treatment for Dry Eye Disease, Allergic Conjunctivitis - Pharmacy Times",
+          "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNLTlmaDFOclA3OUhtMkdzQjBtQXk3S1JKbl93VzJBM3R2bGRDRUpWQWQxQnZhY05qS0pOTXhNcnJpZE5jTVJnbmlvR1pGa1EweWc2aFkxTldEUEQ2RDZOaTZsS184ZUYxVHN0YmNEOXZlUUt1N3hqNl9VVjJNQ3BKZ19HQkxYbFBRNWdMYnZ1aWJVdlJxb2RweTBfendMM2NQU2I4NVd0MUo1M21Kc3FqS1oyVWwxWE5pZVVzVHVuZUk2dHJiSmhVcGRicDMyMlNVRVE5b1YyRmRIT3BXRzBCOEZDRzA4TWtFNGc?oc=5",
+          "source": "Google News - CRLs",
+          "summary": "FDA Issues Complete Response Letter to Manufacturer of Reproxalap, Treatment for Dry Eye Disease, Allergic Conjunctivitis  Pharmacy Times",
+          "severity": 9
+        }
+      },
+      {
+        "company": "Ultragenyx Gene Therapy Faces FDA Delay",
+        "violation": {
+          "id": "Google News - CRLs-1757256367386-jbu1hod0z",
+          "type": "regulatory_news",
+          "date": "2025-07-11T07:00:00.000Z",
+          "title": "Ultragenyx Gene Therapy Faces FDA Delay: Clinical Data Strong, Manufacturing Issues Fixable - Stock Titan",
+          "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNRjFYdWEzT0pObThZbExVVTc0RS1SQjhhZGs0NGRETFkwbnRrSmRsWnc3dmVYaU9sTUhUdTRnY2FzQ0U2WVhheVBhZ3dRSzVwa0hISWJhUzBaczZxLXhqb2RGanlLMnF4S2lIeG9GNkJ1ZUg5RW8zQW9Db1ZaSUhpWXpnVTBPVWZaazdkYTRxS2RxMU91UFJyWVNmNlVjTlZKRHZ5eFBHSUkzTFRRYkR2dENQU2xDUE9vbTBodUNJUQ?oc=5",
+          "source": "Google News - CRLs",
+          "summary": "Ultragenyx Gene Therapy Faces FDA Delay: Clinical Data Strong, Manufacturing Issues Fixable  Stock Titan",
+          "severity": 5
+        }
+      },
+      {
+        "company": "FDA",
+        "violation": {
+          "id": "Google News - Form 483-1757268589562-2uku50kok",
+          "type": "regulatory_news",
+          "date": "2025-05-30T07:00:00.000Z",
+          "title": "Cipla's Bommasandra plant in Bengaluru gets single USFDA observation after cGMP inspection - CNBC TV18",
+          "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNUHZSMS1mSWFQNkZpY2lfN0xoTmViVFJfVkJwVWFqc2lQYVBKNXJtNklyR1pwYWRYSmc2U19pWl9ySTI5ak43Z09tVjY3VndxZmE3QVJZMGtLLURvMFh4bGwzOEV2OWVWTlVXb21sbkkyenNUUy15NzlYYUk0NEZ0NmpUc1o4R3RPdFFmeEtmb2hPUXhmTDNRd3VTdXFBVDd6aE85LU9HUDZ5YmNoeGxqa3IzSnJuelNnVG9ocndwWmc2dnFrVnp2RHdKTHlEZUF5OVR2YWNhQjc4YWR5VTY1dmhHai1Jem_SAewBQVVfeXFMUFRNVUNDbE5OUFU0VnhIS1plSng2eXNHMzZ3MTd0UUxrcFVNeElnX1NIa3cya1N5aWkxaF9pZ01rSzBzWHJNSGwtbTdHcFJhVWxjcWg2V0oyTGhEbHBvcS1TcEpLR092ZXZUclVGbmdhQ3RsRFB6UjRpQzNwNEJ1bXNGbThYUG55dGFLdktiWFlWUm9TZk9fWFdvaWFLX01SU2d2SlluRTE2VWNKNFFyNDZLQmNwZmM3bnRaNkR3M01lZkdOYTRRVGVvUkttWkIwSGY2eTdIUS0xSEJ0Ym00TEl0RDlUZEZwbFFEMGY?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "Cipla's Bommasandra plant in Bengaluru gets single USFDA observation after cGMP inspection  CNBC TV18",
+          "severity": 5
+        }
+      },
+      {
+        "company": "FDA",
+        "violation": {
+          "id": "Google News - Form 483-1757268589561-p8k14yyhv",
+          "type": "regulatory_news",
+          "date": "2025-06-19T07:00:00.000Z",
+          "title": "NATCO Pharma gets 7 observations from FDA for Hyderabad manufacturing unit - CNBC TV18",
+          "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNUElJckpwNDlkYWt5RUM1aEF1UTlDSnctczFCRmM0Unp6RkREMGRZT2R2MVhtWXNqSTVaTEtFR05nNnR5Y192UWxHdS11UFlRNk84bF9iQVFhSmJqM1hpdTc4MFlraW1JTmQ2d0hMWWhHeHFocGktc3AtbkR2djJMLVpFNU9YTV9KRU9SSVJYWTZuM3NMWTJPZEZTY2k1bkszcW0zclhDaGtqTnZsZVdIemFRY3dWVWU1UXRQVHZGclVRLUhaY1NUUm8yMGpwaHdyVHV6YzM3SWEwbEFmX2VsUdIB5gFBVV95cUxNOFAzRFViOFc3U2tvNFc1RGhrZndaTHI0a192R1RNVnQtM2ZUX3ZUSDNIZUdZY3RUQVNvZXU3YWFUZVk2T3F0YmVwUXNGNHRrbmNHeld5LUVxWG55a21vNTFfajBRSW51T3VhMzJac3h1Y3F0QXVKRTV5M09DM20tLWNrQ3BHRDlFYTdJV2V5dWVLMTI0M2hDSndTcEhMNkxCWnpiMk5HYUVkNHpyMDNXWWk3Wk9uT1FmVmowcTlmdEoyX2JqM2wtaTR0Zl9VT3Q3ZzdweHVBX3NsaHpsUXRBZXF0THpfQQ?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "NATCO Pharma gets 7 observations from FDA for Hyderabad manufacturing unit  CNBC TV18",
+          "severity": 5
+        }
+      },
+      {
+        "company": "FDA",
+        "violation": {
+          "id": "Google News - Form 483-1757268589557-sir1ldi79",
+          "type": "form_483",
+          "date": "2025-08-28T14:08:33.000Z",
+          "title": "FDA 483 Observations Highlight Ongoing Issues in Quality Control and cGMP Compliance - geneonline.com",
+          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOeU9EMEZNc0kxSG8wekZiUWtmWVlxVHNhelFmck9IYlcyeFhBYl85UnJqWUh3M0JDNW00UWVnZi1BNENYdFBaRzRlcm9jeHp5MHphTGE4R1dWTGRMUnJLWERBZ0FOM3A1U2dISjU1VXMxNk9iemx1VnF4U05PZmdPVzNPT1BaYUtGeVZVM1drOTZsT3VwakpsS3ZKUUZZMmViYzMzajFISnBKQmdTM2h2XzJB?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "FDA 483 Observations Highlight Ongoing Issues in Quality Control and cGMP Compliance  geneonline.com",
+          "severity": 6
+        }
+      },
+      {
+        "company": "FDA 483 Observations Highlight Ongoing Issues in Quality Control and cGMP Compliance",
+        "violation": {
+          "id": "Google News - Form 483-1757256367323-crg6sx5zq",
+          "type": "form_483",
+          "date": "2025-08-28T14:08:33.000Z",
+          "title": "FDA 483 Observations Highlight Ongoing Issues in Quality Control and cGMP Compliance - geneonline.com",
+          "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOeU9EMEZNc0kxSG8wekZiUWtmWVlxVHNhelFmck9IYlcyeFhBYl85UnJqWUh3M0JDNW00UWVnZi1BNENYdFBaRzRlcm9jeHp5MHphTGE4R1dWTGRMUnJLWERBZ0FOM3A1U2dISjU1VXMxNk9iemx1VnF4U05PZmdPVzNPT1BaYUtGeVZVM1drOTZsT3VwakpsS3ZKUUZZMmViYzMzajFISnBKQmdTM2h2XzJB?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "FDA 483 Observations Highlight Ongoing Issues in Quality Control and cGMP Compliance  geneonline.com",
+          "severity": 6
+        }
+      },
+      {
+        "company": "Sterile Drug Manufacturers",
+        "violation": {
+          "id": "Google News - Form 483-1757256367323-mn8sf5szt",
+          "type": "regulatory_news",
+          "date": "2025-01-30T08:00:00.000Z",
+          "title": "2024 Trends In FDA Observations For Sterile Drug Manufacturers - Pharmaceutical Online",
+          "link": "https://news.google.com/rss/articles/CBMirAFBVV95cUxQY0gzZEdCMEdiRTZqdUFUa0w4MWtheTY0VE9VV1F5Tkt1Q3NyRmhVckZfbjdBc1RSTW1YVVVSa3VaaGtDd2pzbHBNWThnbG1RSE02MXJRTFFQakZua1owM2Zuc1R5dFlRczdyR01BV0lMV0ZRQ1pEU0VlVndzYklvSlpiZDE0c1VQQnlBWFFFeXVYN3lmck9BNzJpS1RIdG96aXI1cmNOQUJkb3M0?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "2024 Trends In FDA Observations For Sterile Drug Manufacturers  Pharmaceutical Online",
+          "severity": 5
+        }
+      },
+      {
+        "company": "FDA dings Piramal API plant with Form 483 detailing problems tied to quality control, equipment cleaning and more",
+        "violation": {
+          "id": "Google News - Form 483-1757256367323-x1sar7jfz",
+          "type": "form_483",
+          "date": "2025-02-26T08:00:00.000Z",
+          "title": "FDA dings Piramal API plant with Form 483 detailing problems tied to quality control, equipment cleaning and more - Fierce Pharma",
+          "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQUlJZeTVjUGkzaXhRcjcwamh2ZmxIVnFldjgxYVFTMS1TMGhBX2xTZFZQczRkMXhJYVFmNnlTWGpRSkZ2UEN2M1FWb0k4YnJpZERJVE1zQUVpSXVRbnViM1I0OVhTRW1hczdPTDJHMk5MV0VrSUVfWTRDRklkcUYtdEpYWE9HX0Z3V3FyWk9ZU3ZUbDU5bGJQMm5fM0oxcW9Bbm9aOEU3b1cweE80VzdMZFFFWnFES2dESGpN?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "FDA dings Piramal API plant with Form 483 detailing problems tied to quality control, equipment cleaning and more  Fierce Pharma",
+          "severity": 6
+        }
+      },
+      {
+        "company": "manufacturing facility",
+        "violation": {
+          "id": "Google News - Form 483-1757256367323-hl93e8qkj",
+          "type": "form_483",
+          "date": "2025-05-26T07:00:00.000Z",
+          "title": "Dr Reddys Labs' manufacturing facility gets two form 483 observations from US FDA - Business Standard",
+          "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPODYzUlZIeXpuOEJEdVNCQjNNc0d5U2d4T1N3V1lTVGJhbDh1Z0ZrY1BvQjJzX3JxYjdBZk02Y3BubnpONGdGeWljaGFvSHoyNWRRYktwZXpSRzIxQnRHSWZWUUJjYVRuR3h0Y0lJSTJ1NzZIb0cxOHoxMVZneDBKaFJITm9kYzNrc3lVZFVqNnoyZTlxOUN1OS1KT2RrYS1TSmtDMlYxMkZHX3I0dGMwa0czT3JwajlNUUZXbHJNWVI0S0RhaE50Rzk2WFNDbXItb0gya2c0di12Mm5Udy1hdnNzQUlkRENycXR5ajhRemtJTkZH0gH6AUFVX3lxTE1HRVVRMUY5V1RMZmJpWTZpMjZpWXdUY2RCRU5Zamc5TmN6b3ZUcVcyX25ObV9YbEFia3c3ZHBPTzJVenlTUXNQYUluMEJoV1hhZVFaMGRRSFhyUWpMU2h4V0xWUk9mTmdCbU1jLWdUU1d4SmdCRzlKVGdNdGVEZmV2djU5Z1lCS285bFdHa1dCZDdHV1FCZEJDQVp3OEpsejd2WG0zUk5NU2dSYWtPWFpjdVNQczg0QzJwNmhqWElweGhubW5QODM5Mi1odHRvT1owMjRaUDRGRDRYQTlCTVU4bGI0Ujl0UENLb2Q5MHBhWG9qaDZwR1JUblE?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "Dr Reddys Labs' manufacturing facility gets two form 483 observations from US FDA  Business Standard",
+          "severity": 6
+        }
+      },
+      {
+        "company": "How to Avoid FDA Warning Letters",
+        "violation": {
+          "id": "Google News - Form 483-1757256367323-3krp7jm92",
+          "type": "warning_letter",
+          "date": "2025-06-17T07:00:00.000Z",
+          "title": "How to Avoid FDA Warning Letters - Quality Digest",
+          "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPUGFtcW8tNVkzQlRvell6cmZ6YU9IWlJYTkV4OHdINlcxTGRudlI1RnFLRWpXbjhYTU9fX25RbFd2UEp4dHRLcGQ2OXczNXE3eS1IWWhGMXVYRlZPS0xHOHZyVDYxQVdma19fSXBEYjhzSl9fSS1UR2dMLXJCREhReXlST2tBLTQxT2dDNGF4Z21SXy01UHZzN0R5Y05GcTI5a3Z3?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "How to Avoid FDA Warning Letters  Quality Digest",
+          "severity": 8
+        }
+      },
+      {
+        "company": "Lupin receives USFDA observations for two Pithampur manufacturing units",
+        "violation": {
+          "id": "Google News - Form 483-1757256367324-ki73bfun4",
+          "type": "regulatory_news",
+          "date": "2025-07-18T07:00:00.000Z",
+          "title": "Lupin receives USFDA observations for two Pithampur manufacturing units - Medical Dialogues",
+          "link": "https://news.google.com/rss/articles/CBMixgFBVV95cUxQazgtbGFva2lTM1NsTWRka1ZRbmczYkJmUkJQcmlTblJoN0dXMWd4MHlkc01WdEpoOWlxU29odFl4NHFTM29vMi13bjczYlplNXh1OGFYdWdJNURRck14VDlIdUx0LU9TZnFoUExrVHJhakF4aVNseDhYekl0TkZJN01WVWVDTTVvaEhSM1Q0MnRkc25Tb2NtTEJwbGxsdXRLclVyaHhTTU8wQWs5WjZRdS0yU2x6YkxZT01MRmxGY05KRWdkM1HSAcsBQVVfeXFMTnlQYjlRYm1yN0JTMWNydVhPdVJHTlNMamw4WUhqeG14MnBmS00tWVplQi0wUGxiVXNab3A0aEhPN3k2R1Y5QXRiRTZhN3NMT0Zib2QzV3I1UTVWTlhVQUpfXzc5d1NGcUFkaUNmdEpycDJ0SHlEWWZEUlNick1kUWlzbkl4eHNPMnREUk1QczY4V2RNTEhxWkZVNEJMd1pFUEVxdTBkZVJIcE44MmJyU1lReHpUVE13Wk14Y0tCNktSU0stU2dDSENzNDA?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "Lupin receives USFDA observations for two Pithampur manufacturing units  Medical Dialogues",
+          "severity": 5
+        }
+      },
+      {
+        "company": "NATCO Pharma gets 7 observations from FDA for Hyderabad manufacturing unit",
+        "violation": {
+          "id": "Google News - Form 483-1757256367324-eedw8pqls",
+          "type": "regulatory_news",
+          "date": "2025-06-19T07:00:00.000Z",
+          "title": "NATCO Pharma gets 7 observations from FDA for Hyderabad manufacturing unit - CNBC TV18",
+          "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNUElJckpwNDlkYWt5RUM1aEF1UTlDSnctczFCRmM0Unp6RkREMGRZT2R2MVhtWXNqSTVaTEtFR05nNnR5Y192UWxHdS11UFlRNk84bF9iQVFhSmJqM1hpdTc4MFlraW1JTmQ2d0hMWWhHeHFocGktc3AtbkR2djJMLVpFNU9YTV9KRU9SSVJYWTZuM3NMWTJPZEZTY2k1bkszcW0zclhDaGtqTnZsZVdIemFRY3dWVWU1UXRQVHZGclVRLUhaY1NUUm8yMGpwaHdyVHV6YzM3SWEwbEFmX2VsUdIB5gFBVV95cUxNOFAzRFViOFc3U2tvNFc1RGhrZndaTHI0a192R1RNVnQtM2ZUX3ZUSDNIZUdZY3RUQVNvZXU3YWFUZVk2T3F0YmVwUXNGNHRrbmNHeld5LUVxWG55a21vNTFfajBRSW51T3VhMzJac3h1Y3F0QXVKRTV5M09DM20tLWNrQ3BHRDlFYTdJV2V5dWVLMTI0M2hDSndTcEhMNkxCWnpiMk5HYUVkNHpyMDNXWWk3Wk9uT1FmVmowcTlmdEoyX2JqM2wtaTR0Zl9VT3Q3ZzdweHVBX3NsaHpsUXRBZXF0THpfQQ?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "NATCO Pharma gets 7 observations from FDA for Hyderabad manufacturing unit  CNBC TV18",
+          "severity": 5
+        }
+      },
+      {
+        "company": "Granules India scolded over truckloads of torn manufacturing documents after recent FDA inspection",
+        "violation": {
+          "id": "Google News - Form 483-1757256367324-hyu51ycmx",
+          "type": "regulatory_news",
+          "date": "2024-09-19T07:00:00.000Z",
+          "title": "Granules India scolded over truckloads of torn manufacturing documents after recent FDA inspection - Fierce Pharma",
+          "link": "https://news.google.com/rss/articles/CBMivAFBVV95cUxQa0M4b3g4LThibmRENjZLbDVNZXczX2JMc1FLYzIwOWV1dmZ5RE5JUURQdGwzS005c29Vak1qbUhRMXRsV0xkTDFSaENMZGdfaVZUNDNTQ3ZnMXNZQTEycDMzbGVHdVRnbzlQZ3NxT3dGSmNiSjFvaVAwcXpseXRjNlB6QnhGcVIxRkdPT2NYLVR4V1FQSmEtSEJkT2czVXBKZURrcktkWE1VYU5JS3lXaDBzQnJ4dHBXclRwRQ?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "Granules India scolded over truckloads of torn manufacturing documents after recent FDA inspection  Fierce Pharma",
+          "severity": 5
+        }
+      },
+      {
+        "company": "s Bommasandra plant in Bengaluru",
+        "violation": {
+          "id": "Google News - Form 483-1757256367324-laeenkbqd",
+          "type": "regulatory_news",
+          "date": "2025-05-30T07:00:00.000Z",
+          "title": "Cipla's Bommasandra plant in Bengaluru gets single USFDA observation after cGMP inspection - CNBC TV18",
+          "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNUHZSMS1mSWFQNkZpY2lfN0xoTmViVFJfVkJwVWFqc2lQYVBKNXJtNklyR1pwYWRYSmc2U19pWl9ySTI5ak43Z09tVjY3VndxZmE3QVJZMGtLLURvMFh4bGwzOEV2OWVWTlVXb21sbkkyenNUUy15NzlYYUk0NEZ0NmpUc1o4R3RPdFFmeEtmb2hPUXhmTDNRd3VTdXFBVDd6aE85LU9HUDZ5YmNoeGxqa3IzSnJuelNnVG9ocndwWmc2dnFrVnp2RHdKTHlEZUF5OVR2YWNhQjc4YWR5VTY1dmhHai1Jem_SAewBQVVfeXFMUFRNVUNDbE5OUFU0VnhIS1plSng2eXNHMzZ3MTd0UUxrcFVNeElnX1NIa3cya1N5aWkxaF9pZ01rSzBzWHJNSGwtbTdHcFJhVWxjcWg2V0oyTGhEbHBvcS1TcEpLR092ZXZUclVGbmdhQ3RsRFB6UjRpQzNwNEJ1bXNGbThYUG55dGFLdktiWFlWUm9TZk9fWFdvaWFLX01SU2d2SlluRTE2VWNKNFFyNDZLQmNwZmM3bnRaNkR3M01lZkdOYTRRVGVvUkttWkIwSGY2eTdIUS0xSEJ0Ym00TEl0RDlUZEZwbFFEMGY?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "Cipla's Bommasandra plant in Bengaluru gets single USFDA observation after cGMP inspection  CNBC TV18",
+          "severity": 5
+        }
+      },
+      {
+        "company": "Manufacturing operations for Eli Lilly, Rentschler reprimanded by FDA",
+        "violation": {
+          "id": "Google News - Form 483-1757256367324-sc1vn9qa2",
+          "type": "regulatory_news",
+          "date": "2023-05-04T07:00:00.000Z",
+          "title": "Manufacturing operations for Eli Lilly, Rentschler reprimanded by FDA - Fierce Pharma",
+          "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNY2JDQ1pBWXJNeXpLZnhPLUpTYnZGYnZudUdDRF9KblE2LUJuVXZKdUF5dG55THVwU1hTdW5vajY4ei1Uc1FBVk5pXy0xRWM2LUpzWmFCVmRpWFZoeTg1S1lueE4wa3VrbzVfWXJoT2xmc1dMOW4xNmRzMEFWRHRsUkdMZFpGZnRKOU0tQTZGOEFkTk52MEFkVWhvZjNHMjA2Z1FOTTY3YWQ4ME5Rc3E1ZU5vVmk5MGxTeGMzc09B?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "Manufacturing operations for Eli Lilly, Rentschler reprimanded by FDA  Fierce Pharma",
+          "severity": 5
+        }
+      },
+      {
+        "company": "FDA hits UCB facility in Switzerland with Form 483, cites quality control and records issues",
+        "violation": {
+          "id": "Google News - Form 483-1757256367324-rv3iad5bd",
+          "type": "form_483",
+          "date": "2023-10-26T07:00:00.000Z",
+          "title": "FDA hits UCB facility in Switzerland with Form 483, cites quality control and records issues - Fierce Pharma",
+          "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQcl84SFlQZVBUYUdSZ1A1ZlBQVWpGTGo3Ui1qel8zT1hFS2dwRDJVa3dUSWdiYzMwUjJMeU5KeTVmLTJCRExnRXRnQTJoYVZvNURHRUVlY0FQbGZRZC1xQXVsWWNUTTFYdkF2ZzkxUTYwUnh0cU51eEswcHhtVXpIWThOa2xBYnRueVk2VnkwdXNVQ3ItTTNyRE9sdlo5djZSM3VjUzkwTkotOVk?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "FDA hits UCB facility in Switzerland with Form 483, cites quality control and records issues  Fierce Pharma",
+          "severity": 6
+        }
+      },
+      {
+        "company": "Manufacturer",
+        "violation": {
+          "id": "Google News - CRLs-1757268365422-ztsyub2l5",
+          "type": "crl",
+          "date": "2025-04-03T07:00:00.000Z",
+          "title": "FDA Issues Complete Response Letter to Manufacturer of Reproxalap, Treatment for Dry Eye Disease, Allergic Conjunctivitis - Pharmacy Times",
+          "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxNLTlmaDFOclA3OUhtMkdzQjBtQXk3S1JKbl93VzJBM3R2bGRDRUpWQWQxQnZhY05qS0pOTXhNcnJpZE5jTVJnbmlvR1pGa1EweWc2aFkxTldEUEQ2RDZOaTZsS184ZUYxVHN0YmNEOXZlUUt1N3hqNl9VVjJNQ3BKZ19HQkxYbFBRNWdMYnZ1aWJVdlJxb2RweTBfendMM2NQU2I4NVd0MUo1M21Kc3FqS1oyVWwxWE5pZVVzVHVuZUk2dHJiSmhVcGRicDMyMlNVRVE5b1YyRmRIT3BXRzBCOEZDRzA4TWtFNGc?oc=5",
+          "source": "Google News - CRLs",
+          "summary": "FDA Issues Complete Response Letter to Manufacturer of Reproxalap, Treatment for Dry Eye Disease, Allergic Conjunctivitis  Pharmacy Times",
+          "severity": 9
+        }
+      },
+      {
+        "company": "Manufacturer",
+        "violation": {
+          "id": "Google News - CRLs-1757268365419-zzk0gaxyo",
+          "type": "crl",
+          "date": "2025-07-02T07:00:00.000Z",
+          "title": "FDA Issues Complete Response Letter to Manufacturer of OLC, Treatment for CKD-Related Hyperphosphatemia - Pharmacy Times",
+          "link": "https://news.google.com/rss/articles/CBMi0wFBVV95cUxQMWtoZlFGel9acHZOWlQyMm9sS3FhYUpjd240RVZRTGY3WmZkNENTZndFSGVfSUx2UWRBcHJybzlyZWZQTHMxZmNRNWZaWTVJeXBRYmhnM3gxTVA2bFBLY1RRLWNtRFF6dTJjdHpsajh4UXE0aU9PeGtjV1Fsclc1QUNTRWNZZG4zRjVzQWFxd1BhQjhWN1pwODNicXY1VERZYWZTMFBheTBuY2FDMVlXZjFwU0dTSnI4RGd5dllFbGZEYjczemlyRXdKMHBRTVotQXVB?oc=5",
+          "source": "Google News - CRLs",
+          "summary": "FDA Issues Complete Response Letter to Manufacturer of OLC, Treatment for CKD-Related Hyperphosphatemia  Pharmacy Times",
+          "severity": 9
+        }
+      },
+      {
+        "company": "FDA dings Piramal API plant with",
+        "violation": {
+          "id": "Google News - Form 483-1757268365500-t8ecqnbqg",
+          "type": "form_483",
+          "date": "2025-02-26T08:00:00.000Z",
+          "title": "FDA dings Piramal API plant with Form 483 detailing problems tied to quality control, equipment cleaning and more - Fierce Pharma",
+          "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQUlJZeTVjUGkzaXhRcjcwamh2ZmxIVnFldjgxYVFTMS1TMGhBX2xTZFZQczRkMXhJYVFmNnlTWGpRSkZ2UEN2M1FWb0k4YnJpZERJVE1zQUVpSXVRbnViM1I0OVhTRW1hczdPTDJHMk5MV0VrSUVfWTRDRklkcUYtdEpYWE9HX0Z3V3FyWk9ZU3ZUbDU5bGJQMm5fM0oxcW9Bbm9aOEU3b1cweE80VzdMZFFFWnFES2dESGpN?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "FDA dings Piramal API plant with Form 483 detailing problems tied to quality control, equipment cleaning and more  Fierce Pharma",
+          "severity": 6
+        }
+      },
+      {
+        "company": "How to Avoid FDA",
+        "violation": {
+          "id": "Google News - Form 483-1757268365500-arfoiwuu6",
+          "type": "warning_letter",
+          "date": "2025-06-17T07:00:00.000Z",
+          "title": "How to Avoid FDA Warning Letters - Quality Digest",
+          "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPUGFtcW8tNVkzQlRvell6cmZ6YU9IWlJYTkV4OHdINlcxTGRudlI1RnFLRWpXbjhYTU9fX25RbFd2UEp4dHRLcGQ2OXczNXE3eS1IWWhGMXVYRlZPS0xHOHZyVDYxQVdma19fSXBEYjhzSl9fSS1UR2dMLXJCREhReXlST2tBLTQxT2dDNGF4Z21SXy01UHZzN0R5Y05GcTI5a3Z3?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "How to Avoid FDA Warning Letters  Quality Digest",
+          "severity": 8
+        }
+      },
+      {
+        "company": "quality control",
+        "violation": {
+          "id": "Google News - Form 483-1757268589558-cx9b6sfq7",
+          "type": "form_483",
+          "date": "2025-02-26T08:00:00.000Z",
+          "title": "FDA dings Piramal API plant with Form 483 detailing problems tied to quality control, equipment cleaning and more - Fierce Pharma",
+          "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQUlJZeTVjUGkzaXhRcjcwamh2ZmxIVnFldjgxYVFTMS1TMGhBX2xTZFZQczRkMXhJYVFmNnlTWGpRSkZ2UEN2M1FWb0k4YnJpZERJVE1zQUVpSXVRbnViM1I0OVhTRW1hczdPTDJHMk5MV0VrSUVfWTRDRklkcUYtdEpYWE9HX0Z3V3FyWk9ZU3ZUbDU5bGJQMm5fM0oxcW9Bbm9aOEU3b1cweE80VzdMZFFFWnFES2dESGpN?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "FDA dings Piramal API plant with Form 483 detailing problems tied to quality control, equipment cleaning and more  Fierce Pharma",
+          "severity": 6
+        }
+      }
+    ],
+    "clinical": [
+      {
+        "company": "Unknown",
+        "violation": {
+          "id": "STAT News Pharma-1757256366570-11yja0eke",
+          "type": "regulatory_news",
+          "date": "2025-09-04T10:33:01.000Z",
+          "title": "STAT+: Sanofi shares drop after disappointing trial results",
+          "link": "https://www.statnews.com/2025/09/04/sanofi-amlitelimab-immunology-atopic-dermatitis-eczema/?utm_campaign=rss",
+          "source": "STAT News Pharma",
+          "summary": "Sanofi shares slid Thursday after the company reported underwhelming results from a closely watched trial in the skin condition atopic dermatitis.",
+          "severity": 5
+        }
+      },
+      {
+        "company": "re",
+        "violation": {
+          "id": "Google News - CRLs-1757268589621-n5fp33tzl",
+          "type": "regulatory_news",
+          "date": "2025-07-22T07:00:00.000Z",
+          "title": "FDA rejects RP1 for advanced melanoma, says IGNYTE not a ‘well-controlled’ trial - Healio",
+          "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNbWJBZlpidVZBdy1nNUVfTkJHZ0xKSlUxRHNzZkFhYzlfSk5EZXpsVmhFclFZRkFZVDJwTWh5aDZwVjNzOWpGZzFYdzFmRWQ2OGI3WDJiazVGR0dGS0ZNWWhLelJKVlczS2d5d2RhMUdDUmYzblhCM3dqWnNZZ05PelNuV1hUS1dxcFNXdDYwSTBXalRGY2hPZ01tVFJ2R19ENkNpNTduZm54SDdvaVZsZWhKY0tkRXdsNUZ0bmJOT1lVNE5DR21HejVubkE3UQ?oc=5",
+          "source": "Google News - CRLs",
+          "summary": "FDA rejects RP1 for advanced melanoma, says IGNYTE not a ‘well-controlled’ trial  Healio",
+          "severity": 5
+        }
+      },
+      {
+        "company": "re",
+        "violation": {
+          "id": "Google News - Form 483-1757268589557-7u0w2232r",
+          "type": "regulatory_news",
+          "date": "2025-07-29T07:00:00.000Z",
+          "title": "5 Cs For Responding To FDA-483s — Strategies For Effective Compliance And Resolution - Clinical Leader",
+          "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQVEgxdUZlOTlRTnhhbWcxLTFxVmxsQkxKZkRjek1CbndhMHFGME9pcF9waTExRV9hcGNTMk9VUjU3NDh1YjBuU2Rrdm1TQ2YxdHdnVXk5YmltQ2lzVG9YT2dkbDV2clFTajhuM0NLelpFclBiREh3X1h0WEF6RVdHR3ptcjU4a0h4bG82eG14Y1NTVGFRdkdHcmlGZ3dPZHlpanlQXzVxUjg1eG1qZjhLUFNONDI3d3ZT?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "5 Cs For Responding To FDA-483s — Strategies For Effective Compliance And Resolution  Clinical Leader",
+          "severity": 5
+        }
+      },
+      {
+        "company": "re",
+        "violation": {
+          "id": "STAT News Pharma-1757268588855-wltat5fqi",
+          "type": "regulatory_news",
+          "date": "2025-09-04T10:33:01.000Z",
+          "title": "STAT+: Sanofi shares drop after disappointing trial results",
+          "link": "https://www.statnews.com/2025/09/04/sanofi-amlitelimab-immunology-atopic-dermatitis-eczema/?utm_campaign=rss",
+          "source": "STAT News Pharma",
+          "summary": "Sanofi shares slid Thursday after the company reported underwhelming results from a closely watched trial in the skin condition atopic dermatitis.",
+          "severity": 5
+        }
+      },
+      {
+        "company": "FDA Crackdown on Trial Design",
+        "violation": {
+          "id": "Google News - CRLs-1757256367385-xfcgd0v23",
+          "type": "regulatory_news",
+          "date": "2025-07-25T07:00:00.000Z",
+          "title": "FDA Crackdown on Trial Design: What July’s CRLs to Replimune and Capricor Mean for Sponsors - Applied Clinical Trials",
+          "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOUlFwSXd5dEk5eHNMYl8xWlk1WS0xby05a1lZNGtmQ1ZXSXRib2lxYzVqb2tWbnMyVlAzalU3eHVBSVpIRUhSQWYyVDNRUkJ3Z1VfUU1VTzRxNXhmbzVUZVpWRVY3cDFQcnA0ZTZHcmsxM1p6cUVvRWIxc2FhV1NBR2d1Z1B3ZXRJVW5NVkcwLUtOWXJRam9JdHFtcjY5STA?oc=5",
+          "source": "Google News - CRLs",
+          "summary": "FDA Crackdown on Trial Design: What July’s CRLs to Replimune and Capricor Mean for Sponsors  Applied Clinical Trials",
+          "severity": 5
+        }
+      },
+      {
+        "company": "New FDA Initiative Reveals Common Reasons for Drug Application Rejection",
+        "violation": {
+          "id": "Google News - CRLs-1757256367385-kl9s24kqk",
+          "type": "regulatory_news",
+          "date": "2025-07-11T07:00:00.000Z",
+          "title": "New FDA Initiative Reveals Common Reasons for Drug Application Rejection - Applied Clinical Trials",
+          "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPN0xiLW1pcG5NdDB0cmhKWUpNLXRZN0ktMmdqZWJqRlg0OFByX3hCQWlvSzJra3hkVzhsQnk3U2QyOURiZGlDRDJteEM1SS1EdVA3N0ZpdW1raFlaRXRPMlExc3FQRnE2R1dBamdjZDRPWC1ZMnhqQVo0aDFGUFdGbEI2bzUzRU1YMVc0UHhoRC1QYkM1T2s2MUNKeU1taG4wcl9SbHJHNnJHdzE1ckVDZTlld21BWkw1?oc=5",
+          "source": "Google News - CRLs",
+          "summary": "New FDA Initiative Reveals Common Reasons for Drug Application Rejection  Applied Clinical Trials",
+          "severity": 5
+        }
+      },
+      {
+        "company": "advanced melanoma",
+        "violation": {
+          "id": "Google News - CRLs-1757256367385-hrm8ldtwo",
+          "type": "regulatory_news",
+          "date": "2025-07-22T07:00:00.000Z",
+          "title": "FDA rejects RP1 for advanced melanoma, says IGNYTE not a ‘well-controlled’ trial - Healio",
+          "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxNbWJBZlpidVZBdy1nNUVfTkJHZ0xKSlUxRHNzZkFhYzlfSk5EZXpsVmhFclFZRkFZVDJwTWh5aDZwVjNzOWpGZzFYdzFmRWQ2OGI3WDJiazVGR0dGS0ZNWWhLelJKVlczS2d5d2RhMUdDUmYzblhCM3dqWnNZZ05PelNuV1hUS1dxcFNXdDYwSTBXalRGY2hPZ01tVFJ2R19ENkNpNTduZm54SDdvaVZsZWhKY0tkRXdsNUZ0bmJOT1lVNE5DR21HejVubkE3UQ?oc=5",
+          "source": "Google News - CRLs",
+          "summary": "FDA rejects RP1 for advanced melanoma, says IGNYTE not a ‘well-controlled’ trial  Healio",
+          "severity": 5
+        }
+      },
+      {
+        "company": "Ultragenyx Gene Therapy Faces FDA Delay",
+        "violation": {
+          "id": "Google News - CRLs-1757256367386-jbu1hod0z",
+          "type": "regulatory_news",
+          "date": "2025-07-11T07:00:00.000Z",
+          "title": "Ultragenyx Gene Therapy Faces FDA Delay: Clinical Data Strong, Manufacturing Issues Fixable - Stock Titan",
+          "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxNRjFYdWEzT0pObThZbExVVTc0RS1SQjhhZGs0NGRETFkwbnRrSmRsWnc3dmVYaU9sTUhUdTRnY2FzQ0U2WVhheVBhZ3dRSzVwa0hISWJhUzBaczZxLXhqb2RGanlLMnF4S2lIeG9GNkJ1ZUg5RW8zQW9Db1ZaSUhpWXpnVTBPVWZaazdkYTRxS2RxMU91UFJyWVNmNlVjTlZKRHZ5eFBHSUkzTFRRYkR2dENQU2xDUE9vbTBodUNJUQ?oc=5",
+          "source": "Google News - CRLs",
+          "summary": "Ultragenyx Gene Therapy Faces FDA Delay: Clinical Data Strong, Manufacturing Issues Fixable  Stock Titan",
+          "severity": 5
+        }
+      },
+      {
+        "company": "FDA",
+        "violation": {
+          "id": "Google News - Form 483-1757256367323-8a4ht53q3",
+          "type": "regulatory_news",
+          "date": "2025-07-29T07:00:00.000Z",
+          "title": "5 Cs For Responding To FDA-483s — Strategies For Effective Compliance And Resolution - Clinical Leader",
+          "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxQVEgxdUZlOTlRTnhhbWcxLTFxVmxsQkxKZkRjek1CbndhMHFGME9pcF9waTExRV9hcGNTMk9VUjU3NDh1YjBuU2Rrdm1TQ2YxdHdnVXk5YmltQ2lzVG9YT2dkbDV2clFTajhuM0NLelpFclBiREh3X1h0WEF6RVdHR3ptcjU4a0h4bG82eG14Y1NTVGFRdkdHcmlGZ3dPZHlpanlQXzVxUjg1eG1qZjhLUFNONDI3d3ZT?oc=5",
+          "source": "Google News - Form 483",
+          "summary": "5 Cs For Responding To FDA-483s — Strategies For Effective Compliance And Resolution  Clinical Leader",
+          "severity": 5
+        }
+      },
+      {
+        "company": "Replimune",
+        "violation": {
+          "id": "Google News - CRLs-1757268365420-wpyf65fne",
+          "type": "regulatory_news",
+          "date": "2025-07-25T07:00:00.000Z",
+          "title": "FDA Crackdown on Trial Design: What July’s CRLs to Replimune and Capricor Mean for Sponsors - Applied Clinical Trials",
+          "link": "https://news.google.com/rss/articles/CBMinwFBVV95cUxOUlFwSXd5dEk5eHNMYl8xWlk1WS0xby05a1lZNGtmQ1ZXSXRib2lxYzVqb2tWbnMyVlAzalU3eHVBSVpIRUhSQWYyVDNRUkJ3Z1VfUU1VTzRxNXhmbzVUZVpWRVY3cDFQcnA0ZTZHcmsxM1p6cUVvRWIxc2FhV1NBR2d1Z1B3ZXRJVW5NVkcwLUtOWXJRam9JdHFtcjY5STA?oc=5",
+          "source": "Google News - CRLs",
+          "summary": "FDA Crackdown on Trial Design: What July’s CRLs to Replimune and Capricor Mean for Sponsors  Applied Clinical Trials",
+          "severity": 5
+        }
+      }
+    ],
+    "promotional": [
+      {
+        "company": "FDA Launches Green List to Protect Americans from Illegal Imported GLP",
+        "violation": {
+          "id": "FDA Press Announcements-1757256366574-4je4x7wx4",
+          "type": "import_alert",
+          "date": "2025-09-05T15:05:29.000Z",
+          "title": "FDA Launches Green List to Protect Americans from Illegal Imported GLP-1 Drug Ingredients",
+          "link": "http://www.fda.gov/news-events/press-announcements/fda-launches-green-list-protect-americans-illegal-imported-glp-1-drug-ingredients",
+          "source": "FDA Press Announcements",
+          "summary": "The U.S. Food and Drug Administration today established a “green list” import alert to help stop potentially dangerous GLP-1 (glucagon-like peptide-1) active pharmaceutical ingredients (APIs) from unverified foreign sources from entering the U.S. market.",
+          "severity": 7
+        }
+      },
+      {
+        "company": "Unknown",
+        "violation": {
+          "id": "STAT News Pharma-1757256366570-vfzjqg14y",
+          "type": "regulatory_news",
+          "date": "2025-09-05T13:49:40.000Z",
+          "title": "STAT+: Up and down the ladder: The latest comings and goings",
+          "link": "https://www.statnews.com/pharmalot/2025/09/05/jobs-biotech-pharma-ladder-sanofi-genmab-merck-icon-iqvia/?utm_campaign=rss",
+          "source": "STAT News Pharma",
+          "summary": "From new hires to departures, promotions and transfers, here are the latest comings and goings in the pharmaceutical industry.",
+          "severity": 5
+        }
+      },
+      {
+        "company": "Replimune Schedules Meeting With FDA for RP1 Complete Response Letter to Treat Melanoma",
+        "violation": {
+          "id": "Google News - CRLs-1757256367385-ead3m4u8o",
+          "type": "crl",
+          "date": "2025-09-02T12:56:17.000Z",
+          "title": "Replimune Schedules Meeting With FDA for RP1 Complete Response Letter to Treat Melanoma - MarketScreener",
+          "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQcjNUVWlfM2wxTnQ1RTlLU0wyYVAtZWNiQnpITDN0Z1dIeTNUS3ZYTXY4SnppYmpReWdpWUI5TlgzUWtMQVVMd0tzVGFYTUE3ZThyMjZPWEM4ZWhDMGJHajZrZDJ1LTZ0VUJNUlZkRDhCWmFOakVjZVJzY1BRTG04U3B5WEl4MlZYSzFiWWdLUmtiVEZabXZ6cHZ3ZmNVTjFTanNQTktvUExmbnJaa3RDUUFCN3A2Q3pxQlJYRE1HVVprdFFVZlVPYldCSm1KaUlnQ1FIQU55aw?oc=5",
+          "source": "Google News - CRLs",
+          "summary": "Replimune Schedules Meeting With FDA for RP1 Complete Response Letter to Treat Melanoma  MarketScreener",
+          "severity": 9
+        }
+      },
+      {
+        "company": "STAT",
+        "violation": {
+          "id": "STAT News Pharma-1757268364758-y5ty7a15e",
+          "type": "regulatory_news",
+          "date": "2025-09-05T13:49:40.000Z",
+          "title": "STAT+: Up and down the ladder: The latest comings and goings",
+          "link": "https://www.statnews.com/pharmalot/2025/09/05/jobs-biotech-pharma-ladder-sanofi-genmab-merck-icon-iqvia/?utm_campaign=rss",
+          "source": "STAT News Pharma",
+          "summary": "From new hires to departures, promotions and transfers, here are the latest comings and goings in the pharmaceutical industry.",
+          "severity": 5
+        }
+      },
+      {
+        "company": "Treat",
+        "violation": {
+          "id": "Google News - CRLs-1757268365421-jc4h28een",
+          "type": "crl",
+          "date": "2025-09-02T12:56:17.000Z",
+          "title": "Replimune Schedules Meeting With FDA for RP1 Complete Response Letter to Treat Melanoma - MarketScreener",
+          "link": "https://news.google.com/rss/articles/CBMi1wFBVV95cUxQcjNUVWlfM2wxTnQ1RTlLU0wyYVAtZWNiQnpITDN0Z1dIeTNUS3ZYTXY4SnppYmpReWdpWUI5TlgzUWtMQVVMd0tzVGFYTUE3ZThyMjZPWEM4ZWhDMGJHajZrZDJ1LTZ0VUJNUlZkRDhCWmFOakVjZVJzY1BRTG04U3B5WEl4MlZYSzFiWWdLUmtiVEZabXZ6cHZ3ZmNVTjFTanNQTktvUExmbnJaa3RDUUFCN3A2Q3pxQlJYRE1HVVprdFFVZlVPYldCSm1KaUlnQ1FIQU55aw?oc=5",
+          "source": "Google News - CRLs",
+          "summary": "Replimune Schedules Meeting With FDA for RP1 Complete Response Letter to Treat Melanoma  MarketScreener",
+          "severity": 9
+        }
+      }
+    ],
+    "repeat_offenders": [
+      {
+        "company": "Unknown",
+        "total_violations": 50,
+        "types": [
+          "form_483",
+          "regulatory_news",
+          "crl"
+        ],
+        "risk_score": 100
+      },
+      {
+        "company": "re",
+        "total_violations": 50,
+        "types": [
+          "crl",
+          "regulatory_news",
+          "warning_letter"
+        ],
+        "risk_score": 100
+      },
+      {
+        "company": "FDA",
+        "total_violations": 42,
+        "types": [
+          "regulatory_news",
+          "form_483"
+        ],
+        "risk_score": 100
+      },
+      {
+        "company": "STAT",
+        "total_violations": 3,
+        "types": [
+          "regulatory_news"
+        ],
+        "risk_score": 0
+      },
+      {
+        "company": "Outlook",
+        "total_violations": 3,
+        "types": [
+          "crl"
+        ],
+        "risk_score": 27
+      },
+      {
+        "company": "RP1",
+        "total_violations": 3,
+        "types": [
+          "regulatory_news"
+        ],
+        "risk_score": 0
+      },
+      {
+        "company": "Replimune",
+        "total_violations": 3,
+        "types": [
+          "crl",
+          "regulatory_news"
+        ],
+        "risk_score": 27
+      },
+      {
+        "company": "USFDA issues",
+        "total_violations": 3,
+        "types": [
+          "form_483"
+        ],
+        "risk_score": 18
+      }
+    ]
+  }
+}

@@ -1,0 +1,83 @@
+{"level":"info","message":"Created: data\\contacts.json"}
+{"level":"info","message":"Created: data\\campaigns.json"}
+{"level":"info","message":"Created: data\\reports.json"}
+{"level":"info","message":"Created: data\\enrichment_cache.json"}
+{"level":"info","message":"\n🔄 Starting comprehensive data aggregation...\n"}
+{"level":"info","message":"Scraping FDA Warning Letters..."}
+{"level":"info","message":"\n============================================================"}
+{"level":"info","message":"🏥 FDA Regulatory Intelligence Platform v3.0"}
+{"level":"info","message":"============================================================"}
+{"level":"info","message":"\n✅ Server running on port 3000"}
+{"level":"info","message":"📊 Dashboard: http://localhost:3000"}
+{"level":"info","message":"📡 API Base: http://localhost:3000/api"}
+{"level":"info","message":"\n🧠 Features Active:"}
+{"level":"info","message":"  • Advanced company intelligence & risk scoring"}
+{"level":"info","message":"  • Contact enrichment (Hunter.io/Apollo.io)"}
+{"level":"info","message":"  • Campaign management system"}
+{"level":"info","message":"  • Automated report generation (PDF/Excel)"}
+{"level":"info","message":"  • Predictive risk analysis"}
+{"level":"info","message":"  • Pattern detection & trend analysis"}
+{"level":"info","message":"  • Geographic clustering"}
+{"level":"info","message":"  • Email notifications"}
+{"level":"info","message":"\n🔄 Initializing systems...\n"}
+{"level":"error","message":"✗ FDA scraping: companyIntel.extractCompany is not a function"}
+{"level":"info","message":"Fetching: FDA Press Releases"}
+{"level":"info","message":"Fetching: FDA CDER Updates"}
+{"level":"info","message":"Fetching: FDA CBER Updates"}
+{"level":"info","message":"Fetching: FiercePharma"}
+{"level":"info","message":"Fetching: FierceBiotech"}
+{"level":"error","message":"✗ FiercePharma: Cannot convert object to primitive value"}
+{"level":"error","message":"✗ FierceBiotech: Cannot convert object to primitive value"}
+{"level":"error","message":"✗ FDA Press Releases: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ FDA CBER Updates: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ FDA CDER Updates: Status code 404"}
+{"level":"info","message":"Fetching: STAT News Pharma"}
+{"level":"info","message":"Fetching: RAPS Regulatory Focus"}
+{"level":"info","message":"Fetching: Pink Sheet"}
+{"level":"info","message":"Fetching: Google News - CRLs"}
+{"level":"info","message":"Fetching: Google News - Form 483"}
+{"level":"error","message":"✗ STAT News Pharma: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ RAPS Regulatory Focus: Attribute without value\nLine: 0\nColumn: 1891\nChar: s"}
+{"level":"error","message":"✗ Google News - Form 483: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ Google News - CRLs: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ Pink Sheet: Status code 404"}
+{"level":"info","message":"Fetching: Google News - Warning Letters"}
+{"level":"error","message":"✗ Google News - Warning Letters: companyIntel.extractCompany is not a function"}
+{"level":"info","message":"\n📊 Aggregation Complete:"}
+{"level":"info","message":"⏱️  Time: 2.8s"}
+{"level":"info","message":"📑 Total items: 0"}
+{"level":"info","message":"🏢 Companies tracked: 182"}
+{"level":"info","message":"🚨 New violations: 0"}
+{"level":"info","message":"\n✨ FDA Intelligence Platform v3.0 Ready!"}
+{"level":"info","message":"============================================================\n"}
+{"level":"info","message":"\n⏰ Scheduled data refresh..."}
+{"level":"info","message":"\n🔄 Starting comprehensive data aggregation...\n"}
+{"level":"info","message":"Scraping FDA Warning Letters..."}
+{"level":"error","message":"✗ FDA scraping: companyIntel.extractCompany is not a function"}
+{"level":"info","message":"Fetching: FDA Press Releases"}
+{"level":"info","message":"Fetching: FDA CDER Updates"}
+{"level":"info","message":"Fetching: FDA CBER Updates"}
+{"level":"info","message":"Fetching: FiercePharma"}
+{"level":"info","message":"Fetching: FierceBiotech"}
+{"level":"error","message":"✗ FDA Press Releases: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ FDA CBER Updates: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ FiercePharma: Cannot convert object to primitive value"}
+{"level":"error","message":"✗ FDA CDER Updates: Status code 404"}
+{"level":"error","message":"✗ FierceBiotech: Cannot convert object to primitive value"}
+{"level":"info","message":"Fetching: STAT News Pharma"}
+{"level":"info","message":"Fetching: RAPS Regulatory Focus"}
+{"level":"info","message":"Fetching: Pink Sheet"}
+{"level":"info","message":"Fetching: Google News - CRLs"}
+{"level":"info","message":"Fetching: Google News - Form 483"}
+{"level":"error","message":"✗ STAT News Pharma: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ Google News - CRLs: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ Google News - Form 483: companyIntel.extractCompany is not a function"}
+{"level":"error","message":"✗ RAPS Regulatory Focus: Attribute without value\nLine: 0\nColumn: 1891\nChar: s"}
+{"level":"error","message":"✗ Pink Sheet: Status code 404"}
+{"level":"info","message":"Fetching: Google News - Warning Letters"}
+{"level":"error","message":"✗ Google News - Warning Letters: companyIntel.extractCompany is not a function"}
+{"level":"info","message":"\n📊 Aggregation Complete:"}
+{"level":"info","message":"⏱️  Time: 0.8s"}
+{"level":"info","message":"📑 Total items: 0"}
+{"level":"info","message":"🏢 Companies tracked: 182"}
+{"level":"info","message":"🚨 New violations: 0"}

@@ -1,0 +1,926 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FDA Regulatory Intelligence Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+    <style>
+        .risk-high { background: linear-gradient(135deg, #fee2e2 0%, #fecaca 100%); }
+        .risk-medium { background: linear-gradient(135deg, #fed7aa 0%, #ffedd5 100%); }
+        .risk-low { background: linear-gradient(135deg, #d1fae5 0%, #ecfdf5 100%); }
+        
+        .pulse {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: .5; }
+        }
+        
+        .slide-in {
+            animation: slideIn 0.3s ease-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(-100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        .timeline-dot {
+            position: relative;
+        }
+        .timeline-dot::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 100%;
+            width: 2px;
+            height: 40px;
+            background: #e5e7eb;
+            transform: translateX(-50%);
+        }
+        .timeline-dot:last-child::before {
+            display: none;
+        }
+        
+        .severity-10 { color: #7c2d12; background: #fef2f2; }
+        .severity-9 { color: #991b1b; background: #fee2e2; }
+        .severity-8 { color: #dc2626; background: #fecaca; }
+        .severity-7 { color: #ea580c; background: #fed7aa; }
+        .severity-6 { color: #d97706; background: #fef3c7; }
+        .severity-5 { color: #ca8a04; background: #fef9c3; }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header with Alerts -->
+    <header class="bg-white shadow-sm border-b sticky top-0 z-40">
+        <div class="max-w-7xl mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <div>
+                    <h1 class="text-2xl font-bold text-gray-900">🧠 FDA Regulatory Intelligence</h1>
+                    <p class="text-sm text-gray-600">Real-time company monitoring & risk assessment</p>
+                </div>
+                <div class="flex items-center gap-3">
+                    <div id="alert-indicator" class="hidden">
+                        <span class="flex items-center gap-2 bg-red-100 text-red-700 px-3 py-1 rounded-full pulse">
+                            <span class="w-2 h-2 bg-red-500 rounded-full"></span>
+                            <span id="alert-count">0</span> New Alerts
+                        </span>
+                    </div>
+                    <button onclick="showWatchlist()" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
+                        👁️ Watchlist
+                    </button>
+                    <button onclick="refreshData()" class="bg-blue-600 text-white px-4 py-2 rounded-lg hover:bg-blue-700">
+                        🔄 Refresh
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Main Dashboard -->
+    <div class="max-w-7xl mx-auto px-4 py-6">
+        
+        <!-- Alert Banner -->
+        <div id="alert-banner" class="hidden mb-6 bg-red-50 border border-red-200 rounded-lg p-4">
+            <div class="flex items-start">
+                <span class="text-2xl mr-3">🚨</span>
+                <div class="flex-1">
+                    <h3 class="font-semibold text-red-900">New Regulatory Actions Detected</h3>
+                    <div id="alert-details" class="mt-2 text-sm text-red-700"></div>
+                </div>
+                <button onclick="dismissAlerts()" class="text-red-400 hover:text-red-600">✕</button>
+            </div>
+        </div>
+
+        <!-- Risk Overview Cards -->
+        <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-medium text-gray-600">Companies Monitored</span>
+                    <span class="text-xl">🏢</span>
+                </div>
+                <p class="text-3xl font-bold text-gray-900" id="stat-companies">-</p>
+                <p class="text-xs text-gray-500 mt-1">Total tracked</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4 risk-high">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-medium text-red-700">High Risk</span>
+                    <span class="text-xl">🔴</span>
+                </div>
+                <p class="text-3xl font-bold text-red-900" id="stat-high-risk">-</p>
+                <p class="text-xs text-red-600 mt-1">Score ≥70</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-medium text-gray-600">New This Week</span>
+                    <span class="text-xl">📈</span>
+                </div>
+                <p class="text-3xl font-bold text-blue-600" id="stat-new-week">-</p>
+                <p class="text-xs text-gray-500 mt-1">Violations</p>
+            </div>
+            
+            <div class="bg-white rounded-lg shadow p-4">
+                <div class="flex items-center justify-between mb-2">
+                    <span class="text-sm font-medium text-gray-600">Repeat Offenders</span>
+                    <span class="text-xl">⚠️</span>
+                </div>
+                <p class="text-3xl font-bold text-orange-600" id="stat-repeat">-</p>
+                <p class="text-xs text-gray-500 mt-1">3+ violations</p>
+            </div>
+        </div>
+
+        <!-- Quick Filters -->
+        <div class="bg-white rounded-lg shadow p-4 mb-6">
+            <div class="flex flex-wrap gap-2">
+                <button onclick="filterView('recent')" class="filter-btn px-4 py-2 rounded-lg bg-blue-100 text-blue-700 hover:bg-blue-200">
+                    🆕 Recent Activity
+                </button>
+                <button onclick="filterView('high-risk')" class="filter-btn px-4 py-2 rounded-lg bg-red-100 text-red-700 hover:bg-red-200">
+                    🔴 High Risk Only
+                </button>
+                <button onclick="filterView('crl')" class="filter-btn px-4 py-2 rounded-lg bg-purple-100 text-purple-700 hover:bg-purple-200">
+                    📋 CRLs
+                </button>
+                <button onclick="filterView('warning')" class="filter-btn px-4 py-2 rounded-lg bg-orange-100 text-orange-700 hover:bg-orange-200">
+                    ⚠️ Warning Letters
+                </button>
+                <button onclick="filterView('483')" class="filter-btn px-4 py-2 rounded-lg bg-yellow-100 text-yellow-700 hover:bg-yellow-200">
+                    🔍 Form 483s
+                </button>
+                <button onclick="filterView('patterns')" class="filter-btn px-4 py-2 rounded-lg bg-green-100 text-green-700 hover:bg-green-200">
+                    📊 Patterns
+                </button>
+                <input type="text" id="company-search" placeholder="Search company..." 
+                       class="ml-auto px-3 py-2 border rounded-lg" onkeyup="searchCompany(event)">
+            </div>
+        </div>
+
+        <!-- Main Content Area -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+            
+            <!-- Company List (Left) -->
+            <div class="lg:col-span-2">
+                <div class="bg-white rounded-lg shadow">
+                    <div class="border-b px-4 py-3 flex justify-between items-center">
+                        <h2 class="text-lg font-semibold">Company Activity</h2>
+                        <select id="sort-select" onchange="sortCompanies()" class="text-sm border rounded px-2 py-1">
+                            <option value="recent">Most Recent</option>
+                            <option value="risk">Highest Risk</option>
+                            <option value="violations">Most Violations</option>
+                        </select>
+                    </div>
+                    <div id="companies-list" class="divide-y divide-gray-200 max-h-[600px] overflow-y-auto">
+                        <!-- Companies will be loaded here -->
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Insights Panel (Right) -->
+            <div class="space-y-6">
+                <!-- Hotspots -->
+                <div class="bg-white rounded-lg shadow">
+                    <div class="border-b px-4 py-3">
+                        <h3 class="font-semibold text-red-700">🔥 Hotspots</h3>
+                    </div>
+                    <div id="hotspots" class="p-4 space-y-2 text-sm">
+                        <!-- Hotspot companies -->
+                    </div>
+                </div>
+                
+                <!-- Patterns -->
+                <div class="bg-white rounded-lg shadow">
+                    <div class="border-b px-4 py-3">
+                        <h3 class="font-semibold text-purple-700">📊 Patterns Detected</h3>
+                    </div>
+                    <div id="patterns" class="p-4 space-y-2 text-sm">
+                        <!-- Pattern analysis -->
+                    </div>
+                </div>
+                
+                <!-- Risk Distribution -->
+                <div class="bg-white rounded-lg shadow">
+                    <div class="border-b px-4 py-3">
+                        <h3 class="font-semibold">Risk Distribution</h3>
+                    </div>
+                    <div class="p-4">
+                        <canvas id="riskChart" height="200"></canvas>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Company Timeline Modal -->
+        <div id="timeline-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-white rounded-lg max-w-4xl w-full mx-4 max-h-[80vh] overflow-hidden">
+                <div class="p-6 border-b">
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <h2 class="text-xl font-bold" id="timeline-company-name">Company Timeline</h2>
+                            <div class="flex gap-4 mt-2 text-sm">
+                                <span id="timeline-risk" class="px-2 py-1 rounded"></span>
+                                <span id="timeline-violations"></span>
+                                <span id="timeline-facilities"></span>
+                            </div>
+                        </div>
+                        <button onclick="closeTimeline()" class="text-gray-400 hover:text-gray-600 text-2xl">×</button>
+                    </div>
+                </div>
+                <div id="timeline-content" class="p-6 overflow-y-auto max-h-[60vh]">
+                    <!-- Timeline will be loaded here -->
+                </div>
+                <div class="p-4 border-t flex justify-between">
+                    <button onclick="addToWatchlist()" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
+                        + Add to Watchlist
+                    </button>
+                    <button onclick="closeTimeline()" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700">
+                        Close
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Watchlist Modal -->
+        <div id="watchlist-modal" class="hidden fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+            <div class="bg-white rounded-lg max-w-2xl w-full mx-4 max-h-[70vh] overflow-hidden">
+                <div class="p-6 border-b">
+                    <h2 class="text-xl font-bold">👁️ Company Watchlist</h2>
+                </div>
+                <div id="watchlist-content" class="p-6 overflow-y-auto max-h-[50vh]">
+                    <!-- Watchlist will be loaded here -->
+                </div>
+                <div class="p-4 border-t">
+                    <div class="flex gap-3">
+                        <input type="text" id="watchlist-company" placeholder="Company name" class="flex-1 px-3 py-2 border rounded-lg">
+                        <button onclick="addNewToWatchlist()" class="bg-purple-600 text-white px-4 py-2 rounded-lg hover:bg-purple-700">
+                            Add Company
+                        </button>
+                        <button onclick="closeWatchlist()" class="bg-gray-600 text-white px-4 py-2 rounded-lg hover:bg-gray-700">
+                            Close
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global state
+        let companies = [];
+        let patterns = {};
+        let alerts = [];
+        let currentCompany = null;
+        let riskChart = null;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadCompanies();
+            loadPatterns();
+            loadAlerts();
+            setInterval(loadAlerts, 60000); // Check alerts every minute
+        });
+
+        // Load companies with recent activity
+        async function loadCompanies(filter = 'recent') {
+            try {
+                let url = '/api/companies?days=30';
+                if (filter === 'high-risk') {
+                    url += '&min_risk=70';
+                } else if (filter === 'recent') {
+                    url += '&sort=recent';
+                } else if (filter === 'risk') {
+                    url += '&sort=risk';
+                }
+                
+                const response = await fetch(url);
+                const data = await response.json();
+                
+                if (data.success) {
+                    companies = data.companies;
+                    displayCompanies(companies);
+                    updateStats();
+                }
+            } catch (error) {
+                console.error('Error loading companies:', error);
+            }
+        }
+
+        // Display companies
+        function displayCompanies(companyList) {
+            const container = document.getElementById('companies-list');
+            
+            if (companyList.length === 0) {
+                container.innerHTML = '<div class="p-8 text-center text-gray-500">No companies found</div>';
+                return;
+            }
+            
+            container.innerHTML = companyList.map(company => {
+                const recentViolation = company.violations[0];
+                const riskClass = company.risk_score >= 70 ? 'risk-high' : 
+                                 company.risk_score >= 40 ? 'risk-medium' : 'risk-low';
+                const riskColor = company.risk_score >= 70 ? 'text-red-700' : 
+                                 company.risk_score >= 40 ? 'text-orange-600' : 'text-green-600';
+                
+                return `
+                    <div class="p-4 hover:bg-gray-50 cursor-pointer slide-in ${riskClass}" 
+                         onclick="showCompanyTimeline('${company.name}')">
+                        <div class="flex justify-between items-start">
+                            <div class="flex-1">
+                                <div class="flex items-center gap-2 mb-1">
+                                    <h3 class="font-semibold text-gray-900">${company.name}</h3>
+                                    <span class="px-2 py-1 text-xs font-bold rounded ${riskColor} bg-white">
+                                        Risk: ${company.risk_score}
+                                    </span>
+                                </div>
+                                <div class="text-sm text-gray-600 mb-2">
+                                    ${company.violations.length} violation${company.violations.length !== 1 ? 's' : ''} 
+                                    ${company.facilities.length > 0 ? `• ${company.facilities[0]}` : ''}
+                                </div>
+                                ${recentViolation ? `
+                                    <div class="text-sm">
+                                        <span class="font-medium">${formatDate(recentViolation.date)}</span>
+                                        <span class="mx-1">•</span>
+                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium severity-${recentViolation.severity}">
+                                            ${recentViolation.type.replace('_', ' ')}
+                                        </span>
+                                    </div>
+                                    <div class="text-xs text-gray-500 mt-1">${recentViolation.title}</div>
+                                ` : ''}
+                            </div>
+                            <div class="text-right ml-4">
+                                <button class="text-blue-600 hover:text-blue-800 text-sm">
+                                    View →
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                `;
+            }).join('');
+        }
+
+        // Show company timeline
+        async function showCompanyTimeline(companyName) {
+            try {
+                const response = await fetch(`/api/companies/${encodeURIComponent(companyName)}`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    currentCompany = data.data;
+                    const modal = document.getElementById('timeline-modal');
+                    
+                    document.getElementById('timeline-company-name').textContent = currentCompany.company;
+                    
+                    // Update risk badge
+                    const riskBadge = document.getElementById('timeline-risk');
+                    riskBadge.textContent = `Risk Score: ${currentCompany.risk_score}`;
+                    riskBadge.className = currentCompany.risk_score >= 70 ? 'px-2 py-1 rounded bg-red-100 text-red-700' :
+                                         currentCompany.risk_score >= 40 ? 'px-2 py-1 rounded bg-orange-100 text-orange-600' :
+                                         'px-2 py-1 rounded bg-green-100 text-green-600';
+                    
+                    document.getElementById('timeline-violations').textContent = `${currentCompany.total_violations} Total Violations`;
+                    document.getElementById('timeline-facilities').textContent = currentCompany.facilities.length > 0 ? 
+                        `Facilities: ${currentCompany.facilities.join(', ')}` : '';
+                    
+                    // Build timeline
+                    const timelineContent = document.getElementById('timeline-content');
+                    timelineContent.innerHTML = `
+                        <div class="mb-4">
+                            ${currentCompany.aliases.length > 1 ? `
+                                <p class="text-sm text-gray-600 mb-2">
+                                    Also known as: ${currentCompany.aliases.filter(a => a !== currentCompany.company).join(', ')}
+                                </p>
+                            ` : ''}
+                            ${currentCompany.products.length > 0 ? `
+                                <p class="text-sm text-gray-600">
+                                    Products: ${currentCompany.products.join(', ')}
+                                </p>
+                            ` : ''}
+                        </div>
+                        <h3 class="font-semibold mb-4">Violation Timeline</h3>
+                        <div class="relative">
+                            ${currentCompany.timeline.map((violation, index) => `
+                                <div class="flex gap-4 mb-6 timeline-dot">
+                                    <div class="flex-shrink-0">
+                                        <div class="w-10 h-10 rounded-full flex items-center justify-center severity-${violation.severity}">
+                                            ${getViolationIcon(violation.type)}
+                                        </div>
+                                    </div>
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2 mb-1">
+                                            <span class="font-medium">${formatDate(violation.date)}</span>
+                                            <span class="px-2 py-0.5 text-xs rounded severity-${violation.severity}">
+                                                ${violation.type.replace(/_/g, ' ').toUpperCase()}
+                                            </span>
+                                        </div>
+                                        <a href="${violation.link}" target="_blank" class="text-blue-600 hover:text-blue-800 text-sm">
+                                            ${violation.title}
+                                        </a>
+                                    </div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    `;
+                    
+                    modal.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Error loading timeline:', error);
+            }
+        }
+
+        // Load patterns
+        async function loadPatterns() {
+            try {
+                const response = await fetch('/api/patterns');
+                const data = await response.json();
+                
+                if (data.success) {
+                    patterns = data.patterns;
+                    displayPatterns();
+                    displayHotspots();
+                }
+            } catch (error) {
+                console.error('Error loading patterns:', error);
+            }
+        }
+
+        // Display hotspots
+        function displayHotspots() {
+            const container = document.getElementById('hotspots');
+            
+            if (!patterns.hotspots || patterns.hotspots.length === 0) {
+                container.innerHTML = '<p class="text-gray-500">No hotspots detected</p>';
+                return;
+            }
+            
+            container.innerHTML = patterns.hotspots.slice(0, 5).map(hotspot => `
+                <div class="p-2 bg-red-50 rounded cursor-pointer hover:bg-red-100" 
+                     onclick="showCompanyTimeline('${hotspot.company}')">
+                    <div class="font-medium text-red-900">${hotspot.company}</div>
+                    <div class="text-xs text-red-600">
+                        ${hotspot.count} violations • ${hotspot.types.join(', ')}
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Display patterns
+        function displayPatterns() {
+            const container = document.getElementById('patterns');
+            
+            const patternSummary = [];
+            
+            if (patterns.escalating && patterns.escalating.length > 0) {
+                patternSummary.push(`
+                    <div class="p-2 bg-purple-50 rounded">
+                        <div class="font-medium text-purple-900">📈 Escalating Severity</div>
+                        <div class="text-xs text-purple-600">
+                            ${patterns.escalating.length} companies showing increasing violation severity
+                        </div>
+                    </div>
+                `);
+            }
+            
+            if (patterns.repeat_offenders && patterns.repeat_offenders.length > 0) {
+                patternSummary.push(`
+                    <div class="p-2 bg-orange-50 rounded">
+                        <div class="font-medium text-orange-900">🔁 Repeat Offenders</div>
+                        <div class="text-xs text-orange-600">
+                            ${patterns.repeat_offenders.length} companies with 3+ violations
+                        </div>
+                    </div>
+                `);
+            }
+            
+            if (patterns.manufacturing && patterns.manufacturing.length > 0) {
+                patternSummary.push(`
+                    <div class="p-2 bg-blue-50 rounded">
+                        <div class="font-medium text-blue-900">🏭 Manufacturing Issues</div>
+                        <div class="text-xs text-blue-600">
+                            ${patterns.manufacturing.length} CGMP/quality violations detected
+                        </div>
+                    </div>
+                `);
+            }
+            
+            container.innerHTML = patternSummary.length > 0 ? 
+                patternSummary.join('') : 
+                '<p class="text-gray-500">No patterns detected</p>';
+        }
+
+        // Load alerts
+        async function loadAlerts() {
+            try {
+                const response = await fetch('/api/alerts?unread=true');
+                const data = await response.json();
+                
+                if (data.success && data.alerts.length > 0) {
+                    alerts = data.alerts;
+                    showAlertIndicator(alerts.length);
+                    showAlertBanner(alerts);
+                }
+            } catch (error) {
+                console.error('Error loading alerts:', error);
+            }
+        }
+
+        // Show alert indicator
+        function showAlertIndicator(count) {
+            const indicator = document.getElementById('alert-indicator');
+            const countEl = document.getElementById('alert-count');
+            
+            if (count > 0) {
+                indicator.classList.remove('hidden');
+                countEl.textContent = count;
+            } else {
+                indicator.classList.add('hidden');
+            }
+        }
+
+        // Show alert banner
+        function showAlertBanner(alertList) {
+            const banner = document.getElementById('alert-banner');
+            const details = document.getElementById('alert-details');
+            
+            if (alertList.length > 0) {
+                banner.classList.remove('hidden');
+                details.innerHTML = alertList.slice(0, 3).map(alert => `
+                    <div class="mb-1">
+                        <span class="font-medium">${alert.company}</span> - 
+                        ${alert.type.replace(/_/g, ' ')} 
+                        <span class="text-xs">(${formatDate(alert.date)})</span>
+                    </div>
+                `).join('');
+                
+                if (alertList.length > 3) {
+                    details.innerHTML += `<div class="text-xs mt-1">... and ${alertList.length - 3} more</div>`;
+                }
+            }
+        }
+
+        // Update stats
+        async function updateStats() {
+            try {
+                // Get risk assessment
+                const riskResponse = await fetch('/api/risk-assessment');
+                const riskData = await riskResponse.json();
+                
+                if (riskData.success) {
+                    document.getElementById('stat-companies').textContent = companies.length;
+                    document.getElementById('stat-high-risk').textContent = riskData.summary.high_risk_count;
+                    document.getElementById('stat-repeat').textContent = 
+                        patterns.repeat_offenders ? patterns.repeat_offenders.length : 0;
+                    
+                    // Update risk chart
+                    updateRiskChart(riskData.summary);
+                }
+                
+                // Get recent violations
+                const recentResponse = await fetch('/api/items?days=7');
+                const recentData = await recentResponse.json();
+                if (recentData.success) {
+                    document.getElementById('stat-new-week').textContent = recentData.count;
+                }
+            } catch (error) {
+                console.error('Error updating stats:', error);
+            }
+        }
+
+        // Update risk chart
+        function updateRiskChart(summary) {
+            const ctx = document.getElementById('riskChart').getContext('2d');
+            
+            if (riskChart) riskChart.destroy();
+            
+            riskChart = new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['High Risk', 'Medium Risk', 'Low Risk'],
+                    datasets: [{
+                        data: [
+                            summary.high_risk_count,
+                            summary.medium_risk_count,
+                            summary.low_risk_count
+                        ],
+                        backgroundColor: [
+                            '#dc2626',
+                            '#ea580c',
+                            '#16a34a'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: {
+                                padding: 10,
+                                font: { size: 11 }
+                            }
+                        }
+                    }
+                }
+            });
+        }
+
+        // Filter view
+        async function filterView(type) {
+            // Update button styles
+            document.querySelectorAll('.filter-btn').forEach(btn => {
+                btn.classList.remove('ring-2', 'ring-offset-2');
+            });
+            event.target.classList.add('ring-2', 'ring-offset-2');
+            
+            if (type === 'patterns') {
+                // Show patterns view
+                showPatternsView();
+            } else if (type === 'high-risk') {
+                loadCompanies('high-risk');
+            } else if (type === 'recent') {
+                loadCompanies('recent');
+            } else {
+                // Load by violation type
+                const response = await fetch(`/api/items?type=${type === 'warning' ? 'warning_letter' : type === '483' ? 'form_483' : type}&days=30`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    // Group by company
+                    const companyMap = {};
+                    data.items.forEach(item => {
+                        const company = item.company;
+                        if (!companyMap[company]) {
+                            companyMap[company] = {
+                                name: company,
+                                violations: [],
+                                risk_score: 0
+                            };
+                        }
+                        companyMap[company].violations.push({
+                            type: item.types[0],
+                            date: item.date,
+                            title: item.title,
+                            link: item.link,
+                            severity: item.severity
+                        });
+                    });
+                    
+                    const companiesList = Object.values(companyMap);
+                    displayCompanies(companiesList);
+                }
+            }
+        }
+
+        // Show patterns view
+        function showPatternsView() {
+            const container = document.getElementById('companies-list');
+            
+            container.innerHTML = `
+                <div class="p-6">
+                    <h3 class="text-lg font-semibold mb-4">Pattern Analysis</h3>
+                    
+                    ${patterns.escalating && patterns.escalating.length > 0 ? `
+                        <div class="mb-6">
+                            <h4 class="font-medium text-purple-700 mb-2">📈 Escalating Severity</h4>
+                            <div class="space-y-2">
+                                ${patterns.escalating.map(esc => `
+                                    <div class="p-3 bg-purple-50 rounded">
+                                        <span class="font-medium">${esc.company}</span>
+                                        <span class="text-sm text-purple-600">
+                                            ${esc.from} → ${esc.to}
+                                        </span>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                    
+                    ${patterns.repeat_offenders && patterns.repeat_offenders.length > 0 ? `
+                        <div class="mb-6">
+                            <h4 class="font-medium text-orange-700 mb-2">🔁 Repeat Offenders</h4>
+                            <div class="space-y-2">
+                                ${patterns.repeat_offenders.map(company => `
+                                    <div class="p-3 bg-orange-50 rounded cursor-pointer hover:bg-orange-100"
+                                         onclick="showCompanyTimeline('${company.company}')">
+                                        <div class="flex justify-between">
+                                            <span class="font-medium">${company.company}</span>
+                                            <span class="text-sm text-orange-600">
+                                                Risk: ${company.risk_score}
+                                            </span>
+                                        </div>
+                                        <div class="text-sm text-gray-600">
+                                            ${company.total_violations} violations • ${company.types.join(', ')}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                </div>
+            `;
+        }
+
+        // Search company
+        function searchCompany(event) {
+            if (event.key === 'Enter') {
+                const query = event.target.value;
+                if (query) {
+                    filterCompaniesByName(query);
+                } else {
+                    displayCompanies(companies);
+                }
+            }
+        }
+
+        // Filter companies by name
+        function filterCompaniesByName(query) {
+            const filtered = companies.filter(company => 
+                company.name.toLowerCase().includes(query.toLowerCase()) ||
+                company.aliases.some(alias => alias.toLowerCase().includes(query.toLowerCase()))
+            );
+            displayCompanies(filtered);
+        }
+
+        // Sort companies
+        function sortCompanies() {
+            const sortBy = document.getElementById('sort-select').value;
+            loadCompanies(sortBy);
+        }
+
+        // Show watchlist
+        async function showWatchlist() {
+            try {
+                const response = await fetch('/api/watchlist');
+                const data = await response.json();
+                
+                if (data.success) {
+                    const modal = document.getElementById('watchlist-modal');
+                    const content = document.getElementById('watchlist-content');
+                    
+                    if (data.watchlist.length === 0) {
+                        content.innerHTML = '<p class="text-gray-500">No companies in watchlist</p>';
+                    } else {
+                        content.innerHTML = data.watchlist.map(entry => `
+                            <div class="p-3 bg-gray-50 rounded mb-2">
+                                <div class="flex justify-between items-center">
+                                    <div>
+                                        <div class="font-medium">${entry.company}</div>
+                                        <div class="text-sm text-gray-600">
+                                            Added: ${formatDate(entry.added)}
+                                        </div>
+                                    </div>
+                                    <button onclick="removeFromWatchlist('${entry.company}')" 
+                                            class="text-red-600 hover:text-red-800">
+                                        Remove
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('');
+                    }
+                    
+                    modal.classList.remove('hidden');
+                }
+            } catch (error) {
+                console.error('Error loading watchlist:', error);
+            }
+        }
+
+        // Add to watchlist
+        async function addToWatchlist() {
+            if (!currentCompany) return;
+            
+            try {
+                const response = await fetch('/api/watchlist', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        company: currentCompany.company,
+                        criteria: {
+                            alert_on_any: true,
+                            alert_on_warning: true,
+                            alert_on_crl: true,
+                            alert_on_483: true
+                        }
+                    })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    alert(`${currentCompany.company} added to watchlist`);
+                }
+            } catch (error) {
+                console.error('Error adding to watchlist:', error);
+            }
+        }
+
+        // Add new company to watchlist
+        async function addNewToWatchlist() {
+            const company = document.getElementById('watchlist-company').value;
+            if (!company) return;
+            
+            try {
+                const response = await fetch('/api/watchlist', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        company: company,
+                        criteria: { alert_on_any: true }
+                    })
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    document.getElementById('watchlist-company').value = '';
+                    showWatchlist(); // Refresh
+                }
+            } catch (error) {
+                console.error('Error adding to watchlist:', error);
+            }
+        }
+
+        // Remove from watchlist
+        async function removeFromWatchlist(company) {
+            try {
+                const response = await fetch(`/api/watchlist/${encodeURIComponent(company)}`, {
+                    method: 'DELETE'
+                });
+                
+                const data = await response.json();
+                if (data.success) {
+                    showWatchlist(); // Refresh
+                }
+            } catch (error) {
+                console.error('Error removing from watchlist:', error);
+            }
+        }
+
+        // Refresh data
+        async function refreshData() {
+            const btn = event.target;
+            btn.disabled = true;
+            btn.textContent = '⏳ Refreshing...';
+            
+            try {
+                const response = await fetch('/api/refresh', { method: 'POST' });
+                const data = await response.json();
+                
+                if (data.success) {
+                    alert(`Data refreshed! Found ${data.stats.new_violations} new violations.`);
+                    loadCompanies();
+                    loadPatterns();
+                    loadAlerts();
+                }
+            } catch (error) {
+                console.error('Refresh error:', error);
+                alert('Error refreshing data');
+            } finally {
+                btn.disabled = false;
+                btn.textContent = '🔄 Refresh';
+            }
+        }
+
+        // Helper functions
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            const days = Math.floor((Date.now() - date) / (1000 * 60 * 60 * 24));
+            
+            if (days === 0) return 'Today';
+            if (days === 1) return 'Yesterday';
+            if (days < 7) return `${days} days ago`;
+            if (days < 30) return `${Math.floor(days / 7)} weeks ago`;
+            
+            return date.toLocaleDateString();
+        }
+
+        function getViolationIcon(type) {
+            const icons = {
+                'warning_letter': '⚠️',
+                'crl': '📋',
+                'form_483': '🔍',
+                'opdp': '📢',
+                'import_alert': '🚫',
+                'consent_decree': '⚖️'
+            };
+            return icons[type] || '📄';
+        }
+
+        function closeTimeline() {
+            document.getElementById('timeline-modal').classList.add('hidden');
+        }
+
+        function closeWatchlist() {
+            document.getElementById('watchlist-modal').classList.add('hidden');
+        }
+
+        function dismissAlerts() {
+            document.getElementById('alert-banner').classList.add('hidden');
+            alerts = [];
+            showAlertIndicator(0);
+        }
+    </script>
+</body>
+</html>
