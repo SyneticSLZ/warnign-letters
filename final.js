@@ -1118,17 +1118,17 @@ async searchHunter(domain, companyName) {
 }
 
   // Paste into final.js replacing the existing searchApollo function
+// Drop-in replacement
 async searchApollo(companyName, domain) {
   try {
-    // Basic validation
     if (!domain || typeof domain !== 'string' || !domain.includes('.')) {
       console.warn(`Skipping Apollo: invalid domain for ${companyName} -> ${domain}`);
       return null;
     }
 
-    // Apollo typically expects auth in headers (Bearer) and domains as an array
     const payload = {
-      q_organization_domains: [domain],
+      api_key: API_KEYS.APOLLO, // <-- IMPORTANT: auth in body for this endpoint
+      q_organization_domains: domain, // string; use "a.com,b.com" for multiples
       per_page: 25,
       page: 1,
       person_titles: [
@@ -1138,48 +1138,44 @@ async searchApollo(companyName, domain) {
     };
 
     const response = await axios.post(
+      // Some workspaces require the /api prefix; try this if you still get 401:
+      // 'https://api.apollo.io/api/v1/mixed_people/search',
       'https://api.apollo.io/v1/mixed_people/search',
       payload,
-      {
-        headers: {
-          'Authorization': `Bearer ${API_KEYS.APOLLO}`,
-          'Content-Type': 'application/json'
-        },
-        timeout: 15000
-      }
+      { headers: { 'Content-Type': 'application/json' }, timeout: 15000 }
     );
 
     if (response.data && response.data.people) {
       return {
-        executives: response.data.people.filter(p => 
-          p.title && (
+        executives: response.data.people
+          .filter(p => p.title && (
             p.title.toLowerCase().includes('chief') || 
             p.title.toLowerCase().includes('vp') ||
             p.title.toLowerCase().includes('vice president') ||
             p.title.toLowerCase().includes('head')
-          )
-        ).map(p => ({
-          name: p.name,
-          title: p.title,
-          email: p.email,
-          linkedin: p.linkedin_url,
-          phone: p.phone_numbers?.[0]?.sanitized_number
-        })),
-        regulatory_contacts: response.data.people.filter(p => 
-          p.title && (
+          ))
+          .map(p => ({
+            name: p.name,
+            title: p.title,
+            email: p.email,
+            linkedin: p.linkedin_url,
+            phone: p.phone_numbers?.[0]?.sanitized_number
+          })),
+        regulatory_contacts: response.data.people
+          .filter(p => p.title && (
             p.title.toLowerCase().includes('regulatory') ||
             p.title.toLowerCase().includes('quality') ||
             p.title.toLowerCase().includes('compliance') ||
             p.title.toLowerCase().includes('medical') ||
             p.title.toLowerCase().includes('clinical')
-          )
-        ).map(p => ({
-          name: p.name,
-          title: p.title,
-          email: p.email,
-          linkedin: p.linkedin_url,
-          verified: p.email_status === 'verified'
-        }))
+          ))
+          .map(p => ({
+            name: p.name,
+            title: p.title,
+            email: p.email,
+            linkedin: p.linkedin_url,
+            verified: p.email_status === 'verified'
+          }))
       };
     }
   } catch (error) {
@@ -1191,6 +1187,7 @@ async searchApollo(companyName, domain) {
   }
   return null;
 }
+
 
 
   async searchClearbit(domain) {
