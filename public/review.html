@@ -1,0 +1,572 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CGMP Contact Profiler</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .spinner {
+            border: 3px solid #f3f3f3;
+            border-top: 3px solid #6366f1;
+            border-radius: 50%;
+            width: 24px;
+            height: 24px;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <div id="app" class="min-h-screen">
+        <!-- Header -->
+        <div class="bg-white border-b border-gray-200">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center py-4">
+                    <div class="flex items-center space-x-4">
+                        <h1 class="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+                            CGMP Contact Profiler
+                        </h1>
+                        <div class="flex items-center space-x-2 text-sm text-gray-500">
+                            <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+                            <span>Connected</span>
+                        </div>
+                    </div>
+                    <div class="flex items-center space-x-4">
+                        <div id="stats" class="flex items-center space-x-6 text-sm text-gray-600">
+                            <!-- Stats populated by JS -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Search Bar -->
+        <div class="bg-white border-b border-gray-100">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+                <div class="relative">
+                    <input 
+                        type="text" 
+                        id="searchInput"
+                        placeholder="Search contacts by name or email..."
+                        class="w-full px-4 py-3 pl-12 pr-4 text-gray-700 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all"
+                    >
+                    <svg class="absolute left-4 top-3.5 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"></path>
+                    </svg>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Content -->
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+            <!-- Loading State -->
+            <div id="loading" class="hidden">
+                <div class="flex flex-col items-center justify-center py-12">
+                    <div class="spinner mb-4"></div>
+                    <p class="text-gray-500">Loading contacts...</p>
+                </div>
+            </div>
+
+            <!-- Empty State -->
+            <div id="emptyState" class="hidden">
+                <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-12 text-center">
+                    <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"></path>
+                    </svg>
+                    <h3 class="text-lg font-medium text-gray-900 mb-2">No contacts found</h3>
+                    <p class="text-gray-500">Try adjusting your search criteria</p>
+                </div>
+            </div>
+
+            <!-- Contacts Table -->
+            <div id="contactsTable" class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+                <div class="overflow-x-auto">
+                    <table class="min-w-full divide-y divide-gray-200">
+                        <thead class="bg-gray-50">
+                            <tr>
+                                <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact</th>
+                                <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+                                <th class="px-6 py-4 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Documents</th>
+                                <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Recent Contributions</th>
+                                <th class="px-6 py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="contactsBody" class="bg-white divide-y divide-gray-200">
+                            <!-- Populated by JavaScript -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Pagination -->
+            <div id="pagination" class="mt-6 flex items-center justify-between">
+                <!-- Populated by JavaScript -->
+            </div>
+        </div>
+
+        <!-- Modal -->
+        <div id="modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+            <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+                <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" onclick="closeModal()"></div>
+                <div class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
+                    <div id="modalContent">
+                        <!-- Populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const API_URL = 'http://localhost:3000';
+        let currentPage = 1;
+        const pageSize = 20;
+        let searchTimer;
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            loadStats();
+            loadContacts();
+            
+            document.getElementById('searchInput').addEventListener('input', (e) => {
+                clearTimeout(searchTimer);
+                searchTimer = setTimeout(() => {
+                    currentPage = 1;
+                    loadContacts();
+                }, 300);
+            });
+        });
+
+        // Load statistics
+        async function loadStats() {
+            try {
+                const response = await fetch(`${API_URL}/stats`);
+                const data = await response.json();
+                
+                if (data.success) {
+                    const stats = data.stats;
+                    document.getElementById('stats').innerHTML = `
+                        <div>
+                            <span class="font-semibold">${stats.totalDocuments.toLocaleString()}</span>
+                            <span class="text-gray-500">Documents</span>
+                        </div>
+                        <div class="w-px h-4 bg-gray-300"></div>
+                        <div>
+                            <span class="font-semibold">${stats.totalContacts.toLocaleString()}</span>
+                            <span class="text-gray-500">Contacts</span>
+                        </div>
+                    `;
+                }
+            } catch (error) {
+                console.error('Error loading stats:', error);
+            }
+        }
+
+        // Load contacts
+        async function loadContacts() {
+            const search = document.getElementById('searchInput').value;
+            
+            showElement('loading');
+            hideElement('emptyState');
+            hideElement('contactsTable');
+            
+            try {
+                const response = await fetch(`${API_URL}/contacts?search=${encodeURIComponent(search)}&page=${currentPage}&pageSize=${pageSize}`);
+                const data = await response.json();
+                
+                hideElement('loading');
+                
+                if (!data.success) {
+                    throw new Error(data.error);
+                }
+                
+                if (data.contacts.length === 0) {
+                    showElement('emptyState');
+                    hideElement('pagination');
+                } else {
+                    renderContacts(data.contacts);
+                    renderPagination(data.pagination);
+                    showElement('contactsTable');
+                    showElement('pagination');
+                }
+            } catch (error) {
+                console.error('Error loading contacts:', error);
+                hideElement('loading');
+                showElement('emptyState');
+            }
+        }
+
+        // Render contacts table
+function renderContacts(contacts) {
+  const tbody = document.getElementById('contactsBody');
+  tbody.innerHTML = contacts.map(contact => {
+    const safeName = contact?.name || '—';
+    const safeEmail = contact?.email || '—';
+    const safePhone = contact?.phone || '';
+    const initial = safeName && typeof safeName === 'string'
+      ? safeName.trim().charAt(0).toUpperCase() || '?'
+      : '?';
+
+    // Ensure recentTitles is a real array of strings
+    const titles = Array.isArray(contact?.recentTitles)
+      ? contact.recentTitles.filter(Boolean).map(t => String(t))
+      : [];
+
+    const visible = titles.slice(0, 3);
+    const extraCount = Math.max(0, titles.length - visible.length);
+
+    return `
+      <tr class="hover:bg-gray-50 transition-colors">
+        <td class="px-6 py-4 whitespace-nowrap">
+          <div class="flex items-center">
+            <div class="flex-shrink-0 h-10 w-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">
+              ${initial}
+            </div>
+            <div class="ml-4">
+              <div class="text-sm font-medium text-gray-900">${escapeHtml(safeName)}</div>
+              ${safePhone ? `<div class="text-xs text-gray-500">${escapeHtml(safePhone)}</div>` : ''}
+            </div>
+          </div>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap">
+          <div class="text-sm text-gray-900">${escapeHtml(safeEmail)}</div>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap text-center">
+          <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
+            (contact?.docCount ?? 0) >= 10 ? 'bg-green-100 text-green-800' :
+            (contact?.docCount ?? 0) >= 5  ? 'bg-yellow-100 text-yellow-800' :
+                                             'bg-gray-100 text-gray-800'
+          }">
+            ${contact?.docCount ?? 0}
+          </span>
+        </td>
+        <td class="px-6 py-4">
+          <div class="flex flex-wrap gap-1">
+            ${visible.map(title => {
+              const label = String(title).split(':')[0] || title; // <- SAFE
+              return `
+                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200">
+                  ${escapeHtml(label)}
+                </span>
+              `;
+            }).join('')}
+            ${extraCount > 0 ? `
+              <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-50 text-gray-500">
+                +${extraCount} more
+              </span>
+            ` : ''}
+          </div>
+        </td>
+        <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+          <button 
+            onclick="openDocsModal('${contact.contactId || ''}')"
+            class="text-indigo-600 hover:text-indigo-900 mr-3 transition-colors"
+            ${contact?.contactId ? '' : 'disabled'}
+          >
+            View Docs
+          </button>
+          <button 
+            onclick="generateProfile('${contact.contactId || ''}')"
+            class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-3 py-1 rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all"
+            ${contact?.contactId ? '' : 'disabled'}
+          >
+            AI Profile
+          </button>
+        </td>
+      </tr>
+    `;
+  }).join('');
+}
+
+        // Render pagination
+        function renderPagination(pagination) {
+            const paginationDiv = document.getElementById('pagination');
+            
+            const startItem = (pagination.page - 1) * pagination.pageSize + 1;
+            const endItem = Math.min(pagination.page * pagination.pageSize, pagination.total);
+            
+            paginationDiv.innerHTML = `
+                <div class="text-sm text-gray-700">
+                    Showing <span class="font-medium">${startItem}</span> to <span class="font-medium">${endItem}</span> of
+                    <span class="font-medium">${pagination.total}</span> results
+                </div>
+                <div class="flex items-center space-x-2">
+                    <button 
+                        onclick="changePage(${pagination.page - 1})"
+                        ${pagination.page === 1 ? 'disabled' : ''}
+                        class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    >
+                        Previous
+                    </button>
+                    <span class="px-3 py-2 text-sm font-medium text-gray-700">
+                        Page ${pagination.page} of ${pagination.totalPages}
+                    </span>
+                    <button 
+                        onclick="changePage(${pagination.page + 1})"
+                        ${pagination.page === pagination.totalPages ? 'disabled' : ''}
+                        class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
+                    >
+                        Next
+                    </button>
+                </div>
+            `;
+        }
+
+        // Change page
+        function changePage(page) {
+            currentPage = page;
+            loadContacts();
+        }
+
+        // Open documents modal
+        async function openDocsModal(contactId) {
+            showModal();
+            
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <div class="p-6">
+                    <div class="flex items-center justify-center py-8">
+                        <div class="spinner"></div>
+                    </div>
+                </div>
+            `;
+            
+            try {
+                const response = await fetch(`${API_URL}/contacts/${contactId}/docs?onlyCGMP=true`);
+                const data = await response.json();
+                
+                if (!data.success) {
+                    throw new Error(data.error);
+                }
+                
+                modalContent.innerHTML = `
+                    <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
+                        <h3 class="text-lg font-semibold text-gray-900">CGMP Guidance Documents</h3>
+                        <p class="text-sm text-gray-500 mt-1">${escapeHtml(data.contact.name)} - ${escapeHtml(data.contact.email)}</p>
+                    </div>
+                    <div class="px-6 py-4 max-h-96 overflow-y-auto">
+                        ${data.documents.length === 0 ? `
+                            <p class="text-gray-500 text-center py-8">No CGMP documents found for this contact</p>
+                        ` : `
+                            <div class="space-y-3">
+                                ${data.documents.map(doc => `
+                                    <div class="bg-white p-4 rounded-lg border border-gray-200 hover:border-indigo-300 transition-colors">
+                                        <div class="flex items-start justify-between">
+                                            <div class="flex-1">
+                                                <h4 class="text-sm font-medium text-gray-900 mb-1">${escapeHtml(doc.title)}</h4>
+                                                <p class="text-xs text-gray-600 mb-2">${escapeHtml(doc.summary)}</p>
+                                                <div class="flex flex-wrap gap-1">
+                                                    ${doc.tags.map(tag => `
+                                                        <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
+                                                            tag === 'High' ? 'bg-red-100 text-red-800' :
+                                                            tag === 'Moderate' ? 'bg-yellow-100 text-yellow-800' :
+                                                            tag === 'Low' ? 'bg-green-100 text-green-800' :
+                                                            'bg-gray-100 text-gray-700'
+                                                        }">
+                                                            ${escapeHtml(tag)}
+                                                        </span>
+                                                    `).join('')}
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="mt-2 text-xs text-gray-500">
+                                            ${doc.filename} • ${new Date(doc.uploadedAt).toLocaleDateString()}
+                                        </div>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        `}
+                    </div>
+                    <div class="bg-gray-50 px-6 py-3 border-t border-gray-200">
+                        <div class="flex justify-between items-center">
+                            <span class="text-sm text-gray-500">Total: ${data.total} documents</span>
+                            <button 
+                                onclick="closeModal()"
+                                class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Error loading documents:', error);
+                modalContent.innerHTML = `
+                    <div class="p-6">
+                        <p class="text-red-600">Error loading documents: ${error.message}</p>
+                        <button 
+                            onclick="closeModal()"
+                            class="mt-4 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50"
+                        >
+                            Close
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        // Generate AI profile
+        async function generateProfile(contactId) {
+            showModal();
+            
+            const modalContent = document.getElementById('modalContent');
+            modalContent.innerHTML = `
+                <div class="p-8 text-center">
+                    <div class="spinner mx-auto mb-4"></div>
+                    <h3 class="text-lg font-semibold text-gray-900 mb-2">Generating AI Profile...</h3>
+                    <p class="text-sm text-gray-500">Analyzing CGMP documents and expertise areas</p>
+                </div>
+            `;
+            
+            try {
+                const response = await fetch(`${API_URL}/contacts/${contactId}/profile`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ maxDocs: 15 })
+                });
+                const data = await response.json();
+                
+                if (!data.success) {
+                    throw new Error(data.error);
+                }
+                
+                const profile = data.profile;
+                
+                modalContent.innerHTML = `
+                    <div class="bg-gradient-to-br from-indigo-600 to-purple-600 px-6 py-6 text-white">
+                        <div class="flex items-center space-x-4">
+                            <div class="flex-shrink-0 h-16 w-16 bg-white/20 backdrop-blur rounded-full flex items-center justify-center text-2xl font-bold">
+                              ${(profile.name || 'Unknown').toString().charAt(0).toUpperCase()}
+
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold">${escapeHtml(profile.name)}</h3>
+                                <p class="text-indigo-100">${escapeHtml(profile.email)}</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="px-6 py-6 space-y-6">
+                        <!-- Summary -->
+                        <div>
+                            <h4 class="text-sm font-semibold text-gray-900 mb-2">Professional Summary</h4>
+                            <p class="text-gray-700">${escapeHtml(profile.summary)}</p>
+                        </div>
+                        
+                        <!-- Metrics -->
+                        <div class="grid grid-cols-2 gap-4">
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="text-2xl font-bold text-indigo-600">${profile.influence_score}/100</div>
+                                <div class="text-sm text-gray-500">Influence Score</div>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <div class="text-2xl font-bold text-purple-600">${profile.document_count}</div>
+                                <div class="text-sm text-gray-500">CGMP Documents</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Areas of Expertise -->
+                        <div>
+                            <h4 class="text-sm font-semibold text-gray-900 mb-2">Areas of Expertise</h4>
+                            <div class="flex flex-wrap gap-2">
+                                ${profile.areas_of_expertise.map(area => `
+                                    <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800">
+                                        ${escapeHtml(area)}
+                                    </span>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
+                        <!-- Common Themes -->
+                        <div>
+                            <h4 class="text-sm font-semibold text-gray-900 mb-2">Common Themes</h4>
+                            <div class="flex flex-wrap gap-2">
+                                ${profile.themes.map(theme => `
+                                    <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-purple-50 text-purple-700 border border-purple-200">
+                                        ${escapeHtml(theme)}
+                                    </span>
+                                `).join('')}
+                            </div>
+                        </div>
+                        
+                        <!-- Notable Documents -->
+                        ${profile.notable_docs.length > 0 ? `
+                            <div>
+                                <h4 class="text-sm font-semibold text-gray-900 mb-2">Notable Contributions</h4>
+                                <ul class="space-y-2">
+                                    ${profile.notable_docs.map(doc => `
+                                        <li class="flex items-start">
+                                            <svg class="w-4 h-4 text-green-500 mt-0.5 mr-2 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                                                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path>
+                                            </svg>
+                                            <span class="text-sm text-gray-700">${escapeHtml(doc)}</span>
+                                        </li>
+                                    `).join('')}
+                                </ul>
+                            </div>
+                        ` : ''}
+                    </div>
+                    
+                    <div class="bg-gray-50 px-6 py-3 border-t border-gray-200">
+                        <div class="flex justify-between items-center">
+                            <span class="text-xs text-gray-500">Generated: ${new Date(profile.generated_at).toLocaleString()}</span>
+                            <button 
+                                onclick="closeModal()"
+                                class="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all"
+                            >
+                                Close
+                            </button>
+                        </div>
+                    </div>
+                `;
+            } catch (error) {
+                console.error('Error generating profile:', error);
+                modalContent.innerHTML = `
+                    <div class="p-6">
+                        <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+                            <p class="text-red-800 font-medium">Error generating profile</p>
+                            <p class="text-red-600 text-sm mt-1">${error.message}</p>
+                        </div>
+                        <button 
+                            onclick="closeModal()"
+                            class="mt-4 px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50"
+                        >
+                            Close
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        // Modal functions
+        function showModal() {
+            document.getElementById('modal').classList.remove('hidden');
+        }
+
+        function closeModal() {
+            document.getElementById('modal').classList.add('hidden');
+        }
+
+        // Utility functions
+        function showElement(id) {
+            document.getElementById(id).classList.remove('hidden');
+        }
+
+        function hideElement(id) {
+            document.getElementById(id).classList.add('hidden');
+        }
+
+       function escapeHtml(text) {
+  if (text === null || text === undefined) return '';
+  const div = document.createElement('div');
+  div.textContent = String(text);
+  return div.innerHTML;
+}
+
+    </script>
+</body>
+</html>
