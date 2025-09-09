@@ -42,5 +42,214 @@
     "timeline": "Not specified",
     "severity_assessment": 7,
     "key_violations": []
+  },
+  "FDA issues complete response letter for 89Zr-DFO-girentuximab in ccRCC - Urology Times": {
+    "canonical_company_name": "Not specified",
+    "summary": "The FDA issued a complete response letter (CRL) for 89Zr-DFO-girentuximab, which is under consideration for use in clear cell renal cell carcinoma (ccRCC). The CRL indicates that the FDA has completed its review of the application but has determined that it cannot approve the application in its current form. Specific reasons for the CRL are not detailed in the provided information.",
+    "emails": [
+      "email@notspecified.com",
+      "email_not_unlocked@domain.com",
+      "email_not_unlocked@domain.com",
+      "email_not_unlocked@domain.com",
+      "email_not_unlocked@domain.com",
+      "email_not_unlocked@domain.com",
+      "email_not_unlocked@domain.com",
+      "email_not_unlocked@domain.com",
+      "email_not_unlocked@domain.com",
+      "email_not_unlocked@domain.com",
+      "email_not_unlocked@domain.com"
+    ],
+    "contacts": {
+      "company": "Not specified",
+      "domain": "notspecified.com",
+      "emails": [
+        {
+          "email": "email@notspecified.com",
+          "name": "",
+          "position": null,
+          "department": "support",
+          "confidence": 75
+        },
+        {
+          "email": "email_not_unlocked@domain.com",
+          "name": "Philippe Winter",
+          "position": "Lead CaptainLead Captain",
+          "verified": true
+        },
+        {
+          "email": "email_not_unlocked@domain.com",
+          "name": "Mike Braham",
+          "position": "Chief Growth Officer and Board of Directors",
+          "verified": true
+        },
+        {
+          "email": "email_not_unlocked@domain.com",
+          "name": "Bill Gates",
+          "position": "Founder",
+          "verified": true
+        },
+        {
+          "email": "email_not_unlocked@domain.com",
+          "name": "Lina Yavuz",
+          "position": "Key-Account-Manager",
+          "verified": true
+        },
+        {
+          "email": "email_not_unlocked@domain.com",
+          "name": "Bobby Purnama",
+          "position": "General Purchase & Customs",
+          "verified": true
+        },
+        {
+          "email": "email_not_unlocked@domain.com",
+          "name": "Christian Luedders",
+          "position": "Product Designer",
+          "verified": true
+        },
+        {
+          "email": "email_not_unlocked@domain.com",
+          "name": "Larry Fink",
+          "position": "Chairman and CEO at BlackRock",
+          "verified": true
+        },
+        {
+          "email": "email_not_unlocked@domain.com",
+          "name": "Crawford How",
+          "position": "Sales Team Leader",
+          "verified": true
+        },
+        {
+          "email": "email_not_unlocked@domain.com",
+          "name": "Andy Jassy",
+          "position": "President and CEO",
+          "verified": true
+        },
+        {
+          "email": "email_not_unlocked@domain.com",
+          "name": "Jeff Weiner",
+          "position": "Founding Partner",
+          "verified": true
+        }
+      ],
+      "contacts": [
+        {
+          "id": "57d32fb5a6da9865801e8a01",
+          "name": "Philippe Winter",
+          "title": "Lead CaptainLead Captain",
+          "email": "email_not_unlocked@domain.com",
+          "linkedin": "http://www.linkedin.com/in/philippe-winter",
+          "verified": true,
+          "email_status": "verified",
+          "locked": false,
+          "company": "Squadron Aviation Services Ltd."
+        },
+        {
+          "id": "59fe56a7a6da9861955e1ec1",
+          "name": "Mike Braham",
+          "title": "Chief Growth Officer and Board of Directors",
+          "email": "email_not_unlocked@domain.com",
+          "linkedin": "http://www.linkedin.com/in/mikebraham",
+          "verified": true,
+          "email_status": "verified",
+          "locked": false,
+          "company": "Intempo Health"
+        },
+        {
+          "id": "6867cec58eea26000153fa61",
+          "name": "Bill Gates",
+          "title": "Founder",
+          "email": "email_not_unlocked@domain.com",
+          "linkedin": "http://www.linkedin.com/in/williamhgates",
+          "verified": true,
+          "email_status": "verified",
+          "locked": false,
+          "company": "Breakthrough Energy"
+        },
+        {
+          "id": "630ed82a329508000113c2f3",
+          "name": "Lina Yavuz",
+          "title": "Key-Account-Manager",
+          "email": "email_not_unlocked@domain.com",
+          "linkedin": "http://www.linkedin.com/in/lina-yavuz-751965244",
+          "verified": true,
+          "email_status": "verified",
+          "locked": false,
+          "company": "Severin"
+        },
+        {
+          "id": "57de5363a6da987ae8cce6c6",
+          "name": "Bobby Purnama",
+          "title": "General Purchase & Customs",
+          "email": "email_not_unlocked@domain.com",
+          "linkedin": "http://www.linkedin.com/in/bobby-purnama-8b226aab",
+          "verified": true,
+          "email_status": "verified",
+          "locked": false,
+          "company": "Hyundai Motor Company"
+        },
+        {
+          "id": "655f2d21dc8b5c0001866810",
+          "name": "Christian Luedders",
+          "title": "Product Designer",
+          "email": "email_not_unlocked@domain.com",
+          "linkedin": "http://www.linkedin.com/in/christian-l%c3%bcdders-580481178",
+          "verified": true,
+          "email_status": "verified",
+          "locked": false,
+          "company": "NovaTaste"
+        },
+        {
+          "id": "652eedddc702330001b94cfc",
+          "name": "Larry Fink",
+          "title": "Chairman and CEO at BlackRock",
+          "email": "email_not_unlocked@domain.com",
+          "linkedin": "http://www.linkedin.com/in/laurencefink",
+          "verified": true,
+          "email_status": "verified",
+          "locked": false,
+          "company": "BlackRock"
+        },
+        {
+          "id": "662098760031b60007f96593",
+          "name": "Crawford How",
+          "title": "Sales Team Leader",
+          "email": "email_not_unlocked@domain.com",
+          "linkedin": "http://www.linkedin.com/in/crawford-how-5a3339142",
+          "verified": true,
+          "email_status": "verified",
+          "locked": false,
+          "company": "Vendella"
+        },
+        {
+          "id": "66eb161a2507e30001ce9d9e",
+          "name": "Andy Jassy",
+          "title": "President and CEO",
+          "email": "email_not_unlocked@domain.com",
+          "linkedin": "http://www.linkedin.com/in/andy-jassy-8b1615",
+          "verified": true,
+          "email_status": "verified",
+          "locked": false,
+          "company": "Amazon"
+        },
+        {
+          "id": "67443f645faa9400014e5d69",
+          "name": "Jeff Weiner",
+          "title": "Founding Partner",
+          "email": "email_not_unlocked@domain.com",
+          "linkedin": "http://www.linkedin.com/in/jeffweiner08",
+          "verified": true,
+          "email_status": "verified",
+          "locked": false,
+          "company": "Next Play Ventures"
+        }
+      ],
+      "searched": true
+    },
+    "regulatory_impact": "The issuance of a CRL halts the current approval process, requiring the company to address the FDA's concerns before proceeding.",
+    "business_impact": "The CRL may delay the market entry of 89Zr-DFO-girentuximab for ccRCC, potentially affecting the company's revenue projections and market positioning.",
+    "action_required": "The company must review the FDA's concerns, conduct any additional studies or analyses required, and resubmit the application for approval.",
+    "timeline": "Not specified",
+    "severity_assessment": 7,
+    "key_violations": []
   }
 }

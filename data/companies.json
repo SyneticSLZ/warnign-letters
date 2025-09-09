@@ -20599,6 +20599,28 @@
     "aliases": [],
     "violations": [
       {
+        "id": "86cd90c845f244cc55072c8bcbff71d9",
+        "type": "regulatory_news",
+        "date": "2025-09-09T12:43:40.000Z",
+        "title": "Over-The-Counter Monograph Drug User Fee Program (OMUFA)",
+        "link": "http://www.fda.gov/industry/fda-user-fee-programs/over-counter-monograph-drug-user-fee-program-omufa",
+        "source": "FDA CDER Updates",
+        "summary": "A user fee program for nonprescription (over-the-counter or OTC) monograph drugs would be a potential funding mechanism to supplement congressional non user-fee appropriations.",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "1d75de1a4f4b8c0028d269cfe10bc41a",
+        "type": "regulatory_news",
+        "date": "2025-09-09T12:30:41.000Z",
+        "title": "Abbreviated New Drug Application (ANDA) Forms and Submission Requirements",
+        "link": "http://www.fda.gov/drugs/abbreviated-new-drug-application-anda/abbreviated-new-drug-application-anda-forms-and-submission-requirements",
+        "source": "FDA CDER Updates",
+        "summary": "The FDA aspires to assist applicants in developing abbreviated new drug applications (ANDAs). To facilitate the development of an ANDA, agency provides the following resources on ANDA forms and submission requirements.",
+        "severity": 5,
+        "status": "new"
+      },
+      {
         "id": "0412bf1b179a9d926c131e1f49011f58",
         "type": "regulatory_news",
         "date": "2025-09-09T12:00:00.000Z",
@@ -21675,28 +21697,6 @@
         "summary": "Aurobindo Pharma Under US FDA Scrutiny: Eight Observations Made  Devdiscourse",
         "severity": 5,
         "status": "new"
-      },
-      {
-        "id": "78fd2992a6d8358ef78c288857c26a4d",
-        "type": "regulatory_news",
-        "date": "2025-09-05T14:45:39.000Z",
-        "title": "'Several concerning observations': FDA sheds more light on reasons it rejected drugs - Fierce Biotech",
-        "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNSnluVHU4Znp2MXRyZ2dXUDFUcXh4VTB2aXNsdzZsVHYwN2poQXZmVHc2TjNtT2xVYWRRQnZJTDlXMXFqV0FuR1NCbUVHUzE3NFFXenBVOS1abklsTDFfLWpITUhFT1FsUnoxN0toazNBYjZ3ano3V2ZJbFU3Z1JXS3VQNmtidkNZWjRBM3dLeGtKcTZEYWdzdDEyQmk5SURBR0pOcDB1bDc?oc=5",
-        "source": "Google News - CRLs",
-        "summary": "'Several concerning observations': FDA sheds more light on reasons it rejected drugs  Fierce Biotech",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "5b456a7f231717f6344587f4d3fbc0a7",
-        "type": "regulatory_news",
-        "date": "2025-09-05T14:19:49.000Z",
-        "title": "Rapafusyn Pharmaceuticals' $44M raise; CAGE Bio's atopic dermatitis data",
-        "link": "https://endpoints.news/rapafusyn-pharmaceuticals-44m-raise-cage-bios-atopic-dermatitis-data/",
-        "source": "Endpoints News",
-        "summary": "Plus, news about Octave Biosciences and Mineralys Therapeutics:\r\n\r\n 💵 Rapafusyn Pharmaceuticals closes $44M Series A: The molecular glue discovery company wrapped up an upsized and oversubscribed funding ...",
-        "severity": 5,
-        "status": "new"
       }
     ],
     "products": [],
@@ -21705,7 +21705,7 @@
     "risk_score": 0,
     "compliance_score": 100,
     "response_times": [],
-    "last_updated": "2025-09-09T12:07:54.353Z",
+    "last_updated": "2025-09-09T13:00:18.037Z",
     "first_seen": "2025-09-09T00:18:57.805Z"
   }
 ]

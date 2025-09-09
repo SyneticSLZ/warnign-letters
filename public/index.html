@@ -899,7 +899,7 @@
     </div>
 
     <!-- Detail Modal -->
-    <div id="detail-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+    <div id="old-detail-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
         <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
             <div class="fixed inset-0 transition-opacity modal-backdrop" onclick="closeDetailModal()">
                 <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
@@ -1002,6 +1002,66 @@
         </div>
     </div>
 
+<!-- Updated Modal HTML Structure - Replace the existing detail-modal div -->
+<div id="detail-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+    <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+        <div class="fixed inset-0 transition-opacity modal-backdrop" onclick="closeDetailModal()">
+            <div class="absolute inset-0 bg-gray-900 opacity-75"></div>
+        </div>
+        
+        <div class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-2xl transform transition-all sm:my-8 sm:align-middle sm:max-w-7xl sm:w-full animate-slide-up">
+            <!-- Modal Header -->
+            <div class="bg-white border-b border-gray-100 px-8 py-5">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center gap-4">
+                        <div class="p-2 bg-emerald-50 rounded-xl">
+                            <svg class="w-6 h-6 text-emerald-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <h3 class="text-xl font-bold text-gray-900" id="modal-title">Regulatory Intelligence Dashboard</h3>
+                            <p class="text-sm text-gray-500 mt-0.5" id="modal-subtitle">Comprehensive Analysis Report</p>
+                        </div>
+                    </div>
+                    <button onclick="closeDetailModal()" class="p-2 hover:bg-gray-100 rounded-lg transition-colors">
+                        <svg class="w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+            
+            <!-- Modal Body -->
+            <div class="bg-gray-50 px-8 py-6 max-h-[75vh] overflow-y-auto" id="modal-body">
+                <!-- Content will be dynamically inserted here -->
+            </div>
+            
+            <!-- Modal Footer -->
+            <div class="bg-white border-t border-gray-100 px-8 py-4">
+                <div class="flex justify-between items-center">
+                    <div class="flex items-center gap-3" id="modal-status">
+                        <!-- Status indicators will be shown here -->
+                    </div>
+                    <div class="flex gap-3">
+                        <button onclick="copyAllEmails()" id="copy-emails-btn" class="hidden px-4 py-2 bg-white border border-gray-300 text-gray-700 rounded-lg hover:bg-gray-50 transition-all duration-200 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                            </svg>
+                            <span>Copy Emails</span>
+                        </button>
+                        <button onclick="exportModalReport()" class="px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-all duration-200 flex items-center gap-2">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+                            </svg>
+                            <span>Export Report</span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
     <!-- Company View Modal -->
     <div id="company-view-modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
         <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
@@ -1143,6 +1203,15 @@
 
     <!-- JavaScript -->
     <script>
+
+        let currentModalData = {
+    item: null,
+    warningLetterData: null,
+    aiAnalysis: null,
+    companyInfo: null,
+    contacts: []
+};
+
         // Global variables
         let currentWarningLetterData = null;
         let allItems = [];
@@ -1567,8 +1636,1139 @@ function renderTable() {
             return `<span class="px-2 py-1 rounded text-xs font-bold ${className}">${label} (${severity})</span>`;
         }
 
-  
+// Main function to open modal
+async function openDetailModal(itemId) {
+    console.log('Opening enhanced modal for item:', itemId);
+    
+    // Reset state
+    currentModalData = {
+        item: allItems.find(i => i.id === itemId),
+        warningLetterData: null,
+        aiAnalysis: null,
+        companyInfo: null,
+        contacts: []
+    };
+    
+    if (!currentModalData.item) {
+        console.error('Item not found:', itemId);
+        return;
+    }
+    
+    // Show modal immediately with initial data
+    document.getElementById('detail-modal').classList.remove('hidden');
+    document.getElementById('modal-title').textContent = 'Regulatory Intelligence Dashboard';
+    document.getElementById('modal-subtitle').textContent = formatDate(currentModalData.item.date);
+    
+    // Render initial view with what we have
+    renderModalContent();
+    
+    // Start parallel data fetching
+    fetchAllModalData();
+}
+  function renderModalContent() {
+    const modalBody = document.getElementById('modal-body');
+    const item = currentModalData.item;
+    
+    modalBody.innerHTML = `
+        <div class="space-y-6">
+            <!-- Top Alert Banner -->
+            ${item.types.includes('warning_letter') ? `
+                <div class="bg-red-50 border-l-4 border-red-500 p-4 rounded-r-lg animate-fade">
+                    <div class="flex items-center">
+                        <div class="flex-shrink-0">
+                            <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                            </svg>
+                        </div>
+                        <div class="ml-3">
+                            <p class="text-sm font-medium text-red-800">FDA Warning Letter Detected</p>
+                            <p class="text-xs text-red-700 mt-0.5">Critical regulatory action requiring immediate attention</p>
+                        </div>
+                    </div>
+                </div>
+            ` : ''}
+            
+            <!-- Main Grid Layout -->
+            <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+                
+                <!-- Left Column - Main Content -->
+                <div class="lg:col-span-2 space-y-6">
+                    
+                    <!-- Document Overview Card -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                        <div class="flex items-start justify-between mb-4">
+                            <h4 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                                <span class="w-1 h-6 bg-emerald-500 rounded-full"></span>
+                                Document Overview
+                            </h4>
+                            <div class="flex gap-2">
+                                ${item.types.map(type => getTypeChip(type)).join('')}
+                            </div>
+                        </div>
+                        
+                        <div class="space-y-4">
+                            <div>
+                                <p class="text-base font-medium text-gray-900 leading-relaxed">${escapeHtml(item.title)}</p>
+                            </div>
+                            
+                            ${item.summary ? `
+                                <div class="pt-4 border-t border-gray-100">
+                                    <p class="text-sm text-gray-600 leading-relaxed">${escapeHtml(item.summary)}</p>
+                                </div>
+                            ` : ''}
+                            
+                            <div class="flex items-center gap-4 pt-4 border-t border-gray-100">
+                                <div class="flex items-center gap-2 text-sm text-gray-500">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                                    </svg>
+                                    ${new Date(item.date).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' })}
+                                </div>
+                                <div class="flex items-center gap-2 text-sm text-gray-500">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                                    </svg>
+                                    ${item.source}
+                                </div>
+                                <a href="${item.link}" target="_blank" class="flex items-center gap-2 text-sm text-emerald-600 hover:text-emerald-700 transition-colors">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                                    </svg>
+                                    View Source
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Warning Letter Details (if applicable) -->
+                    <div id="warning-letter-section">
+                        ${renderWarningLetterSection()}
+                    </div>
+                    
+                    <!-- AI Analysis Section -->
+                    <div id="ai-analysis-section">
+                        ${renderAIAnalysisSection()}
+                    </div>
+                </div>
+                
+                <!-- Right Column - Sidebar -->
+                <div class="space-y-6">
+                    
+                    <!-- Company Card -->
+                    <div id="company-card">
+                        ${renderCompanyCard()}
+                    </div>
+                    
+                    <!-- Severity Indicator -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                        <h4 class="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-4">Risk Assessment</h4>
+                        ${renderSeverityIndicator(item.severity)}
+                    </div>
+                    
+                    <!-- Contacts Card -->
+                    <div id="contacts-card">
+                        ${renderContactsCard()}
+                    </div>
+                    
+                    <!-- Quick Actions -->
+                    <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                        <h4 class="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-4">Quick Actions</h4>
+                        <div class="space-y-3">
+                            <button onclick="window.open('${item.link}', '_blank')" class="w-full px-4 py-2 bg-gray-50 text-gray-700 rounded-lg hover:bg-gray-100 transition-all duration-200 text-sm font-medium">
+                                View Original Document
+                            </button>
+                            <button onclick="exportModalReport()" class="w-full px-4 py-2 bg-emerald-50 text-emerald-700 rounded-lg hover:bg-emerald-100 transition-all duration-200 text-sm font-medium">
+                                Generate Full Report
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    `;
+    
+    // Update status indicators
+    updateModalStatus();
+}
 
+// Fetch all data in parallel
+async function fetchAllModalData() {
+    const promises = [];
+    
+    // Fetch warning letter details if applicable
+    if (currentModalData.item.types.includes('warning_letter') && currentModalData.item.link) {
+        promises.push(fetchWarningLetterDetails(currentModalData.item.link));
+    }
+    
+    // Always run AI analysis
+    promises.push(runAIAnalysis());
+    
+    // Wait for all promises
+    await Promise.allSettled(promises);
+}
+
+// Fetch warning letter details
+async function fetchWarningLetterDetails(url) {
+    try {
+        updateModalStatus('Fetching FDA warning letter details...');
+        
+        const response = await fetch(`/api/warning-letter/scrape?url=${encodeURIComponent(url)}`);
+        const result = await response.json();
+        
+        if (result.success && result.data) {
+            currentModalData.warningLetterData = result.data;
+            console.log('Warning letter data fetched:', result.data);
+            
+            // Update display
+            document.getElementById('warning-letter-section').innerHTML = renderWarningLetterSection();
+        }
+    } catch (error) {
+        console.error('Error fetching warning letter:', error);
+    }
+}
+function toggleLetterContent() {
+    const preview = document.getElementById('letter-content-preview');
+    const full = document.getElementById('letter-content-full');
+    const button = document.getElementById('letter-toggle-btn');
+    
+    if (preview.classList.contains('hidden')) {
+        preview.classList.remove('hidden');
+        full.classList.add('hidden');
+        button.textContent = 'Show Full Text';
+    } else {
+        preview.classList.add('hidden');
+        full.classList.remove('hidden');
+        button.textContent = 'Hide Full Text';
+    }
+}
+// Run AI Analysis
+async function runAIAnalysis() {
+    try {
+        updateModalStatus('Running AI analysis...');
+        
+        const payload = {
+            itemId: currentModalData.item.id,
+            title: currentModalData.item.title,
+            link: currentModalData.item.link,
+            summary: currentModalData.item.summary,
+            source: currentModalData.item.source,
+            types: currentModalData.item.types,
+            date: currentModalData.item.date
+        };
+        
+        // Add warning letter data if available
+        if (currentModalData.warningLetterData) {
+            payload.warningLetterData = {
+                company: currentModalData.warningLetterData.recipient?.company,
+                letterContent: currentModalData.warningLetterData.letterContent,
+                violations: currentModalData.warningLetterData.violations,
+                products: currentModalData.warningLetterData.products,
+                responseDeadline: currentModalData.warningLetterData.responseDeadline
+            };
+        }
+        
+        const response = await fetch('/api/ai/enhance', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            currentModalData.aiAnalysis = data;
+            currentModalData.contacts = data.emails || [];
+            
+            // Update displays
+            document.getElementById('ai-analysis-section').innerHTML = renderAIAnalysisSection();
+            document.getElementById('company-card').innerHTML = renderCompanyCard();
+            document.getElementById('contacts-card').innerHTML = renderContactsCard();
+            
+            // Show/hide email button
+            if (currentModalData.contacts.length > 0) {
+                document.getElementById('copy-emails-btn').classList.remove('hidden');
+            }
+            
+            updateModalStatus('Analysis complete', 'success');
+        }
+    } catch (error) {
+        console.error('AI analysis error:', error);
+        updateModalStatus('Analysis failed', 'error');
+    }
+}
+
+// Render Warning Letter Section
+// Render Warning Letter Section
+function renderWarningLetterSection() {
+    if (!currentModalData.warningLetterData) {
+        if (currentModalData.item.types.includes('warning_letter')) {
+            return `
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                    <div class="flex items-center justify-center py-8">
+                        <div class="text-center">
+                            <div class="inline-flex items-center justify-center w-12 h-12 mb-3 rounded-full bg-yellow-100">
+                                <svg class="w-6 h-6 text-yellow-600 animate-spin" fill="none" viewBox="0 0 24 24">
+                                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                                </svg>
+                            </div>
+                            <p class="text-sm text-gray-600">Fetching warning letter details from FDA.gov...</p>
+                        </div>
+                    </div>
+                </div>
+            `;
+        }
+        return '';
+    }
+    
+    const data = currentModalData.warningLetterData;
+    
+    return `
+        <div class="space-y-4">
+            <!-- Warning Letter Main Card -->
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                <h4 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                    <span class="w-1 h-6 bg-red-500 rounded-full"></span>
+                    FDA Warning Letter Details
+                    ${data.marcsNumber ? `<span class="ml-auto text-xs font-normal text-gray-500">MARCS-CMS ${data.marcsNumber}</span>` : ''}
+                </h4>
+                
+                <div class="space-y-4">
+                    <!-- Recipient Information -->
+                    ${data.recipient ? `
+                        <div class="bg-red-50 rounded-lg p-4">
+                            <p class="text-xs font-semibold text-red-700 uppercase tracking-wider mb-2">Recipient Information</p>
+                            <div class="space-y-1">
+                                <p class="text-lg font-semibold text-red-900">${data.recipient.company || data.companyName || 'Unknown'}</p>
+                                ${data.recipient.name ? `<p class="text-sm text-red-800">${data.recipient.name}${data.recipient.title ? `, ${data.recipient.title}` : ''}</p>` : ''}
+                                ${data.recipient.fullAddress ? `<p class="text-sm text-red-700 mt-2">${data.recipient.fullAddress}</p>` : ''}
+                                ${data.recipient.email ? `
+                                    <div class="mt-2 pt-2 border-t border-red-200">
+                                        <a href="mailto:${data.recipient.email}" class="text-sm text-red-600 hover:text-red-800 font-medium">
+                                            📧 ${data.recipient.email}
+                                        </a>
+                                    </div>
+                                ` : ''}
+                            </div>
+                        </div>
+                    ` : data.companyName ? `
+                        <div class="bg-red-50 rounded-lg p-4">
+                            <p class="text-xs font-semibold text-red-700 uppercase tracking-wider mb-1">Company</p>
+                            <p class="text-lg font-semibold text-red-900">${data.companyName}</p>
+                        </div>
+                    ` : ''}
+                    
+                    <!-- Key Dates and Metadata -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+                        ${data.letterDate ? `
+                            <div class="bg-gray-50 rounded-lg p-3">
+                                <p class="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1">Letter Date</p>
+                                <p class="text-sm font-medium text-gray-900">${data.letterDate}</p>
+                            </div>
+                        ` : ''}
+                        ${data.issueDate ? `
+                            <div class="bg-gray-50 rounded-lg p-3">
+                                <p class="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1">Posted</p>
+                                <p class="text-sm font-medium text-gray-900">${new Date(data.issueDate).toLocaleDateString()}</p>
+                            </div>
+                        ` : ''}
+                        ${data.responseDeadline ? `
+                            <div class="bg-orange-50 rounded-lg p-3 border border-orange-200">
+                                <p class="text-xs font-semibold text-orange-700 uppercase tracking-wider mb-1">Response Due</p>
+                                <p class="text-sm font-bold text-orange-900">${data.responseDeadline}</p>
+                            </div>
+                        ` : ''}
+                        ${data.deliveryMethod ? `
+                            <div class="bg-blue-50 rounded-lg p-3">
+                                <p class="text-xs font-semibold text-blue-600 uppercase tracking-wider mb-1">Delivery</p>
+                                <p class="text-sm font-medium text-blue-900">${data.deliveryMethod}</p>
+                            </div>
+                        ` : ''}
+                    </div>
+                    
+                    <!-- Additional Metadata -->
+                    ${(data.productType || data.issuingOffice || data.subject || data.feiNumber) ? `
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                            ${data.productType ? `
+                                <div class="bg-purple-50 rounded-lg p-3">
+                                    <p class="text-xs font-semibold text-purple-600 uppercase tracking-wider mb-1">Product Type</p>
+                                    <p class="text-sm font-medium text-purple-900">${data.productType}</p>
+                                </div>
+                            ` : ''}
+                            ${data.issuingOffice ? `
+                                <div class="bg-indigo-50 rounded-lg p-3">
+                                    <p class="text-xs font-semibold text-indigo-600 uppercase tracking-wider mb-1">Issuing Office</p>
+                                    <p class="text-sm font-medium text-indigo-900">${data.issuingOffice}</p>
+                                </div>
+                            ` : ''}
+                            ${data.subject ? `
+                                <div class="bg-gray-50 rounded-lg p-3 md:col-span-2">
+                                    <p class="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1">Subject</p>
+                                    <p class="text-sm font-medium text-gray-900">${data.subject}</p>
+                                </div>
+                            ` : ''}
+                            ${data.feiNumber ? `
+                                <div class="bg-gray-50 rounded-lg p-3">
+                                    <p class="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-1">FEI Number</p>
+                                    <p class="text-sm font-medium text-gray-900">${data.feiNumber}</p>
+                                </div>
+                            ` : ''}
+                        </div>
+                    ` : ''}
+                    
+                    <!-- Violations -->
+                    ${data.violations && data.violations.length > 0 ? `
+                        <div class="bg-red-50 rounded-lg p-4">
+                            <div class="flex items-center justify-between mb-3">
+                                <p class="text-sm font-semibold text-red-900">Violations Cited</p>
+                                <span class="px-2 py-1 bg-red-100 text-red-700 rounded-full text-xs font-medium">${data.violations.length} total</span>
+                            </div>
+                            <div class="space-y-2 max-h-60 overflow-y-auto">
+                                ${data.violations.map((v, index) => `
+                                    <div class="flex items-start gap-2 ${index >= 5 ? 'opacity-75' : ''}">
+                                        <span class="flex-shrink-0 w-5 h-5 bg-red-200 text-red-700 rounded-full text-xs font-bold flex items-center justify-center mt-0.5">${index + 1}</span>
+                                        <p class="text-sm text-red-800">${escapeHtml(v)}</p>
+                                    </div>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                    
+                    <!-- Products -->
+                    ${data.products && data.products.length > 0 ? `
+                        <div class="bg-purple-50 rounded-lg p-4">
+                            <p class="text-sm font-semibold text-purple-900 mb-3">Affected Products</p>
+                            <div class="flex flex-wrap gap-2">
+                                ${data.products.map(p => `
+                                    <span class="px-3 py-1.5 bg-white border border-purple-200 text-purple-700 rounded-full text-xs font-medium">
+                                        ${escapeHtml(p)}
+                                    </span>
+                                `).join('')}
+                            </div>
+                        </div>
+                    ` : ''}
+                    
+                    <!-- Response Information -->
+                    ${data.responseEmail || data.responseAddress ? `
+                        <div class="bg-amber-50 rounded-lg p-4 border border-amber-200">
+                            <p class="text-sm font-semibold text-amber-900 mb-3">Response Information</p>
+                            ${data.responseEmail ? `
+                                <div class="mb-2">
+                                    <p class="text-xs text-amber-700 mb-1">Email responses to:</p>
+                                    <a href="mailto:${data.responseEmail}" class="text-sm font-medium text-amber-800 hover:text-amber-900">
+                                        ${data.responseEmail}
+                                    </a>
+                                </div>
+                            ` : ''}
+                            ${data.responseAddress ? `
+                                <div>
+                                    <p class="text-xs text-amber-700 mb-1">Mail responses to:</p>
+                                    <p class="text-sm text-amber-800">${data.responseAddress}</p>
+                                </div>
+                            ` : ''}
+                            ${data.responseDeadline ? `
+                                <div class="mt-3 pt-3 border-t border-amber-200">
+                                    <p class="text-sm font-medium text-amber-900">⏰ Deadline: ${data.responseDeadline}</p>
+                                </div>
+                            ` : ''}
+                        </div>
+                    ` : ''}
+                </div>
+            </div>
+            
+            <!-- Full Letter Content -->
+            ${data.letterContent ? `
+                <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                    <div class="flex items-center justify-between mb-4">
+                        <h4 class="text-lg font-semibold text-gray-900 flex items-center gap-2">
+                            <span class="w-1 h-6 bg-gray-400 rounded-full"></span>
+                            Full Warning Letter Text
+                        </h4>
+                        <button onclick="toggleLetterContent()" id="letter-toggle-btn" class="px-3 py-1 bg-gray-100 text-gray-700 rounded-lg hover:bg-gray-200 transition-colors text-sm font-medium">
+                            Show Full Text
+                        </button>
+                    </div>
+                    
+                    <div id="letter-content-preview" class="prose prose-sm max-w-none">
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <p class="text-gray-700 whitespace-pre-wrap text-sm leading-relaxed">${escapeHtml(data.letterContent.substring(0, 1000))}${data.letterContent.length > 1000 ? '...' : ''}</p>
+                        </div>
+                        ${data.letterContent.length > 1000 ? `
+                            <p class="text-center mt-4">
+                                <button onclick="toggleLetterContent()" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">
+                                    Show full letter (${Math.round(data.letterContent.length / 1000)}k characters) →
+                                </button>
+                            </p>
+                        ` : ''}
+                    </div>
+                    
+                    <div id="letter-content-full" class="hidden prose prose-sm max-w-none">
+                        <div class="bg-gray-50 rounded-lg p-4 max-h-96 overflow-y-auto">
+                            <p class="text-gray-700 whitespace-pre-wrap text-sm leading-relaxed">${escapeHtml(data.letterContent)}</p>
+                        </div>
+                        <p class="text-center mt-4">
+                            <button onclick="toggleLetterContent()" class="text-indigo-600 hover:text-indigo-800 text-sm font-medium">
+                                ← Show less
+                            </button>
+                        </p>
+                    </div>
+                </div>
+            ` : ''}
+        </div>
+    `;
+}
+// Render AI Analysis Section
+function renderAIAnalysisSection() {
+    if (!currentModalData.aiAnalysis) {
+        return `
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                <div class="flex items-center justify-center py-8">
+                    <div class="text-center">
+                        <div class="inline-flex items-center justify-center w-12 h-12 mb-3 rounded-full bg-indigo-100">
+                            <svg class="w-6 h-6 text-indigo-600 animate-spin" fill="none" viewBox="0 0 24 24">
+                                <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                                <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                            </svg>
+                        </div>
+                        <p class="text-sm text-gray-600">Running AI analysis...</p>
+                        <p class="text-xs text-gray-500 mt-1">This may take a few moments</p>
+                    </div>
+                </div>
+            </div>
+        `;
+    }
+    
+    const analysis = currentModalData.aiAnalysis;
+    
+    return `
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <h4 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                <span class="w-1 h-6 bg-indigo-500 rounded-full"></span>
+                AI Intelligence Analysis
+                <span class="ml-auto px-2 py-1 bg-indigo-100 text-indigo-700 rounded-md text-xs font-medium">GPT-4</span>
+            </h4>
+            
+            <div class="space-y-4">
+                ${analysis.summary ? `
+                    <div class="bg-blue-50 rounded-lg p-4">
+                        <p class="text-xs font-semibold text-blue-700 uppercase tracking-wider mb-2">Executive Summary</p>
+                        <p class="text-sm text-blue-900 leading-relaxed">${analysis.summary}</p>
+                    </div>
+                ` : ''}
+                
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    ${analysis.regulatory_impact ? `
+                        <div class="bg-red-50 rounded-lg p-4">
+                            <div class="flex items-start gap-2 mb-2">
+                                <svg class="w-4 h-4 text-red-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                                </svg>
+                                <p class="text-xs font-semibold text-red-700 uppercase tracking-wider">Regulatory Impact</p>
+                            </div>
+                            <p class="text-sm text-red-800">${analysis.regulatory_impact}</p>
+                        </div>
+                    ` : ''}
+                    
+                    ${analysis.business_impact ? `
+                        <div class="bg-orange-50 rounded-lg p-4">
+                            <div class="flex items-start gap-2 mb-2">
+                                <svg class="w-4 h-4 text-orange-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+                                </svg>
+                                <p class="text-xs font-semibold text-orange-700 uppercase tracking-wider">Business Impact</p>
+                            </div>
+                            <p class="text-sm text-orange-800">${analysis.business_impact}</p>
+                        </div>
+                    ` : ''}
+                </div>
+                
+                ${analysis.action_required ? `
+                    <div class="bg-emerald-50 rounded-lg p-4">
+                        <div class="flex items-start gap-2 mb-2">
+                            <svg class="w-4 h-4 text-emerald-600 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+                            </svg>
+                            <p class="text-xs font-semibold text-emerald-700 uppercase tracking-wider">Recommended Actions</p>
+                        </div>
+                        <p class="text-sm text-emerald-800">${analysis.action_required}</p>
+                        ${analysis.timeline ? `
+                            <div class="mt-2 pt-2 border-t border-emerald-200">
+                                <p class="text-xs text-emerald-700"><strong>Timeline:</strong> ${analysis.timeline}</p>
+                            </div>
+                        ` : ''}
+                    </div>
+                ` : ''}
+            </div>
+        </div>
+    `;
+}
+
+// Render Company Card
+function renderCompanyCard() {
+    const company = currentModalData.aiAnalysis?.canonical_company_name || 
+                   currentModalData.warningLetterData?.recipient?.company ||
+                   currentModalData.item.company;
+    
+    if (!company || company === 'Unknown Company') {
+        return `
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                <h4 class="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-4">Company</h4>
+                <div class="text-center py-4">
+                    <div class="inline-flex items-center justify-center w-12 h-12 mb-3 rounded-full bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                    </div>
+                    <p class="text-sm text-gray-500">Identifying company...</p>
+                </div>
+            </div>
+        `;
+    }
+    
+    return `
+        <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+            <h4 class="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-4">Company</h4>
+            <div class="space-y-3">
+                <div>
+                    <p class="text-lg font-semibold text-gray-900">${company}</p>
+                    ${currentModalData.aiAnalysis?.severity_assessment ? `
+                        <div class="mt-2 flex items-center gap-2">
+                            <span class="text-xs text-gray-500">Risk Score:</span>
+                            <span class="text-sm font-bold ${
+                                currentModalData.aiAnalysis.severity_assessment >= 8 ? 'text-red-600' :
+                                currentModalData.aiAnalysis.severity_assessment >= 5 ? 'text-orange-600' :
+                                'text-green-600'
+                            }">${currentModalData.aiAnalysis.severity_assessment}/10</span>
+                        </div>
+                    ` : ''}
+                </div>
+            </div>
+        </div>
+    `;
+}
+
+// Render Contacts Card
+// function renderContactsCard() {
+//     if (!currentModalData.contacts || currentModalData.contacts.length === 0) {
+//         return `
+//             <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+//                 <h4 class="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-4">Contacts</h4>
+//                 <div class="text-center py-4">
+//                     <div class="inline-flex items-center justify-center w-12 h-12 mb-3 rounded-full bg-gray-100">
+//                         <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+//                         </svg>
+//                     </div>
+//                     <p class="text-sm text-gray-500">No contacts found</p>
+//                 </div>
+//             </div>
+//         `;
+//     }
+    
+//     return `
+//         <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+//             <h4 class="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-4">
+//                 Contacts
+//                 <span class="ml-2 px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full text-xs font-medium">
+//                     ${currentModalData.contacts.length}
+//                 </span>
+//             </h4>
+//             <div class="space-y-2 max-h-48 overflow-y-auto">
+//                 ${currentModalData.contacts.slice(0, 5).map(email => `
+//                     <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg group hover:bg-gray-100 transition-colors">
+//                         <span class="text-xs font-mono text-gray-700 truncate">${email}</span>
+//                         <button onclick="copyToClipboard('${email}')" 
+//                                 class="opacity-0 group-hover:opacity-100 transition-opacity p-1 hover:bg-white rounded">
+//                             <svg class="w-3 h-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+//                             </svg>
+//                         </button>
+//                     </div>
+//                 `).join('')}
+//             </div>
+//             ${currentModalData.contacts.length > 5 ? `
+//                 <p class="text-xs text-gray-500 mt-2 text-center">+${currentModalData.contacts.length - 5} more</p>
+//             ` : ''}
+//         </div>
+//     `;
+// }
+// Render Contacts Card
+function renderContactsCard() {
+    const data = currentModalData.aiAnalysis;
+    const warningLetter = currentModalData.warningLetterData;
+    
+    // Collect all contacts from various sources
+    const allContacts = [];
+    
+    // From warning letter recipient
+    if (warningLetter?.recipient) {
+        if (warningLetter.recipient.name || warningLetter.recipient.email) {
+            allContacts.push({
+                name: warningLetter.recipient.name || 'Unknown',
+                title: warningLetter.recipient.title || 'Recipient',
+                email: warningLetter.recipient.email,
+                type: 'recipient',
+                verified: true,
+                source: 'FDA Warning Letter'
+            });
+        }
+    }
+    
+    // From AI analysis contacts
+    if (data?.contacts?.contacts && Array.isArray(data.contacts.contacts)) {
+        data.contacts.contacts.forEach(contact => {
+            allContacts.push({
+name: contact.name || 
+      (contact.first_name && contact.last_name ? `${contact.first_name} ${contact.last_name}` : 
+       contact.first_name || contact.last_name || 'Unknown'),
+                title: contact.title || contact.position || contact.role,
+                email: contact.email,
+                phone: contact.phone || contact.phone_number,
+                department: contact.department,
+                linkedin: contact.linkedin || contact.linkedin_url,
+                type: contact.seniority || 'contact',
+                verified: contact.verified || false,
+                confidence: contact.confidence_score,
+                source: contact.source || 'Hunter.io/Apollo.io'
+            });
+        });
+    }
+    
+    // From AI regulatory contacts
+    if (data?.contacts?.regulatory_contacts) {
+        data.contacts.regulatory_contacts.forEach(contact => {
+            allContacts.push({
+                name: contact.name,
+                title: contact.title,
+                email: contact.email,
+                phone: contact.phone,
+                type: 'regulatory',
+                verified: contact.verified || false,
+                source: 'Regulatory Database'
+            });
+        });
+    }
+    
+    // From AI executives
+    if (data?.contacts?.executives) {
+        data.contacts.executives.forEach(exec => {
+            allContacts.push({
+                name: exec.name,
+                title: exec.title,
+                email: exec.email,
+                phone: exec.phone,
+                linkedin: exec.linkedin,
+                type: 'executive',
+                verified: exec.verified || false,
+                source: 'Executive Database'
+            });
+        });
+    }
+    
+    // Separate emails without full contact info
+    const standaloneEmails = currentModalData.contacts.filter(email => 
+        !allContacts.some(c => c.email === email)
+    );
+    
+    if (allContacts.length === 0 && standaloneEmails.length === 0) {
+        return `
+            <div class="bg-white rounded-xl p-6 shadow-sm border border-gray-100">
+                <h4 class="text-sm font-semibold text-gray-700 uppercase tracking-wider mb-4">Contacts</h4>
+                <div class="text-center py-4">
+                    <div class="inline-flex items-center justify-center w-12 h-12 mb-3 rounded-full bg-gray-100">
+                        <svg class="w-6 h-6 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+                        </svg>
+                    </div>
+                    <p class="text-sm text-gray-500">No contacts found</p>
+                </div>
+            </div>
+        `;
+    }
+    
+    // Sort contacts by type priority
+    const sortOrder = { recipient: 1, executive: 2, regulatory: 3, contact: 4 };
+    allContacts.sort((a, b) => (sortOrder[a.type] || 5) - (sortOrder[b.type] || 5));
+    
+    return `
+        <div class="bg-white rounded-xl shadow-sm border border-gray-100">
+            <!-- Header -->
+            <div class="p-6 pb-0">
+                <div class="flex items-center justify-between mb-4">
+                    <h4 class="text-sm font-semibold text-gray-700 uppercase tracking-wider">
+                        Contact Directory
+                    </h4>
+                    <div class="flex items-center gap-2">
+                        ${allContacts.length > 0 ? `
+                            <span class="px-2 py-0.5 bg-emerald-100 text-emerald-700 rounded-full text-xs font-medium">
+                                ${allContacts.length} people
+                            </span>
+                        ` : ''}
+                        ${standaloneEmails.length > 0 ? `
+                            <span class="px-2 py-0.5 bg-blue-100 text-blue-700 rounded-full text-xs font-medium">
+                                ${standaloneEmails.length} emails
+                            </span>
+                        ` : ''}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- People Cards -->
+            ${allContacts.length > 0 ? `
+                <div class="px-6 pb-4 space-y-3 max-h-96 overflow-y-auto">
+                    ${allContacts.map(contact => `
+                        <div class="bg-gradient-to-r from-gray-50 to-white rounded-lg p-4 border border-gray-100 hover:border-gray-200 transition-all duration-200">
+                            <!-- Person Header -->
+                            <div class="flex items-start justify-between mb-2">
+                                <div class="flex items-start gap-3">
+                                    <!-- Avatar -->
+                                    <div class="flex-shrink-0 w-10 h-10 bg-${
+                                        contact.type === 'recipient' ? 'red' :
+                                        contact.type === 'executive' ? 'purple' :
+                                        contact.type === 'regulatory' ? 'blue' :
+                                        'gray'
+                                    }-100 rounded-full flex items-center justify-center">
+                                        <span class="text-sm font-bold text-${
+                                            contact.type === 'recipient' ? 'red' :
+                                            contact.type === 'executive' ? 'purple' :
+                                            contact.type === 'regulatory' ? 'blue' :
+                                            'gray'
+                                        }-700">
+                                            ${contact.name ? contact.name.split(' ').map(n => n[0]).join('').substring(0, 2).toUpperCase() : '?'}
+                                        </span>
+                                    </div>
+                                    
+                                    <!-- Name and Title -->
+                                    <div class="flex-1">
+                                        <div class="flex items-center gap-2">
+                                            <p class="font-semibold text-gray-900">${contact.name}</p>
+                                            ${contact.verified ? `
+                                                <svg class="w-4 h-4 text-green-500" fill="currentColor" viewBox="0 0 20 20">
+                                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                                                </svg>
+                                            ` : ''}
+                                        </div>
+                                        ${contact.title ? `
+                                            <p class="text-sm text-gray-600">${contact.title}</p>
+                                        ` : ''}
+                                        ${contact.department ? `
+                                            <p class="text-xs text-gray-500">${contact.department}</p>
+                                        ` : ''}
+                                    </div>
+                                </div>
+                                
+                                <!-- Type Badge -->
+                                <span class="px-2 py-1 text-xs font-medium rounded-full ${
+                                    contact.type === 'recipient' ? 'bg-red-100 text-red-700' :
+                                    contact.type === 'executive' ? 'bg-purple-100 text-purple-700' :
+                                    contact.type === 'regulatory' ? 'bg-blue-100 text-blue-700' :
+                                    'bg-gray-100 text-gray-700'
+                                }">
+                                    ${contact.type}
+                                </span>
+                            </div>
+                            
+                            <!-- Contact Details -->
+                            <div class="space-y-1.5 mt-3 pl-13">
+                                ${contact.email ? `
+                                    <div class="flex items-center gap-2 group">
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                        </svg>
+                                        <a href="mailto:${contact.email}" class="text-sm text-blue-600 hover:text-blue-800 font-mono">
+                                            ${contact.email}
+                                        </a>
+                                        <button onclick="copyToClipboard('${contact.email}')" 
+                                                class="opacity-0 group-hover:opacity-100 transition-opacity p-1 hover:bg-gray-100 rounded">
+                                            <svg class="w-3 h-3 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                            </svg>
+                                        </button>
+                                    </div>
+                                ` : ''}
+                                
+                                ${contact.phone ? `
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/>
+                                        </svg>
+                                        <span class="text-sm text-gray-700">${contact.phone}</span>
+                                    </div>
+                                ` : ''}
+                                
+                                ${contact.linkedin ? `
+                                    <div class="flex items-center gap-2">
+                                        <svg class="w-4 h-4 text-gray-400" fill="currentColor" viewBox="0 0 24 24">
+                                            <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
+                                        </svg>
+                                        <a href="${contact.linkedin}" target="_blank" class="text-sm text-blue-600 hover:text-blue-800">
+                                            LinkedIn Profile
+                                        </a>
+                                    </div>
+                                ` : ''}
+                                
+                                <!-- Metadata -->
+                                <div class="flex items-center gap-3 pt-1">
+                                    ${contact.source ? `
+                                        <span class="text-xs text-gray-500">Source: ${contact.source}</span>
+                                    ` : ''}
+                                    ${contact.confidence ? `
+                                        <span class="text-xs text-gray-500">Confidence: ${contact.confidence}%</span>
+                                    ` : ''}
+                                </div>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            ` : ''}
+            
+            <!-- Standalone Emails Section -->
+            ${standaloneEmails.length > 0 ? `
+                <div class="px-6 pb-6 ${allContacts.length > 0 ? 'pt-4 border-t border-gray-100' : ''}">
+                    <p class="text-xs font-semibold text-gray-600 uppercase tracking-wider mb-3">Additional Emails</p>
+                    <div class="space-y-2 max-h-32 overflow-y-auto">
+                        ${standaloneEmails.slice(0, 10).map(email => `
+                            <div class="flex items-center justify-between p-2 bg-gray-50 rounded-lg group hover:bg-gray-100 transition-colors">
+                                <span class="text-xs font-mono text-gray-700 truncate">${email}</span>
+                                <button onclick="copyToClipboard('${email}')" 
+                                        class="opacity-0 group-hover:opacity-100 transition-opacity p-1 hover:bg-white rounded">
+                                    <svg class="w-3 h-3 text-gray-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                    </svg>
+                                </button>
+                            </div>
+                        `).join('')}
+                    </div>
+                    ${standaloneEmails.length > 10 ? `
+                        <p class="text-xs text-gray-500 mt-2 text-center">+${standaloneEmails.length - 10} more emails</p>
+                    ` : ''}
+                </div>
+            ` : ''}
+            
+            <!-- Action Footer -->
+            ${(allContacts.length > 0 || standaloneEmails.length > 0) ? `
+                <div class="px-6 pb-4 border-t border-gray-100 pt-4">
+                    <button onclick="copyAllContactInfo()" 
+                            class="w-full px-4 py-2 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors text-sm font-medium">
+                        Export All Contacts
+                    </button>
+                </div>
+            ` : ''}
+        </div>
+    `;
+}
+
+// Add this helper function for exporting all contact info
+function copyAllContactInfo() {
+    const data = currentModalData.aiAnalysis;
+    const warningLetter = currentModalData.warningLetterData;
+    
+    let exportText = "CONTACT DIRECTORY\n\n";
+    
+    // Add recipient if exists
+    if (warningLetter?.recipient) {
+        exportText += "FDA WARNING LETTER RECIPIENT:\n";
+        if (warningLetter.recipient.name) exportText += `Name: ${warningLetter.recipient.name}\n`;
+        if (warningLetter.recipient.title) exportText += `Title: ${warningLetter.recipient.title}\n`;
+        if (warningLetter.recipient.email) exportText += `Email: ${warningLetter.recipient.email}\n`;
+        if (warningLetter.recipient.fullAddress) exportText += `Address: ${warningLetter.recipient.fullAddress}\n`;
+        exportText += "\n";
+    }
+    
+    // Add all other contacts
+    if (currentModalData.contacts && currentModalData.contacts.length > 0) {
+        exportText += "ALL EMAIL CONTACTS:\n";
+        exportText += currentModalData.contacts.join('\n');
+    }
+    
+    navigator.clipboard.writeText(exportText).then(() => {
+        showToast('All contact information copied to clipboard', 'success');
+    });
+}
+// Helper function to get type chip
+function getTypeChip(type) {
+    const typeConfig = {
+        'warning_letter': { bg: 'bg-red-100', text: 'text-red-700', icon: '⚠️' },
+        'form_483': { bg: 'bg-orange-100', text: 'text-orange-700', icon: '📋' },
+        'crl': { bg: 'bg-purple-100', text: 'text-purple-700', icon: '📄' },
+        'opdp': { bg: 'bg-blue-100', text: 'text-blue-700', icon: '📢' },
+        'import_alert': { bg: 'bg-yellow-100', text: 'text-yellow-700', icon: '🚢' },
+        'consent_decree': { bg: 'bg-pink-100', text: 'text-pink-700', icon: '⚖️' },
+        'recall': { bg: 'bg-indigo-100', text: 'text-indigo-700', icon: '↩️' },
+        'clinical_hold': { bg: 'bg-gray-100', text: 'text-gray-700', icon: '🔬' }
+    };
+    
+    const config = typeConfig[type] || { bg: 'bg-gray-100', text: 'text-gray-700', icon: '📌' };
+    const label = type.replace(/_/g, ' ').toUpperCase();
+    
+    return `
+        <span class="inline-flex items-center gap-1 px-2.5 py-1 rounded-full text-xs font-medium ${config.bg} ${config.text}">
+            <span>${config.icon}</span>
+            ${label}
+        </span>
+    `;
+}
+// Render severity indicator
+function renderSeverityIndicator(severity) {
+    let color, label, percentage;
+    
+    if (severity >= 9) {
+        color = 'bg-red-500';
+        label = 'Critical';
+        percentage = 100;
+    } else if (severity >= 7) {
+        color = 'bg-orange-500';
+        label = 'High';
+        percentage = 80;
+    } else if (severity >= 5) {
+        color = 'bg-yellow-500';
+        label = 'Medium';
+        percentage = 60;
+    } else {
+        color = 'bg-green-500';
+        label = 'Low';
+        percentage = 40;
+    }
+    
+    return `
+        <div class="space-y-3">
+            <div class="flex items-center justify-between">
+                <span class="text-2xl font-bold text-gray-900">${severity}/10</span>
+                <span class="px-3 py-1 ${color} text-white rounded-full text-xs font-medium">${label}</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2">
+                <div class="${color} h-2 rounded-full transition-all duration-500" style="width: ${percentage}%"></div>
+            </div>
+            <p class="text-xs text-gray-600">Based on violation type, frequency, and potential impact</p>
+        </div>
+    `;
+}
+
+// Update modal status
+function updateModalStatus(message = '', type = 'loading') {
+    const statusDiv = document.getElementById('modal-status');
+    
+    if (!message) {
+        statusDiv.innerHTML = '';
+        return;
+    }
+    
+    let icon, color;
+    if (type === 'loading') {
+        icon = `<svg class="w-4 h-4 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>`;
+        color = 'text-gray-600';
+    } else if (type === 'success') {
+        icon = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>`;
+        color = 'text-green-600';
+    } else {
+        icon = `<svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>`;
+        color = 'text-red-600';
+    }
+    
+    statusDiv.innerHTML = `
+        <div class="flex items-center gap-2 ${color} text-sm animate-fade">
+            ${icon}
+            <span>${message}</span>
+        </div>
+    `;
+    
+    if (type === 'success') {
+        setTimeout(() => updateModalStatus(), 3000);
+    }
+}
+
+// Close modal
+function closeDetailModal() {
+    document.getElementById('detail-modal').classList.add('hidden');
+    currentModalData = {
+        item: null,
+        warningLetterData: null,
+        aiAnalysis: null,
+        companyInfo: null,
+        contacts: []
+    };
+}
+
+// Copy all emails
+function copyAllEmails() {
+    if (currentModalData.contacts && currentModalData.contacts.length > 0) {
+        const emailText = currentModalData.contacts.join('; ');
+        navigator.clipboard.writeText(emailText).then(() => {
+            showToast(`Copied ${currentModalData.contacts.length} emails to clipboard`, 'success');
+        });
+    }
+}
+
+// Export modal report
+async function exportModalReport() {
+    const email = prompt('Enter email address to send report to:', userSettings.email || '');
+    if (!email) return;
+    
+    try {
+        const modalContent = document.getElementById('modal-body').innerHTML;
+        
+        const response = await fetch('/api/report/export-modal', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                html: modalContent,
+                toEmail: email,
+                subject: `Regulatory Report: ${currentModalData.item.title}`
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            showToast(`Report sent to ${email}`, 'success');
+        } else {
+            throw new Error(data.error || 'Failed to send email');
+        }
+    } catch (error) {
+        console.error('Export error:', error);
+        showToast(`Error: ${error.message}`, 'error');
+    }
+}
+
+// Add custom animation styles
+const style = document.createElement('style');
+style.textContent = `
+    @keyframes fade {
+        from { opacity: 0; }
+        to { opacity: 1; }
+    }
+    
+    .animate-fade {
+        animation: fade 0.3s ease-in-out;
+    }
+    
+    /* Custom scrollbar for modal */
+    #modal-body::-webkit-scrollbar {
+        width: 6px;
+    }
+    
+    #modal-body::-webkit-scrollbar-track {
+        background: #f3f4f6;
+        border-radius: 3px;
+    }
+    
+    #modal-body::-webkit-scrollbar-thumb {
+        background: #9ca3af;
+        border-radius: 3px;
+    }
+    
+    #modal-body::-webkit-scrollbar-thumb:hover {
+        background: #6b7280;
+    }
+`;
+document.head.appendChild(style);
 // async function openDetailModal(itemId) {
 //     console.log('Opening modal for item:', itemId);
     
@@ -1578,8 +2778,9 @@ function renderTable() {
 //         return;
 //     }
     
-//     // Reset enhanced data
+//     // Reset data
 //     currentEnhancedData = null;
+//     currentWarningLetterData = null;
     
 //     // Show modal
 //     document.getElementById('detail-modal').classList.remove('hidden');
@@ -1590,8 +2791,14 @@ function renderTable() {
 //     // Show details tab by default
 //     switchTab('details');
     
-//     // Render initial details (without company info yet)
+//     // Render initial details
 //     renderDetailsTab();
+    
+//     // Check if this is a warning letter and auto-fetch details
+//     if (currentItem.types && currentItem.types.includes('warning_letter') && currentItem.link) {
+//         console.log('Detected warning letter, fetching detailed information...');
+//         fetchWarningLetterDetails(currentItem.link);
+//     }
     
 //     // Clear other tabs
 //     document.getElementById('company-content').innerHTML = `
@@ -1613,110 +2820,57 @@ function renderTable() {
 //     `;
 // }
 
-// Render details tab
-
-async function openDetailModal(itemId) {
-    console.log('Opening modal for item:', itemId);
-    
-    currentItem = allItems.find(i => i.id === itemId);
-    if (!currentItem) {
-        console.error('Item not found:', itemId);
-        return;
-    }
-    
-    // Reset data
-    currentEnhancedData = null;
-    currentWarningLetterData = null;
-    
-    // Show modal
-    document.getElementById('detail-modal').classList.remove('hidden');
-    
-    // Update modal header
-    document.getElementById('modal-title').textContent = 'Regulatory Action Details';
-    
-    // Show details tab by default
-    switchTab('details');
-    
-    // Render initial details
-    renderDetailsTab();
-    
-    // Check if this is a warning letter and auto-fetch details
-    if (currentItem.types && currentItem.types.includes('warning_letter') && currentItem.link) {
-        console.log('Detected warning letter, fetching detailed information...');
-        fetchWarningLetterDetails(currentItem.link);
-    }
-    
-    // Clear other tabs
-    document.getElementById('company-content').innerHTML = `
-        <div class="text-center py-8 text-gray-500">
-            <p>Click "AI Enhance" to identify company and load information</p>
-        </div>
-    `;
-    
-    document.getElementById('contacts-content').innerHTML = `
-        <div class="text-center py-8 text-gray-500">
-            <p>Click "AI Enhance" to search for contacts</p>
-        </div>
-    `;
-    
-    document.getElementById('ai-content').innerHTML = `
-        <div class="text-center py-8 text-gray-500">
-            <p>Click "AI Enhance" to generate AI analysis</p>
-        </div>
-    `;
-}
-
 // Fetch warning letter details
-async function fetchWarningLetterDetails(url) {
-    // Show loading indicator in details tab
-    const detailsContent = document.getElementById('details-content');
-    const existingContent = detailsContent.innerHTML;
+// async function fetchWarningLetterDetails(url) {
+//     // Show loading indicator in details tab
+//     const detailsContent = document.getElementById('details-content');
+//     const existingContent = detailsContent.innerHTML;
     
-    // Add loading indicator at the top
-    detailsContent.innerHTML = `
-        <div id="warning-letter-loading" class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
-            <div class="flex items-center gap-3">
-                <svg class="w-5 h-5 text-yellow-600 animate-spin" fill="none" viewBox="0 0 24 24">
-                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
-                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
-                </svg>
-                <p class="text-yellow-800">Fetching detailed warning letter information from FDA.gov...</p>
-            </div>
-        </div>
-    ` + existingContent;
+//     // Add loading indicator at the top
+//     detailsContent.innerHTML = `
+//         <div id="warning-letter-loading" class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+//             <div class="flex items-center gap-3">
+//                 <svg class="w-5 h-5 text-yellow-600 animate-spin" fill="none" viewBox="0 0 24 24">
+//                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+//                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+//                 </svg>
+//                 <p class="text-yellow-800">Fetching detailed warning letter information from FDA.gov...</p>
+//             </div>
+//         </div>
+//     ` + existingContent;
     
-    try {
-        const response = await fetch(`/api/warning-letter/scrape?url=${encodeURIComponent(url)}`);
-        const result = await response.json();
+//     try {
+//         const response = await fetch(`/api/warning-letter/scrape?url=${encodeURIComponent(url)}`);
+//         const result = await response.json();
         
-        if (result.success && result.data) {
-            currentWarningLetterData = result.data;
-            console.log('Warning letter data fetched:', currentWarningLetterData);
+//         if (result.success && result.data) {
+//             currentWarningLetterData = result.data;
+//             console.log('Warning letter data fetched:', currentWarningLetterData);
             
-            // Update the display with the fetched data
-            renderWarningLetterDetails();
+//             // Update the display with the fetched data
+//             renderWarningLetterDetails();
             
-            // If we found a company name, update the item
-            if (currentWarningLetterData.companyName) {
-                currentItem.extractedCompany = currentWarningLetterData.companyName;
-            }
-        } else {
-            console.error('Failed to fetch warning letter details:', result.error);
-            document.getElementById('warning-letter-loading').innerHTML = `
-                <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
-                    <p class="text-red-800">Failed to fetch warning letter details: ${result.error || 'Unknown error'}</p>
-                </div>
-            `;
-        }
-    } catch (error) {
-        console.error('Error fetching warning letter:', error);
-        document.getElementById('warning-letter-loading').innerHTML = `
-            <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
-                <p class="text-red-800">Error fetching warning letter details: ${error.message}</p>
-            </div>
-        `;
-    }
-}
+//             // If we found a company name, update the item
+//             if (currentWarningLetterData.companyName) {
+//                 currentItem.extractedCompany = currentWarningLetterData.companyName;
+//             }
+//         } else {
+//             console.error('Failed to fetch warning letter details:', result.error);
+//             document.getElementById('warning-letter-loading').innerHTML = `
+//                 <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+//                     <p class="text-red-800">Failed to fetch warning letter details: ${result.error || 'Unknown error'}</p>
+//                 </div>
+//             `;
+//         }
+//     } catch (error) {
+//         console.error('Error fetching warning letter:', error);
+//         document.getElementById('warning-letter-loading').innerHTML = `
+//             <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+//                 <p class="text-red-800">Error fetching warning letter details: ${error.message}</p>
+//             </div>
+//         `;
+//     }
+// }
 
 // Render warning letter details
 function renderWarningLetterDetails() {
@@ -2675,6 +3829,115 @@ function renderDetailsTab() {
 // }
 
 // NEWONENEWOE WNIEWIE
+// async function aiEnhance() {
+//     if (!currentItem) return;
+    
+//     console.log('Starting AI enhancement...');
+    
+//     // If we have a company name from the warning letter scraper, use it
+//     let extractedCompany = null;
+//     if (currentWarningLetterData && currentWarningLetterData.recipient && currentWarningLetterData.recipient.company) {
+//         extractedCompany = currentWarningLetterData.recipient.company;
+//         console.log('Using company from warning letter:', extractedCompany);
+//     }
+    
+//     // Update all tabs to show loading
+//     const loadingHTML = `
+//         <div class="text-center py-12">
+//             <div class="inline-flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-indigo-100">
+//                 <svg class="w-8 h-8 text-indigo-600 animate-spin" fill="none" viewBox="0 0 24 24">
+//                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+//                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+//                 </svg>
+//             </div>
+//             <p class="text-gray-700 font-medium mb-2">AI Analysis in Progress...</p>
+//             <p class="text-gray-500 text-sm">${extractedCompany ? `Analyzing ${extractedCompany}...` : 'Identifying company and searching for contacts'}</p>
+//         </div>
+//     `;
+    
+//     document.getElementById('ai-content').innerHTML = loadingHTML;
+//     document.getElementById('company-content').innerHTML = loadingHTML;
+//     document.getElementById('contacts-content').innerHTML = loadingHTML;
+    
+//     // Switch to AI tab
+//     switchTab('ai');
+    
+//     try {
+//         // Build the request payload
+//         const payload = {
+//             itemId: currentItem.id,
+//             title: currentItem.title,
+//             link: currentItem.link,
+//             summary: currentItem.summary,
+//             source: currentItem.source,
+//             types: currentItem.types,
+//             date: currentItem.date
+//         };
+        
+//         // Add warning letter data if available
+//         if (currentWarningLetterData) {
+//             payload.warningLetterData = {
+//                 company: extractedCompany,
+//                 letterContent: currentWarningLetterData.letterContent,
+//                 violations: currentWarningLetterData.violations,
+//                 products: currentWarningLetterData.products,
+//                 responseDeadline: currentWarningLetterData.responseDeadline
+//             };
+//         }
+        
+//         // Make the API call
+//         const response = await fetch('/api/ai/enhance', {
+//             method: 'POST',
+//             headers: { 'Content-Type': 'application/json' },
+//             body: JSON.stringify(payload)
+//         });
+        
+//         const data = await response.json();
+//         console.log('AI Enhancement response:', data);
+        
+//         if (!data.success) {
+//             throw new Error(data.error || 'Enhancement failed');
+//         }
+        
+//         // If we didn't get a company name from AI but have one from scraping, use it
+//         if ((!data.canonical_company_name || data.canonical_company_name === 'Unknown Company') && extractedCompany) {
+//             data.canonical_company_name = extractedCompany;
+//         }
+        
+//         // Store enhanced data
+//         currentEnhancedData = data;
+        
+//         // Update displays
+//         renderAIAnalysis(data);
+//         renderCompanyTab(data);
+//         renderContactsTab(data);
+        
+//     } catch (error) {
+//         console.error('AI enhancement error:', error);
+        
+//         const errorHTML = `
+//             <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+//                 <div class="flex items-start gap-3">
+//                     <svg class="w-6 h-6 text-red-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+//                     </svg>
+//                     <div class="flex-1">
+//                         <p class="text-red-800 font-medium">Enhancement Failed</p>
+//                         <p class="text-red-700 text-sm mt-1">${error.message}</p>
+//                         <button onclick="aiEnhance()" class="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
+//                             Try Again
+//                         </button>
+//                     </div>
+//                 </div>
+//             </div>
+//         `;
+        
+//         document.getElementById('ai-content').innerHTML = errorHTML;
+//         document.getElementById('company-content').innerHTML = errorHTML;
+//         document.getElementById('contacts-content').innerHTML = errorHTML;
+//     }
+// }
+
 async function aiEnhance() {
     if (!currentItem) return;
     
@@ -2709,7 +3972,7 @@ async function aiEnhance() {
     switchTab('ai');
     
     try {
-        // Build the request payload
+        // Build the request payload with basic item data
         const payload = {
             itemId: currentItem.id,
             title: currentItem.title,
@@ -2720,18 +3983,54 @@ async function aiEnhance() {
             date: currentItem.date
         };
         
-        // Add warning letter data if available
+        // IMPORTANT CHANGE: Send ALL warning letter data if available
         if (currentWarningLetterData) {
+            console.log('Sending full warning letter data to AI, including content of length:', 
+                        currentWarningLetterData.letterContent ? currentWarningLetterData.letterContent.length : 0);
+            
+            // Send the COMPLETE warning letter data object
             payload.warningLetterData = {
-                company: extractedCompany,
+                // Company and recipient info
+                company: extractedCompany || currentWarningLetterData.recipient?.company || currentWarningLetterData.companyName,
+                recipient: currentWarningLetterData.recipient,
+                companyName: currentWarningLetterData.companyName,
+                
+                // FULL letter content - no truncation
                 letterContent: currentWarningLetterData.letterContent,
+                
+                // All violations and products (complete arrays)
                 violations: currentWarningLetterData.violations,
                 products: currentWarningLetterData.products,
-                responseDeadline: currentWarningLetterData.responseDeadline
+                
+                // All dates and deadlines
+                letterDate: currentWarningLetterData.letterDate,
+                issueDate: currentWarningLetterData.issueDate,
+                responseDeadline: currentWarningLetterData.responseDeadline,
+                
+                // All metadata fields
+                marcsNumber: currentWarningLetterData.marcsNumber,
+                deliveryMethod: currentWarningLetterData.deliveryMethod,
+                productType: currentWarningLetterData.productType,
+                issuingOffice: currentWarningLetterData.issuingOffice,
+                subject: currentWarningLetterData.subject,
+                feiNumber: currentWarningLetterData.feiNumber,
+                
+                // Response contact information
+                responseEmail: currentWarningLetterData.responseEmail,
+                responseAddress: currentWarningLetterData.responseAddress,
+                
+                // Include the raw title if different
+                title: currentWarningLetterData.title,
+                
+                // Any other fields that might exist
+                ...currentWarningLetterData
             };
+            
+            console.log('Full warning letter payload prepared with keys:', 
+                        Object.keys(payload.warningLetterData));
         }
         
-        // Make the API call
+        // Make the API call with ALL the data
         const response = await fetch('/api/ai/enhance', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
@@ -2783,6 +4082,7 @@ async function aiEnhance() {
         document.getElementById('contacts-content').innerHTML = errorHTML;
     }
 }
+
 
 // async function aiEnhance() {
 //     if (!currentItem) return;

@@ -907,66 +907,29 @@ titleCase(str) {
     }
     return null;
   }
+// Enhanced Apollo Integration - Replace your existing searchApollo and revealApolloEmail functions with these
+
+
+// Fixed Apollo Integration - Replace your searchApollo function with this
 
 async searchApollo(companyName, domain) {
   const searchAttempts = [];
   let finalResult = null;
+  const REVEAL_LIMIT = 10; // Limit reveals to control credit usage
 
   // Helper function to clean company names
   const cleanCompanyName = (name) => {
     if (!name || typeof name !== 'string') return '';
-    
     return name
-      // Remove common company suffixes
       .replace(/,?\s*(inc|incorporated|llc|ltd|limited|corp|corporation|company|co|group|holdings|international|global|usa|america|us|technologies|tech|solutions|services|systems|software|digital|media|partners|ventures|capital|labs|studio|works|industries|enterprises)\.?$/gi, '')
-      // Remove special characters but keep spaces
       .replace(/[^\w\s&-]/g, '')
-      // Remove numbers at the end (like "Company 2024")
       .replace(/\s+\d{2,4}$/g, '')
-      // Remove parenthetical additions
       .replace(/\s*\([^)]*\)/g, '')
-      // Clean up whitespace
       .replace(/\s+/g, ' ')
       .trim();
   };
 
-  // Helper to extract potential domain from company name
-  const generatePotentialDomains = (name) => {
-    const cleaned = cleanCompanyName(name)
-      .toLowerCase()
-      .replace(/[^a-z0-9]/g, '');
-    
-    const domains = [
-      `${cleaned}.com`,
-      `${cleaned}.io`,
-      `${cleaned}.co`,
-      `${cleaned}.net`,
-      `${cleaned}.org`,
-      `${cleaned}.ai`,
-      `${cleaned}.app`,
-      `${cleaned}.dev`
-    ];
-
-    // Try without common words if name has multiple words
-    const words = cleanCompanyName(name).toLowerCase().split(' ');
-    if (words.length > 1) {
-      const abbreviated = words.map(w => w[0]).join('');
-      domains.push(`${abbreviated}.com`, `${abbreviated}.io`);
-      
-      // Try first word only
-      domains.push(`${words[0]}.com`);
-      
-      // Try combination of main words
-      const mainWords = words.filter(w => w.length > 3).join('');
-      if (mainWords) {
-        domains.push(`${mainWords}.com`);
-      }
-    }
-
-    return [...new Set(domains)]; // Remove duplicates
-  };
-
-  // Helper to search Apollo with specific parameters
+  // Main search function
   const executeApolloSearch = async (searchParams, attemptDescription) => {
     try {
       console.log(`🔍 Apollo attempt: ${attemptDescription}`);
@@ -975,133 +938,106 @@ async searchApollo(companyName, domain) {
       const response = await axios.post(
         'https://api.apollo.io/v1/mixed_people/search',
         {
-          per_page: 10,
+          per_page: 25,
           page: 1,
           ...searchParams
         },
         {
           headers: {
             'Content-Type': 'application/json',
-            'X-Api-Key': API_KEYS.APOLLO
+            'X-Api-Key': API_KEYS.APOLLO,
+            'Cache-Control': 'no-cache'
           },
-          timeout: 15000
+          timeout: 20000
         }
       );
 
       if (response.data?.people?.length > 0) {
         console.log(`✅ Found ${response.data.people.length} contacts via ${attemptDescription}`);
+        
+        // Map initial contacts (most won't have emails yet)
+        let contacts = response.data.people.map(p => ({
+          id: p.id,
+          name: p.name,
+          title: p.title,
+          email: p.email || null,
+          phone: p.phone_number || null,
+          linkedin: p.linkedin_url,
+          verified: p.email_status === 'verified',
+          email_status: p.email_status || null,
+          company: p.organization?.name,
+          domain: p.organization?.primary_domain || p.organization?.domain,
+          seniority: p.seniority,
+          departments: p.departments,
+          locked: !p.email // Mark as locked if no email
+        }));
+
+        // Count how many already have emails
+        const withEmails = contacts.filter(c => c.email).length;
+        console.log(`   📧 ${withEmails} contacts already have emails`);
+        console.log(`   🔒 ${contacts.length - withEmails} contacts need enrichment`);
+
+        // CRITICAL: Actually enrich the contacts without emails
+        const contactsNeedingEnrichment = contacts.filter(c => !c.email && c.id);
+        
+        if (contactsNeedingEnrichment.length > 0) {
+          console.log(`\n🔓 Starting enrichment for ${Math.min(contactsNeedingEnrichment.length, REVEAL_LIMIT)} contacts...`);
+          
+          let enrichedCount = 0;
+          for (let i = 0; i < Math.min(contactsNeedingEnrichment.length, REVEAL_LIMIT); i++) {
+            const contact = contactsNeedingEnrichment[i];
+            console.log(`   Enriching ${i + 1}/${Math.min(contactsNeedingEnrichment.length, REVEAL_LIMIT)}: ${contact.name}`);
+            
+            const enrichedData = await this.enrichApolloContact(contact, companyName, domain);
+            
+            if (enrichedData && enrichedData.email) {
+              // Find and update the contact in the main array
+              const index = contacts.findIndex(c => c.id === contact.id);
+              if (index !== -1) {
+                contacts[index] = { ...contacts[index], ...enrichedData, locked: false };
+                enrichedCount++;
+                console.log(`   ✅ Email found: ${enrichedData.email}`);
+              }
+            } else {
+              console.log(`   ❌ No email found for ${contact.name}`);
+            }
+            
+            // Small delay to avoid rate limiting
+            if (i < contactsNeedingEnrichment.length - 1) {
+              await new Promise(resolve => setTimeout(resolve, 500));
+            }
+          }
+          
+          console.log(`\n📊 Enrichment complete: ${enrichedCount} emails revealed`);
+        }
+
+        // Final count
+        const finalEmailCount = contacts.filter(c => c.email).length;
+        console.log(`📧 Final result: ${finalEmailCount} contacts with emails out of ${contacts.length} total`);
+
         return {
-          contacts: response.data.people.map(p => ({
-            name: p.name,
-            title: p.title,
-            email: p.email,
-            linkedin: p.linkedin_url,
-            verified: p.email_status === 'verified',
-            company: p.organization?.name,
-            domain: p.organization?.domain
-          })),
+          contacts,
           method: attemptDescription,
-          totalFound: response.data.total_people || response.data.people.length
+          totalFound: response.data.total_people || response.data.people.length,
+          emailsFound: finalEmailCount
         };
       }
-      
+
       console.log(`   No results for ${attemptDescription}`);
       return null;
     } catch (error) {
-      console.error(`   Error in ${attemptDescription}:`, error.response?.data?.error || error.message);
+      console.error(`   Error in ${attemptDescription}:`, error.response?.data || error.message);
       return null;
     }
   };
 
-  // ATTEMPT 1: Search by provided domain if valid
-  if (domain && typeof domain === 'string' && domain.includes('.')) {
-    const result = await executeApolloSearch(
-      { q_organization_domains: domain },
-      `domain search: ${domain}`
-    );
-    if (result) {
-      finalResult = result;
-      searchAttempts.push({ type: 'domain', value: domain, success: true });
-    } else {
-      searchAttempts.push({ type: 'domain', value: domain, success: false });
-    }
-  }
+  // Search strategies
+  const searchStrategies = [];
 
-  // ATTEMPT 2: Search by exact company name
-  if (!finalResult && companyName) {
-    const result = await executeApolloSearch(
-      { q_organization_name: companyName },
-      `exact name: "${companyName}"`
-    );
-    if (result) {
-      finalResult = result;
-      searchAttempts.push({ type: 'exact_name', value: companyName, success: true });
-    } else {
-      searchAttempts.push({ type: 'exact_name', value: companyName, success: false });
-    }
-  }
-
-  // ATTEMPT 3: Search with cleaned company name
-  if (!finalResult && companyName) {
-    const cleanedName = cleanCompanyName(companyName);
-    if (cleanedName && cleanedName !== companyName) {
-      const result = await executeApolloSearch(
-        { q_organization_name: cleanedName },
-        `cleaned name: "${cleanedName}"`
-      );
-      if (result) {
-        finalResult = result;
-        searchAttempts.push({ type: 'cleaned_name', value: cleanedName, success: true });
-      } else {
-        searchAttempts.push({ type: 'cleaned_name', value: cleanedName, success: false });
-      }
-    }
-  }
-
-  // ATTEMPT 4: Try with fuzzy/partial matching
-  if (!finalResult && companyName) {
-    const partialName = cleanCompanyName(companyName).split(' ')[0];
-    if (partialName && partialName.length > 3) {
-      const result = await executeApolloSearch(
-        { 
-          q_organization_name: partialName,
-          organization_name_fuzzy: true  // If Apollo supports fuzzy matching
-        },
-        `partial name: "${partialName}"`
-      );
-      if (result) {
-        finalResult = result;
-        searchAttempts.push({ type: 'partial_name', value: partialName, success: true });
-      } else {
-        searchAttempts.push({ type: 'partial_name', value: partialName, success: false });
-      }
-    }
-  }
-
-  // ATTEMPT 5: Try generated domains
-  if (!finalResult && companyName) {
-    const potentialDomains = generatePotentialDomains(companyName);
-    console.log(`🔄 Trying ${potentialDomains.length} potential domains...`);
-    
-    for (const testDomain of potentialDomains.slice(0, 5)) { // Limit to 5 attempts
-      const result = await executeApolloSearch(
-        { q_organization_domains: testDomain },
-        `generated domain: ${testDomain}`
-      );
-      if (result) {
-        finalResult = result;
-        searchAttempts.push({ type: 'generated_domain', value: testDomain, success: true });
-        break;
-      } else {
-        searchAttempts.push({ type: 'generated_domain', value: testDomain, success: false });
-      }
-    }
-  }
-
-  // ATTEMPT 6: Search using organization search endpoint first
-  if (!finalResult && companyName) {
+  // Try organization search first
+  if (companyName) {
     try {
-      console.log(`🔍 Attempting organization lookup for: ${companyName}`);
+      console.log(`\n🏢 Searching for organization: ${companyName}`);
       
       const orgResponse = await axios.post(
         'https://api.apollo.io/v1/organizations/search',
@@ -1120,101 +1056,596 @@ async searchApollo(companyName, domain) {
       );
 
       if (orgResponse.data?.organizations?.length > 0) {
-        // Try each organization found
-        for (const org of orgResponse.data.organizations) {
-          const orgDomain = org.primary_domain || org.domains?.[0];
-          if (orgDomain) {
-            console.log(`✅ Found organization: ${org.name} with domain: ${orgDomain}`);
-            
-            const result = await executeApolloSearch(
-              { q_organization_domains: orgDomain },
-              `org lookup domain: ${orgDomain} (${org.name})`
-            );
-            
-            if (result) {
-              finalResult = {
-                ...result,
-                organization: {
-                  name: org.name,
-                  domain: orgDomain,
-                  industry: org.industry,
-                  size: org.estimated_num_employees
-                }
-              };
-              searchAttempts.push({ type: 'org_lookup', value: org.name, success: true });
-              break;
-            }
-          }
+        const org = orgResponse.data.organizations[0];
+        console.log(`✅ Found org: ${org.name} (${org.primary_domain || org.website_url})`);
+        
+        const orgDomain = org.primary_domain || 
+                         org.website_url?.replace(/^https?:\/\//, '').replace(/\/.*$/, '') ||
+                         domain;
+        
+        if (orgDomain) {
+          searchStrategies.push({
+            q_organization_domains: orgDomain,
+            person_seniorities: ["owner", "founder", "c_suite", "partner", "vp", "director", "manager"],
+            person_titles: ["regulatory", "compliance", "quality", "affairs", "director", "manager", "head"]
+          });
         }
       }
     } catch (error) {
-      console.error('Organization lookup error:', error.response?.data || error.message);
-      searchAttempts.push({ type: 'org_lookup', value: companyName, success: false });
+      console.error('Org search error:', error.response?.data || error.message);
     }
   }
 
-  // ATTEMPT 7: Try alternative name formats
-  if (!finalResult && companyName) {
-    const alternativeFormats = [
-      companyName.toUpperCase(),
-      companyName.toLowerCase(),
-      companyName.replace(/&/g, 'and'),
-      companyName.replace(/\band\b/gi, '&'),
-      companyName.replace(/\s+/g, ''),  // No spaces
-      companyName.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ') // Title case
-    ];
+  // Add domain search if provided
+  if (domain && !searchStrategies.length) {
+    searchStrategies.push({
+      q_organization_domains: domain,
+      person_seniorities: ["owner", "founder", "c_suite", "partner", "vp", "director", "manager"]
+    });
+  }
 
-    for (const altName of [...new Set(alternativeFormats)]) {
-      if (altName !== companyName && altName !== cleanCompanyName(companyName)) {
-        const result = await executeApolloSearch(
-          { q_organization_name: altName },
-          `alternative format: "${altName}"`
-        );
-        if (result) {
-          finalResult = result;
-          searchAttempts.push({ type: 'alternative_format', value: altName, success: true });
-          break;
+  // Add company name search
+  if (companyName && !searchStrategies.length) {
+    searchStrategies.push({
+      q_organization_name: cleanCompanyName(companyName)
+    });
+  }
+
+  // Execute search strategies
+  for (let i = 0; i < searchStrategies.length; i++) {
+    const strategy = searchStrategies[i];
+    const result = await executeApolloSearch(strategy, `Strategy ${i + 1}`);
+    
+    if (result && result.contacts.length > 0) {
+      finalResult = result;
+      searchAttempts.push({ 
+        type: `strategy_${i + 1}`, 
+        success: true,
+        contactsFound: result.contacts.length,
+        emailsFound: result.emailsFound
+      });
+      break;
+    }
+  }
+
+  if (finalResult) {
+    console.log(`\n✅ Apollo search successful`);
+    return finalResult;
+  }
+
+  console.log(`\n❌ No results found`);
+  return {
+    contacts: [],
+    searchMetadata: {
+      attempts: searchAttempts,
+      error: 'No contacts found'
+    }
+  };
+}
+
+// Enhanced enrichment function that tries multiple methods
+async enrichApolloContact(contact, companyName, domain) {
+  if (!contact.id) return null;
+
+  // Method 1: Direct people endpoint (often works without credits)
+  try {
+    const response = await axios.get(
+      `https://api.apollo.io/v1/people/${contact.id}`,
+      {
+        headers: {
+          'X-Api-Key': API_KEYS.APOLLO,
+          'Cache-Control': 'no-cache'
+        },
+        timeout: 10000
+      }
+    );
+
+    if (response.data?.person?.email) {
+      return {
+        email: response.data.person.email,
+        phone: response.data.person.phone_number,
+        email_status: response.data.person.email_status,
+        verified: response.data.person.email_status === 'verified'
+      };
+    }
+  } catch (e) {
+    // Continue to next method
+  }
+
+  // Method 2: People match endpoint (consumes credits)
+  try {
+    const [firstName, ...lastNameParts] = (contact.name || '').split(' ');
+    const lastName = lastNameParts.join(' ');
+    
+    const response = await axios.post(
+      'https://api.apollo.io/v1/people/match',
+      {
+        first_name: firstName,
+        last_name: lastName || firstName, // Fallback if no last name
+        organization_name: companyName || contact.company,
+        domain: domain || contact.domain,
+        reveal_personal_emails: true,
+        reveal_phone_number: false
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Api-Key': API_KEYS.APOLLO,
+          'Cache-Control': 'no-cache'
+        },
+        timeout: 10000
+      }
+    );
+
+    if (response.data?.person?.email || response.data?.email) {
+      return {
+        email: response.data.person?.email || response.data.email,
+        phone: response.data.person?.phone_number || response.data.phone_number,
+        email_status: response.data.person?.email_status || response.data.email_status,
+        verified: true
+      };
+    }
+  } catch (error) {
+    if (error.response?.status === 402) {
+      console.log(`      💳 Out of credits for email reveal`);
+    } else if (error.response?.status === 422) {
+      console.log(`      ⚠️ No match found for ${contact.name}`);
+    }
+  }
+
+  // Method 3: Email pattern generation (fallback)
+  if (contact.name && (domain || contact.domain)) {
+    const [firstName, ...lastNameParts] = contact.name.toLowerCase().split(' ');
+    const lastName = lastNameParts.join('');
+    const emailDomain = domain || contact.domain;
+    
+    // Common email patterns
+    const patterns = [
+      `${firstName}.${lastName}@${emailDomain}`,
+      `${firstName}${lastName}@${emailDomain}`,
+      `${firstName.charAt(0)}${lastName}@${emailDomain}`,
+      `${firstName}@${emailDomain}`,
+      `${firstName}_${lastName}@${emailDomain}`
+    ];
+    
+    // Return the most likely pattern
+    return {
+      email: patterns[0],
+      email_status: 'guessed',
+      verified: false,
+      pattern_generated: true
+    };
+  }
+
+  return null;
+}
+
+// Add this validation function to check your setup
+async validateApolloSetup() {
+  try {
+    // Check API key validity
+    const response = await axios.get(
+      'https://api.apollo.io/v1/auth/billing',
+      {
+        headers: {
+          'X-Api-Key': API_KEYS.APOLLO,
+          'Cache-Control': 'no-cache'
         }
       }
+    );
+    
+    console.log('\n🔍 Apollo Account Status:');
+    console.log('   ✅ API Key is valid');
+    
+    if (response.data) {
+      console.log('   Plan:', response.data.plan_name || 'Unknown');
+      console.log('   Credits used:', response.data.credits_used || 0);
+      console.log('   Credits limit:', response.data.credits_limit || 'Unknown');
+      console.log('   Email credits:', response.data.email_credits || 'Unknown');
     }
-  }
-
-  // Log summary
-  console.log('\n📊 Apollo Search Summary:');
-  console.log(`   Total attempts: ${searchAttempts.length}`);
-  console.log(`   Successful: ${searchAttempts.filter(a => a.success).length}`);
-  console.log(`   Failed: ${searchAttempts.filter(a => !a.success).length}`);
-  
-  if (finalResult) {
-    console.log(`   ✅ Final result: ${finalResult.totalFound} contacts found via ${finalResult.method}`);
-    console.log(`   Search attempts:`, searchAttempts);
     
-    // Add metadata about the search process
-    finalResult.searchMetadata = {
-      attempts: searchAttempts,
-      originalCompanyName: companyName,
-      originalDomain: domain,
-      successfulMethod: finalResult.method
-    };
-  } else {
-    console.log(`   ❌ No results found after all attempts`);
-    console.log(`   Search attempts:`, searchAttempts);
+    return true;
+  } catch (error) {
+    console.error('\n❌ Apollo API Error:', error.response?.status, error.response?.data || error.message);
     
-    // Return empty result with metadata
-    return {
-      contacts: [],
-      searchMetadata: {
-        attempts: searchAttempts,
-        originalCompanyName: companyName,
-        originalDomain: domain,
-        successfulMethod: null,
-        error: 'No contacts found after exhaustive search'
-      }
-    };
+    if (error.response?.status === 401) {
+      console.error('   Invalid API key');
+    } else if (error.response?.status === 402) {
+      console.error('   Payment required - check your Apollo subscription');
+    }
+    
+    return false;
   }
-
-  return finalResult;
 }
+
+// Helper function to validate Apollo API key and check credits
+// async validateApolloSetup() {
+//   try {
+//     const response = await axios.get(
+//       'https://api.apollo.io/v1/auth/health',
+//       {
+//         headers: {
+//           'X-Api-Key': API_KEYS.APOLLO
+//         }
+//       }
+//     );
+    
+//     console.log('✅ Apollo API Key Valid');
+//     console.log('   Credits remaining:', response.data?.credits_remaining || 'Unknown');
+//     console.log('   Rate limit:', response.data?.rate_limit || 'Unknown');
+    
+//     return true;
+//   } catch (error) {
+//     console.error('❌ Apollo API validation failed:', error.response?.data || error.message);
+//     return false;
+//   }
+// }
+
+// async searchApollo(companyName, domain) {
+//   const searchAttempts = [];
+//   let finalResult = null;
+
+//   // Helper function to clean company names
+//   const cleanCompanyName = (name) => {
+//     if (!name || typeof name !== 'string') return '';
+    
+//     return name
+//       // Remove common company suffixes
+//       .replace(/,?\s*(inc|incorporated|llc|ltd|limited|corp|corporation|company|co|group|holdings|international|global|usa|america|us|technologies|tech|solutions|services|systems|software|digital|media|partners|ventures|capital|labs|studio|works|industries|enterprises)\.?$/gi, '')
+//       // Remove special characters but keep spaces
+//       .replace(/[^\w\s&-]/g, '')
+//       // Remove numbers at the end (like "Company 2024")
+//       .replace(/\s+\d{2,4}$/g, '')
+//       // Remove parenthetical additions
+//       .replace(/\s*\([^)]*\)/g, '')
+//       // Clean up whitespace
+//       .replace(/\s+/g, ' ')
+//       .trim();
+//   };
+
+//   // Helper to extract potential domain from company name
+//   const generatePotentialDomains = (name) => {
+//     const cleaned = cleanCompanyName(name)
+//       .toLowerCase()
+//       .replace(/[^a-z0-9]/g, '');
+    
+//     const domains = [
+//       `${cleaned}.com`,
+//       `${cleaned}.io`,
+//       `${cleaned}.co`,
+//       `${cleaned}.net`,
+//       `${cleaned}.org`,
+//       `${cleaned}.ai`,
+//       `${cleaned}.app`,
+//       `${cleaned}.dev`
+//     ];
+
+//     // Try without common words if name has multiple words
+//     const words = cleanCompanyName(name).toLowerCase().split(' ');
+//     if (words.length > 1) {
+//       const abbreviated = words.map(w => w[0]).join('');
+//       domains.push(`${abbreviated}.com`, `${abbreviated}.io`);
+      
+//       // Try first word only
+//       domains.push(`${words[0]}.com`);
+      
+//       // Try combination of main words
+//       const mainWords = words.filter(w => w.length > 3).join('');
+//       if (mainWords) {
+//         domains.push(`${mainWords}.com`);
+//       }
+//     }
+
+//     return [...new Set(domains)]; // Remove duplicates
+//   };
+
+//   // Helper to search Apollo with specific parameters
+//   const executeApolloSearch = async (searchParams, attemptDescription) => {
+//     try {
+//       console.log(`🔍 Apollo attempt: ${attemptDescription}`);
+//       console.log('   Parameters:', JSON.stringify(searchParams, null, 2));
+
+//       const response = await axios.post(
+//         'https://api.apollo.io/v1/mixed_people/search',
+//         {
+//           per_page: 10,
+//           page: 1,
+//           ...searchParams
+//         },
+//         {
+//           headers: {
+//             'Content-Type': 'application/json',
+//             'X-Api-Key': API_KEYS.APOLLO
+//           },
+//           timeout: 15000
+//         }
+//       );
+
+//       if (response.data?.people?.length > 0) {
+//         console.log(`✅ Found ${response.data.people.length} contacts via ${attemptDescription}`);
+//         return {
+//           contacts: response.data.people.map(p => ({
+//             name: p.name,
+//             title: p.title,
+//             email: p.email,
+//             linkedin: p.linkedin_url,
+//             verified: p.email_status === 'verified',
+//             company: p.organization?.name,
+//             domain: p.organization?.domain
+//           })),
+//           method: attemptDescription,
+//           totalFound: response.data.total_people || response.data.people.length
+//         };
+//       }
+      
+//       console.log(`   No results for ${attemptDescription}`);
+//       return null;
+//     } catch (error) {
+//       console.error(`   Error in ${attemptDescription}:`, error.response?.data?.error || error.message);
+//       return null;
+//     }
+//   };
+
+//   // ATTEMPT 1: Search by provided domain if valid
+//   if (domain && typeof domain === 'string' && domain.includes('.')) {
+//     const result = await executeApolloSearch(
+//       { q_organization_domains: domain },
+//       `domain search: ${domain}`
+//     );
+//     if (result) {
+//       finalResult = result;
+//       searchAttempts.push({ type: 'domain', value: domain, success: true });
+//     } else {
+//       searchAttempts.push({ type: 'domain', value: domain, success: false });
+//     }
+//   }
+
+//   // ATTEMPT 2: Search by exact company name
+//   if (!finalResult && companyName) {
+//     const result = await executeApolloSearch(
+//       { q_organization_name: companyName },
+//       `exact name: "${companyName}"`
+//     );
+//     if (result) {
+//       finalResult = result;
+//       searchAttempts.push({ type: 'exact_name', value: companyName, success: true });
+//     } else {
+//       searchAttempts.push({ type: 'exact_name', value: companyName, success: false });
+//     }
+//   }
+
+//   // ATTEMPT 3: Search with cleaned company name
+//   if (!finalResult && companyName) {
+//     const cleanedName = cleanCompanyName(companyName);
+//     if (cleanedName && cleanedName !== companyName) {
+//       const result = await executeApolloSearch(
+//         { q_organization_name: cleanedName },
+//         `cleaned name: "${cleanedName}"`
+//       );
+//       if (result) {
+//         finalResult = result;
+//         searchAttempts.push({ type: 'cleaned_name', value: cleanedName, success: true });
+//       } else {
+//         searchAttempts.push({ type: 'cleaned_name', value: cleanedName, success: false });
+//       }
+//     }
+//   }
+
+//   // ATTEMPT 4: Try with fuzzy/partial matching
+//   if (!finalResult && companyName) {
+//     const partialName = cleanCompanyName(companyName).split(' ')[0];
+//     if (partialName && partialName.length > 3) {
+//       const result = await executeApolloSearch(
+//         { 
+//           q_organization_name: partialName,
+//           organization_name_fuzzy: true  // If Apollo supports fuzzy matching
+//         },
+//         `partial name: "${partialName}"`
+//       );
+//       if (result) {
+//         finalResult = result;
+//         searchAttempts.push({ type: 'partial_name', value: partialName, success: true });
+//       } else {
+//         searchAttempts.push({ type: 'partial_name', value: partialName, success: false });
+//       }
+//     }
+//   }
+
+//   // ATTEMPT 5: Try generated domains
+//   if (!finalResult && companyName) {
+//     const potentialDomains = generatePotentialDomains(companyName);
+//     console.log(`🔄 Trying ${potentialDomains.length} potential domains...`);
+    
+//     for (const testDomain of potentialDomains.slice(0, 5)) { // Limit to 5 attempts
+//       const result = await executeApolloSearch(
+//         { q_organization_domains: testDomain },
+//         `generated domain: ${testDomain}`
+//       );
+//       if (result) {
+//         finalResult = result;
+//         searchAttempts.push({ type: 'generated_domain', value: testDomain, success: true });
+//         break;
+//       } else {
+//         searchAttempts.push({ type: 'generated_domain', value: testDomain, success: false });
+//       }
+//     }
+//   }
+
+//   // ATTEMPT 6: Search using organization search endpoint first
+//   if (!finalResult && companyName) {
+//     try {
+//       console.log(`🔍 Attempting organization lookup for: ${companyName}`);
+      
+//       const orgResponse = await axios.post(
+//         'https://api.apollo.io/v1/organizations/search',
+//         {
+//           q_organization_name: cleanCompanyName(companyName),
+//           per_page: 3,
+//           page: 1
+//         },
+//         {
+//           headers: {
+//             'Content-Type': 'application/json',
+//             'X-Api-Key': API_KEYS.APOLLO
+//           },
+//           timeout: 15000
+//         }
+//       );
+
+//       if (orgResponse.data?.organizations?.length > 0) {
+//         // Try each organization found
+//         for (const org of orgResponse.data.organizations) {
+//           const orgDomain = org.primary_domain || org.domains?.[0];
+//           if (orgDomain) {
+//             console.log(`✅ Found organization: ${org.name} with domain: ${orgDomain}`);
+            
+//             const result = await executeApolloSearch(
+//               { q_organization_domains: orgDomain },
+//               `org lookup domain: ${orgDomain} (${org.name})`
+//             );
+            
+//             if (result) {
+//               finalResult = {
+//                 ...result,
+//                 organization: {
+//                   name: org.name,
+//                   domain: orgDomain,
+//                   industry: org.industry,
+//                   size: org.estimated_num_employees
+//                 }
+//               };
+//               searchAttempts.push({ type: 'org_lookup', value: org.name, success: true });
+//               break;
+//             }
+//           }
+//         }
+//       }
+//     } catch (error) {
+//       console.error('Organization lookup error:', error.response?.data || error.message);
+//       searchAttempts.push({ type: 'org_lookup', value: companyName, success: false });
+//     }
+//   }
+
+//   // ATTEMPT 7: Try alternative name formats
+//   if (!finalResult && companyName) {
+//     const alternativeFormats = [
+//       companyName.toUpperCase(),
+//       companyName.toLowerCase(),
+//       companyName.replace(/&/g, 'and'),
+//       companyName.replace(/\band\b/gi, '&'),
+//       companyName.replace(/\s+/g, ''),  // No spaces
+//       companyName.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ') // Title case
+//     ];
+
+//     for (const altName of [...new Set(alternativeFormats)]) {
+//       if (altName !== companyName && altName !== cleanCompanyName(companyName)) {
+//         const result = await executeApolloSearch(
+//           { q_organization_name: altName },
+//           `alternative format: "${altName}"`
+//         );
+//         if (result) {
+//           finalResult = result;
+//           searchAttempts.push({ type: 'alternative_format', value: altName, success: true });
+//           break;
+//         }
+//       }
+//     }
+//   }
+
+//   // Log summary
+//   console.log('\n📊 Apollo Search Summary:');
+//   console.log(`   Total attempts: ${searchAttempts.length}`);
+//   console.log(`   Successful: ${searchAttempts.filter(a => a.success).length}`);
+//   console.log(`   Failed: ${searchAttempts.filter(a => !a.success).length}`);
+  
+//   if (finalResult) {
+//     console.log(`   ✅ Final result: ${finalResult.totalFound} contacts found via ${finalResult.method}`);
+//     console.log(`   Search attempts:`, searchAttempts);
+    
+//     // Add metadata about the search process
+//     finalResult.searchMetadata = {
+//       attempts: searchAttempts,
+//       originalCompanyName: companyName,
+//       originalDomain: domain,
+//       successfulMethod: finalResult.method
+//     };
+//   } else {
+//     console.log(`   ❌ No results found after all attempts`);
+//     console.log(`   Search attempts:`, searchAttempts);
+    
+//     // Return empty result with metadata
+//     return {
+//       contacts: [],
+//       searchMetadata: {
+//         attempts: searchAttempts,
+//         originalCompanyName: companyName,
+//         originalDomain: domain,
+//         successfulMethod: null,
+//         error: 'No contacts found after exhaustive search'
+//       }
+//     };
+//   }
+
+//   return finalResult;
+// }
+// Helper: reveal Apollo email for a single person id via People Enrichment
+async revealApolloEmail(personId) {
+  if (!personId) return null;
+
+  try {
+    // Use the correct endpoint for revealing emails
+    const resp = await axios.post(
+      'https://api.apollo.io/api/v1/people/enrich',  // Changed endpoint
+      {
+        id: personId,  // Changed from person_id to id
+        reveal_personal_emails: true,
+        reveal_phone_number: false
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'Cache-Control': 'no-cache',
+          'X-Api-Key': API_KEYS.APOLLO
+        },
+        timeout: 15000
+      }
+    );
+
+    const person = resp.data?.person || resp.data;
+    if (!person) return null;
+
+    // Apollo returns email in different places depending on the endpoint
+    const primaryEmail = 
+      person.email ||
+      person.work_email ||
+      person.personal_email ||
+      (person.email_addresses && person.email_addresses[0]) ||
+      null;
+
+    return {
+      email: primaryEmail,
+      email_status: person.email_status || 'revealed'
+    };
+  } catch (error) {
+    const code = error.response?.status;
+    const msg = error.response?.data?.error || error.message;
+    
+    // Common error codes:
+    // 402: Payment required (out of credits)
+    // 403: Forbidden (API key doesn't have permission)
+    // 404: Person not found
+    // 422: Invalid request
+    
+    console.error(`   🔒 Reveal failed for person ${personId} [${code || 'ERR'}]: ${msg}`);
+    
+    if (code === 402) {
+      console.error('   ⚠️ Out of Apollo credits for email reveals');
+    }
+    
+    return null;
+  }
+}
+
 
 // Optional: Standalone function to validate and find company domain
 async  findAndValidateCompanyDomain(companyName) {
@@ -1263,73 +1694,152 @@ async  findAndValidateCompanyDomain(companyName) {
   };
 }
 
-  async findContactsForCompany(companyName, domain = null) {
-    console.log(`📧 Finding contacts for: ${companyName}`);
+  // async findContactsForCompany(companyName, domain = null) {
+  //   console.log(`📧 Finding contacts for: ${companyName}`);
     
-    const canonical = this.findCanonicalName(companyName);
+  //   const canonical = this.findCanonicalName(companyName);
     
-    // Get or find domain
-    if (!domain) {
-      domain = await this.findCompanyDomain(canonical);
-    }
+  //   // Get or find domain
+  //   if (!domain) {
+  //     domain = await this.findCompanyDomain(canonical);
+  //   }
     
-    console.log(`🌐 Using domain: ${domain}`);
+  //   console.log(`🌐 Using domain: ${domain}`);
     
-    const contactInfo = {
-      company: canonical,
-      domain: domain,
-      emails: [],
-      contacts: [],
-      searched: true
-    };
+  //   const contactInfo = {
+  //     company: canonical,
+  //     domain: domain,
+  //     emails: [],
+  //     contacts: [],
+  //     searched: true
+  //   };
     
-    try {
-      // Try Hunter
-      if (API_KEYS.HUNTER) {
-        const hunterData = await this.searchHunter(domain, canonical);
-        if (hunterData && hunterData.emails) {
-          contactInfo.emails.push(...hunterData.emails);
-        }
-      }
+  //   try {
+  //     // Try Hunter
+  //     if (API_KEYS.HUNTER) {
+  //       const hunterData = await this.searchHunter(domain, canonical);
+  //       if (hunterData && hunterData.emails) {
+  //         contactInfo.emails.push(...hunterData.emails);
+  //       }
+  //     }
       
-      // Try Apollo
-      if (API_KEYS.APOLLO) {
-        const apolloData = await this.searchApollo(canonical, domain);
-        if (apolloData && apolloData.contacts) {
-          contactInfo.contacts.push(...apolloData.contacts);
-          // Add Apollo emails to main list
-          apolloData.contacts.forEach(c => {
-            if (c.email) {
-              contactInfo.emails.push({
-                email: c.email,
-                name: c.name,
-                position: c.title,
-                verified: c.verified
-              });
-            }
-          });
-        }
-      }
+  //     // Try Apollo
+  //     if (API_KEYS.APOLLO) {
+  //       const apolloData = await this.searchApollo(canonical, domain);
+  //       if (apolloData && apolloData.contacts) {
+  //         contactInfo.contacts.push(...apolloData.contacts);
+  //         // Add Apollo emails to main list
+  //         apolloData.contacts.forEach(c => {
+  //           if (c.email) {
+  //             contactInfo.emails.push({
+  //               email: c.email,
+  //               name: c.name,
+  //               position: c.title,
+  //               verified: c.verified
+  //             });
+  //           }
+  //         });
+  //       }
+  //     }
       
-      // If no APIs configured or no results, generate fallback emails
-      if (contactInfo.emails.length === 0) {
-        console.log('⚠️ No contacts found via APIs, generating fallbacks');
-        contactInfo.emails = [
-          { email: `info@${domain}`, name: 'General Info', position: 'General' },
-          { email: `regulatory@${domain}`, name: 'Regulatory Affairs', position: 'Regulatory' },
-          { email: `quality@${domain}`, name: 'Quality Assurance', position: 'Quality' },
-          { email: `compliance@${domain}`, name: 'Compliance', position: 'Compliance' }
-        ];
-      }
+  //     // If no APIs configured or no results, generate fallback emails
+  //     if (contactInfo.emails.length === 0) {
+  //       console.log('⚠️ No contacts found via APIs, generating fallbacks');
+  //       contactInfo.emails = [
+  //         { email: `info@${domain}`, name: 'General Info', position: 'General' },
+  //         { email: `regulatory@${domain}`, name: 'Regulatory Affairs', position: 'Regulatory' },
+  //         { email: `quality@${domain}`, name: 'Quality Assurance', position: 'Quality' },
+  //         { email: `compliance@${domain}`, name: 'Compliance', position: 'Compliance' }
+  //       ];
+  //     }
       
-    } catch (error) {
-      console.error(`Error finding contacts for ${canonical}:`, error.message);
-    }
+  //   } catch (error) {
+  //     console.error(`Error finding contacts for ${canonical}:`, error.message);
+  //   }
     
-    console.log(`📊 Found ${contactInfo.emails.length} total emails`);
-    this.contacts.set(canonical, contactInfo);
-    return contactInfo;
+  //   console.log(`📊 Found ${contactInfo.emails.length} total emails`);
+  //   this.contacts.set(canonical, contactInfo);
+  //   return contactInfo;
+  // }
+  async  findContactsForCompany(companyName, domain = null) {
+  console.log(`📧 Finding contacts for: ${companyName}`);
+
+  const canonical = this.findCanonicalName(companyName);
+
+  // Get or find domain
+  if (!domain) {
+    domain = await this.findCompanyDomain(canonical);
   }
+
+  console.log(`🌐 Using domain: ${domain}`);
+
+  const contactInfo = {
+    company: canonical,
+    domain: domain,
+    emails: [],
+    contacts: [],
+    searched: true
+  };
+
+  try {
+    // Hunter
+    if (API_KEYS.HUNTER) {
+      const hunterData = await this.searchHunter(domain, canonical);
+      if (hunterData && hunterData.emails) {
+        contactInfo.emails.push(...hunterData.emails);
+      }
+    }
+
+    // Apollo
+    if (API_KEYS.APOLLO) {
+      const apolloData = await this.searchApollo(canonical, domain);
+      if (apolloData && apolloData.contacts) {
+        contactInfo.contacts.push(...apolloData.contacts);
+
+        // Add Apollo emails to main list (now includes revealed ones)
+        apolloData.contacts.forEach(c => {
+          if (c.email) {
+            contactInfo.emails.push({
+              email: c.email,
+              name: c.name,
+              position: c.title,
+              verified: !!c.verified
+            });
+          } else {
+            // Still locked/unavailable — surface to UI as non-sending entry
+            contactInfo.emails.push({
+              email: null,
+              name: c.name,
+              position: c.title,
+              verified: false,
+              locked: true,
+              status_reason: c.email_status || 'not_unlocked'
+            });
+          }
+        });
+      }
+    }
+
+    // If truly nothing usable, generate fallbacks
+    const hasReal = contactInfo.emails.some(e => e.email);
+    if (!hasReal) {
+      console.log('⚠️ No deliverable emails found via APIs, generating fallbacks');
+      contactInfo.emails = [
+        { email: `info@${domain}`, name: 'General Info', position: 'General' },
+        { email: `regulatory@${domain}`, name: 'Regulatory Affairs', position: 'Regulatory' },
+        { email: `quality@${domain}`, name: 'Quality Assurance', position: 'Quality' },
+        { email: `compliance@${domain}`, name: 'Compliance', position: 'Compliance' }
+      ];
+    }
+  } catch (error) {
+    console.error(`Error finding contacts for ${canonical}:`, error.message);
+  }
+
+  console.log(`📊 Found ${contactInfo.emails.length} total emails (incl. locked/placeholders)`);
+  this.contacts.set(canonical, contactInfo);
+  return contactInfo;
+}
+
 
   updateMetrics() {
     this.metrics = {
@@ -1878,154 +2388,154 @@ app.get('/api/warning-letter/scrape', async (req, res) => {
 });
 
 // COMPLETE REPLACEMENT FOR /api/ai/enhance endpoint
-app.post('/api/ai/enhance', async (req, res) => {
-  try {
-    const { itemId, title, link, summary, source, types, date } = req.body;
+// app.post('/api/ai/enhance', async (req, res) => {
+//   try {
+//     const { itemId, title, link, summary, source, types, date } = req.body;
     
-    console.log('\n🤖 AI Enhancement Request:');
-    console.log('Title:', title?.substring(0, 100));
-    console.log('Has OpenAI:', !!openai);
+//     console.log('\n🤖 AI Enhancement Request:');
+//     console.log('Title:', title?.substring(0, 100));
+//     console.log('Has OpenAI:', !!openai);
     
-    // Build comprehensive content for analysis
-    const fullContent = `
-Title: ${title || 'No title'}
-Date: ${date || 'Unknown date'}
-Source: ${source || 'Unknown source'}
-Types: ${types?.join(', ') || 'Unknown type'}
-Link: ${link || 'No link'}
-Summary: ${summary || 'No summary available'}
-    `.trim();
+//     // Build comprehensive content for analysis
+//     const fullContent = `
+// Title: ${title || 'No title'}
+// Date: ${date || 'Unknown date'}
+// Source: ${source || 'Unknown source'}
+// Types: ${types?.join(', ') || 'Unknown type'}
+// Link: ${link || 'No link'}
+// Summary: ${summary || 'No summary available'}
+//     `.trim();
     
-    let aiResult = {
-      canonical_company_name: 'Unknown Company',
-      summary: summary || 'No summary available',
-      emails: [],
-      contacts: []
-    };
+//     let aiResult = {
+//       canonical_company_name: 'Unknown Company',
+//       summary: summary || 'No summary available',
+//       emails: [],
+//       contacts: []
+//     };
     
-    // Try AI extraction if available
-    if (openai) {
-      try {
-        console.log('🔮 Calling OpenAI...');
+//     // Try AI extraction if available
+//     if (openai) {
+//       try {
+//         console.log('🔮 Calling OpenAI...');
         
-        const completion = await openai.chat.completions.create({
-          model: "gpt-4-turbo-preview",
-          messages: [
-            {
-              role: "system",
-              content: `You are an FDA regulatory expert. Extract and analyze information from FDA regulatory documents.
+//         const completion = await openai.chat.completions.create({
+//           model: "gpt-4-turbo-preview",
+//           messages: [
+//             {
+//               role: "system",
+//               content: `You are an FDA regulatory expert. Extract and analyze information from FDA regulatory documents.
               
-IMPORTANT: Look for company names in these patterns:
-- "Warning Letter to [COMPANY NAME]"
-- "[COMPANY NAME] - Warning Letter"
-- "Issued to [COMPANY NAME]"
-- Company names often appear near the beginning of titles
-- Look for Inc., Corp., LLC, Ltd., Pharmaceuticals, Pharma, Biotech, etc.
+// IMPORTANT: Look for company names in these patterns:
+// - "Warning Letter to [COMPANY NAME]"
+// - "[COMPANY NAME] - Warning Letter"
+// - "Issued to [COMPANY NAME]"
+// - Company names often appear near the beginning of titles
+// - Look for Inc., Corp., LLC, Ltd., Pharmaceuticals, Pharma, Biotech, etc.
 
-Return a JSON object with these fields:
-- canonical_company_name: The actual company name (be very careful to extract the real company, not FDA or generic terms)
-- summary: A detailed 3-4 sentence summary of the regulatory action
-- regulatory_impact: Specific regulatory implications
-- business_impact: Business and market implications
-- action_required: What the company needs to do
-- timeline: Response timeline if mentioned
-- severity_assessment: Your assessment of severity (1-10 scale)
-- key_violations: Array of specific violations mentioned`
-            },
-            {
-              role: "user",
-              content: `Extract the company name and analyze this FDA regulatory action:\n\n${fullContent}\n\nReturn ONLY valid JSON.`
-            }
-          ],
-          temperature: 0.2,
-          max_tokens: 1500,
-          response_format: { type: "json_object" }
-        });
+// Return a JSON object with these fields:
+// - canonical_company_name: The actual company name (be very careful to extract the real company, not FDA or generic terms)
+// - summary: A detailed 3-4 sentence summary of the regulatory action
+// - regulatory_impact: Specific regulatory implications
+// - business_impact: Business and market implications
+// - action_required: What the company needs to do
+// - timeline: Response timeline if mentioned
+// - severity_assessment: Your assessment of severity (1-10 scale)
+// - key_violations: Array of specific violations mentioned`
+//             },
+//             {
+//               role: "user",
+//               content: `Extract the company name and analyze this FDA regulatory action:\n\n${fullContent}\n\nReturn ONLY valid JSON.`
+//             }
+//           ],
+//           temperature: 0.2,
+//           max_tokens: 1500,
+//           response_format: { type: "json_object" }
+//         });
         
-        const aiResponse = completion.choices[0].message.content;
-        console.log('✅ OpenAI responded');
+//         const aiResponse = completion.choices[0].message.content;
+//         console.log('✅ OpenAI responded');
         
-        try {
-          aiResult = { ...aiResult, ...JSON.parse(aiResponse) };
-          console.log('📊 Extracted company:', aiResult.canonical_company_name);
-        } catch (parseError) {
-          console.error('Failed to parse AI response:', parseError);
-          aiResult.summary = aiResponse;
-        }
+//         try {
+//           aiResult = { ...aiResult, ...JSON.parse(aiResponse) };
+//           console.log('📊 Extracted company:', aiResult.canonical_company_name);
+//         } catch (parseError) {
+//           console.error('Failed to parse AI response:', parseError);
+//           aiResult.summary = aiResponse;
+//         }
         
-      } catch (aiError) {
-        console.error('OpenAI error:', aiError.message);
-      }
-    } else {
-      console.log('⚠️ OpenAI not configured, using fallback');
+//       } catch (aiError) {
+//         console.error('OpenAI error:', aiError.message);
+//       }
+//     } else {
+//       console.log('⚠️ OpenAI not configured, using fallback');
       
-      // Try basic extraction from title
-      const patterns = [
-        /Warning Letter to\s+([A-Z][A-Za-z0-9\s&,\.']+?)(?:\s*[-–:]|\s+regarding)/i,
-        /([A-Z][A-Za-z0-9\s&,\.']+?)\s*[-–:]\s*Warning Letter/i,
-        /([A-Z][A-Za-z0-9\s&,\.']+?)\s+(?:Receives?|Gets?)\s+(?:Complete Response Letter|CRL)/i,
-        /Form 483.*?(?:for|to|issued to)\s+([A-Z][A-Za-z0-9\s&,\.']+?)(?:\s*[-–,]|$)/i
-      ];
+//       // Try basic extraction from title
+//       const patterns = [
+//         /Warning Letter to\s+([A-Z][A-Za-z0-9\s&,\.']+?)(?:\s*[-–:]|\s+regarding)/i,
+//         /([A-Z][A-Za-z0-9\s&,\.']+?)\s*[-–:]\s*Warning Letter/i,
+//         /([A-Z][A-Za-z0-9\s&,\.']+?)\s+(?:Receives?|Gets?)\s+(?:Complete Response Letter|CRL)/i,
+//         /Form 483.*?(?:for|to|issued to)\s+([A-Z][A-Za-z0-9\s&,\.']+?)(?:\s*[-–,]|$)/i
+//       ];
       
-      for (const pattern of patterns) {
-        const match = title?.match(pattern);
-        if (match && match[1]) {
-          aiResult.canonical_company_name = match[1].trim();
-          console.log('📊 Pattern matched company:', aiResult.canonical_company_name);
-          break;
-        }
-      }
-    }
+//       for (const pattern of patterns) {
+//         const match = title?.match(pattern);
+//         if (match && match[1]) {
+//           aiResult.canonical_company_name = match[1].trim();
+//           console.log('📊 Pattern matched company:', aiResult.canonical_company_name);
+//           break;
+//         }
+//       }
+//     }
     
-    // Now search for contacts if we have a company name
-    let contactsData = null;
-    if (aiResult.canonical_company_name && aiResult.canonical_company_name !== 'Unknown Company') {
-      console.log(`\n📧 Searching contacts for: ${aiResult.canonical_company_name}`);
+//     // Now search for contacts if we have a company name
+//     let contactsData = null;
+//     if (aiResult.canonical_company_name && aiResult.canonical_company_name !== 'Unknown Company') {
+//       console.log(`\n📧 Searching contacts for: ${aiResult.canonical_company_name}`);
       
-      // Find domain for the company
-      const domain = await companyIntel.findCompanyDomain(aiResult.canonical_company_name);
-      console.log(`🌐 Domain: ${domain}`);
+//       // Find domain for the company
+//       const domain = await companyIntel.findCompanyDomain(aiResult.canonical_company_name);
+//       console.log(`🌐 Domain: ${domain}`);
       
-      // Search for contacts
-      contactsData = await companyIntel.findContactsForCompany(aiResult.canonical_company_name, domain);
+//       // Search for contacts
+//       contactsData = await companyIntel.findContactsForCompany(aiResult.canonical_company_name, domain);
       
-      if (contactsData) {
-        aiResult.emails = contactsData.emails?.map(e => e.email || e) || [];
-        aiResult.contacts = contactsData;
-        console.log(`✅ Found ${aiResult.emails.length} emails`);
-      }
-    }
+//       if (contactsData) {
+//         aiResult.emails = contactsData.emails?.map(e => e.email || e) || [];
+//         aiResult.contacts = contactsData;
+//         console.log(`✅ Found ${aiResult.emails.length} emails`);
+//       }
+//     }
     
-    // Cache the result
-    if (aiResult.canonical_company_name !== 'Unknown Company') {
-      companyIntel.aiCache.set(title, aiResult);
-    }
+//     // Cache the result
+//     if (aiResult.canonical_company_name !== 'Unknown Company') {
+//       companyIntel.aiCache.set(title, aiResult);
+//     }
     
-    console.log('\n✅ Enhancement complete\n');
+//     console.log('\n✅ Enhancement complete\n');
     
-    res.json({
-      success: true,
-      ...aiResult,
-      debug: {
-        hadOpenAI: !!openai,
-        hadHunter: !!API_KEYS.HUNTER,
-        hadApollo: !!API_KEYS.APOLLO,
-        foundCompany: aiResult.canonical_company_name !== 'Unknown Company',
-        emailCount: aiResult.emails.length
-      }
-    });
+//     res.json({
+//       success: true,
+//       ...aiResult,
+//       debug: {
+//         hadOpenAI: !!openai,
+//         hadHunter: !!API_KEYS.HUNTER,
+//         hadApollo: !!API_KEYS.APOLLO,
+//         foundCompany: aiResult.canonical_company_name !== 'Unknown Company',
+//         emailCount: aiResult.emails.length
+//       }
+//     });
     
-  } catch (error) {
-    console.error('AI enhance error:', error);
-    res.status(500).json({ 
-      success: false, 
-      error: error.message,
-      canonical_company_name: 'Unknown Company',
-      summary: 'Enhancement failed',
-      emails: []
-    });
-  }
-});
+//   } catch (error) {
+//     console.error('AI enhance error:', error);
+//     res.status(500).json({ 
+//       success: false, 
+//       error: error.message,
+//       canonical_company_name: 'Unknown Company',
+//       summary: 'Enhancement failed',
+//       emails: []
+//     });
+//   }
+// });
 
 // Initialize company intelligence
 const companyIntel = new CompanyIntelligenceSystem();
@@ -3005,113 +3515,115 @@ app.get('/api/company/:name', async (req, res) => {
 //   }
 // });
 // Replace the existing /api/ai/enhance endpoint
-app.post('/api/ai/enhance', async (req, res) => {
-  try {
-    const { sourceItemId, title, link, summary, source } = req.body;
+// app.post('/api/ai/enhance', async (req, res) => {
+//   try {
+//     const { sourceItemId, title, link, summary, source } = req.body;
     
-    // Build a more comprehensive prompt for AI
-    const promptContent = `${title || ''}\n${summary || ''}\nSource: ${source || ''}\nLink: ${link || ''}`;
+//     // Build a more comprehensive prompt for AI
+//     const promptContent = `${title || ''}\n${summary || ''}\nSource: ${source || ''}\nLink: ${link || ''}`;
     
-    if (!openai) {
-      // Fallback without AI
-      return res.json({
-        success: true,
-        fallback: true,
-        canonical_company_name: 'Unknown Company',
-        summary: summary || 'No AI summary available',
-        public_context: '',
-        precedent_refs: [],
-        emails: []
-      });
-    }
+//     if (!openai) {
+//       // Fallback without AI
+//       return res.json({
+//         success: true,
+//         fallback: true,
+//         canonical_company_name: 'Unknown Company',
+//         summary: summary || 'No AI summary available',
+//         public_context: '',
+//         precedent_refs: [],
+//         emails: []
+//       });
+//     }
     
-    // Use OpenAI to extract company and enhance data
-    const completion = await openai.chat.completions.create({
-      model: "gpt-4-turbo-preview",
-      messages: [
-        {
-          role: "system",
-          content: `You are an FDA regulatory expert. Analyze the provided FDA action and return a JSON response with:
-            - canonical_company_name: Extract the actual company name from the text (be very careful and accurate)
-            - summary: Clear, detailed summary of the regulatory action (3-4 sentences)
-            - public_context: Any relevant public context about this company's regulatory history
-            - regulatory_impact: Specific regulatory implications
-            - business_impact: Business and market implications
-            - precedent_refs: Array of similar FDA precedents or related cases
-            - action_required: What the company needs to do
-            - timeline: Response timeline if mentioned`
-        },
-        {
-          role: "user",
-          content: `Analyze this FDA action and extract the company name:\n\n${promptContent}\n\nReturn only valid JSON.`
-        }
-      ],
-      temperature: 0.3,
-      max_tokens: 1500,
-      response_format: { type: "json_object" }
-    });
+//     // Use OpenAI to extract company and enhance data
+//     const completion = await openai.chat.completions.create({
+//       model: "gpt-4-turbo-preview",
+//       messages: [
+//         {
+//           role: "system",
+//           content: `You are an FDA regulatory expert. Analyze the provided FDA action and return a JSON response with:
+//             - canonical_company_name: Extract the actual company name from the text (be very careful and accurate)
+//             - summary: Clear, detailed summary of the regulatory action (3-4 sentences)
+//             - public_context: Any relevant public context about this company's regulatory history
+//             - regulatory_impact: Specific regulatory implications
+//             - business_impact: Business and market implications
+//             - precedent_refs: Array of similar FDA precedents or related cases
+//             - action_required: What the company needs to do
+//             - timeline: Response timeline if mentioned`
+//         },
+//         {
+//           role: "user",
+//           content: `Analyze this FDA action and extract the company name:\n\n${promptContent}\n\nReturn only valid JSON.`
+//         }
+//       ],
+//       temperature: 0.3,
+//       max_tokens: 1500,
+//       response_format: { type: "json_object" }
+//     });
     
-    let aiData;
-    try {
-      aiData = JSON.parse(completion.choices[0].message.content);
-    } catch {
-      aiData = {
-        canonical_company_name: 'Unknown Company',
-        summary: 'Unable to parse AI response',
-        public_context: '',
-        precedent_refs: [],
-        emails: []
-      };
-    }
+//     let aiData;
+//     try {
+//       aiData = JSON.parse(completion.choices[0].message.content);
+//     } catch {
+//       aiData = {
+//         canonical_company_name: 'Unknown Company',
+//         summary: 'Unable to parse AI response',
+//         public_context: '',
+//         precedent_refs: [],
+//         emails: []
+//       };
+//     }
     
-    // Now search for contacts with the extracted company name
-    let allEmails = [];
-    if (aiData.canonical_company_name && aiData.canonical_company_name !== 'Unknown Company') {
-      const contacts = await companyIntel.findContactsForCompany(aiData.canonical_company_name);
+//     // Now search for contacts with the extracted company name
+//     let allEmails = [];
+//     if (aiData.canonical_company_name && aiData.canonical_company_name !== 'Unknown Company') {
+//       const contacts = await companyIntel.findContactsForCompany(aiData.canonical_company_name);
       
-      if (contacts) {
-        // Collect all emails from different sources
-        if (contacts.emails && contacts.emails.length > 0) {
-          allEmails = allEmails.concat(contacts.emails.map(e => e.email || e));
-        }
-        if (contacts.regulatory_contacts && contacts.regulatory_contacts.length > 0) {
-          allEmails = allEmails.concat(contacts.regulatory_contacts.filter(c => c.email).map(c => c.email));
-        }
-        if (contacts.executives && contacts.executives.length > 0) {
-          allEmails = allEmails.concat(contacts.executives.filter(e => e.email).map(e => e.email));
-        }
-        if (contacts.general_email) {
-          allEmails.push(contacts.general_email);
-        }
+//       if (contacts) {
+//         // Collect all emails from different sources
+//         if (contacts.emails && contacts.emails.length > 0) {
+//           allEmails = allEmails.concat(contacts.emails.map(e => e.email || e));
+//         }
+//         if (contacts.regulatory_contacts && contacts.regulatory_contacts.length > 0) {
+//           allEmails = allEmails.concat(contacts.regulatory_contacts.filter(c => c.email).map(c => c.email));
+//         }
+//         if (contacts.executives && contacts.executives.length > 0) {
+//           allEmails = allEmails.concat(contacts.executives.filter(e => e.email).map(e => e.email));
+//         }
+//         if (contacts.general_email) {
+//           allEmails.push(contacts.general_email);
+//         }
         
-        // Add contact details to response
-        aiData.contacts = contacts;
-      }
-    }
+//         // Add contact details to response
+//         aiData.contacts = contacts;
+//       }
+//     }
     
-    // Remove duplicates
-    aiData.emails = [...new Set(allEmails)];
+//     // Remove duplicates
+//     aiData.emails = [...new Set(allEmails)];
     
-    res.json({
-      success: true,
-      ...aiData
-    });
+//     res.json({
+//       success: true,
+//       ...aiData
+//     });
     
-  } catch (error) {
-    console.error('AI enhancement error:', error);
-    res.status(500).json({ 
-      success: false, 
-      error: error.message,
-      fallback: {
-        canonical_company_name: 'Unknown Company',
-        summary: 'AI enhancement unavailable',
-        public_context: '',
-        precedent_refs: [],
-        emails: []
-      }
-    });
-  }
-});
+//   } catch (error) {
+//     console.error('AI enhancement error:', error);
+//     res.status(500).json({ 
+//       success: false, 
+//       error: error.message,
+//       fallback: {
+//         canonical_company_name: 'Unknown Company',
+//         summary: 'AI enhancement unavailable',
+//         public_context: '',
+//         precedent_refs: [],
+//         emails: []
+//       }
+//     });
+//   }
+// });
+
+
 
 // Export modal to email
 app.post('/api/report/export-modal', async (req, res) => {
@@ -3722,7 +4234,338 @@ function setupScheduledTasks() {
   
   console.log('✅ Scheduled tasks configured');
 }
+// COMPLETE REPLACEMENT FOR /api/ai/enhance endpoint
+app.post('/api/ai/enhance', async (req, res) => {
+  try {
+    const { itemId, title, link, summary, source, types, date, warningLetterData } = req.body;
+    
+    console.log('\n🤖 AI Enhancement Request:');
+    console.log('Title:', title?.substring(0, 100));
+    console.log('Has OpenAI:', !!openai);
+    
+    // Check if we have warning letter data
+    if (warningLetterData) {
+      console.log('📋 Warning Letter Data Received:');
+      console.log('  - Company:', warningLetterData.company || warningLetterData.companyName);
+      console.log('  - Letter content length:', warningLetterData.letterContent?.length || 0);
+      console.log('  - Violations count:', warningLetterData.violations?.length || 0);
+      console.log('  - Products count:', warningLetterData.products?.length || 0);
+      console.log('  - Response deadline:', warningLetterData.responseDeadline);
+    }
+    
+    // Build comprehensive content for analysis INCLUDING warning letter data
+    let fullContent = `
+Title: ${title || 'No title'}
+Date: ${date || 'Unknown date'}
+Source: ${source || 'Unknown source'}
+Types: ${types?.join(', ') || 'Unknown type'}
+Link: ${link || 'No link'}
+Summary: ${summary || 'No summary available'}`;
 
+    // Add warning letter specific content if available
+    if (warningLetterData) {
+      fullContent += `
+
+DETAILED WARNING LETTER INFORMATION:
+Company: ${warningLetterData.company || warningLetterData.companyName || 'Unknown'}
+${warningLetterData.recipient ? `
+Recipient Name: ${warningLetterData.recipient.name || 'Not specified'}
+Recipient Title: ${warningLetterData.recipient.title || 'Not specified'}
+Recipient Email: ${warningLetterData.recipient.email || 'Not specified'}
+Address: ${warningLetterData.recipient.fullAddress || 'Not specified'}` : ''}
+
+Letter Date: ${warningLetterData.letterDate || 'Not specified'}
+Response Deadline: ${warningLetterData.responseDeadline || 'Not specified'}
+MARCS Number: ${warningLetterData.marcsNumber || 'Not specified'}
+Issuing Office: ${warningLetterData.issuingOffice || 'Not specified'}
+Product Type: ${warningLetterData.productType || 'Not specified'}
+Delivery Method: ${warningLetterData.deliveryMethod || 'Not specified'}
+FEI Number: ${warningLetterData.feiNumber || 'Not specified'}
+Subject: ${warningLetterData.subject || 'Not specified'}
+
+Response Email: ${warningLetterData.responseEmail || 'Not specified'}
+Response Address: ${warningLetterData.responseAddress || 'Not specified'}
+
+Violations (${warningLetterData.violations?.length || 0} total):
+${warningLetterData.violations?.map((v, i) => `${i+1}. ${v}`).join('\n') || 'None listed'}
+
+Products Mentioned:
+${warningLetterData.products?.join(', ') || 'None listed'}
+
+Full Letter Content (${warningLetterData.letterContent?.length || 0} characters):
+${warningLetterData.letterContent || 'Not available'}`;
+    }
+    
+    fullContent = fullContent.trim();
+    
+    let aiResult = {
+      canonical_company_name: 'Unknown Company',
+      summary: summary || 'No summary available',
+      emails: [],
+      contacts: [],
+      regulatory_impact: '',
+      business_impact: '',
+      action_required: '',
+      timeline: '',
+      severity_assessment: 5,
+      key_violations: [],
+      response_strategy: '',
+      compliance_recommendations: ''
+    };
+    
+    // If we have the company from warning letter, use it directly
+    if (warningLetterData?.company || warningLetterData?.companyName || warningLetterData?.recipient?.company) {
+      aiResult.canonical_company_name = 
+        warningLetterData.company || 
+        warningLetterData.companyName || 
+        warningLetterData.recipient?.company;
+      console.log('📊 Using company from warning letter:', aiResult.canonical_company_name);
+    }
+    
+    // Try AI extraction if available
+    if (openai) {
+      try {
+        console.log('🔮 Calling OpenAI with full content...');
+        console.log('Content length being sent to AI:', fullContent.length);
+        
+        // Split into chunks if content is too long
+        const MAX_CONTENT_LENGTH = 30000; // Adjust based on your needs
+        let contentToAnalyze = fullContent;
+        
+        if (fullContent.length > MAX_CONTENT_LENGTH) {
+          // Prioritize key information
+          contentToAnalyze = fullContent.substring(0, MAX_CONTENT_LENGTH);
+          console.log('⚠️ Content truncated to', MAX_CONTENT_LENGTH, 'characters');
+        }
+        
+        const completion = await openai.chat.completions.create({
+          model: "gpt-4-turbo-preview",
+          messages: [
+            {
+              role: "system",
+              content: `You are an FDA regulatory expert specializing in warning letters and compliance. Analyze the provided FDA warning letter and regulatory documents.
+              
+CRITICAL INSTRUCTIONS:
+1. Extract the ACTUAL company name (not FDA, not generic terms)
+2. Analyze the FULL warning letter content, especially violations
+3. Pay special attention to deadlines and required actions
+4. Assess severity based on number and nature of violations
+5. Consider the response requirements and timeline
+
+Return a JSON object with ALL these fields (all required):
+{
+  "canonical_company_name": "The actual company name from the letter",
+  "summary": "Comprehensive 4-5 sentence summary including key violations, required actions, and deadlines",
+  "regulatory_impact": "Specific regulatory implications based on the violations cited",
+  "business_impact": "Business, market, and operational implications",
+  "action_required": "Specific actions the company must take based on the warning letter",
+  "timeline": "Response timeline and all deadlines mentioned",
+  "severity_assessment": 8, // 1-10 scale based on violations (warning letters typically 7-9)
+  "key_violations": ["violation 1", "violation 2"], // Array of most critical violations
+  "response_strategy": "Recommended approach for responding to FDA",
+  "compliance_recommendations": "Specific improvements needed to address violations",
+  "public_context": "Any relevant context about this company's regulatory history",
+  "precedent_refs": ["similar case 1", "similar case 2"] // Array of similar FDA cases
+}`
+            },
+            {
+              role: "user",
+              content: `Analyze this FDA warning letter comprehensively. Extract ALL critical information and provide detailed analysis.
+
+${contentToAnalyze}
+
+Remember to return ONLY valid JSON with all required fields.`
+            }
+          ],
+          temperature: 0.2,
+          max_tokens: 3000, // Increased for comprehensive analysis
+          response_format: { type: "json_object" }
+        });
+        
+        const aiResponse = completion.choices[0].message.content;
+        console.log('✅ OpenAI responded with analysis');
+        
+        try {
+          const parsedResponse = JSON.parse(aiResponse);
+          aiResult = { ...aiResult, ...parsedResponse };
+          
+          // Override with warning letter company if AI got it wrong
+          if (warningLetterData?.company && 
+              (aiResult.canonical_company_name === 'Unknown Company' || 
+               aiResult.canonical_company_name === 'FDA')) {
+            aiResult.canonical_company_name = warningLetterData.company;
+          }
+          
+          // Ensure we have reasonable defaults for warning letters
+          if (types?.includes('warning_letter') && aiResult.severity_assessment < 7) {
+            aiResult.severity_assessment = 7; // Minimum severity for warning letters
+          }
+          
+          console.log('📊 AI Analysis Complete:');
+          console.log('  - Company:', aiResult.canonical_company_name);
+          console.log('  - Severity:', aiResult.severity_assessment);
+          console.log('  - Key violations:', aiResult.key_violations?.length || 0);
+          
+        } catch (parseError) {
+          console.error('Failed to parse AI response:', parseError);
+          aiResult.summary = aiResponse;
+        }
+        
+      } catch (aiError) {
+        console.error('OpenAI error:', aiError.message);
+        
+        // Fallback analysis using warning letter data
+        if (warningLetterData) {
+          aiResult = createFallbackAnalysis(warningLetterData, aiResult);
+        }
+      }
+    } else {
+      console.log('⚠️ OpenAI not configured, using fallback analysis');
+      
+      // Create detailed fallback analysis from warning letter data
+      if (warningLetterData) {
+        aiResult = createFallbackAnalysis(warningLetterData, aiResult);
+      }
+    }
+    
+    // Now search for contacts if we have a company name
+    let contactsData = null;
+    if (aiResult.canonical_company_name && aiResult.canonical_company_name !== 'Unknown Company') {
+      console.log(`\n📧 Searching contacts for: ${aiResult.canonical_company_name}`);
+      
+      // Find domain for the company
+      const domain = await companyIntel.findCompanyDomain(aiResult.canonical_company_name);
+      console.log(`🌐 Domain: ${domain}`);
+      
+      // Search for contacts
+      contactsData = await companyIntel.findContactsForCompany(aiResult.canonical_company_name, domain);
+      
+      if (contactsData) {
+        // Collect all emails
+        const allEmails = [];
+        
+        // Add warning letter recipient email if available
+        if (warningLetterData?.recipient?.email) {
+          allEmails.push(warningLetterData.recipient.email);
+        }
+        
+        // Add emails from contact search
+        if (contactsData.emails && contactsData.emails.length > 0) {
+          contactsData.emails.forEach(e => {
+            if (e.email) allEmails.push(e.email);
+          });
+        }
+        
+        // Add regulatory contacts
+        if (contactsData.regulatory_contacts) {
+          contactsData.regulatory_contacts.forEach(c => {
+            if (c.email) allEmails.push(c.email);
+          });
+        }
+        
+        // Add executives
+        if (contactsData.executives) {
+          contactsData.executives.forEach(e => {
+            if (e.email) allEmails.push(e.email);
+          });
+        }
+        
+        // Add general email
+        if (contactsData.general_email) {
+          allEmails.push(contactsData.general_email);
+        }
+        
+        // Remove duplicates
+        aiResult.emails = [...new Set(allEmails)];
+        aiResult.contacts = contactsData;
+        
+        console.log(`✅ Found ${aiResult.emails.length} unique emails`);
+      }
+    }
+    
+    // Cache the result if we have meaningful data
+    if (aiResult.canonical_company_name !== 'Unknown Company') {
+      const cacheKey = `${title}_${link}`.substring(0, 100);
+      companyIntel.aiCache.set(cacheKey, aiResult);
+      
+      // Update company record
+      if (itemId) {
+        const allData = await fs.readFile(DATA_FILES.ALL_ITEMS, 'utf8');
+        const items = JSON.parse(allData);
+        const item = items.find(i => i.id === itemId);
+        if (item) {
+          item.ai_enhanced = true;
+          item.canonical_company = aiResult.canonical_company_name;
+          item.severity = aiResult.severity_assessment || item.severity;
+          await fs.writeFile(DATA_FILES.ALL_ITEMS, JSON.stringify(items, null, 2));
+        }
+      }
+    }
+    
+    console.log('\n✅ Enhancement complete\n');
+    
+    res.json({
+      success: true,
+      ...aiResult,
+      debug: {
+        hadOpenAI: !!openai,
+        hadHunter: !!API_KEYS.HUNTER,
+        hadApollo: !!API_KEYS.APOLLO,
+        hadWarningLetter: !!warningLetterData,
+        warningLetterContentLength: warningLetterData?.letterContent?.length || 0,
+        foundCompany: aiResult.canonical_company_name !== 'Unknown Company',
+        emailCount: aiResult.emails.length
+      }
+    });
+    
+  } catch (error) {
+    console.error('AI enhance error:', error);
+    res.status(500).json({ 
+      success: false, 
+      error: error.message,
+      canonical_company_name: 'Unknown Company',
+      summary: 'Enhancement failed',
+      emails: []
+    });
+  }
+});
+
+// Helper function for fallback analysis
+function createFallbackAnalysis(warningLetterData, baseResult) {
+  const result = { ...baseResult };
+  
+  result.canonical_company_name = 
+    warningLetterData.company || 
+    warningLetterData.companyName || 
+    warningLetterData.recipient?.company || 
+    'Unknown Company';
+  
+  // Build summary
+  let summary = `FDA Warning Letter issued to ${result.canonical_company_name}`;
+  if (warningLetterData.letterDate) {
+    summary += ` on ${warningLetterData.letterDate}`;
+  }
+  if (warningLetterData.violations?.length > 0) {
+    summary += `. ${warningLetterData.violations.length} violations cited including regulatory compliance issues`;
+  }
+  if (warningLetterData.responseDeadline) {
+    summary += `. Response required within ${warningLetterData.responseDeadline}`;
+  }
+  if (warningLetterData.products?.length > 0) {
+    summary += `. Affects ${warningLetterData.products.length} products`;
+  }
+  result.summary = summary + '.';
+  
+  // Set fields based on warning letter data
+  result.key_violations = warningLetterData.violations?.slice(0, 10) || [];
+  result.severity_assessment = warningLetterData.violations?.length > 5 ? 8 : 7;
+  result.timeline = warningLetterData.responseDeadline || 'Standard 15 working days';
+  result.action_required = 'Company must respond to all violations cited and provide corrective action plan';
+  result.regulatory_impact = 'Potential enforcement action if not addressed. May affect product approvals';
+  result.business_impact = 'Reputation risk, potential stock impact, possible manufacturing delays';
+  
+  return result;
+}
 // Send daily digest
 async function sendDailyDigest(user, items) {
   const html = `
