@@ -1,1 +1,46 @@
-{}
+{
+  "Saol Therapeutics gets FDA Complete Response Letter for SL1009 (DCA) in treating PDCD - MarketScreener": {
+    "canonical_company_name": "Saol Therapeutics",
+    "summary": "Saol Therapeutics received a Complete Response Letter (CRL) from the FDA regarding their application for SL1009, a drug intended for the treatment of PDCD. The CRL indicates that the FDA has completed its review of the application but has identified issues that prevent approval in its current form. The specific concerns or requirements for addressing these issues were not detailed in the summary provided.",
+    "emails": [
+      "info@saoltherapeutics.com",
+      "regulatory@saoltherapeutics.com",
+      "quality@saoltherapeutics.com",
+      "compliance@saoltherapeutics.com"
+    ],
+    "contacts": {
+      "company": "Saol Therapeutics",
+      "domain": "saoltherapeutics.com",
+      "emails": [
+        {
+          "email": "info@saoltherapeutics.com",
+          "name": "General Info",
+          "position": "General"
+        },
+        {
+          "email": "regulatory@saoltherapeutics.com",
+          "name": "Regulatory Affairs",
+          "position": "Regulatory"
+        },
+        {
+          "email": "quality@saoltherapeutics.com",
+          "name": "Quality Assurance",
+          "position": "Quality"
+        },
+        {
+          "email": "compliance@saoltherapeutics.com",
+          "name": "Compliance",
+          "position": "Compliance"
+        }
+      ],
+      "contacts": [],
+      "searched": true
+    },
+    "regulatory_impact": "The issuance of a CRL means that Saol Therapeutics cannot proceed with the marketing of SL1009 for PDCD until the concerns raised by the FDA are adequately addressed.",
+    "business_impact": "Receiving a CRL can significantly delay the commercialization of SL1009, potentially affecting Saol Therapeutics' revenue projections and market positioning for this treatment. It may also impact investor confidence and could require additional investment to meet the FDA's requirements.",
+    "action_required": "Saol Therapeutics needs to review the concerns raised by the FDA, conduct any additional studies or data analysis required, and resubmit their application for SL1009 once these issues are fully addressed.",
+    "timeline": "Not specified",
+    "severity_assessment": 7,
+    "key_violations": []
+  }
+}

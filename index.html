@@ -10,6 +10,11 @@
     <meta name="title" content="SyneticX | Enterprise Regulatory Intelligence Platform for Life Sciences">
     <meta name="description" content="Transform regulatory compliance with AI-driven intelligence. Monitor FDA submissions, track competitor activities, and accelerate approval timelines.">
     
+        <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="syneticx.png">
+    <link rel="alternate icon" href="syneticx.png">
+    <link rel="apple-touch-icon" href="syneticx.png">
+
     <!-- Fonts -->
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@600;700;800&display=swap" rel="stylesheet">
     
@@ -124,12 +129,33 @@
         }
         
         /* Navigation with glass effect */
-        .nav-glass {
+        .nav-glass.scrolled {
             background: rgba(10, 14, 39, 0.85);
             backdrop-filter: blur(20px);
             border-bottom: 1px solid rgba(255, 255, 255, 0.1);
         }
-        
+         .nav-link::after {
+            content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  .select-clean{
+  -webkit-appearance: none !important;
+  -moz-appearance: none !important;
+  appearance: none !important;
+  background-image: none !important; /* remove any injected SVG bg */
+}
+.select-clean::-ms-expand { display: none; } /* IE/Edge legacy */
+
         /* Animated background */
         @keyframes float {
             0%, 100% { transform: translateY(0) rotate(0deg); }
@@ -248,100 +274,193 @@
 </style>
 
 </head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LGV9XLLBLV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LGV9XLLBLV');
+</script>
 <body class="font-sans text-gray-100 bg-gray-900">
+<!-- Professional Enterprise Navbar -->
+<input type="hidden" id="utm_source" name="utm_source" value="">
+<input type="hidden" id="utm_medium" name="utm_medium" value="">
+<input type="hidden" id="utm_campaign" name="utm_campaign" value="">
+<input type="hidden" id="utm_content" name="utm_content" value="">
+<input type="hidden" id="utm_term" name="utm_term" value="">
+<!-- Spacer for fixed navbar -->
+<!-- <div class="h-24"></div> -->
 
-    <!-- Navigation -->
-<!-- Big & Bold Glass Navbar (Synetic colors) -->
-<nav x-data="{ mobileMenu:false }" class="fixed inset-x-0 top-0 z-50 nav-glass">
-  <div class="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
-    <div class="flex h-20 items-center justify-between">
-      <!-- Brand -->
-     <!-- Brand (flush-left) -->
-<a href="./" class="flex items-center gap-3 shrink-0 -ml-4 sm:-ml-6 lg:-ml-8">
-  <img src="syneticx.png" alt="SyneticX" class="h-9 w-9 object-contain" />
-  <span class="text-2xl font-extrabold tracking-tight gradient-text">SyneticX</span>
-</a>
+<!-- Enhanced Navbar Styles -->
+<style>
+  /* Navbar base styles */
+  #navbar {
+    will-change: transform, background-color, backdrop-filter;
+  }
+  
+  /* Glass effect on scroll */
+  #navbar.scrolled {
+    background: rgba(15, 23, 42, 0.85);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.05),
+                0 10px 40px -10px rgba(0, 0, 0, 0.5);
+  }
+  
+  /* Nav link hover effect with underline animation */
+  .nav-link {
+    position: relative;
+    padding-bottom: 2px;
+  }
+  
+  .nav-link::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    height: 2px;
+    width: 0;
+    background: linear-gradient(90deg, #3b82f6, #60a5fa);
+    transition: width 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  .nav-link:hover::after {
+    width: 100%;
+  }
+  
+  /* Smooth hover for buttons */
+  a, button {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+  
+  /* Mobile menu animation */
+  #mobile-menu {
+    animation: slideDown 0.3s ease-out;
+  }
+  
+  @keyframes slideDown {
+    from {
+      opacity: 0;
+      transform: translateY(-10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  
+  /* Ensure good contrast on glass effect */
+  #navbar.scrolled .nav-link {
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 1024px) {
+    #navbar .max-w-7xl {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+</style>
 
 
-      <!-- Desktop nav -->
-      <div class="hidden lg:flex items-center gap-8">
-        <a href="./head.html" class="px-1 text-lg font-semibold text-white/85 hover:text-white transition-colors">
-          Leaf Intelligence
-        </a>
-        <a href="./competitive.html" class="px-1 text-lg font-semibold text-white/85 hover:text-white transition-colors">
-          Business Intelligence
+<!-- Floating Try Button -->
+    <div class="fixed bottom-6 left-6 z-50">
+        <div class="group">
+            <!-- Main floating button -->
+            <div class="glass-card rounded-2xl p-4 bg-gradient-to-r from-white/10 to-white/5 backdrop-blur-xl border border-white/20 hover:border-white/40 transition-all duration-300 hover:scale-105 cursor-pointer shadow-2xl">
+                <div class="flex items-center space-x-3">
+                    <div class="flex items-center">
+                        <!-- Beautiful gradient leaf icon -->
+                        <div class="relative">
+                            <img src="leaf.png" alt="Leaf Intelligence" class="h-12 w-12 object-contain">
+                            <!-- Subtle glow effect -->
+                            <div class="absolute inset-0 bg-gradient-to-r from-emerald-400 to-cyan-400 opacity-30 blur-lg rounded-full group-hover:opacity-50 transition-opacity duration-300"></div>
+                        </div>
+                        <div class="ml-3">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-lg font-bold bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                                    Leaf Intelligence
+                                </span>
+                                <span class="px-2 py-1 bg-gradient-to-r from-brand-500 to-brand-600 text-white text-xs font-semibold rounded-full animate-pulse">
+                                    TRY NOW ->
+                                </span>
+                            </div>
+                            <div class="text-xs text-gray-300 font-medium tracking-wide">AI Research Platform</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Hover tooltip -->
+            <div class="absolute bottom-full left-0 mb-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none">
+                <div class="bg-black/80 backdrop-blur-sm text-white text-sm px-3 py-2 rounded-lg whitespace-nowrap">
+                    Try our AI-powered regulatory intelligence platform
+                    <div class="absolute top-full left-4 w-0 h-0 border-l-4 border-r-4 border-t-4 border-transparent border-t-black/80"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+ <section class="relative min-h-[97vh] flex items-center overflow-hidden tech-grid"> 
+      <nav id="navbar" class="nav-glass fixed top-0 left-0 right-0 z-50" x-data="{ mobileMenu: false }">
+  <div class="container mx-auto px-6 lg:px-8">
+    <div class="flex justify-between items-center h-16">
+      
+      <!-- Logo -->
+      <div class="flex items-center">
+        <a href="./" class="flex items-center group">
+          <!-- SyneticX Icon -->
+          <img src="syneticx.png" 
+               alt="SyneticX Logo" 
+               class="h-8 w-auto transition-transform duration-300 group-hover:scale-105" />
+          <!-- Gradient SyneticX Text -->
+          <span class="ml-2 text-xl font-display font-extrabold bg-gradient-to-r from-blue-400 via-cyan-400 to-purple-500 bg-clip-text text-transparent">
+            SyneticX
+          </span>
         </a>
       </div>
 
-      <!-- Desktop CTAs -->
-      <div class="hidden lg:flex items-center gap-4">
-        <a href="/contact" class="btn-secondary-dark text-base font-semibold">
-          Contact Sales
-        </a>
-        <a href="/demo.html" class="btn-glow rounded-xl text-base font-semibold px-5 py-3">
+      <!-- Desktop Navigation -->
+      <div class="hidden lg:flex items-center space-x-8">
+        <a href="./head.html" class="text-gray-300 hover:text-brand-400 font-medium transition-colors">Leaf Intelligence</a>
+        <a href="./competitive.html" class="text-gray-300 hover:text-brand-400 font-medium transition-colors">Business Intelligence</a>
+        <!-- <a href="#resources" class="text-gray-300 hover:text-brand-400 font-medium transition-colors">Resources</a> -->
+      </div>
+
+      <!-- CTAs -->
+      <div class="hidden lg:flex items-center space-x-4">
+        <a href="./demo.html" class="text-gray-300 hover:text-white font-medium transition-colors">Contact Sales</a>
+        <a href="/demo.html" class="btn-glow px-5 py-2.5 rounded-lg text-white font-semibold bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 transition-all">
           Request Demo
         </a>
       </div>
 
-      <!-- Mobile menu button -->
-      <button
-        @click="mobileMenu = !mobileMenu"
-        :aria-expanded="mobileMenu"
-        aria-controls="primary-mobile-menu"
-        class="lg:hidden inline-flex items-center justify-center rounded-xl p-3 text-white/85 hover:bg-white/10 focus:outline-none focus:ring-2 focus:ring-white/30"
-      >
-        <svg x-show="!mobileMenu" class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7h16M4 12h16M4 17h16"/>
+      <!-- Mobile Menu Button -->
+      <button @click="mobileMenu = !mobileMenu" class="lg:hidden p-2 rounded-lg hover:bg-white/10">
+        <svg x-show="!mobileMenu" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
         </svg>
-        <svg x-show="mobileMenu" class="h-7 w-7" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"/>
+        <svg x-show="mobileMenu" class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+          <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
         </svg>
       </button>
     </div>
   </div>
 
-  <!-- Mobile menu -->
-  <div
-    x-show="mobileMenu"
-    x-transition
-    x-cloak
-    id="primary-mobile-menu"
-    class="lg:hidden border-t border-white/10 bg-[rgba(10,14,39,0.92)] backdrop-blur-md"
-  >
-    <div class="px-4 py-4 space-y-2">
-      <a href="/head.html" class="block rounded-lg px-4 py-3 text-base font-semibold text-white/90 hover:text-white hover:bg-white/10">
-        Leaf Intelligence
-      </a>
-      <a href="/competitive.html" class="block rounded-lg px-4 py-3 text-base font-semibold text-white/90 hover:text-white hover:bg-white/10">
-        Business Intelligence
-      </a>
-      <div class="h-px bg-white/10 my-2"></div>
-      <a href="/contact" class="block rounded-lg px-4 py-3 text-base font-semibold text-white/90 hover:text-white hover:bg-white/10">
-        Contact Sales
-      </a>
-      <a href="/demo.html" class="block rounded-xl px-4 py-3 text-center btn-glow text-base font-semibold">
-        Request Demo
-      </a>
-    </div>
+  <!-- Mobile Menu -->
+  <div x-show="mobileMenu" class="lg:hidden bg-black/80 backdrop-blur-md px-6 py-4 space-y-4">
+    <a href="/head.html" class="block text-gray-300 hover:text-brand-400 font-medium transition-colors">Leaf Intelligence</a>
+    <a href="/competitive.html" class="block text-gray-300 hover:text-brand-400 font-medium transition-colors">Business Intelligence</a>
+    <a href="#resources" class="block text-gray-300 hover:text-brand-400 font-medium transition-colors">Resources</a>
+    <a href="/contact" class="block text-gray-300 hover:text-white font-medium transition-colors">Contact Sales</a>
+    <a href="/demo.html" class="block w-full text-center btn-glow px-5 py-2.5 rounded-lg text-white font-semibold bg-gradient-to-r from-blue-500 to-purple-500 hover:from-purple-500 hover:to-blue-500 transition-all">
+      Request Demo
+    </a>
   </div>
-</nav>
-
-<!-- Spacer to offset fixed nav height -->
-<div class="h-20"></div>
-
-
-<!-- Spacer so content clears the fixed nav -->
-<div class="h-20"></div>
-
-
-<!-- Spacer to offset fixed nav height -->
-<div class="h-14"></div>
-
-
-
-
-    <!-- Hero Section -->
- <section class="relative min-h-[90vh] flex items-center overflow-hidden tech-grid">        <!-- Animated background particles -->
+</nav>       <!-- Animated background particles -->
         <div class="absolute inset-0">
             <div class="absolute top-20 left-10 w-64 h-64 glow-orb floating-particle"></div>
             <div class="absolute bottom-20 right-10 w-96 h-96 glow-orb floating-particle" style="animation-delay: 10s;"></div>
@@ -364,19 +483,45 @@
                     </h1>
                     
                     <p class="text-xl text-gray-300 leading-relaxed mb-8">
-                        Transform your regulatory operations with real-time FDA intelligence, comprehensive competitor monitoring, and predictive compliance analytics. Reduce submission timelines by 40% while ensuring complete regulatory adherence.
+                        Transform your regulatory operations with real-time FDA intelligence, comprehensive competitor monitoring, and predictive compliance analytics. Leaf Intelligence gives you visibility across FDA, EMA, PubMed, patents, and clinical trials - instantly.
                     </p>
                     
                     <div class="flex flex-col sm:flex-row gap-4 mb-12">
-                        <a href="/demo.html" class="btn-glow px-8 py-4 rounded-lg text-white font-semibold text-center">
-                            Schedule Executive Briefing
-                        </a>
+<div class="flex justify-center">
+  <a href="/demo.html" 
+     class="btn-glow px-8 py-4 rounded-lg text-white font-semibold flex items-center justify-center">
+    Schedule Executive Briefing
+  </a>
+</div>
+
+
                         <button onclick="playProductDemo()" class="btn-secondary-dark px-8 py-4 rounded-lg font-semibold flex items-center justify-center text-white">
-                            <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <!-- <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                             </svg>
-                            View Product Demo
+                            Try Leaf Intelligence Now -->
+                              <div class="flex items-center space-x-3">
+                    <div class="flex items-center">
+                        <!-- Beautiful gradient leaf icon -->
+                        <div class="relative">
+                            <img src="leaf.png" alt="Leaf Intelligence" class="h-12 w-12 object-contain">
+                            <!-- Subtle glow effect -->
+                            <div class="absolute inset-0 bg-gradient-to-r from-emerald-400 to-cyan-400 opacity-30 blur-lg rounded-full group-hover:opacity-50 transition-opacity duration-300"></div>
+                        </div>
+                        <div class="ml-3">
+                            <div class="flex items-center space-x-2">
+                                <span class="text-lg font-bold bg-gradient-to-r from-emerald-400 via-blue-400 to-purple-400 bg-clip-text text-transparent">
+                                    Leaf Intelligence
+                                </span>
+                                <!-- <span class="px-2 py-1 bg-gradient-to-r from-brand-500 to-brand-600 text-white text-xs font-semibold rounded-full animate-pulse">
+                                    TRY NOW ->
+                                </span> -->
+                            </div>
+                            <div class="text-xs text-gray-300 font-medium tracking-wide">AI Research Platform</div>
+                        </div>
+                    </div>
+                </div>
                         </button>
                     </div>
                     
@@ -412,7 +557,7 @@
                     </div>
                     
                     <!-- Floating badge -->
-                    <div class="absolute -top-4 -right-4 px-4 py-2 bg-green-500/20 backdrop-blur text-green-300 rounded-full text-sm font-semibold border border-green-500/30 pulse-badge">
+                    <div class="absolute -top-4 -right-4 px-4 py-2 bg-green-500/20 backdrop-blur text-green-300 rounded-full text-sm font-semibold border border-green-500/30 ">
                         Validated by Subject Matter Experts
                     </div>
                 </div>
@@ -482,8 +627,8 @@
                             <span class="text-gray-300">Real-time data visualization</span>
                         </li>
                     </ul>
-                    <a href="/solutions/time-saving" class="inline-flex items-center text-brand-400 font-semibold hover:text-brand-300">
-                        Learn more
+                    <a href="/demo.html" class="inline-flex items-center text-brand-400 font-semibold hover:text-brand-300">
+                        Book a Call
                         <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
                         </svg>
@@ -518,7 +663,7 @@
                             <span class="text-gray-300">Compliance risk assessment</span>
                         </li>
                     </ul>
-                    <a href="/solutions/regulatory" class="inline-flex items-center text-purple-400 font-semibold hover:text-purple-300">
+                    <a href="/head.html" class="inline-flex items-center text-purple-400 font-semibold hover:text-purple-300">
                         Learn more
                         <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -554,7 +699,7 @@
                             <span class="text-gray-300">Market share analysis</span>
                         </li>
                     </ul>
-                    <a href="/solutions/competitive" class="inline-flex items-center text-green-400 font-semibold hover:text-green-300">
+                    <a href="/competitive.html" class="inline-flex items-center text-green-400 font-semibold hover:text-green-300">
                         Learn more
                         <svg class="w-5 h-5 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -807,14 +952,12 @@
                 <div>
                     <div class="relative">
                         <!-- Molecule Container -->
-                        <div class="bg-black/30 rounded-2xl p-6 backdrop-blur-sm border border-white/10">
-                            <!-- Controls Bar -->
-                            <div class="flex items-center justify-between mb-4">
+<div class="bg-gradient-to-r from-gray-900/30 via-brand-900/20 to-gray-900/30 rounded-2xl p-6 backdrop-blur-sm border border-white/10">                            <div class="flex items-center justify-between mb-4">
                                 <div class="flex items-center space-x-2">
                                     <span class="text-sm text-gray-400">View Mode:</span>
                                     <button onclick="changeStyle('stick')" class="px-3 py-1 text-xs bg-white/10 hover:bg-white/20 rounded transition">Stick</button>
                                     <button onclick="changeStyle('sphere')" class="px-3 py-1 text-xs bg-white/10 hover:bg-white/20 rounded transition">Sphere</button>
-                                    <button onclick="changeStyle('cartoon')" class="px-3 py-1 text-xs bg-white/10 hover:bg-white/20 rounded transition">Cartoon</button>
+                                    <button onclick="changeStyle('cartoon')" class="hidden px-3 py-1 text-xs bg-white/10 hover:bg-white/20 rounded transition">Cartoon</button>
                                 </div>
                                 <button onclick="toggleRotation()" class="p-2 bg-white/10 hover:bg-white/20 rounded-lg transition">
                                     <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -824,7 +967,14 @@
                             </div>
                             
                             <!-- 3D Viewer -->
-                            <div id="molecule-viewer" class="h-[400px] bg-gray-900/50 rounded-lg relative">
+                            <div id="molecule-viewer" class="h-[500px] rounded-lg relative overflow-hidden">
+    <!-- Gradient background layer -->
+    <div class="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-blue-900/70 to-purple-900/80"></div>
+    
+    <!-- Floating orbs for extra effect -->
+    <div class="absolute top-0 right-0 w-32 h-32 bg-blue-500/20 rounded-full blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-40 h-40 bg-purple-500/20 rounded-full blur-3xl"></div>
+    
                                 <!-- Loading state -->
                                 <div id="molecule-loading" class="absolute inset-0 flex items-center justify-center">
                                     <div class="text-center">
@@ -875,6 +1025,7 @@
         </div>
     </section>
 
+
    
     <!-- Platform Features -->
     <section class="py-20 relative overflow-hidden">
@@ -889,7 +1040,7 @@
                 </p>
             </div>
             
-            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-20">
                 <!-- Feature Cards with Glass Effect -->
                 <div class="glass-card rounded-xl p-8">
                     <div class="w-12 h-12 rounded-lg bg-brand-500/20 flex items-center justify-center mb-4 border border-brand-500/30">
@@ -901,9 +1052,9 @@
                     <p class="text-gray-300 mb-4">
                         Monitor all FDA submissions, amendments, and correspondence in real-time. Automated alerts for critical deadlines and regulatory changes.
                     </p>
-                    <a href="/features/fda-tracking" class="text-brand-400 font-medium hover:text-brand-300 transition-colors">
+                    <!-- <a href="/features/fda-tracking" class="text-brand-400 font-medium hover:text-brand-300 transition-colors">
                         Explore capabilities →
-                    </a>
+                    </a> -->
                 </div>
                 
                 <div class="glass-card rounded-xl p-8">
@@ -916,9 +1067,9 @@
                     <p class="text-gray-300 mb-4">
                         Track competitor regulatory activities, product pipelines, and market positioning. Predictive analytics for strategic planning.
                     </p>
-                    <a href="/features/competitive-intelligence" class="text-brand-400 font-medium hover:text-brand-300 transition-colors">
+                    <!-- <a href="/features/competitive-intelligence" class="text-brand-400 font-medium hover:text-brand-300 transition-colors">
                         Explore capabilities →
-                    </a>
+                    </a> -->
                 </div>
                 
                 <div class="glass-card rounded-xl p-8">
@@ -931,12 +1082,12 @@
                     <p class="text-gray-300 mb-4">
                         Comprehensive analysis of global clinical trials, enrollment metrics, and protocol optimization recommendations.
                     </p>
-                    <a href="/features/clinical-analytics" class="text-brand-400 font-medium hover:text-brand-300 transition-colors">
+                    <!-- <a href="/features/clinical-analytics" class="text-brand-400 font-medium hover:text-brand-300 transition-colors">
                         Explore capabilities →
-                    </a>
+                    </a> -->
                 </div>
                 
-                <div class="glass-card rounded-xl p-8">
+                <div class=" glass-card rounded-xl p-8">
                     <div class="w-12 h-12 rounded-lg bg-amber-500/20 flex items-center justify-center mb-4 border border-amber-500/30">
                         <svg class="w-6 h-6 text-amber-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
@@ -946,46 +1097,60 @@
                     <p class="text-gray-300 mb-4">
                         Customizable alert system for regulatory changes, competitor activities, and compliance deadlines across all jurisdictions.
                     </p>
-                    <a href="/features/alerts" class="text-brand-400 font-medium hover:text-brand-300 transition-colors">
+                    <!-- <a href="/features/alerts" class="text-brand-400 font-medium hover:text-brand-300 transition-colors">
                         Explore capabilities →
-                    </a>
+                    </a> -->
                 </div>
                 
-                <div class="glass-card rounded-xl p-8">
+                <div class=" glass-card rounded-xl p-8">
                     <div class="w-12 h-12 rounded-lg bg-indigo-500/20 flex items-center justify-center mb-4 border border-indigo-500/30">
                         <svg class="w-6 h-6 text-indigo-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
                         </svg>
                     </div>
-                    <h3 class="text-xl font-semibold text-white mb-3">Predictive Analytics</h3>
+                    <h3 class="text-xl font-semibold text-white mb-3">Custom Solutions</h3>
                     <p class="text-gray-300 mb-4">
-                        Machine learning models predict approval timelines, identify potential compliance risks, and optimize submission strategies.
+                        If you need a tailored solution, we can build custom modules and integrations to fit your unique regulatory needs.
                     </p>
-                    <a href="/features/analytics" class="text-brand-400 font-medium hover:text-brand-300 transition-colors">
+                    <!-- <a href="/features/analytics" class="text-brand-400 font-medium hover:text-brand-300 transition-colors">
                         Explore capabilities →
-                    </a>
+                    </a> -->
                 </div>
+
+
                 
-                <div class="glass-card rounded-xl p-8">
-                    <div class="w-12 h-12 rounded-lg bg-rose-500/20 flex items-center justify-center mb-4 border border-rose-500/30">
-                        <svg class="w-6 h-6 text-rose-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
-                        </svg>
-                    </div>
-                    <h3 class="text-xl font-semibold text-white mb-3">Collaboration Hub</h3>
-                    <p class="text-gray-300 mb-4">
-                        Centralized workspace for cross-functional teams with role-based access, audit trails, and integrated workflow management.
-                    </p>
-                    <a href="/features/collaboration" class="text-brand-400 font-medium hover:text-brand-300 transition-colors">
-                        Explore capabilities →
-                    </a>
-                </div>
+<div class="glass-card rounded-xl p-8">
+    <div class="w-12 h-12 rounded-lg bg-pink-500/20 flex items-center justify-center mb-4 border border-pink-500/30">
+        <!-- Plus Icon -->
+        <svg class="w-6 h-6 text-pink-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+    </div>
+    <h3 class="text-xl font-semibold text-white mb-3">Have Something in Mind?</h3>
+    <p class="text-gray-300 mb-4">
+        We can help you save time and/or analyse historical FDA market precedent. Let’s explore how our team can support your unique challenges.
+    </p>
+    <!-- <a href="/demo.html" class="text-brand-400 font-medium hover:text-brand-300 transition-colors">
+        Book a call →
+    </a> -->
+</div>
+
+            </div>
+                     <div class="grid place-items-center mt-30">
+            <!-- <div class="flex flex-col sm:flex-row gap-4 justify-center"> -->
+                <!-- <a href="/demo.html" class="btn-glow px-8 py-4 rounded-lg text-white font-semibold">
+                    Schedule Executive Briefing
+                </a> -->
+                <a href="/head.html" class="btn-secondary-dark px-8 py-4 rounded-lg font-semibold text-white">
+                    Explore capabilities →
+                </a>
+            <!-- </div> -->
             </div>
         </div>
     </section>
 
     <!-- Enhanced Webinar Section -->
-    <section class="py-20 relative overflow-hidden">
+    <section class="hidden py-20 relative overflow-hidden">
         <div class="absolute inset-0">
             <div class="absolute top-0 right-0 w-96 h-96 glow-orb opacity-30"></div>
             <div class="absolute bottom-0 left-0 w-96 h-96 glow-orb opacity-30" style="filter: blur(100px);"></div>
@@ -1159,6 +1324,126 @@
         </div>
     </section>
 
+    <!-- Enhanced Webinar Section -->
+<section class="py-20 relative overflow-hidden">
+    <div class="absolute inset-0">
+        <div class="absolute top-0 right-0 w-96 h-96 glow-orb opacity-30"></div>
+        <div class="absolute bottom-0 left-0 w-96 h-96 glow-orb opacity-30" style="filter: blur(100px);"></div>
+    </div>
+    
+    <div class="relative container mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-4xl font-display font-bold text-white mb-4">
+                Recent <span class="gradient-text">Webinars & Events</span>
+            </h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Stay connected with industry leaders and regulatory experts
+            </p>
+        </div>
+        
+        <!-- Past Featured Webinar -->
+        <div class="max-w-6xl mx-auto mb-12">
+            <div class="glass-card rounded-2xl overflow-hidden bg-gradient-to-r from-gray-600/20 to-gray-800/20 backdrop-blur-xl border border-gray-500/30">
+                <div class="grid lg:grid-cols-2">
+                    <!-- Left Content -->
+                    <div class="p-8 lg:p-12">
+                        <div class="flex items-center mb-6">
+                            <span class="px-4 py-2 bg-gray-500/20 text-gray-300 rounded-full text-sm font-bold border border-gray-500/30">
+                                EVENT COMPLETED
+                            </span>
+                            <span class="ml-auto text-gray-500">September 3rd, 2025</span>
+                        </div>
+                        
+                        <h3 class="text-3xl lg:text-4xl font-bold text-white mb-4">
+                            Cracking the FDA Code II
+                        </h3>
+                        <p class="text-lg text-gray-300 mb-6">
+                            How Regulatory Intelligence Helps Pharma Leaders Move Faster in 2025
+                        </p>
+                        
+                        <div class="space-y-3 mb-8">
+                            <div class="flex items-center text-gray-400">
+                                <svg class="w-5 h-5 text-gray-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                <span>This event has concluded</span>
+                            </div>
+                            <!-- <div class="flex items-center text-gray-400">
+                                <svg class="w-5 h-5 text-gray-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z" />
+                                </svg>
+                                <span>500+ Regulatory Professionals Attended</span>
+                            </div>
+                            <div class="flex items-center text-gray-400">
+                                <svg class="w-5 h-5 text-gray-500 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 10l4.553-2.276A1 1 0 0121 8.618v6.764a1 1 0 01-1.447.894L15 14M5 18h8a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v8a2 2 0 002 2z" />
+                                </svg>
+                                <span>Recording available to subscribers</span>
+                            </div> -->
+                        </div>
+                        
+                        <div class="flex flex-col sm:flex-row gap-4">
+                            <button class="btn-secondary-dark inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold opacity-50 cursor-not-allowed" disabled>
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                </svg>
+                                Registration Closed
+                            </button>
+                            <a href="/webinar/recording" class="hidden btn-glow inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.828 14.828a4 4 0 01-5.656 0M9 10h1m4 0h1m-7 4h12a2 2 0 002-2V8a2 2 0 00-2-2H6a2 2 0 00-2 2v4a2 2 0 002 2z" />
+                                </svg>
+                                Watch Recording
+                            </a>
+                        </div>
+                    </div>
+                    
+                    <!-- Right Content - Mailing List Signup -->
+                    <div class="relative bg-gradient-to-br from-brand-600/20 to-brand-800/20 p-8 lg:p-12 flex items-center justify-center backdrop-blur">
+                        <div class="text-center w-full">
+                            <div class="mb-6">
+                                <svg class="w-16 h-16 text-brand-400 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 4.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                <h4 class="text-2xl font-bold text-white mb-2">Don't Miss the Next One</h4>
+                                <p class="text-gray-300 text-sm">
+                                    Subscribe to our mailing list to be the first to know when we announce our next webinar
+                                </p>
+                            </div>
+                            
+                            <div class="space-y-4">
+                                <div>
+                                    <input 
+                                        type="email" 
+                                        placeholder="Enter your email address"
+                                        class="w-full px-4 py-3 bg-white/10 border border-white/20 rounded-lg text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-brand-400 focus:border-transparent backdrop-blur"
+                                    >
+                                </div>
+                                <button class="btn-glow w-full inline-flex items-center justify-center px-6 py-3 rounded-lg font-semibold">
+                                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 19l9 2-9-18-9 18 9-2zm0 0v-8" />
+                                    </svg>
+                                    Subscribe for Updates
+                                </button>
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Additional CTA for future events -->
+        <!-- <div class="text-center">
+            <p class="text-gray-400 mb-4">Want to stay updated on all our events and insights?</p>
+            <a href="/newsletter" class="text-brand-400 font-medium hover:text-brand-300 underline">
+                Join our newsletter for weekly regulatory intelligence updates
+            </a>
+        </div> -->
+    </div>
+</section>
+
     <!-- Enhanced Blog Section -->
 <section class="py-20 section-gradient relative overflow-hidden">
     <div class="absolute inset-0 tech-grid opacity-10"></div>
@@ -1175,7 +1460,7 @@
         </div>
         
         <!-- Featured Article -->
-        <div class="mb-16">
+        <div class="mb-16 hidden ">
             <div class="glass-card rounded-2xl overflow-hidden">
                 <div class="grid lg:grid-cols-2">
                     <div class="aspect-video lg:aspect-auto relative">
@@ -1202,15 +1487,15 @@
                         </p>
                         <div class="flex items-center justify-between">
                             <div class="flex items-center">
-                                <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center mr-3">
+                                <!-- <div class="w-10 h-10 rounded-full bg-gradient-to-br from-brand-500 to-brand-600 flex items-center justify-center mr-3">
                                     <span class="text-white font-bold">MC</span>
-                                </div>
-                                <div>
+                                </div> -->
+                                <!-- <div>
                                     <p class="font-semibold text-white">Dr. Michael Chen</p>
                                     <p class="text-sm text-gray-400">Chief Medical Officer</p>
-                                </div>
+                                </div> -->
                             </div>
-                            <a href="/blog/ai-drug-discovery" class="inline-flex items-center text-brand-400 font-semibold hover:text-brand-300">
+                            <a href="https://www.syneticx.com/blog/ai-diagnostics.html" class="inline-flex items-center text-brand-400 font-semibold hover:text-brand-300">
                                 Read Full Article
                                 <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
@@ -1226,7 +1511,7 @@
         <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 mb-12">
             <!-- Blog Card 1 - AI Diagnostics -->
             <article class="group glass-card rounded-xl overflow-hidden">
-                <a href="blog/ai-diagnostics.html" class="block">
+                <a href="https://www.syneticx.com/blog/ai-diagnostics.html" class="block" _target="_blank" rel="noopener">
                     <div class="relative h-48 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1559757148-5c350d0d3c56?w=400&h=200&fit=crop" 
                              alt="AI Diagnostics in Healthcare" 
@@ -1263,7 +1548,7 @@
 
             <!-- Blog Card 2 - FDA Regulatory -->
             <article class="group glass-card rounded-xl overflow-hidden">
-                <a href="blog/fda-regulatory-landscape.html" class="block">
+                <a href="https://www.syneticx.com/blog/fda-regulatory-landscape.html" class="block" target="_blank" rel="noopener">
                     <div class="relative h-48 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1587854692152-cbe660dbde88?w=400&h=200&fit=crop" 
                              alt="FDA Regulatory Framework" 
@@ -1300,7 +1585,7 @@
 
             <!-- Blog Card 3 - Predictive Analytics -->
             <article class="group glass-card rounded-xl overflow-hidden">
-                <a href="blog/predictive-analytics.html" class="block">
+                <a href="https://www.syneticx.com/blog/predictive-analytics.html" class="block" target="_blank" rel="noopener">
                     <div class="relative h-48 overflow-hidden">
                         <img src="https://images.unsplash.com/photo-1504868584819-f8e8b4b6d7e3?w=400&h=200&fit=crop" 
                              alt="Hospital Analytics Dashboard" 
@@ -1480,25 +1765,15 @@
                 </p>
             </div>
             
-            <div class="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-8">
-                <div class="glass-card rounded-lg p-6 flex items-center justify-center h-24">
-                    <span class="text-gray-400 hover:text-white transition-colors">Veeva</span>
-                </div>
-                <div class="glass-card rounded-lg p-6 flex items-center justify-center h-24">
-                    <span class="text-gray-400 hover:text-white transition-colors">Oracle</span>
-                </div>
-                <div class="glass-card rounded-lg p-6 flex items-center justify-center h-24">
-                    <span class="text-gray-400 hover:text-white transition-colors">Salesforce</span>
-                </div>
-                <div class="glass-card rounded-lg p-6 flex items-center justify-center h-24">
-                    <span class="text-gray-400 hover:text-white transition-colors">SAP</span>
-                </div>
-                <div class="glass-card rounded-lg p-6 flex items-center justify-center h-24">
-                    <span class="text-gray-400 hover:text-white transition-colors">Microsoft</span>
-                </div>
-                <div class="glass-card rounded-lg p-6 flex items-center justify-center h-24">
-                    <span class="text-gray-400 hover:text-white transition-colors">AWS</span>
-                </div>
+         <div class="grid place-items-center">
+            <!-- <div class="flex flex-col sm:flex-row gap-4 justify-center"> -->
+                <!-- <a href="/demo.html" class="btn-glow px-8 py-4 rounded-lg text-white font-semibold">
+                    Schedule Executive Briefing
+                </a> -->
+                <a href="/competitive.html" class="btn-secondary-dark px-8 py-4 rounded-lg font-semibold text-white">
+                    View our integrations ->
+                </a>
+            <!-- </div> -->
             </div>
         </div>
     </section>
@@ -1511,7 +1786,7 @@
     
     <div class="relative container mx-auto px-6 lg:px-8">
         <div class="max-w-6xl mx-auto">
-            <div class="grid lg:grid-cols-2 gap-12">
+          <div class="grid place-items-center">
                 <!-- Left: Form -->
                 <div>
                     <div class="mb-8">
@@ -1569,16 +1844,7 @@
                         </div>
                         
                         <!-- Phone -->
-                        <div>
-                            <label for="phone" class="block text-sm font-medium text-gray-300 mb-2">
-                                Phone Number
-                            </label>
-                            <input type="tel" 
-                                   id="phone" 
-                                   name="phone"
-                                   class="w-full px-4 py-3 rounded-lg form-input-dark"
-                                   placeholder="+1 (555) 123-4567">
-                        </div>
+
                         
                         <!-- Company Info -->
                         <div class="grid md:grid-cols-2 gap-4">
@@ -1611,63 +1877,212 @@
                             <label for="company-size" class="block text-sm font-medium text-gray-300 mb-2">
                                 Company Size <span class="text-red-400">*</span>
                             </label>
-                            <select id="company-size" 
-                                    name="companySize"
-                                    required
-                                    class="w-full px-4 py-3 rounded-lg form-input-dark">
-                                <option value="">Select company size</option>
-                                <option value="1-50">1-50 employees</option>
-                                <option value="51-200">51-200 employees</option>
-                                <option value="201-500">201-500 employees</option>
-                                <option value="501-1000">501-1,000 employees</option>
-                                <option value="1001-5000">1,001-5,000 employees</option>
-                                <option value="5001+">5,001+ employees</option>
-                            </select>
+<div class="relative">
+  <select id="company-size"
+          name="companySize"
+          required
+          class="select-clean w-full px-4 py-3 pr-12 rounded-lg form-input-dark
+                 bg-gray-900/60 border border-white/10 text-gray-200
+                 focus:outline-none focus:ring-2 focus:ring-brand-500 focus:border-brand-500">
+    <option value="">Select company size</option>
+    <option value="1-50">1-50 employees</option>
+    <option value="51-200">51-200 employees</option>
+    <option value="201-500">201-500 employees</option>
+    <option value="501-1000">501-1,000 employees</option>
+    <option value="1001-5000">1,001-5,000 employees</option>
+    <option value="5001+">5,001+ employees</option>
+  </select>
+
+  <!-- custom arrow -->
+  <svg class="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-gray-400"
+       fill="none" stroke="currentColor" viewBox="0 0 24 24">
+    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
+  </svg>
+</div>
+
+
                         </div>
                         
-                        <!-- Interest Areas -->
-                        <div>
-                            <label class="block text-sm font-medium text-gray-300 mb-2">
-                                Areas of Interest <span class="text-gray-400">(Select all that apply)</span>
-                            </label>
-                            <div class="space-y-3">
-                                <label class="flex items-center cursor-pointer group">
-                                    <input type="checkbox" 
-                                           name="interests" 
-                                           value="fda-tracking"
-                                           class="w-4 h-4 rounded border-gray-600 bg-gray-800 text-brand-500 focus:ring-brand-500 focus:ring-offset-0">
-                                    <span class="ml-3 text-gray-300 group-hover:text-white">FDA Submission Tracking</span>
-                                </label>
-                                <label class="flex items-center cursor-pointer group">
-                                    <input type="checkbox" 
-                                           name="interests" 
-                                           value="competitive-intel"
-                                           class="w-4 h-4 rounded border-gray-600 bg-gray-800 text-brand-500 focus:ring-brand-500 focus:ring-offset-0">
-                                    <span class="ml-3 text-gray-300 group-hover:text-white">Competitive Intelligence</span>
-                                </label>
-                                <label class="flex items-center cursor-pointer group">
-                                    <input type="checkbox" 
-                                           name="interests" 
-                                           value="clinical-analytics"
-                                           class="w-4 h-4 rounded border-gray-600 bg-gray-800 text-brand-500 focus:ring-brand-500 focus:ring-offset-0">
-                                    <span class="ml-3 text-gray-300 group-hover:text-white">Clinical Trial Analytics</span>
-                                </label>
-                                <label class="flex items-center cursor-pointer group">
-                                    <input type="checkbox" 
-                                           name="interests" 
-                                           value="predictive-analytics"
-                                           class="w-4 h-4 rounded border-gray-600 bg-gray-800 text-brand-500 focus:ring-brand-500 focus:ring-offset-0">
-                                    <span class="ml-3 text-gray-300 group-hover:text-white">Predictive Analytics</span>
-                                </label>
-                                <label class="flex items-center cursor-pointer group">
-                                    <input type="checkbox" 
-                                           name="interests" 
-                                           value="regulatory-intelligence"
-                                           class="w-4 h-4 rounded border-gray-600 bg-gray-800 text-brand-500 focus:ring-brand-500 focus:ring-offset-0">
-                                    <span class="ml-3 text-gray-300 group-hover:text-white">Regulatory Intelligence</span>
-                                </label>
-                            </div>
-                        </div>
+                    <!-- Interest Areas -->
+<div>
+  <fieldset>
+    <legend class="block text-sm font-medium text-gray-300 mb-2">
+      Areas of Interest <span class="text-gray-400">(Select all that apply)</span>
+    </legend>
+
+    <div class="grid sm:grid-cols-2 gap-4">
+      <!-- FDA Submission Tracking -->
+      <label class="relative cursor-pointer">
+        <input
+          type="checkbox"
+          name="interests"
+          value="fda-tracking"
+          class="sr-only peer"
+        />
+        <div
+          class="glass-card rounded-xl p-4 flex items-start gap-3 border border-white/10
+                 hover:border-brand-400/40 transition
+                 peer-focus:ring-2 peer-focus:ring-brand-500 peer-focus:ring-offset-0 peer-focus:outline-none
+                 peer-checked:border-brand-400/60 peer-checked:bg-brand-500/10"
+        >
+          <span
+            class="inline-flex h-10 w-10 rounded-lg bg-brand-500/20 border border-brand-500/30
+                   items-center justify-center flex-shrink-0"
+            aria-hidden="true"
+          >
+            <svg class="w-5 h-5 text-brand-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+            </svg>
+          </span>
+          <div class="min-w-0">
+            <div class="flex items-center gap-2">
+              <p class="text-white font-semibold">FDA Submission Tracking</p>
+              <span
+                class="opacity-0 peer-checked:opacity-100 transition text-brand-300"
+                aria-hidden="true"
+                title="Selected"
+              >
+                ✓
+              </span>
+            </div>
+            <p class="text-sm text-gray-400">Submissions, amendments & deadlines</p>
+          </div>
+        </div>
+      </label>
+
+      <!-- Competitive Intelligence -->
+      <label class="relative cursor-pointer">
+        <input
+          type="checkbox"
+          name="interests"
+          value="competitive-intel"
+          class="sr-only peer"
+        />
+        <div
+          class="glass-card rounded-xl p-4 flex items-start gap-3 border border-white/10
+                 hover:border-purple-400/40 transition
+                 peer-focus:ring-2 peer-focus:ring-purple-500 peer-focus:ring-offset-0
+                 peer-checked:border-purple-400/60 peer-checked:bg-purple-500/10"
+        >
+          <span
+            class="inline-flex h-10 w-10 rounded-lg bg-purple-500/20 border border-purple-500/30
+                   items-center justify-center flex-shrink-0"
+            aria-hidden="true"
+          >
+            <svg class="w-5 h-5 text-purple-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+            </svg>
+          </span>
+          <div class="min-w-0">
+            <p class="text-white font-semibold">Competitive Intelligence</p>
+            <p class="text-sm text-gray-400">Pipelines, signals & positioning</p>
+          </div>
+        </div>
+      </label>
+
+      <!-- Clinical Trial Analytics -->
+      <label class="relative cursor-pointer">
+        <input
+          type="checkbox"
+          name="interests"
+          value="clinical-analytics"
+          class="sr-only peer"
+        />
+        <div
+          class="glass-card rounded-xl p-4 flex items-start gap-3 border border-white/10
+                 hover:border-green-400/40 transition
+                 peer-focus:ring-2 peer-focus:ring-green-500 peer-focus:ring-offset-0
+                 peer-checked:border-green-400/60 peer-checked:bg-green-500/10"
+        >
+          <span
+            class="inline-flex h-10 w-10 rounded-lg bg-green-500/20 border border-green-500/30
+                   items-center justify-center flex-shrink-0"
+            aria-hidden="true"
+          >
+            <svg class="w-5 h-5 text-green-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-3 7h3m-3 4h3m-6-4h.01M9 16h.01" />
+            </svg>
+          </span>
+          <div class="min-w-0">
+            <p class="text-white font-semibold">Clinical Trial Analytics</p>
+            <p class="text-sm text-gray-400">Enrollment, sites & protocol insights</p>
+          </div>
+        </div>
+      </label>
+
+      <!-- Predictive Analytics -->
+      <label class="relative cursor-pointer">
+        <input
+          type="checkbox"
+          name="interests"
+          value="predictive-analytics"
+          class="sr-only peer"
+        />
+        <div
+          class="glass-card rounded-xl p-4 flex items-start gap-3 border border-white/10
+                 hover:border-amber-400/40 transition
+                 peer-focus:ring-2 peer-focus:ring-amber-500 peer-focus:ring-offset-0
+                 peer-checked:border-amber-400/60 peer-checked:bg-amber-500/10"
+        >
+          <span
+            class="inline-flex h-10 w-10 rounded-lg bg-amber-500/20 border border-amber-500/30
+                   items-center justify-center flex-shrink-0"
+            aria-hidden="true"
+          >
+            <svg class="w-5 h-5 text-amber-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+            </svg>
+          </span>
+          <div class="min-w-0">
+            <p class="text-white font-semibold">Predictive Analytics</p>
+            <p class="text-sm text-gray-400">Signals, trends & forecasting</p>
+          </div>
+        </div>
+      </label>
+
+      <!-- Regulatory Intelligence -->
+      <label class="relative cursor-pointer sm:col-span-2">
+        <input
+          type="checkbox"
+          name="interests"
+          value="regulatory-intelligence"
+          class="sr-only peer"
+        />
+        <div
+          class="glass-card rounded-xl p-4 flex items-start gap-3 border border-white/10
+                 hover:border-indigo-400/40 transition
+                 peer-focus:ring-2 peer-focus:ring-indigo-500 peer-focus:ring-offset-0
+                 peer-checked:border-indigo-400/60 peer-checked:bg-indigo-500/10"
+        >
+          <span
+            class="inline-flex h-10 w-10 rounded-lg bg-indigo-500/20 border border-indigo-500/30
+                   items-center justify-center flex-shrink-0"
+            aria-hidden="true"
+          >
+            <svg class="w-5 h-5 text-indigo-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                    d="M7 12l3-3 3 3 4-4M8 21l4-4 4 4M3 4h18M4 4h16v12a1 1 0 01-1 1H5a1 1 0 01-1-1V4z" />
+            </svg>
+          </span>
+          <div class="min-w-0">
+            <p class="text-white font-semibold">Regulatory Intelligence</p>
+            <p class="text-sm text-gray-400">Global changes, guidance & impact</p>
+          </div>
+        </div>
+      </label>
+    </div>
+
+    <!-- Helper text -->
+    <p class="text-xs text-gray-400 mt-3">
+      Tip: You can select multiple areas to tailor your demo.
+    </p>
+  </fieldset>
+</div>
+
                         
                         <!-- Message -->
                         <div>
@@ -1716,12 +2131,24 @@
                             </button>
                         </div>
                     </div>
+                    <div class="text-center p-6 rounded-xl border border-white/10 mt-20">
+                        <p class="text-gray-300 mb-4">Prefer to talk to someone directly?</p>
+                        <div class="space-y-2">
+                            
+                            <a href="mailto:demo@syneticx.com" class="flex items-center justify-center text-brand-400 font-semibold hover:text-brand-300">
+                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                alex@syneticx.com
+                            </a>
+                        </div>
+                    </div>
                 </div>
                 
                 <!-- Right: Benefits & Info -->
-                <div class="lg:pl-8">
+                <div class="hidden lg:pl-8">
                     <!-- What to Expect -->
-                    <div class="glass-card rounded-xl p-8 mb-8">
+                    <div class="hidden glass-card rounded-xl p-8 mb-8">
                         <h3 class="text-2xl font-bold text-white mb-6">What to Expect</h3>
                         <div class="space-y-4">
                             <div class="flex items-start">
@@ -1766,11 +2193,11 @@
                     <!-- Stats -->
                     <div class="grid grid-cols-2 gap-4 mb-8">
                         <div class="glass-card rounded-lg p-4 text-center">
-                            <div class="text-3xl font-bold gradient-text mb-1">500+</div>
-                            <div class="text-sm text-gray-400">Enterprise Clients</div>
+                            <!-- <div class="text-3xl font-bold gradient-text mb-1">500+</div> -->
+                            <div class="text-sm text-gray-400">Enterprise Grade Support</div>
                         </div>
                         <div class="glass-card rounded-lg p-4 text-center">
-                            <div class="text-3xl font-bold gradient-text mb-1">40%</div>
+                            <!-- <div class="text-3xl font-bold gradient-text mb-1">40%</div> -->
                             <div class="text-sm text-gray-400">Faster Approvals</div>
                         </div>
                         <div class="glass-card rounded-lg p-4 text-center">
@@ -1784,23 +2211,7 @@
                     </div>
                     
                     <!-- Contact Alternative -->
-                    <div class="text-center p-6 rounded-xl border border-white/10">
-                        <p class="text-gray-300 mb-4">Prefer to talk to someone directly?</p>
-                        <div class="space-y-2">
-                            <a href="tel:+1-800-SYNETIC" class="flex items-center justify-center text-brand-400 font-semibold hover:text-brand-300">
-                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
-                                </svg>
-                                1-800-SYNETIC
-                            </a>
-                            <a href="mailto:demo@syneticx.com" class="flex items-center justify-center text-brand-400 font-semibold hover:text-brand-300">
-                                <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
-                                </svg>
-                                demo@syneticx.com
-                            </a>
-                        </div>
-                    </div>
+                    
                 </div>
             </div>
         </div>
@@ -1810,7 +2221,7 @@
 
 
       <!-- Team Section -->
-    <section class="py-20 section-gradient relative overflow-hidden">
+    <section class="hidden py-20 section-gradient relative overflow-hidden">
         <div class="absolute inset-0 tech-grid opacity-10"></div>
         <div class="relative container mx-auto px-6 lg:px-8">
             <div class="text-center mb-16">
@@ -1879,9 +2290,9 @@
                 <a href="/demo.html" class="btn-glow px-8 py-4 rounded-lg text-white font-semibold">
                     Schedule Executive Briefing
                 </a>
-                <a href="/contact" class="btn-secondary-dark px-8 py-4 rounded-lg font-semibold text-white">
+                <!-- <a href="/contact" class="btn-secondary-dark px-8 py-4 rounded-lg font-semibold text-white">
                     Contact Sales Team
-                </a>
+                </a> -->
             </div>
         </div>
     </section>
@@ -1893,18 +2304,21 @@
             <div class="grid md:grid-cols-4 gap-8">
                 <div>
                     <div class="flex items-center mb-4">
-                        <svg class="w-8 h-8 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                        <!-- <svg class="w-8 h-8 text-brand-400" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
                             <path stroke-linecap="round" stroke-linejoin="round" d="M13 10V3L4 14h7v7l9-11h-7z" />
-                        </svg>
+                        </svg> -->
+                        <img src="syneticx.png" 
+               alt="SyneticX Logo" 
+               class="h-8 w-auto transition-transform duration-300 group-hover:scale-105" />
                         <span class="ml-2 text-xl font-display font-bold text-white">SyneticX</span>
                     </div>
                     <p class="text-gray-400 mb-4">Enterprise regulatory intelligence platform for life sciences organizations.</p>
                     <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-brand-400 transition-colors">
+                        <!-- <a href="#" class="text-gray-400 hover:text-brand-400 transition-colors">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z"/>
                             </svg>
-                        </a>
+                        </a> -->
                         <a href="#" class="text-gray-400 hover:text-brand-400 transition-colors">
                             <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                                 <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/>
@@ -1918,7 +2332,7 @@
                     <ul class="space-y-2">
                         <li><a href="/features" class="text-gray-400 hover:text-brand-400 transition-colors">Features</a></li>
                         <li><a href="/integrations" class="text-gray-400 hover:text-brand-400 transition-colors">Integrations</a></li>
-                        <li><a href="/security" class="text-gray-400 hover:text-brand-400 transition-colors">Security</a></li>
+                        <!-- <li><a href="/security" class="text-gray-400 hover:text-brand-400 transition-colors">Security</a></li> -->
                         <li><a href="/pricing" class="text-gray-400 hover:text-brand-400 transition-colors">Pricing</a></li>
                     </ul>
                 </div>
@@ -1934,11 +2348,12 @@
                 </div>
                 
                 <div>
-                    <h4 class="font-semibold text-white mb-4">Company</h4>
+                    <h4 class="font-semibold text-white mb-4">Custom Solutions</h4>
                     <ul class="space-y-2">
-                        <li><a href="/about" class="text-gray-400 hover:text-brand-400 transition-colors">About Us</a></li>
-                        <li><a href="/careers" class="text-gray-400 hover:text-brand-400 transition-colors">Careers</a></li>
-                        <li><a href="/partners" class="text-gray-400 hover:text-brand-400 transition-colors">Partners</a></li>
+                        <!-- <li><a href="/features" class="text-gray-400 hover:text-brand-400 transition-colors">Features</a></li> -->
+                        <li><a href="/integrations" class="text-gray-400 hover:text-brand-400 transition-colors">Integrations</a></li>
+                        <!-- <li><a href="/security" class="text-gray-400 hover:text-brand-400 transition-colors">Security</a></li> -->
+                        <li><a href="/pricing" class="text-gray-400 hover:text-brand-400 transition-colors">Pricing</a></li>
                         <li><a href="/contact" class="text-gray-400 hover:text-brand-400 transition-colors">Contact</a></li>
                     </ul>
                 </div>
@@ -1949,16 +2364,16 @@
                     © 2025 SyneticX Corporation. All rights reserved.
                 </p>
                 <div class="flex space-x-6">
-                    <a href="/privacy" class="text-gray-400 text-sm hover:text-brand-400 transition-colors">Privacy Policy</a>
-                    <a href="/terms" class="text-gray-400 text-sm hover:text-brand-400 transition-colors">Terms of Service</a>
-                    <a href="/security" class="text-gray-400 text-sm hover:text-brand-400 transition-colors">Security</a>
+                    <a href="/Privacy-Policy.pdf" class="text-gray-400 text-sm hover:text-brand-400 transition-colors">Privacy Policy</a>
+                    <a href="/Terms-of-Use.pdf" class="text-gray-400 text-sm hover:text-brand-400 transition-colors">Terms of Service</a>
+                    <!-- <a href="/security" class="text-gray-400 text-sm hover:text-brand-400 transition-colors">Security</a> -->
                 </div>
             </div>
         </div>
     </footer>
     
     <!-- Scripts -->
-   <script>
+    <script>
 // Form submission handler
 document.getElementById('demo-request-form').addEventListener('submit', async function(e) {
     e.preventDefault();
@@ -2101,21 +2516,21 @@ document.querySelectorAll('.form-input-dark').forEach(input => {
             return await res.text();
         }
         
-        function initViewer() {
-            const element = document.getElementById('molecule-viewer');
-            if (element && typeof $3Dmol !== 'undefined') {
-                viewer = $3Dmol.createViewer(element, {
-                    backgroundColor: 'black',
-                    antialias: true
-                });
-                // Load default molecule
-                loadMolecule(currentMolecule);
-            } else {
-                // Fallback if 3Dmol doesn't load
-                console.log('3Dmol.js not loaded, retrying...');
-                setTimeout(initViewer, 500);
-            }
-        }
+function initViewer() {
+    const element = document.getElementById('molecule-viewer');
+    if (element && typeof $3Dmol !== 'undefined') {
+        viewer = $3Dmol.createViewer(element, {
+            backgroundColor: '#0a0e27', // Dark blue-gray to match your site
+            antialias: true
+        });
+        // Load default molecule
+        loadMolecule(currentMolecule);
+    } else {
+        // Fallback if 3Dmol doesn't load
+        console.log('3Dmol.js not loaded, retrying...');
+        setTimeout(initViewer, 500);
+    }
+}
 
         async function loadMolecule(chemblId, buttonElement) {
             if (!viewer) {
@@ -2271,7 +2686,95 @@ document.querySelectorAll('.form-input-dark').forEach(input => {
                 observer.observe(card);
             });
         });
-    </script>
+
+(function() {
+  // Check if navbar exists before running the script
+  const nav = document.getElementById('navbar');
+  if (!nav) {
+    console.warn('Navbar element not found');
+    return; // Exit if navbar doesn't exist
+  }
+
+  const toggle = document.getElementById('nav-toggle');
+  const menu = document.getElementById('mobile-menu');
+  
+  // Toggle mobile menu with animation
+  if (toggle && menu) {
+    toggle.addEventListener('click', function() {
+      menu.classList.toggle('hidden');
+      
+      // Toggle icon animation
+      const isOpen = !menu.classList.contains('hidden');
+      this.style.transform = isOpen ? 'rotate(90deg)' : 'rotate(0)';
+    });
+  }
+  
+  // Close mobile menu when clicking outside
+  document.addEventListener('click', function(e) {
+    if (menu && !nav.contains(e.target) && !menu.classList.contains('hidden')) {
+      menu.classList.add('hidden');
+      if (toggle) toggle.style.transform = 'rotate(0)';
+    }
+  });
+  
+  // Glass effect on scroll with smooth transition
+  let lastScroll = 0;
+  function updateNav() {
+    // Double-check nav exists before updating
+    if (!nav) return;
+    
+    const currentScroll = window.pageYOffset;
+    
+    if (currentScroll > 20) {
+      nav.classList.add('scrolled');
+    } else {
+      nav.classList.remove('scrolled');
+    }
+    
+    lastScroll = currentScroll;
+  }
+  
+  // Throttled scroll handler for performance
+  let scrollTimeout;
+  window.addEventListener('scroll', function() {
+    if (scrollTimeout) {
+      window.cancelAnimationFrame(scrollTimeout);
+    }
+    scrollTimeout = window.requestAnimationFrame(function() {
+      updateNav();
+    });
+  }, { passive: true });
+  
+  // Initial check
+  updateNav();
+  
+  // Smooth scroll for anchor links
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const href = this.getAttribute('href');
+      if (href !== '#' && href !== '#!') {
+        e.preventDefault();
+        const target = document.querySelector(href);
+        if (target) {
+          const offset = nav ? nav.offsetHeight : 0;
+          const targetPosition = target.offsetTop - offset;
+          window.scrollTo({
+            top: targetPosition,
+            behavior: 'smooth'
+          });
+          
+          // Close mobile menu if open
+          if (menu && !menu.classList.contains('hidden')) {
+            menu.classList.add('hidden');
+            if (toggle) toggle.style.transform = 'rotate(0)';
+          }
+        }
+      }
+    });
+  });
+})();
+</script>
+
 
 </body>
 </html>

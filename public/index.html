@@ -82,43 +82,90 @@
             animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
         }
         
-        /* Professional table styling */
-        .data-table {
-            width: 100%;
-            border-collapse: separate;
-            border-spacing: 0;
-        }
-        
-        .data-table thead {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            color: white;
-        }
-        
-        .data-table thead th {
-            padding: 16px;
-            text-align: left;
-            font-weight: 600;
-            text-transform: uppercase;
-            font-size: 12px;
-            letter-spacing: 0.05em;
-        }
-        
-        .data-table tbody tr {
-            background: white;
-            border-bottom: 1px solid #e5e7eb;
-            transition: all 0.2s ease;
-        }
-        
-        .data-table tbody tr:hover {
-            background: #f9fafb;
-            transform: translateX(4px);
-            box-shadow: 0 2px 4px rgba(0,0,0,0.05);
-        }
-        
-        .data-table tbody td {
-            padding: 16px;
-            font-size: 14px;
-        }
+      /* Clean, professional table styling without gradients */
+.data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.data-table thead {
+    background: #f9fafb;  /* Simple light gray background */
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.data-table thead th {
+    padding: 12px 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 11px;
+    letter-spacing: 0.05em;
+    color: #6b7280;
+    text-transform: uppercase;
+    white-space: nowrap;
+}
+
+.data-table thead th:hover {
+    background: #f3f4f6;
+}
+
+.data-table tbody tr {
+    background: white;
+    border-bottom: 1px solid #f3f4f6;
+    transition: all 0.15s ease;
+}
+
+.data-table tbody tr:hover {
+    background: #fafbfc;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.02);
+}
+
+.data-table tbody tr:last-child {
+    border-bottom: none;
+}
+
+.data-table tbody td {
+    padding: 12px 16px;
+    font-size: 14px;
+    vertical-align: middle;
+    color: #111827;
+}
+
+/* Remove all gradient classes from table header */
+.gradient-primary {
+    background: #4f46e5;  /* Solid color instead of gradient */
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+/* Clean hover effects for sortable columns */
+.data-table thead th.cursor-pointer {
+    user-select: none;
+    transition: background-color 0.15s ease;
+}
+
+.data-table thead th.cursor-pointer:active {
+    background: #e5e7eb;
+}
+
+/* Professional type badges without heavy colors */
+.type-badge {
+    display: inline-flex;
+    align-items: center;
+    padding: 2px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.025em;
+}
         
         /* Severity indicators */
         .severity-critical {
@@ -289,34 +336,231 @@
             from { transform: translateX(400px); }
             to { transform: translateX(0); }
         }
+        /* Enhanced table styling for professional look */
+.data-table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+}
+
+.data-table thead {
+    background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%);
+    border-bottom: 2px solid #e2e8f0;
+}
+
+.data-table thead th {
+    padding: 16px;
+    text-align: left;
+    font-weight: 600;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    color: #64748b;
+    text-transform: uppercase;
+}
+
+.data-table tbody tr {
+    background: white;
+    border-bottom: 1px solid #f1f5f9;
+    transition: all 0.2s ease;
+}
+
+.data-table tbody tr:hover {
+    background: linear-gradient(to right, transparent, rgba(99, 102, 241, 0.02));
+}
+
+.data-table tbody td {
+    padding: 16px;
+    font-size: 14px;
+    vertical-align: top;
+}
+
+/* Line clamp utility */
+.line-clamp-2 {
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+}
+
+.nav-bar {
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid rgba(229, 231, 235, 0.6);
+    box-shadow: 0 4px 20px -2px rgba(0, 0, 0, 0.05);
+    position: relative;
+    overflow: hidden;
+    height: auto;
+    min-height: 80px;
+    display: flex;
+    align-items: center;
+}
+
+/* Animated gradient background line */
+.nav-bar::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 200%;
+    height: 2px;
+    background: linear-gradient(90deg, 
+        transparent,
+        #0a6b5e,
+        #085a4f,
+        #0a6b5e,
+        transparent
+    );
+    animation: shimmer 3s infinite;
+}
+
+.nav-tab {
+    position: relative;
+    padding: 0.5rem 1rem;
+    color: #6b7280;
+    font-weight: 500;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    border-radius: 0.625rem;
+    display: flex;
+    align-items: center;
+    gap: 0.375rem;
+    font-size: 0.875rem;
+    white-space: nowrap;
+    text-decoration: none;
+}
+
+.nav-tab:hover {
+    color: #0a6b5e;
+    background: linear-gradient(135deg, 
+        rgba(10, 107, 94, 0.08),
+        rgba(8, 90, 79, 0.05)
+    );
+    transform: translateY(-1px);
+}
+
+.nav-tab.active {
+    color: #fff;
+    background: linear-gradient(135deg, #0a6b5e, #085a4f);
+    box-shadow: 0 4px 15px -3px rgba(10, 107, 94, 0.4);
+}
+
+.nav-tab svg {
+    transition: all 0.3s ease;
+}
+
+.nav-tab:hover svg {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.nav-tab.active svg {
+    filter: brightness(1.2);
+    animation: float 3s ease-in-out infinite;
+}
+
+.logo-container {
+    animation: float 4s ease-in-out infinite;
+}
+
+.glow-effect {
+    animation: pulse-glow 2s ease-in-out infinite;
+}
+
+/* Gradient text animation on hover */
+.brand-text {
+    background-size: 200% 200%;
+    transition: all 0.3s ease;
+}
+
+.brand-container:hover .brand-text {
+    background-position: 100% 0;
+    filter: brightness(1.1);
+}
+
+.max-w-9xl {
+     max-width: 1600px;
+}
     </style>
+    
 </head>
 <body class="bg-gray-50">
     <!-- Toast Notification -->
     <div id="toast" class="notification-toast"></div>
-
-    <!-- Professional Header -->
-    <header class="gradient-primary text-white shadow-lg">
-        <div class="max-w-7xl mx-auto px-4 py-4">
-            <div class="flex justify-between items-center">
-                <div class="flex items-center space-x-4">
-                    <div class="bg-white/20 p-2 rounded-lg">
-                        <svg class="w-8 h-8" fill="currentColor" viewBox="0 0 20 20">
-                            <path d="M10.394 2.08a1 1 0 00-.788 0l-7 3a1 1 0 000 1.84L5.25 8.051a.999.999 0 01.356-.257l4-1.714a1 1 0 11.788 1.838L7.667 9.088l1.94.831a1 1 0 00.787 0l7-3a1 1 0 000-1.838l-7-3zM3.31 9.397L5 10.12v4.102a8.969 8.969 0 00-1.05-.174 1 1 0 01-.89-.89 11.115 11.115 0 01.25-3.762zM9.3 16.573A9.026 9.026 0 007 14.935v-3.957l1.818.78a3 3 0 002.364 0l5.508-2.361a11.026 11.026 0 01.25 3.762 1 1 0 01-.89.89 8.968 8.968 0 00-5.35 2.524 1 1 0 01-1.4 0zM6 18a1 1 0 001-1v-2.065a8.935 8.935 0 00-2-.712V17a1 1 0 001 1z"/>
-                        </svg>
+ <nav class="nav-bar" class="max-w-9xl mx-auto px-4 py-6" style="height: auto; min-height: 80px;">
+        <div class="w-full px-8 py-4">
+            <div class="flex items-center justify-between gap-8">
+                <!-- Logo and Brand - Fixed width to prevent squashing -->
+                <div class="brand-container flex items-center gap-4 cursor-pointer group flex-shrink-0" onclick="location.href='/blackstone.html'">
+                    <div class="logo-container relative">
+                        <!-- Using your existing logo -->
+                        <img src="./leaf.png" alt="Leaf Intelligence" class="h-12 w-12 object-contain relative z-10 transition-transform duration-300 group-hover:scale-110">
+                        
+                        <!-- Enhanced glow effect with multiple layers -->
+                        <div class="absolute inset-0 bg-gradient-to-r from-emerald-400 via-cyan-400 to-purple-400 opacity-30 blur-xl rounded-full glow-effect"></div>
+                        <div class="absolute inset-0 bg-gradient-to-r from-emerald-300 to-cyan-300 opacity-20 blur-2xl rounded-full scale-150"></div>
                     </div>
-                    <div>
-                        <h1 class="text-2xl font-bold">FDA Regulatory Intelligence Platform</h1>
-                        <p class="text-white/80 text-sm">Real-time Monitoring • AI-Powered Analysis • Instant Alerts</p>
+                    
+                    <div class="flex flex-col">
+                        <span class="brand-text text-xl font-bold bg-gradient-to-r from-emerald-600 via-blue-600 to-purple-600 bg-clip-text text-transparent whitespace-nowrap">
+                            Leaf Intelligence
+                        </span>
+                        <div class="flex items-center gap-2">
+                            <div class="flex items-center gap-1">
+                                <div class="w-1.5 h-1.5 bg-emerald-500 rounded-full animate-pulse"></div>
+                                <span class="text-xs text-gray-600 font-medium">FDA Regulatory Intelligence Platform</span>
+                            </div>
+                            <span class="text-xs bg-gradient-to-r from-emerald-500 to-cyan-500 text-white px-2 py-0.5 rounded-full font-semibold">BETA</span>
+                        </div>
                     </div>
                 </div>
-                <div class="flex items-center space-x-3">
+                
+                <!-- Navigation Tabs - Center aligned with proper spacing -->
+                <div class="nav-tabs flex items-center gap-2 flex-grow justify-center">
+                    <a  class="nav-tab ">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M13 10V3L4 14h7v7l9-11h-7z"/>
+</svg>
+
+
+                        <span>Real-time Monitoring</span>
+                    </a>
+                    <a  class="nav-tab">
+<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+  <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+        d="M12 4v2m0 12v2m8-8h2M2 12h2m15.364-7.364l1.414 1.414M4.222 19.778l1.414-1.414M18.364 18.364l1.414-1.414M4.222 4.222l1.414 1.414M9 9h6v6H9z"/>
+</svg>
+
+
+<!-- <span>Scientific Insights</span> -->
+
+                        <span>AI-Powered Analysis</span>
+                    </a>
+                    <a  class="nav-tab">
+                      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
+                        </svg>
+                        <span> Instant Alerts</span>
+                    </a>
+                    <!-- <a href="/comparison.html" class="nav-tab">
+                        <i data-lucide="git-compare" class="w-4 h-4"></i>
+                        <span>Side-By-Side</span>
+                    </a> -->
+                    <!-- </a>
+                   <a href="/others.html" class="nav-tab">
+                        <i data-lucide="git-compare" class="w-4 h-4"></i>
+                        <span>Other ( need a better name ) </span>
+                    </a> -->
+                </div>
+                
+                <!-- Right side actions - Fixed width -->
+                <div class="flex items-center gap-2 flex-shrink-0">
+<div class="flex items-center space-x-3">
                     <div id="connection-status" class="flex items-center space-x-2 bg-white/20 px-3 py-1 rounded-full">
                         <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
                         <span class="text-sm">Live</span>
                         <span id="last-updated" class="text-xs opacity-75"></span>
                     </div>
-                    <button onclick="openNotifications()" class="relative bg-white/20 p-2 rounded-lg hover:bg-white/30 transition">
+                    <button onclick="openSettings()" class="relative bg-white/20 p-2 rounded-lg hover:bg-white/30 transition">
                         <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9"/>
                         </svg>
@@ -330,10 +574,12 @@
                         <span>Settings</span>
                     </button>
                 </div>
+                </div>
             </div>
         </div>
-    </header>
-
+    </nav>
+    <!-- Professional Header -->
+   
     <!-- Tutorial Banner (Dismissible) -->
     <div id="tutorial-banner" class="bg-indigo-600 text-white px-4 py-3">
         <div class="max-w-7xl mx-auto flex items-center justify-between">
@@ -352,11 +598,12 @@
     </div>
 
     <!-- Main Dashboard -->
-    <div class="max-w-7xl mx-auto px-4 py-6">
-        <!-- Key Metrics Dashboard -->
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6">
-            <!-- Total Items Card -->
-            <div class="bg-white rounded-xl shadow-lg card-hover overflow-hidden">
+    <div class="max-w-9xl mx-auto px-4 py-6">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
+    <!-- Left side (2/3) -->
+    <div class="lg:col-span-2 space-y-6">
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6"> 
+        <div class="bg-white rounded-xl shadow-lg card-hover overflow-hidden">
                 <div class="gradient-info p-1"></div>
                 <div class="p-6">
                     <div class="flex items-center justify-between mb-2">
@@ -442,8 +689,10 @@
                     </div>
                 </div>
             </div>
-        </div>
-
+            </div>
+        <!-- Data Table -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden">
+            
         <!-- Advanced Filters -->
         <div class="bg-white rounded-xl shadow-lg p-6 mb-6">
             <div class="flex items-center justify-between mb-4">
@@ -526,24 +775,7 @@
             </div>
         </div>
 
-        <!-- Data Visualization Row -->
-        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6">
-            <!-- Trend Chart -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-4">Violation Trends (Last 30 Days)</h3>
-                <div class="chart-container">
-                    <canvas id="trendChart"></canvas>
-                </div>
-            </div>
-            
-            <!-- Type Distribution -->
-            <div class="bg-white rounded-xl shadow-lg p-6">
-                <h3 class="text-lg font-semibold text-gray-900 mb-4">Type Distribution</h3>
-                <div class="chart-container">
-                    <canvas id="typeChart"></canvas>
-                </div>
-            </div>
-        </div>
+     
 
         <!-- Main Data Table -->
         <div class="bg-white rounded-xl shadow-lg overflow-hidden">
@@ -554,18 +786,30 @@
                 </div>
             </div>
             <div class="overflow-x-auto">
-                <table class="data-table">
-                    <thead>
-                        <tr>
-                            <th onclick="sortTable('date')" class="cursor-pointer">Date ↓</th>
-                            <th onclick="sortTable('company')" class="cursor-pointer">Company</th>
-                            <th>Type</th>
-                            <th onclick="sortTable('severity')" class="cursor-pointer">Severity</th>
-                            <th>Title</th>
-                            <th>Source</th>
-                            <th>Actions</th>
-                        </tr>
-                    </thead>
+        <table class="data-table">
+            <thead>
+                <tr>
+                    <th onclick="sortTable('date')" class="cursor-pointer hover:bg-gray-100 transition-colors">
+                        <div class="flex items-center gap-2">
+                            <span>Date</span>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/>
+                            </svg>
+                        </div>
+                    </th>
+                    <th>Title & Summary</th>
+                    <th>Type</th>
+                    <th onclick="sortTable('severity')" class="cursor-pointer hover:bg-gray-100 transition-colors">
+                        <div class="flex items-center gap-2">
+                            <span>Severity</span>
+                            <svg class="w-4 h-4 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 16V4m0 0L3 8m4-4l4 4m6 0v12m0 0l4-4m-4 4l-4-4"/>
+                            </svg>
+                        </div>
+                    </th>
+                    <th>Actions</th>
+                </tr>
+            </thead>
                     <tbody id="items-tbody">
                         <tr>
                             <td colspan="7" class="text-center py-12">
@@ -595,6 +839,43 @@
                 </div>
             </div>
         </div>
+        </div>
+    </div>
+
+    <!-- Right side (1/3) -->
+    <div class="lg:col-span-1 space-y-6">
+        <!-- Key Metrics -->
+        <!-- <div class="grid grid-cols-2 gap-4"> -->
+                  <!-- Key Metrics Dashboard -->
+        <!-- <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mb-6"> -->
+            <!-- Total Items Card -->
+            
+        <!-- </div> -->
+        <!-- </div> -->
+
+   <!-- Data Visualization Row -->
+        <!-- <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-6"> -->
+            <!-- Trend Chart -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Violation Trends (Last 30 Days)</h3>
+                <div class="chart-container">
+                    <canvas id="trendChart"></canvas>
+                </div>
+            </div>
+            
+            <!-- Type Distribution -->
+            <div class="bg-white rounded-xl shadow-lg p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Type Distribution</h3>
+                <div class="chart-container">
+                    <canvas id="typeChart"></canvas>
+                </div>
+            </div>
+        <!-- </div> -->
+    </div>
+</div>
+
+
+
     </div>
 
     <!-- Detail Modal -->
@@ -843,11 +1124,13 @@
     <!-- JavaScript -->
     <script>
         // Global variables
+        let currentWarningLetterData = null;
         let allItems = [];
         let filteredItems = [];
         let currentPage = 1;
         const itemsPerPage = 20;
         let currentItem = null;
+let currentEnhancedData = null;
         let currentSort = { column: 'date', order: 'desc' };
         let trendChart = null;
         let typeChart = null;
@@ -863,7 +1146,7 @@
             reportEmails: [],
             watchedCompanies: []
         };
-
+let currentItemData = null;
         // Initialize on page load
         document.addEventListener('DOMContentLoaded', async () => {
             console.log('Initializing FDA Dashboard...');
@@ -971,64 +1254,239 @@
         }
 
         // Render table
-        function renderTable() {
-            const tbody = document.getElementById('items-tbody');
+        // function renderTable() {
+        //     const tbody = document.getElementById('items-tbody');
             
-            if (filteredItems.length === 0) {
-                tbody.innerHTML = `
-                    <tr>
-                        <td colspan="7" class="text-center py-12 text-gray-500">
-                            No items found for the selected filters
-                        </td>
-                    </tr>
-                `;
-                updatePagination();
-                return;
-            }
+        //     if (filteredItems.length === 0) {
+        //         tbody.innerHTML = `
+        //             <tr>
+        //                 <td colspan="7" class="text-center py-12 text-gray-500">
+        //                     No items found for the selected filters
+        //                 </td>
+        //             </tr>
+        //         `;
+        //         updatePagination();
+        //         return;
+        //     }
             
-            // Sort items
-            const sorted = [...filteredItems].sort((a, b) => {
-                let aVal = a[currentSort.column];
-                let bVal = b[currentSort.column];
+        //     // Sort items
+        //     const sorted = [...filteredItems].sort((a, b) => {
+        //         let aVal = a[currentSort.column];
+        //         let bVal = b[currentSort.column];
                 
-                if (currentSort.column === 'date') {
-                    aVal = new Date(aVal);
-                    bVal = new Date(bVal);
-                }
+        //         if (currentSort.column === 'date') {
+        //             aVal = new Date(aVal);
+        //             bVal = new Date(bVal);
+        //         }
                 
-                if (currentSort.order === 'asc') {
-                    return aVal > bVal ? 1 : -1;
-                } else {
-                    return aVal < bVal ? 1 : -1;
-                }
-            });
+        //         if (currentSort.order === 'asc') {
+        //             return aVal > bVal ? 1 : -1;
+        //         } else {
+        //             return aVal < bVal ? 1 : -1;
+        //         }
+        //     });
             
-            // Paginate
-            const start = (currentPage - 1) * itemsPerPage;
-            const end = start + itemsPerPage;
-            const pageItems = sorted.slice(start, end);
+        //     // Paginate
+        //     const start = (currentPage - 1) * itemsPerPage;
+        //     const end = start + itemsPerPage;
+        //     const pageItems = sorted.slice(start, end);
             
-            // Render rows
-            tbody.innerHTML = pageItems.map(item => `
-                <tr class="hover:bg-gray-50 cursor-pointer" onclick="openDetailModal('${item.id}')">
-                    <td class="whitespace-nowrap">${formatDate(item.date)}</td>
-                    <td class="font-medium">${item.company}</td>
-                    <td>${getTypeBadges(item.types)}</td>
-                    <td>${getSeverityBadge(item.severity)}</td>
-                    <td class="max-w-xs truncate" title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</td>
-                    <td class="text-sm text-gray-600">${item.source}</td>
-                    <td>
-                        <button onclick="event.stopPropagation(); window.open('${item.link}', '_blank')" class="text-indigo-600 hover:text-indigo-900">
+        //     // Render rows
+        //     tbody.innerHTML = pageItems.map(item => `
+        //         <tr class="hover:bg-gray-50 cursor-pointer" onclick="openDetailModal('${item.id}')">
+        //             <td class="whitespace-nowrap">${formatDate(item.date)}</td>
+        //             <td class="font-medium">${item.company}</td>
+        //             <td>${getTypeBadges(item.types)}</td>
+        //             <td>${getSeverityBadge(item.severity)}</td>
+        //             <td class="max-w-xs truncate" title="${escapeHtml(item.title)}">${escapeHtml(item.title)}</td>
+        //             <td class="text-sm text-gray-600">${item.source}</td>
+        //             <td>
+        //                 <button onclick="event.stopPropagation(); window.open('${item.link}', '_blank')" class="text-indigo-600 hover:text-indigo-900">
+        //                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        //                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+        //                     </svg>
+        //                 </button>
+        //             </td>
+        //         </tr>
+        //     `).join('');
+            
+        //     updatePagination();
+        // }
+function renderTable() {
+    const tbody = document.getElementById('items-tbody');
+    
+    if (filteredItems.length === 0) {
+        tbody.innerHTML = `
+            <tr>
+                <td colspan="6" class="text-center py-16">
+                    <div class="text-gray-400">
+                        <svg class="w-16 h-16 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        <p class="text-lg font-medium">No items found</p>
+                        <p class="text-sm mt-1">Try adjusting your filters</p>
+                    </div>
+                </td>
+            </tr>
+        `;
+        updatePagination();
+        return;
+    }
+    
+    // Sort items
+    const sorted = [...filteredItems].sort((a, b) => {
+        let aVal = a[currentSort.column];
+        let bVal = b[currentSort.column];
+        
+        if (currentSort.column === 'date') {
+            aVal = new Date(aVal);
+            bVal = new Date(bVal);
+        }
+        
+        if (currentSort.order === 'asc') {
+            return aVal > bVal ? 1 : -1;
+        } else {
+            return aVal < bVal ? 1 : -1;
+        }
+    });
+    
+    // Paginate
+    const start = (currentPage - 1) * itemsPerPage;
+    const end = start + itemsPerPage;
+    const pageItems = sorted.slice(start, end);
+    
+    // Render clean, modern rows
+    tbody.innerHTML = pageItems.map(item => {
+        const date = new Date(item.date);
+        const isToday = date.toDateString() === new Date().toDateString();
+        const isRecent = (new Date() - date) < (7 * 24 * 60 * 60 * 1000);
+        
+        return `
+            <tr class="border-b border-gray-100 hover:bg-gradient-to-r hover:from-transparent hover:to-indigo-50/30 transition-all duration-200 cursor-pointer group"
+                onclick="openDetailModal('${item.id}')">
+                
+                <!-- Date Column -->
+                <td class="py-4 px-6">
+                    <div class="flex flex-col">
+                        <span class="text-sm font-medium text-gray-900">
+                            ${date.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}
+                        </span>
+                        <span class="text-xs text-gray-500">
+                            ${date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit' })}
+                        </span>
+                        ${isToday ? '<span class="text-xs text-green-600 font-medium mt-1">Today</span>' : 
+                          isRecent ? '<span class="text-xs text-blue-600 font-medium mt-1">Recent</span>' : ''}
+                    </div>
+                </td>
+                
+                <!-- Title & Summary Column -->
+                <td class="py-4 px-6 max-w-2xl">
+                    <div class="space-y-1">
+                        <p class="text-sm font-semibold text-gray-900 line-clamp-2 group-hover:text-indigo-600 transition-colors">
+                            ${escapeHtml(item.title)}
+                        </p>
+                        ${item.summary ? `
+                            <p class="text-xs text-gray-500 line-clamp-2">
+                                ${escapeHtml(item.summary).substring(0, 150)}${item.summary.length > 150 ? '...' : ''}
+                            </p>
+                        ` : ''}
+                        <div class="flex items-center gap-2 mt-2">
+                            <span class="text-xs text-gray-400">Source:</span>
+                            <span class="text-xs font-medium text-gray-600">${item.source}</span>
+                        </div>
+                    </div>
+                </td>
+                
+                <!-- Type Column -->
+                <td class="py-4 px-6">
+                    <div class="flex flex-wrap gap-1">
+                        ${item.types.map(type => {
+                            const typeConfig = {
+                                'warning_letter': { bg: 'bg-red-100', text: 'text-red-700', border: 'border-red-200' },
+                                'form_483': { bg: 'bg-orange-100', text: 'text-orange-700', border: 'border-orange-200' },
+                                'crl': { bg: 'bg-purple-100', text: 'text-purple-700', border: 'border-purple-200' },
+                                'opdp': { bg: 'bg-blue-100', text: 'text-blue-700', border: 'border-blue-200' },
+                                'import_alert': { bg: 'bg-yellow-100', text: 'text-yellow-700', border: 'border-yellow-200' },
+                                'consent_decree': { bg: 'bg-pink-100', text: 'text-pink-700', border: 'border-pink-200' },
+                                'recall': { bg: 'bg-indigo-100', text: 'text-indigo-700', border: 'border-indigo-200' },
+                                'clinical_hold': { bg: 'bg-gray-100', text: 'text-gray-700', border: 'border-gray-200' }
+                            };
+                            const config = typeConfig[type] || { bg: 'bg-gray-100', text: 'text-gray-700', border: 'border-gray-200' };
+                            const label = type.replace(/_/g, ' ').toUpperCase();
+                            
+                            return `
+                                <span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium ${config.bg} ${config.text} border ${config.border}">
+                                    ${label}
+                                </span>
+                            `;
+                        }).join('')}
+                    </div>
+                </td>
+                
+                <!-- Severity Column -->
+                <td class="py-4 px-6">
+                    ${getSeverityIndicator(item.severity)}
+                </td>
+                
+                <!-- Actions Column -->
+                <td class="py-4 px-6">
+                    <div class="flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                        <button onclick="event.stopPropagation(); openDetailModal('${item.id}')" 
+                                class="p-2 text-indigo-600 hover:bg-indigo-50 rounded-lg transition-colors"
+                                title="View Details">
+                            <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                            </svg>
+                        </button>
+                        <button onclick="event.stopPropagation(); window.open('${item.link}', '_blank')" 
+                                class="p-2 text-gray-600 hover:bg-gray-50 rounded-lg transition-colors"
+                                title="Open Source">
                             <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
                             </svg>
                         </button>
-                    </td>
-                </tr>
-            `).join('');
-            
-            updatePagination();
-        }
+                    </div>
+                </td>
+            </tr>
+        `;
+    }).join('');
+    
+    updatePagination();
+}function getSeverityIndicator(severity) {
+    let color, label, bgColor, borderColor;
+    
+    if (severity >= 9) {
+        color = 'text-red-700';
+        bgColor = 'bg-red-50';
+        borderColor = 'border-red-200';
+        label = 'Critical';
+    } else if (severity >= 7) {
+        color = 'text-orange-700';
+        bgColor = 'bg-orange-50';
+        borderColor = 'border-orange-200';
+        label = 'High';
+    } else if (severity >= 5) {
+        color = 'text-yellow-700';
+        bgColor = 'bg-yellow-50';
+        borderColor = 'border-yellow-200';
+        label = 'Medium';
+    } else {
+        color = 'text-green-700';
+        bgColor = 'bg-green-50';
+        borderColor = 'border-green-200';
+        label = 'Low';
+    }
+    
+    return `
+        <div class="flex items-center gap-2">
+            <div class="flex items-center justify-center w-8 h-8 ${bgColor} border ${borderColor} rounded-lg">
+                <span class="text-lg font-bold ${color}">${severity}</span>
+            </div>
+            <span class="text-xs font-medium ${color}">${label}</span>
+        </div>
+    `;
+}
 
         // Format date
         function formatDate(dateStr) {
@@ -1089,72 +1547,501 @@
             return `<span class="px-2 py-1 rounded text-xs font-bold ${className}">${label} (${severity})</span>`;
         }
 
-        // Open detail modal
-        async function openDetailModal(itemId) {
-            currentItem = allItems.find(i => i.id === itemId);
-            if (!currentItem) return;
+  
+
+// async function openDetailModal(itemId) {
+//     console.log('Opening modal for item:', itemId);
+    
+//     currentItem = allItems.find(i => i.id === itemId);
+//     if (!currentItem) {
+//         console.error('Item not found:', itemId);
+//         return;
+//     }
+    
+//     // Reset enhanced data
+//     currentEnhancedData = null;
+    
+//     // Show modal
+//     document.getElementById('detail-modal').classList.remove('hidden');
+    
+//     // Update modal header
+//     document.getElementById('modal-title').textContent = 'Regulatory Action Details';
+    
+//     // Show details tab by default
+//     switchTab('details');
+    
+//     // Render initial details (without company info yet)
+//     renderDetailsTab();
+    
+//     // Clear other tabs
+//     document.getElementById('company-content').innerHTML = `
+//         <div class="text-center py-8 text-gray-500">
+//             <p>Click "AI Enhance" to identify company and load information</p>
+//         </div>
+//     `;
+    
+//     document.getElementById('contacts-content').innerHTML = `
+//         <div class="text-center py-8 text-gray-500">
+//             <p>Click "AI Enhance" to search for contacts</p>
+//         </div>
+//     `;
+    
+//     document.getElementById('ai-content').innerHTML = `
+//         <div class="text-center py-8 text-gray-500">
+//             <p>Click "AI Enhance" to generate AI analysis</p>
+//         </div>
+//     `;
+// }
+
+// Render details tab
+
+async function openDetailModal(itemId) {
+    console.log('Opening modal for item:', itemId);
+    
+    currentItem = allItems.find(i => i.id === itemId);
+    if (!currentItem) {
+        console.error('Item not found:', itemId);
+        return;
+    }
+    
+    // Reset data
+    currentEnhancedData = null;
+    currentWarningLetterData = null;
+    
+    // Show modal
+    document.getElementById('detail-modal').classList.remove('hidden');
+    
+    // Update modal header
+    document.getElementById('modal-title').textContent = 'Regulatory Action Details';
+    
+    // Show details tab by default
+    switchTab('details');
+    
+    // Render initial details
+    renderDetailsTab();
+    
+    // Check if this is a warning letter and auto-fetch details
+    if (currentItem.types && currentItem.types.includes('warning_letter') && currentItem.link) {
+        console.log('Detected warning letter, fetching detailed information...');
+        fetchWarningLetterDetails(currentItem.link);
+    }
+    
+    // Clear other tabs
+    document.getElementById('company-content').innerHTML = `
+        <div class="text-center py-8 text-gray-500">
+            <p>Click "AI Enhance" to identify company and load information</p>
+        </div>
+    `;
+    
+    document.getElementById('contacts-content').innerHTML = `
+        <div class="text-center py-8 text-gray-500">
+            <p>Click "AI Enhance" to search for contacts</p>
+        </div>
+    `;
+    
+    document.getElementById('ai-content').innerHTML = `
+        <div class="text-center py-8 text-gray-500">
+            <p>Click "AI Enhance" to generate AI analysis</p>
+        </div>
+    `;
+}
+
+// Fetch warning letter details
+async function fetchWarningLetterDetails(url) {
+    // Show loading indicator in details tab
+    const detailsContent = document.getElementById('details-content');
+    const existingContent = detailsContent.innerHTML;
+    
+    // Add loading indicator at the top
+    detailsContent.innerHTML = `
+        <div id="warning-letter-loading" class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+            <div class="flex items-center gap-3">
+                <svg class="w-5 h-5 text-yellow-600 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+                <p class="text-yellow-800">Fetching detailed warning letter information from FDA.gov...</p>
+            </div>
+        </div>
+    ` + existingContent;
+    
+    try {
+        const response = await fetch(`/api/warning-letter/scrape?url=${encodeURIComponent(url)}`);
+        const result = await response.json();
+        
+        if (result.success && result.data) {
+            currentWarningLetterData = result.data;
+            console.log('Warning letter data fetched:', currentWarningLetterData);
             
-            document.getElementById('modal-title').textContent = currentItem.title;
-            document.getElementById('detail-modal').classList.remove('hidden');
+            // Update the display with the fetched data
+            renderWarningLetterDetails();
             
-            // Show details tab by default
-            switchTab('details');
-            
-            // Load details content
-            const detailsContent = document.getElementById('details-content');
-            detailsContent.innerHTML = `
-                <div class="space-y-4">
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                        <div>
-                            <h4 class="text-sm font-semibold text-gray-700 mb-1">Company</h4>
-                            <p class="text-lg font-medium">${currentItem.company}</p>
-                        </div>
-                        <div>
-                            <h4 class="text-sm font-semibold text-gray-700 mb-1">Date</h4>
-                            <p class="text-lg">${new Date(currentItem.date).toLocaleDateString()}</p>
-                        </div>
-                        <div>
-                            <h4 class="text-sm font-semibold text-gray-700 mb-1">Type</h4>
-                            <div>${getTypeBadges(currentItem.types)}</div>
-                        </div>
-                        <div>
-                            <h4 class="text-sm font-semibold text-gray-700 mb-1">Severity</h4>
-                            <div>${getSeverityBadge(currentItem.severity)}</div>
-                        </div>
-                    </div>
-                    
-                    <div>
-                        <h4 class="text-sm font-semibold text-gray-700 mb-1">Title</h4>
-                        <p class="text-gray-900">${currentItem.title}</p>
-                    </div>
-                    
-                    ${currentItem.summary ? `
-                        <div>
-                            <h4 class="text-sm font-semibold text-gray-700 mb-1">Summary</h4>
-                            <p class="text-gray-700">${currentItem.summary}</p>
-                        </div>
-                    ` : ''}
-                    
-                    <div>
-                        <h4 class="text-sm font-semibold text-gray-700 mb-1">Source</h4>
-                        <p class="text-gray-700">${currentItem.source} (${currentItem.sourceCategory})</p>
-                    </div>
-                    
-                    <div>
-                        <h4 class="text-sm font-semibold text-gray-700 mb-1">Link</h4>
-                        <a href="${currentItem.link}" target="_blank" class="text-indigo-600 hover:text-indigo-900 break-all">
-                            ${currentItem.link}
-                        </a>
-                    </div>
+            // If we found a company name, update the item
+            if (currentWarningLetterData.companyName) {
+                currentItem.extractedCompany = currentWarningLetterData.companyName;
+            }
+        } else {
+            console.error('Failed to fetch warning letter details:', result.error);
+            document.getElementById('warning-letter-loading').innerHTML = `
+                <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+                    <p class="text-red-800">Failed to fetch warning letter details: ${result.error || 'Unknown error'}</p>
                 </div>
             `;
         }
+    } catch (error) {
+        console.error('Error fetching warning letter:', error);
+        document.getElementById('warning-letter-loading').innerHTML = `
+            <div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-4">
+                <p class="text-red-800">Error fetching warning letter details: ${error.message}</p>
+            </div>
+        `;
+    }
+}
 
-        // Close detail modal
-        function closeDetailModal() {
-            document.getElementById('detail-modal').classList.add('hidden');
-            currentItem = null;
+// Render warning letter details
+function renderWarningLetterDetails() {
+    if (!currentWarningLetterData) return;
+    
+    const data = currentWarningLetterData;
+    const detailsContent = document.getElementById('details-content');
+    
+    detailsContent.innerHTML = `
+        <div class="space-y-6">
+            <!-- Warning Letter Badge -->
+            <div class="bg-red-50 border-2 border-red-200 rounded-lg p-4">
+                <div class="flex items-center gap-3">
+                    <svg class="w-6 h-6 text-red-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                    </svg>
+                    <div>
+                        <h3 class="text-lg font-bold text-red-900">FDA Warning Letter</h3>
+                        ${data.marcsNumber ? `<p class="text-sm text-red-700">MARCS-CMS ${data.marcsNumber}</p>` : ''}
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Title Section -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
+                <h2 class="text-xl font-bold text-gray-900 mb-3">${escapeHtml(data.title || currentItem.title)}</h2>
+                <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+                    ${data.letterDate ? `
+                        <span class="flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                            </svg>
+                            Letter Date: ${data.letterDate}
+                        </span>
+                    ` : ''}
+                    ${data.issueDate ? `
+                        <span class="flex items-center gap-1">
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                            </svg>
+                            Published: ${new Date(data.issueDate).toLocaleDateString()}
+                        </span>
+                    ` : ''}
+                </div>
+            </div>
+            
+            <!-- Recipient Information -->
+            ${data.recipient && Object.keys(data.recipient).length > 0 ? `
+                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-4 flex items-center gap-2">
+                        <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                        Recipient Information
+                    </h3>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                        ${data.recipient.company ? `
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Company</p>
+                                <p class="font-semibold text-lg">${data.recipient.company}</p>
+                            </div>
+                        ` : ''}
+                        ${data.recipient.name ? `
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Contact Person</p>
+                                <p class="font-medium">${data.recipient.name}${data.recipient.title ? `, ${data.recipient.title}` : ''}</p>
+                            </div>
+                        ` : ''}
+                        ${data.recipient.fullAddress ? `
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Address</p>
+                                <p class="text-gray-700">${data.recipient.fullAddress}</p>
+                            </div>
+                        ` : ''}
+                        ${data.recipient.email ? `
+                            <div>
+                                <p class="text-sm text-gray-500 mb-1">Email</p>
+                                <a href="mailto:${data.recipient.email}" class="text-indigo-600 hover:text-indigo-800">
+                                    ${data.recipient.email}
+                                </a>
+                            </div>
+                        ` : ''}
+                    </div>
+                </div>
+            ` : ''}
+            
+            <!-- Warning Letter Details -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                ${data.deliveryMethod ? `
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Delivery Method</p>
+                        <p class="font-medium">${data.deliveryMethod}</p>
+                    </div>
+                ` : ''}
+                ${data.productType ? `
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Product Type</p>
+                        <p class="font-medium">${data.productType}</p>
+                    </div>
+                ` : ''}
+                ${data.issuingOffice ? `
+                    <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+                        <p class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1">Issuing Office</p>
+                        <p class="font-medium">${data.issuingOffice}</p>
+                    </div>
+                ` : ''}
+                ${data.responseDeadline ? `
+                    <div class="bg-orange-50 border border-orange-200 rounded-lg p-4">
+                        <p class="text-xs font-semibold text-orange-700 uppercase tracking-wider mb-1">Response Deadline</p>
+                        <p class="font-medium text-orange-900">${data.responseDeadline}</p>
+                    </div>
+                ` : ''}
+            </div>
+            
+            <!-- Products Mentioned -->
+            ${data.products && data.products.length > 0 ? `
+                <div class="bg-purple-50 border border-purple-200 rounded-lg p-6">
+                    <h4 class="font-semibold text-purple-900 mb-3">📦 Products Mentioned</h4>
+                    <div class="flex flex-wrap gap-2">
+                        ${data.products.map(product => `
+                            <span class="px-3 py-1 bg-white border border-purple-300 rounded-full text-sm text-purple-800">
+                                ${escapeHtml(product)}
+                            </span>
+                        `).join('')}
+                    </div>
+                </div>
+            ` : ''}
+            
+            <!-- Violations -->
+            ${data.violations && data.violations.length > 0 ? `
+                <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                    <h4 class="font-semibold text-red-900 mb-3">⚠️ Violations Cited</h4>
+                    <ul class="space-y-2">
+                        ${data.violations.slice(0, 5).map(violation => `
+                            <li class="flex items-start gap-2">
+                                <span class="text-red-600 mt-1">•</span>
+                                <span class="text-red-800 text-sm">${escapeHtml(violation)}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                    ${data.violations.length > 5 ? `
+                        <p class="text-sm text-red-600 mt-3">... and ${data.violations.length - 5} more violations</p>
+                    ` : ''}
+                </div>
+            ` : ''}
+            
+            <!-- Letter Content Preview -->
+            ${data.letterContent ? `
+                <div class="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                    <h4 class="font-semibold text-gray-900 mb-3">📄 Letter Content Preview</h4>
+                    <div class="prose prose-sm max-w-none">
+                        <p class="text-gray-700 whitespace-pre-wrap">${escapeHtml(data.letterContent.substring(0, 1000))}${data.letterContent.length > 1000 ? '...' : ''}</p>
+                    </div>
+                    ${data.letterContent.length > 1000 ? `
+                        <button onclick="showFullLetterContent()" class="mt-4 text-indigo-600 hover:text-indigo-800 text-sm font-medium">
+                            Show Full Content →
+                        </button>
+                    ` : ''}
+                </div>
+            ` : ''}
+            
+            <!-- Response Information -->
+            ${data.responseEmail ? `
+                <div class="bg-amber-50 border border-amber-200 rounded-lg p-6">
+                    <h4 class="font-semibold text-amber-900 mb-3">📮 Response Information</h4>
+                    <p class="text-amber-800 mb-2">Responses should be sent to:</p>
+                    <a href="mailto:${data.responseEmail}" class="text-amber-700 font-medium hover:text-amber-900">
+                        ${data.responseEmail}
+                    </a>
+                    ${data.responseDeadline ? `
+                        <p class="text-amber-700 mt-2">
+                            <strong>Deadline:</strong> ${data.responseDeadline}
+                        </p>
+                    ` : ''}
+                </div>
+            ` : ''}
+            
+            <!-- Source Link -->
+            <div class="bg-white border border-gray-200 rounded-lg p-4">
+                <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Original Source</h4>
+                <a href="${currentItem.link}" target="_blank" 
+                   class="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-800 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                    <span class="text-sm font-medium">View Full Warning Letter on FDA.gov</span>
+                </a>
+            </div>
+            
+            <!-- Enhancement Prompt -->
+            <div class="bg-indigo-50 border-2 border-dashed border-indigo-300 rounded-lg p-6 text-center">
+                <svg class="w-12 h-12 mx-auto mb-3 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+                <p class="text-indigo-900 font-medium mb-2">Want deeper analysis?</p>
+                <p class="text-indigo-700 text-sm mb-4">AI can provide regulatory impact assessment and find additional contacts</p>
+                <button onclick="aiEnhance()" class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors inline-flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    AI Enhance Now
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+// Show full letter content
+function showFullLetterContent() {
+    if (!currentWarningLetterData || !currentWarningLetterData.letterContent) return;
+    
+    // Create a modal or expand the content
+    const contentDiv = document.querySelector('.prose');
+    if (contentDiv) {
+        contentDiv.innerHTML = `<p class="text-gray-700 whitespace-pre-wrap">${escapeHtml(currentWarningLetterData.letterContent)}</p>`;
+        
+        // Change button to "Show Less"
+        const button = contentDiv.nextElementSibling;
+        if (button) {
+            button.textContent = 'Show Less ←';
+            button.onclick = () => renderWarningLetterDetails();
         }
+    }
+}
+function renderDetailsTab() {
+    if (!currentItem) return;
+    
+    const detailsContent = document.getElementById('details-content');
+    const date = new Date(currentItem.date);
+    
+    detailsContent.innerHTML = `
+        <div class="space-y-6">
+            <!-- Title Section - Primary Focus -->
+            <div class="bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6 border border-blue-200">
+                <h2 class="text-xl font-bold text-gray-900 mb-3">${escapeHtml(currentItem.title)}</h2>
+                <div class="flex flex-wrap items-center gap-4 text-sm text-gray-600">
+                    <span class="flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"/>
+                        </svg>
+                        ${date.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' })}
+                    </span>
+                    <span class="flex items-center gap-1">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        ${currentItem.source}
+                    </span>
+                </div>
+            </div>
+            
+            <!-- Company Section (will be populated after enhancement) -->
+            <div id="details-company-section" class="hidden">
+                <div class="bg-green-50 rounded-lg p-6 border border-green-200">
+                    <h3 class="text-lg font-semibold text-green-900 mb-2 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                        </svg>
+                        Identified Company
+                    </h3>
+                    <p id="details-company-name" class="text-xl font-bold text-green-900">-</p>
+                </div>
+            </div>
+            
+            <!-- Quick Info Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Action Type</h4>
+                    <div class="flex flex-wrap gap-2">
+                        ${currentItem.types.map(type => {
+                            const typeConfig = {
+                                'warning_letter': { bg: 'bg-red-100', text: 'text-red-700', border: 'border-red-200' },
+                                'form_483': { bg: 'bg-orange-100', text: 'text-orange-700', border: 'border-orange-200' },
+                                'crl': { bg: 'bg-purple-100', text: 'text-purple-700', border: 'border-purple-200' },
+                                'opdp': { bg: 'bg-blue-100', text: 'text-blue-700', border: 'border-blue-200' },
+                                'import_alert': { bg: 'bg-yellow-100', text: 'text-yellow-700', border: 'border-yellow-200' },
+                                'consent_decree': { bg: 'bg-pink-100', text: 'text-pink-700', border: 'border-pink-200' },
+                                'recall': { bg: 'bg-indigo-100', text: 'text-indigo-700', border: 'border-indigo-200' },
+                                'clinical_hold': { bg: 'bg-gray-100', text: 'text-gray-700', border: 'border-gray-200' }
+                            };
+                            const config = typeConfig[type] || { bg: 'bg-gray-100', text: 'text-gray-700', border: 'border-gray-200' };
+                            const label = type.replace(/_/g, ' ').toUpperCase();
+                            
+                            return `
+                                <span class="inline-flex items-center px-3 py-1 rounded-md text-xs font-medium ${config.bg} ${config.text} border ${config.border}">
+                                    ${label}
+                                </span>
+                            `;
+                        }).join('')}
+                    </div>
+                </div>
+                <div class="bg-white border border-gray-200 rounded-lg p-4">
+                    <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Severity Level</h4>
+                    ${getSeverityIndicator(currentItem.severity)}
+                </div>
+            </div>
+            
+            <!-- Summary Section -->
+            ${currentItem.summary ? `
+                <div class="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                    <h4 class="text-sm font-semibold text-gray-700 mb-3 flex items-center gap-2">
+                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+                        </svg>
+                        Original Summary
+                    </h4>
+                    <p class="text-gray-700 leading-relaxed">${escapeHtml(currentItem.summary)}</p>
+                </div>
+            ` : ''}
+            
+            <!-- Source Link -->
+            <div class="bg-white border border-gray-200 rounded-lg p-4">
+                <h4 class="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-2">Original Source</h4>
+                <a href="${currentItem.link}" target="_blank" 
+                   class="inline-flex items-center gap-2 text-indigo-600 hover:text-indigo-800 transition-colors">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"/>
+                    </svg>
+                    <span class="text-sm font-medium break-all">${currentItem.link}</span>
+                </a>
+            </div>
+            
+            <!-- Enhancement Prompt -->
+            <div class="bg-indigo-50 border-2 border-dashed border-indigo-300 rounded-lg p-6 text-center">
+                <svg class="w-12 h-12 mx-auto mb-3 text-indigo-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                </svg>
+                <p class="text-indigo-900 font-medium mb-2">Ready for AI Enhancement</p>
+                <p class="text-indigo-700 text-sm mb-4">Click the button below to identify the company and get comprehensive analysis</p>
+                <button onclick="aiEnhance()" class="px-6 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition-colors inline-flex items-center gap-2">
+                    <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/>
+                    </svg>
+                    AI Enhance Now
+                </button>
+            </div>
+        </div>
+    `;
+}
+
+// Close detail modal
+        // function closeDetailModal() {
+        //     document.getElementById('detail-modal').classList.add('hidden');
+        //     currentItem = null;
+        // }
 
         // Switch tabs
         function switchTab(tabName) {
@@ -1186,304 +2073,1057 @@
         }
 
         // AI Enhance functionality - COMPREHENSIVE VERSION
-        async function aiEnhance() {
-            if (!currentItem) return;
+        // async function aiEnhance() {
+        //     if (!currentItem) return;
             
-            const aiContent = document.getElementById('ai-content');
-            aiContent.innerHTML = `
-                <div class="text-center py-8">
-                    <div class="loader mx-auto mb-4"></div>
-                    <p class="text-gray-500">Running comprehensive AI analysis...</p>
-                    <p class="text-xs text-gray-400 mt-2">Analyzing with GPT-4, searching Hunter.io & Apollo.io...</p>
-                </div>
-            `;
+        //     const aiContent = document.getElementById('ai-content');
+        //     aiContent.innerHTML = `
+        //         <div class="text-center py-8">
+        //             <div class="loader mx-auto mb-4"></div>
+        //             <p class="text-gray-500">Running comprehensive AI analysis...</p>
+        //             <p class="text-xs text-gray-400 mt-2">Analyzing with GPT-4, searching Hunter.io & Apollo.io...</p>
+        //         </div>
+        //     `;
             
-            switchTab('ai');
+        //     switchTab('ai');
             
-            try {
-                // Call the AI enhance endpoint
-                const response = await fetch('/api/ai/enhance', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ sourceItemId: currentItem.id })
-                });
+        //     try {
+        //         // Call the AI enhance endpoint
+        //         const response = await fetch('/api/ai/enhance', {
+        //             method: 'POST',
+        //             headers: { 'Content-Type': 'application/json' },
+        //             body: JSON.stringify({ sourceItemId: currentItem.id })
+        //         });
                 
-                const data = await response.json();
+        //         const data = await response.json();
                 
-                if (data.success) {
-                    // Store canonical name for future use
-                    if (data.canonical_company_name) {
-                        currentItem.canonical_company = data.canonical_company_name;
-                    }
+        //         if (data.success) {
+        //             // Store canonical name for future use
+        //             if (data.canonical_company_name) {
+        //                 currentItem.canonical_company = data.canonical_company_name;
+        //             }
                     
-                    // Now get comprehensive company data with the canonical name
-                    const companyResponse = await fetch(`/api/company/${encodeURIComponent(data.canonical_company_name || currentItem.company)}`);
-                    const companyData = await companyResponse.json();
+        //             // Now get comprehensive company data with the canonical name
+        //             const companyResponse = await fetch(`/api/company/${encodeURIComponent(data.canonical_company_name || currentItem.company)}`);
+        //             const companyData = await companyResponse.json();
                     
-                    // Combine all data sources
-                    const allEmails = new Set();
+        //             // Combine all data sources
+        //             const allEmails = new Set();
                     
-                    // Add emails from AI analysis
-                    if (data.emails && data.emails.length > 0) {
-                        data.emails.forEach(email => allEmails.add(email));
-                    }
+        //             // Add emails from AI analysis
+        //             if (data.emails && data.emails.length > 0) {
+        //                 data.emails.forEach(email => allEmails.add(email));
+        //             }
                     
-                    // Add emails from company contacts (Hunter/Apollo)
-                    if (companyData.success && companyData.contacts) {
-                        if (companyData.contacts.emails) {
-                            companyData.contacts.emails.forEach(e => allEmails.add(e.email || e));
-                        }
-                        if (companyData.contacts.regulatory_contacts) {
-                            companyData.contacts.regulatory_contacts.forEach(c => {
-                                if (c.email) allEmails.add(c.email);
-                            });
-                        }
-                        if (companyData.contacts.executives) {
-                            companyData.contacts.executives.forEach(e => {
-                                if (e.email) allEmails.add(e.email);
-                            });
-                        }
-                        if (companyData.contacts.general_email) {
-                            allEmails.add(companyData.contacts.general_email);
-                        }
-                    }
+        //             // Add emails from company contacts (Hunter/Apollo)
+        //             if (companyData.success && companyData.contacts) {
+        //                 if (companyData.contacts.emails) {
+        //                     companyData.contacts.emails.forEach(e => allEmails.add(e.email || e));
+        //                 }
+        //                 if (companyData.contacts.regulatory_contacts) {
+        //                     companyData.contacts.regulatory_contacts.forEach(c => {
+        //                         if (c.email) allEmails.add(c.email);
+        //                     });
+        //                 }
+        //                 if (companyData.contacts.executives) {
+        //                     companyData.contacts.executives.forEach(e => {
+        //                         if (e.email) allEmails.add(e.email);
+        //                     });
+        //                 }
+        //                 if (companyData.contacts.general_email) {
+        //                     allEmails.add(companyData.contacts.general_email);
+        //                 }
+        //             }
                     
-                    // Build comprehensive display
-                    aiContent.innerHTML = `
-                        <div class="space-y-4">
-                            <!-- Company Intelligence Header -->
-                            <div class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-lg p-4">
-                                <h3 class="text-lg font-bold mb-2">🤖 AI-Enhanced Company Intelligence</h3>
-                                <p class="text-sm opacity-90">Powered by GPT-4, Hunter.io, and Apollo.io</p>
-                            </div>
+        //             // Build comprehensive display
+        //             aiContent.innerHTML = `
+        //                 <div class="space-y-4">
+        //                     <!-- Company Intelligence Header -->
+        //                     <div class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-lg p-4">
+        //                         <h3 class="text-lg font-bold mb-2">🤖 AI-Enhanced Company Intelligence</h3>
+        //                         <p class="text-sm opacity-90">Powered by GPT-4, Hunter.io, and Apollo.io</p>
+        //                     </div>
                             
-                            <!-- Canonical Company Name -->
-                            <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
-                                <h4 class="font-semibold text-indigo-900 mb-2">✅ Verified Company Name</h4>
-                                <p class="text-indigo-700 font-medium text-lg">${data.canonical_company_name || currentItem.company}</p>
-                                ${companyData.company && companyData.company.aliases && companyData.company.aliases.length > 1 ? `
-                                    <div class="mt-2">
-                                        <p class="text-xs text-indigo-600 mb-1">Also known as:</p>
-                                        <div class="flex flex-wrap gap-1">
-                                            ${companyData.company.aliases.filter(a => a !== data.canonical_company_name).map(alias => 
-                                                `<span class="text-xs bg-white px-2 py-1 rounded">${alias}</span>`
-                                            ).join('')}
-                                        </div>
-                                    </div>
-                                ` : ''}
-                            </div>
+        //                     <!-- Canonical Company Name -->
+        //                     <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+        //                         <h4 class="font-semibold text-indigo-900 mb-2">✅ Verified Company Name</h4>
+        //                         <p class="text-indigo-700 font-medium text-lg">${data.canonical_company_name || currentItem.company}</p>
+        //                         ${companyData.company && companyData.company.aliases && companyData.company.aliases.length > 1 ? `
+        //                             <div class="mt-2">
+        //                                 <p class="text-xs text-indigo-600 mb-1">Also known as:</p>
+        //                                 <div class="flex flex-wrap gap-1">
+        //                                     ${companyData.company.aliases.filter(a => a !== data.canonical_company_name).map(alias => 
+        //                                         `<span class="text-xs bg-white px-2 py-1 rounded">${alias}</span>`
+        //                                     ).join('')}
+        //                                 </div>
+        //                             </div>
+        //                         ` : ''}
+        //                     </div>
                             
-                            <!-- AI Summary -->
-                            <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                                <h4 class="font-semibold text-gray-900 mb-2">📝 AI Executive Summary</h4>
-                                <p class="text-gray-700">${data.summary || 'No summary available'}</p>
-                            </div>
+        //                     <!-- AI Summary -->
+        //                     <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+        //                         <h4 class="font-semibold text-gray-900 mb-2">📝 AI Executive Summary</h4>
+        //                         <p class="text-gray-700">${data.summary || 'No summary available'}</p>
+        //                     </div>
                             
-                            <!-- Company Metrics -->
-                            ${companyData.success && companyData.company ? `
-                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                                    <h4 class="font-semibold text-blue-900 mb-3">📊 Company Metrics</h4>
-                                    <div class="grid grid-cols-2 gap-3">
-                                        <div>
-                                            <p class="text-xs text-blue-600">Total Violations</p>
-                                            <p class="text-2xl font-bold text-blue-900">${companyData.metrics?.total_violations || 0}</p>
-                                        </div>
-                                        <div>
-                                            <p class="text-xs text-blue-600">Compliance Score</p>
-                                            <p class="text-2xl font-bold text-blue-900">${companyData.company.compliance_score || 0}/100</p>
-                                        </div>
-                                        <div>
-                                            <p class="text-xs text-blue-600">Recent (30d)</p>
-                                            <p class="text-2xl font-bold text-blue-900">${companyData.metrics?.recent_violations || 0}</p>
-                                        </div>
-                                        <div>
-                                            <p class="text-xs text-blue-600">Risk Level</p>
-                                            <p class="text-2xl font-bold ${companyData.metrics?.risk_score >= 70 ? 'text-red-600' : companyData.metrics?.risk_score >= 40 ? 'text-orange-600' : 'text-green-600'}">
-                                                ${companyData.metrics?.risk_score >= 70 ? 'High' : companyData.metrics?.risk_score >= 40 ? 'Medium' : 'Low'}
-                                            </p>
-                                        </div>
-                                    </div>
-                                    ${companyData.company.ticker ? `
-                                        <div class="mt-3 pt-3 border-t border-blue-200">
-                                            <p class="text-sm"><span class="font-medium">Stock Ticker:</span> ${companyData.company.ticker}</p>
-                                        </div>
-                                    ` : ''}
-                                    ${companyData.company.domain ? `
-                                        <div class="mt-1">
-                                            <p class="text-sm"><span class="font-medium">Website:</span> 
-                                                <a href="https://${companyData.company.domain}" target="_blank" class="text-blue-600 hover:text-blue-800">
-                                                    ${companyData.company.domain}
-                                                </a>
-                                            </p>
-                                        </div>
-                                    ` : ''}
-                                </div>
-                            ` : ''}
+        //                     <!-- Company Metrics -->
+        //                     ${companyData.success && companyData.company ? `
+        //                         <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+        //                             <h4 class="font-semibold text-blue-900 mb-3">📊 Company Metrics</h4>
+        //                             <div class="grid grid-cols-2 gap-3">
+        //                                 <div>
+        //                                     <p class="text-xs text-blue-600">Total Violations</p>
+        //                                     <p class="text-2xl font-bold text-blue-900">${companyData.metrics?.total_violations || 0}</p>
+        //                                 </div>
+        //                                 <div>
+        //                                     <p class="text-xs text-blue-600">Compliance Score</p>
+        //                                     <p class="text-2xl font-bold text-blue-900">${companyData.company.compliance_score || 0}/100</p>
+        //                                 </div>
+        //                                 <div>
+        //                                     <p class="text-xs text-blue-600">Recent (30d)</p>
+        //                                     <p class="text-2xl font-bold text-blue-900">${companyData.metrics?.recent_violations || 0}</p>
+        //                                 </div>
+        //                                 <div>
+        //                                     <p class="text-xs text-blue-600">Risk Level</p>
+        //                                     <p class="text-2xl font-bold ${companyData.metrics?.risk_score >= 70 ? 'text-red-600' : companyData.metrics?.risk_score >= 40 ? 'text-orange-600' : 'text-green-600'}">
+        //                                         ${companyData.metrics?.risk_score >= 70 ? 'High' : companyData.metrics?.risk_score >= 40 ? 'Medium' : 'Low'}
+        //                                     </p>
+        //                                 </div>
+        //                             </div>
+        //                             ${companyData.company.ticker ? `
+        //                                 <div class="mt-3 pt-3 border-t border-blue-200">
+        //                                     <p class="text-sm"><span class="font-medium">Stock Ticker:</span> ${companyData.company.ticker}</p>
+        //                                 </div>
+        //                             ` : ''}
+        //                             ${companyData.company.domain ? `
+        //                                 <div class="mt-1">
+        //                                     <p class="text-sm"><span class="font-medium">Website:</span> 
+        //                                         <a href="https://${companyData.company.domain}" target="_blank" class="text-blue-600 hover:text-blue-800">
+        //                                             ${companyData.company.domain}
+        //                                         </a>
+        //                                     </p>
+        //                                 </div>
+        //                             ` : ''}
+        //                         </div>
+        //                     ` : ''}
                             
-                            <!-- Public Context -->
-                            ${data.public_context ? `
-                                <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
-                                    <h4 class="font-semibold text-amber-900 mb-2">🌐 Public Context & Background</h4>
-                                    <p class="text-amber-700">${data.public_context}</p>
-                                </div>
-                            ` : ''}
+        //                     <!-- Public Context -->
+        //                     ${data.public_context ? `
+        //                         <div class="bg-amber-50 border border-amber-200 rounded-lg p-4">
+        //                             <h4 class="font-semibold text-amber-900 mb-2">🌐 Public Context & Background</h4>
+        //                             <p class="text-amber-700">${data.public_context}</p>
+        //                         </div>
+        //                     ` : ''}
                             
-                            <!-- FDA Precedents -->
-                            ${data.precedent_refs && data.precedent_refs.length > 0 ? `
-                                <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                                    <h4 class="font-semibold text-purple-900 mb-2">⚖️ Related FDA Precedents</h4>
-                                    <ul class="space-y-1">
-                                        ${data.precedent_refs.map(ref => `
-                                            <li class="text-purple-700 text-sm flex items-start">
-                                                <span class="mr-2">•</span>
-                                                <span>${ref}</span>
-                                            </li>
-                                        `).join('')}
-                                    </ul>
-                                </div>
-                            ` : ''}
+        //                     <!-- FDA Precedents -->
+        //                     ${data.precedent_refs && data.precedent_refs.length > 0 ? `
+        //                         <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+        //                             <h4 class="font-semibold text-purple-900 mb-2">⚖️ Related FDA Precedents</h4>
+        //                             <ul class="space-y-1">
+        //                                 ${data.precedent_refs.map(ref => `
+        //                                     <li class="text-purple-700 text-sm flex items-start">
+        //                                         <span class="mr-2">•</span>
+        //                                         <span>${ref}</span>
+        //                                     </li>
+        //                                 `).join('')}
+        //                             </ul>
+        //                         </div>
+        //                     ` : ''}
                             
-                            <!-- Comprehensive Email Contacts -->
-                            ${allEmails.size > 0 ? `
-                                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-                                    <h4 class="font-semibold text-green-900 mb-3">📧 All Discovered Email Contacts (${allEmails.size})</h4>
-                                    <div class="space-y-2 max-h-60 overflow-y-auto">
-                                        ${Array.from(allEmails).map(email => `
-                                            <div class="flex items-center justify-between bg-white p-2 rounded">
-                                                <span class="text-green-700 text-sm font-mono">${email}</span>
-                                                <div class="flex gap-2">
-                                                    <button onclick="copyToClipboard('${email}')" 
-                                                            class="text-green-600 hover:text-green-800" title="Copy">
-                                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                                                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                                        </svg>
-                                                    </button>
-                                                    <a href="mailto:${email}" class="text-green-600 hover:text-green-800" title="Send Email">
-                                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                                                  d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
-                                                        </svg>
-                                                    </a>
-                                                </div>
-                                            </div>
-                                        `).join('')}
-                                    </div>
-                                    <div class="mt-3 pt-3 border-t border-green-200">
-                                        <button onclick="copyAllEmails()" class="w-full bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
-                                            Copy All Emails
-                                        </button>
-                                    </div>
-                                </div>
-                            ` : `
-                                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                                    <p class="text-yellow-700">No email contacts found. Hunter.io and Apollo.io may require API keys to be configured.</p>
-                                </div>
-                            `}
+        //                     <!-- Comprehensive Email Contacts -->
+        //                     ${allEmails.size > 0 ? `
+        //                         <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+        //                             <h4 class="font-semibold text-green-900 mb-3">📧 All Discovered Email Contacts (${allEmails.size})</h4>
+        //                             <div class="space-y-2 max-h-60 overflow-y-auto">
+        //                                 ${Array.from(allEmails).map(email => `
+        //                                     <div class="flex items-center justify-between bg-white p-2 rounded">
+        //                                         <span class="text-green-700 text-sm font-mono">${email}</span>
+        //                                         <div class="flex gap-2">
+        //                                             <button onclick="copyToClipboard('${email}')" 
+        //                                                     class="text-green-600 hover:text-green-800" title="Copy">
+        //                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        //                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+        //                                                           d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+        //                                                 </svg>
+        //                                             </button>
+        //                                             <a href="mailto:${email}" class="text-green-600 hover:text-green-800" title="Send Email">
+        //                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        //                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+        //                                                           d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+        //                                                 </svg>
+        //                                             </a>
+        //                                         </div>
+        //                                     </div>
+        //                                 `).join('')}
+        //                             </div>
+        //                             <div class="mt-3 pt-3 border-t border-green-200">
+        //                                 <button onclick="copyAllEmails()" class="w-full bg-green-600 text-white px-4 py-2 rounded hover:bg-green-700">
+        //                                     Copy All Emails
+        //                                 </button>
+        //                             </div>
+        //                         </div>
+        //                     ` : `
+        //                         <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+        //                             <p class="text-yellow-700">No email contacts found. Hunter.io and Apollo.io may require API keys to be configured.</p>
+        //                         </div>
+        //                     `}
                             
-                            <!-- Key Personnel (from Apollo/Hunter) -->
-                            ${companyData.contacts && (companyData.contacts.regulatory_contacts?.length > 0 || companyData.contacts.executives?.length > 0) ? `
-                                <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
-                                    <h4 class="font-semibold text-indigo-900 mb-3">👥 Key Personnel</h4>
-                                    ${companyData.contacts.regulatory_contacts?.length > 0 ? `
-                                        <div class="mb-3">
-                                            <p class="text-sm font-medium text-indigo-700 mb-2">Regulatory Contacts:</p>
-                                            <div class="space-y-2">
-                                                ${companyData.contacts.regulatory_contacts.slice(0, 5).map(contact => `
-                                                    <div class="bg-white p-2 rounded text-sm">
-                                                        <p class="font-medium">${contact.name}</p>
-                                                        <p class="text-gray-600">${contact.title}</p>
-                                                        ${contact.email ? `<p class="text-indigo-600">${contact.email}</p>` : ''}
-                                                    </div>
-                                                `).join('')}
-                                            </div>
-                                        </div>
-                                    ` : ''}
-                                    ${companyData.contacts.executives?.length > 0 ? `
-                                        <div>
-                                            <p class="text-sm font-medium text-indigo-700 mb-2">Executive Team:</p>
-                                            <div class="space-y-2">
-                                                ${companyData.contacts.executives.slice(0, 5).map(exec => `
-                                                    <div class="bg-white p-2 rounded text-sm">
-                                                        <p class="font-medium">${exec.name}</p>
-                                                        <p class="text-gray-600">${exec.title}</p>
-                                                        ${exec.email ? `<p class="text-indigo-600">${exec.email}</p>` : ''}
-                                                    </div>
-                                                `).join('')}
-                                            </div>
-                                        </div>
-                                    ` : ''}
-                                </div>
-                            ` : ''}
+        //                     <!-- Key Personnel (from Apollo/Hunter) -->
+        //                     ${companyData.contacts && (companyData.contacts.regulatory_contacts?.length > 0 || companyData.contacts.executives?.length > 0) ? `
+        //                         <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-4">
+        //                             <h4 class="font-semibold text-indigo-900 mb-3">👥 Key Personnel</h4>
+        //                             ${companyData.contacts.regulatory_contacts?.length > 0 ? `
+        //                                 <div class="mb-3">
+        //                                     <p class="text-sm font-medium text-indigo-700 mb-2">Regulatory Contacts:</p>
+        //                                     <div class="space-y-2">
+        //                                         ${companyData.contacts.regulatory_contacts.slice(0, 5).map(contact => `
+        //                                             <div class="bg-white p-2 rounded text-sm">
+        //                                                 <p class="font-medium">${contact.name}</p>
+        //                                                 <p class="text-gray-600">${contact.title}</p>
+        //                                                 ${contact.email ? `<p class="text-indigo-600">${contact.email}</p>` : ''}
+        //                                             </div>
+        //                                         `).join('')}
+        //                                     </div>
+        //                                 </div>
+        //                             ` : ''}
+        //                             ${companyData.contacts.executives?.length > 0 ? `
+        //                                 <div>
+        //                                     <p class="text-sm font-medium text-indigo-700 mb-2">Executive Team:</p>
+        //                                     <div class="space-y-2">
+        //                                         ${companyData.contacts.executives.slice(0, 5).map(exec => `
+        //                                             <div class="bg-white p-2 rounded text-sm">
+        //                                                 <p class="font-medium">${exec.name}</p>
+        //                                                 <p class="text-gray-600">${exec.title}</p>
+        //                                                 ${exec.email ? `<p class="text-indigo-600">${exec.email}</p>` : ''}
+        //                                             </div>
+        //                                         `).join('')}
+        //                                     </div>
+        //                                 </div>
+        //                             ` : ''}
+        //                         </div>
+        //                     ` : ''}
                             
-                            <!-- Facilities & Products -->
-                            ${companyData.company && (companyData.company.facilities?.length > 0 || companyData.company.products?.length > 0) ? `
-                                <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
-                                    ${companyData.company.facilities?.length > 0 ? `
-                                        <div class="mb-3">
-                                            <h4 class="font-semibold text-gray-900 mb-2">🏭 Facilities</h4>
-                                            <div class="flex flex-wrap gap-2">
-                                                ${companyData.company.facilities.map(facility => 
-                                                    `<span class="text-xs bg-white px-2 py-1 rounded border">${facility}</span>`
-                                                ).join('')}
-                                            </div>
-                                        </div>
-                                    ` : ''}
-                                    ${companyData.company.products?.length > 0 ? `
-                                        <div>
-                                            <h4 class="font-semibold text-gray-900 mb-2">💊 Products</h4>
-                                            <div class="flex flex-wrap gap-2">
-                                                ${companyData.company.products.map(product => 
-                                                    `<span class="text-xs bg-white px-2 py-1 rounded border">${product}</span>`
-                                                ).join('')}
-                                            </div>
-                                        </div>
-                                    ` : ''}
-                                </div>
-                            ` : ''}
+        //                     <!-- Facilities & Products -->
+        //                     ${companyData.company && (companyData.company.facilities?.length > 0 || companyData.company.products?.length > 0) ? `
+        //                         <div class="bg-gray-50 border border-gray-200 rounded-lg p-4">
+        //                             ${companyData.company.facilities?.length > 0 ? `
+        //                                 <div class="mb-3">
+        //                                     <h4 class="font-semibold text-gray-900 mb-2">🏭 Facilities</h4>
+        //                                     <div class="flex flex-wrap gap-2">
+        //                                         ${companyData.company.facilities.map(facility => 
+        //                                             `<span class="text-xs bg-white px-2 py-1 rounded border">${facility}</span>`
+        //                                         ).join('')}
+        //                                     </div>
+        //                                 </div>
+        //                             ` : ''}
+        //                             ${companyData.company.products?.length > 0 ? `
+        //                                 <div>
+        //                                     <h4 class="font-semibold text-gray-900 mb-2">💊 Products</h4>
+        //                                     <div class="flex flex-wrap gap-2">
+        //                                         ${companyData.company.products.map(product => 
+        //                                             `<span class="text-xs bg-white px-2 py-1 rounded border">${product}</span>`
+        //                                         ).join('')}
+        //                                     </div>
+        //                                 </div>
+        //                             ` : ''}
+        //                         </div>
+        //                     ` : ''}
                             
-                            <!-- Action Buttons -->
-                            <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-4">
-                                <div class="grid grid-cols-2 gap-3">
-                                    <button onclick="exportAIAnalysis()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
-                                        Export Analysis
-                                    </button>
-                                    <button onclick="refreshAIAnalysis()" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
-                                        Refresh Analysis
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                    `;
+        //                     <!-- Action Buttons -->
+        //                     <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-4">
+        //                         <div class="grid grid-cols-2 gap-3">
+        //                             <button onclick="exportAIAnalysis()" class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
+        //                                 Export Analysis
+        //                             </button>
+        //                             <button onclick="refreshAIAnalysis()" class="bg-purple-600 text-white px-4 py-2 rounded hover:bg-purple-700">
+        //                                 Refresh Analysis
+        //                             </button>
+        //                         </div>
+        //                     </div>
+        //                 </div>
+        //             `;
                     
-                    // Store all emails for easy access
-                    window.currentAnalysisEmails = Array.from(allEmails);
+        //             // Store all emails for easy access
+        //             window.currentAnalysisEmails = Array.from(allEmails);
                     
-                } else {
-                    throw new Error(data.error || 'AI enhancement failed');
-                }
-            } catch (error) {
-                console.error('AI enhance error:', error);
-                aiContent.innerHTML = `
-                    <div class="bg-red-50 border border-red-200 rounded-lg p-4">
-                        <p class="text-red-700">Error: ${error.message}</p>
-                        <p class="text-red-600 text-sm mt-2">Make sure Hunter.io, Apollo.io, and OpenAI API keys are configured in your backend.</p>
-                        <button onclick="aiEnhance()" class="mt-3 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+        //         } else {
+        //             throw new Error(data.error || 'AI enhancement failed');
+        //         }
+        //     } catch (error) {
+        //         console.error('AI enhance error:', error);
+        //         aiContent.innerHTML = `
+        //             <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+        //                 <p class="text-red-700">Error: ${error.message}</p>
+        //                 <p class="text-red-600 text-sm mt-2">Make sure Hunter.io, Apollo.io, and OpenAI API keys are configured in your backend.</p>
+        //                 <button onclick="aiEnhance()" class="mt-3 bg-red-600 text-white px-4 py-2 rounded hover:bg-red-700">
+        //                     Try Again
+        //                 </button>
+        //             </div>
+        //         `;
+        //     }
+        // }
+
+
+//         async function aiEnhance() {
+//     if (!currentItemData) return;
+    
+//     const aiContent = document.getElementById('ai-content');
+//     aiContent.innerHTML = `
+//         <div class="text-center py-8">
+//             <div class="loader mx-auto mb-4"></div>
+//             <p class="text-gray-500">Analyzing document with AI...</p>
+//             <p class="text-xs text-gray-400 mt-2">Extracting company name and searching for contacts...</p>
+//         </div>
+//     `;
+    
+//     switchTab('ai');
+    
+//     try {
+//         // Send more data to the AI endpoint for better analysis
+//         const response = await fetch('/api/ai/enhance', {
+//             method: 'POST',
+//             headers: { 'Content-Type': 'application/json' },
+//             body: JSON.stringify({
+//                 sourceItemId: currentItemData.id,
+//                 title: currentItemData.title,
+//                 link: currentItemData.link,
+//                 summary: currentItemData.summary,
+//                 source: currentItemData.source,
+//                 types: currentItemData.types
+//             })
+//         });
+        
+//         const data = await response.json();
+        
+//         if (data.success) {
+//             // Update the company info section in details tab
+//             const companySection = document.getElementById('company-info-section');
+//             const companyContent = document.getElementById('company-info-content');
+            
+//             if (data.canonical_company_name && data.canonical_company_name !== 'Unknown Company') {
+//                 companySection.classList.remove('hidden');
+//                 companyContent.innerHTML = `
+//                     <p class="text-lg font-semibold text-blue-900">${data.canonical_company_name}</p>
+//                 `;
+//             }
+            
+//             // Build comprehensive AI analysis display
+//             aiContent.innerHTML = `
+//                 <div class="space-y-6">
+//                     <!-- AI Analysis Header -->
+//                     <div class="bg-gradient-to-r from-purple-500 to-indigo-600 text-white rounded-lg p-6">
+//                         <h3 class="text-xl font-bold mb-2">🤖 AI-Enhanced Analysis</h3>
+//                         <p class="text-sm opacity-90">Comprehensive regulatory intelligence report</p>
+//                     </div>
+                    
+//                     <!-- Company Identification -->
+//                     ${data.canonical_company_name && data.canonical_company_name !== 'Unknown Company' ? `
+//                         <div class="bg-gradient-to-r from-indigo-50 to-blue-50 border border-indigo-200 rounded-lg p-6">
+//                             <h4 class="font-semibold text-indigo-900 mb-3 flex items-center gap-2">
+//                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+//                                 </svg>
+//                                 Identified Company
+//                             </h4>
+//                             <p class="text-xl font-bold text-indigo-900">${data.canonical_company_name}</p>
+//                         </div>
+//                     ` : `
+//                         <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+//                             <p class="text-yellow-800">Unable to identify specific company from the document</p>
+//                         </div>
+//                     `}
+                    
+//                     <!-- Executive Summary -->
+//                     <div class="bg-white border border-gray-200 rounded-lg p-6">
+//                         <h4 class="font-semibold text-gray-900 mb-3 flex items-center gap-2">
+//                             <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                                 <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/>
+//                             </svg>
+//                             Executive Summary
+//                         </h4>
+//                         <p class="text-gray-700 leading-relaxed">${data.summary || 'No summary available'}</p>
+//                     </div>
+                    
+//                     <!-- Regulatory Impact -->
+//                     ${data.regulatory_impact ? `
+//                         <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+//                             <h4 class="font-semibold text-red-900 mb-3 flex items-center gap-2">
+//                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+//                                 </svg>
+//                                 Regulatory Impact
+//                             </h4>
+//                             <p class="text-red-800">${data.regulatory_impact}</p>
+//                         </div>
+//                     ` : ''}
+                    
+//                     <!-- Business Impact -->
+//                     ${data.business_impact ? `
+//                         <div class="bg-orange-50 border border-orange-200 rounded-lg p-6">
+//                             <h4 class="font-semibold text-orange-900 mb-3 flex items-center gap-2">
+//                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/>
+//                                 </svg>
+//                                 Business Impact
+//                             </h4>
+//                             <p class="text-orange-800">${data.business_impact}</p>
+//                         </div>
+//                     ` : ''}
+                    
+//                     <!-- Action Required -->
+//                     ${data.action_required ? `
+//                         <div class="bg-amber-50 border border-amber-200 rounded-lg p-6">
+//                             <h4 class="font-semibold text-amber-900 mb-3 flex items-center gap-2">
+//                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4"/>
+//                                 </svg>
+//                                 Action Required
+//                             </h4>
+//                             <p class="text-amber-800">${data.action_required}</p>
+//                             ${data.timeline ? `<p class="text-sm text-amber-700 mt-2"><strong>Timeline:</strong> ${data.timeline}</p>` : ''}
+//                         </div>
+//                     ` : ''}
+                    
+//                     <!-- Public Context -->
+//                     ${data.public_context ? `
+//                         <div class="bg-purple-50 border border-purple-200 rounded-lg p-6">
+//                             <h4 class="font-semibold text-purple-900 mb-3 flex items-center gap-2">
+//                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+//                                 </svg>
+//                                 Background & Context
+//                             </h4>
+//                             <p class="text-purple-800">${data.public_context}</p>
+//                         </div>
+//                     ` : ''}
+                    
+//                     <!-- FDA Precedents -->
+//                     ${data.precedent_refs && data.precedent_refs.length > 0 ? `
+//                         <div class="bg-indigo-50 border border-indigo-200 rounded-lg p-6">
+//                             <h4 class="font-semibold text-indigo-900 mb-3 flex items-center gap-2">
+//                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/>
+//                                 </svg>
+//                                 Related FDA Precedents
+//                             </h4>
+//                             <ul class="space-y-2">
+//                                 ${data.precedent_refs.map(ref => `
+//                                     <li class="flex items-start gap-2">
+//                                         <span class="text-indigo-600 mt-1">•</span>
+//                                         <span class="text-indigo-800">${ref}</span>
+//                                     </li>
+//                                 `).join('')}
+//                             </ul>
+//                         </div>
+//                     ` : ''}
+                    
+//                     <!-- Email Contacts -->
+//                     ${data.emails && data.emails.length > 0 ? `
+//                         <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+//                             <h4 class="font-semibold text-green-900 mb-4 flex items-center gap-2">
+//                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+//                                 </svg>
+//                                 Discovered Email Contacts (${data.emails.length})
+//                             </h4>
+//                             <div class="space-y-2 max-h-60 overflow-y-auto">
+//                                 ${data.emails.map(email => `
+//                                     <div class="flex items-center justify-between bg-white p-3 rounded-lg border border-green-100">
+//                                         <span class="text-green-800 text-sm font-mono">${email}</span>
+//                                         <div class="flex gap-2">
+//                                             <button onclick="copyToClipboard('${email}')" 
+//                                                     class="p-1.5 text-green-600 hover:bg-green-100 rounded transition-colors"
+//                                                     title="Copy">
+//                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+//                                                           d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+//                                                 </svg>
+//                                             </button>
+//                                             <a href="mailto:${email}" 
+//                                                class="p-1.5 text-green-600 hover:bg-green-100 rounded transition-colors"
+//                                                title="Send Email">
+//                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+//                                                           d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+//                                                 </svg>
+//                                             </a>
+//                                         </div>
+//                                     </div>
+//                                 `).join('')}
+//                             </div>
+//                             <button onclick="copyAllEmails()" 
+//                                     class="mt-4 w-full bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+//                                 Copy All Emails
+//                             </button>
+//                         </div>
+//                     ` : data.canonical_company_name && data.canonical_company_name !== 'Unknown Company' ? `
+//                         <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+//                             <p class="text-yellow-800">No email contacts found. Hunter.io and Apollo.io API keys may need to be configured.</p>
+//                         </div>
+//                     ` : ''}
+                    
+//                     <!-- Key Personnel (if available from contacts) -->
+//                     ${data.contacts && (data.contacts.regulatory_contacts?.length > 0 || data.contacts.executives?.length > 0) ? `
+//                         <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+//                             <h4 class="font-semibold text-blue-900 mb-4 flex items-center gap-2">
+//                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"/>
+//                                 </svg>
+//                                 Key Personnel
+//                             </h4>
+//                             <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+//                                 ${data.contacts.regulatory_contacts?.length > 0 ? `
+//                                     <div>
+//                                         <p class="text-sm font-medium text-blue-700 mb-3">Regulatory Contacts</p>
+//                                         <div class="space-y-2">
+//                                             ${data.contacts.regulatory_contacts.slice(0, 3).map(contact => `
+//                                                 <div class="bg-white p-3 rounded-lg">
+//                                                     <p class="font-medium text-gray-900">${contact.name}</p>
+//                                                     <p class="text-sm text-gray-600">${contact.title}</p>
+//                                                     ${contact.email ? `<p class="text-xs text-blue-600 mt-1">${contact.email}</p>` : ''}
+//                                                 </div>
+//                                             `).join('')}
+//                                         </div>
+//                                     </div>
+//                                 ` : ''}
+//                                 ${data.contacts.executives?.length > 0 ? `
+//                                     <div>
+//                                         <p class="text-sm font-medium text-blue-700 mb-3">Executive Team</p>
+//                                         <div class="space-y-2">
+//                                             ${data.contacts.executives.slice(0, 3).map(exec => `
+//                                                 <div class="bg-white p-3 rounded-lg">
+//                                                     <p class="font-medium text-gray-900">${exec.name}</p>
+//                                                     <p class="text-sm text-gray-600">${exec.title}</p>
+//                                                     ${exec.email ? `<p class="text-xs text-blue-600 mt-1">${exec.email}</p>` : ''}
+//                                                 </div>
+//                                             `).join('')}
+//                                         </div>
+//                                     </div>
+//                                 ` : ''}
+//                             </div>
+//                         </div>
+//                     ` : ''}
+                    
+//                     <!-- Action Buttons -->
+//                     <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-6">
+//                         <div class="grid grid-cols-2 gap-4">
+//                             <button onclick="exportAIAnalysis()" 
+//                                     class="bg-indigo-600 text-white px-6 py-3 rounded-lg hover:bg-indigo-700 transition-colors flex items-center justify-center gap-2">
+//                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"/>
+//                                 </svg>
+//                                 Export Analysis
+//                             </button>
+//                             <button onclick="refreshAIAnalysis()" 
+//                                     class="bg-purple-600 text-white px-6 py-3 rounded-lg hover:bg-purple-700 transition-colors flex items-center justify-center gap-2">
+//                                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/>
+//                                 </svg>
+//                                 Refresh Analysis
+//                             </button>
+//                         </div>
+//                     </div>
+//                 </div>
+//             `;
+            
+//             // Store emails for bulk operations
+//             window.currentAnalysisEmails = data.emails || [];
+            
+//         } else {
+//             throw new Error(data.error || 'AI enhancement failed');
+//         }
+//     } catch (error) {
+//         console.error('AI enhance error:', error);
+//         aiContent.innerHTML = `
+//             <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+//                 <div class="flex items-start gap-3">
+//                     <svg class="w-6 h-6 text-red-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+//                     </svg>
+//                     <div>
+//                         <p class="text-red-800 font-medium">Analysis Error</p>
+//                         <p class="text-red-700 text-sm mt-1">${error.message}</p>
+//                         <p class="text-red-600 text-sm mt-2">Please ensure Hunter.io, Apollo.io, and OpenAI API keys are configured in your backend.</p>
+//                         <button onclick="aiEnhance()" class="mt-4 bg-red-600 text-white px-4 py-2 rounded-lg hover:bg-red-700 transition-colors">
+//                             Try Again
+//                         </button>
+//                     </div>
+//                 </div>
+//             </div>
+//         `;
+//     }
+// }
+
+// NEWONENEWOE WNIEWIE
+async function aiEnhance() {
+    if (!currentItem) return;
+    
+    console.log('Starting AI enhancement...');
+    
+    // If we have a company name from the warning letter scraper, use it
+    let extractedCompany = null;
+    if (currentWarningLetterData && currentWarningLetterData.recipient && currentWarningLetterData.recipient.company) {
+        extractedCompany = currentWarningLetterData.recipient.company;
+        console.log('Using company from warning letter:', extractedCompany);
+    }
+    
+    // Update all tabs to show loading
+    const loadingHTML = `
+        <div class="text-center py-12">
+            <div class="inline-flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-indigo-100">
+                <svg class="w-8 h-8 text-indigo-600 animate-spin" fill="none" viewBox="0 0 24 24">
+                    <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+                    <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+                </svg>
+            </div>
+            <p class="text-gray-700 font-medium mb-2">AI Analysis in Progress...</p>
+            <p class="text-gray-500 text-sm">${extractedCompany ? `Analyzing ${extractedCompany}...` : 'Identifying company and searching for contacts'}</p>
+        </div>
+    `;
+    
+    document.getElementById('ai-content').innerHTML = loadingHTML;
+    document.getElementById('company-content').innerHTML = loadingHTML;
+    document.getElementById('contacts-content').innerHTML = loadingHTML;
+    
+    // Switch to AI tab
+    switchTab('ai');
+    
+    try {
+        // Build the request payload
+        const payload = {
+            itemId: currentItem.id,
+            title: currentItem.title,
+            link: currentItem.link,
+            summary: currentItem.summary,
+            source: currentItem.source,
+            types: currentItem.types,
+            date: currentItem.date
+        };
+        
+        // Add warning letter data if available
+        if (currentWarningLetterData) {
+            payload.warningLetterData = {
+                company: extractedCompany,
+                letterContent: currentWarningLetterData.letterContent,
+                violations: currentWarningLetterData.violations,
+                products: currentWarningLetterData.products,
+                responseDeadline: currentWarningLetterData.responseDeadline
+            };
+        }
+        
+        // Make the API call
+        const response = await fetch('/api/ai/enhance', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(payload)
+        });
+        
+        const data = await response.json();
+        console.log('AI Enhancement response:', data);
+        
+        if (!data.success) {
+            throw new Error(data.error || 'Enhancement failed');
+        }
+        
+        // If we didn't get a company name from AI but have one from scraping, use it
+        if ((!data.canonical_company_name || data.canonical_company_name === 'Unknown Company') && extractedCompany) {
+            data.canonical_company_name = extractedCompany;
+        }
+        
+        // Store enhanced data
+        currentEnhancedData = data;
+        
+        // Update displays
+        renderAIAnalysis(data);
+        renderCompanyTab(data);
+        renderContactsTab(data);
+        
+    } catch (error) {
+        console.error('AI enhancement error:', error);
+        
+        const errorHTML = `
+            <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                <div class="flex items-start gap-3">
+                    <svg class="w-6 h-6 text-red-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                    </svg>
+                    <div class="flex-1">
+                        <p class="text-red-800 font-medium">Enhancement Failed</p>
+                        <p class="text-red-700 text-sm mt-1">${error.message}</p>
+                        <button onclick="aiEnhance()" class="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
                             Try Again
                         </button>
                     </div>
-                `;
-            }
-        }
+                </div>
+            </div>
+        `;
+        
+        document.getElementById('ai-content').innerHTML = errorHTML;
+        document.getElementById('company-content').innerHTML = errorHTML;
+        document.getElementById('contacts-content').innerHTML = errorHTML;
+    }
+}
 
-        // Helper function to copy all emails
-        function copyAllEmails() {
-            if (window.currentAnalysisEmails && window.currentAnalysisEmails.length > 0) {
-                const emailText = window.currentAnalysisEmails.join(', ');
-                copyToClipboard(emailText);
-                showToast(`Copied ${window.currentAnalysisEmails.length} emails to clipboard`, 'success');
-            }
-        }
+// async function aiEnhance() {
+//     if (!currentItem) return;
+    
+//     console.log('Starting AI enhancement for:', currentItem.title);
+    
+//     // Update all tabs to show loading
+//     const loadingHTML = `
+//         <div class="text-center py-12">
+//             <div class="inline-flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-indigo-100">
+//                 <svg class="w-8 h-8 text-indigo-600 animate-spin" fill="none" viewBox="0 0 24 24">
+//                     <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+//                     <path class="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z"></path>
+//                 </svg>
+//             </div>
+//             <p class="text-gray-700 font-medium mb-2">AI Analysis in Progress...</p>
+//             <p class="text-gray-500 text-sm">Identifying company and searching for contacts</p>
+//         </div>
+//     `;
+    
+//     document.getElementById('ai-content').innerHTML = loadingHTML;
+//     document.getElementById('company-content').innerHTML = loadingHTML;
+//     document.getElementById('contacts-content').innerHTML = loadingHTML;
+    
+//     // Switch to AI tab
+//     switchTab('ai');
+    
+//     try {
+//         // Make the API call with all available data
+//         const response = await fetch('/api/ai/enhance', {
+//             method: 'POST',
+//             headers: { 'Content-Type': 'application/json' },
+//             body: JSON.stringify({
+//                 itemId: currentItem.id,
+//                 title: currentItem.title,
+//                 link: currentItem.link,
+//                 summary: currentItem.summary,
+//                 source: currentItem.source,
+//                 types: currentItem.types,
+//                 date: currentItem.date
+//             })
+//         });
+        
+//         const data = await response.json();
+//         console.log('AI Enhancement response:', data);
+        
+//         if (!data.success) {
+//             throw new Error(data.error || 'Enhancement failed');
+//         }
+        
+//         // Store enhanced data
+//         currentEnhancedData = data;
+        
+//         // Update company name in details tab if found
+//         if (data.canonical_company_name && data.canonical_company_name !== 'Unknown Company') {
+//             document.getElementById('details-company-section').classList.remove('hidden');
+//             document.getElementById('details-company-name').textContent = data.canonical_company_name;
+//         }
+        
+//         // Render AI analysis
+//         renderAIAnalysis(data);
+        
+//         // Update company tab
+//         renderCompanyTab(data);
+        
+//         // Update contacts tab
+//         renderContactsTab(data);
+        
+//     } catch (error) {
+//         console.error('AI enhancement error:', error);
+        
+//         const errorHTML = `
+//             <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+//                 <div class="flex items-start gap-3">
+//                     <svg class="w-6 h-6 text-red-600 flex-shrink-0 mt-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+//                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4m0 4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"/>
+//                     </svg>
+//                     <div class="flex-1">
+//                         <p class="text-red-800 font-medium">Enhancement Failed</p>
+//                         <p class="text-red-700 text-sm mt-1">${error.message}</p>
+//                         <p class="text-red-600 text-sm mt-2">Please check that API keys are configured correctly.</p>
+//                         <button onclick="aiEnhance()" class="mt-4 px-4 py-2 bg-red-600 text-white rounded-lg hover:bg-red-700 transition-colors">
+//                             Try Again
+//                         </button>
+//                     </div>
+//                 </div>
+//             </div>
+//         `;
+        
+//         document.getElementById('ai-content').innerHTML = errorHTML;
+//         document.getElementById('company-content').innerHTML = errorHTML;
+//         document.getElementById('contacts-content').innerHTML = errorHTML;
+//     }
+// }
+
+
+
+// Helper function to refresh AI analysis
+function refreshAIAnalysis() {
+    aiEnhance();
+}
+// Render AI Analysis
+function renderAIAnalysis(data) {
+    const aiContent = document.getElementById('ai-content');
+    
+    // Check debug info
+    const hasAPIs = data.debug?.hadHunter || data.debug?.hadApollo;
+    const foundCompany = data.canonical_company_name && data.canonical_company_name !== 'Unknown Company';
+    
+    aiContent.innerHTML = `
+        <div class="space-y-6">
+            <!-- Header -->
+            <div class="bg-gradient-to-r from-purple-600 to-indigo-600 text-white rounded-lg p-6">
+                <h3 class="text-xl font-bold mb-2">🤖 AI-Enhanced Intelligence Report</h3>
+                <p class="text-purple-100 text-sm">
+                    ${data.debug?.hadOpenAI ? 'Powered by GPT-4' : 'Using pattern matching'} • 
+                    ${hasAPIs ? 'Contact APIs available' : 'No contact APIs configured'}
+                </p>
+            </div>
+            
+            <!-- Company Identification -->
+            ${foundCompany ? `
+                <div class="bg-green-50 border border-green-200 rounded-lg p-6">
+                    <h4 class="font-semibold text-green-900 mb-3 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                        </svg>
+                        Company Successfully Identified
+                    </h4>
+                    <p class="text-2xl font-bold text-green-900">${data.canonical_company_name}</p>
+                </div>
+            ` : `
+                <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-6">
+                    <h4 class="font-semibold text-yellow-900 mb-3 flex items-center gap-2">
+                        <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"/>
+                        </svg>
+                        Company Not Identified
+                    </h4>
+                    <p class="text-yellow-800">Unable to extract company name from the document. This may be a general FDA announcement.</p>
+                </div>
+            `}
+            
+            <!-- Enhanced Summary -->
+            ${data.summary && data.summary !== 'No summary available' ? `
+                <div class="bg-white border border-gray-200 rounded-lg p-6">
+                    <h4 class="font-semibold text-gray-900 mb-3">📋 Executive Summary</h4>
+                    <p class="text-gray-700 leading-relaxed">${data.summary}</p>
+                </div>
+            ` : ''}
+            
+            <!-- Regulatory Impact -->
+            ${data.regulatory_impact ? `
+                <div class="bg-red-50 border border-red-200 rounded-lg p-6">
+                    <h4 class="font-semibold text-red-900 mb-3">⚠️ Regulatory Impact</h4>
+                    <p class="text-red-800">${data.regulatory_impact}</p>
+                </div>
+            ` : ''}
+            
+            <!-- Business Impact -->
+            ${data.business_impact ? `
+                <div class="bg-orange-50 border border-orange-200 rounded-lg p-6">
+                    <h4 class="font-semibold text-orange-900 mb-3">📊 Business Impact</h4>
+                    <p class="text-orange-800">${data.business_impact}</p>
+                </div>
+            ` : ''}
+            
+            <!-- Action Required -->
+            ${data.action_required ? `
+                <div class="bg-amber-50 border border-amber-200 rounded-lg p-6">
+                    <h4 class="font-semibold text-amber-900 mb-3">✅ Action Required</h4>
+                    <p class="text-amber-800">${data.action_required}</p>
+                    ${data.timeline ? `<p class="text-sm text-amber-700 mt-2"><strong>Timeline:</strong> ${data.timeline}</p>` : ''}
+                </div>
+            ` : ''}
+            
+            <!-- Emails Found -->
+            ${data.emails && data.emails.length > 0 ? `
+                <div class="bg-blue-50 border border-blue-200 rounded-lg p-6">
+                    <h4 class="font-semibold text-blue-900 mb-4">📧 Email Contacts Found (${data.emails.length})</h4>
+                    <div class="space-y-2 max-h-60 overflow-y-auto">
+                        ${data.emails.slice(0, 10).map(email => `
+                            <div class="flex items-center justify-between bg-white p-3 rounded-lg">
+                                <span class="text-blue-800 font-mono text-sm">${email}</span>
+                                <div class="flex gap-2">
+                                    <button onclick="copyToClipboard('${email}')" 
+                                            class="p-1.5 text-blue-600 hover:bg-blue-100 rounded transition-colors"
+                                            title="Copy">
+                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                        </svg>
+                                    </button>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    ${data.emails.length > 10 ? `<p class="text-sm text-blue-700 mt-2">... and ${data.emails.length - 10} more</p>` : ''}
+                </div>
+            ` : foundCompany ? `
+                <div class="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                    <p class="text-gray-600">No email contacts found. ${!hasAPIs ? 'Configure Hunter.io or Apollo.io API keys for contact discovery.' : 'The APIs did not return any contacts for this domain.'}</p>
+                </div>
+            ` : ''}
+            
+            <!-- Debug Info (if in development) -->
+            ${data.debug ? `
+                <div class="bg-gray-100 rounded-lg p-4 text-xs text-gray-600">
+                    <p><strong>Debug Info:</strong></p>
+                    <p>OpenAI: ${data.debug.hadOpenAI ? '✅' : '❌'} | 
+                       Hunter: ${data.debug.hadHunter ? '✅' : '❌'} | 
+                       Apollo: ${data.debug.hadApollo ? '✅' : '❌'} | 
+                       Emails: ${data.debug.emailCount}</p>
+                </div>
+            ` : ''}
+        </div>
+    `;
+    
+    // Store emails globally for bulk operations
+    window.currentAnalysisEmails = data.emails || [];
+}
+
+function renderCompanyTab(data) {
+    const companyContent = document.getElementById('company-content');
+    
+    if (!data.canonical_company_name || data.canonical_company_name === 'Unknown Company') {
+        companyContent.innerHTML = `
+            <div class="text-center py-12 text-gray-500">
+                <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                </svg>
+                <p>No company identified</p>
+            </div>
+        `;
+        return;
+    }
+    
+    companyContent.innerHTML = `
+        <div class="space-y-6">
+            <div class="bg-gray-50 rounded-lg p-6">
+                <h3 class="text-lg font-semibold text-gray-900 mb-4">Company Overview</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                    <div>
+                        <p class="text-sm text-gray-600">Company Name</p>
+                        <p class="font-medium text-lg">${data.canonical_company_name}</p>
+                    </div>
+                    ${data.contacts?.domain ? `
+                        <div>
+                            <p class="text-sm text-gray-600">Domain</p>
+                            <p class="font-medium">${data.contacts.domain}</p>
+                        </div>
+                    ` : ''}
+                </div>
+            </div>
+            
+            ${data.severity_assessment ? `
+                <div class="bg-red-50 rounded-lg p-6">
+                    <h4 class="text-sm font-semibold text-red-900 mb-2">Severity Assessment</h4>
+                    <div class="flex items-center gap-4">
+                        <div class="text-3xl font-bold text-red-700">${data.severity_assessment}/10</div>
+                        <p class="text-red-700 text-sm">Based on AI analysis of the regulatory action</p>
+                    </div>
+                </div>
+            ` : ''}
+            
+            ${data.key_violations && data.key_violations.length > 0 ? `
+                <div class="bg-orange-50 rounded-lg p-6">
+                    <h4 class="text-sm font-semibold text-orange-900 mb-3">Key Violations</h4>
+                    <ul class="space-y-2">
+                        ${data.key_violations.map(v => `
+                            <li class="flex items-start gap-2">
+                                <span class="text-orange-600 mt-1">•</span>
+                                <span class="text-orange-800">${v}</span>
+                            </li>
+                        `).join('')}
+                    </ul>
+                </div>
+            ` : ''}
+        </div>
+    `;
+}
+
+// Render Contacts Tab
+function renderContactsTab(data) {
+    const contactsContent = document.getElementById('contacts-content');
+    
+    if (!data.emails || data.emails.length === 0) {
+        contactsContent.innerHTML = `
+            <div class="text-center py-12 text-gray-500">
+                <svg class="w-16 h-16 mx-auto mb-4 text-gray-300" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                </svg>
+                <p>No contacts found</p>
+                ${!data.debug?.hadHunter && !data.debug?.hadApollo ? 
+                    '<p class="text-sm mt-2">Configure Hunter.io or Apollo.io API keys</p>' : ''}
+            </div>
+        `;
+        return;
+    }
+    
+    contactsContent.innerHTML = `
+        <div class="space-y-6">
+            <div class="bg-green-50 rounded-lg p-6">
+                <h3 class="text-lg font-semibold text-green-900 mb-4">Email Contacts (${data.emails.length})</h3>
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+                    ${data.emails.map(email => `
+                        <div class="bg-white p-3 rounded-lg border border-green-200 flex items-center justify-between">
+                            <span class="text-sm font-mono text-green-800">${email}</span>
+                            <div class="flex gap-1">
+                                <button onclick="copyToClipboard('${email}')" 
+                                        class="p-1 text-green-600 hover:bg-green-100 rounded transition-colors"
+                                        title="Copy">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                              d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+                                    </svg>
+                                </button>
+                                <a href="mailto:${email}" 
+                                   class="p-1 text-green-600 hover:bg-green-100 rounded transition-colors"
+                                   title="Send Email">
+                                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+                                              d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/>
+                                    </svg>
+                                </a>
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+                
+                <div class="mt-4 flex gap-3">
+                    <button onclick="copyAllEmails()" 
+                            class="flex-1 bg-green-600 text-white px-4 py-2 rounded-lg hover:bg-green-700 transition-colors">
+                        Copy All Emails
+                    </button>
+                    <button onclick="exportEmailList()" 
+                            class="flex-1 bg-indigo-600 text-white px-4 py-2 rounded-lg hover:bg-indigo-700 transition-colors">
+                        Export List
+                    </button>
+                </div>
+            </div>
+            
+            ${data.contacts?.contacts && data.contacts.contacts.length > 0 ? `
+                <div class="bg-blue-50 rounded-lg p-6">
+                    <h3 class="text-lg font-semibold text-blue-900 mb-4">Personnel Details</h3>
+                    <div class="space-y-3">
+                        ${data.contacts.contacts.slice(0, 10).map(contact => `
+                            <div class="bg-white p-3 rounded-lg">
+                                <p class="font-medium text-gray-900">${contact.name || 'Unknown'}</p>
+                                ${contact.title ? `<p class="text-sm text-gray-600">${contact.title}</p>` : ''}
+                                ${contact.email ? `<p class="text-sm text-blue-600">${contact.email}</p>` : ''}
+                                ${contact.verified ? '<span class="text-xs text-green-600">✓ Verified</span>' : ''}
+                            </div>
+                        `).join('')}
+                    </div>
+                </div>
+            ` : ''}
+        </div>
+    `;
+}
+
 
         // Helper function to export AI analysis
         async function exportAIAnalysis() {
@@ -1516,357 +3156,441 @@
         }
 
         // Get company info
-        async function getCompanyInfo() {
-            if (!currentItem) return;
+        // async function getCompanyInfo() {
+        //     if (!currentItem) return;
             
-            switchTab('company');
-            const companyContent = document.getElementById('company-content');
+        //     switchTab('company');
+        //     const companyContent = document.getElementById('company-content');
             
-            companyContent.innerHTML = `
-                <div class="text-center py-8">
-                    <div class="loader mx-auto mb-4"></div>
-                    <p class="text-gray-500">Loading company information...</p>
-                </div>
-            `;
+        //     companyContent.innerHTML = `
+        //         <div class="text-center py-8">
+        //             <div class="loader mx-auto mb-4"></div>
+        //             <p class="text-gray-500">Loading company information...</p>
+        //         </div>
+        //     `;
             
-            try {
-                const companyName = encodeURIComponent(currentItem.canonical_company || currentItem.company);
-                const response = await fetch(`/api/company/${companyName}`);
-                const data = await response.json();
+        //     try {
+        //         const companyName = encodeURIComponent(currentItem.canonical_company || currentItem.company);
+        //         const response = await fetch(`/api/company/${companyName}`);
+        //         const data = await response.json();
                 
-                if (data.success && data.company) {
-                    const company = data.company;
-                    companyContent.innerHTML = `
-                        <div class="space-y-6">
-                            <div class="bg-gray-50 rounded-lg p-4">
-                                <h4 class="font-semibold text-gray-900 mb-3">Company Overview</h4>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    <div>
-                                        <p class="text-sm text-gray-600">Name</p>
-                                        <p class="font-medium">${company.name}</p>
-                                    </div>
-                                    ${company.domain ? `
-                                        <div>
-                                            <p class="text-sm text-gray-600">Website</p>
-                                            <a href="https://${company.domain}" target="_blank" class="text-indigo-600 hover:text-indigo-900">
-                                                ${company.domain}
-                                            </a>
-                                        </div>
-                                    ` : ''}
-                                    ${company.ticker ? `
-                                        <div>
-                                            <p class="text-sm text-gray-600">Stock Ticker</p>
-                                            <p class="font-medium">${company.ticker}</p>
-                                        </div>
-                                    ` : ''}
-                                    <div>
-                                        <p class="text-sm text-gray-600">Compliance Score</p>
-                                        <p class="font-medium">${company.compliance_score}/100</p>
-                                    </div>
-                                </div>
-                            </div>
+        //         if (data.success && data.company) {
+        //             const company = data.company;
+        //             companyContent.innerHTML = `
+        //                 <div class="space-y-6">
+        //                     <div class="bg-gray-50 rounded-lg p-4">
+        //                         <h4 class="font-semibold text-gray-900 mb-3">Company Overview</h4>
+        //                         <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+        //                             <div>
+        //                                 <p class="text-sm text-gray-600">Name</p>
+        //                                 <p class="font-medium">${company.name}</p>
+        //                             </div>
+        //                             ${company.domain ? `
+        //                                 <div>
+        //                                     <p class="text-sm text-gray-600">Website</p>
+        //                                     <a href="https://${company.domain}" target="_blank" class="text-indigo-600 hover:text-indigo-900">
+        //                                         ${company.domain}
+        //                                     </a>
+        //                                 </div>
+        //                             ` : ''}
+        //                             ${company.ticker ? `
+        //                                 <div>
+        //                                     <p class="text-sm text-gray-600">Stock Ticker</p>
+        //                                     <p class="font-medium">${company.ticker}</p>
+        //                                 </div>
+        //                             ` : ''}
+        //                             <div>
+        //                                 <p class="text-sm text-gray-600">Compliance Score</p>
+        //                                 <p class="font-medium">${company.compliance_score}/100</p>
+        //                             </div>
+        //                         </div>
+        //                     </div>
                             
-                            ${company.aliases && company.aliases.length > 1 ? `
-                                <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                                    <h4 class="font-semibold text-blue-900 mb-2">Also Known As</h4>
-                                    <div class="flex flex-wrap gap-2">
-                                        ${company.aliases.map(alias => 
-                                            `<span class="px-2 py-1 bg-white rounded text-sm">${alias}</span>`
-                                        ).join('')}
-                                    </div>
-                                </div>
-                            ` : ''}
+        //                     ${company.aliases && company.aliases.length > 1 ? `
+        //                         <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+        //                             <h4 class="font-semibold text-blue-900 mb-2">Also Known As</h4>
+        //                             <div class="flex flex-wrap gap-2">
+        //                                 ${company.aliases.map(alias => 
+        //                                     `<span class="px-2 py-1 bg-white rounded text-sm">${alias}</span>`
+        //                                 ).join('')}
+        //                             </div>
+        //                         </div>
+        //                     ` : ''}
                             
-                            ${company.facilities && company.facilities.length > 0 ? `
-                                <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-                                    <h4 class="font-semibold text-green-900 mb-2">Facilities</h4>
-                                    <ul class="list-disc list-inside text-green-700">
-                                        ${company.facilities.map(facility => `<li>${facility}</li>`).join('')}
-                                    </ul>
-                                </div>
-                            ` : ''}
+        //                     ${company.facilities && company.facilities.length > 0 ? `
+        //                         <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+        //                             <h4 class="font-semibold text-green-900 mb-2">Facilities</h4>
+        //                             <ul class="list-disc list-inside text-green-700">
+        //                                 ${company.facilities.map(facility => `<li>${facility}</li>`).join('')}
+        //                             </ul>
+        //                         </div>
+        //                     ` : ''}
                             
-                            ${company.products && company.products.length > 0 ? `
-                                <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                                    <h4 class="font-semibold text-purple-900 mb-2">Products</h4>
-                                    <div class="flex flex-wrap gap-2">
-                                        ${company.products.map(product => 
-                                            `<span class="px-2 py-1 bg-white rounded text-sm">${product}</span>`
-                                        ).join('')}
-                                    </div>
-                                </div>
-                            ` : ''}
+        //                     ${company.products && company.products.length > 0 ? `
+        //                         <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+        //                             <h4 class="font-semibold text-purple-900 mb-2">Products</h4>
+        //                             <div class="flex flex-wrap gap-2">
+        //                                 ${company.products.map(product => 
+        //                                     `<span class="px-2 py-1 bg-white rounded text-sm">${product}</span>`
+        //                                 ).join('')}
+        //                             </div>
+        //                         </div>
+        //                     ` : ''}
                             
-                            <div class="bg-red-50 border border-red-200 rounded-lg p-4">
-                                <h4 class="font-semibold text-red-900 mb-3">Recent Violations</h4>
-                                <div class="space-y-2">
-                                    ${company.violations.slice(0, 5).map(v => `
-                                        <div class="bg-white p-2 rounded">
-                                            <div class="flex justify-between items-start">
-                                                <div>
-                                                    <p class="font-medium text-sm">${v.title}</p>
-                                                    <p class="text-xs text-gray-600">${formatDate(v.date)} • ${v.type.replace(/_/g, ' ')}</p>
-                                                </div>
-                                                <span class="text-xs px-2 py-1 rounded severity-${v.severity >= 7 ? 'high' : 'medium'}">
-                                                    Severity: ${v.severity}
-                                                </span>
-                                            </div>
-                                        </div>
-                                    `).join('')}
-                                    ${company.violations.length > 5 ? 
-                                        `<p class="text-sm text-gray-600 text-center">... and ${company.violations.length - 5} more</p>` 
-                                        : ''
-                                    }
-                                </div>
-                            </div>
+        //                     <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+        //                         <h4 class="font-semibold text-red-900 mb-3">Recent Violations</h4>
+        //                         <div class="space-y-2">
+        //                             ${company.violations.slice(0, 5).map(v => `
+        //                                 <div class="bg-white p-2 rounded">
+        //                                     <div class="flex justify-between items-start">
+        //                                         <div>
+        //                                             <p class="font-medium text-sm">${v.title}</p>
+        //                                             <p class="text-xs text-gray-600">${formatDate(v.date)} • ${v.type.replace(/_/g, ' ')}</p>
+        //                                         </div>
+        //                                         <span class="text-xs px-2 py-1 rounded severity-${v.severity >= 7 ? 'high' : 'medium'}">
+        //                                             Severity: ${v.severity}
+        //                                         </span>
+        //                                     </div>
+        //                                 </div>
+        //                             `).join('')}
+        //                             ${company.violations.length > 5 ? 
+        //                                 `<p class="text-sm text-gray-600 text-center">... and ${company.violations.length - 5} more</p>` 
+        //                                 : ''
+        //                             }
+        //                         </div>
+        //                     </div>
                             
-                            <div class="text-center">
-                                <button onclick="viewFullCompany('${encodeURIComponent(company.name)}')" 
-                                        class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
-                                    View Full Company Profile
-                                </button>
-                            </div>
-                        </div>
-                    `;
-                } else {
-                    throw new Error('Company not found');
-                }
-            } catch (error) {
-                console.error('Company info error:', error);
-                companyContent.innerHTML = `
-                    <div class="bg-red-50 border border-red-200 rounded-lg p-4">
-                        <p class="text-red-700">Error loading company information: ${error.message}</p>
-                        <button onclick="getCompanyInfo()" class="mt-2 text-red-600 hover:text-red-800">Try Again</button>
-                    </div>
-                `;
-            }
-        }
+        //                     <div class="text-center">
+        //                         <button onclick="viewFullCompany('${encodeURIComponent(company.name)}')" 
+        //                                 class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700">
+        //                             View Full Company Profile
+        //                         </button>
+        //                     </div>
+        //                 </div>
+        //             `;
+        //         } else {
+        //             throw new Error('Company not found');
+        //         }
+        //     } catch (error) {
+        //         console.error('Company info error:', error);
+        //         companyContent.innerHTML = `
+        //             <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+        //                 <p class="text-red-700">Error loading company information: ${error.message}</p>
+        //                 <button onclick="getCompanyInfo()" class="mt-2 text-red-600 hover:text-red-800">Try Again</button>
+        //             </div>
+        //         `;
+        //     }
+        // }
 
         // Load contacts
-        async function loadContacts() {
-            if (!currentItem) return;
+        // async function loadContacts() {
+        //     if (!currentItem) return;
             
-            const contactsContent = document.getElementById('contacts-content');
-            contactsContent.innerHTML = `
-                <div class="text-center py-8">
-                    <div class="loader mx-auto mb-4"></div>
-                    <p class="text-gray-500">Searching for contacts...</p>
-                </div>
-            `;
+        //     const contactsContent = document.getElementById('contacts-content');
+        //     contactsContent.innerHTML = `
+        //         <div class="text-center py-8">
+        //             <div class="loader mx-auto mb-4"></div>
+        //             <p class="text-gray-500">Searching for contacts...</p>
+        //         </div>
+        //     `;
             
-            try {
-                const companyName = encodeURIComponent(currentItem.canonical_company || currentItem.company);
-                const response = await fetch(`/api/company/${companyName}`);
-                const data = await response.json();
+        //     try {
+        //         const companyName = encodeURIComponent(currentItem.canonical_company || currentItem.company);
+        //         const response = await fetch(`/api/company/${companyName}`);
+        //         const data = await response.json();
                 
-                if (data.success && data.contacts) {
-                    const contacts = data.contacts;
+        //         if (data.success && data.contacts) {
+        //             const contacts = data.contacts;
                     
-                    let html = '<div class="space-y-4">';
+        //             let html = '<div class="space-y-4">';
                     
-                    // General company info
-                    if (contacts.domain || contacts.website || contacts.phone || contacts.address) {
-                        html += `
-                            <div class="bg-gray-50 rounded-lg p-4">
-                                <h4 class="font-semibold text-gray-900 mb-3">Company Contact Information</h4>
-                                <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
-                                    ${contacts.website ? `
-                                        <div>
-                                            <p class="text-sm text-gray-600">Website</p>
-                                            <a href="${contacts.website}" target="_blank" class="text-indigo-600 hover:text-indigo-900">
-                                                ${contacts.website}
-                                            </a>
-                                        </div>
-                                    ` : ''}
-                                    ${contacts.phone ? `
-                                        <div>
-                                            <p class="text-sm text-gray-600">Phone</p>
-                                            <p class="font-medium">${contacts.phone}</p>
-                                        </div>
-                                    ` : ''}
-                                    ${contacts.address ? `
-                                        <div>
-                                            <p class="text-sm text-gray-600">Address</p>
-                                            <p class="font-medium">${contacts.address}</p>
-                                        </div>
-                                    ` : ''}
-                                    ${contacts.linkedin ? `
-                                        <div>
-                                            <p class="text-sm text-gray-600">LinkedIn</p>
-                                            <a href="${contacts.linkedin}" target="_blank" class="text-indigo-600 hover:text-indigo-900">
-                                                View Profile
-                                            </a>
-                                        </div>
-                                    ` : ''}
-                                </div>
-                            </div>
-                        `;
-                    }
+        //             // General company info
+        //             if (contacts.domain || contacts.website || contacts.phone || contacts.address) {
+        //                 html += `
+        //                     <div class="bg-gray-50 rounded-lg p-4">
+        //                         <h4 class="font-semibold text-gray-900 mb-3">Company Contact Information</h4>
+        //                         <div class="grid grid-cols-1 md:grid-cols-2 gap-3">
+        //                             ${contacts.website ? `
+        //                                 <div>
+        //                                     <p class="text-sm text-gray-600">Website</p>
+        //                                     <a href="${contacts.website}" target="_blank" class="text-indigo-600 hover:text-indigo-900">
+        //                                         ${contacts.website}
+        //                                     </a>
+        //                                 </div>
+        //                             ` : ''}
+        //                             ${contacts.phone ? `
+        //                                 <div>
+        //                                     <p class="text-sm text-gray-600">Phone</p>
+        //                                     <p class="font-medium">${contacts.phone}</p>
+        //                                 </div>
+        //                             ` : ''}
+        //                             ${contacts.address ? `
+        //                                 <div>
+        //                                     <p class="text-sm text-gray-600">Address</p>
+        //                                     <p class="font-medium">${contacts.address}</p>
+        //                                 </div>
+        //                             ` : ''}
+        //                             ${contacts.linkedin ? `
+        //                                 <div>
+        //                                     <p class="text-sm text-gray-600">LinkedIn</p>
+        //                                     <a href="${contacts.linkedin}" target="_blank" class="text-indigo-600 hover:text-indigo-900">
+        //                                         View Profile
+        //                                     </a>
+        //                                 </div>
+        //                             ` : ''}
+        //                         </div>
+        //                     </div>
+        //                 `;
+        //             }
                     
-                    // Regulatory contacts
-                    if (contacts.regulatory_contacts && contacts.regulatory_contacts.length > 0) {
-                        html += `
-                            <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
-                                <h4 class="font-semibold text-blue-900 mb-3">Regulatory Contacts</h4>
-                                <div class="space-y-3">
-                                    ${contacts.regulatory_contacts.map(contact => `
-                                        <div class="bg-white p-3 rounded">
-                                            <div class="flex justify-between items-start">
-                                                <div>
-                                                    <p class="font-medium">${contact.name}</p>
-                                                    <p class="text-sm text-gray-600">${contact.title}</p>
-                                                    ${contact.email ? `
-                                                        <div class="flex items-center mt-1">
-                                                            <span class="text-sm text-blue-600">${contact.email}</span>
-                                                            <button onclick="copyToClipboard('${contact.email}')" 
-                                                                    class="ml-2 text-gray-400 hover:text-gray-600">
-                                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                                                          d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                                                </svg>
-                                                            </button>
-                                                        </div>
-                                                    ` : ''}
-                                                </div>
-                                                ${contact.verified ? 
-                                                    '<span class="text-green-600"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg></span>' 
-                                                    : ''
-                                                }
-                                            </div>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            </div>
-                        `;
-                    }
+        //             // Regulatory contacts
+        //             if (contacts.regulatory_contacts && contacts.regulatory_contacts.length > 0) {
+        //                 html += `
+        //                     <div class="bg-blue-50 border border-blue-200 rounded-lg p-4">
+        //                         <h4 class="font-semibold text-blue-900 mb-3">Regulatory Contacts</h4>
+        //                         <div class="space-y-3">
+        //                             ${contacts.regulatory_contacts.map(contact => `
+        //                                 <div class="bg-white p-3 rounded">
+        //                                     <div class="flex justify-between items-start">
+        //                                         <div>
+        //                                             <p class="font-medium">${contact.name}</p>
+        //                                             <p class="text-sm text-gray-600">${contact.title}</p>
+        //                                             ${contact.email ? `
+        //                                                 <div class="flex items-center mt-1">
+        //                                                     <span class="text-sm text-blue-600">${contact.email}</span>
+        //                                                     <button onclick="copyToClipboard('${contact.email}')" 
+        //                                                             class="ml-2 text-gray-400 hover:text-gray-600">
+        //                                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        //                                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+        //                                                                   d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+        //                                                         </svg>
+        //                                                     </button>
+        //                                                 </div>
+        //                                             ` : ''}
+        //                                         </div>
+        //                                         ${contact.verified ? 
+        //                                             '<span class="text-green-600"><svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/></svg></span>' 
+        //                                             : ''
+        //                                         }
+        //                                     </div>
+        //                                 </div>
+        //                             `).join('')}
+        //                         </div>
+        //                     </div>
+        //                 `;
+        //             }
                     
-                    // Executive contacts
-                    if (contacts.executives && contacts.executives.length > 0) {
-                        html += `
-                            <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
-                                <h4 class="font-semibold text-purple-900 mb-3">Executive Contacts</h4>
-                                <div class="space-y-3">
-                                    ${contacts.executives.map(exec => `
-                                        <div class="bg-white p-3 rounded">
-                                            <p class="font-medium">${exec.name}</p>
-                                            <p class="text-sm text-gray-600">${exec.title}</p>
-                                            ${exec.email ? `
-                                                <div class="flex items-center mt-1">
-                                                    <span class="text-sm text-purple-600">${exec.email}</span>
-                                                    <button onclick="copyToClipboard('${exec.email}')" 
-                                                            class="ml-2 text-gray-400 hover:text-gray-600">
-                                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                                                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                                        </svg>
-                                                    </button>
-                                                </div>
-                                            ` : ''}
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            </div>
-                        `;
-                    }
+        //             // Executive contacts
+        //             if (contacts.executives && contacts.executives.length > 0) {
+        //                 html += `
+        //                     <div class="bg-purple-50 border border-purple-200 rounded-lg p-4">
+        //                         <h4 class="font-semibold text-purple-900 mb-3">Executive Contacts</h4>
+        //                         <div class="space-y-3">
+        //                             ${contacts.executives.map(exec => `
+        //                                 <div class="bg-white p-3 rounded">
+        //                                     <p class="font-medium">${exec.name}</p>
+        //                                     <p class="text-sm text-gray-600">${exec.title}</p>
+        //                                     ${exec.email ? `
+        //                                         <div class="flex items-center mt-1">
+        //                                             <span class="text-sm text-purple-600">${exec.email}</span>
+        //                                             <button onclick="copyToClipboard('${exec.email}')" 
+        //                                                     class="ml-2 text-gray-400 hover:text-gray-600">
+        //                                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        //                                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+        //                                                           d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+        //                                                 </svg>
+        //                                             </button>
+        //                                         </div>
+        //                                     ` : ''}
+        //                                 </div>
+        //                             `).join('')}
+        //                         </div>
+        //                     </div>
+        //                 `;
+        //             }
                     
-                    // General emails
-                    if (contacts.emails && contacts.emails.length > 0) {
-                        html += `
-                            <div class="bg-green-50 border border-green-200 rounded-lg p-4">
-                                <h4 class="font-semibold text-green-900 mb-3">Additional Email Contacts</h4>
-                                <div class="space-y-2">
-                                    ${contacts.emails.map(emailObj => `
-                                        <div class="flex items-center justify-between bg-white p-2 rounded">
-                                            <div>
-                                                ${emailObj.name ? `<p class="font-medium text-sm">${emailObj.name}</p>` : ''}
-                                                <span class="text-sm text-green-600">${emailObj.email}</span>
-                                            </div>
-                                            <button onclick="copyToClipboard('${emailObj.email}')" 
-                                                    class="text-gray-400 hover:text-gray-600">
-                                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                                          d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                                </svg>
-                                            </button>
-                                        </div>
-                                    `).join('')}
-                                </div>
-                            </div>
-                        `;
-                    }
+        //             // General emails
+        //             if (contacts.emails && contacts.emails.length > 0) {
+        //                 html += `
+        //                     <div class="bg-green-50 border border-green-200 rounded-lg p-4">
+        //                         <h4 class="font-semibold text-green-900 mb-3">Additional Email Contacts</h4>
+        //                         <div class="space-y-2">
+        //                             ${contacts.emails.map(emailObj => `
+        //                                 <div class="flex items-center justify-between bg-white p-2 rounded">
+        //                                     <div>
+        //                                         ${emailObj.name ? `<p class="font-medium text-sm">${emailObj.name}</p>` : ''}
+        //                                         <span class="text-sm text-green-600">${emailObj.email}</span>
+        //                                     </div>
+        //                                     <button onclick="copyToClipboard('${emailObj.email}')" 
+        //                                             class="text-gray-400 hover:text-gray-600">
+        //                                         <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        //                                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+        //                                                   d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+        //                                         </svg>
+        //                                     </button>
+        //                                 </div>
+        //                             `).join('')}
+        //                         </div>
+        //                     </div>
+        //                 `;
+        //             }
                     
-                    if (contacts.general_email) {
-                        html += `
-                            <div class="bg-gray-50 rounded-lg p-4">
-                                <p class="text-sm text-gray-600 mb-1">General Contact Email</p>
-                                <div class="flex items-center">
-                                    <span class="font-medium">${contacts.general_email}</span>
-                                    <button onclick="copyToClipboard('${contacts.general_email}')" 
-                                            class="ml-2 text-gray-400 hover:text-gray-600">
-                                        <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
-                                                  d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
-                                        </svg>
-                                    </button>
-                                </div>
-                            </div>
-                        `;
-                    }
+        //             if (contacts.general_email) {
+        //                 html += `
+        //                     <div class="bg-gray-50 rounded-lg p-4">
+        //                         <p class="text-sm text-gray-600 mb-1">General Contact Email</p>
+        //                         <div class="flex items-center">
+        //                             <span class="font-medium">${contacts.general_email}</span>
+        //                             <button onclick="copyToClipboard('${contacts.general_email}')" 
+        //                                     class="ml-2 text-gray-400 hover:text-gray-600">
+        //                                 <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        //                                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" 
+        //                                           d="M8 16H6a2 2 0 01-2-2V6a2 2 0 012-2h8a2 2 0 012 2v2m-6 12h8a2 2 0 002-2v-8a2 2 0 00-2-2h-8a2 2 0 00-2 2v8a2 2 0 002 2z"/>
+        //                                 </svg>
+        //                             </button>
+        //                         </div>
+        //                     </div>
+        //                 `;
+        //             }
                     
-                    html += '</div>';
-                    contactsContent.innerHTML = html;
+        //             html += '</div>';
+        //             contactsContent.innerHTML = html;
                     
-                } else {
-                    contactsContent.innerHTML = `
-                        <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-                            <p class="text-yellow-700">No contact information found. Try using AI Enhance to search for contacts.</p>
-                        </div>
-                    `;
-                }
-            } catch (error) {
-                console.error('Contacts error:', error);
-                contactsContent.innerHTML = `
-                    <div class="bg-red-50 border border-red-200 rounded-lg p-4">
-                        <p class="text-red-700">Error loading contacts: ${error.message}</p>
-                        <button onclick="loadContacts()" class="mt-2 text-red-600 hover:text-red-800">Try Again</button>
-                    </div>
-                `;
-            }
-        }
+        //         } else {
+        //             contactsContent.innerHTML = `
+        //                 <div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+        //                     <p class="text-yellow-700">No contact information found. Try using AI Enhance to search for contacts.</p>
+        //                 </div>
+        //             `;
+        //         }
+        //     } catch (error) {
+        //         console.error('Contacts error:', error);
+        //         contactsContent.innerHTML = `
+        //             <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+        //                 <p class="text-red-700">Error loading contacts: ${error.message}</p>
+        //                 <button onclick="loadContacts()" class="mt-2 text-red-600 hover:text-red-800">Try Again</button>
+        //             </div>
+        //         `;
+        //     }
+        // }
 
         // Export modal to email
-        async function exportModalToEmail() {
-            if (!currentItem) return;
+        // async function exportModalToEmail() {
+        //     if (!currentItem) return;
             
-            const email = prompt('Enter email address to send report to:', userSettings.email);
-            if (!email) return;
+        //     const email = prompt('Enter email address to send report to:', userSettings.email);
+        //     if (!email) return;
             
-            try {
-                // Get all modal content
-                const modalContent = document.getElementById('tab-content').innerHTML;
+        //     try {
+        //         // Get all modal content
+        //         const modalContent = document.getElementById('tab-content').innerHTML;
                 
-                const response = await fetch('/api/report/export-modal', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({
-                        html: modalContent,
-                        toEmail: email
-                    })
-                });
+        //         const response = await fetch('/api/report/export-modal', {
+        //             method: 'POST',
+        //             headers: { 'Content-Type': 'application/json' },
+        //             body: JSON.stringify({
+        //                 html: modalContent,
+        //                 toEmail: email
+        //             })
+        //         });
                 
-                const data = await response.json();
+        //         const data = await response.json();
                 
-                if (data.success) {
-                    showToast(`Report sent to ${email}`, 'success');
-                } else {
-                    throw new Error(data.error || 'Failed to send email');
-                }
-            } catch (error) {
-                console.error('Export error:', error);
-                showToast(`Error: ${error.message}`, 'error');
-            }
-        }
+        //         if (data.success) {
+        //             showToast(`Report sent to ${email}`, 'success');
+        //         } else {
+        //             throw new Error(data.error || 'Failed to send email');
+        //         }
+        //     } catch (error) {
+        //         console.error('Export error:', error);
+        //         showToast(`Error: ${error.message}`, 'error');
+        //     }
+        // }
+// Helper function to copy all emails
+function copyAllEmails() {
+    if (window.currentAnalysisEmails && window.currentAnalysisEmails.length > 0) {
+        const emailText = window.currentAnalysisEmails.join('; ');
+        navigator.clipboard.writeText(emailText).then(() => {
+            showToast(`Copied ${window.currentAnalysisEmails.length} emails to clipboard`, 'success');
+        });
+    }
+}
 
+// Helper function to export email list
+function exportEmailList() {
+    if (!currentEnhancedData || !currentEnhancedData.emails) return;
+    
+    const csvContent = "data:text/csv;charset=utf-8," 
+        + "Email,Company,Date\n"
+        + currentEnhancedData.emails.map(email => 
+            `${email},${currentEnhancedData.canonical_company_name || 'Unknown'},${new Date().toISOString()}`
+          ).join("\n");
+    
+    const encodedUri = encodeURI(csvContent);
+    const link = document.createElement("a");
+    link.setAttribute("href", encodedUri);
+    link.setAttribute("download", `contacts_${Date.now()}.csv`);
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    
+    showToast('Email list exported', 'success');
+}
+
+// Close modal
+function closeDetailModal() {
+    document.getElementById('detail-modal').classList.add('hidden');
+    currentItem = null;
+    currentEnhancedData = null;
+}
+
+// Get Company Info button handler
+async function getCompanyInfo() {
+    // Just trigger AI enhance if not already done
+    if (!currentEnhancedData) {
+        await aiEnhance();
+    }
+    switchTab('company');
+}
+
+// Load contacts
+async function loadContacts() {
+    // Just trigger AI enhance if not already done
+    if (!currentEnhancedData) {
+        await aiEnhance();
+    }
+    switchTab('contacts');
+}
+
+// Export modal to email
+async function exportModalToEmail() {
+    const email = prompt('Enter email address to send report to:', userSettings.email || '');
+    if (!email) return;
+    
+    try {
+        const modalContent = document.getElementById('tab-content').innerHTML;
+        
+        const response = await fetch('/api/report/export-modal', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+                html: modalContent,
+                toEmail: email
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            showToast(`Report sent to ${email}`, 'success');
+        } else {
+            throw new Error(data.error || 'Failed to send email');
+        }
+    } catch (error) {
+        console.error('Export error:', error);
+        showToast(`Error: ${error.message}`, 'error');
+    }
+}
         // View by company
         function viewByCompany() {
             // Group items by company

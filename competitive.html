@@ -12,7 +12,9 @@
     
     <!-- Canonical URL -->
     <link rel="canonical" href="https://www.syneticx.com/services/business-intelligence" />
-    
+        <link rel="icon" type="image/svg+xml" href="syneticx.png">
+    <link rel="alternate icon" href="syneticx.png">
+    <link rel="apple-touch-icon" href="syneticx.png">
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://www.syneticx.com/services/business-intelligence">
@@ -269,9 +271,132 @@
             backdrop-filter: blur(10px);
         }
     </style>
-</head>
-<body class="font-sans text-gray-100 bg-gray-900">
+    <style>
+  /* ===== Polished surface styles ===== */
+  .glass {
+    background: linear-gradient(180deg, rgba(255,255,255,0.07), rgba(255,255,255,0.03));
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(10px);
+    border-radius: 16px;
+    box-shadow:
+      0 10px 30px rgba(0,0,0,0.35),
+      inset 0 1px 0 rgba(255,255,255,0.06);
+  }
+  .btn-glow {
+    background: linear-gradient(90deg, rgba(16,185,129,0.22), rgba(99,102,241,0.22));
+    border: 1px solid rgba(255,255,255,0.16);
+    box-shadow: 0 0 22px rgba(34,197,94,0.28), inset 0 0 10px rgba(99,102,241,0.18);
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .btn-glow:hover { transform: translateY(-1px); box-shadow: 0 0 32px rgba(34,197,94,0.38), inset 0 0 14px rgba(99,102,241,0.22); }
+  .btn-ghost {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: transform .2s ease, background .2s ease;
+  }
+  .btn-ghost:hover { transform: translateY(-1px); background: rgba(255,255,255,0.10); }
 
+  /* ===== Dynamic grid (sleeker) ===== */
+  .tech-grid {
+    position: relative; isolation: isolate;
+    background:
+      radial-gradient(1200px 600px at 80% 10%, rgba(59,130,246,0.10), transparent 60%),
+      radial-gradient(900px 500px at 20% 80%, rgba(16,185,129,0.08), transparent 60%),
+      #0a0f1a;
+    overflow: hidden;
+  }
+  .grid-layer { position:absolute; inset:0; z-index:-1; opacity:.75; mask-image: radial-gradient(1100px 650px at 50% 50%, black 60%, transparent 100%); }
+  .grid-a, .grid-b {
+    background-image:
+      linear-gradient(to right, rgba(255,255,255,.07) 1px, transparent 1px),
+      linear-gradient(to bottom, rgba(255,255,255,.07) 1px, transparent 1px);
+    background-size: 36px 36px;
+    will-change: transform, opacity;
+  }
+  .grid-a { animation: driftA 38s ease-in-out infinite; opacity:.55; }
+  .grid-b { background-size: 22px 22px; animation: driftB 30s ease-in-out infinite; opacity:.75; }
+
+  @keyframes driftA { 0%{transform:translate3d(-1.5%, -1.5%,0) scale(1.01)} 50%{transform:translate3d(1%,1%,0) scale(1.03)} 100%{transform:translate3d(-1.5%,-1.5%,0) scale(1.01)} }
+  @keyframes driftB { 0%{transform:translate3d(1%, .5%,0) scale(1)} 50%{transform:translate3d(-1%,-1.5%,0) scale(.985)} 100%{transform:translate3d(1%, .5%,0) scale(1)} }
+
+  /* twinkles */
+  .twinkle { position:absolute; width:3px; height:3px; border-radius:9999px; background: rgba(99,102,241,0.25); box-shadow: 0 0 10px 2px rgba(99,102,241,0.25); animation: twinkle 2s ease-in-out infinite; }
+  @keyframes twinkle { 0%,100%{transform:scale(.9); opacity:.2} 50%{transform:scale(1.35); opacity:.9} }
+
+  /* ===== Live bar chart ===== */
+  .bars { display:grid; grid-template-columns:repeat(8,1fr); gap:10px; align-items:end; height:100%;}
+  .bar {
+    position:relative; height:0%;
+    background: linear-gradient(180deg, rgba(34,197,94,.55), rgba(59,130,246,.45));
+    border: 1px solid rgba(255,255,255,.16); border-radius: 7px 7px 0 0;
+    box-shadow: inset 0 1px 6px rgba(255,255,255,.08), 0 6px 20px rgba(16,185,129,.10);
+    animation: rise 800ms cubic-bezier(.2,.7,.2,1) forwards, wobble 6.5s ease-in-out infinite;
+    animation-delay: var(--d,0s), calc(var(--d,0s) + .9s);
+  }
+  .bar::after {
+    content:""; position:absolute; inset:0; background: linear-gradient(90deg, transparent, rgba(255,255,255,.08), transparent);
+    transform: translateX(-110%); animation: sheen 14s ease-in-out infinite; animation-delay: calc(var(--d,0s) + 1.2s);
+  }
+  @keyframes rise { to { height: calc(var(--h,60) * 1%); } }
+  @keyframes wobble {
+    0%{height:calc(var(--h,60)*1%)} 25%{height:calc(var(--h,60)*1.06%)} 50%{height:calc(var(--h,60)*.94%)} 75%{height:calc(var(--h,60)*1.04%)} 100%{height:calc(var(--h,60)*.98%)}
+  }
+  @keyframes sheen { 0%,75%{transform:translateX(-120%);opacity:0} 82%{opacity:1} 100%{transform:translateX(120%);opacity:0} }
+
+  /* ===== Animated pie chart ===== */
+  .pie {
+    --p1: 38; --p2: 26; --p3: 22; --p4: 14; /* totals 100 */
+    width: 110px; height: 110px; border-radius: 9999px; position: relative;
+    background: conic-gradient(
+      rgba(59,130,246,.85) 0 calc(var(--s,0) * 1%), 
+      rgba(99,102,241,.85) 0 0,
+      rgba(16,185,129,.85) 0 0,
+      rgba(236,72,153,.85) 0 0
+    );
+    box-shadow: 0 10px 30px rgba(0,0,0,.35), inset 0 0 10px rgba(255,255,255,.06);
+    animation: pieSweep 1.2s ease forwards;
+  }
+  .pie::before {
+    content:""; position:absolute; inset:12px; background: rgba(10,15,26,.9); border-radius:9999px; box-shadow: inset 0 0 12px rgba(255,255,255,.06);
+  }
+  .pie::after {
+    content:"Live"; position:absolute; inset:0; display:grid; place-items:center; font-size:.7rem; color:#cbd5e1;
+  }
+  @keyframes pieSweep {
+    from { --s: 0; }
+    to   { --s: calc(var(--p1) + var(--p2) + var(--p3) + var(--p4)); }
+  }
+  /* after sweep ends, lock final slices (using CSS var switch via class) */
+  .pie.ready {
+    background: conic-gradient(
+      rgba(59,130,246,.85) 0 calc(var(--p1) * 1%),
+      rgba(99,102,241,.85) calc(var(--p1) * 1%) calc((var(--p1) + var(--p2)) * 1%),
+      rgba(16,185,129,.85) calc((var(--p1) + var(--p2)) * 1%) calc((var(--p1) + var(--p2) + var(--p3)) * 1%),
+      rgba(236,72,153,.85) calc((var(--p1) + var(--p2) + var(--p3)) * 1%) 100%
+    );
+  }
+
+  /* ===== Reduced motion ===== */
+  @media (prefers-reduced-motion: reduce) {
+    .grid-a, .grid-b, .twinkle, .bar, .bar::after, .pie { animation: none !important; }
+  }
+</style>
+
+</head>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-LGV9XLLBLV"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-LGV9XLLBLV');
+</script>
+<body class="font-sans text-gray-100 bg-gray-900">
+<input type="hidden" id="utm_source" name="utm_source" value="">
+<input type="hidden" id="utm_medium" name="utm_medium" value="">
+<input type="hidden" id="utm_campaign" name="utm_campaign" value="">
+<input type="hidden" id="utm_content" name="utm_content" value="">
+<input type="hidden" id="utm_term" name="utm_term" value="">
     <!-- Navigation -->
   <nav class="nav-glass fixed top-0 left-0 right-0 z-50" x-data="{ mobileMenu: false }">
   <div class="container mx-auto px-6 lg:px-8">
@@ -330,8 +455,135 @@
   </div>
 </nav>
 
+
+<section class="relative min-h-[90vh] flex items-center tech-grid">
+  <!-- dynamic grid -->
+  <div class="grid-layer grid-a"></div>
+  <div class="grid-layer grid-b"></div>
+  <!-- soft twinkles -->
+  <span class="twinkle" style="left:12%;top:20%;animation-delay:.1s"></span>
+  <span class="twinkle" style="left:32%;top:68%;animation-delay:.6s"></span>
+  <span class="twinkle" style="left:48%;top:34%;animation-delay:1s"></span>
+  <span class="twinkle" style="left:66%;top:18%;animation-delay:.4s"></span>
+  <span class="twinkle" style="left:78%;top:56%;animation-delay:1.3s"></span>
+  <span class="twinkle" style="left:18%;top:80%;animation-delay:1.6s"></span>
+
+  <div class="relative container mx-auto px-6 lg:px-8">
+    <div class="grid lg:grid-cols-2 gap-12 items-center">
+      <!-- Left copy -->
+      <div>
+        <h1 class="text-5xl lg:text-6xl font-bold leading-tight mb-6">
+          Custom Business Intelligence for
+          <span class="bg-clip-text text-transparent bg-gradient-to-r from-emerald-400 via-sky-400 to-indigo-400">
+            MedTech &amp; Pharma
+          </span>
+        </h1>
+        <p class="text-lg text-slate-300/90 mb-8 max-w-xl">
+          Secure, company-specific dashboards tracking financials, reimbursement, pricing movements competitive moves, and up to date competitive KPIs -  <span class="font-semibold text-slate-100">Supercharged with AI</span>.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4">
+          <a href="/demo.html" class="btn-glow px-7 py-4 rounded-xl text-white font-semibold text-center">Schedule Executive Briefing</a>
+          <button class="btn-ghost px-7 py-4 rounded-xl font-semibold text-white">See Sample Dashboards</button>
+        </div>
+      </div>
+
+      <!-- Right visuals -->
+      <div class="grid grid-cols-2 gap-4">
+        <!-- Live bar chart -->
+        <div class="glass p-4">
+          <div class="flex items-center justify-between mb-3">
+            <div class="text-sm text-slate-300">Finance KPIs</div>
+            <div class="flex items-center gap-2">
+              <span class="relative flex h-2 w-2">
+                <span class="absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-70 animate-ping"></span>
+                <span class="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
+              </span>
+              <span class="text-xs text-slate-400">Live</span>
+            </div>
+          </div>
+          <div class="h-36 rounded-lg bg-gradient-to-br from-emerald-900/30 to-sky-900/30 p-3">
+            <div class="bars">
+              <div class="bar" style="--h:50; --d:.00s"></div>
+              <div class="bar" style="--h:74; --d:.05s"></div>
+              <div class="bar" style="--h:61; --d:.10s"></div>
+              <div class="bar" style="--h:84; --d:.15s"></div>
+              <div class="bar" style="--h:44; --d:.20s"></div>
+              <div class="bar" style="--h:68; --d:.25s"></div>
+              <div class="bar" style="--h:57; --d:.30s"></div>
+              <div class="bar" style="--h:79; --d:.35s"></div>
+            </div>
+          </div>
+          <div class="mt-3 grid grid-cols-3 gap-2 text-xs">
+            <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-slate-300">Revenue ▲ 3.2%</span>
+            <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-slate-300">ASP ▼ 0.8%</span>
+            <span class="px-2 py-1 rounded bg-white/5 border border-white/10 text-slate-300">Share ▲ 0.4%</span>
+          </div>
+        </div>
+
+        <!-- Pie chart card -->
+        <div class="glass p-4">
+          <div class="text-sm text-slate-300 mb-3">Channel Mix</div>
+          <div class="flex items-center gap-4">
+            <div class="pie" id="pieMix" aria-label="Channel mix chart" role="img"></div>
+            <div class="space-y-2 text-xs text-slate-300">
+              <div class="flex items-center gap-2"><span class="inline-block w-2.5 h-2.5 rounded-full" style="background:#3b82f6"></span> Direct — 38%</div>
+              <div class="flex items-center gap-2"><span class="inline-block w-2.5 h-2.5 rounded-full" style="background:#6366f1"></span> Distributor — 26%</div>
+              <div class="flex items-center gap-2"><span class="inline-block w-2.5 h-2.5 rounded-full" style="background:#10b981"></span> Marketplace — 22%</div>
+              <div class="flex items-center gap-2"><span class="inline-block w-2.5 h-2.5 rounded-full" style="background:#ec4899"></span> Other — 14%</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AI Supercharged table -->
+        <div class="glass p-4 col-span-2">
+          <div class="flex items-center justify-between mb-3">
+            <div class="text-sm text-slate-300">Quarter Snapshot</div>
+            <span class="px-2.5 py-1 text-[10px] uppercase tracking-wide rounded-full bg-emerald-500/15 border border-emerald-300/30 text-emerald-300">
+              AI Supercharged
+            </span>
+          </div>
+          <div class="overflow-hidden rounded-lg border border-white/10">
+            <table class="w-full text-sm">
+              <thead class="bg-white/5 text-slate-300">
+                <tr>
+                  <th class="text-left px-4 py-2 font-semibold">Metric</th>
+                  <th class="text-left px-4 py-2 font-semibold">Current</th>
+                  <th class="text-left px-4 py-2 font-semibold">Δ (30d)</th>
+                  <th class="text-left px-4 py-2 font-semibold">Note</th>
+                </tr>
+              </thead>
+              <tbody class="divide-y divide-white/10">
+                <tr class="hover:bg-white/5">
+                  <td class="px-4 py-2 text-slate-200">Revenue</td>
+                  <td class="px-4 py-2">$4.2M</td>
+                  <td class="px-4 py-2 text-emerald-300">▲ 3.2%</td>
+                  <td class="px-4 py-2 text-slate-400">Upsell pipeline expanding</td>
+                </tr>
+                <tr class="hover:bg-white/5">
+                  <td class="px-4 py-2 text-slate-200">ASP</td>
+                  <td class="px-4 py-2">$1,280</td>
+                  <td class="px-4 py-2 text-rose-300">▼ 0.8%</td>
+                  <td class="px-4 py-2 text-slate-400">Mix shift toward bundles</td>
+                </tr>
+                <tr class="hover:bg-white/5">
+                  <td class="px-4 py-2 text-slate-200">Share of Voice</td>
+                  <td class="px-4 py-2">18.4%</td>
+                  <td class="px-4 py-2 text-emerald-300">▲ 0.4%</td>
+                  <td class="px-4 py-2 text-slate-400">PR cadence maintained</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <p class="mt-2 text-xs text-slate-400">Insights ranked and summarized by our <span class="text-slate-200 font-medium">AI Supercharged</span> signal engine.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
     <!-- Hero Section -->
-   <section class="relative min-h-[90vh] flex items-center overflow-hidden tech-grid"> 
+   <section class="hidden relative min-h-[90vh] flex items-center overflow-hidden tech-grid"> 
         <!-- Animated background particles -->
         <div class="absolute inset-0">
             <div class="absolute top-20 left-10 w-64 h-64 glow-orb floating-particle"></div>
@@ -440,12 +692,12 @@
                             Payer mix analysis
                         </li>
                     </ul>
-                    <button onclick="openGalleryModal('financials')" class="text-brand-400 font-medium hover:text-brand-300 transition-colors inline-flex items-center">
+                    <!-- <button onclick="openGalleryModal('financials')" class="text-brand-400 font-medium hover:text-brand-300 transition-colors inline-flex items-center">
                         See Sample
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
-                    </button>
+                    </button> -->
                 </div>
                 
                 <div class="glass-card rounded-xl p-6 group">
@@ -476,12 +728,12 @@
                             Patent landscape analysis
                         </li>
                     </ul>
-                    <button onclick="openGalleryModal('competitive')" class="text-purple-400 font-medium hover:text-purple-300 transition-colors inline-flex items-center">
+                    <!-- <button onclick="openGalleryModal('competitive')" class="text-purple-400 font-medium hover:text-purple-300 transition-colors inline-flex items-center">
                         See Sample
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
-                    </button>
+                    </button> -->
                 </div>
                 
                 <div class="glass-card rounded-xl p-6 group">
@@ -512,12 +764,12 @@
                             PBM relationship mapping
                         </li>
                     </ul>
-                    <button onclick="openGalleryModal('reimbursement')" class="text-green-400 font-medium hover:text-green-300 transition-colors inline-flex items-center">
+                    <!-- <button onclick="openGalleryModal('reimbursement')" class="text-green-400 font-medium hover:text-green-300 transition-colors inline-flex items-center">
                         See Sample
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
-                    </button>
+                    </button> -->
                 </div>
                 
                 <div class="glass-card rounded-xl p-6 group">
@@ -548,18 +800,626 @@
                             KOL engagement metrics
                         </li>
                     </ul>
-                    <button onclick="openGalleryModal('commercial')" class="text-amber-400 font-medium hover:text-amber-300 transition-colors inline-flex items-center">
+                    <!-- <button onclick="openGalleryModal('commercial')" class="text-amber-400 font-medium hover:text-amber-300 transition-colors inline-flex items-center">
                         See Sample
                         <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                             <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
                         </svg>
-                    </button>
+                    </button> -->
                 </div>
             </div>
         </div>
     </section>
     
+<!-- Integration Section - How Leaf Works with Your Stack -->
+<section class="py-20 relative overflow-hidden">
+    <div class="absolute inset-0 bg-gradient-to-b from-gray-900 via-brand-900/20 to-gray-900"></div>
+    <div class="absolute inset-0 tech-grid opacity-5"></div>
+    
+    <div class="relative container mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center px-4 py-2 rounded-full bg-brand-500/20 text-brand-300 text-sm font-semibold mb-6 border border-brand-500/30">
+                <span class="w-2 h-2 rounded-full bg-brand-400 mr-2 animate-pulse"></span>
+                UNIFIED DATA ECOSYSTEM
+            </div>
+            <h2 class="text-4xl font-display font-bold text-white mb-6">
+                Connect Leaf Intelligence to Your
+                <span class="gradient-text">Existing Data Sources</span>
+            </h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Build a truly closed-loop intelligence system by integrating Leaf with your IQVIA, Veeva, Salesforce, and internal databases. Combine public insights with your proprietary data for complete market visibility.
+            </p>
+        </div>
+        
+        <!-- Integration Flow Diagram -->
+        <div class="max-w-6xl mx-auto">
+            <div class="grid lg:grid-cols-3 gap-8 items-center">
+                <!-- Data Sources -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-white mb-4">Your Data Sources</h3>
+                    
+                    <div class="glass-card rounded-lg p-4 hover:scale-105 transition-transform cursor-pointer group">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded bg-blue-500/20 flex items-center justify-center mr-3">
+                                <span class="text-xs font-bold text-blue-400">IQ</span>
+                            </div>
+                            <div>
+                                <div class="font-medium text-white">IQVIA</div>
+                                <div class="text-xs text-gray-400">Sales & prescription data</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-lg p-4 hover:scale-105 transition-transform cursor-pointer group">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded bg-green-500/20 flex items-center justify-center mr-3">
+                                <span class="text-xs font-bold text-green-400">V</span>
+                            </div>
+                            <div>
+                                <div class="font-medium text-white">Veeva CRM</div>
+                                <div class="text-xs text-gray-400">Customer interactions</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-lg p-4 hover:scale-105 transition-transform cursor-pointer group">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded bg-purple-500/20 flex items-center justify-center mr-3">
+                                <span class="text-xs font-bold text-purple-400">SF</span>
+                            </div>
+                            <div>
+                                <div class="font-medium text-white">Salesforce</div>
+                                <div class="text-xs text-gray-400">Pipeline & forecasting</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-lg p-4 hover:scale-105 transition-transform cursor-pointer group">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded bg-amber-500/20 flex items-center justify-center mr-3">
+                                <span class="text-xs font-bold text-amber-400">DB</span>
+                            </div>
+                            <div>
+                                <div class="font-medium text-white">Internal DBs</div>
+                                <div class="text-xs text-gray-400">Proprietary insights</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Central Hub -->
+                <div class="relative">
+                    <!-- Animated connection lines -->
+                    <svg class="absolute inset-0 w-full h-full" style="z-index: -1;">
+                        <defs>
+                            <linearGradient id="lineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+                                <stop offset="0%" style="stop-color:#36a5f5;stop-opacity:0" />
+                                <stop offset="50%" style="stop-color:#36a5f5;stop-opacity:1" />
+                                <stop offset="100%" style="stop-color:#36a5f5;stop-opacity:0" />
+                            </linearGradient>
+                        </defs>
+                        <line x1="0" y1="50%" x2="100%" y2="50%" stroke="url(#lineGradient)" stroke-width="2" opacity="0.5">
+                            <animate attributeName="x1" from="-20%" to="0%" dur="2s" repeatCount="indefinite" />
+                            <animate attributeName="x2" from="100%" to="120%" dur="2s" repeatCount="indefinite" />
+                        </line>
+                    </svg>
+                    
+                    <div class="relative glass-card rounded-2xl p-8 border-2 border-brand-500/30 bg-gradient-to-br from-brand-900/30 to-brand-800/30">
+                        <div class="absolute -top-3 -right-3">
+                            <span class="relative flex h-3 w-3">
+                                <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-brand-400 opacity-75"></span>
+                                <span class="relative inline-flex rounded-full h-3 w-3 bg-brand-500"></span>
+                            </span>
+                        </div>
+                        
+                        <div class="text-center">
+                            <div class="w-20 h-20 mx-auto mb-4 rounded-full bg-gradient-to-br from-brand-500 to-purple-500 flex items-center justify-center">
+                                <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                                </svg>
+                            </div>
+                            <h3 class="text-xl font-bold text-white mb-2">Leaf Intelligence Hub</h3>
+                            <p class="text-sm text-gray-300">Unified data orchestration</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Output Dashboards -->
+                <div class="space-y-4">
+                    <h3 class="text-lg font-semibold text-white mb-4">Intelligent Outputs</h3>
+                    
+                    <div class="glass-card rounded-lg p-4 hover:scale-105 transition-transform cursor-pointer group">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded bg-gradient-to-br from-brand-500 to-purple-500 flex items-center justify-center mr-3">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-medium text-white">360° Market View</div>
+                                <div class="text-xs text-gray-400">Complete intelligence picture</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-lg p-4 hover:scale-105 transition-transform cursor-pointer group">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded bg-gradient-to-br from-green-500 to-blue-500 flex items-center justify-center mr-3">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-medium text-white">Predictive Analytics</div>
+                                <div class="text-xs text-gray-400">AI-powered forecasting</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-lg p-4 hover:scale-105 transition-transform cursor-pointer group">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded bg-gradient-to-br from-purple-500 to-pink-500 flex items-center justify-center mr-3">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-medium text-white">Real-time Alerts</div>
+                                <div class="text-xs text-gray-400">Automated monitoring</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="glass-card rounded-lg p-4 hover:scale-105 transition-transform cursor-pointer group">
+                        <div class="flex items-center">
+                            <div class="w-10 h-10 rounded bg-gradient-to-br from-amber-500 to-red-500 flex items-center justify-center mr-3">
+                                <svg class="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4" />
+                                </svg>
+                            </div>
+                            <div>
+                                <div class="font-medium text-white">Custom Workflows</div>
+                                <div class="text-xs text-gray-400">Tailored to your process</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Key Benefits -->
+            <div class="mt-16 grid md:grid-cols-3 gap-6">
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-brand-500/20 flex items-center justify-center border border-brand-500/30">
+                        <svg class="w-8 h-8 text-brand-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Secure & Compliant</h3>
+                    <p class="text-gray-400 text-sm">Closed Loop and FDA 21 CFR Part 11 compliant architecture</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-purple-500/20 flex items-center justify-center border border-purple-500/30">
+                        <svg class="w-8 h-8 text-purple-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7M4 7c0 2.21 3.582 4 8 4s8-1.79 8-4M4 7c0-2.21 3.582-4 8-4s8 1.79 8 4" />
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Build upon our existing vast data ecosystem</h3>
+                    <p class="text-gray-400 text-sm">Strengthen your insights with comprehensive data and unseen relationships</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-green-500/20 flex items-center justify-center border border-green-500/30">
+                        <svg class="w-8 h-8 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z" />
+                        </svg>
+                    </div>
+                    <h3 class="text-lg font-semibold text-white mb-2">Real-time Processing</h3>
+                    <p class="text-gray-400 text-sm">Live data updates and instant alert notifications with reporting capabilities</p>
+                </div>
+            </div>
+            
+            <div class="mt-12 text-center">
+                <button onclick="openIntegrationDemo()" class="btn-glow px-8 py-4 rounded-lg font-semibold inline-flex items-center">
+                    <svg class="w-5 h-5 mr-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                    </svg>
+                    See Integration Demo
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
 
+<!-- Portfolio Section - Projects We've Delivered -->
+<section class="py-20 section-gradient relative overflow-hidden">
+    <div class="absolute inset-0 tech-grid opacity-10"></div>
+    <div class="relative container mx-auto px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <div class="inline-flex items-center px-4 py-2 rounded-full bg-green-500/20 text-green-300 text-sm font-semibold mb-6 border border-green-500/30">
+                <span class="w-2 h-2 rounded-full bg-green-400 mr-2 animate-pulse"></span>
+                PROVEN SUCCESS
+            </div>
+            <h2 class="text-4xl font-display font-bold text-white mb-6">
+                Dashboards That Drive
+                <span class="gradient-text">Real Business Impact</span>
+            </h2>
+            <p class="text-xl text-gray-300 max-w-3xl mx-auto">
+                Explore how we've helped leading life sciences companies transform their data into actionable intelligence
+            </p>
+        </div>
+        
+        <!-- Project Cards Grid -->
+        <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
+            <!-- Project 1 -->
+            <div class="project-card relative group cursor-pointer" onclick="window.location.href='/case-studies/oncology-launch'">
+                <div class="glass-card rounded-xl overflow-hidden h-full transform transition-all duration-500 group-hover:scale-105">
+                    <!-- Image Container -->
+                    <div class="relative h-48 bg-gradient-to-br from-purple-900/50 to-pink-900/50 overflow-hidden">
+                        <!-- Placeholder visualization -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-32 h-32 text-purple-400/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" />
+                            </svg>
+                        </div>
+                        <!-- Animated overlay on hover -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+                            <div class="text-white">
+                                <p class="text-sm font-medium">View Full Case Study</p>
+                                <div class="flex items-center mt-1">
+                                    <span class="text-xs">Learn more</span>
+                                    <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Category badge -->
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-purple-500/80 backdrop-blur text-white text-xs font-semibold rounded-full">
+                                Oncology
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-brand-400 transition-colors">
+                            Oncology Drug Launch Intelligence
+                        </h3>
+                        <p class="text-gray-400 mb-4 line-clamp-2">
+                            Real-time competitive tracking dashboard for a top-10 pharma's immunotherapy launch, monitoring 15 competitors across trial data, publications, and market signals.
+                        </p>
+                        
+                        <!-- Stats -->
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <div class="text-2xl font-bold text-brand-400">47%</div>
+                                <div class="text-xs text-gray-400">Faster insights</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-green-400">$2.3M</div>
+                                <div class="text-xs text-gray-400">Annual savings</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Technologies used -->
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-brand-500/20 text-brand-300 text-xs rounded border border-brand-500/30">
+                                Clinical Trials
+                            </span>
+                            <span class="px-2 py-1 bg-brand-500/20 text-brand-300 text-xs rounded border border-brand-500/30">
+                                FDA Tracking
+                            </span>
+                            <span class="px-2 py-1 bg-brand-500/20 text-brand-300 text-xs rounded border border-brand-500/30">
+                                KOL Mapping
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 2 -->
+            <div class="project-card relative group cursor-pointer" onclick="window.location.href='/case-studies/pbm-analytics'">
+                <div class="glass-card rounded-xl overflow-hidden h-full transform transition-all duration-500 group-hover:scale-105">
+                    <!-- Image Container -->
+                    <div class="relative h-48 bg-gradient-to-br from-green-900/50 to-emerald-900/50 overflow-hidden">
+                        <!-- Placeholder visualization -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-32 h-32 text-green-400/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                            </svg>
+                        </div>
+                        <!-- Animated overlay on hover -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+                            <div class="text-white">
+                                <p class="text-sm font-medium">View Full Case Study</p>
+                                <div class="flex items-center mt-1">
+                                    <span class="text-xs">Learn more</span>
+                                    <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Category badge -->
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-green-500/80 backdrop-blur text-white text-xs font-semibold rounded-full">
+                                Market Access
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-brand-400 transition-colors">
+                            PBM Relationship Mapping Platform
+                        </h3>
+                        <p class="text-gray-400 mb-4 line-clamp-2">
+                            Comprehensive dashboard tracking formulary positions, rebate structures, and access trends across all major PBMs for a specialty pharma portfolio.
+                        </p>
+                        
+                        <!-- Stats -->
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <div class="text-2xl font-bold text-brand-400">12</div>
+                                <div class="text-xs text-gray-400">PBMs tracked</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-green-400">89%</div>
+                                <div class="text-xs text-gray-400">Coverage visibility</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Technologies used -->
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-brand-500/20 text-brand-300 text-xs rounded border border-brand-500/30">
+                                Formulary Analysis
+                            </span>
+                            <span class="px-2 py-1 bg-brand-500/20 text-brand-300 text-xs rounded border border-brand-500/30">
+                                Rebate Tracking
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 3 -->
+            <div class="project-card relative group cursor-pointer" onclick="window.location.href='/case-studies/medtech-supply'">
+                <div class="glass-card rounded-xl overflow-hidden h-full transform transition-all duration-500 group-hover:scale-105">
+                    <!-- Image Container -->
+                    <div class="relative h-48 bg-gradient-to-br from-blue-900/50 to-cyan-900/50 overflow-hidden">
+                        <!-- Placeholder visualization -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-32 h-32 text-blue-400/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
+                            </svg>
+                        </div>
+                        <!-- Animated overlay on hover -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+                            <div class="text-white">
+                                <p class="text-sm font-medium">View Full Case Study</p>
+                                <div class="flex items-center mt-1">
+                                    <span class="text-xs">Learn more</span>
+                                    <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Category badge -->
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-blue-500/80 backdrop-blur text-white text-xs font-semibold rounded-full">
+                                MedTech
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-brand-400 transition-colors">
+                            Medical Device Supply Chain Analytics
+                        </h3>
+                        <p class="text-gray-400 mb-4 line-clamp-2">
+                            End-to-end visibility dashboard for Class III device manufacturer, tracking regulatory changes, supplier risks, and global distribution patterns.
+                        </p>
+                        
+                        <!-- Stats -->
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <div class="text-2xl font-bold text-brand-400">35%</div>
+                                <div class="text-xs text-gray-400">Risk reduction</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-green-400">24/7</div>
+                                <div class="text-xs text-gray-400">Monitoring</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Technologies used -->
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-brand-500/20 text-brand-300 text-xs rounded border border-brand-500/30">
+                                FDA MAUDE
+                            </span>
+                            <span class="px-2 py-1 bg-brand-500/20 text-brand-300 text-xs rounded border border-brand-500/30">
+                                Supply Chain
+                            </span>
+                            <span class="px-2 py-1 bg-brand-500/20 text-brand-300 text-xs rounded border border-brand-500/30">
+                                Quality Metrics
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 4 -->
+            <div class="project-card relative group cursor-pointer" onclick="window.location.href='/case-studies/rare-disease'">
+                <div class="glass-card rounded-xl overflow-hidden h-full transform transition-all duration-500 group-hover:scale-105">
+                    <!-- Image Container -->
+                    <div class="relative h-48 bg-gradient-to-br from-amber-900/50 to-orange-900/50 overflow-hidden">
+                        <!-- Placeholder visualization -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-32 h-32 text-amber-400/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M12 4.354a4 4 0 110 5.292M15 21H3v-1a6 6 0 0112 0v1zm0 0h6v-1a6 6 0 00-9-5.197M13 7a4 4 0 11-8 0 4 4 0 018 0z" />
+                            </svg>
+                        </div>
+                        <!-- Animated overlay on hover -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+                            <div class="text-white">
+                                <p class="text-sm font-medium">View Full Case Study</p>
+                                <div class="flex items-center mt-1">
+                                    <span class="text-xs">Learn more</span>
+                                    <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Category badge -->
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-amber-500/80 backdrop-blur text-white text-xs font-semibold rounded-full">
+                                Rare Disease
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-brand-400 transition-colors">
+                            Rare Disease Patient Journey Mapping
+                        </h3>
+                        <p class="text-gray-400 mb-4 line-clamp-2">
+                            Integrated dashboard combining real-world evidence, patient registry data, and treatment patterns for orphan drug development strategy.
+                        </p>
+                        
+                        <!-- Stats -->
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <div class="text-2xl font-bold text-brand-400">7</div>
+                                <div class="text-xs text-gray-400">Data sources unified</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-green-400">3.2x</div>
+                                <div class="text-xs text-gray-400">Faster patient ID</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Technologies used -->
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-brand-500/20 text-brand-300 text-xs rounded border border-brand-500/30">
+                                RWE Analytics
+                            </span>
+                            <span class="px-2 py-1 bg-brand-500/20 text-brand-300 text-xs rounded border border-brand-500/30">
+                                Patient Registry
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 5 -->
+            <div class="project-card relative group cursor-pointer" onclick="window.location.href='/case-studies/biosimilar-tracking'">
+                <div class="glass-card rounded-xl overflow-hidden h-full transform transition-all duration-500 group-hover:scale-105">
+                    <!-- Image Container -->
+                    <div class="relative h-48 bg-gradient-to-br from-indigo-900/50 to-purple-900/50 overflow-hidden">
+                        <!-- Placeholder visualization -->
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <svg class="w-32 h-32 text-indigo-400/20" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1" d="M19.428 15.428a2 2 0 00-1.022-.547l-2.387-.477a6 6 0 00-3.86.517l-.318.158a6 6 0 01-3.86.517L6.05 15.21a2 2 0 00-1.806.547M8 4h8l-1 1v5.172a2 2 0 00.586 1.414l5 5c1.26 1.26.367 3.414-1.415 3.414H4.828c-1.782 0-2.674-2.154-1.414-3.414l5-5A2 2 0 009 10.172V5L8 4z" />
+                            </svg>
+                        </div>
+                        <!-- Animated overlay on hover -->
+                        <div class="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 flex items-end p-4">
+                            <div class="text-white">
+                                <p class="text-sm font-medium">View Full Case Study</p>
+                                <div class="flex items-center mt-1">
+                                    <span class="text-xs">Learn more</span>
+                                    <svg class="w-4 h-4 ml-1 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Category badge -->
+                        <div class="absolute top-4 left-4">
+                            <span class="px-3 py-1 bg-indigo-500/80 backdrop-blur text-white text-xs font-semibold rounded-full">
+                                Biosimilars
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Content -->
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-brand-400 transition-colors">
+                            Global Biosimilar Competitive Tracker
+                        </h3>
+                        <p class="text-gray-400 mb-4 line-clamp-2">
+                            Multi-region dashboard monitoring biosimilar pipeline developments, regulatory approvals, and market penetration across 15 countries.
+                        </p>
+                        
+                        <!-- Stats -->
+                        <div class="grid grid-cols-2 gap-4 mb-4">
+                            <div>
+                                <div class="text-2xl font-bold text-brand-400">15</div>
+                                <div class="text-xs text-gray-400">Countries tracked</div>
+                            </div>
+                            <div>
+                                <div class="text-2xl font-bold text-green-400">6mo</div>
+                                <div class="text-xs text-gray-400">Earlier signals</div>
+                            </div>
+                        </div>
+                        
+                        <!-- Technologies used -->
+                        <div class="flex flex-wrap gap-2">
+                            <span class="px-2 py-1 bg-brand-500/20 text-brand-300 text-xs rounded border border-brand-500/30">
+                                Global Regulatory
+                            </span>
+                            <span class="px-2 py-1 bg-brand-500/20 text-brand-300 text-xs rounded border border-brand-500/30">
+                                Pipeline Intel
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Project 6 - Call to Action Card -->
+            <div class="relative group cursor-pointer" onclick="openScopingForm()">
+                <div class="glass-card rounded-xl overflow-hidden h-full transform transition-all duration-500 group-hover:scale-105 bg-gradient-to-br from-brand-900/30 to-purple-900/30 border-2 border-brand-500/30">
+                    <div class="h-full flex flex-col items-center justify-center p-8 text-center">
+                        <div class="w-20 h-20 rounded-full bg-gradient-to-br from-brand-500 to-purple-500 flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
+                            <svg class="w-10 h-10 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+                            </svg>
+                        </div>
+                        <h3 class="text-2xl font-bold text-white mb-3">
+                            Start Your Project
+                        </h3>
+                        <p class="text-gray-300 mb-6">
+                            Let's discuss how we can build a custom intelligence solution for your specific needs
+                        </p>
+                        <button class="btn-glow px-6 py-3 rounded-lg font-semibold inline-flex items-center">
+                            Request Scoping Call
+                            <svg class="w-4 h-4 ml-2 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- View All Projects Link -->
+        <!-- <div class="text-center mt-12">
+            <a href="/portfolio" class="inline-flex items-center text-brand-400 hover:text-brand-300 font-medium transition-colors">
+                View All Case Studies
+                <svg class="w-5 h-5 ml-2" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3" />
+                </svg>
+            </a>
+        </div> -->
+    </div>
+</section>
     
     <!-- Consulting Bridge Section -->
     <section class="py-20 bg-gradient-to-br from-brand-900 via-brand-800 to-brand-900 relative overflow-hidden">
@@ -757,7 +1617,7 @@
     </section>
     
     <!-- Related Resources -->
-    <section class="py-20 section-gradient">
+    <section class="py-20 section-gradient hidden ">
         <div class="container mx-auto px-6 lg:px-8">
             <div class="text-center mb-12">
                 <h2 class="text-3xl font-display font-bold text-white mb-4">
@@ -957,34 +1817,305 @@
     <!-- Scripts -->
     <script>
         // Form submission handler
-        function handleFormSubmit(event) {
-            event.preventDefault();
-            
-            // Track form submission
-            if (typeof gtag !== 'undefined') {
-                gtag('event', 'scoping_form_submit', {
-                    'page': 'business-intelligence',
-                    'form_id': 'scoping-form'
-                });
-            }
-            
-            // Show calendar modal after form submission
-            document.getElementById('calendarModal').classList.remove('hidden');
-            
-            // Simulate form processing
-            const formData = new FormData(event.target);
-            console.log('Form submitted:', Object.fromEntries(formData));
+document.addEventListener('DOMContentLoaded', function() {
+    const scopingForm = document.getElementById('scopingForm');
+    const submitBtn = scopingForm.querySelector('button[type="submit"]');
+    
+    scopingForm.addEventListener('submit', function(e) {
+        e.preventDefault();
+        
+        // Validate form
+        if (!validateScopingForm()) {
+            return;
         }
         
-        // PHI selection handler
-        function handlePHISelection(select) {
-            const hipaaNote = document.getElementById('hipaaNote');
-            if (select.value === 'phi' || select.value === 'mixed') {
-                hipaaNote.classList.remove('hidden');
+        // Show loading state
+        submitBtn.disabled = true;
+        const originalText = submitBtn.textContent;
+        submitBtn.textContent = 'Submitting...';
+        
+        // Collect form data
+        const formData = new FormData(scopingForm);
+        
+        // Get all selected use cases
+        const useCases = [];
+        document.querySelectorAll('input[name="useCase"]:checked').forEach(checkbox => {
+            useCases.push(checkbox.value);
+        });
+        
+        const submissionData = {
+            firstName: formData.get('firstName').trim(),
+            lastName: formData.get('lastName').trim(),
+            fullName: `${formData.get('firstName').trim()} ${formData.get('lastName').trim()}`,
+            email: formData.get('email').trim(),
+            company: formData.get('company').trim(),
+            jobTitle: formData.get('role').trim() || 'Not Specified',
+            useCases: useCases.join(', ') || 'Not Specified',
+            dataSensitivity: formData.get('dataSensitivity') || 'Not Specified',
+            preferredWeek: formData.get('preferredWeek') || 'Not Specified',
+            source: 'Business Intelligence Page',
+            // Add UTM tracking if present
+            utm_source: getParameterByName('utm_source') || '',
+            utm_medium: getParameterByName('utm_medium') || '',
+            utm_campaign: getParameterByName('utm_campaign') || '',
+            utm_content: getParameterByName('utm_content') || '',
+            utm_term: getParameterByName('utm_term') || ''
+        };
+        
+        // Submit to backend API
+        fetch('/api/webinar/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(submissionData)
+        })
+        .then(response => response.json())
+        .then(data => {
+            // Reset button state
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+            
+            if (data.success) {
+                // Hide form and show success state
+                scopingForm.style.display = 'none';
+                
+                // Create and show success message
+                const successDiv = document.createElement('div');
+                successDiv.className = 'glass-card rounded-2xl p-8 text-center';
+                successDiv.innerHTML = `
+                    <div class="w-20 h-20 mx-auto mb-6 rounded-full bg-green-500/20 flex items-center justify-center border border-green-500/30">
+                        <svg class="w-10 h-10 text-green-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
+                        </svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-white mb-4">Request Received!</h3>
+                    <p class="text-gray-300 mb-6">Thank you for your interest. Our team will contact you within 24 hours to schedule your scoping call.</p>
+                    <p class="text-sm text-gray-400">Check your email for confirmation and next steps.</p>
+                `;
+                scopingForm.parentElement.appendChild(successDiv);
+                
+                // Track successful submission
+                if (typeof gtag !== 'undefined') {
+                    gtag('event', 'scoping_form_success', {
+                        'page': 'business-intelligence',
+                        'form_id': 'scoping-form'
+                    });
+                }
+                
+                // Store registration data for analytics
+                if (data.data) {
+                    sessionStorage.setItem('biScopingRequest', JSON.stringify(data.data));
+                }
+                
+                // Show success notification
+                showSuccessNotification('Request submitted successfully! Check your email for confirmation.');
+                
+                // Scroll to success message
+                successDiv.scrollIntoView({ behavior: 'smooth', block: 'center' });
+                
+                // Reset form for potential future use
+                scopingForm.reset();
+                
             } else {
-                hipaaNote.classList.add('hidden');
+                // Show error message
+                showErrorNotification(data.message || 'Submission failed. Please try again.');
             }
+        })
+        .catch(error => {
+            console.error('Submission error:', error);
+            
+            // Reset button state
+            submitBtn.disabled = false;
+            submitBtn.textContent = originalText;
+            
+            // Show error message
+            showErrorNotification('Network error. Please check your connection and try again.');
+        });
+    });
+    
+    // Form validation
+    function validateScopingForm() {
+        const firstName = document.querySelector('input[name="firstName"]').value.trim();
+        const lastName = document.querySelector('input[name="lastName"]').value.trim();
+        const email = document.querySelector('input[name="email"]').value.trim();
+        const company = document.querySelector('input[name="company"]').value.trim();
+        const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        
+        let isValid = true;
+        
+        // Validate first name
+        if (!firstName) {
+            showFieldError('firstName', 'Please enter your first name');
+            isValid = false;
+        } else {
+            clearFieldError('firstName');
         }
+        
+        // Validate last name
+        if (!lastName) {
+            showFieldError('lastName', 'Please enter your last name');
+            isValid = false;
+        } else {
+            clearFieldError('lastName');
+        }
+        
+        // Validate email
+        if (!email) {
+            showFieldError('email', 'Please enter your email address');
+            isValid = false;
+        } else if (!emailRegex.test(email)) {
+            showFieldError('email', 'Please enter a valid email address');
+            isValid = false;
+        } else {
+            clearFieldError('email');
+        }
+        
+        // Validate company
+        if (!company) {
+            showFieldError('company', 'Please enter your company name');
+            isValid = false;
+        } else {
+            clearFieldError('company');
+        }
+        
+        return isValid;
+    }
+    
+    // Field error handling
+    function showFieldError(fieldName, message) {
+        const field = document.querySelector(`[name="${fieldName}"]`);
+        field.classList.add('border-red-500', 'bg-red-900/20');
+        field.classList.remove('border-white/10');
+        
+        // Remove existing error message
+        const existingError = field.parentNode.querySelector('.error-message');
+        if (existingError) {
+            existingError.remove();
+        }
+        
+        // Add error message
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-message text-red-400 text-sm mt-1';
+        errorDiv.textContent = message;
+        field.parentNode.appendChild(errorDiv);
+    }
+    
+    function clearFieldError(fieldName) {
+        const field = document.querySelector(`[name="${fieldName}"]`);
+        field.classList.remove('border-red-500', 'bg-red-900/20');
+        field.classList.add('border-white/10');
+        
+        const errorMessage = field.parentNode.querySelector('.error-message');
+        if (errorMessage) {
+            errorMessage.remove();
+        }
+    }
+    
+    // Success notification
+    function showSuccessNotification(message) {
+        // Remove any existing notifications
+        const existingNotification = document.querySelector('.success-notification');
+        if (existingNotification) {
+            existingNotification.remove();
+        }
+        
+        const successDiv = document.createElement('div');
+        successDiv.className = 'success-notification fixed top-4 right-4 bg-green-500 text-white px-6 py-4 rounded-lg shadow-lg z-50 max-w-md animate-fade-in-up';
+        successDiv.innerHTML = `
+            <div class="flex items-start">
+                <svg class="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"/>
+                </svg>
+                <div>
+                    <p class="font-semibold">Success!</p>
+                    <p class="text-sm opacity-90">${message}</p>
+                </div>
+                <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-white hover:text-gray-200">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                </button>
+            </div>
+        `;
+        
+        document.body.appendChild(successDiv);
+        
+        // Auto-remove after 5 seconds
+        setTimeout(() => {
+            if (successDiv.parentNode) {
+                successDiv.remove();
+            }
+        }, 5000);
+    }
+    
+    // Error notification
+    function showErrorNotification(message) {
+        // Remove any existing error messages
+        const existingError = document.querySelector('.error-notification');
+        if (existingError) {
+            existingError.remove();
+        }
+        
+        // Create error notification
+        const errorDiv = document.createElement('div');
+        errorDiv.className = 'error-notification fixed top-4 right-4 bg-red-500 text-white px-6 py-4 rounded-lg shadow-lg z-50 max-w-md animate-fade-in-up';
+        errorDiv.innerHTML = `
+            <div class="flex items-start">
+                <svg class="w-5 h-5 mr-3 mt-0.5 flex-shrink-0" fill="currentColor" viewBox="0 0 20 20">
+                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8.707 7.293a1 1 0 00-1.414 1.414L8.586 10l-1.293 1.293a1 1 0 101.414 1.414L10 11.414l1.293 1.293a1 1 0 001.414-1.414L11.414 10l1.293-1.293a1 1 0 00-1.414-1.414L10 8.586 8.707 7.293z" clip-rule="evenodd"/>
+                </svg>
+                <div>
+                    <p class="font-semibold">Submission Error</p>
+                    <p class="text-sm opacity-90">${message}</p>
+                </div>
+                <button onclick="this.parentElement.parentElement.remove()" class="ml-4 text-white hover:text-gray-200">
+                    <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
+                        <path fill-rule="evenodd" d="M4.293 4.293a1 1 0 011.414 0L10 8.586l4.293-4.293a1 1 0 111.414 1.414L11.414 10l4.293 4.293a1 1 0 01-1.414 1.414L10 11.414l-4.293 4.293a1 1 0 01-1.414-1.414L8.586 10 4.293 5.707a1 1 0 010-1.414z" clip-rule="evenodd"/>
+                    </svg>
+                </button>
+            </div>
+        `;
+        
+        document.body.appendChild(errorDiv);
+        
+        // Auto-remove after 8 seconds
+        setTimeout(() => {
+            if (errorDiv.parentNode) {
+                errorDiv.remove();
+            }
+        }, 8000);
+    }
+    
+    // UTM Parameter helper function
+    function getParameterByName(name, url = window.location.href) {
+        name = name.replace(/[\[\]]/g, '\\$&');
+        const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)'),
+            results = regex.exec(url);
+        if (!results) return '';
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, ' '));
+    }
+    
+    // Store UTM parameters in session storage
+    const utmParams = ['utm_source', 'utm_medium', 'utm_campaign', 'utm_content', 'utm_term'];
+    utmParams.forEach(param => {
+        const value = getParameterByName(param);
+        if (value) {
+            sessionStorage.setItem(param, value);
+        }
+    });
+});
+
+// PHI selection handler
+function handlePHISelection(select) {
+    const hipaaNote = document.getElementById('hipaaNote');
+    if (select.value === 'phi' || select.value === 'mixed') {
+        hipaaNote.classList.remove('hidden');
+    } else {
+        hipaaNote.classList.add('hidden');
+    }
+}
         
         // Gallery modal functions
         function openGalleryModal(category) {
@@ -1143,13 +2274,105 @@
     </script>
     
     <!-- Google Analytics (placeholder - add your actual GA4 tag) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=GA_MEASUREMENT_ID"></script>
-    <script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-K0S1Q07YG7"></script>
+    <script>GA_MEASUREMENT_ID
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
-        gtag('config', 'GA_MEASUREMENT_ID');
-    </script>
+        gtag('config', 'G-K0S1Q07YG7');
+
+        // Open Integration Demo
+        function openIntegrationDemo() {
+            // Track demo request
+            if (typeof gtag !== 'undefined') {
+                gtag('event', 'demo_request', {
+                    'demo_type': 'integration',
+                    'page': 'business-intelligence'
+                });
+            }
+            
+            // Could open a modal with video or redirect to demo page
+            alert('Integration demo request received. Our team will contact you within 24 hours to schedule a personalized walkthrough.');
+        }
+        
+        // Add hover animation for project cards
+        document.addEventListener('DOMContentLoaded', () => {
+            const projectCards = document.querySelectorAll('.project-card');
+            
+            projectCards.forEach(card => {
+                card.addEventListener('mouseenter', function() {
+                    // Add animation class
+                    this.classList.add('animate-pulse');
+                });
+                
+                card.addEventListener('mouseleave', function() {
+                    // Remove animation class
+                    this.classList.remove('animate-pulse');
+                });
+            });
+            
+            // Animate integration flow lines
+            const animateIntegrationFlow = () => {
+                const lines = document.querySelectorAll('.integration-line');
+                lines.forEach((line, index) => {
+                    setTimeout(() => {
+                        line.style.opacity = '1';
+                        line.style.transform = 'scaleX(1)';
+                    }, index * 200);
+                });
+            };
+            
+            // Trigger animation when integration section is in view
+            const integrationSection = document.querySelector('#integration-section');
+            if (integrationSection) {
+                const integrationObserver = new IntersectionObserver(
+                    (entries) => {
+                        entries.forEach(entry => {
+                            if (entry.isIntersecting) {
+                                animateIntegrationFlow();
+                                integrationObserver.unobserve(entry.target);
+                            }
+                        });
+                    },
+                    { threshold: 0.3 }
+                );
+                integrationObserver.observe(integrationSection);
+            }
+        });
+        
+        // Initialize GA4 tracking (placeholder)
+        // In production, add actual GA4 script in head
+        console.log('Page loaded: Business Intelligence');
+
+  // optional: gentle mouse parallax (kept subtle + resets to preserve CSS animations)
+  (function () {
+    const root = document.querySelector('.tech-grid');
+    const layers = document.querySelectorAll('.grid-layer');
+    if (!root || !layers.length) return;
+
+    let raf = null;
+    root.addEventListener('mousemove', (e) => {
+      if (raf) cancelAnimationFrame(raf);
+      const r = root.getBoundingClientRect();
+      const cx = (e.clientX - r.left) / r.width - 0.5;
+      const cy = (e.clientY - r.top) / r.height - 0.5;
+      raf = requestAnimationFrame(() => {
+        layers.forEach((el, i) => {
+          const strength = (i + 1) * 1.2; // front moves a hair more
+          el.style.transform += ` translate(${(-cx * strength)}%, ${(-cy * strength)}%)`;
+        });
+        setTimeout(() => layers.forEach(el => el.style.transform = ''), 40);
+      });
+    }, { passive: true });
+
+    // finalize pie chart after sweep so the slices lock cleanly
+    const pie = document.getElementById('pieMix');
+    if (pie) {
+      pie.addEventListener('animationend', () => pie.classList.add('ready'), { once: true });
+    }
+  })();
+</script>
+
 
 </body>
 </html>

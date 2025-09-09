@@ -1,6 +1,6 @@
 [
   {
-    "id": "f90756d10a45db7b12a07b1d8aac6bfa",
+    "id": "d66729d4d53fae72522f287318ea8640",
     "title": "USFDA issues Form 483 with 8 observations to Aurobindo's Telangana unit - The Economic Times",
     "link": "https://news.google.com/rss/articles/CBMi_AFBVV95cUxOandHTGphc2JfNWV6N1V4eEpsR090a29QWWxwOWVGVlF0ZV9fZXRJSXZERXpqZDNIcXRiS3owZWNJaVc2QzhGblFUWEFmU1lFa1BNdng1RnMycmZFWENDR3pSYW01SXBhYnh4UlZ6U1RTQUxob0VmZGJiUnRHamVIeXJrYTZzOC16cG4yZFU3MnpxV2RGanFYTkJCbGRLSmlvaFhrTTRFdFNYbU01ZE5vODhPVm9IUHRjLU05S3U2UE9FY050Q3FVVGppQW8tSXZDcmRLa01vT1RJellYcGN3NlVZbjhqR1FzclZsN1p0akJCQUxHMnhOc0dGbVrSAYICQVVfeXFMTVltYnc5UFhyWE9mZjF2UkwxWElRejNJWGNuV1hJQ2plTTYyX3VkeC0wSmxXVlNmblF6eWtLZjhZdW02d1ZEMVQ5b0NVVmNCczhZVFZYX0pUdW1NRlB4RjhOOUMyV0lMdHFnc0JSLV9lSkF5UUpEdEdzbE43Q1FERmc5ZG50cDhlZzl5QmJ5T203MFVvUWJzTll5eGFTeVMwYmhrQjJmX0JEeks5Ri1IOWZmeVNiTTQtV3daWFRXZHZXSmV0U3pqamw2YUNtc0lSN3FLdjZFT2J4QnU3aUx3VGFobWZWWjljME5ZXzV2cTRqNEVzWmRrWGw4WkxMVG0xcXFR?oc=5",
     "date": "2025-09-05T14:59:30.000Z",
@@ -9,7 +9,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "USFDA issues Form 483 with 8 observations to Aurobindo's Telangana unit  The Economic Times",
-    "company": "Aurobindo's Telangana Unit",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -17,7 +17,7 @@
     "priority": 3
   },
   {
-    "id": "750c7e68863042ce270451f9d9b7236b",
+    "id": "5dea650ba743c15259ec7f2ef44520fc",
     "title": "FDA 483 Observations Highlight Ongoing Issues in Quality Control and cGMP Compliance - geneonline.com",
     "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxOeU9EMEZNc0kxSG8wekZiUWtmWVlxVHNhelFmck9IYlcyeFhBYl85UnJqWUh3M0JDNW00UWVnZi1BNENYdFBaRzRlcm9jeHp5MHphTGE4R1dWTGRMUnJLWERBZ0FOM3A1U2dISjU1VXMxNk9iemx1VnF4U05PZmdPVzNPT1BaYUtGeVZVM1drOTZsT3VwakpsS3ZKUUZZMmViYzMzajFISnBKQmdTM2h2XzJB?oc=5",
     "date": "2025-08-28T14:08:33.000Z",
@@ -26,7 +26,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "FDA 483 Observations Highlight Ongoing Issues in Quality Control and cGMP Compliance  geneonline.com",
-    "company": "FDA 483 Observations Highlight Ongoing Issues in Quality Control and cGMP Compliance",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -34,24 +34,7 @@
     "priority": 3
   },
   {
-    "id": "9418757a0cfdb17430076f35434110a0",
-    "title": "A Shifting Trend In FDA Form 483 Disclosure Obligations - Law360",
-    "link": "https://news.google.com/rss/articles/CBMitwFBVV95cUxNbjc4YTFOYWxET0dKcVZzWWdZd2dVWW55bzN5Q0djRlBYdk9Jd2JnQUl1M2lqalU2TVJ6d3RJbzcwMWthckc1OGFjejRuMEpJM0o0VTRFcVRnclVaVEFQeTJrQnFmUDFSMGROLUV1WmQtbllqVmJ6OW5rMFM1eHd1cHVkVWNfWVlPcVZNNGxVR0lld1RXLUxpTFluNlo2RU8wTFh5a19XTHF3YVVoVGFwRlhFS2stVW_SAXJBVV95cUxNN3ZYQlVIQVgtb2d3MEVsSmZyQmJqaFR2MktlbnF5MGpDVXByQUthaUNqRTFxUGgzZklraTdhLWRHai1vZ0FZS191OFZaWFlNQ1VBZWE2VW4xY1VhSnJ1QVR3SFR6YzgtSG16WThyaXFlbXc?oc=5",
-    "date": "2025-08-22T21:08:00.000Z",
-    "dateFormatted": "22/08/2025",
-    "source": "Google News - Form 483",
-    "sourceCategory": "google",
-    "sourceType": "form_483",
-    "summary": "A Shifting Trend In FDA Form 483 Disclosure Obligations  Law360",
-    "company": "A Shifting Trend In FDA",
-    "types": [
-      "form_483"
-    ],
-    "severity": 6,
-    "priority": 3
-  },
-  {
-    "id": "aa6e483d23aa85cce2b4faa543fbd291",
+    "id": "a03ea6dc56c66cd86a48a3646f90ff40",
     "title": "Novo plant acquired in Catalent buyout faces renewed FDA scrutiny with Form 483: Stat - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxNbHR0a3hLWml2bzhKdWl0RWszdXM3ZlQ4THY1LU05SkwzU24tbDdnaHpQeFFOSTRBemxUeFpPVWJWWG5PVWlpYmt2MFpfcXExdGk5MEVOSnFzVElGU2JJaXlEbHVGRUxiVXFvaFdPMzFrUnVMT2ZXc3FDNGJNUmpYTlh2NndnR0ZpTDJHN25TYy1PcHRPTnplVVpQc0ExTl94NHNsVHFUZzNzS2VEeVZDQ0Zjd1liNFlpdVpB?oc=5",
     "date": "2025-08-22T07:00:00.000Z",
@@ -60,7 +43,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Novo plant acquired in Catalent buyout faces renewed FDA scrutiny with Form 483: Stat  Fierce Pharma",
-    "company": "Novo plant acquired in Catalent buyout faces renewed FDA scrutiny with",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -68,7 +51,24 @@
     "priority": 3
   },
   {
-    "id": "01e53b327859430e5c2d350e7f2d6916",
+    "id": "b2f8513e4ac43fd6bb117f0c29f4ff60",
+    "title": "A Shifting Trend In FDA Form 483 Disclosure Obligations - Law360",
+    "link": "https://news.google.com/rss/articles/CBMimwFBVV95cUxOUWFxdHp2UWZCVXlRMEVtM2Rmbm1uTWtMdzVXa01YR05VWlRoOGNXREd4R1RQTjBqNlVJa3FBVXI1elNGLU5JRzlibTRjTmlfaDBIaTFpYTRqdjA0dmNrYm50ZGdqSTdOMExORXdmRE9obzJpZ0tpMFE1ODMyMlNjWkJnbHVPVzhhWkl1YzVtdms4a2Q2VEhhOVdtNNIBVkFVX3lxTFA4NjhhLVMwRWRIT3lkbmdtXy1MNEpGNHVlYlJtaUJvUVMwN1Q0OXRtUThGVkppZTNhVzZZZUd6NjZZYTF0THNuMkhvV25KYk5iQTh2UUlB?oc=5",
+    "date": "2025-08-22T07:00:00.000Z",
+    "dateFormatted": "22/08/2025",
+    "source": "Google News - Form 483",
+    "sourceCategory": "google",
+    "sourceType": "form_483",
+    "summary": "A Shifting Trend In FDA Form 483 Disclosure Obligations  Law360",
+    "company": "TBD",
+    "types": [
+      "form_483"
+    ],
+    "severity": 6,
+    "priority": 3
+  },
+  {
+    "id": "652018198825fc882af861f935266c2a",
     "title": "Dr Reddys Gets Form 483 With Seven Observations From USFDA After Inspection At Andhra Unit - NDTV Profit",
     "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOOFByMHpFSDBaTVpURTd2ak0tY2Q1QXFMa0pKajA2WWJOTUxOalV1MklJRktfWkZXWjdYOVlpbWFRN2VQUW1NdjBSRXlzcTFGWVRaNno5cnhjTkRRajRnRjFraFZqRkdQc2t0NHdRWm1rME1lVWZNa19md1BHbGloSmQ5NUlDUVVrSmRwSXBaSjNycGdleUVVSzBjWXZJbFU4SjUxRzdnZXYxSFJGaDdpLXc5ZTZReWR1aWdIMC12NC1BaTk10gHKAUFVX3lxTE5HNG9CVVh3S0VTWWhrTWpPdmNMQzFHZnZ2Z3pRZ1JieExCUzV3ZDYwS2NDa1JHNG9Bck1aZVFvaGRERUp3TGRRMm9OZF9jOE9Uck1pc21iREdGM3BmN3JJUWpwTFJjWHJMeUNSRUtXRWxTZzd3dTlFa1lTWUkyNG1rTVhsQ2RYWXVPOXBPMXFBdEJuMi1UbWI2b2RJdlhDMS1iWS1HcnhueDhxWTNtSDVkUmdDV0FNanBUOXJkWFpzcVUwZ3BZaV9KVlE?oc=5",
     "date": "2025-07-18T07:00:00.000Z",
@@ -77,7 +77,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Dr Reddys Gets Form 483 With Seven Observations From USFDA After Inspection At Andhra Unit  NDTV Profit",
-    "company": "Dr Reddys Gets",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -85,7 +85,7 @@
     "priority": 3
   },
   {
-    "id": "b71d4aa98d974b16afb49c9f0c3e779f",
+    "id": "ef721a28c2f47d6a15f62031f8fbfe60",
     "title": "Lupin receives Form 483 with 4 observations from USFDA for Pithampur unit-2 - Indian Pharma Post",
     "link": "https://news.google.com/rss/articles/CBMixwFBVV95cUxNaEN3TTlLUDREOXRYejhIRWx5UF9ucUdQdGhkdmVwSDhKRTVIRmRiZUJ2UXZVVDZFSTBMdGVqMWZ2WWNDTmtJTXpILVJMckllcDUyYkJoSVFyU1k1Yml3Q3BkWTd0OGkzWTVnTHJJMkYtdVh2YzQ1NlN0ZUZUYzhxNndvS3RRV2xOMVVhRHRrYmR2SnB2MDZ6dHZZeU81QXJzem5zalFpendlMVMyOFFpcXM3MFk3bW9jSlFYcTNFc05NNVRRSFZ30gHOAUFVX3lxTE9qa3dyWUdyaFFWNFQzX0RCa3V5Sks0bDNDQzRSbU9zRFVNbXBZTVprbUdiRU5NV253OVI3U2MxdVVaUkZxLUNkU3U0czNlU1FLQUpoeUFqQkhsRXBKWGlQNTRmaTgyaHczTGlOU1dXTDVYdHNmMUQtYXVJUnZsVlNkcThCUHdCd3FFN2d6Sk9lM2lONERKQjFpSFhIUzdKTHR3VUxfVjI4VGJpOGpoRmM0MU9iZTFad0ZweENYSVpPNTlVaXlBakdtb0tUeTd3?oc=5",
     "date": "2025-07-18T07:00:00.000Z",
@@ -94,7 +94,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Lupin receives Form 483 with 4 observations from USFDA for Pithampur unit-2  Indian Pharma Post",
-    "company": "Pithampur unit",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -102,7 +102,7 @@
     "priority": 3
   },
   {
-    "id": "dc7c82793037b76edec97579bf94ccd4",
+    "id": "53df29a6ed55a5f08998697317a99520",
     "title": "Granules India receives Form 483 with 1 observation from USFDA for Bonthapally API unit 1 - Indian Pharma Post",
     "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxQdTBGaXNDb1ktYURkZ3FfQjhTbmxnTTRvVlN1aWVfWkZwaURpYmNXZjhmNk91c25ZZ0d0dkZLUDRVek9TVG9UbzE4WUFGaGROQkdJY0t6dW1HbkFkTVNLTUJscm9taU5FMU9NazhoZDBvYkhlcXZzQXFULWxualRsdWNJc2haZ1NXVnZDandCRWtfdkpQMEZzWEFadTJ6MGtqVzNMNEJSZWRJbTBpQ2FWeVlzLXF0ay1tMVpTcE1RMnA1TkdSN1RpYUFpVmM2X3NacnhMNzhYSjlKZw?oc=5",
     "date": "2025-06-23T07:00:00.000Z",
@@ -111,7 +111,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Granules India receives Form 483 with 1 observation from USFDA for Bonthapally API unit 1  Indian Pharma Post",
-    "company": "Bonthapally API unit 1",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -119,7 +119,7 @@
     "priority": 3
   },
   {
-    "id": "b922eebe6a6f5558065912fdead8a043",
+    "id": "3ea6253e5f2d769dbf5b96f76c1d1510",
     "title": "NATCO Pharma's Hyderabad-based plant gets 'one' Form 483 observation post US FDA audit - Business Standard",
     "link": "https://news.google.com/rss/articles/CBMi-gFBVV95cUxNV3Y2eS1EMHMzN3JYVmd4VHItZ2xyQllZTW52N0hMaHNlVDZRSjBTb2F1ZzIxYU1USXlMeHNJTEh4QUFzNzctS2ptYURWUFdIN2RtNTVmREpuWFlINHU3VnBHR0lPWHYwYzNXTUF5a0hWVGMzdXgxTTI3NGd3YThONkUzdXVhZWxLYTRBOFNXVENCRmNHSXloUGdEa0RiMG5FSlRtSEVTX0hQcHJNMFBuaWctSUlnQ1RUQ24wTWRVajM3U3hBMF8ta1Qwd1hsS1IzdWxTVUp1VlFkWE8zbVhEeEtSLVQ2T2sxUjhHRGVQZ1RfTjB4OG5ER1BR0gH_AUFVX3lxTE8yTUJ4N0xocHZvdUFXOHR3aEJhdUtPRmJ4WUF0aF80elRXc2RZV0hVMURFeHUwb0QzeGFmNnFOOExyakhJU3djVDNESXR0VXZCY0xxTGVpYjhIYnBFNWNwREhDTEw3M0JDd1FabUVJQ1RiRzEtbEFDU2FkRXRjb044eXN5YmtTTkU4YTZwVXp5ZkpKTXh5OVFhNGxWMF9xakQ0UnhaVmhVd1JYOFBvZ0tKdEdRYUFrVGMybDJqbzM2TG1zVUJFT3BYRGFCV3huRFBQRWhfSm10MnZkWE1LdlNMUm15b253ZFpaTHA3RzlpQzFHTWREYWk5TmZFaUhmdw?oc=5",
     "date": "2025-06-14T07:00:00.000Z",
@@ -128,7 +128,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "NATCO Pharma's Hyderabad-based plant gets 'one' Form 483 observation post US FDA audit  Business Standard",
-    "company": "Natco Pharma's Hyderabad",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -136,7 +136,7 @@
     "priority": 3
   },
   {
-    "id": "e453f68b6fd5f9107c4c27d87dec1641",
+    "id": "f91e150857aa05382416c728b591c0db",
     "title": "US FDA inspects Sun Pharma’s Halol plant, issues Form 483 with 8 observations - CNBC TV18",
     "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQbTdEdW9jZ2NFYmtRN25uM1VjV0txdzZGc2xKeHNQaFM0dFNGMjFiT2ZYVmZNbTVNSzUwMkFvaXZuOVFZOXlhREJ5Zk5mRDhfNUY5dDJveDdpTFAxbkQzbURIWHF1WU05MUJDMzBtRkFXWjZJX2x6NU9UNVpVd2dnQ1p5Z0o2WHdVOG4tQmdsZlRiVjNYWnh4Snp6TTJaNzZvWDNVMWE1ejNlVjY3T3ZLTUJwZEVDc0xtcXluRnFUZnpsQUpSRnFQVU0za1pFTS1XUXB0TTlTMng3eHZW0gHiAUFVX3lxTE9Kbzk0N1BUZHBNaEJORDRCUlVOLU8wNkdoSFQxMDZnZmcyd0Z2Q1p2ZW1LTjdYemdpVkxRVEJvRkJLd082UWR1R1BIbDJweEpGS0NqNjlsRTE1QmtZSGhKbGpWTVFXMnlYUTRFVEdmbE1DTGNHamJjcW5mWjVDVTVRRVRGb0liMzIzVW1oVDczOWlKTXZzZ3FRYVZ6RnZYcVp1UzBkQmR0dWp5YmJKcTFoVGc0RmdfelVNOUF6NTZmeGl2WEJjN1FsYVl2b0FnMnpNZWtLLW9YdjZCSnVHZF9Wb2c?oc=5",
     "date": "2025-06-14T07:00:00.000Z",
@@ -145,7 +145,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "US FDA inspects Sun Pharma’s Halol plant, issues Form 483 with 8 observations  CNBC TV18",
-    "company": "Unknown Company",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -153,7 +153,24 @@
     "priority": 3
   },
   {
-    "id": "4d6e17274fbc033c96e2e3e96332a3ed",
+    "id": "1df634c5b19ea1bc188fb53d20e0eafb",
+    "title": "Capricor says FDA inspection brought Form 483 with several observations - Yahoo Finance",
+    "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxNODRhYzJFMkRaVEpPNHlJa2NFdl81TXdXc0Q5azc3UGJuQ1F6YnI1dnQtWk4xMEswYWNuMDR4VG12RlRpQW9UYmJhZ2ZYZ0dDaTdEaG9UYkxvUEFubzVDLXBhaVRHM0Zwd2tqTjctU1YxM1diaDRZRUZpN3lCMm95N042X1NnV2tpWmc?oc=5",
+    "date": "2025-06-12T07:00:00.000Z",
+    "dateFormatted": "12/06/2025",
+    "source": "Google News - Form 483",
+    "sourceCategory": "google",
+    "sourceType": "form_483",
+    "summary": "Capricor says FDA inspection brought Form 483 with several observations  Yahoo Finance",
+    "company": "TBD",
+    "types": [
+      "form_483"
+    ],
+    "severity": 6,
+    "priority": 3
+  },
+  {
+    "id": "aeeea7eb43ccab1ebe4cd505bf93f233",
     "title": "Dr Reddys Labs' manufacturing facility gets two form 483 observations from US FDA - Business Standard",
     "link": "https://news.google.com/rss/articles/CBMi9AFBVV95cUxPODYzUlZIeXpuOEJEdVNCQjNNc0d5U2d4T1N3V1lTVGJhbDh1Z0ZrY1BvQjJzX3JxYjdBZk02Y3BubnpONGdGeWljaGFvSHoyNWRRYktwZXpSRzIxQnRHSWZWUUJjYVRuR3h0Y0lJSTJ1NzZIb0cxOHoxMVZneDBKaFJITm9kYzNrc3lVZFVqNnoyZTlxOUN1OS1KT2RrYS1TSmtDMlYxMkZHX3I0dGMwa0czT3JwajlNUUZXbHJNWVI0S0RhaE50Rzk2WFNDbXItb0gya2c0di12Mm5Udy1hdnNzQUlkRENycXR5ajhRemtJTkZH0gH6AUFVX3lxTE1HRVVRMUY5V1RMZmJpWTZpMjZpWXdUY2RCRU5Zamc5TmN6b3ZUcVcyX25ObV9YbEFia3c3ZHBPTzJVenlTUXNQYUluMEJoV1hhZVFaMGRRSFhyUWpMU2h4V0xWUk9mTmdCbU1jLWdUU1d4SmdCRzlKVGdNdGVEZmV2djU5Z1lCS285bFdHa1dCZDdHV1FCZEJDQVp3OEpsejd2WG0zUk5NU2dSYWtPWFpjdVNQczg0QzJwNmhqWElweGhubW5QODM5Mi1odHRvT1owMjRaUDRGRDRYQTlCTVU4bGI0Ujl0UENLb2Q5MHBhWG9qaDZwR1JUblE?oc=5",
     "date": "2025-05-26T07:00:00.000Z",
@@ -162,7 +179,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Dr Reddys Labs' manufacturing facility gets two form 483 observations from US FDA  Business Standard",
-    "company": "Dr Reddys Labs' Manufacturing Facility Gets Two",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -170,7 +187,7 @@
     "priority": 3
   },
   {
-    "id": "c981c4cfec39fccca44a939b56f25a19",
+    "id": "b9b1a68e571dfa6f16f309b5b81d384f",
     "title": "Dr Reddy's NY API plant gets USFDA Form 483 with 2 observations - MSN",
     "link": "https://news.google.com/rss/articles/CBMi3AFBVV95cUxQbjZjajl3ZjVoRk5BYV9nUkdRQ0twV1hVVFVJYWVmWG9IblJxV1ZQY3BCQklGSDAzWDJYdDJxT0hjLUtGX09fX0dNY2wyUVcwYlMyZzh3TW16ek0yWnhHU0x2cXF0S285WVpSWkZGblVsUU9WR0c3a25yLUpXeF9wVWxudENNaVZNMXd4NFJpd3lDbHZzVGtrajVXek1WbHF0clRHX3ExZjNOQThRZ3cyWk8xQWt5MzlkUXg1RnhVRjdfcmxfcnpMamI5aFVZaHN1RUI2QThUdWx1NFZB?oc=5",
     "date": "2025-05-17T17:34:26.000Z",
@@ -179,7 +196,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Dr Reddy's NY API plant gets USFDA Form 483 with 2 observations  MSN",
-    "company": "Dr Reddy's Ny Api Plant Gets Usfda",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -187,16 +204,16 @@
     "priority": 3
   },
   {
-    "id": "00f9d2df4bde09658e542e7d8d84d89c",
-    "title": "Dr Reddy's NY API plant gets USFDA Form 483 with 2 observations - The Times of India",
+    "id": "69cb55a093f172e82c8ac172d0d4b199",
+    "title": "Dr Reddy's NY API plant gets USFDA Form 483 with 2 observations - Times of India",
     "link": "https://news.google.com/rss/articles/CBMi4gFBVV95cUxPQjE0QWN5WlUwTDZxQ3A5ZEpLdkMyN3psTUlaUlQ2V2NFTG9mcXlLSVRBdlp4Vm1tR0cwdlFVbkpsQ0IwMTR4bEpFN0wyMUwxMm1EZ3dNNllGSzRMcEM3MnY5NmN6anZzOWFBaFdzZHJRNV9QX2ZZUURzdlNDVElndmlUM1FvVVRRVE9OYk0waURRWlp0X2s0dVpaaE1PbjVkVmNmMVpZTTJWNGRrSDcyRlY1T0luLWJKNUpSSVZVeW5NaE15aktaS21WTXRFWlhNMS1BRFg2MVVnUkxUWXVjMG1n0gHnAUFVX3lxTE1sMmpYb1dhSVRlWC1yT2paVkMtaVhsMTZmNS1ZZHZPZWxiZ2ZhWTlIb0ZJS28wdE9KWUlLTVVpbUhEVjJZbHVhNUwxdUxMWEZRYU9wUTVhRFh0dW9uVjNNYnRHc0w3TTlPZzI0bE15cFZySkRCWTUzSHhQSUhzLWd2eVk5Y2xkMkxwdFVnOW90WnVLcThjS1NtNUM3OEkxbnpTdkk2Zkh5azE4QlhfMi1XTlN6MWhMM2liVml6SHlKX0RReXo0bFBXZGhsUldpNjVFb1R1NTF6Um0xb01RbEJZSnRmenp2cw?oc=5",
     "date": "2025-05-17T07:00:00.000Z",
     "dateFormatted": "17/05/2025",
     "source": "Google News - Form 483",
     "sourceCategory": "google",
     "sourceType": "form_483",
-    "summary": "Dr Reddy's NY API plant gets USFDA Form 483 with 2 observations  The Times of India",
-    "company": "Dr Reddy's Ny Api Plant Gets Usfda",
+    "summary": "Dr Reddy's NY API plant gets USFDA Form 483 with 2 observations  Times of India",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -204,7 +221,7 @@
     "priority": 3
   },
   {
-    "id": "5a401fd873ce8f7459cc2d834d78def8",
+    "id": "0a00639eb9bacc56a786c6f8f3cee47a",
     "title": "Aurobindo gets Form 483 scolding from FDA at North Carolina inhaler plant - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQdUNLZzdXMDZhVExlZlNXeldtWWk5RHpQTHpDQ3l5S1JqckFNNmtOUFpUX3NhU3RnNVB6ZFJ6S1U1VWItNkY5a3NuUFFLaXFENmx1WDByMmd3RkR3cmxGS0xBUkY0ZFNoLW85aG95ZlRDdUZqMzZBQUZTRC1DRGY1MzBMNVUzbFNJUmUzVXlTNmdHa29jTzVQd0lTNWtmQVdUb3FMRDdRNW9pZw?oc=5",
     "date": "2025-04-14T07:00:00.000Z",
@@ -213,7 +230,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Aurobindo gets Form 483 scolding from FDA at North Carolina inhaler plant  Fierce Pharma",
-    "company": "Aurobindo gets",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -221,7 +238,7 @@
     "priority": 3
   },
   {
-    "id": "4eb4abe22414de65649660102972d057",
+    "id": "fdfd1d3c4c898b11ace8e91c3161f31f",
     "title": "USFDA issues Form 483 with 11 observations to Raleigh plant of Aurobindo Pharma arm - The Economic Times",
     "link": "https://news.google.com/rss/articles/CBMijgJBVV95cUxPNzVELXZoQ25GX2Vyclk1aU42LVQtN0VuRUhsTXRsWjU5MDRiTF9jaXNfQno1ZzBJa2hFTGpZdkdfb20zNWlkMS15akx4NHQtTEVOVUZKakY2NF95ZGZtdjhvVmRLejhsdkJZamt6bWpfLXlKLWJyVFJ6N09zMXhOankxQzRFSjgxbm93RDJKTVJld2hLNlExazJJbThveGo0eGJMSzBkdWRnWXlQbENDWE1TZkJ6dm5CTkFXOW42OWtrYndVd3loaUtVM0ZTaVBJaGVjR1hQQmFDcHBxWTZuTnNNZVhMS0I0WENkekc2Wm9TaVFocVkwVVFiS1JHOHkzVjZjTTlPem93UU5aLWfSAZMCQVVfeXFMTlpRMF8tWkc4MzZDaUdnSERrTDhfdkNpZll4dWFQNy01elJ1Q2RSaENBd0c2N2R1V2dmdUJONVpsTmJjOFR3c1EtTnhTZkI2Vi1lRUVHRkZQUk1Ga0c3VVhwV1RVN2duYWNFTTVKUW9kd1lNR0xqUk9XU1NtWTNrRXc0c3llQU9TLXVEWFBseEhiV1pEbkZxY3JBNXFxaHRialFJdFZYb0RrMkNhTzY4S1gtc011MEdVVGNZRUt3OEktcDdhRlp6a2NmRDZJekFKcTlWZXN2WGNBVlZGSUItdDYwUVA1ZHZNR2VIbWVjT3FxTUhDRnVjYlljV3k0U1hvOWQ0akt1cHEyVGdTbkVtR3dTaDQ?oc=5",
     "date": "2025-04-11T07:00:00.000Z",
@@ -230,7 +247,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "USFDA issues Form 483 with 11 observations to Raleigh plant of Aurobindo Pharma arm  The Economic Times",
-    "company": "Raleigh plant of Aurobindo Pharma arm",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -238,7 +255,7 @@
     "priority": 3
   },
   {
-    "id": "5b98daece86da7b1e029f10e6983ba5b",
+    "id": "bf9b35b1c7c9dc37b91d2f72f1947306",
     "title": "Aurobindo Pharma's Aurolife plant in North Carolina faces US FDA scrutiny, gets Form 483 with 11 observations - CNBC TV18",
     "link": "https://news.google.com/rss/articles/CBMi9gFBVV95cUxPYjVPeUxNeTdhQ0tzcWNILTEzTTVVWVBsOG1mNkxzNlFybFRCRzdfa0lsaEY5cjdDQWU0c0hwMS03OC1xbVNZSU1OZEptMDl6SmdEdmhWOV9VaG9xdVEtRnU1SkFmekhvRGpQQVBLZlkya0RSWTNRRDJ2Rk5BWUxxWjJZeE9ObWZrZHBmX0EyUV8tUDdkT1JhUF9yNzJLZFNFVUZwdkVYdlc2S0JTMXNyNHd5Ukd2dkdlQS16WDRUcFVVRGtoT09fOWhvT09KaURVWmlhaG1zWmM5b3FQMUdPVFkzOFVLTWRmX0NuT0pXanREWE05bFHSAfsBQVVfeXFMUFZwcTlLcnBoYmFaWlNKanBuOTFEbVBrU2prZ21TdUVES2Q2bS1ldkszYjVxMU9EZi05YU9USXR3bXFCVXF2X3VpTUlrenBWWk50NUtyeW4xRGFRYVRtY2xCN1dyUmJxWFM2dkhNTDMxNkp3ZlppZURTQk1FY0Ffb0IzZlJTZ3VEOXdDOHVOWFA4QXROblJzSXZWQVdCTjZ1THlSZEtEbFFsZVp1Tkw1QmpwbmotSUh6cEVxdHJwQ0FkV2dRLVFlRUR5QlFTeF9VOUlwSFlMVEk2ajZISTVNLUJDaHFzZmdkQzNsYmc2S3gxTWhrODBxbjBRNXc?oc=5",
     "date": "2025-04-11T07:00:00.000Z",
@@ -247,7 +264,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Aurobindo Pharma's Aurolife plant in North Carolina faces US FDA scrutiny, gets Form 483 with 11 observations  CNBC TV18",
-    "company": "Aurobindo Pharma's Aurolife Plant In North Carolina Faces Us Fda Scrutiny, Gets",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -255,7 +272,7 @@
     "priority": 3
   },
   {
-    "id": "dc214091320eff36862063f686b59ce2",
+    "id": "f4cc788be96d0e55997ab602323fdce7",
     "title": "Alembic Pharma's Vadodara facility gets one Form 483 observation from US FDA - Business Standard",
     "link": "https://news.google.com/rss/articles/CBMi7wFBVV95cUxNX0tfVnNXLVFrdWpDR0N1bllHalcwTG01c0hGTnN3UFV3eWJrMmNXbzZYT2owTURYT0ZHVTVVVmVsWlh1YVFLeDJxczJVanJ0MjQzSUpYbUpnM3FMODdFQ1MtSzdRUlVheFZhQ29RbFpXYjBHS1J4TVJaYWNDZ1dPa2d1NXZ5ZG95QWVYVHZuMUpHYU15MUlEclpkY01HODA3UndCeFRyWWptXzI3Wkd0eFR5R1U3ZmtncnlJbFkyMjZ3VTdkaHBheGF5cW9FWnVYWkd5ZkcxV2ExU3AtTEdqdXJxQVhiRHBob01FR0tpZ9IB9AFBVV95cUxNU0ZYNjZHaVJ2SmxBQ0VNTndfZGM1dTBMN3g1b0YxMVVNejVFMTJJTXlqSmNjS1BXSkdwVk5vd0w5R25PX1ZiWWJKX3M1a2QxTmhBQ0VYeXJkV0VxUDh5QTVkeC05bzdTVU9vb2xVemlnZjg0S0szdUdFOE1YbHpCRlpZdlhSRnFpU1FCZzJuVE1fRW9DbURnNEs1QkxrSFRhUUdzNmRCdFp2bU9ULUtPQS1KSWdfbTEwU2t0cC1lTEo1U21rYUVXSWN6bHRFWktxUDhORFNiTGpMbE9ORFJUcHJIZ1hiWDV0U2tCbm5wXzRxZnlh?oc=5",
     "date": "2025-03-08T08:00:00.000Z",
@@ -264,7 +281,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Alembic Pharma's Vadodara facility gets one Form 483 observation from US FDA  Business Standard",
-    "company": "Alembic Pharma's Vadodara Facility Gets One",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -272,7 +289,7 @@
     "priority": 3
   },
   {
-    "id": "ae13ced378690638942b96a866246757",
+    "id": "6e2d4ccb090a7bc0295f237c8c5e9011",
     "title": "Shilpa Medicare's Raichur units gets Form 483 with one observation from US FDA - Business Standard",
     "link": "https://news.google.com/rss/articles/CBMi8gFBVV95cUxPOVNUb09xaklVRWFVb2ItUzFScFZLOGdGdkFNM1ZfS0FLSXZUTTZldTVmLTIwaVFGWXBEWTZPa3lkd0s3Y01qY1R2Zlc3ZGhxXzEyZ3RhUVpCV0JWYlVfY1pTdGpDdm5iY2ZHcTRvdEMwZi15Z3k4bFQ1V3NFMGxmUFgwcVh0UmNnZUtpMDNoRFhvMkxiVEhYRHY3SEtWbURsLTRvc3pzVnlHR05FMGNJU1hLYV9QYXR5YWpZbHpnQWdoSUNTQ3Z4cG1abzBlanVHY2RTRmhUTTJyZTFOaFlQNDlock5TM2lOeVVvMVRKSEZsd9IB9wFBVV95cUxNb0lseExzY19hZURIU1puZWwyY2N5UHhrUXNobk9sSnV3VDhHQkZEV1o3a3p3dDV1NjRzTDNibkNKRzk5MGlraTFKVDJ3b2lWMm9xOUpyR3NfODdHR2FCS1VQMUs1T0tfYnhlT2hlSjFDcjFrNUFBRmNycDZ2MGxyTjY2ek8wNFNwcHJFbHppOVUwc3lZT2dPNFRXVE53MkZTQ2VubDliVDh0MjgwUDM5YTNncE5qalhPSENFd3YxV0ZneGllUzRWVExxd2ZETFBmVWNfd3NkUU4xQS01bGFfS1dKMVVXNHVQMzJpRERQc001T194Y2xr?oc=5",
     "date": "2025-03-08T08:00:00.000Z",
@@ -281,7 +298,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Shilpa Medicare's Raichur units gets Form 483 with one observation from US FDA  Business Standard",
-    "company": "Shilpa Medicare's Raichur Units Gets",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -289,7 +306,7 @@
     "priority": 3
   },
   {
-    "id": "10c0c38afcac539b00e55343fc77d2c3",
+    "id": "da1c23cab73db57c01955da7ee6ea0f8",
     "title": "USFDA issues Form 483 with 3 observations to Gland Pharma's Sterile APIs unit - Indian Pharma Post",
     "link": "https://news.google.com/rss/articles/CBMiyAFBVV95cUxQZTR0VHk3RHhUZVJRQUM3ZmJyc1VBcjBwWVkwcXBRdGthYlJINVBYWVp3YTBVOXJZWGJtWVRHQUh4R0RKbmF0M3JpV0VldnZpWHkyQlhVOHNESnNKVG8zOTRlcEJHVUxpNmNQN1AzV2RKb19NRjdNRUJZNlh4cTVESU9iYXN0cmttaGttUlhSRHhDanBKSlVNMUp3QjJIQWZSYTNsTzVKVE5HazA0ODJybVNjVnFvY1U3ZFIzUFdYbFRrQndUMTNmetIBzwFBVV95cUxQSnhKRGtrS0JfYkNQM291V3pIS1NDRXhMYXBtZHZMZEQyMks4eUlkRk81UElSR0JpOS1ERDlFeFVBTG5uRnBHbW1iSjJ6cDRLRnJJVUFTMk5TOFNtaG40ZGdqTGYxVzJYMmMzRlQ1akhVSFVFV1lhOGZDNWpsbURudnFUNHZDcDRQdzlMdXZyUTZvaGdNOEdvNlZvYnJ3eWhYRl9FRzRHa3RuNkh2OUFfX05qa0MyUC1hS1hYQWRQMlM5dUtJeG9NNzNNbXhZckU?oc=5",
     "date": "2025-02-27T08:00:00.000Z",
@@ -298,7 +315,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "USFDA issues Form 483 with 3 observations to Gland Pharma's Sterile APIs unit  Indian Pharma Post",
-    "company": "Gland Pharma's Sterile Apis Unit",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -306,7 +323,7 @@
     "priority": 3
   },
   {
-    "id": "b197720a352f1185b802c47b649d3245",
+    "id": "c6759d94ab73df46b9c4f57da6754dee",
     "title": "FDA dings Piramal API plant with Form 483 detailing problems tied to quality control, equipment cleaning and more - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMiuwFBVV95cUxQUlJZeTVjUGkzaXhRcjcwamh2ZmxIVnFldjgxYVFTMS1TMGhBX2xTZFZQczRkMXhJYVFmNnlTWGpRSkZ2UEN2M1FWb0k4YnJpZERJVE1zQUVpSXVRbnViM1I0OVhTRW1hczdPTDJHMk5MV0VrSUVfWTRDRklkcUYtdEpYWE9HX0Z3V3FyWk9ZU3ZUbDU5bGJQMm5fM0oxcW9Bbm9aOEU3b1cweE80VzdMZFFFWnFES2dESGpN?oc=5",
     "date": "2025-02-26T08:00:00.000Z",
@@ -315,7 +332,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "FDA dings Piramal API plant with Form 483 detailing problems tied to quality control, equipment cleaning and more  Fierce Pharma",
-    "company": "quality control",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -323,7 +340,7 @@
     "priority": 3
   },
   {
-    "id": "1d9f5ad72fddb9ceee6afc0e2c65de16",
+    "id": "2793327d806f3700775ab7a0f08af0f4",
     "title": "USFDA issues Form 483 with 3 three observations to Gland Pharma's Visakhapatnam unit - The Economic Times",
     "link": "https://news.google.com/rss/articles/CBMijgJBVV95cUxNWUhtb2xxWmlRaERKVVVUc2dueTNhN21lQ0pCcFRXVDBqOWo4WW1paHVUcVk2aVZmVmZzSklZUFo4aUFoS2hMN1lOWXdkemxyODU5alFIdW4tMjZ5N3BnSTY1dlNVQ2pQSDFDWS1ZdVBDUC1mUU1aTF9SbEZtNW82d3JLQUxBcVN6cWpxMDVxVWlXQjZfc0YyWkJfS3E1RXNNSk5lRjVEQ2w1d2g5Y2tJSHdiVmFyQ1ZGeHVoRkkxUk0yOHJTUWgzV01sNERzclluVno1VHpqUElONnVLU3hyVk9DZ2VIYnFiQlE5RHJELTJHNnE3TENoOVNENy0zN3NZeHFPZnpxWGJhTlM1aGfSAZMCQVVfeXFMTVRjXzRmSzZGOEkxNkNQeVh3RXRHOUJMSnRFQVlQN2xuSjg0ZnFsX0ZwUzMwN3N5R2lqbnBmLWpqSkViNVd2cXdJWlQ4LUc0UVEwVS1semRjMUU2N095dTRKd1hTcjhPUnpQM2hNaU5aMVZxSG9mY2FYNVhCZ3FtZnFma1o4eW1DQ19aMUYxaDJnZlZ3cElUdnZWS09xbDk4VFhrZTJKRzZtLTdzMlZLMW9FeUdqQXpKQWhfVTBvdUs2cVMxZ2Y5cVBGbnZFVGZENFZEbGxpUjJCel8yeF8xWGRGZjhGY0NyOHNPSlZ0QWpaY0poRENIbjNiTU9rRkVVUk9LODBUMW4wZlVnZk5JN2pTMHM?oc=5",
     "date": "2025-02-25T08:00:00.000Z",
@@ -332,7 +349,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "USFDA issues Form 483 with 3 three observations to Gland Pharma's Visakhapatnam unit  The Economic Times",
-    "company": "Gland Pharma's Visakhapatnam Unit",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -340,7 +357,7 @@
     "priority": 3
   },
   {
-    "id": "f5ba4f2f7edd131ef0703af2026e50b5",
+    "id": "5bbe0f1e68213c829e34be4135e28a0c",
     "title": "Piramal Pharma declines after US FDA issues Form 483 with 6 observations to Turbhe unit - Business Standard",
     "link": "https://news.google.com/rss/articles/CBMi_gFBVV95cUxORWpVaWVneTVTZHBhcWt6OERlSFNwZTJLQnVHTzV6NTFVMHdLYXJadGVZQko1Q3JKUTBuSG9uMWtZTnFLbEI1bTNENkpHVDJoRThFZFZWb2pBX0FoUVl5R3lvOWxrcE05Tno4UHJ2QmZuN2xHVUFMTkJBZTktZTFzeDgtaXVCUmRSZ09tYXJPb19NLVVXbTB2MXI4cHhsT2JnUVVtRFh4YU1MaUFxQVI4ZUNrazhIdmVoUVRvNl9VQUtnSXhIZ0E5YWE1VnJuWlhyUUpCY29EcnFoYkdQTlRmRF9pVzZsSWY0aGNiOVZBRnVXZEN0SHFXdWZxVXRjZ9IBgwJBVV95cUxONkZoaDVjcE5zWjV6OUduaHJiVEhhY0FhRE1JcjZaNmpqSlRoMXl1bnBWNlREVEZrZkdvMU9Ta25kYzR4MG9NTWgxcVFXeU00TE43VVJRWVREd0dhYnlBZHN0cC1IbWlPTnlROVZTRnpNQ195ZUoxYVBnQ1JMYnhtSkVIOVhHUnJzdHNoU0o0dUFvX2RiNlRjemlKdDdpY0tDcUo3anUtSEhFLXAzQlJ6dmxvZVRCblJsd1p6M1FsTUpMQkdndWN3M2pGMjdrbm9FMFBkd1YtZnRxcHMtcUxDMjdoZ0xPZDhSZGNXMUJqanVLZ2o3R2lkQWVlaTBHUFlrZnZ3?oc=5",
     "date": "2025-02-19T08:00:00.000Z",
@@ -349,7 +366,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Piramal Pharma declines after US FDA issues Form 483 with 6 observations to Turbhe unit  Business Standard",
-    "company": "Turbhe unit",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -357,7 +374,7 @@
     "priority": 3
   },
   {
-    "id": "b0001d90936006b2cc691a63cba2c647",
+    "id": "374ac77c543c679f6cfa5a97274e058e",
     "title": "Lupin's Somerset -based facility completes US FDA inspection with zero Form 483 observations - Business Standard",
     "link": "https://news.google.com/rss/articles/CBMigwJBVV95cUxOeVVNbzlZS19GemduLVRRdnhxZlA2TFN1QUdLNUhhSHFKRV9PV1BvajFnWjVFN3h3dldTTzdJMVM1QmNNU24tc3R3Sm00bnJXaE50NjMxYkt6MU14Qmdub2tERzFCQWl2WS10US1renFXNW5NcDcwWGpRVVlvT3R1eS1OY0NZRkVpa3Y4bnlWWTJtS0c0T2I5Y3I4OUFQNGRGWFMzbDJkaEl5MzdORVdCbTdlSVQtcWszSGM5MHZqRl9LU2dTb296d2VZVjhBb3RUWkQ4WDhuRG1CS1JhREUzdVBxUmtlT2x1TUl4bHJ0RGJYS3B4VVVnRkxmZ1Vwa1BSMmVR0gGIAkFVX3lxTE5zckNWVV9zaWNkYThLX1M0X0ktV3Q1d2ZRR0cza2JqcXNqbzgtWkxIbnlMQU50Z3I0SFVDQW9ZUEpZaHhxcEJORGdZMHRWRWhOYWRqeVVvQ3QzQUI0WXU3M18xcWYxUkVuUkZ2Q2FVdXpQdWlxVGMzaU0zcjRjME1LRDIzRkVDMkQtYTBRV3p4SUFOY3pVdVBEbC1MWFlsZDZjdDQtZ2Nwb2J4NkJPTGM5VVBuTGY1c0ZlQm5tMS1tNzFvRVYxUlpEQ3RwWFRWQTlkM1hLZmJ5WEtVdnp2YWl1bFJULWNJemZoMFc4VHRhZ0ptM3BRdzRJV0VJTXpzdm85YVN3MFIwSQ?oc=5",
     "date": "2025-02-03T08:00:00.000Z",
@@ -366,7 +383,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Lupin's Somerset -based facility completes US FDA inspection with zero Form 483 observations  Business Standard",
-    "company": "Lupin's Somerset",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -374,7 +391,7 @@
     "priority": 3
   },
   {
-    "id": "17c768b3e8dc676011a02afb8ae8b524",
+    "id": "70a334cd28c8ffb68426c18cd40cf003",
     "title": "Laurus Labs' US arm gets Form 483 from FDA after 'adverse experience' probe - CNBC TV18",
     "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxQUUxUcnBhWVo0RVI3SUlKYVdxbGYtQTFrTEtKa3VnWDU4bDJ3YnFMV2pUN0l6OHFwSkh4UTN2SmExTHlTZGNkTGJCMU5JM1dIdXhEcUFQWnhKVngyY1EwSXk2T1RxWmtIeVVvdUVlSnM3Rm1Pa0NpQlZuc3huc1JfUDhjM2hzZmF2WHpxTEtZaEJfX0FTU0dMYTk0Ukl4OF84MjM4WTQwc0FMbHNXUmZGRFctaVJPU01uODFVQzhJcTdXVFE1Mi1CZ3RoVkJTZDVFRVkwTDljcFJ0WEpWN1RjcUc4dW3SAeoBQVVfeXFMTWk0M1NoUjl0TlZXV3JuQjQxcGU0dDBMNEx5blhIa1BWMlBTcmdMN0lzc2c1dTNfRjVxYzlwVGdMdG1kVHBYT2xidHBtY1FlUU5GNlZqcTlINzlNSzdFLXdIZWt5bDNYZzA1N1J3dktqLV9hS3F6NG1TcDRxTEw0UllSWi1leE1GN3g4dlNvZDNMVWg5MEJ0S3hxM3RyeXViTVdqU1VwQUtQRFA3NG1qbEJxaU1rWEk3a3JDaXpkTE9haFdpOGZaLS00MG5VUThxUmFXNVM2XzlUbFh3dmJZRXVwNW9GdElncHlR?oc=5",
     "date": "2025-01-22T08:00:00.000Z",
@@ -383,7 +400,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Laurus Labs' US arm gets Form 483 from FDA after 'adverse experience' probe  CNBC TV18",
-    "company": "Laurus Labs' Us Arm Gets",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -391,7 +408,7 @@
     "priority": 3
   },
   {
-    "id": "98891eb33a3b1e32abf736c00b54bf27",
+    "id": "7729c4935ba6a9695e777ff7d52d9dc2",
     "title": "Cipla's Goa-based facility gets one form 483 observation from US FDA - Business Standard",
     "link": "https://news.google.com/rss/articles/CBMi5AFBVV95cUxPVGFnVEhpLWZjSkxtUGNJM1R2MXByNTFmWUUzWEliNmJMdHhHeFJmLTlhQlJ4QWJSWmdudmp1dEpWS2FzUV9hcWp4aDJ1MVZDcS1sWHhNRnlNdTBiME9UeEpWZkJpd0I3OFQyU0hFWDFOQWFTejlMcXd3MzVsMlRjQ2o5dm45MGdLLVVUeU5oNnpJaUVpWDRwLVpPX3Rkbmw0bUhieWc0UWM5ckFsbTkzeVRHRlFmWWh5REdXT3VuRDJDbW04eUlUQTdJa3BLckhONkQyb0hEREk0OV92bk10bkRhUkPSAeoBQVVfeXFMTUFWRXJscldnY3pQMWlXazFyVjBJVHM5WFlMemtiTE5HRlZLQXRaSVFMZHlpcGdtT2dXUzhOaEFFTUQ5bWJWazdseXppZ0ZxRzQyamUyZkpmZTlnN1pCM1R3Y21UYk1oRUFiQVZZak9SWDZ2WUZ1NkpyRExHMi1vUTNtd29vUTh5RjdQNVNPRkVsdGdBRU1RVnlqMWxkUXNqck9VX0YycGlxR0VPS1RxR1J4d3V2N2ExWUVZRm9GZEk4WnJTU2dDb0xlckVYTEhKalA4RkhXSXpjSTZmbEM3aWx0eDNxblNraHpR?oc=5",
     "date": "2025-01-21T08:00:00.000Z",
@@ -400,7 +417,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Cipla's Goa-based facility gets one form 483 observation from US FDA  Business Standard",
-    "company": "Cipla's Goa",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -408,7 +425,7 @@
     "priority": 3
   },
   {
-    "id": "f800b1ef1433269f0dee64589a5f7ef5",
+    "id": "748a958ec6788ef34ab84b26572e6fd2",
     "title": "FDA Releases Form 483 to Taylor Farms Colorado Springs Facility - Food Safety Magazine",
     "link": "https://news.google.com/rss/articles/CBMiqgFBVV95cUxQNTVlWEdUOXJncDJRT2dBZkc2WTZJaEwwVUVob0M1S1liRnZuN3F5U3VGQ3A1QWVSSTF5YklwUkpfbUwyNl9ZVW1wM2k3OGFUVDhaalVPVV9TRkJnenhuaDNFZS04NDdXMk5PT01rT2hXbXZGRWF3MjJYQm52blRJVDlBSk9PNldOM1BjOTBLNWl1bU1CU01XZDFfRUVEX1AxbktGbGpKVzladw?oc=5",
     "date": "2025-01-14T08:00:00.000Z",
@@ -417,7 +434,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "FDA Releases Form 483 to Taylor Farms Colorado Springs Facility  Food Safety Magazine",
-    "company": "Taylor Farms Colorado Springs Facility",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -425,7 +442,7 @@
     "priority": 3
   },
   {
-    "id": "2aad697fcb766629b4801878313921f4",
+    "id": "ddd271fbbeec5c286e19b17043fc4773",
     "title": "Dr. Reddy’s API unit issued Form 483 with 7 observations by U.S. FDA - The Hindu",
     "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxQQ1Fhd3NkdFR4ajUzUW13cFkyY0RZTzkwT3hQYW4zNnVoNjh0Nk5tbjl6NjVGTmd2UTVUaExaa09qVFBqTFhkajlMUi1BVnY4ZzNIUDg3M3ZROGE5VkhCM3FMdW5WdU9Jc0xvY1hfWnVMWGlfcWNBR0FsNldtSVp2alJSNjdIZ1M4UkUyczRyRXhBOERsVHpuMVR2NHAwVWpOSlRvOFM3UkZ2UnNLUmtNdGpUdXVzYUdfS3fSAcABQVVfeXFMT0VXb3J6b2cwZkxMYU81ZU9YYmczc0JRMEdVTFd1eFVBREV3U1VmalhBT3Jvc0xWbWVsZVp0Tl94VjI0NnNHN05RbFVzcEJaMkFKNlZrOVZFUDczamlDWWFIaW11cFRhR2xiM2tYeWxuOGlCVjZYNGVJQ09LUFVMMWpNMENOUEdqNjhELURrak9pbkRMR093UmZxbGE4ZnpTdE5sTVFYTm05Wm42RlRsT3V2UFJ6Z3V0OEg4dk1pYlUy?oc=5",
     "date": "2024-11-19T08:00:00.000Z",
@@ -434,7 +451,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Dr. Reddy’s API unit issued Form 483 with 7 observations by U.S. FDA  The Hindu",
-    "company": "Unknown Company",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -442,7 +459,7 @@
     "priority": 3
   },
   {
-    "id": "d544de7a1676242c1b15525ac615e4fb",
+    "id": "57f56c3004ec73945a3206822e8e4ce6",
     "title": "Shilpa Medicare slips after US FDA issues four form 483 obersvations to Bengaluru facility - Business Standard",
     "link": "https://news.google.com/rss/articles/CBMiggJBVV95cUxNMHlFWHRaQ21iNW9tNGFpaHhtSExkZ3JXcHhjS2p2UW9NV1VJdFlrd1NUR3RWbU9jRXJWX2gyWXFPa0NMUGdGMS1WdmJ6eE1aem4xd25mMTVCbkhwOVFQU2JnM0JGWUhTYjEtU1dIZkFFMnY4LWdwMW9wOEx0U1FwSHBwTDdIOGlWYlZKbmpCeEZ1SUU0RU5iNUhWaFB3cEhPQ2dCR1JVWHRjbmEyU1FnbkZkN3ZGRVp4T19ueHVFZ2I5WDBjUG40a3BydnhGYTNPR0ptNkgzUV81UmlyNnJWWkZmQ1I4YkFkMGdqZGhIazduWXhUTmpBYngyRlZWZEx1b0HSAYcCQVVfeXFMTkIzbG9YNUdUZDA1TDdyc3hZdFVaWkh6RGJIWWRYU0txWmo0Y0t4VzBQTEpxeHQ5eDNZMDlvb0trWUgzZmhaU05YY0t5VVhBd2picUdQLVV1WlN2YkVqVWQ1Z01ScjlOWlBxTEZzcHNrTE9oMWRJV3lXX1kyUVo1a1EzUGFyYi1VZU9ZQVRfM3NUVExQc0xCSUYxSzF6MDFHM2NLWEFyUkZxbjJWcjl4S3ZVazBPMTZwQUJDaVdlRkw4NVhzSkFjMXREaHRwRXJFTll3YXc3dEVobk90LU52Q194MURWNDlpemRFSDBjcVd4X1BGenJXTFRBYmdVeExEWWE3T0lYMUU?oc=5",
     "date": "2024-10-31T07:00:00.000Z",
@@ -451,7 +468,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Shilpa Medicare slips after US FDA issues four form 483 obersvations to Bengaluru facility  Business Standard",
-    "company": "Bengaluru facility",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -459,7 +476,7 @@
     "priority": 3
   },
   {
-    "id": "6fea6ef6109ed903a4d6c5cfd87dd984",
+    "id": "9e621ab0da10144d97d72d1e88085fea",
     "title": "Apitoria Pharma gets Form 483 with 10 observations from USFDA - Indian Pharma Post",
     "link": "https://news.google.com/rss/articles/CBMitAFBVV95cUxPc0E4a2cwYTl0YWs5YUJxa3lvTlQ1RTdrcGpnTVNXLUVXSW1XbUVzWjBlUDhWZmtHTlBiemJaOTBRZ2lleFFTWGRPenNSLUk3ejYxVXdBd0l5ZWJIRnFQcmhla2t6bzBCYUNxVURDZG5uSXRzWHN0R2pGZWQzNlFJLXQ3YUJ4S0xua0ZjMk41YWlqQUVBYWptVDlwSmJSeHp4dzlQVGVUZS12MDc1LW9PZVBfdETSAbsBQVVfeXFMTXdkRmNVUGZhYUt6MFdHZzhNOWVZd1lKdEFDa1FiZVBlNHdvQno3SjFEWm5odmlUWHZ3NkVqdFdCdFZ0clpEaHIzWXhzN092SUdIdlVqQ0NDMlpCRXV3dWNZaS1wVlZQZzJ3cE1TZHliUUdHTENvalN5Y0FUY3B5Qkl4UlZvZ0xoN2EzLThqWWg5RFFEUjVtNzlhNUlVMndNaHdhRnJJYjZwUTBYWjY3UjlpX3ZzNWV5YkY3MA?oc=5",
     "date": "2024-10-01T07:00:00.000Z",
@@ -468,7 +485,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Apitoria Pharma gets Form 483 with 10 observations from USFDA  Indian Pharma Post",
-    "company": "Apitoria Pharma gets",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -476,7 +493,7 @@
     "priority": 3
   },
   {
-    "id": "9d792bdab5222a541f9e17b4d8b1cd30",
+    "id": "8e9f449836bf1ac142afa5157fe2e3e5",
     "title": "FDA issues Form 483s to Japanese, Indian drugmakers in wake of plant inspections - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxNRFZDZXhpX2U1U2RjMHN1c1B2WGY1aVIyNExmOEo5TGE0VDlQTEJfcVVwejNza0JjdTN2Y1I3Qk1jQnZ4cW4zOTRRWjJDTWVjTTNXbl9JUXU3dW9wNGlYSklOR1BOcFlCT3JRLU5xWC1vTkFSSUw4cDJUbXdlUXVCTy05UG1mMzZEVll0LVQ4SnlSWjgwOHZNbV9KRDkyMjlRd1gtX09nRVhZZTA?oc=5",
     "date": "2024-09-10T07:00:00.000Z",
@@ -485,7 +502,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "FDA issues Form 483s to Japanese, Indian drugmakers in wake of plant inspections  Fierce Pharma",
-    "company": "Japanese",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -493,7 +510,7 @@
     "priority": 3
   },
   {
-    "id": "e07e1bf12e0df6c571ff29ad0e7d7a04",
+    "id": "8ec8cb7b54eca036b990180d509f3c2c",
     "title": "API maker Global Calcium stung with Form 483 filing after FDA inspection of Indian plant - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPOGVwY1NZaktiWnJxNDEySjlsRUQ4dS1ENW1maHF5dEN6V2syVjZQQzFVQ3BYclFHcDNGNlBuNmxGeFVRVk1wTjVfOG83Q3FzSUNtdDBJT0RBeUhnN0JaTm5UTXpmOFJEbmRoNlYwcHJvaG45TnJ6Y3RHaDZCeWZ5ZTJVM3hjcl9tVF8zTG1qWXNIUFJid1hObVhaQmFkNnowQ2VrTldtQnB4TVBBNXhuc0s0dw?oc=5",
     "date": "2024-08-29T07:00:00.000Z",
@@ -502,7 +519,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "API maker Global Calcium stung with Form 483 filing after FDA inspection of Indian plant  Fierce Pharma",
-    "company": "API maker Global Calcium stung with",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -510,7 +527,7 @@
     "priority": 3
   },
   {
-    "id": "e81e78baa5c8e639a64f6898d66b8314",
+    "id": "363d05877d99953bcf786b5ae03842ba",
     "title": "That Time FDA was ‘Unusually Thorough’ on a Form 483 - Medical Device and Diagnostic industry",
     "link": "https://news.google.com/rss/articles/CBMiiwFBVV95cUxPUDV4YWgyWHZ4YmNWYk8ya2lxSFNZMWozR3JmakNGU2QwSlNmOUQ4eVRjYzM4dWRTXzJaTTl5a0t0eW5EbDl1NkV2S3I0dDN2Zm9wTEl5cG9IMjRUdW40OUVSak1ULXBXdUYtdzd1MWlBRGx1RjJXQ2dYY2w5X0k3SngzQW5jNExrYjlB?oc=5",
     "date": "2024-08-19T07:00:00.000Z",
@@ -519,7 +536,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "That Time FDA was ‘Unusually Thorough’ on a Form 483  Medical Device and Diagnostic industry",
-    "company": "Unknown Company",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -527,7 +544,7 @@
     "priority": 3
   },
   {
-    "id": "a8b5b959b6ab99ebb9e547f0c35cc598",
+    "id": "47f7378594227c82ba587c5d0c417514",
     "title": "2023–2024 Trends In FDA Form 483s For Pharmaceutical Formulation Facilities - Pharmaceutical Online",
     "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxNRUFyTmtXYWsyTWRvX29VU1pkTUFKSkQ2amdscHQ4b0lSTDRjSVNaLVhhSEduVEJOOE5zZ2kweEFfM3JWaXFHTG5GaEdLTGZYS01NSVdURzJXXzJybVdIU2h5NDNqU2JzME5BdUgzVk16QXB1ZG5tZnhJdDlOVFRWY05IYzBOQlBrdmdrcjR0QXBhZ0VVTGdFazZueFVkcktVRnRza3c0OTFQU25GQ0pSeFFEclUtMzlMZzJGRnBB?oc=5",
     "date": "2024-08-01T07:00:00.000Z",
@@ -536,7 +553,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "2023–2024 Trends In FDA Form 483s For Pharmaceutical Formulation Facilities  Pharmaceutical Online",
-    "company": "Pharmaceutical Formulation Facilities",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -544,7 +561,7 @@
     "priority": 3
   },
   {
-    "id": "22cb9b5bcb5592d552b11405ca5dcabc",
+    "id": "579a46e362e9b0d7966d9abbdf2af314",
     "title": "FDA flags 10 observations in another Form 483 for a Zydus plant - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMingFBVV95cUxORTRTdjd0QmlpWWxyOE0xODZHdlVYanJtNkUybmVSTnhoZUtKVUM2ZFRSRXZzX1VmNE5JdHI3TmhZZTk0a193QTdyY0hKVTBSSjY3c21YQkpVTllDSXdUSGlfNV9OQVdXUjM5SU1icDFJWWtWM3BMQVMtSDVGaWtBQ1NkX2t0VXlLY2hzQjhkc25LNFFFcmZ0WnNTQ2JCQQ?oc=5",
     "date": "2024-05-06T07:00:00.000Z",
@@ -553,7 +570,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "FDA flags 10 observations in another Form 483 for a Zydus plant  Fierce Pharma",
-    "company": "a Zydus plant",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -561,7 +578,7 @@
     "priority": 3
   },
   {
-    "id": "ec03420c13143893cb2ddbe0e7bc55e8",
+    "id": "0ad9b281037d7c5ca6564d24744dc52f",
     "title": "Piramal API plant in Michigan hit with FDA Form 483 write-up - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxOa0NYYjJTU1JqZElDOEs4UmRJajRJSll4TE0weU5Sd2NHNnd3MUoxZW9ubHdUX19vX1dqZ2U5VHRmekpDYU52M2V4cEtzM1FQWnB0VkhRZjIwT01fM0hFcE1Cd1VzT0VLbXp6bklIb2RHVWFOMmlyZy1Ud1N1ek1SNXE3c3RFM2ptNkJDUUhkd3JMM3lad2c?oc=5",
     "date": "2024-02-09T08:00:00.000Z",
@@ -570,7 +587,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Piramal API plant in Michigan hit with FDA Form 483 write-up  Fierce Pharma",
-    "company": "Piramal API plant in Michigan hit with FDA",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -578,24 +595,7 @@
     "priority": 3
   },
   {
-    "id": "7f89873eb4ad6c5a83f950b9447d01f6",
-    "title": "FDA slams Eugia with Form 483 and posts older reprimands for AGC, Baxter - Fierce Pharma",
-    "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxQR2lJNDJYc0N5QUMyWi1HdjVMSlRIVUtqOXlDY2l5ZlF6Q3kyd0lEQVFnckRrelhBYmo2N0thblpwTkwxemJmWFRkNlR2NnNrbl9odlpXRmpFYk0weDJ2ckxqUzd4NnhKQ3VNcVR1V0lPZVJrdlczMFk5dC1FN3J4QjVkdGhDWi1IWk9oWW1IR2FTT1BxTVZrTE1zakZDamdWY0hTeWJhZ3Y?oc=5",
-    "date": "2024-01-31T08:00:00.000Z",
-    "dateFormatted": "31/01/2024",
-    "source": "Google News - Form 483",
-    "sourceCategory": "google",
-    "sourceType": "form_483",
-    "summary": "FDA slams Eugia with Form 483 and posts older reprimands for AGC, Baxter  Fierce Pharma",
-    "company": "Agc",
-    "types": [
-      "form_483"
-    ],
-    "severity": 6,
-    "priority": 3
-  },
-  {
-    "id": "a44a43f684cacc91533c242258ce4929",
+    "id": "eb438fe2ab8defaccb8a49038da00255",
     "title": "FDA slams trio of Indian drugmakers with Form 483 filings after December inspections - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxQVS16dVlxMldRdUJWNDJVRG1Sc3QydmtUSDQwOUFqamViaE5ROTBGRjhiNWR4cGpSSmVHVk05Z2I0bE1sQ1Fvd0dMb1pkZkVfOUR3V0pQRlpzdU11RldzN005a2R4aURwZ1BXQlF2cFY0M1h2VXNaUkl2VDl0ZDhXakotWW1DQlpqd054bGZla3F3bW1vMzlyYVFPY2VlMm5fNEp5SHljTkRQendxYWN4LXh3?oc=5",
     "date": "2024-01-03T08:00:00.000Z",
@@ -604,7 +604,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "FDA slams trio of Indian drugmakers with Form 483 filings after December inspections  Fierce Pharma",
-    "company": "FDA slams trio of Indian drugmakers with",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -612,7 +612,7 @@
     "priority": 3
   },
   {
-    "id": "76f5d2131e9ce99a7a4e0e3f09b1e55a",
+    "id": "b3d1d605d3f439cec2b9ac8ac20bca28",
     "title": "FDA hits Torrent Pharma with a Form 483, citing 5 observations - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxQMVRfMW1odTNyNTBRMkR4bnFoZEs5WFdnNXJkX1RrSzMzNjVzVy1hWWRBcktWX1hMQXZnT2h5Ym5LUURrV0JrUGZXa2FPd3ZCc0VQYzhULTdabjZPaG9HdVd1NGQ0Q3RYU3lwN1J1dEFUdWVsU3BWNEszcDJ3VUtvamx1Y0RnRWFHaGVyT2c3amM5Vl83ak5rVWZZUktOTTRmZ0E?oc=5",
     "date": "2023-12-13T08:00:00.000Z",
@@ -621,7 +621,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "FDA hits Torrent Pharma with a Form 483, citing 5 observations  Fierce Pharma",
-    "company": "FDA hits Torrent Pharma with a",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -629,7 +629,7 @@
     "priority": 3
   },
   {
-    "id": "5e420e1a1fccf32d9e557a6460d19735",
+    "id": "9d93a3d888cdd466849eaa30b60dba01",
     "title": "FDA puts New Jersey drug ingredients maker Spectrum through the wringer in scathing Form 483 - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxQU0JFWlBzYnRLcHQ4VUNmRHFRbVFlSnBySzhHMllXTlRaelBMdVk1WkpHVGoya0VNWmVVMTFyN1huc2llaTBGZGFBaTJmRWZSTXRxZk10bmF4NGhjTzdESFNhQ2tWbVZhMlk0MjVLUHMwTUtQZ0xMbVB4TUFPRjVyWEF0OWtnRFZyTHVrQ1lYandpRVNvcnBRWjJUbjdXRzFPeVlzdEhrWGxLUFBKdUlqNl9Zbw?oc=5",
     "date": "2023-10-11T07:00:00.000Z",
@@ -638,7 +638,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "FDA puts New Jersey drug ingredients maker Spectrum through the wringer in scathing Form 483  Fierce Pharma",
-    "company": "FDA puts New Jersey drug ingredients maker Spectrum through the wringer in scathing",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -646,7 +646,7 @@
     "priority": 3
   },
   {
-    "id": "2902bc7d7305c7eb29cef9beb4d0f5fa",
+    "id": "d0421ff351c68f9a78e6e8126034b06e",
     "title": "Alembic hit with Form 483, citing 4 observations at Panelav plant in India - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxNVlBZemFGZmV0cjBwZ3ptbEUxbGhoSnJ6bmZESXNQS2xPR2FzOHNkMGNhT0IzLUZHSjc4eGx2SEg4QVV1N2hWNmswa0F4V0dEdkFLZjdfRFhTTDkyZ1BNWnh1cFgteG9BXzNJQXltUW5EbFQwMVR4MmNKNzdQMzZxT2xQTlk3WDdhSzk4MmRKZjUzcDJxcGhHbmRac1FHZE9RTW9hS3E3dURoT3Vwa2RZWEZLTGJXNVZYVnc?oc=5",
     "date": "2022-10-20T07:00:00.000Z",
@@ -655,7 +655,7 @@
     "sourceCategory": "google",
     "sourceType": "form_483",
     "summary": "Alembic hit with Form 483, citing 4 observations at Panelav plant in India  Fierce Pharma",
-    "company": "Alembic hit with",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -663,7 +663,7 @@
     "priority": 3
   },
   {
-    "id": "e5fc5b4fa2d5ce60ec01511fe749741b",
+    "id": "3ab5dfbc096ef38eea4f4690eb579c89",
     "title": "FDA FY2020 Drug Inspection Observations And Trends - Pharmaceutical Online",
     "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNSGdpeDRlNmR1U0R3NW5YMkljdHQwNHVkNjRqMHN2M3hCZ2dpdFFuNldVM1c2bmpSOTNjcC0yUW1QVWp4UnN1Y3dYRmFXb0ZDRmotTC1pOXY5Wnh5QkMtbV9iX2FGWUtIRWJGS2xFbHlzY2pIQlFWaWNyc3hIWDAtXy1rSEdjNGVuMFpRQ3FlRm9MUjZKZ3Jv?oc=5",
     "date": "2020-12-09T08:00:00.000Z",
@@ -672,7 +672,7 @@
     "sourceCategory": "google",
     "sourceType": "consent_decree",
     "summary": "FDA FY2020 Drug Inspection Observations And Trends  Pharmaceutical Online",
-    "company": "Fda Fy2020 Drug Inspection Observations And Trends",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -680,7 +680,7 @@
     "priority": 3
   },
   {
-    "id": "0d3669831ae29e8b1d37fe3ad38737b4",
+    "id": "279af11656f5ecc3cbe25abf7aa750d9",
     "title": "FY2017 FDA Drug Inspection Observations And Trends - Pharmaceutical Online",
     "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxQQ3BsXzNPcFIzY1Aya1FJcUlWMUhmRVZqV0JvWDNmWkd3VWtyeElVQ0NCdFJHNUVnZnRzWlBPc1c2NXoxS0JPTFNmWjVFb3htTHhieURHazFsTkRIYkR6U0t2dmxsZC0yVk54b05SSkRSU3dndDNZYkhKVW1nZko2QjR3b1d0dDJmVlJmTjE2SGRHUDVIUWw0?oc=5",
     "date": "2018-04-18T07:00:00.000Z",
@@ -689,7 +689,7 @@
     "sourceCategory": "google",
     "sourceType": "consent_decree",
     "summary": "FY2017 FDA Drug Inspection Observations And Trends  Pharmaceutical Online",
-    "company": "Fda Fy2020 Drug Inspection Observations And Trends",
+    "company": "TBD",
     "types": [
       "form_483"
     ],
@@ -697,7 +697,7 @@
     "priority": 3
   },
   {
-    "id": "f524fa7e1fc54d5dcf7ed0924e9ff444",
+    "id": "7034f9a8eb82d2b381ca8b35b14380a4",
     "title": "US FDA Inspections in China: An Analysis of Form 483s from 2015 - Regulatory Affairs Professionals Society | RAPS",
     "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxOdmZlN2FoYjk2UlBZNG9JdW9uZENla095VUdGamZtQ0lNelVEOG55UnAtMERuME1GYjVRcFhkQ21Pc0ZobHczUXNVR0p3MldyZjhjSHB4ekJWUEpDX01keUh3N3dKUW9ILWhGTDN0OWhhNGhQZ0xyaHlSc05hbVBndWxFZDhMSktkR1Zla0kzZ3YzRnFtcHpYNXFUX1RoSDdSSmdmX2hJQmR1ckdnb3c?oc=5",
     "date": "2016-02-10T08:00:00.000Z",
@@ -706,7 +706,7 @@
     "sourceCategory": "google",
     "sourceType": "import_alert",
     "summary": "US FDA Inspections in China: An Analysis of Form 483s from 2015  Regulatory Affairs Professionals Society | RAPS",
-    "company": "Us Fda Inspections In China",
+    "company": "TBD",
     "types": [
       "form_483"
     ],

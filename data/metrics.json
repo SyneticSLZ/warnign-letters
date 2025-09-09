@@ -1,36 +1,47 @@
 {
-  "totalCompanies": 566,
-  "totalViolations": 822,
-  "averageResponseTime": 0,
+  "totalCompanies": 615,
+  "totalViolations": 1073,
   "topViolators": [
     {
       "name": "Unknown",
       "violations": 100,
-      "risk_score": null,
-      "compliance_score": 0
+      "risk_score": 0,
+      "compliance_score": 100
+    },
+    {
+      "name": "Pending Analysis",
+      "violations": 100,
+      "risk_score": 32,
+      "compliance_score": 100
+    },
+    {
+      "name": "Unknown Company",
+      "violations": 100,
+      "risk_score": 0,
+      "compliance_score": 100
     },
     {
       "name": "re",
       "violations": 51,
-      "risk_score": null,
-      "compliance_score": 0
+      "risk_score": 0,
+      "compliance_score": 100
     },
     {
       "name": "FDA",
       "violations": 48,
-      "risk_score": null,
-      "compliance_score": 0
+      "risk_score": 0,
+      "compliance_score": 100
     },
     {
       "name": "USFDA issues",
-      "violations": 5,
-      "risk_score": null,
+      "violations": 6,
+      "risk_score": 0,
       "compliance_score": 90
     },
     {
       "name": "Outlook",
       "violations": 4,
-      "risk_score": null,
+      "risk_score": 0,
       "compliance_score": 55
     },
     {
@@ -46,40 +57,10 @@
       "compliance_score": 100
     },
     {
-      "name": "STAT",
+      "name": "Capricor",
       "violations": 3,
-      "risk_score": 0
-    },
-    {
-      "name": "RP1",
-      "violations": 3,
-      "risk_score": 0
-    },
-    {
-      "name": "Ultragenyx",
-      "violations": 3,
-      "risk_score": null,
-      "compliance_score": 55
+      "risk_score": 0,
+      "compliance_score": 65
     }
-  ],
-  "violationTrends": {
-    "2024-10": 17,
-    "2024-11": 6,
-    "2024-12": 12,
-    "2025-01": 24,
-    "2025-02": 38,
-    "2025-03": 16,
-    "2025-04": 24,
-    "2025-05": 22,
-    "2025-06": 48,
-    "2025-07": 76,
-    "2025-08": 115,
-    "2025-09": 175
-  },
-  "complianceDistribution": {
-    "excellent": 310,
-    "good": 19,
-    "fair": 2,
-    "poor": 235
-  }
+  ]
 }

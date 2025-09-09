@@ -449,6 +449,8 @@ const CLASSIFIERS = {
 };
 
 // Advanced Company Intelligence System
+// COMPLETE REPLACEMENT FOR CompanyIntelligenceSystem class in final.js
+
 class CompanyIntelligenceSystem {
   constructor() {
     this.companies = new Map();
@@ -465,6 +467,133 @@ class CompanyIntelligenceSystem {
     };
     this.initializeKnownCompanies();
   }
+  // Add this method to the CompanyIntelligenceSystem class (add it after the findContactsForCompany method)
+
+async updateCompany(item) {
+  const companyName = item.company === 'TBD' ? 'Unknown Company' : item.company;
+  
+  if (!this.companies.has(companyName)) {
+    this.companies.set(companyName, {
+      name: companyName,
+      aliases: [],
+      violations: [],
+      products: [],
+      facilities: [],
+      executives: [],
+      risk_score: 0,
+      compliance_score: 100,
+      response_times: [],
+      last_updated: new Date().toISOString(),
+      first_seen: new Date().toISOString()
+    });
+  }
+
+  const company = this.companies.get(companyName);
+  
+  // Create violation record
+  const violation = {
+    id: item.id,
+    type: item.types[0],
+    date: item.date,
+    title: item.title,
+    link: item.link,
+    source: item.source,
+    summary: item.summary,
+    severity: item.severity || 5,
+    status: 'new'
+  };
+  
+  // Check if violation already exists
+  const exists = company.violations.some(v => v.link === violation.link);
+  if (!exists) {
+    company.violations.push(violation);
+    company.violations.sort((a, b) => new Date(b.date) - new Date(a.date));
+    
+    // Keep only last 100 violations
+    if (company.violations.length > 100) {
+      company.violations = company.violations.slice(0, 100);
+    }
+    
+    company.last_updated = new Date().toISOString();
+    
+    this.updateMetrics();
+    return true;
+  }
+  
+  return false;
+}
+
+calculateRiskScore(company) {
+  let score = 0;
+  const weights = {
+    violation_count: 0.3,
+    severity: 0.3,
+    frequency: 0.2,
+    response_time: 0.1,
+    repeat_violations: 0.1
+  };
+  
+  // Recent violations (last 2 years)
+  const twoYearsAgo = new Date();
+  twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
+  const recentViolations = company.violations.filter(v => 
+    new Date(v.date) > twoYearsAgo
+  );
+  
+  // Violation count score
+  score += Math.min(recentViolations.length * 10, 30) * weights.violation_count;
+  
+  // Severity score
+  const avgSeverity = recentViolations.reduce((sum, v) => sum + (v.severity || 5), 0) / 
+                     (recentViolations.length || 1);
+  score += avgSeverity * 10 * weights.severity;
+  
+  // Frequency score (violations per month)
+  if (recentViolations.length > 0) {
+    const monthsActive = Math.max(1, 
+      (Date.now() - new Date(company.first_seen)) / (30 * 24 * 60 * 60 * 1000)
+    );
+    const frequency = recentViolations.length / monthsActive;
+    score += Math.min(frequency * 50, 20) * weights.frequency;
+  }
+  
+  return Math.min(100, Math.round(score));
+}
+
+calculateComplianceScore(company) {
+  // Inverse of risk score with adjustments
+  let score = 100;
+  
+  const recentViolations = company.violations.filter(v => {
+    const sixMonthsAgo = new Date();
+    sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+    return new Date(v.date) > sixMonthsAgo;
+  });
+  
+  // Deduct points for recent violations
+  score -= recentViolations.length * 5;
+  
+  // Deduct for high severity violations
+  recentViolations.forEach(v => {
+    if (v.severity >= 8) score -= 10;
+    else if (v.severity >= 6) score -= 5;
+  });
+  
+  // Bonus for clean recent record
+  if (recentViolations.length === 0) {
+    score = Math.min(100, score + 10);
+  }
+  
+  return Math.max(0, Math.round(score));
+}
+
+titleCase(str) {
+  return str.replace(/\w\S*/g, txt => 
+    txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
+  );
+}
+
+// Add this property at the end of the class
 
   initializeKnownCompanies() {
     // Major pharmaceutical companies with correct domains
@@ -481,29 +610,11 @@ class CompanyIntelligenceSystem {
       'astrazeneca': { canonical: 'AstraZeneca PLC', domain: 'astrazeneca.com', ticker: 'AZN' },
       'abbvie': { canonical: 'AbbVie Inc.', domain: 'abbvie.com', ticker: 'ABBV' },
       'bristol myers squibb': { canonical: 'Bristol Myers Squibb Company', domain: 'bms.com', ticker: 'BMY' },
-      'bristol-myers squibb': { canonical: 'Bristol Myers Squibb Company', domain: 'bms.com', ticker: 'BMY' },
-      'bms': { canonical: 'Bristol Myers Squibb Company', domain: 'bms.com', ticker: 'BMY' },
       'eli lilly': { canonical: 'Eli Lilly and Company', domain: 'lilly.com', ticker: 'LLY' },
-      'lilly': { canonical: 'Eli Lilly and Company', domain: 'lilly.com', ticker: 'LLY' },
       'amgen': { canonical: 'Amgen Inc.', domain: 'amgen.com', ticker: 'AMGN' },
       'gilead': { canonical: 'Gilead Sciences, Inc.', domain: 'gilead.com', ticker: 'GILD' },
       'biogen': { canonical: 'Biogen Inc.', domain: 'biogen.com', ticker: 'BIIB' },
-      'regeneron': { canonical: 'Regeneron Pharmaceuticals, Inc.', domain: 'regeneron.com', ticker: 'REGN' },
-      'moderna': { canonical: 'Moderna, Inc.', domain: 'modernatx.com', ticker: 'MRNA' },
-      'bayer': { canonical: 'Bayer AG', domain: 'bayer.com', ticker: 'BAYRY' },
-      'takeda': { canonical: 'Takeda Pharmaceutical Company Limited', domain: 'takeda.com', ticker: 'TAK' },
-      'boehringer ingelheim': { canonical: 'Boehringer Ingelheim', domain: 'boehringer-ingelheim.com', ticker: null },
-      'teva': { canonical: 'Teva Pharmaceutical Industries Ltd.', domain: 'tevapharm.com', ticker: 'TEVA' },
-      'mylan': { canonical: 'Mylan N.V.', domain: 'mylan.com', ticker: 'MYL' },
-      'viatris': { canonical: 'Viatris Inc.', domain: 'viatris.com', ticker: 'VTRS' },
-      'vertex': { canonical: 'Vertex Pharmaceuticals Incorporated', domain: 'vrtx.com', ticker: 'VRTX' },
-      'alexion': { canonical: 'Alexion Pharmaceuticals, Inc.', domain: 'alexion.com', ticker: 'ALXN' },
-      'incyte': { canonical: 'Incyte Corporation', domain: 'incyte.com', ticker: 'INCY' },
-      'jazz pharmaceuticals': { canonical: 'Jazz Pharmaceuticals plc', domain: 'jazzpharma.com', ticker: 'JAZZ' },
-      'horizon therapeutics': { canonical: 'Horizon Therapeutics plc', domain: 'horizontherapeutics.com', ticker: 'HZNP' },
-      'catalent': { canonical: 'Catalent, Inc.', domain: 'catalent.com', ticker: 'CTLT' },
-      'perrigo': { canonical: 'Perrigo Company plc', domain: 'perrigo.com', ticker: 'PRGO' },
-      'mallinckrodt': { canonical: 'Mallinckrodt plc', domain: 'mallinckrodt.com', ticker: 'MNK' }
+      'moderna': { canonical: 'Moderna, Inc.', domain: 'modernatx.com', ticker: 'MRNA' }
     };
   }
 
@@ -560,146 +671,15 @@ class CompanyIntelligenceSystem {
       .trim();
   }
 
-  // Enhanced company extraction with multiple strategies
+  // SIMPLIFIED: Just return placeholder for initial display
   extractCompanyName(title, content, link, source) {
-    // Check cache first
-    const cacheKey = `${title}|${link}`;
-    if (this.matchingCache.has(cacheKey)) {
-      return this.matchingCache.get(cacheKey);
-    }
-
-    let extractedName = null;
-
-    // Strategy 1: FDA URL patterns
-    if (link && link.includes('fda.gov')) {
-      extractedName = this.extractFromFDAUrl(link);
-      if (extractedName && extractedName !== 'Unknown Company') {
-        this.matchingCache.set(cacheKey, extractedName);
-        return extractedName;
-      }
-    }
-
-    // Strategy 2: Pattern matching on title
-    extractedName = this.extractFromTitle(title);
-    if (extractedName && extractedName !== 'Unknown Company') {
-      extractedName = this.findCanonicalName(extractedName);
-      this.matchingCache.set(cacheKey, extractedName);
-      return extractedName;
-    }
-
-    // Strategy 3: Content analysis
-    if (content) {
-      extractedName = this.extractFromContent(content);
-      if (extractedName && extractedName !== 'Unknown Company') {
-        extractedName = this.findCanonicalName(extractedName);
-        this.matchingCache.set(cacheKey, extractedName);
-        return extractedName;
-      }
-    }
-
-    // Strategy 4: AI cache lookup
-    const aiResult = this.checkAICache(title);
-    if (aiResult) {
-      this.matchingCache.set(cacheKey, aiResult);
-      return aiResult;
-    }
-
-    // Default
-    const result = 'Unknown Company';
-    this.matchingCache.set(cacheKey, result);
-    return result;
-  }
-
-  extractFromFDAUrl(url) {
-    const patterns = [
-      /\/([a-z0-9\-]+)-\d{2}-\d{2}-\d{4}/i,
-      /\/([a-z0-9\-]+)-\d{6}/i,
-      /\/company\/([a-z0-9\-]+)/i,
-      /\/warning-letters\/([a-z0-9\-]+)/i
-    ];
-    
-    for (const pattern of patterns) {
-      const match = url.match(pattern);
-      if (match && match[1]) {
-        const name = match[1].replace(/-/g, ' ');
-        return this.titleCase(name);
-      }
-    }
-    return null;
-  }
-
-  extractFromTitle(title) {
-    // Clean title first
-    title = title.replace(/^(BREAKING:|UPDATE:|NEWS:|ALERT:|FDA:|US FDA:)\s*/gi, '');
-    
-    const patterns = [
-      // Warning letter patterns
-      /^Warning Letter to\s+([A-Z][A-Za-z0-9\s&,\.']+?)(?:\s*[-–:]|\s+regarding)/i,
-      /^([A-Z][A-Za-z0-9\s&,\.']+?)\s*[-–:]\s*Warning Letter/i,
-      /^([A-Z][A-Za-z0-9\s&,\.']+?)\s+Warning Letter/i,
-      
-      // CRL patterns
-      /^([A-Z][A-Za-z0-9\s&,\.']+?)\s+(?:Receives?|Gets?)\s+(?:Complete Response Letter|CRL)/i,
-      /Complete Response Letter.*?to\s+([A-Z][A-Za-z0-9\s&,\.']+?)(?:\s|$)/i,
-      
-      // Form 483 patterns
-      /Form 483.*?(?:for|to|issued to)\s+([A-Z][A-Za-z0-9\s&,\.']+?)(?:\s*[-–,]|$)/i,
-      /^([A-Z][A-Za-z0-9\s&,\.']+?)\s+Form 483/i,
-      
-      // General patterns
-      /^([A-Z][A-Za-z0-9\s&,\.']+?)(?:\s*[-–:])/,
-      /FDA (?:Issues?|Sends?|Cites?)\s+.*?to\s+([A-Z][A-Za-z0-9\s&,\.']+?)(?:\s*[-–,]|$)/i
-    ];
-
-    for (const pattern of patterns) {
-      const match = title.match(pattern);
-      if (match && match[1]) {
-        return this.cleanCompanyName(match[1]);
-      }
-    }
-    
-    return null;
-  }
-
-  extractFromContent(content) {
-    const patterns = [
-      /(?:letter|warning|alert|action)\s+(?:to|for|against)\s+([A-Z][A-Za-z0-9\s&,\.']+?)(?:\s*[-–,.]|\s+(?:regarding|concerning))/i,
-      /([A-Z][A-Za-z0-9\s&,\.']+?)\s+(?:has|have)\s+received\s+(?:a|an)\s+(?:warning|letter|form|CRL)/i,
-      /The company,?\s+([A-Z][A-Za-z0-9\s&,\.']+?),?\s+/i
-    ];
-
-    for (const pattern of patterns) {
-      const match = content.match(pattern);
-      if (match && match[1]) {
-        return this.cleanCompanyName(match[1]);
-      }
-    }
-    
-    return null;
-  }
-
-  cleanCompanyName(name) {
-    if (!name) return 'Unknown Company';
-    
-    // Remove common suffixes but keep important ones
-    name = name.trim()
-      .replace(/\s+/g, ' ')
-      .replace(/[,;:\.\-–—]+$/, '');
-    
-    // Handle common pharma suffixes intelligently
-    const suffixPattern = /\s*((?:,\s*)?(?:Inc\.?|LLC|Ltd\.?|Corp\.?|Corporation|Company|Co\.?|plc|PLC|GmbH|SA|AG)\.?)$/i;
-    const pharmaPattern = /\s*(Pharmaceuticals?|Pharma|Biotech|Therapeutics?|Sciences?|Laboratories?|Labs?)\.?$/gi;
-    
-    // Keep suffix if it's part of the known name
-    const baseName = name.replace(suffixPattern, '').replace(pharmaPattern, '').trim();
-    
-    // If too short after cleaning, return original
-    if (baseName.length < 3) return name;
-    
-    return baseName;
+    // Don't try to extract - let AI do it when modal opens
+    return "TBD";
   }
 
   findCanonicalName(name) {
+    if (!name || name === 'TBD' || name === 'Unknown Company') return name;
+    
     const normalized = this.normalizeForMatching(name);
     
     // Check known companies
@@ -712,326 +692,7 @@ class CompanyIntelligenceSystem {
       return this.companyAliases.get(normalized);
     }
     
-    // Fuzzy matching
-    const allCompanyNames = Array.from(this.companies.keys());
-    if (allCompanyNames.length > 0) {
-      const matches = stringSimilarity.findBestMatch(normalized, 
-        allCompanyNames.map(n => this.normalizeForMatching(n))
-      );
-      
-      if (matches.bestMatch.rating > 0.85) {
-        const index = allCompanyNames.findIndex(n => 
-          this.normalizeForMatching(n) === matches.bestMatch.target
-        );
-        if (index >= 0) return allCompanyNames[index];
-      }
-    }
-    
-    return this.titleCase(name);
-  }
-
-  checkAICache(text) {
-    for (const [key, value] of this.aiCache.entries()) {
-      if (text.includes(key) && value.canonical_company_name) {
-        return value.canonical_company_name;
-      }
-    }
-    return null;
-  }
-
-  titleCase(str) {
-    return str.replace(/\w\S*/g, txt => 
-      txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase()
-    );
-  }
-
-  async updateCompany(item) {
-    const companyName = this.findCanonicalName(item.company);
-    
-    if (!this.companies.has(companyName)) {
-      this.companies.set(companyName, {
-        name: companyName,
-        aliases: new Set([item.company]),
-        violations: [],
-        products: new Set(),
-        facilities: new Set(),
-        executives: [],
-        risk_score: 0,
-        compliance_score: 100,
-        response_times: [],
-        last_updated: new Date().toISOString(),
-        first_seen: new Date().toISOString(),
-        ticker: this.knownCompanies[this.normalizeForMatching(companyName)]?.ticker,
-        domain: this.knownCompanies[this.normalizeForMatching(companyName)]?.domain
-      });
-    }
-
-    const company = this.companies.get(companyName);
-    
-    // Convert Sets to Arrays for manipulation
-    if (company.aliases instanceof Set) {
-      company.aliases = Array.from(company.aliases);
-    }
-    if (company.products instanceof Set) {
-      company.products = Array.from(company.products);
-    }
-    if (company.facilities instanceof Set) {
-      company.facilities = Array.from(company.facilities);
-    }
-    
-    // Add alias if new
-    if (!company.aliases.includes(item.company)) {
-      company.aliases.push(item.company);
-      this.companyAliases.set(this.normalizeForMatching(item.company), companyName);
-    }
-    
-    // Create violation record
-    const violation = {
-      id: item.id,
-      type: item.types[0],
-      date: item.date,
-      title: item.title,
-      link: item.link,
-      source: item.source,
-      summary: item.summary,
-      severity: CLASSIFIERS[item.types[0]]?.severity || 5,
-      status: 'new',
-      response_deadline: this.calculateDeadline(item.types[0], item.date)
-    };
-    
-    // Check if violation already exists
-    const exists = company.violations.some(v => v.link === violation.link);
-    if (!exists) {
-      company.violations.push(violation);
-      company.violations.sort((a, b) => new Date(b.date) - new Date(a.date));
-      
-      // Keep only last 100 violations
-      if (company.violations.length > 100) {
-        company.violations = company.violations.slice(0, 100);
-      }
-      
-      // Update scores
-      company.risk_score = this.calculateRiskScore(company);
-      company.compliance_score = this.calculateComplianceScore(company);
-      company.last_updated = new Date().toISOString();
-      
-      // Extract additional details
-      this.extractCompanyDetails(company, item.summary);
-      
-      // Trigger instant notification
-      this.notificationQueue.push({ company: companyName, violation });
-      
-      this.updateMetrics();
-      return true;
-    }
-    
-    return false;
-  }
-
-  calculateDeadline(type, date) {
-    const classifier = CLASSIFIERS[type];
-    if (!classifier) return null;
-    
-    const timeline = classifier.typical_timeline;
-    const match = timeline.match(/(\d+)\s*days?/i);
-    if (match) {
-      const days = parseInt(match[1]);
-      const deadline = new Date(date);
-      deadline.setDate(deadline.getDate() + days);
-      return deadline.toISOString();
-    }
-    
-    return null;
-  }
-
-  calculateRiskScore(company) {
-    let score = 0;
-    const weights = {
-      violation_count: 0.3,
-      severity: 0.3,
-      frequency: 0.2,
-      response_time: 0.1,
-      repeat_violations: 0.1
-    };
-    
-    // Recent violations (last 2 years)
-    const twoYearsAgo = new Date();
-    twoYearsAgo.setFullYear(twoYearsAgo.getFullYear() - 2);
-    const recentViolations = company.violations.filter(v => 
-      new Date(v.date) > twoYearsAgo
-    );
-    
-    // Violation count score
-    score += Math.min(recentViolations.length * 10, 30) * weights.violation_count;
-    
-    // Severity score
-    const avgSeverity = recentViolations.reduce((sum, v) => sum + v.severity, 0) / 
-                       (recentViolations.length || 1);
-    score += avgSeverity * 10 * weights.severity;
-    
-    // Frequency score (violations per month)
-    if (recentViolations.length > 0) {
-      const monthsActive = Math.max(1, 
-        (Date.now() - new Date(company.first_seen)) / (30 * 24 * 60 * 60 * 1000)
-      );
-      const frequency = recentViolations.length / monthsActive;
-      score += Math.min(frequency * 50, 20) * weights.frequency;
-    }
-    
-    // Response time score (if data available)
-    if (company.response_times && company.response_times.length > 0) {
-      const avgResponseTime = company.response_times.reduce((a, b) => a + b, 0) / 
-                              company.response_times.length;
-      score += Math.max(0, 10 - avgResponseTime) * weights.response_time;
-    }
-    
-    // Repeat violations
-    const violationTypes = {};
-    recentViolations.forEach(v => {
-      violationTypes[v.type] = (violationTypes[v.type] || 0) + 1;
-    });
-    const repeatCount = Object.values(violationTypes).filter(count => count > 1).length;
-    score += repeatCount * 5 * weights.repeat_violations;
-    
-    return Math.min(100, Math.round(score));
-  }
-
-  calculateComplianceScore(company) {
-    // Inverse of risk score with adjustments
-    let score = 100;
-    
-    const recentViolations = company.violations.filter(v => {
-      const sixMonthsAgo = new Date();
-      sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
-      return new Date(v.date) > sixMonthsAgo;
-    });
-    
-    // Deduct points for recent violations
-    score -= recentViolations.length * 5;
-    
-    // Deduct for high severity violations
-    recentViolations.forEach(v => {
-      if (v.severity >= 8) score -= 10;
-      else if (v.severity >= 6) score -= 5;
-    });
-    
-    // Bonus for clean recent record
-    if (recentViolations.length === 0) {
-      score = Math.min(100, score + 10);
-    }
-    
-    return Math.max(0, Math.round(score));
-  }
-
-  extractCompanyDetails(company, text) {
-    if (!text) return;
-    
-    // Extract facilities
-    const facilityPatterns = [
-      /(?:facility|plant|site|location)\s+(?:in|at|located)\s+([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?),?\s+([A-Z]{2})/gi,
-      /([A-Z][a-z]+(?:\s+[A-Z][a-z]+)?),?\s+([A-Z]{2})\s+(?:facility|plant|site)/gi
-    ];
-    
-    facilityPatterns.forEach(pattern => {
-      let match;
-      while ((match = pattern.exec(text)) !== null) {
-        const facility = `${match[1]}, ${match[2]}`;
-        if (!company.facilities.includes(facility)) {
-          company.facilities.push(facility);
-        }
-      }
-    });
-    
-    // Extract products
-    const productPatterns = [
-      /(?:drug|product|medication|treatment|therapy)\s+(?:called\s+)?([A-Z][a-z]+(?:\s+[A-Z]?[a-z]+)?)/gi,
-      /([A-Z][a-z]+(?:\s+[A-Z]?[a-z]+)?)\s+(?:drug|product|medication|treatment)/gi
-    ];
-    
-    productPatterns.forEach(pattern => {
-      let match;
-      while ((match = pattern.exec(text)) !== null) {
-        const product = match[1];
-        if (product.length > 3 && !company.products.includes(product)) {
-          company.products.push(product);
-        }
-      }
-    });
-  }
-
-  async findContactsForCompany(companyName) {
-    const canonical = this.findCanonicalName(companyName);
-    
-    if (this.contacts.has(canonical)) {
-      return this.contacts.get(canonical);
-    }
-    
-    const contactInfo = {
-      company: canonical,
-      domain: null,
-      emails: [],
-      executives: [],
-      regulatory_contacts: [],
-      quality_contacts: [],
-      general_email: null,
-      phone: null,
-      address: null,
-      linkedin: null,
-      website: null,
-      last_updated: new Date().toISOString()
-    };
-    
-    try {
-      // Get domain
-      const domain = await this.findCompanyDomain(canonical);
-      if (domain) {
-        contactInfo.domain = domain;
-        contactInfo.website = `https://${domain}`;
-        
-        // Use various APIs to find contacts
-        const [hunterData, apolloData, clearbitData] = await Promise.all([
-          API_KEYS.HUNTER ? this.searchHunter(domain, canonical) : null,
-          API_KEYS.APOLLO ? this.searchApollo(canonical, domain) : null,
-          API_KEYS.CLEARBIT ? this.searchClearbit(domain) : null
-        ]);
-        
-        // Merge results
-        if (hunterData) {
-          contactInfo.emails = hunterData.emails || [];
-          contactInfo.general_email = hunterData.general_email;
-          contactInfo.phone = hunterData.phone;
-          contactInfo.address = hunterData.address;
-          contactInfo.linkedin = hunterData.linkedin;
-        }
-        
-        if (apolloData) {
-          contactInfo.executives = apolloData.executives || [];
-          contactInfo.regulatory_contacts = apolloData.regulatory_contacts || [];
-        }
-        
-        if (clearbitData) {
-          contactInfo.phone = contactInfo.phone || clearbitData.phone;
-          contactInfo.address = contactInfo.address || clearbitData.address;
-        }
-        
-        // Generate fallback emails if no API data
-        if (contactInfo.emails.length === 0 && !API_KEYS.HUNTER) {
-          contactInfo.general_email = `info@${domain}`;
-          contactInfo.regulatory_contacts = [
-            { name: 'Regulatory Affairs', title: 'Department', email: `regulatory@${domain}` },
-            { name: 'Quality Assurance', title: 'Department', email: `quality@${domain}` },
-            { name: 'Compliance', title: 'Department', email: `compliance@${domain}` },
-            { name: 'Medical Information', title: 'Department', email: `medinfo@${domain}` }
-          ];
-        }
-      }
-    } catch (error) {
-      console.error(`Error finding contacts for ${canonical}:`, error.message);
-    }
-    
-    this.contacts.set(canonical, contactInfo);
-    await this.saveContacts();
-    return contactInfo;
+    return name;
   }
 
   async findCompanyDomain(companyName) {
@@ -1058,268 +719,501 @@ class CompanyIntelligenceSystem {
     return domain;
   }
 
-async searchHunter(domain, companyName) {
-  try {
-    // Basic validation for domain
-    if (!domain || typeof domain !== 'string' || !domain.includes('.')) {
-      console.warn(`Skipping Hunter: invalid domain for ${companyName} -> ${domain}`);
-      return null;
-    }
-
-    const response = await axios.get('https://api.hunter.io/v2/domain-search', {
-      params: {
-        domain: domain,
-        api_key: API_KEYS.HUNTER,
-        limit: 5
-      },
-      timeout: 15000
-    });
-
-    if (response.data && response.data.data) {
-      const data = response.data.data;
-      return {
-        emails: (data.emails || []).map(e => ({
-          email: e.value,
-          name: `${e.first_name || ''} ${e.last_name || ''}`.trim(),
-          position: e.position,
-          department: e.department,
-          confidence: e.confidence,
-          sources: e.sources?.length || 0
-        })).filter(e => 
-          (e.confidence || 0) > 50 && (
-            !e.position ||
-            e.position.toLowerCase().includes('regulatory') ||
-            e.position.toLowerCase().includes('quality') ||
-            e.position.toLowerCase().includes('compliance') ||
-            e.position.toLowerCase().includes('medical') ||
-            e.position.toLowerCase().includes('clinical') ||
-            e.position.toLowerCase().includes('chief') ||
-            e.position.toLowerCase().includes('director') ||
-            e.position.toLowerCase().includes('vp') ||
-            e.position.toLowerCase().includes('vice president')
-          )
-        ).sort((a, b) => (b.confidence || 0) - (a.confidence || 0)),
-        general_email: data.pattern ? 
-          data.pattern.replace('{first}', 'info').replace('{last}', '').replace('{f}', 'i').replace('{l}', '') : null,
-        phone: data.phone_number,
-        address: `${data.city || ''} ${data.state || ''} ${data.country || ''}`.trim(),
-        linkedin: data.linkedin_url
-      };
-    }
-  } catch (error) {
-    // Better logging to help debug (include response body if available)
-    if (error.response) {
-      console.error('Hunter.io HTTP error:', error.response.status, error.response.data);
-    } else {
-      console.error('Hunter.io error:', error.message);
-    }
-  }
-  return null;
-}
-
-  // Paste into final.js replacing the existing searchApollo function
-// Drop-in replacement
-async searchApollo(companyName, domain) {
-  try {
-    if (!domain || typeof domain !== 'string' || !domain.includes('.')) {
-      console.warn(`Skipping Apollo: invalid domain for ${companyName} -> ${domain}`);
-      return null;
-    }
-
-    const payload = {
-      api_key: API_KEYS.APOLLO, // <-- IMPORTANT: auth in body for this endpoint
-      q_organization_domains: domain, // string; use "a.com,b.com" for multiples
-      per_page: 25,
-      page: 1,
-      person_titles: [
-        'Regulatory', 'Quality', 'Compliance', 'Medical', 'Clinical',
-        'VP', 'Vice President', 'Director', 'Chief', 'Head', 'Senior'
-      ]
-    };
-
-    const response = await axios.post(
-      // Some workspaces require the /api prefix; try this if you still get 401:
-      // 'https://api.apollo.io/api/v1/mixed_people/search',
-      'https://api.apollo.io/v1/mixed_people/search',
-      payload,
-      { headers: { 'Content-Type': 'application/json' }, timeout: 15000 }
-    );
-
-    if (response.data && response.data.people) {
-      return {
-        executives: response.data.people
-          .filter(p => p.title && (
-            p.title.toLowerCase().includes('chief') || 
-            p.title.toLowerCase().includes('vp') ||
-            p.title.toLowerCase().includes('vice president') ||
-            p.title.toLowerCase().includes('head')
-          ))
-          .map(p => ({
-            name: p.name,
-            title: p.title,
-            email: p.email,
-            linkedin: p.linkedin_url,
-            phone: p.phone_numbers?.[0]?.sanitized_number
-          })),
-        regulatory_contacts: response.data.people
-          .filter(p => p.title && (
-            p.title.toLowerCase().includes('regulatory') ||
-            p.title.toLowerCase().includes('quality') ||
-            p.title.toLowerCase().includes('compliance') ||
-            p.title.toLowerCase().includes('medical') ||
-            p.title.toLowerCase().includes('clinical')
-          ))
-          .map(p => ({
-            name: p.name,
-            title: p.title,
-            email: p.email,
-            linkedin: p.linkedin_url,
-            verified: p.email_status === 'verified'
-          }))
-      };
-    }
-  } catch (error) {
-    if (error.response) {
-      console.error('Apollo.io HTTP error:', error.response.status, error.response.data);
-    } else {
-      console.error('Apollo.io error:', error.message);
-    }
-  }
-  return null;
-}
-
-
-
-  async searchClearbit(domain) {
+  async searchHunter(domain, companyName) {
     try {
-      const response = await axios.get(`https://company.clearbit.com/v2/companies/find`, {
-        params: { domain: domain },
-        headers: { Authorization: `Bearer ${API_KEYS.CLEARBIT}` }
+      if (!domain || typeof domain !== 'string' || !domain.includes('.')) {
+        console.warn(`Invalid domain for Hunter: ${domain}`);
+        return null;
+      }
+
+      console.log(`🔍 Searching Hunter for ${companyName} (${domain})`);
+
+      const response = await axios.get('https://api.hunter.io/v2/domain-search', {
+        params: {
+          domain: domain,
+          api_key: API_KEYS.HUNTER,
+          limit: 10
+        },
+        timeout: 15000
       });
-      
-      if (response.data) {
+
+      if (response.data && response.data.data) {
+        const data = response.data.data;
+        console.log(`✅ Hunter found ${data.emails?.length || 0} emails for ${domain}`);
+        
         return {
-          phone: response.data.phone,
-          address: [
-            response.data.location,
-            response.data.geo?.city,
-            response.data.geo?.state,
-            response.data.geo?.country
-          ].filter(Boolean).join(', '),
-          employees: response.data.metrics?.employees,
-          industry: response.data.category?.industry,
-          description: response.data.description,
-          logo: response.data.logo,
-          twitter: response.data.twitter?.handle,
-          facebook: response.data.facebook?.handle
+          emails: (data.emails || []).map(e => ({
+            email: e.value,
+            name: `${e.first_name || ''} ${e.last_name || ''}`.trim(),
+            position: e.position,
+            department: e.department,
+            confidence: e.confidence
+          })),
+          pattern: data.pattern,
+          domain: domain
         };
       }
     } catch (error) {
-      console.error('Clearbit error:', error.message);
+      console.error('Hunter error:', error.response?.data || error.message);
     }
     return null;
+  }
+
+async searchApollo(companyName, domain) {
+  const searchAttempts = [];
+  let finalResult = null;
+
+  // Helper function to clean company names
+  const cleanCompanyName = (name) => {
+    if (!name || typeof name !== 'string') return '';
+    
+    return name
+      // Remove common company suffixes
+      .replace(/,?\s*(inc|incorporated|llc|ltd|limited|corp|corporation|company|co|group|holdings|international|global|usa|america|us|technologies|tech|solutions|services|systems|software|digital|media|partners|ventures|capital|labs|studio|works|industries|enterprises)\.?$/gi, '')
+      // Remove special characters but keep spaces
+      .replace(/[^\w\s&-]/g, '')
+      // Remove numbers at the end (like "Company 2024")
+      .replace(/\s+\d{2,4}$/g, '')
+      // Remove parenthetical additions
+      .replace(/\s*\([^)]*\)/g, '')
+      // Clean up whitespace
+      .replace(/\s+/g, ' ')
+      .trim();
+  };
+
+  // Helper to extract potential domain from company name
+  const generatePotentialDomains = (name) => {
+    const cleaned = cleanCompanyName(name)
+      .toLowerCase()
+      .replace(/[^a-z0-9]/g, '');
+    
+    const domains = [
+      `${cleaned}.com`,
+      `${cleaned}.io`,
+      `${cleaned}.co`,
+      `${cleaned}.net`,
+      `${cleaned}.org`,
+      `${cleaned}.ai`,
+      `${cleaned}.app`,
+      `${cleaned}.dev`
+    ];
+
+    // Try without common words if name has multiple words
+    const words = cleanCompanyName(name).toLowerCase().split(' ');
+    if (words.length > 1) {
+      const abbreviated = words.map(w => w[0]).join('');
+      domains.push(`${abbreviated}.com`, `${abbreviated}.io`);
+      
+      // Try first word only
+      domains.push(`${words[0]}.com`);
+      
+      // Try combination of main words
+      const mainWords = words.filter(w => w.length > 3).join('');
+      if (mainWords) {
+        domains.push(`${mainWords}.com`);
+      }
+    }
+
+    return [...new Set(domains)]; // Remove duplicates
+  };
+
+  // Helper to search Apollo with specific parameters
+  const executeApolloSearch = async (searchParams, attemptDescription) => {
+    try {
+      console.log(`🔍 Apollo attempt: ${attemptDescription}`);
+      console.log('   Parameters:', JSON.stringify(searchParams, null, 2));
+
+      const response = await axios.post(
+        'https://api.apollo.io/v1/mixed_people/search',
+        {
+          per_page: 10,
+          page: 1,
+          ...searchParams
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Api-Key': API_KEYS.APOLLO
+          },
+          timeout: 15000
+        }
+      );
+
+      if (response.data?.people?.length > 0) {
+        console.log(`✅ Found ${response.data.people.length} contacts via ${attemptDescription}`);
+        return {
+          contacts: response.data.people.map(p => ({
+            name: p.name,
+            title: p.title,
+            email: p.email,
+            linkedin: p.linkedin_url,
+            verified: p.email_status === 'verified',
+            company: p.organization?.name,
+            domain: p.organization?.domain
+          })),
+          method: attemptDescription,
+          totalFound: response.data.total_people || response.data.people.length
+        };
+      }
+      
+      console.log(`   No results for ${attemptDescription}`);
+      return null;
+    } catch (error) {
+      console.error(`   Error in ${attemptDescription}:`, error.response?.data?.error || error.message);
+      return null;
+    }
+  };
+
+  // ATTEMPT 1: Search by provided domain if valid
+  if (domain && typeof domain === 'string' && domain.includes('.')) {
+    const result = await executeApolloSearch(
+      { q_organization_domains: domain },
+      `domain search: ${domain}`
+    );
+    if (result) {
+      finalResult = result;
+      searchAttempts.push({ type: 'domain', value: domain, success: true });
+    } else {
+      searchAttempts.push({ type: 'domain', value: domain, success: false });
+    }
+  }
+
+  // ATTEMPT 2: Search by exact company name
+  if (!finalResult && companyName) {
+    const result = await executeApolloSearch(
+      { q_organization_name: companyName },
+      `exact name: "${companyName}"`
+    );
+    if (result) {
+      finalResult = result;
+      searchAttempts.push({ type: 'exact_name', value: companyName, success: true });
+    } else {
+      searchAttempts.push({ type: 'exact_name', value: companyName, success: false });
+    }
+  }
+
+  // ATTEMPT 3: Search with cleaned company name
+  if (!finalResult && companyName) {
+    const cleanedName = cleanCompanyName(companyName);
+    if (cleanedName && cleanedName !== companyName) {
+      const result = await executeApolloSearch(
+        { q_organization_name: cleanedName },
+        `cleaned name: "${cleanedName}"`
+      );
+      if (result) {
+        finalResult = result;
+        searchAttempts.push({ type: 'cleaned_name', value: cleanedName, success: true });
+      } else {
+        searchAttempts.push({ type: 'cleaned_name', value: cleanedName, success: false });
+      }
+    }
+  }
+
+  // ATTEMPT 4: Try with fuzzy/partial matching
+  if (!finalResult && companyName) {
+    const partialName = cleanCompanyName(companyName).split(' ')[0];
+    if (partialName && partialName.length > 3) {
+      const result = await executeApolloSearch(
+        { 
+          q_organization_name: partialName,
+          organization_name_fuzzy: true  // If Apollo supports fuzzy matching
+        },
+        `partial name: "${partialName}"`
+      );
+      if (result) {
+        finalResult = result;
+        searchAttempts.push({ type: 'partial_name', value: partialName, success: true });
+      } else {
+        searchAttempts.push({ type: 'partial_name', value: partialName, success: false });
+      }
+    }
+  }
+
+  // ATTEMPT 5: Try generated domains
+  if (!finalResult && companyName) {
+    const potentialDomains = generatePotentialDomains(companyName);
+    console.log(`🔄 Trying ${potentialDomains.length} potential domains...`);
+    
+    for (const testDomain of potentialDomains.slice(0, 5)) { // Limit to 5 attempts
+      const result = await executeApolloSearch(
+        { q_organization_domains: testDomain },
+        `generated domain: ${testDomain}`
+      );
+      if (result) {
+        finalResult = result;
+        searchAttempts.push({ type: 'generated_domain', value: testDomain, success: true });
+        break;
+      } else {
+        searchAttempts.push({ type: 'generated_domain', value: testDomain, success: false });
+      }
+    }
+  }
+
+  // ATTEMPT 6: Search using organization search endpoint first
+  if (!finalResult && companyName) {
+    try {
+      console.log(`🔍 Attempting organization lookup for: ${companyName}`);
+      
+      const orgResponse = await axios.post(
+        'https://api.apollo.io/v1/organizations/search',
+        {
+          q_organization_name: cleanCompanyName(companyName),
+          per_page: 3,
+          page: 1
+        },
+        {
+          headers: {
+            'Content-Type': 'application/json',
+            'X-Api-Key': API_KEYS.APOLLO
+          },
+          timeout: 15000
+        }
+      );
+
+      if (orgResponse.data?.organizations?.length > 0) {
+        // Try each organization found
+        for (const org of orgResponse.data.organizations) {
+          const orgDomain = org.primary_domain || org.domains?.[0];
+          if (orgDomain) {
+            console.log(`✅ Found organization: ${org.name} with domain: ${orgDomain}`);
+            
+            const result = await executeApolloSearch(
+              { q_organization_domains: orgDomain },
+              `org lookup domain: ${orgDomain} (${org.name})`
+            );
+            
+            if (result) {
+              finalResult = {
+                ...result,
+                organization: {
+                  name: org.name,
+                  domain: orgDomain,
+                  industry: org.industry,
+                  size: org.estimated_num_employees
+                }
+              };
+              searchAttempts.push({ type: 'org_lookup', value: org.name, success: true });
+              break;
+            }
+          }
+        }
+      }
+    } catch (error) {
+      console.error('Organization lookup error:', error.response?.data || error.message);
+      searchAttempts.push({ type: 'org_lookup', value: companyName, success: false });
+    }
+  }
+
+  // ATTEMPT 7: Try alternative name formats
+  if (!finalResult && companyName) {
+    const alternativeFormats = [
+      companyName.toUpperCase(),
+      companyName.toLowerCase(),
+      companyName.replace(/&/g, 'and'),
+      companyName.replace(/\band\b/gi, '&'),
+      companyName.replace(/\s+/g, ''),  // No spaces
+      companyName.split(' ').map(w => w.charAt(0).toUpperCase() + w.slice(1).toLowerCase()).join(' ') // Title case
+    ];
+
+    for (const altName of [...new Set(alternativeFormats)]) {
+      if (altName !== companyName && altName !== cleanCompanyName(companyName)) {
+        const result = await executeApolloSearch(
+          { q_organization_name: altName },
+          `alternative format: "${altName}"`
+        );
+        if (result) {
+          finalResult = result;
+          searchAttempts.push({ type: 'alternative_format', value: altName, success: true });
+          break;
+        }
+      }
+    }
+  }
+
+  // Log summary
+  console.log('\n📊 Apollo Search Summary:');
+  console.log(`   Total attempts: ${searchAttempts.length}`);
+  console.log(`   Successful: ${searchAttempts.filter(a => a.success).length}`);
+  console.log(`   Failed: ${searchAttempts.filter(a => !a.success).length}`);
+  
+  if (finalResult) {
+    console.log(`   ✅ Final result: ${finalResult.totalFound} contacts found via ${finalResult.method}`);
+    console.log(`   Search attempts:`, searchAttempts);
+    
+    // Add metadata about the search process
+    finalResult.searchMetadata = {
+      attempts: searchAttempts,
+      originalCompanyName: companyName,
+      originalDomain: domain,
+      successfulMethod: finalResult.method
+    };
+  } else {
+    console.log(`   ❌ No results found after all attempts`);
+    console.log(`   Search attempts:`, searchAttempts);
+    
+    // Return empty result with metadata
+    return {
+      contacts: [],
+      searchMetadata: {
+        attempts: searchAttempts,
+        originalCompanyName: companyName,
+        originalDomain: domain,
+        successfulMethod: null,
+        error: 'No contacts found after exhaustive search'
+      }
+    };
+  }
+
+  return finalResult;
+}
+
+// Optional: Standalone function to validate and find company domain
+async  findAndValidateCompanyDomain(companyName) {
+  try {
+    // First try Apollo's organization search
+    const orgResponse = await axios.post(
+      'https://api.apollo.io/v1/organizations/search',
+      {
+        q_organization_name: companyName,
+        per_page: 1,
+        page: 1
+      },
+      {
+        headers: {
+          'Content-Type': 'application/json',
+          'X-Api-Key': API_KEYS.APOLLO
+        },
+        timeout: 15000
+      }
+    );
+
+    if (orgResponse.data?.organizations?.[0]) {
+      const org = orgResponse.data.organizations[0];
+      return {
+        domain: org.primary_domain || org.domains?.[0],
+        companyName: org.name,
+        confidence: 'high',
+        source: 'apollo_org_search'
+      };
+    }
+  } catch (error) {
+    console.error('Domain lookup error:', error.message);
+  }
+
+  // Fallback to generating domain
+  const cleaned = companyName
+    .toLowerCase()
+    .replace(/[^\w\s]/g, '')
+    .replace(/\s+/g, '');
+  
+  return {
+    domain: `${cleaned}.com`,
+    companyName: companyName,
+    confidence: 'low',
+    source: 'generated'
+  };
+}
+
+  async findContactsForCompany(companyName, domain = null) {
+    console.log(`📧 Finding contacts for: ${companyName}`);
+    
+    const canonical = this.findCanonicalName(companyName);
+    
+    // Get or find domain
+    if (!domain) {
+      domain = await this.findCompanyDomain(canonical);
+    }
+    
+    console.log(`🌐 Using domain: ${domain}`);
+    
+    const contactInfo = {
+      company: canonical,
+      domain: domain,
+      emails: [],
+      contacts: [],
+      searched: true
+    };
+    
+    try {
+      // Try Hunter
+      if (API_KEYS.HUNTER) {
+        const hunterData = await this.searchHunter(domain, canonical);
+        if (hunterData && hunterData.emails) {
+          contactInfo.emails.push(...hunterData.emails);
+        }
+      }
+      
+      // Try Apollo
+      if (API_KEYS.APOLLO) {
+        const apolloData = await this.searchApollo(canonical, domain);
+        if (apolloData && apolloData.contacts) {
+          contactInfo.contacts.push(...apolloData.contacts);
+          // Add Apollo emails to main list
+          apolloData.contacts.forEach(c => {
+            if (c.email) {
+              contactInfo.emails.push({
+                email: c.email,
+                name: c.name,
+                position: c.title,
+                verified: c.verified
+              });
+            }
+          });
+        }
+      }
+      
+      // If no APIs configured or no results, generate fallback emails
+      if (contactInfo.emails.length === 0) {
+        console.log('⚠️ No contacts found via APIs, generating fallbacks');
+        contactInfo.emails = [
+          { email: `info@${domain}`, name: 'General Info', position: 'General' },
+          { email: `regulatory@${domain}`, name: 'Regulatory Affairs', position: 'Regulatory' },
+          { email: `quality@${domain}`, name: 'Quality Assurance', position: 'Quality' },
+          { email: `compliance@${domain}`, name: 'Compliance', position: 'Compliance' }
+        ];
+      }
+      
+    } catch (error) {
+      console.error(`Error finding contacts for ${canonical}:`, error.message);
+    }
+    
+    console.log(`📊 Found ${contactInfo.emails.length} total emails`);
+    this.contacts.set(canonical, contactInfo);
+    return contactInfo;
   }
 
   updateMetrics() {
     this.metrics = {
       totalCompanies: this.companies.size,
       totalViolations: Array.from(this.companies.values())
-        .reduce((sum, c) => sum + c.violations.length, 0),
-      averageResponseTime: this.calculateAverageResponseTime(),
-      topViolators: this.getTopViolators(10),
-      violationTrends: this.calculateViolationTrends(),
-      complianceDistribution: this.getComplianceDistribution()
+        .reduce((sum, c) => sum + (c.violations?.length || 0), 0),
+      topViolators: this.getTopViolators(10)
     };
-  }
-
-  calculateAverageResponseTime() {
-    const allResponseTimes = [];
-    this.companies.forEach(company => {
-      if (company.response_times && company.response_times.length > 0) {
-        allResponseTimes.push(...company.response_times);
-      }
-    });
-    
-    if (allResponseTimes.length === 0) return 0;
-    
-    return Math.round(
-      allResponseTimes.reduce((a, b) => a + b, 0) / allResponseTimes.length
-    );
   }
 
   getTopViolators(limit = 10) {
     return Array.from(this.companies.values())
-      .sort((a, b) => b.violations.length - a.violations.length)
+      .sort((a, b) => (b.violations?.length || 0) - (a.violations?.length || 0))
       .slice(0, limit)
       .map(c => ({
         name: c.name,
-        violations: c.violations.length,
-        risk_score: c.risk_score,
-        compliance_score: c.compliance_score
+        violations: c.violations?.length || 0,
+        risk_score: c.risk_score || 0,
+        compliance_score: c.compliance_score || 100
       }));
-  }
-
-  calculateViolationTrends() {
-    const trends = {};
-    const now = new Date();
-    
-    for (let i = 11; i >= 0; i--) {
-      const month = new Date(now.getFullYear(), now.getMonth() - i, 1);
-      const monthKey = `${month.getFullYear()}-${String(month.getMonth() + 1).padStart(2, '0')}`;
-      trends[monthKey] = 0;
-    }
-    
-    this.companies.forEach(company => {
-      company.violations.forEach(violation => {
-        const vDate = new Date(violation.date);
-        const monthKey = `${vDate.getFullYear()}-${String(vDate.getMonth() + 1).padStart(2, '0')}`;
-        if (trends.hasOwnProperty(monthKey)) {
-          trends[monthKey]++;
-        }
-      });
-    });
-    
-    return trends;
-  }
-
-  getComplianceDistribution() {
-    const distribution = {
-      excellent: 0,  // 90-100
-      good: 0,       // 70-89
-      fair: 0,       // 50-69
-      poor: 0        // 0-49
-    };
-    
-    this.companies.forEach(company => {
-      if (company.compliance_score >= 90) distribution.excellent++;
-      else if (company.compliance_score >= 70) distribution.good++;
-      else if (company.compliance_score >= 50) distribution.fair++;
-      else distribution.poor++;
-    });
-    
-    return distribution;
   }
 
   async save() {
     try {
-      // Convert Sets to Arrays before saving
-      const companiesArray = Array.from(this.companies.values()).map(company => ({
-        ...company,
-        aliases: Array.from(company.aliases || []),
-        products: Array.from(company.products || []),
-        facilities: Array.from(company.facilities || [])
-      }));
-      
+      const companiesArray = Array.from(this.companies.values());
       await fs.writeFile(DATA_FILES.COMPANIES, JSON.stringify(companiesArray, null, 2));
       
-      // Save AI cache
       const cacheObj = {};
       this.aiCache.forEach((value, key) => {
         cacheObj[key] = value;
       });
       await fs.writeFile(DATA_FILES.AI_CACHE, JSON.stringify(cacheObj, null, 2));
       
-      // Save metrics
       await fs.writeFile(DATA_FILES.METRICS, JSON.stringify(this.metrics, null, 2));
       
       console.log('✅ Company data saved');
@@ -1336,9 +1230,653 @@ async searchApollo(companyName, domain) {
       console.error('Error saving contacts:', error);
     }
   }
-
   notificationQueue = [];
+
+
 }
+class WarningLetterScraper {
+  constructor() {
+    this.cache = new Map();
+    this.rateLimiter = {
+      lastRequest: 0,
+      minDelay: 1000, // 1 second between requests
+      maxRetries: 3
+    };
+  }
+
+  // Main scraping method
+  async scrapeWarningLetter(url) {
+    // Check cache first
+    if (this.cache.has(url)) {
+      console.log(`📋 Using cached data for: ${url}`);
+      return this.cache.get(url);
+    }
+
+    // Rate limiting
+    await this.enforceRateLimit();
+
+    let lastError = null;
+    for (let attempt = 1; attempt <= this.rateLimiter.maxRetries; attempt++) {
+      try {
+        console.log(`🔍 Scraping warning letter (attempt ${attempt}): ${url}`);
+        
+        const response = await axios.get(url, {
+          headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36',
+            'Accept': 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+            'Accept-Language': 'en-US,en;q=0.5',
+            'Accept-Encoding': 'gzip, deflate, br',
+            'Connection': 'keep-alive',
+            'Upgrade-Insecure-Requests': '1'
+          },
+          timeout: 15000,
+          maxRedirects: 5
+        });
+
+        const $ = cheerio.load(response.data);
+        const letterData = this.extractLetterData($, url);
+        
+        // Cache the result
+        this.cache.set(url, letterData);
+        
+        // Clean old cache entries if too large
+        if (this.cache.size > 100) {
+          const firstKey = this.cache.keys().next().value;
+          this.cache.delete(firstKey);
+        }
+        
+        console.log(`✅ Successfully scraped warning letter`);
+        return letterData;
+        
+      } catch (error) {
+        lastError = error;
+        console.error(`❌ Attempt ${attempt} failed:`, error.message);
+        
+        if (attempt < this.rateLimiter.maxRetries) {
+          // Exponential backoff
+          await new Promise(resolve => setTimeout(resolve, attempt * 2000));
+        }
+      }
+    }
+    
+    // If all retries failed, return partial data
+    console.error(`⚠️ All scraping attempts failed for ${url}`);
+    return {
+      success: false,
+      error: lastError?.message || 'Failed to scrape warning letter',
+      url: url,
+      scrapedAt: new Date().toISOString()
+    };
+  }
+
+  // Extract data from the HTML
+  extractLetterData($, url) {
+    const data = {
+      success: true,
+      url: url,
+      scrapedAt: new Date().toISOString(),
+      
+      // Basic Info
+      title: this.extractTitle($),
+      marcsNumber: this.extractMarcsNumber($),
+      letterDate: this.extractLetterDate($),
+      issueDate: this.extractIssueDate($),
+      
+      // Delivery Info
+      deliveryMethod: this.extractDeliveryMethod($),
+      productType: this.extractProductType($),
+      
+      // Recipient Info
+      recipient: this.extractRecipient($),
+      
+      // Issuing Office
+      issuingOffice: this.extractIssuingOffice($),
+      
+      // Letter Content
+      letterContent: this.extractLetterContent($),
+      violations: this.extractViolations($),
+      products: this.extractProducts($),
+      
+      // Response Requirements
+      responseDeadline: this.extractResponseDeadline($),
+      responseEmail: this.extractResponseEmail($),
+      
+      // Metadata
+      contentDate: this.extractContentDate($),
+      regulatedProducts: this.extractRegulatedProducts($)
+    };
+    
+    // Extract company name from recipient if available
+    if (data.recipient && data.recipient.company) {
+      data.companyName = data.recipient.company;
+    }
+    
+    return data;
+  }
+
+  // Individual extraction methods
+  extractTitle($) {
+    // Try multiple selectors
+    let title = $('h1.content-title').first().text().trim();
+    if (!title) {
+      title = $('h1').first().text().trim();
+    }
+    if (!title) {
+      title = $('meta[property="og:title"]').attr('content') || '';
+    }
+    return title.replace(/\s+/g, ' ').trim();
+  }
+
+  extractMarcsNumber($) {
+    const title = this.extractTitle($);
+    const match = title.match(/MARCS-CMS\s+(\d+)/i) || title.match(/(\d{6})/);
+    if (match) return match[1];
+    
+    // Try to find in the letter content
+    const content = $('body').text();
+    const contentMatch = content.match(/MARCS-CMS\s+(\d+)/i) || content.match(/RE:\s*(\d{6})/i);
+    return contentMatch ? contentMatch[1] : null;
+  }
+
+  extractLetterDate($) {
+    // Look for date in title first
+    const title = this.extractTitle($);
+    const titleMatch = title.match(/(\d{1,2}\/\d{1,2}\/\d{4})/);
+    if (titleMatch) return titleMatch[1];
+    
+    // Look for time element
+    const timeElement = $('time').first();
+    if (timeElement.length) {
+      return timeElement.attr('datetime') || timeElement.text().trim();
+    }
+    
+    // Look in the letter content for date pattern
+    const letterContent = $('.inset-column').text() || $('main').text();
+    const dateMatch = letterContent.match(/([A-Z][a-z]+\s+\d{1,2},\s+\d{4})/);
+    return dateMatch ? dateMatch[1] : null;
+  }
+
+  extractIssueDate($) {
+    const published = $('meta[property="article:published_time"]').attr('content');
+    if (published) return published;
+    
+    const modified = $('meta[property="article:modified_time"]').attr('content');
+    return modified || null;
+  }
+
+  extractDeliveryMethod($) {
+    const deliveryDt = $('dt:contains("Delivery Method")');
+    if (deliveryDt.length) {
+      return deliveryDt.next('dd').text().trim();
+    }
+    return 'Not specified';
+  }
+
+  extractProductType($) {
+    const productDt = $('dt:contains("Product")');
+    if (productDt.length) {
+      return productDt.next('dd').text().trim();
+    }
+    return 'Not specified';
+  }
+
+  extractRecipient($) {
+    const recipient = {};
+    
+    // Look for recipient section
+    const recipientDt = $('dt:contains("Recipient")');
+    if (recipientDt.length) {
+      const recipientSection = recipientDt.nextUntil('dt');
+      
+      // Extract name
+      const nameField = recipientSection.find('.field--name-field-recipient-name .field--item');
+      if (nameField.length) {
+        recipient.name = nameField.text().trim();
+      }
+      
+      // Extract title
+      const titleField = recipientSection.find('.field--name-field-recipient-title .field--item');
+      if (titleField.length) {
+        recipient.title = titleField.text().trim();
+      }
+      
+      // Extract company (usually in a dd after name/title)
+      recipientSection.each((i, elem) => {
+        const text = $(elem).text().trim();
+        if (text && !text.includes('Recipient') && !text.includes(recipient.name) && !text.includes(recipient.title)) {
+          if (!recipient.company && text.length > 2 && !text.includes('@')) {
+            recipient.company = text;
+          }
+        }
+      });
+      
+      // Extract address
+      const address = recipientSection.find('.address');
+      if (address.length) {
+        recipient.address = {
+          street: address.find('.address-line1').text().trim(),
+          city: address.find('.locality').text().trim(),
+          state: address.find('.administrative-area').text().trim(),
+          zip: address.find('.postal-code').text().trim(),
+          country: address.find('.country').text().trim()
+        };
+        recipient.fullAddress = `${recipient.address.street}, ${recipient.address.city}, ${recipient.address.state} ${recipient.address.zip}`;
+      }
+      
+      // Extract email
+      const emailLink = recipientSection.find('a[href^="mailto:"]');
+      if (emailLink.length) {
+        recipient.email = emailLink.attr('href').replace('mailto:', '');
+      }
+    }
+    
+    // Fallback: try to extract from meta tags
+    if (!recipient.company) {
+      const ogTitle = $('meta[property="og:title"]').attr('content');
+      if (ogTitle) {
+        const match = ogTitle.match(/^([^-]+)\s*-/);
+        if (match) {
+          recipient.company = match[1].trim();
+        }
+      }
+    }
+    
+    return recipient;
+  }
+
+  extractIssuingOffice($) {
+    const issuingDt = $('dt:contains("Issuing Office")');
+    if (issuingDt.length) {
+      const office = issuingDt.next('dd').text().trim();
+      return office;
+    }
+    
+    // Look for CDER or other FDA offices in content
+    const content = $('body').text();
+    if (content.includes('Center for Drug Evaluation and Research')) {
+      return 'Center for Drug Evaluation and Research (CDER)';
+    }
+    if (content.includes('Center for Devices and Radiological Health')) {
+      return 'Center for Devices and Radiological Health (CDRH)';
+    }
+    if (content.includes('Center for Biologics Evaluation and Research')) {
+      return 'Center for Biologics Evaluation and Research (CBER)';
+    }
+    
+    return 'FDA';
+  }
+
+  extractLetterContent($) {
+    // Main content is usually after the hr tags
+    const mainContent = $('hr').last().nextAll();
+    let content = '';
+    
+    mainContent.each((i, elem) => {
+      const text = $(elem).text().trim();
+      if (text) {
+        content += text + '\n\n';
+      }
+    });
+    
+    // If that didn't work, try other selectors
+    if (!content) {
+      content = $('.inset-column').nextAll().text().trim();
+    }
+    
+    if (!content) {
+      content = $('main p').text().trim();
+    }
+    
+    return content.substring(0, 5000); // Limit to 5000 chars for storage
+  }
+
+  extractViolations($) {
+    const violations = [];
+    
+    // Look for bulleted lists after "Examples of claims" or similar phrases
+    const lists = $('ul li, ol li');
+    lists.each((i, elem) => {
+      const text = $(elem).text().trim();
+      if (text && (text.includes('claim') || text.includes('violation') || text.includes('antimicrobial') || text.includes('treat'))) {
+        violations.push(text);
+      }
+    });
+    
+    // Also look for specific violation patterns in the content
+    const content = this.extractLetterContent($);
+    const violationPatterns = [
+      /unapproved new drug/gi,
+      /misbranded/gi,
+      /adulterated/gi,
+      /not generally recognized as safe/gi,
+      /GRASE/g,
+      /section \d+\([a-z]\)/gi
+    ];
+    
+    violationPatterns.forEach(pattern => {
+      const matches = content.match(pattern);
+      if (matches) {
+        violations.push(...matches);
+      }
+    });
+    
+    // Deduplicate
+    return [...new Set(violations)].slice(0, 10); // Limit to 10 violations
+  }
+
+  extractProducts($) {
+    const products = [];
+    
+    // Look for product names in quotes
+    const content = this.extractLetterContent($);
+    const quotedProducts = content.match(/"([^"]+)"/g);
+    if (quotedProducts) {
+      quotedProducts.forEach(product => {
+        const cleaned = product.replace(/"/g, '').trim();
+        if (cleaned.length > 3 && cleaned.length < 100) {
+          products.push(cleaned);
+        }
+      });
+    }
+    
+    // Look for specific product mentions
+    const productPatterns = [
+      /product[s]?\s+(?:called|named|labeled|marketed as)\s+"?([^".\n]+)"?/gi,
+      /your\s+"([^"]+)"\s+product/gi
+    ];
+    
+    productPatterns.forEach(pattern => {
+      let match;
+      while ((match = pattern.exec(content)) !== null) {
+        if (match[1]) {
+          products.push(match[1].trim());
+        }
+      }
+    });
+    
+    // Deduplicate
+    return [...new Set(products)].slice(0, 5); // Limit to 5 products
+  }
+
+  extractResponseDeadline($) {
+    const content = this.extractLetterContent($);
+    
+    // Look for common deadline phrases
+    const patterns = [
+      /within\s+(\d+)\s+(?:working\s+)?days/i,
+      /(\d+)\s+(?:working\s+)?days\s+of\s+receipt/i,
+      /respond\s+(?:by|within)\s+([A-Z][a-z]+\s+\d{1,2},?\s+\d{4})/i
+    ];
+    
+    for (const pattern of patterns) {
+      const match = content.match(pattern);
+      if (match) {
+        return match[1] + (match[1].match(/\d+/) ? ' days' : '');
+      }
+    }
+    
+    return 'Not specified';
+  }
+
+  extractResponseEmail($) {
+    const content = this.extractLetterContent($);
+    
+    // Look for FDA advisory email
+    const emailPattern = /([a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,})/g;
+    const emails = content.match(emailPattern);
+    
+    if (emails) {
+      // Prefer FDA emails
+      const fdaEmail = emails.find(email => email.includes('fda.hhs.gov') || email.includes('fda.gov'));
+      if (fdaEmail) return fdaEmail;
+      
+      // Return first email that's not the recipient's
+      const recipientEmail = this.extractRecipient($).email;
+      return emails.find(email => email !== recipientEmail) || emails[0];
+    }
+    
+    return null;
+  }
+
+  extractContentDate($) {
+    const contentDate = $('.node-current-date time').attr('datetime');
+    if (contentDate) return contentDate;
+    
+    const contentText = $('.node-current-date').text();
+    const match = contentText.match(/(\d{1,2}\/\d{1,2}\/\d{4})/);
+    return match ? match[1] : null;
+  }
+
+  extractRegulatedProducts($) {
+    const products = [];
+    
+    // Look in the metadata section
+    $('.lcds-metadata-list li').each((i, elem) => {
+      const text = $(elem).text().trim();
+      if (text) {
+        products.push(text);
+      }
+    });
+    
+    // Also check the Product field
+    const productType = this.extractProductType($);
+    if (productType && productType !== 'Not specified' && !products.includes(productType)) {
+      products.push(productType);
+    }
+    
+    return products;
+  }
+
+  // Rate limiting
+  async enforceRateLimit() {
+    const now = Date.now();
+    const timeSinceLastRequest = now - this.rateLimiter.lastRequest;
+    
+    if (timeSinceLastRequest < this.rateLimiter.minDelay) {
+      const delay = this.rateLimiter.minDelay - timeSinceLastRequest;
+      console.log(`⏳ Rate limiting: waiting ${delay}ms`);
+      await new Promise(resolve => setTimeout(resolve, delay));
+    }
+    
+    this.rateLimiter.lastRequest = Date.now();
+  }
+
+  // Clear cache
+  clearCache() {
+    this.cache.clear();
+    console.log('🗑️ Warning letter cache cleared');
+  }
+}
+
+// Create singleton instance
+const warningLetterScraper = new WarningLetterScraper();
+
+// Add this endpoint to your Express app
+app.get('/api/warning-letter/scrape', async (req, res) => {
+  try {
+    const { url } = req.query;
+    
+    if (!url) {
+      return res.status(400).json({
+        success: false,
+        error: 'URL parameter is required'
+      });
+    }
+    
+    // Validate it's an FDA URL
+    if (!url.includes('fda.gov')) {
+      return res.status(400).json({
+        success: false,
+        error: 'Only FDA.gov URLs are allowed'
+      });
+    }
+    
+    // Scrape the warning letter
+    const letterData = await warningLetterScraper.scrapeWarningLetter(url);
+    
+    res.json({
+      success: letterData.success !== false,
+      data: letterData
+    });
+    
+  } catch (error) {
+    console.error('Warning letter scraping error:', error);
+    res.status(500).json({
+      success: false,
+      error: error.message
+    });
+  }
+});
+
+// COMPLETE REPLACEMENT FOR /api/ai/enhance endpoint
+app.post('/api/ai/enhance', async (req, res) => {
+  try {
+    const { itemId, title, link, summary, source, types, date } = req.body;
+    
+    console.log('\n🤖 AI Enhancement Request:');
+    console.log('Title:', title?.substring(0, 100));
+    console.log('Has OpenAI:', !!openai);
+    
+    // Build comprehensive content for analysis
+    const fullContent = `
+Title: ${title || 'No title'}
+Date: ${date || 'Unknown date'}
+Source: ${source || 'Unknown source'}
+Types: ${types?.join(', ') || 'Unknown type'}
+Link: ${link || 'No link'}
+Summary: ${summary || 'No summary available'}
+    `.trim();
+    
+    let aiResult = {
+      canonical_company_name: 'Unknown Company',
+      summary: summary || 'No summary available',
+      emails: [],
+      contacts: []
+    };
+    
+    // Try AI extraction if available
+    if (openai) {
+      try {
+        console.log('🔮 Calling OpenAI...');
+        
+        const completion = await openai.chat.completions.create({
+          model: "gpt-4-turbo-preview",
+          messages: [
+            {
+              role: "system",
+              content: `You are an FDA regulatory expert. Extract and analyze information from FDA regulatory documents.
+              
+IMPORTANT: Look for company names in these patterns:
+- "Warning Letter to [COMPANY NAME]"
+- "[COMPANY NAME] - Warning Letter"
+- "Issued to [COMPANY NAME]"
+- Company names often appear near the beginning of titles
+- Look for Inc., Corp., LLC, Ltd., Pharmaceuticals, Pharma, Biotech, etc.
+
+Return a JSON object with these fields:
+- canonical_company_name: The actual company name (be very careful to extract the real company, not FDA or generic terms)
+- summary: A detailed 3-4 sentence summary of the regulatory action
+- regulatory_impact: Specific regulatory implications
+- business_impact: Business and market implications
+- action_required: What the company needs to do
+- timeline: Response timeline if mentioned
+- severity_assessment: Your assessment of severity (1-10 scale)
+- key_violations: Array of specific violations mentioned`
+            },
+            {
+              role: "user",
+              content: `Extract the company name and analyze this FDA regulatory action:\n\n${fullContent}\n\nReturn ONLY valid JSON.`
+            }
+          ],
+          temperature: 0.2,
+          max_tokens: 1500,
+          response_format: { type: "json_object" }
+        });
+        
+        const aiResponse = completion.choices[0].message.content;
+        console.log('✅ OpenAI responded');
+        
+        try {
+          aiResult = { ...aiResult, ...JSON.parse(aiResponse) };
+          console.log('📊 Extracted company:', aiResult.canonical_company_name);
+        } catch (parseError) {
+          console.error('Failed to parse AI response:', parseError);
+          aiResult.summary = aiResponse;
+        }
+        
+      } catch (aiError) {
+        console.error('OpenAI error:', aiError.message);
+      }
+    } else {
+      console.log('⚠️ OpenAI not configured, using fallback');
+      
+      // Try basic extraction from title
+      const patterns = [
+        /Warning Letter to\s+([A-Z][A-Za-z0-9\s&,\.']+?)(?:\s*[-–:]|\s+regarding)/i,
+        /([A-Z][A-Za-z0-9\s&,\.']+?)\s*[-–:]\s*Warning Letter/i,
+        /([A-Z][A-Za-z0-9\s&,\.']+?)\s+(?:Receives?|Gets?)\s+(?:Complete Response Letter|CRL)/i,
+        /Form 483.*?(?:for|to|issued to)\s+([A-Z][A-Za-z0-9\s&,\.']+?)(?:\s*[-–,]|$)/i
+      ];
+      
+      for (const pattern of patterns) {
+        const match = title?.match(pattern);
+        if (match && match[1]) {
+          aiResult.canonical_company_name = match[1].trim();
+          console.log('📊 Pattern matched company:', aiResult.canonical_company_name);
+          break;
+        }
+      }
+    }
+    
+    // Now search for contacts if we have a company name
+    let contactsData = null;
+    if (aiResult.canonical_company_name && aiResult.canonical_company_name !== 'Unknown Company') {
+      console.log(`\n📧 Searching contacts for: ${aiResult.canonical_company_name}`);
+      
+      // Find domain for the company
+      const domain = await companyIntel.findCompanyDomain(aiResult.canonical_company_name);
+      console.log(`🌐 Domain: ${domain}`);
+      
+      // Search for contacts
+      contactsData = await companyIntel.findContactsForCompany(aiResult.canonical_company_name, domain);
+      
+      if (contactsData) {
+        aiResult.emails = contactsData.emails?.map(e => e.email || e) || [];
+        aiResult.contacts = contactsData;
+        console.log(`✅ Found ${aiResult.emails.length} emails`);
+      }
+    }
+    
+    // Cache the result
+    if (aiResult.canonical_company_name !== 'Unknown Company') {
+      companyIntel.aiCache.set(title, aiResult);
+    }
+    
+    console.log('\n✅ Enhancement complete\n');
+    
+    res.json({
+      success: true,
+      ...aiResult,
+      debug: {
+        hadOpenAI: !!openai,
+        hadHunter: !!API_KEYS.HUNTER,
+        hadApollo: !!API_KEYS.APOLLO,
+        foundCompany: aiResult.canonical_company_name !== 'Unknown Company',
+        emailCount: aiResult.emails.length
+      }
+    });
+    
+  } catch (error) {
+    console.error('AI enhance error:', error);
+    res.status(500).json({ 
+      success: false, 
+      error: error.message,
+      canonical_company_name: 'Unknown Company',
+      summary: 'Enhancement failed',
+      emails: []
+    });
+  }
+});
 
 // Initialize company intelligence
 const companyIntel = new CompanyIntelligenceSystem();
@@ -2198,70 +2736,169 @@ app.get('/api/company/:name', async (req, res) => {
 });
 
 // AI Enhancement endpoint
+// app.post('/api/ai/enhance', async (req, res) => {
+//   try {
+//     const { sourceItemId } = req.body;
+    
+//     // Get the item
+//     const allData = await fs.readFile(DATA_FILES.ALL_ITEMS, 'utf8');
+//     const items = JSON.parse(allData);
+//     const item = items.find(i => i.id === sourceItemId);
+    
+//     if (!item) {
+//       return res.status(404).json({ success: false, error: 'Item not found' });
+//     }
+    
+//     // Check cache
+//     if (companyIntel.aiCache.has(item.company)) {
+//       return res.json({
+//         success: true,
+//         cached: true,
+//         ...companyIntel.aiCache.get(item.company)
+//       });
+//     }
+    
+//     if (!openai) {
+//       // Fallback response without AI
+//       const contacts = await companyIntel.findContactsForCompany(item.company);
+//       return res.json({
+//         success: true,
+//         fallback: true,
+//         canonical_company_name: companyIntel.findCanonicalName(item.company),
+//         summary: item.summary || 'No AI summary available',
+//         public_context: '',
+//         precedent_refs: [],
+//         emails: contacts?.emails?.map(e => e.email) || []
+//       });
+//     }
+    
+//     // Use OpenAI
+//     const completion = await openai.chat.completions.create({
+//       model: "gpt-4-turbo-preview",
+//       messages: [
+//         {
+//           role: "system",
+//           content: `You are an FDA regulatory expert. Analyze the provided FDA action and return a JSON response with:
+//             - canonical_company_name: The official registered company name
+//             - summary: Clear summary of the regulatory action (2-3 sentences)
+//             - public_context: Any relevant public context about this company's regulatory history
+//             - precedent_refs: Array of similar FDA precedents or related cases
+//             - emails: Array of any publicly available regulatory/quality contact emails`
+//         },
+//         {
+//           role: "user",
+//           content: `Analyze this FDA action:
+//             Title: ${item.title}
+//             Company: ${item.company}
+//             Type: ${item.types.join(', ')}
+//             Date: ${item.date}
+//             Link: ${item.link}
+//             Content: ${item.summary}
+            
+//             Return only valid JSON.`
+//         }
+//       ],
+//       temperature: 0.3,
+//       max_tokens: 1000,
+//       response_format: { type: "json_object" }
+//     });
+    
+//     let aiData;
+//     try {
+//       aiData = JSON.parse(completion.choices[0].message.content);
+//     } catch {
+//       aiData = {
+//         canonical_company_name: companyIntel.findCanonicalName(item.company),
+//         summary: completion.choices[0].message.content,
+//         public_context: '',
+//         precedent_refs: [],
+//         emails: []
+//       };
+//     }
+    
+//     // Cache the result
+//     companyIntel.aiCache.set(item.company, aiData);
+//     await companyIntel.save();
+    
+//     // Update company alias if different
+//     if (aiData.canonical_company_name && aiData.canonical_company_name !== item.company) {
+//       companyIntel.companyAliases.set(
+//         companyIntel.normalizeForMatching(item.company),
+//         aiData.canonical_company_name
+//       );
+//     }
+    
+//     // Merge with contact search
+//     const contacts = await companyIntel.findContactsForCompany(aiData.canonical_company_name || item.company);
+//     if (contacts && contacts.emails) {
+//       const contactEmails = contacts.emails.map(e => e.email);
+//       aiData.emails = [...new Set([...aiData.emails, ...contactEmails])];
+//     }
+    
+//     res.json({
+//       success: true,
+//       ...aiData
+//     });
+    
+//   } catch (error) {
+//     console.error('AI enhancement error:', error);
+//     res.status(500).json({ 
+//       success: false, 
+//       error: error.message,
+//       fallback: {
+//         canonical_company_name: companyIntel.findCanonicalName(req.body.company || ''),
+//         summary: 'AI enhancement unavailable',
+//         public_context: '',
+//         precedent_refs: [],
+//         emails: []
+//       }
+//     });
+//   }
+// });
+// Replace the existing /api/ai/enhance endpoint
 app.post('/api/ai/enhance', async (req, res) => {
   try {
-    const { sourceItemId } = req.body;
+    const { sourceItemId, title, link, summary, source } = req.body;
     
-    // Get the item
-    const allData = await fs.readFile(DATA_FILES.ALL_ITEMS, 'utf8');
-    const items = JSON.parse(allData);
-    const item = items.find(i => i.id === sourceItemId);
-    
-    if (!item) {
-      return res.status(404).json({ success: false, error: 'Item not found' });
-    }
-    
-    // Check cache
-    if (companyIntel.aiCache.has(item.company)) {
-      return res.json({
-        success: true,
-        cached: true,
-        ...companyIntel.aiCache.get(item.company)
-      });
-    }
+    // Build a more comprehensive prompt for AI
+    const promptContent = `${title || ''}\n${summary || ''}\nSource: ${source || ''}\nLink: ${link || ''}`;
     
     if (!openai) {
-      // Fallback response without AI
-      const contacts = await companyIntel.findContactsForCompany(item.company);
+      // Fallback without AI
       return res.json({
         success: true,
         fallback: true,
-        canonical_company_name: companyIntel.findCanonicalName(item.company),
-        summary: item.summary || 'No AI summary available',
+        canonical_company_name: 'Unknown Company',
+        summary: summary || 'No AI summary available',
         public_context: '',
         precedent_refs: [],
-        emails: contacts?.emails?.map(e => e.email) || []
+        emails: []
       });
     }
     
-    // Use OpenAI
+    // Use OpenAI to extract company and enhance data
     const completion = await openai.chat.completions.create({
       model: "gpt-4-turbo-preview",
       messages: [
         {
           role: "system",
           content: `You are an FDA regulatory expert. Analyze the provided FDA action and return a JSON response with:
-            - canonical_company_name: The official registered company name
-            - summary: Clear summary of the regulatory action (2-3 sentences)
+            - canonical_company_name: Extract the actual company name from the text (be very careful and accurate)
+            - summary: Clear, detailed summary of the regulatory action (3-4 sentences)
             - public_context: Any relevant public context about this company's regulatory history
+            - regulatory_impact: Specific regulatory implications
+            - business_impact: Business and market implications
             - precedent_refs: Array of similar FDA precedents or related cases
-            - emails: Array of any publicly available regulatory/quality contact emails`
+            - action_required: What the company needs to do
+            - timeline: Response timeline if mentioned`
         },
         {
           role: "user",
-          content: `Analyze this FDA action:
-            Title: ${item.title}
-            Company: ${item.company}
-            Type: ${item.types.join(', ')}
-            Date: ${item.date}
-            Link: ${item.link}
-            Content: ${item.summary}
-            
-            Return only valid JSON.`
+          content: `Analyze this FDA action and extract the company name:\n\n${promptContent}\n\nReturn only valid JSON.`
         }
       ],
       temperature: 0.3,
-      max_tokens: 1000,
+      max_tokens: 1500,
       response_format: { type: "json_object" }
     });
     
@@ -2270,32 +2907,41 @@ app.post('/api/ai/enhance', async (req, res) => {
       aiData = JSON.parse(completion.choices[0].message.content);
     } catch {
       aiData = {
-        canonical_company_name: companyIntel.findCanonicalName(item.company),
-        summary: completion.choices[0].message.content,
+        canonical_company_name: 'Unknown Company',
+        summary: 'Unable to parse AI response',
         public_context: '',
         precedent_refs: [],
         emails: []
       };
     }
     
-    // Cache the result
-    companyIntel.aiCache.set(item.company, aiData);
-    await companyIntel.save();
-    
-    // Update company alias if different
-    if (aiData.canonical_company_name && aiData.canonical_company_name !== item.company) {
-      companyIntel.companyAliases.set(
-        companyIntel.normalizeForMatching(item.company),
-        aiData.canonical_company_name
-      );
+    // Now search for contacts with the extracted company name
+    let allEmails = [];
+    if (aiData.canonical_company_name && aiData.canonical_company_name !== 'Unknown Company') {
+      const contacts = await companyIntel.findContactsForCompany(aiData.canonical_company_name);
+      
+      if (contacts) {
+        // Collect all emails from different sources
+        if (contacts.emails && contacts.emails.length > 0) {
+          allEmails = allEmails.concat(contacts.emails.map(e => e.email || e));
+        }
+        if (contacts.regulatory_contacts && contacts.regulatory_contacts.length > 0) {
+          allEmails = allEmails.concat(contacts.regulatory_contacts.filter(c => c.email).map(c => c.email));
+        }
+        if (contacts.executives && contacts.executives.length > 0) {
+          allEmails = allEmails.concat(contacts.executives.filter(e => e.email).map(e => e.email));
+        }
+        if (contacts.general_email) {
+          allEmails.push(contacts.general_email);
+        }
+        
+        // Add contact details to response
+        aiData.contacts = contacts;
+      }
     }
     
-    // Merge with contact search
-    const contacts = await companyIntel.findContactsForCompany(aiData.canonical_company_name || item.company);
-    if (contacts && contacts.emails) {
-      const contactEmails = contacts.emails.map(e => e.email);
-      aiData.emails = [...new Set([...aiData.emails, ...contactEmails])];
-    }
+    // Remove duplicates
+    aiData.emails = [...new Set(allEmails)];
     
     res.json({
       success: true,
@@ -2308,7 +2954,7 @@ app.post('/api/ai/enhance', async (req, res) => {
       success: false, 
       error: error.message,
       fallback: {
-        canonical_company_name: companyIntel.findCanonicalName(req.body.company || ''),
+        canonical_company_name: 'Unknown Company',
         summary: 'AI enhancement unavailable',
         public_context: '',
         precedent_refs: [],
@@ -2816,7 +3462,7 @@ app.post('/api/backup', async (req, res) => {
 // Schedule tasks
 function setupScheduledTasks() {
   // Data refresh every 30 minutes
-  cron.schedule('*/30 * * * *', async () => {
+  cron.schedule('*/300 * * * *', async () => {
     if (!global.refreshInProgress) {
       console.log('\n⏰ Scheduled data refresh starting...');
       try {
