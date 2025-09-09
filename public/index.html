@@ -669,7 +669,7 @@
             </div>
 
             <!-- Companies Tracked Card -->
-            <div class="bg-white rounded-xl shadow-lg card-hover overflow-hidden">
+            <div class="hidden bg-white rounded-xl shadow-lg card-hover overflow-hidden">
                 <div class="gradient-success p-1"></div>
                 <div class="p-6">
                     <div class="flex items-center justify-between mb-2">
@@ -687,6 +687,26 @@
                         <span class="text-green-600 font-semibold" id="stat-companies-change">0</span>
                         <span class="text-gray-500 ml-2">unique companies</span>
                     </div>
+                </div>
+            </div>
+               <div class="bg-white rounded-xl shadow-lg card-hover overflow-hidden">
+                <div class="gradient-success p-1"></div>
+                <div class="p-6">
+                    <div class="flex items-center justify-between mb-2">
+                        <div>
+                            <p class="text-gray-600 text-sm font-medium">Data Sources</p>
+                            <p class="text-3xl font-bold text-gray-900">21</p>
+                        </div>
+                        <div class="bg-green-100 p-3 rounded-lg">
+                            <svg class="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
+                            </svg>
+                        </div>
+                    </div>
+                    <!-- <div class="flex items-center text-sm">
+                        <span class="text-green-600 font-semibold" id="stat-companies-change">0</span>
+                        <span class="text-gray-500 ml-2">unique companies</span>
+                    </div> -->
                 </div>
             </div>
             </div>
@@ -748,7 +768,7 @@
             
             <!-- Quick Action Buttons -->
             <div class="flex flex-wrap gap-2 mt-4">
-                <button onclick="viewByCompany()" class="px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition flex items-center space-x-2">
+                <button onclick="viewByCompany()" class="hidden px-4 py-2 bg-indigo-600 text-white rounded-lg hover:bg-indigo-700 transition flex items-center space-x-2">
                     <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/>
                     </svg>

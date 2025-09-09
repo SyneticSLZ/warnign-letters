@@ -1,316 +1,649 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FDA Warning Letters</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #f5f5f5;
-            padding: 20px;
-        }
-        
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        header {
-            background: white;
-            padding: 20px;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        h1 {
-            font-size: 24px;
-            color: #333;
-            margin-bottom: 10px;
-        }
-        
-        .stats {
-            display: flex;
-            gap: 20px;
-            margin: 20px 0;
-        }
-        
-        .stat-card {
-            background: white;
-            padding: 15px 20px;
-            border-radius: 8px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-            flex: 1;
-        }
-        
-        .stat-number {
-            font-size: 32px;
-            font-weight: bold;
-            color: #2563eb;
-        }
-        
-        .stat-label {
-            font-size: 14px;
-            color: #666;
-            margin-top: 5px;
-        }
-        
-        .controls {
-            display: flex;
-            gap: 10px;
-            align-items: center;
-            margin: 20px 0;
-        }
-        
-        button {
-            background: #2563eb;
-            color: white;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 6px;
-            cursor: pointer;
-            font-size: 14px;
-            font-weight: 500;
-        }
-        
-        button:hover {
-            background: #1d4ed8;
-        }
-        
-        select {
-            padding: 10px;
-            border: 1px solid #ddd;
-            border-radius: 6px;
-            font-size: 14px;
-        }
-        
-        .letters-container {
-            background: white;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        
-        .letter-item {
-            padding: 15px;
-            border-bottom: 1px solid #eee;
-            display: flex;
-            justify-content: space-between;
-            align-items: start;
-        }
-        
-        .letter-item:last-child {
-            border-bottom: none;
-        }
-        
-        .letter-item:hover {
-            background: #f9fafb;
-        }
-        
-        .letter-info {
-            flex: 1;
-        }
-        
-        .letter-title {
-            font-size: 16px;
-            color: #111;
-            margin-bottom: 5px;
-            font-weight: 500;
-        }
-        
-        .letter-company {
-            color: #2563eb;
-            font-weight: 600;
-        }
-        
-        .letter-meta {
-            font-size: 13px;
-            color: #666;
-        }
-        
-        .letter-link {
-            background: #eff6ff;
-            color: #2563eb;
-            text-decoration: none;
-            padding: 8px 16px;
-            border-radius: 6px;
-            font-size: 14px;
-            font-weight: 500;
-            white-space: nowrap;
-        }
-        
-        .letter-link:hover {
-            background: #dbeafe;
-        }
-        
-        .loading {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-        }
-        
-        .error {
-            background: #fee2e2;
-            color: #991b1b;
-            padding: 15px;
-            border-radius: 6px;
-            margin: 20px 0;
-        }
-        
-        .empty {
-            text-align: center;
-            padding: 40px;
-            color: #666;
-        }
-        
-        #status {
-            font-size: 14px;
-            color: #666;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reviewer Intelligence — CGMP & Public Data</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .spinner{border:3px solid #eef2ff;border-top:3px solid #4f46e5;border-radius:50%;width:24px;height:24px;animation:spin 1s linear infinite}
+    @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+    .skeleton{background:linear-gradient(90deg,#f3f4f6 25%,#e5e7eb 37%,#f3f4f6 63%);background-size:400% 100%;animation:skeleton 1.4s ease infinite}
+    @keyframes skeleton{0%{background-position:100% 50%}100%{background-position:0 50%}}
+  </style>
 </head>
-<body>
-    <div class="container">
-        <header>
-            <h1>FDA Warning Letters Monitor</h1>
-            <div id="status">Loading...</div>
-        </header>
-
-        <div class="stats">
-            <div class="stat-card">
-                <div class="stat-number" id="total">0</div>
-                <div class="stat-label">Total Found</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="last24h">0</div>
-                <div class="stat-label">Last 24 Hours</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="last7days">0</div>
-                <div class="stat-label">Last 7 Days</div>
-            </div>
-            <div class="stat-card">
-                <div class="stat-number" id="last30days">0</div>
-                <div class="stat-label">Last 30 Days</div>
-            </div>
-        </div>
-
-        <div class="controls">
-            <button onclick="refresh()">🔄 Refresh Data</button>
-            <select id="timeframe" onchange="loadLetters()">
-                <option value="7">Last 7 days</option>
-                <option value="30" selected>Last 30 days</option>
-                <option value="60">Last 60 days</option>
-                <option value="90">Last 90 days</option>
-                <option value="365">Last year</option>
-            </select>
-            <span id="resultCount" style="margin-left: auto; color: #666; font-size: 14px;"></span>
-        </div>
-
-        <div class="letters-container">
-            <div id="lettersList" class="loading">Loading warning letters...</div>
-        </div>
+<body class="bg-gray-50 text-gray-900">
+  <div id="app" class="min-h-screen">
+    <!-- Toast -->
+    <div id="toast" class="fixed top-5 right-5 z-[60] hidden">
+      <div id="toastInner" class="px-4 py-3 rounded-xl shadow-lg text-white text-sm"></div>
     </div>
 
-    <script>
-        let currentLetters = [];
+    <!-- Header -->
+    <header class="bg-white border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center justify-between py-4">
+          <div class="flex items-center gap-3">
+            <div class="h-9 w-9 rounded-xl bg-gradient-to-br from-indigo-600 to-purple-600 flex items-center justify-center text-white font-bold">RI</div>
+            <div>
+              <h1 class="text-xl sm:text-2xl font-bold">Reviewer Intelligence</h1>
+              <p class="text-xs text-gray-500 -mt-0.5">CGMP + PubMed + OpenAlex + Crossref + ORCID + CT.gov + NIH + FDA</p>
+            </div>
+            <span id="connDot" class="ml-3 inline-flex items-center text-xs text-gray-500"><span class="w-2 h-2 rounded-full bg-gray-300 mr-2" id="connDotLed"></span><span id="connText">Checking…</span></span>
+          </div>
+          <div class="flex items-center gap-2">
+            <button id="settingsBtn" class="px-3 py-2 text-sm rounded-lg border bg-white hover:bg-gray-50">Settings</button>
+            <a href="#" id="refreshAllBtn" class="px-3 py-2 text-sm rounded-lg bg-indigo-600 text-white hover:bg-indigo-700">Refresh</a>
+          </div>
+        </div>
+      </div>
+    </header>
 
-        // Load data on page load
-        window.addEventListener('DOMContentLoaded', () => {
-            loadStats();
-            loadLetters();
-        });
+    <!-- Top Stats -->
+    <section class="bg-white border-b border-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4" id="statsBar">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-3">
+          <div class="p-4 bg-gray-50 rounded-xl">
+            <div class="text-xs text-gray-500">Documents</div>
+            <div id="statDocs" class="text-2xl font-semibold">—</div>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-xl">
+            <div class="text-xs text-gray-500">Contacts</div>
+            <div id="statContacts" class="text-2xl font-semibold">—</div>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-xl">
+            <div class="text-xs text-gray-500">NIH Grants (est.)</div>
+            <div id="statGrants" class="text-2xl font-semibold">—</div>
+          </div>
+          <div class="p-4 bg-gray-50 rounded-xl">
+            <div class="text-xs text-gray-500">Clinical Trials (est.)</div>
+            <div id="statTrials" class="text-2xl font-semibold">—</div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-        async function loadStats() {
-            try {
-                const response = await fetch('/api/stats');
-                const stats = await response.json();
-                
-                document.getElementById('total').textContent = stats.total || 0;
-                document.getElementById('last24h').textContent = stats.last24h || 0;
-                document.getElementById('last7days').textContent = stats.last7days || 0;
-                document.getElementById('last30days').textContent = stats.last30days || 0;
-            } catch (error) {
-                console.error('Error loading stats:', error);
-            }
-        }
+    <!-- Tabs -->
+    <nav class="bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex items-center gap-2 overflow-x-auto">
+          <button data-tab="contacts" class="tab-btn px-4 py-3 text-sm font-medium border-b-2 border-indigo-600 text-indigo-600">Contacts</button>
+          <button data-tab="fda" class="tab-btn px-4 py-3 text-sm font-medium border-b-2 border-transparent text-gray-600 hover:text-gray-900">FDA Reviewers</button>
+          <button data-tab="batch" class="tab-btn px-4 py-3 text-sm font-medium border-b-2 border-transparent text-gray-600 hover:text-gray-900">Batch Profiles</button>
+        </div>
+      </div>
+    </nav>
 
-        async function loadLetters() {
-            const container = document.getElementById('lettersList');
-            container.innerHTML = '<div class="loading">Loading...</div>';
-            
-            try {
-                const days = document.getElementById('timeframe').value;
-                const response = await fetch(`/api/letters?days=${days}`);
-                const data = await response.json();
-                
-                if (!data.success) {
-                    throw new Error(data.error || 'Failed to load letters');
-                }
-                
-                currentLetters = data.letters;
-                document.getElementById('status').textContent = `Last updated: ${new Date().toLocaleString()}`;
-                document.getElementById('resultCount').textContent = `Showing ${data.total} letters from last ${data.timeframe}`;
-                
-                if (currentLetters.length === 0) {
-                    container.innerHTML = '<div class="empty">No warning letters found in this timeframe</div>';
-                    return;
-                }
-                
-                container.innerHTML = currentLetters.map(letter => `
-                    <div class="letter-item">
-                        <div class="letter-info">
-                            <div class="letter-title">
-                                <span class="letter-company">${letter.company}</span>
-                            </div>
-                            <div class="letter-meta">
-                                ${letter.dateFormatted} • ${letter.source}
-                                ${letter.summary ? `<br><span style="color: #888; font-size: 12px;">${letter.summary.substring(0, 150)}...</span>` : ''}
-                            </div>
-                        </div>
-                        <a href="${letter.link}" target="_blank" class="letter-link">
-                            View Letter →
-                        </a>
-                    </div>
-                `).join('');
-                
-            } catch (error) {
-                console.error('Error:', error);
-                container.innerHTML = `<div class="error">Error loading letters: ${error.message}</div>`;
-                document.getElementById('status').textContent = 'Error loading data';
-            }
-        }
+    <!-- Main Content -->
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Contacts Tab -->
+      <section id="tab-contacts">
+        <!-- Search Bar -->
+        <div class="mb-4 flex flex-col sm:flex-row gap-3 items-stretch sm:items-center">
+          <div class="relative flex-1">
+            <input id="searchInput" type="text" placeholder="Search contacts by name or email…"
+                   class="w-full px-4 py-3 pl-11 pr-4 bg-white border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500"/>
+            <svg class="absolute left-3.5 top-3.5 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg>
+          </div>
+          <button id="clearSearchBtn" class="px-4 py-2 text-sm rounded-lg border bg-white hover:bg-gray-50">Clear</button>
+        </div>
 
-        async function refresh() {
-            const btn = event.target;
-            btn.disabled = true;
-            btn.textContent = '⏳ Refreshing...';
-            
-            try {
-                const response = await fetch('/api/refresh', { method: 'POST' });
-                const data = await response.json();
-                
-                if (data.success) {
-                    alert(`Success! Found ${data.count} warning letters`);
-                    loadStats();
-                    loadLetters();
-                } else {
-                    alert('Error: ' + data.error);
-                }
-            } catch (error) {
-                alert('Error refreshing data: ' + error.message);
-            } finally {
-                btn.disabled = false;
-                btn.textContent = '🔄 Refresh Data';
-            }
-        }
-    </script>
+        <!-- Table -->
+        <div id="contactsWrap" class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50">
+                <tr>
+                  <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Contact</th>
+                  <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Email</th>
+                  <th class="px-6 py-3 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider">Docs</th>
+                  <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Recent Contributions</th>
+                  <th class="px-6 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
+                </tr>
+              </thead>
+              <tbody id="contactsBody" class="bg-white divide-y divide-gray-100"></tbody>
+            </table>
+          </div>
+        </div>
+        <div id="contactsEmpty" class="hidden text-center text-gray-500 py-12">No contacts found.</div>
+        <div id="contactsLoading" class="py-12 flex items-center justify-center"><div class="spinner"></div></div>
+
+        <!-- Pagination -->
+        <div id="contactsPagination" class="mt-6 flex items-center justify-between hidden"></div>
+      </section>
+
+      <!-- FDA Reviewers Tab -->
+      <section id="tab-fda" class="hidden">
+        <div class="mb-4 flex items-center justify-between">
+          <div class="text-sm text-gray-600">Listing unique contacts with <span class="font-medium">@fda.hhs.gov</span></div>
+          <div class="flex items-center gap-2">
+            <button id="fdaRefreshBtn" class="px-3 py-2 text-sm rounded-lg bg-blue-600 text-white hover:bg-blue-700">Refresh Page</button>
+            <button id="fdaBatchBtn" class="px-3 py-2 text-sm rounded-lg border bg-white hover:bg-gray-50">Load Quick Profiles</button>
+          </div>
+        </div>
+
+        <div id="fdaTableWrap" class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+          <div class="overflow-x-auto">
+            <table class="min-w-full divide-y divide-gray-200">
+              <thead class="bg-gray-50"><tr>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Reviewer</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Email</th>
+                <th class="px-6 py-3 text-center text-xs font-semibold text-gray-500 uppercase tracking-wider">Docs</th>
+                <th class="px-6 py-3 text-left text-xs font-semibold text-gray-500 uppercase tracking-wider">Recent</th>
+                <th class="px-6 py-3 text-right text-xs font-semibold text-gray-500 uppercase tracking-wider">Actions</th>
+              </tr></thead>
+              <tbody id="fdaBody" class="bg-white divide-y divide-gray-100"></tbody>
+            </table>
+          </div>
+        </div>
+        <div id="fdaLoading" class="py-10 flex items-center justify-center"><div class="spinner"></div></div>
+        <div id="fdaPagination" class="mt-6 flex items-center justify-between hidden"></div>
+
+        <!-- Batch quick profiles grid -->
+        <div id="batchGrid" class="mt-8 grid md:grid-cols-2 lg:grid-cols-3 gap-4 hidden"></div>
+      </section>
+
+      <!-- Batch Profiles Tab (explicit) -->
+      <section id="tab-batch" class="hidden">
+        <div class="mb-4 flex items-center justify-between">
+          <div>
+            <h3 class="font-semibold">Batch Quick Profiles</h3>
+            <p class="text-sm text-gray-500">Loads current page of FDA reviewers with external summaries and PubMed top 3.</p>
+          </div>
+          <button id="batchLoadBtn" class="px-3 py-2 text-sm rounded-lg bg-indigo-600 text-white hover:bg-indigo-700">Load Batch</button>
+        </div>
+        <div id="batchGridExplicit" class="grid md:grid-cols-2 lg:grid-cols-3 gap-4"></div>
+      </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="modal" class="hidden fixed inset-0 z-50">
+      <div class="absolute inset-0 bg-black/40" onclick="closeModal()"></div>
+      <div class="relative mx-auto mt-10 max-w-4xl bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div id="modalContent"></div>
+      </div>
+    </div>
+
+    <!-- Settings Drawer -->
+    <div id="settings" class="hidden fixed right-0 top-0 h-full w-full sm:w-[420px] bg-white shadow-2xl z-50">
+      <div class="p-5 border-b flex items-center justify-between">
+        <h3 class="font-semibold">Settings</h3>
+        <button onclick="toggleSettings(false)" class="text-gray-600 hover:text-gray-900">✕</button>
+      </div>
+      <div class="p-5 space-y-4">
+        <div>
+          <label class="text-sm text-gray-600">API Base URL</label>
+          <input id="apiBaseInput" type="text" class="mt-1 w-full px-3 py-2 border rounded-lg" placeholder="http://localhost:3000" />
+          <p class="text-xs text-gray-500 mt-1">If blank, the app will try same-origin; fallback to <code>http://localhost:3000</code>.</p>
+        </div>
+        <div class="flex items-center justify-between">
+          <span class="text-sm">Auto-refresh public data before AI Profile</span>
+          <label class="inline-flex items-center cursor-pointer">
+            <input id="toggleRefreshExternal" type="checkbox" class="sr-only" checked>
+            <span class="w-10 h-6 bg-gray-200 rounded-full relative transition-all">
+              <span class="dot absolute left-1 top-1 w-4 h-4 bg-white rounded-full shadow transition-all"></span>
+            </span>
+          </label>
+        </div>
+        <div class="pt-2">
+          <button id="saveSettingsBtn" class="w-full px-4 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700">Save</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // ========= Config =========
+    const defaultApi = 'http://localhost:3000';
+    const settings = {
+      get apiBase(){
+        const val = localStorage.getItem('ri.apiBase');
+        if (val && /^https?:\/\//i.test(val)) return val.replace(/\/$/, '');
+        if (location.origin && location.origin !== 'null') return location.origin;
+        return defaultApi;
+      },
+      set apiBase(v){ localStorage.setItem('ri.apiBase', v || ''); },
+      get refreshExternal(){ return localStorage.getItem('ri.refreshExternal') !== 'false'; },
+      set refreshExternal(v){ localStorage.setItem('ri.refreshExternal', v ? 'true':'false'); }
+    };
+
+    // ========= Utils =========
+    const sleep = (ms)=> new Promise(r=>setTimeout(r, ms));
+    function escapeHtml(t){ if(t===null||t===undefined) return ''; const div=document.createElement('div'); div.textContent=String(t); return div.innerHTML; }
+    function uniq(arr){ return Array.from(new Set((arr||[]).filter(Boolean))); }
+    function groupBy(arr, fn){ return (arr||[]).reduce((acc,x)=>{ const k=fn(x); (acc[k]=acc[k]||[]).push(x); return acc; },{}); }
+    function showToast(msg,type='info'){ const wrap=document.getElementById('toast'); const inner=document.getElementById('toastInner'); inner.textContent=msg; inner.className='px-4 py-3 rounded-xl shadow-lg text-white text-sm '+(type==='success'?'bg-emerald-600':type==='error'?'bg-red-600':'bg-gray-900'); wrap.classList.remove('hidden'); setTimeout(()=>wrap.classList.add('hidden'),2300); }
+    function setConnStatus(ok){ const led=document.getElementById('connDotLed'); const t=document.getElementById('connText'); if(ok){ led.className='w-2 h-2 rounded-full bg-green-500 mr-2'; t.textContent='Connected'; } else { led.className='w-2 h-2 rounded-full bg-gray-300 mr-2'; t.textContent='Offline'; } }
+    function show(id){ document.getElementById(id)?.classList?.remove('hidden'); }
+    function hide(id){ document.getElementById(id)?.classList?.add('hidden'); }
+
+    // ========= HTTP =========
+    async function apiFetch(path, opts={}){
+      const controller = new AbortController();
+      const timer = setTimeout(()=>controller.abort(), opts.timeout || 25000);
+      const base = settings.apiBase || defaultApi;
+      try{
+        const res = await fetch(base+path, { ...opts, signal: controller.signal, headers: { 'Content-Type':'application/json', ...(opts.headers||{}) } });
+        clearTimeout(timer);
+        if(!res.ok){ const text = await res.text().catch(()=>res.statusText); throw new Error(text || `HTTP ${res.status}`); }
+        const ct = res.headers.get('content-type')||'';
+        if(ct.includes('application/json')) return await res.json();
+        return await res.text();
+      } catch(e){ clearTimeout(timer); throw e; }
+    }
+
+    // ========= Tabs =========
+    const tabs = ['contacts','fda','batch'];
+    function switchTab(id){ tabs.forEach(t=>{ const on = (t===id); document.querySelector(`[data-tab="${t}"]`).className = 'tab-btn px-4 py-3 text-sm font-medium border-b-2 '+(on?'border-indigo-600 text-indigo-600':'border-transparent text-gray-600 hover:text-gray-900'); document.getElementById('tab-'+t).classList.toggle('hidden', !on); }); }
+
+    // ========= Boot =========
+    let searchTimer; let currentPage=1; const pageSize=20; let fdaPage=1; const fdaPageSize=20;
+    document.addEventListener('DOMContentLoaded', async()=>{
+      // Settings
+      document.getElementById('apiBaseInput').value = settings.apiBase;
+      document.getElementById('toggleRefreshExternal').checked = settings.refreshExternal;
+
+      // Events
+      document.querySelectorAll('.tab-btn').forEach(btn=> btn.addEventListener('click', ()=> switchTab(btn.dataset.tab)) );
+      document.getElementById('settingsBtn').addEventListener('click', ()=> toggleSettings(true));
+      document.getElementById('saveSettingsBtn').addEventListener('click', saveSettings);
+      document.getElementById('refreshAllBtn').addEventListener('click', ()=>{ loadStats(); loadContacts(); loadFDA(); });
+      document.getElementById('clearSearchBtn').addEventListener('click', ()=>{ document.getElementById('searchInput').value=''; currentPage=1; loadContacts(); });
+      document.getElementById('searchInput').addEventListener('input', ()=>{ clearTimeout(searchTimer); searchTimer=setTimeout(()=>{ currentPage=1; loadContacts(); }, 350); });
+      document.getElementById('fdaRefreshBtn').addEventListener('click', ()=> loadFDA());
+      document.getElementById('fdaBatchBtn').addEventListener('click', ()=> loadBatchQuickProfiles('batchGrid'));
+      document.getElementById('batchLoadBtn').addEventListener('click', ()=> loadBatchQuickProfiles('batchGridExplicit'));
+
+      // Connectivity check
+      try{ const h=await apiFetch('/health'); setConnStatus(true); }catch{ setConnStatus(false); }
+
+      // Initial loads
+      loadStats();
+      loadContacts();
+      loadFDA();
+    });
+
+    function toggleSettings(showPanel){ const el=document.getElementById('settings'); if(showPanel) el.classList.remove('hidden'); else el.classList.add('hidden'); }
+    function saveSettings(){ const v=document.getElementById('apiBaseInput').value.trim().replace(/\/$/,''); settings.apiBase=v; settings.refreshExternal=document.getElementById('toggleRefreshExternal').checked; showToast('Settings saved','success'); toggleSettings(false); loadStats(); loadContacts(); loadFDA(); }
+
+    // ========= Stats =========
+    async function loadStats(){
+      try{
+        const data = await apiFetch('/stats');
+        if(!data?.success) throw new Error(data?.error||'Failed');
+        document.getElementById('statDocs').textContent = Number(data.stats.totalDocuments||0).toLocaleString();
+        document.getElementById('statContacts').textContent = Number(data.stats.totalContacts||0).toLocaleString();
+        // Best-effort rollups: these come from per-contact external summaries — we display placeholders here
+        document.getElementById('statGrants').textContent = '—';
+        document.getElementById('statTrials').textContent = '—';
+      }catch(e){ console.error('stats', e); }
+    }
+
+    // ========= Contacts =========
+    async function loadContacts(){
+      const q = document.getElementById('searchInput').value||'';
+      hide('contactsEmpty'); show('contactsLoading'); hide('contactsPagination');
+      try{
+        const data = await apiFetch(`/contacts?search=${encodeURIComponent(q)}&page=${currentPage}&pageSize=${pageSize}`);
+        renderContacts(data.contacts||[]);
+        renderContactsPagination(data.pagination||{page:1,pageSize:20,total:0,totalPages:1});
+        if(!data.contacts?.length) show('contactsEmpty'); else hide('contactsEmpty');
+      }catch(e){ console.error('contacts', e); document.getElementById('contactsBody').innerHTML = `<tr><td colspan="5" class="px-6 py-8 text-center text-red-600">${escapeHtml(e.message)}</td></tr>`; }
+      finally{ hide('contactsLoading'); }
+    }
+
+    function renderContacts(rows){
+      const tbody = document.getElementById('contactsBody');
+      tbody.innerHTML = rows.map(c=>{
+        const initial = (c.name||'?').toString().trim().charAt(0).toUpperCase()||'?';
+        const titles = Array.isArray(c.recentTitles)?c.recentTitles.filter(Boolean).map(String):[];
+        const visible = titles.slice(0,3), extra=titles.length-visible.length;
+        const cid = c.contactId||'';
+        return `<tr class="hover:bg-gray-50">
+          <td class="px-6 py-4"><div class="flex items-center gap-3"><div class="h-10 w-10 rounded-full bg-gradient-to-br from-indigo-600 to-purple-600 text-white font-semibold flex items-center justify-center">${initial}</div><div><div class="font-medium">${escapeHtml(c.name)}</div>${c.phone?`<div class="text-xs text-gray-500">${escapeHtml(c.phone)}</div>`:''}</div></div></td>
+          <td class="px-6 py-4 text-sm">${escapeHtml(c.email)}</td>
+          <td class="px-6 py-4 text-center"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${c.docCount>=10?'bg-green-100 text-green-800':c.docCount>=5?'bg-yellow-100 text-yellow-800':'bg-gray-100 text-gray-700'}">${c.docCount||0}</span></td>
+          <td class="px-6 py-4">
+            <div class="flex flex-wrap gap-1">${visible.map(t=>`<span class="px-2 py-0.5 rounded-md text-xs bg-blue-50 text-blue-700 border border-blue-200">${escapeHtml(String(t).split(':')[0]||t)}</span>`).join('')}${extra>0?`<span class="px-2 py-0.5 rounded-md text-xs bg-gray-50 text-gray-500">+${extra} more</span>`:''}</div>
+          </td>
+          <td class="px-6 py-4 text-right">
+            <div class="flex items-center justify-end gap-2">
+              <button class="text-indigo-600 hover:text-indigo-800" onclick="openDocs('${cid}')">Docs</button>
+              <button class="text-blue-600 hover:text-blue-800" onclick="refreshPublic('${cid}')">Refresh Public</button>
+              <button class="text-sky-600 hover:text-sky-800" onclick="viewExternal('${cid}')">Intel</button>
+              <button class="px-3 py-1.5 rounded-lg text-white bg-indigo-600 hover:bg-indigo-700" onclick="fullProfile('${cid}')">AI Profile</button>
+            </div>
+          </td>
+        </tr>`
+      }).join('');
+    }
+
+    function renderContactsPagination(p){
+      const el=document.getElementById('contactsPagination');
+      const start=(p.page-1)*p.pageSize+1; const end=Math.min(p.page*p.pageSize,p.total);
+      el.innerHTML = `
+        <div class="text-sm text-gray-700">Showing <span class="font-medium">${start}</span>–<span class="font-medium">${end}</span> of <span class="font-medium">${p.total}</span></div>
+        <div class="flex items-center gap-2">
+          <button class="px-3 py-2 rounded-lg border bg-white ${p.page===1?'opacity-50 cursor-not-allowed':'hover:bg-gray-50'}" ${p.page===1?'disabled':''} onclick="contactsPage(${p.page-1})">Previous</button>
+          <span class="text-sm">Page ${p.page} / ${p.totalPages||1}</span>
+          <button class="px-3 py-2 rounded-lg border bg-white ${p.page>=p.totalPages?'opacity-50 cursor-not-allowed':'hover:bg-gray-50'}" ${p.page>=p.totalPages?'disabled':''} onclick="contactsPage(${p.page+1})">Next</button>
+        </div>`;
+      show('contactsPagination');
+    }
+    function contactsPage(n){ currentPage=n; loadContacts(); }
+
+    // ========= FDA Reviewers =========
+    async function loadFDA(){
+      hide('fdaPagination'); show('fdaLoading');
+      try{
+        const data = await apiFetch(`/reviewers/fda?page=${fdaPage}&pageSize=${fdaPageSize}`);
+        renderFDA(data.reviewers||[]);
+        renderFDAPagination(data.pagination||{page:1,pageSize:20,total:0,totalPages:1});
+      }catch(e){ console.error('fda', e); document.getElementById('fdaBody').innerHTML = `<tr><td colspan="5" class="px-6 py-8 text-center text-red-600">${escapeHtml(e.message)}</td></tr>`; }
+      finally{ hide('fdaLoading'); }
+    }
+
+    function renderFDA(rows){
+      const tbody = document.getElementById('fdaBody');
+      tbody.innerHTML = rows.map(r=>{
+        const initial = (r.name||'?').toString().trim().charAt(0).toUpperCase()||'?';
+        const titles = Array.isArray(r.recentTitles)?r.recentTitles.filter(Boolean).map(String):[];
+        return `<tr class="hover:bg-gray-50">
+          <td class="px-6 py-4"><div class="flex items-center gap-3"><div class="h-10 w-10 rounded-full bg-gradient-to-br from-sky-500 to-indigo-600 text-white font-semibold flex items-center justify-center">${initial}</div><div class="font-medium">${escapeHtml(r.name)}</div></div></td>
+          <td class="px-6 py-4 text-sm">${escapeHtml(r.email)}</td>
+          <td class="px-6 py-4 text-center"><span class="inline-flex items-center px-2.5 py-0.5 rounded-full text-xs font-medium ${r.docCount>=10?'bg-green-100 text-green-800':r.docCount>=5?'bg-yellow-100 text-yellow-800':'bg-gray-100 text-gray-700'}">${r.docCount||0}</span></td>
+          <td class="px-6 py-4 text-xs text-gray-600">${escapeHtml(titles.slice(0,2).join(' • ')||'—')}</td>
+          <td class="px-6 py-4 text-right">
+            <div class="flex items-center justify-end gap-2">
+              <button class="text-blue-600 hover:text-blue-800" onclick="quickProfile('${r.contactId}')">Quick</button>
+              <button class="text-sky-600 hover:text-sky-800" onclick="viewExternal('${r.contactId}')">Intel</button>
+              <button class="px-3 py-1.5 rounded-lg text-white bg-indigo-600 hover:bg-indigo-700" onclick="fullProfile('${r.contactId}')">AI Profile</button>
+            </div>
+          </td>
+        </tr>`
+      }).join('');
+    }
+
+    function renderFDAPagination(p){
+      const el=document.getElementById('fdaPagination');
+      const start=(p.page-1)*p.pageSize+1; const end=Math.min(p.page*p.pageSize,p.total);
+      el.innerHTML = `
+        <div class="text-sm text-gray-700">Showing <span class="font-medium">${start}</span>–<span class="font-medium">${end}</span> of <span class="font-medium">${p.total}</span></div>
+        <div class="flex items-center gap-2">
+          <button class="px-3 py-2 rounded-lg border bg-white ${p.page===1?'opacity-50 cursor-not-allowed':'hover:bg-gray-50'}" ${p.page===1?'disabled':''} onclick="fdaPageTo(${p.page-1})">Previous</button>
+          <span class="text-sm">Page ${p.page} / ${p.totalPages||1}</span>
+          <button class="px-3 py-2 rounded-lg border bg-white ${p.page>=p.totalPages?'opacity-50 cursor-not-allowed':'hover:bg-gray-50'}" ${p.page>=p.totalPages?'disabled':''} onclick="fdaPageTo(${p.page+1})">Next</button>
+        </div>`;
+      show('fdaPagination');
+    }
+    function fdaPageTo(n){ fdaPage=n; loadFDA(); }
+
+    // ========= External Intel =========
+    async function refreshPublic(contactId){
+      try{ const data = await apiFetch(`/external/${contactId}/search`); if(!data?.success) throw new Error(data?.error||'Failed'); showToast(`Refreshed • ${data.artifactsCount||0} artifacts`,'success'); }
+      catch(e){ showToast(`Refresh failed: ${e.message}`,'error'); }
+    }
+
+    async function viewExternal(contactId){
+      showModal(`<div class='p-8 text-center'><div class='spinner mx-auto mb-4'></div><div class='text-gray-700'>Loading external intelligence…</div></div>`);
+      try{
+        const data = await apiFetch(`/external/${contactId}/artifacts`);
+        if(!data?.success) throw new Error(data?.error||'Failed');
+        const rows = Array.isArray(data.artifacts)?data.artifacts:[];
+        const bySrc = groupBy(rows, r=> r.source||'unknown');
+        const topics = uniq(rows.flatMap(r=> (r.facets?.topics)||[])).slice(0,12);
+        const grants = rows.filter(r=> r.source==='nih_reporter').length;
+        const trials = rows.filter(r=> r.source==='ctgov').length;
+        const hasFda = rows.some(r=> r.source==='fda_dashboard' || r.source==='fda_crl');
+
+        const body = `
+          <div class="bg-gradient-to-r from-indigo-600 to-purple-600 px-6 py-5 text-white">
+            <h3 class="text-lg font-semibold">External Intelligence</h3>
+            <p class="text-indigo-100 text-sm">${Object.keys(bySrc).sort().join(' • ')}</p>
+          </div>
+          <div class="px-6 py-6 space-y-6 max-h-[70vh] overflow-y-auto">
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+              <div class="bg-gray-50 rounded-lg p-4"><div class="text-xs text-gray-500">Artifacts</div><div class="text-xl font-semibold">${rows.length}</div></div>
+              <div class="bg-gray-50 rounded-lg p-4"><div class="text-xs text-gray-500">NIH Grants</div><div class="text-xl font-semibold">${grants}</div></div>
+              <div class="bg-gray-50 rounded-lg p-4"><div class="text-xs text-gray-500">Clinical Trials</div><div class="text-xl font-semibold">${trials}</div></div>
+              <div class="bg-gray-50 rounded-lg p-4"><div class="text-xs text-gray-500">Regulatory Context</div><div class="text-xl font-semibold ${hasFda?'text-green-600':''}">${hasFda?'Yes':'No'}</div></div>
+            </div>
+            ${topics.length?`<div><div class='text-sm font-semibold mb-2'>Topics</div><div class='flex flex-wrap gap-2'>${topics.map(t=>`<span class='px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 text-sm'>${escapeHtml(t)}</span>`).join('')}</div></div>`:''}
+            <div class="space-y-4">
+              ${Object.keys(bySrc).sort().map(src=>{
+                const items = bySrc[src];
+                return `<div>
+                  <div class='text-xs uppercase tracking-wide text-gray-500 mb-2'>${escapeHtml(src)} <span class='text-gray-400'>(${items.length})</span></div>
+                  <div class='space-y-2'>
+                    ${items.slice(0,8).map(a=>`
+                      <div class='border rounded-lg p-3 hover:border-indigo-300'>
+                        <div class='text-sm font-medium'>${escapeHtml(a.title||'(untitled)')}</div>
+                        <div class='text-xs text-gray-500'>${a.year||''}${a.facets?.journal?` • ${escapeHtml(a.facets.journal)}`:''}${a.facets?.trial_phase?` • Phase ${escapeHtml(a.facets.trial_phase)}`:''}</div>
+                        ${a.url?`<a class='text-xs text-indigo-600 hover:text-indigo-800 inline-flex items-center mt-1' target='_blank' href='${a.url}'>Open ↗</a>`:''}
+                      </div>`).join('')}
+                    ${items.length>8?`<div class='text-xs text-gray-500'>+${items.length-8} more…</div>`:''}
+                  </div>
+                </div>`
+              }).join('')}
+            </div>
+          </div>
+          <div class='bg-gray-50 px-6 py-3 border-t flex items-center justify-end'>
+            <button class='px-4 py-2 rounded-lg border bg-white hover:bg-gray-50' onclick='closeModal()'>Close</button>
+          </div>`;
+        showModal(body);
+      }catch(e){ showModal(errorBox(e.message)); }
+    }
+
+    // ========= Docs & Publications =========
+    async function openDocs(contactId){
+      showModal(`<div class='p-8 text-center'><div class='spinner mx-auto mb-4'></div><div class='text-gray-700'>Loading documents…</div></div>`);
+      try{
+        const data = await apiFetch(`/contacts/${contactId}/docs?onlyCGMP=true`);
+        if(!data?.success) throw new Error(data?.error||'Failed');
+        const list = data.documents||[];
+        const body = `
+          <div class='bg-gray-50 px-6 py-4 border-b'>
+            <h3 class='text-lg font-semibold'>CGMP Documents</h3>
+            <p class='text-sm text-gray-500 mt-1'>${escapeHtml(data.contact?.name||'')} — ${escapeHtml(data.contact?.email||'')}</p>
+          </div>
+          <div class='px-6 py-4 max-h-[70vh] overflow-y-auto'>
+            ${list.length?`<div class='space-y-3'>${list.map(d=>`
+              <div class='border rounded-lg p-4 hover:border-indigo-300'>
+                <div class='text-sm font-medium'>${escapeHtml(d.title)}</div>
+                <div class='text-xs text-gray-600 mt-1'>${escapeHtml(d.summary||'')}</div>
+                <div class='mt-2 flex flex-wrap gap-1'>${(d.tags||[]).map(t=>`<span class='px-2 py-0.5 rounded text-xs ${t==='High'?'bg-red-100 text-red-800':t==='Moderate'?'bg-yellow-100 text-yellow-800':t==='Low'?'bg-green-100 text-green-800':'bg-gray-100 text-gray-700'}'>${escapeHtml(t)}</span>`).join('')}</div>
+                <div class='text-xs text-gray-400 mt-2'>${escapeHtml(d.filename||'')} • ${d.uploadedAt? new Date(d.uploadedAt).toLocaleDateString():''}</div>
+              </div>`).join('')}</div>`:`<div class='text-center text-gray-500 py-10'>No CGMP documents found.</div>`}
+          </div>
+          <div class='bg-gray-50 px-6 py-3 border-t text-right'>
+            <button class='px-4 py-2 rounded-lg border bg-white hover:bg-gray-50' onclick='closeModal()'>Close</button>
+          </div>`;
+        showModal(body);
+      }catch(e){ showModal(errorBox(e.message)); }
+    }
+
+    async function openPubs(contactId){
+      showModal(`<div class='p-8 text-center'><div class='spinner mx-auto mb-4'></div><div class='text-gray-700'>Loading publications…</div></div>`);
+      try{
+        const data = await apiFetch(`/contacts/${contactId}/publications?maxResults=20`);
+        if(!data?.success) throw new Error(data?.error||'Failed');
+        const pubs = data.publications||[];
+        const body = `
+          <div class='bg-gradient-to-r from-blue-600 to-indigo-600 px-6 py-4 text-white'>
+            <h3 class='text-lg font-semibold'>PubMed Publications</h3>
+            <p class='text-blue-100 text-sm mt-1'>${escapeHtml(data.contact?.name||'')} — ${escapeHtml(data.contact?.email||'')}</p>
+          </div>
+          <div class='px-6 py-4 max-h-[70vh] overflow-y-auto'>
+            ${pubs.length?`<div class='space-y-3'>${pubs.map((p,i)=>`
+              <div class='bg-white border rounded-lg p-4 hover:border-blue-300'>
+                <div class='flex items-start justify-between'>
+                  <div class='flex-1'>
+                    <div class='text-sm font-medium mb-1'><span class='text-gray-400 mr-2'>#${i+1}</span>${escapeHtml(p.title)}</div>
+                    <div class='text-xs text-gray-600'>${escapeHtml(p.journal||'')} ${p.year?`(${escapeHtml(p.year)})`:''}</div>
+                  </div>
+                  <a class='ml-3 text-blue-600 hover:text-blue-800' target='_blank' href='${p.pubmedUrl}'>Open ↗</a>
+                </div>
+                ${p.abstract?`<details class='mt-2 text-xs text-gray-600'><summary class='cursor-pointer text-blue-600 hover:text-blue-800'>Abstract</summary><p class='mt-1 leading-relaxed'>${escapeHtml(p.abstract)}</p></details>`:''}
+                ${p.doi?`<div class='mt-1 text-xs text-gray-500'>DOI: ${escapeHtml(p.doi)}</div>`:''}
+              </div>`).join('')}</div>`:`<div class='text-center text-gray-500 py-10'>No publications found.</div>`}
+          </div>
+          <div class='bg-gray-50 px-6 py-3 border-t text-right'>
+            <button class='px-4 py-2 rounded-lg border bg-white hover:bg-gray-50' onclick='closeModal()'>Close</button>
+          </div>`;
+        showModal(body);
+      }catch(e){ showModal(errorBox(e.message)); }
+    }
+
+    // ========= Profiles =========
+    async function fullProfile(contactId){
+      const refresh = settings.refreshExternal;
+      showModal(`<div class='p-10 text-center'><div class='spinner mx-auto mb-4'></div><div class='text-gray-700'>Building AI profile…</div><p class='text-xs text-gray-500 mt-2'>Refreshing public data: ${refresh? 'Yes':'No'}</p></div>`);
+      try{
+        const data = await apiFetch(`/contacts/${contactId}/profile`, { method:'POST', body: JSON.stringify({ maxDocs: 15, includePubMed: true, refreshExternal: refresh }) });
+        if(!data?.success) throw new Error(data?.error||'Failed');
+        const p = data.profile||{};
+        const initial = (p.name||'?').toString().trim().charAt(0).toUpperCase()||'?';
+
+        const works = Array.isArray(p.public_works)?p.public_works:[]; // if server provides
+        const pubs = Array.isArray(p.publications)?p.publications:[];
+
+        const body = `
+          <div class='bg-gradient-to-br from-indigo-600 to-purple-600 px-6 py-6 text-white'>
+            <div class='flex items-center gap-3'>
+              <div class='h-14 w-14 rounded-full bg-white/20 flex items-center justify-center text-2xl font-bold'>${initial}</div>
+              <div><div class='text-xl font-bold'>${escapeHtml(p.name||'')}</div><div class='text-indigo-100 text-sm'>${escapeHtml(p.email||'')}</div></div>
+            </div>
+          </div>
+          <div class='px-6 py-6 space-y-6 max-h-[70vh] overflow-y-auto'>
+            <div class='grid grid-cols-2 md:grid-cols-4 gap-4'>
+              <div class='bg-gray-50 rounded-lg p-4'><div class='text-xs text-gray-500'>Influence Score</div><div class='text-2xl font-semibold text-indigo-600'>${p.influence_score||0}/100</div></div>
+              <div class='bg-gray-50 rounded-lg p-4'><div class='text-xs text-gray-500'>CGMP Documents</div><div class='text-2xl font-semibold text-purple-600'>${p.document_count||0}</div></div>
+              <div class='bg-gray-50 rounded-lg p-4'><div class='text-xs text-gray-500'>Publications</div><div class='text-2xl font-semibold text-blue-600'>${p.publication_count||0}</div></div>
+              <div class='bg-gray-50 rounded-lg p-4'><div class='text-xs text-gray-500'>Regulatory Context</div><div class='text-2xl font-semibold ${p.regulatory_context?'text-green-600':''}'>${p.regulatory_context?'Yes':'No'}</div></div>
+            </div>
+
+            ${Array.isArray(p.areas_of_expertise)&&p.areas_of_expertise.length?`<div><div class='text-sm font-semibold mb-2'>Areas of Expertise</div><div class='flex flex-wrap gap-2'>${p.areas_of_expertise.map(a=>`<span class='px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 text-sm'>${escapeHtml(a)}</span>`).join('')}</div></div>`:''}
+
+            ${Array.isArray(p.themes)&&p.themes.length?`<div><div class='text-sm font-semibold mb-2'>Themes</div><div class='flex flex-wrap gap-2'>${p.themes.map(t=>`<span class='px-2 py-1 rounded-md bg-purple-50 text-purple-700 text-xs border border-purple-200'>${escapeHtml(t)}</span>`).join('')}</div></div>`:''}
+
+            ${p.funding_summary||p.trials_summary?`<div class='grid grid-cols-2 gap-4'>
+              <div class='bg-gray-50 rounded-lg p-4'><div class='text-xs text-gray-500'>NIH Grants</div><div class='text-xl font-semibold'>${p.funding_summary?.nih_grant_count||0}</div></div>
+              <div class='bg-gray-50 rounded-lg p-4'><div class='text-xs text-gray-500'>Clinical Trials</div><div class='text-xl font-semibold'>${p.trials_summary?.ctgov_trial_count||0}</div></div>
+            </div>`:''}
+
+            ${Array.isArray(p.cgmp?.recent)&&p.cgmp.recent.length?`<div><div class='text-sm font-semibold mb-2'>Recent CGMP Contributions</div><div class='space-y-2'>${p.cgmp.recent.map(d=>`<div class='border rounded-lg p-3'><div class='text-sm font-medium'>${escapeHtml(d.title||'')}</div><div class='text-xs text-gray-600 mt-1'>${escapeHtml(d.excerpt||'')}</div></div>`).join('')}</div></div>`:''}
+
+            ${p.recent_publications?.length?`<div><div class='text-sm font-semibold mb-2'>Recent Publications</div><div class='space-y-2'>${p.recent_publications.map(r=>`<div class='border rounded-lg p-3 hover:border-blue-300'><div class='text-sm font-medium'>${escapeHtml(r.title||'')}</div><div class='text-xs text-gray-500'>${r.year||''} ${r.url?`• <a class='text-blue-600 hover:text-blue-800' target='_blank' href='${r.url}'>Open ↗</a>`:''}</div></div>`).join('')}</div></div>`:''}
+
+            ${pubs.length?`<div><div class='text-sm font-semibold mb-2'>PubMed (Top)</div><div class='space-y-2'>${pubs.map(pb=>`<div class='bg-blue-50 border border-blue-200 rounded-lg p-3'><div class='text-sm font-medium'>${escapeHtml(pb.title||'')}</div><div class='text-xs text-gray-600'>${escapeHtml(pb.journal||'')} ${pb.year?`(${escapeHtml(pb.year)})`:''}</div>${pb.pubmedUrl?`<a class='text-xs text-blue-700 hover:text-blue-900 inline-flex items-center mt-1' target='_blank' href='${pb.pubmedUrl}'>Open ↗</a>`:''}</div>`).join('')}</div></div>`:''}
+
+            ${works.length?`<div><div class='text-sm font-semibold mb-2'>Public Works (deduped)</div><div class='space-y-2'>${works.slice(0,60).map(w=>`<div class='border rounded-lg p-3'><div class='text-sm font-medium'>${escapeHtml(w.title||'(untitled)')}</div><div class='text-xs text-gray-500'>${escapeHtml(w.source||'')}${w.year?` • ${w.year}`:''} ${w.url?`• <a class='text-blue-600 hover:text-blue-800' target='_blank' href='${w.url}'>Open ↗</a>`:''}</div></div>`).join('')}</div></div>`:''}
+
+            ${Array.isArray(p.affiliations)&&p.affiliations.length?`<div><div class='text-sm font-semibold mb-2'>Affiliations</div><div class='flex flex-wrap gap-2'>${p.affiliations.map(a=>`<span class='px-2.5 py-1 rounded-md bg-gray-100 text-gray-700 text-xs'>${escapeHtml(a)}</span>`).join('')}</div></div>`:''}
+
+          </div>
+          <div class='bg-gray-50 px-6 py-3 border-t flex items-center justify-between'>
+            <div class='text-xs text-gray-500'>Generated: ${new Date(p.generated_at||Date.now()).toLocaleString()}</div>
+            <div class='flex items-center gap-2'>
+              <button class='px-3 py-2 rounded-lg border bg-white hover:bg-gray-50' onclick='openPubs("${contactId}")'>All Publications</button>
+              <button class='px-3 py-2 rounded-lg border bg-white hover:bg-gray-50' onclick='viewExternal("${contactId}")'>External Intel</button>
+              <button class='px-3 py-2 rounded-lg bg-indigo-600 text-white hover:bg-indigo-700' onclick='closeModal()'>Close</button>
+            </div>
+          </div>`;
+        showModal(body);
+      }catch(e){ showModal(errorBox(e.message)); }
+    }
+
+    async function quickProfile(contactId){
+      showModal(`<div class='p-8 text-center'><div class='spinner mx-auto mb-4'></div><div class='text-gray-700'>Loading quick profile…</div></div>`);
+      try{
+        const data = await apiFetch(`/contacts/${contactId}/quick-profile?refreshExternal=false`);
+        if(!data?.success) throw new Error(data?.error||'Failed');
+        const p = data.profile||{}; const initial = (p.name||'?').charAt(0).toUpperCase();
+        const topics = p.areas_of_expertise||[]; const pubs = p.pubmed_top||[];
+        const body = `
+          <div class='bg-gradient-to-r from-sky-600 to-indigo-600 px-6 py-5 text-white'>
+            <div class='flex items-center gap-3'>
+              <div class='h-12 w-12 rounded-full bg-white/20 flex items-center justify-center text-xl font-bold'>${initial}</div>
+              <div><div class='font-semibold'>${escapeHtml(p.name||'')}</div><div class='text-sky-100 text-sm'>${escapeHtml(p.email||'')}</div></div>
+            </div>
+          </div>
+          <div class='px-6 py-6 space-y-6 max-h-[70vh] overflow-y-auto'>
+            <div class='grid grid-cols-3 gap-4'>
+              <div class='bg-gray-50 rounded-lg p-4'><div class='text-xs text-gray-500'>CGMP Docs</div><div class='text-xl font-semibold'>${p.cgmp?.doc_count||0}</div></div>
+              <div class='bg-gray-50 rounded-lg p-4'><div class='text-xs text-gray-500'>NIH Grants</div><div class='text-xl font-semibold'>${p.funding_summary?.nih_grant_count||0}</div></div>
+              <div class='bg-gray-50 rounded-lg p-4'><div class='text-xs text-gray-500'>Trials</div><div class='text-xl font-semibold'>${p.trials_summary?.ctgov_trial_count||0}</div></div>
+            </div>
+            ${topics.length?`<div><div class='text-sm font-semibold mb-2'>Topics</div><div class='flex flex-wrap gap-2'>${topics.map(t=>`<span class='px-3 py-1 rounded-full bg-indigo-100 text-indigo-800 text-sm'>${escapeHtml(t)}</span>`).join('')}</div></div>`:''}
+            ${Array.isArray(p.recent_publications)&&p.recent_publications.length?`<div><div class='text-sm font-semibold mb-2'>Recent Publications</div><div class='space-y-2'>${p.recent_publications.map(r=>`<div class='border rounded-lg p-3'><div class='text-sm font-medium'>${escapeHtml(r.title||'')}</div><div class='text-xs text-gray-500'>${r.year||''} ${r.url?`• <a class='text-blue-600 hover:text-blue-800' target='_blank' href='${r.url}'>Open ↗</a>`:''}</div></div>`).join('')}</div></div>`:''}
+            ${pubs.length?`<div><div class='text-sm font-semibold mb-2'>PubMed (Top 3)</div><div class='space-y-2'>${pubs.map(pb=>`<div class='bg-blue-50 border border-blue-200 rounded-lg p-3'><div class='text-sm font-medium'>${escapeHtml(pb.title||'')}</div><div class='text-xs text-gray-600'>${escapeHtml(pb.journal||'')} ${pb.year?`(${escapeHtml(pb.year)})`:''}</div></div>`).join('')}</div></div>`:''}
+          </div>
+          <div class='bg-gray-50 px-6 py-3 border-t text-right'>
+            <button class='px-3 py-2 rounded-lg border bg-white hover:bg-gray-50' onclick='closeModal()'>Close</button>
+          </div>`;
+        showModal(body);
+      }catch(e){ showModal(errorBox(e.message)); }
+    }
+
+    // ========= Batch Quick Profiles =========
+    async function loadBatchQuickProfiles(targetId){
+      const grid = document.getElementById(targetId);
+      grid.innerHTML = '';
+      show(targetId);
+      grid.insertAdjacentHTML('beforeend', `<div class='col-span-full text-center text-gray-600'><div class='spinner mx-auto mb-3'></div>Loading quick profiles…</div>`);
+      try{
+        const data = await apiFetch(`/reviewers/fda/quick-profiles?page=${fdaPage}&pageSize=${Math.min(9,fdaPageSize)}&refreshExternal=false`);
+        if(!data?.success) throw new Error(data?.error||'Failed');
+        grid.innerHTML = (data.profiles||[]).map(p=>{
+          const topics = (p.areas_of_expertise||[]).slice(0,4);
+          const pubs = p.pubmed_top||[];
+          const initial = (p.name||'?').charAt(0).toUpperCase();
+          return `<div class='border rounded-xl p-4 bg-white hover:shadow transition'>
+            <div class='flex items-center gap-3'>
+              <div class='h-10 w-10 rounded-full bg-gradient-to-br from-sky-500 to-indigo-600 text-white font-semibold flex items-center justify-center'>${initial}</div>
+              <div class='flex-1'>
+                <div class='font-medium'>${escapeHtml(p.name||'')}</div>
+                <div class='text-xs text-gray-500'>${escapeHtml(p.email||'')}</div>
+              </div>
+              <span class='px-2 py-0.5 rounded-full text-xs bg-gray-100 text-gray-700'>${p.docCount||0} docs</span>
+            </div>
+            ${topics.length?`<div class='mt-3 flex flex-wrap gap-1'>${topics.map(t=>`<span class='px-2 py-0.5 rounded-md text-xs bg-indigo-100 text-indigo-800'>${escapeHtml(t)}</span>`).join('')}</div>`:''}
+            ${pubs.length?`<div class='mt-3 text-xs text-gray-600'>${escapeHtml(pubs[0].title||'')}</div>`:''}
+            <div class='mt-4 flex items-center justify-end gap-2'>
+              <button class='text-sky-600 hover:text-sky-800 text-sm' onclick='viewExternal("${p.contactId}")'>Intel</button>
+<button class='text-indigo-600 hover:text-indigo-800 text-sm' onclick='fullProfile("${p.contactId}")'>AI Profile</button>
+</div>
+</div>`
+}).join('');
+}catch(e){ grid.innerHTML = `<div class='col-span-full text-center text-red-600'>${escapeHtml(e.message)}</div>`; }
+}
+
+
+// ========= Modal helpers =========
+function showModal(html){
+const m = document.getElementById('modal');
+const c = document.getElementById('modalContent');
+c.innerHTML = html;
+m.classList.remove('hidden');
+}
+function closeModal(){
+const m = document.getElementById('modal');
+const c = document.getElementById('modalContent');
+c.innerHTML = '';
+m.classList.add('hidden');
+}
+function errorBox(msg){
+return `
+<div class='p-6'>
+<div class='bg-red-50 border border-red-200 rounded-lg p-4'>
+<div class='text-red-800 font-medium'>Error</div>
+<div class='text-red-600 text-sm mt-1'>${escapeHtml(msg)}</div>
+</div>
+<div class='mt-4 text-right'>
+<button class='px-3 py-2 rounded-lg border bg-white hover:bg-gray-50' onclick='closeModal()'>Close</button>
+</div>
+</div>`;
+}
+</script>
 </body>
 </html>

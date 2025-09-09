@@ -17,8 +17,11 @@ const crypto = require('crypto');
 
 const app = express();
 const parser = new Parser({
-  timeout: 10000,
-  headers: { 'User-Agent': 'FDA-Monitor/5.0' }
+  timeout: 15000,
+  headers: {
+    'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+    'Accept': 'application/rss+xml, application/atom+xml;q=0.9, application/xml;q=0.8, text/xml;q=0.7, */*;q=0.5'
+  }
 });
 
 app.use(cors());
@@ -213,156 +216,6 @@ if (API_KEYS.SMTP_USER && API_KEYS.SMTP_PASS) {
 }
 
 // Comprehensive Feed Sources - All data sources from your files
-// const FEED_SOURCES = {
-//   fda_official: [
-//     {
-//       url: 'https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/press-releases/rss.xml',
-//       name: 'FDA Press Announcements',
-//       category: 'official',
-//       priority: 1,
-//       type: 'general'
-//     },
-//     {
-//       url: 'https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/whats-new-drugs/rss.xml',
-//       name: 'FDA CDER Updates',
-//       category: 'official',
-//       priority: 1,
-//       type: 'drugs'
-//     },
-//     {
-//       url: 'https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/medwatch/rss.xml',
-//       name: 'FDA MedWatch Safety',
-//       category: 'official',
-//       priority: 1,
-//       type: 'safety'
-//     },
-//     {
-//       url: 'https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/warning-letters/rss.xml',
-//       name: 'FDA Warning Letters RSS',
-//       category: 'official',
-//       priority: 1,
-//       type: 'warning_letter'
-//     },
-//     {
-//       url: 'https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/biologics/rss.xml',
-//       name: 'FDA CBER Biologics',
-//       category: 'official',
-//       priority: 1,
-//       type: 'biologics'
-//     },
-//     {
-//       url: 'https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/devices/rss.xml',
-//       name: 'FDA CDRH Devices',
-//       category: 'official',
-//       priority: 1,
-//       type: 'devices'
-//     }
-//   ],
-  
-//   trade_press: [
-//     {
-//       url: 'https://www.fiercepharma.com/rss/xml',
-//       name: 'FiercePharma',
-//       category: 'trade',
-//       priority: 2
-//     },
-//     {
-//       url: 'https://www.fiercebiotech.com/rss/xml',
-//       name: 'FierceBiotech',
-//       category: 'trade',
-//       priority: 2
-//     },
-//     {
-//       url: 'https://www.statnews.com/category/pharma/feed/',
-//       name: 'STAT News Pharma',
-//       category: 'trade',
-//       priority: 2
-//     },
-//     {
-//       url: 'https://www.statnews.com/category/biotech/feed/',
-//       name: 'STAT News Biotech',
-//       category: 'trade',
-//       priority: 2
-//     },
-//     {
-//       url: 'https://www.biospace.com/rss',
-//       name: 'BioSpace',
-//       category: 'trade',
-//       priority: 3
-//     },
-//     {
-//       url: 'https://www.raps.org/rss/regulatory-focus',
-//       name: 'RAPS Regulatory Focus',
-//       category: 'trade',
-//       priority: 2
-//     },
-//     {
-//       url: 'https://www.biopharmadive.com/feeds/news/',
-//       name: 'BioPharma Dive',
-//       category: 'trade',
-//       priority: 3
-//     },
-//     {
-//       url: 'https://endpts.com/feed/',
-//       name: 'Endpoints News',
-//       category: 'trade',
-//       priority: 2
-//     },
-//     {
-//       url: 'https://www.pharmavoice.com/rss/',
-//       name: 'PharmaVoice',
-//       category: 'trade',
-//       priority: 3
-//     }
-//   ],
-  
-//   google_news: [
-//     {
-//       url: 'https://news.google.com/rss/search?q=%22Complete%20Response%20Letter%22%20FDA&hl=en-US&gl=US&ceid=US:en',
-//       name: 'Google News - CRLs',
-//       category: 'google',
-//       type: 'crl',
-//       priority: 3
-//     },
-//     {
-//       url: 'https://news.google.com/rss/search?q=site%3Afda.gov%20%22Warning%20Letters%22&hl=en-US&gl=US&ceid=US:en',
-//       name: 'Google News - FDA Warning Letters',
-//       category: 'google',
-//       type: 'warning_letter',
-//       priority: 3
-//     },
-//     {
-//       url: 'https://news.google.com/rss/search?q=site%3Afda.gov%20OPDP%20%28%22Untitled%20Letter%22%20OR%20%22Warning%20Letter%22%29&hl=en-US&gl=US&ceid=US:en',
-//       name: 'Google News - OPDP Letters',
-//       category: 'google',
-//       type: 'opdp',
-//       priority: 3
-//     },
-//     {
-//       url: 'https://news.google.com/rss/search?q=FDA%20%22Form%20483%22%20observations&hl=en-US&gl=US&ceid=US:en',
-//       name: 'Google News - Form 483',
-//       category: 'google',
-//       type: 'form_483',
-//       priority: 3
-//     },
-//     {
-//       url: 'https://news.google.com/rss/search?q=%22Import%20Alert%22%20FDA%20pharmaceutical&hl=en-US&gl=US&ceid=US:en',
-//       name: 'Google News - Import Alerts',
-//       category: 'google',
-//       type: 'import_alert',
-//       priority: 3
-//     },
-//     {
-//       url: 'https://news.google.com/rss/search?q=%22Consent%20Decree%22%20FDA%20pharmaceutical&hl=en-US&gl=US&ceid=US:en',
-//       name: 'Google News - Consent Decrees',
-//       category: 'google',
-//       type: 'consent_decree',
-//       priority: 3
-//     }
-//   ],
-  
-//   sec_filings: [] // Dynamically populated based on watched companies
-// };
 const FEED_SOURCES = {
   fda_official: [
     {
@@ -513,6 +366,7 @@ const FEED_SOURCES = {
   
   sec_filings: [] // Dynamically populated based on watched companies
 };
+
 // Enhanced Classification System with more detail
 const CLASSIFIERS = {
   warning_letter: {
@@ -2055,10 +1909,27 @@ async function fetchFeed(source, retries = 3) {
     try {
       console.log(`📡 Fetching: ${source.name} (attempt ${attempt})`);
       
-      const feed = await parser.parseURL(source.url);
+      let feed;
+      try {
+        // First try: normal parseURL
+        feed = await parser.parseURL(source.url);
+      } catch (err1) {
+        // Fallback: fetch with axios (browser-like headers) then parse string
+        console.warn(`   ↪︎ parseURL failed for ${source.name}: ${err1.message}. Falling back to axios + parseString`);
+        const resp = await axios.get(source.url, {
+          headers: {
+            'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+            'Accept': 'application/rss+xml, application/atom+xml;q=0.9, application/xml;q=0.8, text/xml;q=0.7, */*;q=0.5'
+          },
+          timeout: 20000,
+          responseType: 'text',
+          transformResponse: [data => data] // keep raw XML
+        });
+        feed = await parser.parseString(resp.data);
+      }
+
       const results = [];
-      
-      feed.items.forEach(item => {
+      (feed.items || []).forEach(item => {
         const date = new Date(item.pubDate || item.isoDate || Date.now());
         const classification = classifyItem(item.title, item.contentSnippet || item.content || '');
         const company = companyIntel.extractCompanyName(
@@ -2071,9 +1942,8 @@ async function fetchFeed(source, retries = 3) {
         results.push({
           id: crypto.randomBytes(16).toString('hex'),
           title: item.title || 'No title',
-          link: item.link || item.guid || '',
+          link: item.link,
           date: date.toISOString(),
-          dateFormatted: date.toLocaleDateString(),
           source: source.name,
           sourceCategory: source.category,
           sourceType: source.type,
@@ -2178,49 +2048,50 @@ async function scrapeFDAWarningLetters() {
 }
 
 // Scrape Form 483s
+// Scrape Form 483s (via ORA/OII FOIA RSS feed)
 async function scrapeFDA483s() {
   const results = [];
-  
   try {
-    console.log('🔍 Scraping FDA Form 483s...');
+    console.log('🔍 Scraping FDA Form 483s (FOIA RSS)...');
+    // Official ORA FOIA Reading Room RSS feed
+    const foiaFeedUrl = 'https://www.fda.gov/about-fda/contact-fda/stay-informed/rss-feeds/ora-foia-electronic-reading-room/rss.xml';
     
-    const response = await axios.get(
-      'https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/inspection-references/form-fda-483-frequently-asked-questions',
-      {
-        headers: { 
-          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36'
+    let feed;
+    try {
+      feed = await parser.parseURL(foiaFeedUrl);
+    } catch (err) {
+      const resp = await axios.get(foiaFeedUrl, {
+        headers: {
+          'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/124.0.0.0 Safari/537.36',
+          'Accept': 'application/rss+xml, application/atom+xml;q=0.9, application/xml;q=0.8, text/xml;q=0.7, */*;q=0.5'
         },
-        timeout: 15000
-      }
-    );
+        timeout: 20000,
+        responseType: 'text',
+        transformResponse: [d => d]
+      });
+      feed = await parser.parseString(resp.data);
+    }
     
-    const $ = cheerio.load(response.data);
-
-
-
-        // Look for links to Form 483 documents
-    $('a[href*="483"]').each((i, elem) => {
-      const $link = $(elem);
-      const href = $link.attr('href');
-      const text = $link.text();
-      
-      if (href && text && text.includes('483')) {
-        const fullUrl = href.startsWith('http') ? href : `https://www.fda.gov${href}`;
-        const company = companyIntel.extractCompanyName(text, '', fullUrl, 'FDA Direct');
-        
+    (feed.items || []).forEach(item => {
+      const title = item.title || '';
+      const summary = item.contentSnippet || item.content || '';
+      // Only keep true Form 483 records
+      if (/\b483\b/i.test(title) || /\bRecord Type\s*:?\s*483\b/i.test(summary) || /\b483 issued\b/i.test(summary)) {
+        const date = new Date(item.pubDate || item.isoDate || Date.now());
+        const company = companyIntel.extractCompanyName(title, summary, item.link, 'OII FOIA Electronic Reading Room');
+        const classification = classifyItem(title, summary);
         results.push({
           id: crypto.randomBytes(16).toString('hex'),
-          title: text.trim(),
-          link: fullUrl,
-          date: new Date().toISOString(),
-          dateFormatted: new Date().toLocaleDateString(),
-          source: 'FDA Form 483 Page',
+          title: title,
+          link: item.link,
+          date: date.toISOString(),
+          source: 'OII FOIA Electronic Reading Room',
           sourceCategory: 'official',
           sourceType: 'form_483',
-          summary: '',
-          company: company,
-          types: ['form_483'],
-          severity: CLASSIFIERS.form_483.severity,
+          summary: summary,
+          company,
+          types: Array.from(new Set([...classification.types, 'form_483'])),
+          severity: Math.max(classification.severity, 7),
           priority: 1
         });
       }
@@ -2230,7 +2101,6 @@ async function scrapeFDA483s() {
   } catch (error) {
     console.error(`❌ FDA 483 scraping error:`, error.message);
   }
-  
   return results;
 }
 

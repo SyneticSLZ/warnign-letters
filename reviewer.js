@@ -5,9 +5,18 @@ const cors = require('cors');
 const OpenAI = require('openai');
 const axios = require('axios'); // Add axios for PubMed API calls
 require('dotenv').config();
-
+// after other imports
+const externalIntel = require('./external-intel.js');
+const contactsProfile = require('./contacts-profile-route.js');
 const app = express();
+// mount routers
+app.use(externalIntel.router);
+// app.use(contactsProfile.router);
 
+
+
+// ...after app & middleware
+// app.use(externalIntelRouter);
 // Middleware
 app.use(cors({
 //   origin: process.env.NODE_ENV === 'production' 

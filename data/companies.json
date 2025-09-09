@@ -20599,6 +20599,116 @@
     "aliases": [],
     "violations": [
       {
+        "id": "0412bf1b179a9d926c131e1f49011f58",
+        "type": "regulatory_news",
+        "date": "2025-09-09T12:00:00.000Z",
+        "title": "STAT+: Obesity drugs may be pricey, but they’re also cost-effective, analysis finds",
+        "link": "https://www.statnews.com/pharmalot/2025/09/09/wegovy-zepbound-novo-lilly-icer-value-price-obesity-weight/?utm_campaign=rss",
+        "source": "STAT News Pharma",
+        "summary": "Despite high price tags, the Wegovy and Zepbound obesity drugs are considered to be cost-effective, according to a new preliminary analysis.",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "c28176b1c58eee11e90a3808b7f5175c",
+        "type": "regulatory_news",
+        "date": "2025-09-09T11:00:16.000Z",
+        "title": "Eli Lilly offers AI models to biotechs with TuneLab launch",
+        "link": "https://endpoints.news/eli-lilly-offers-ai-models-to-biotechs-with-tunelab-launch/",
+        "source": "Endpoints News",
+        "summary": "Eli Lilly is offering an unusual deal to any biotech: contribute some data, and in exchange, get access to many of Lilly's own AI models.\r\n\r\n The initiative, called TuneLab, debuted Tuesday with a dozen biotech ...",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "b65f7fd84880acd72bab2a456fa26d94",
+        "type": "regulatory_news",
+        "date": "2025-09-09T11:00:00.000Z",
+        "title": "STAT+: Lilly will let small biotechs use its AI models at no cost",
+        "link": "https://www.statnews.com/2025/09/09/eli-lilly-ai-tunelab-biotech-drug-insitro/?utm_campaign=rss",
+        "source": "STAT News Biotech",
+        "summary": "Lilly is opening up its proprietary AI models to biotech companies that want to use them to jumpstart their science.",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "014a10b1772660e9b741c48ea10554e1",
+        "type": "regulatory_news",
+        "date": "2025-09-09T10:47:20.000Z",
+        "title": "Novartis to spend $1.4B on Tourmaline Bio, gaining new heart drug",
+        "link": "https://endpoints.news/novartis-to-spend-1-4b-on-tourmaline-bio-gaining-new-heart-drug/",
+        "source": "Endpoints News",
+        "summary": "Novartis said Tuesday that it would buy Tourmaline Bio for $1.4 billion in a bid to revitalize its cardiovascular offering.\r\n\r\n The Swiss pharma said it would pay $48 per share in ...",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "4af02a410781fab07e68f62d46b23efc",
+        "type": "regulatory_news",
+        "date": "2025-09-09T10:00:04.000Z",
+        "title": "Ridge Bio raises $25M to help drugmakers come up with better ADCs",
+        "link": "https://endpoints.news/ridge-bio-raises-25m-to-help-drugmakers-come-up-with-better-adcs/",
+        "source": "Endpoints News",
+        "summary": "A new California startup announced itself Tuesday with $25 million in seed funding, some major scientific backers, and the hope of helping biopharma companies make better antibody-drug conjugates and other biologics.\r\n\r\n Ridge Biotechnologies says it ...",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "a6855e00f9515dc1e7a2d479070f1a58",
+        "type": "warning_letter",
+        "date": "2025-09-09T09:07:17.303Z",
+        "title": "Green Vitality dba Gr33n",
+        "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/green-vitality-dba-gr33n-710151-08252025",
+        "source": "FDA Website Direct",
+        "summary": "",
+        "severity": 8,
+        "status": "new"
+      },
+      {
+        "id": "8d9bfeda15461393a0064351bb44221c",
+        "type": "warning_letter",
+        "date": "2025-09-09T09:07:17.303Z",
+        "title": "HS GLOBAL DISTRIBUTION LLC, d/b/a O&Z WHOLESALE",
+        "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/hs-global-distribution-llc-dba-oz-wholesale-715189-08282025",
+        "source": "FDA Website Direct",
+        "summary": "",
+        "severity": 8,
+        "status": "new"
+      },
+      {
+        "id": "62b068b657639de4272fa9c785b0e043",
+        "type": "warning_letter",
+        "date": "2025-09-09T09:07:17.303Z",
+        "title": "My Holistic Honey c/o Shenzhen Qanhai Wanb Express Supply Chain Co., LTD",
+        "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/my-holistic-honey-co-shenzhen-qanhai-wanb-express-supply-chain-co-ltd-712052-08252025",
+        "source": "FDA Website Direct",
+        "summary": "",
+        "severity": 8,
+        "status": "new"
+      },
+      {
+        "id": "743ccaf5d04e105f33a4745c585e1ada",
+        "type": "warning_letter",
+        "date": "2025-09-09T09:07:17.303Z",
+        "title": "Life Enthusiast Co-op",
+        "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/life-enthusiast-co-op-709315-08252025",
+        "source": "FDA Website Direct",
+        "summary": "",
+        "severity": 8,
+        "status": "new"
+      },
+      {
+        "id": "2e063381876d3d16fe38d326ce81c422",
+        "type": "regulatory_news",
+        "date": "2025-09-09T07:43:55.000Z",
+        "title": "STAT+: Novartis to buy Tourmaline Bio, gaining promising heart medicine",
+        "link": "https://www.statnews.com/2025/09/09/novartis-tourmaline-bio-heart-disease-acquisition-pacibekitug/?utm_campaign=rss",
+        "source": "STAT News Pharma",
+        "summary": "Novartis said it would buy Tourmaline Bio in a deal worth $1.4 billion, building out its pipeline with a promising heart medicine.",
+        "severity": 5,
+        "status": "new"
+      },
+      {
         "id": "a190b2adc3a4094517b7d3411d101237",
         "type": "warning_letter",
         "date": "2025-09-09T00:18:36.823Z",
@@ -20720,6 +20830,17 @@
         "status": "new"
       },
       {
+        "id": "18e6b8355383ae604408a02b1f11a46b",
+        "type": "regulatory_news",
+        "date": "2025-09-08T19:53:44.000Z",
+        "title": "Safety Labeling Change Orders",
+        "link": "http://www.fda.gov/drugs/postmarket-drug-safety-information-patients-and-providers/safety-labeling-change-orders",
+        "source": "FDA CDER Updates",
+        "summary": "Section 505(o)(4) of the Federal Food, Drug, and Cosmetic Act (FD&C Act) (21 U.S.C. 355(o)(4)) authorizes FDA to require application holders for certain drugs to make labeling changes based on new safety information. Learn more.",
+        "severity": 5,
+        "status": "new"
+      },
+      {
         "id": "5ea79c02c21ffe45306a25ade1434596",
         "type": "regulatory_news",
         "date": "2025-09-08T19:48:00.000Z",
@@ -20742,6 +20863,17 @@
         "status": "new"
       },
       {
+        "id": "04f775b1dd391da08607afe21d24c809",
+        "type": "regulatory_news",
+        "date": "2025-09-08T19:39:25.000Z",
+        "title": "Newly Added Guidance Documents",
+        "link": "http://www.fda.gov/drugs/guidances-drugs/newly-added-guidance-documents",
+        "source": "FDA CDER Updates",
+        "summary": "Guidance documents represent the FDA's current thinking on a particular subject. New guidance documents are listed here for three months.",
+        "severity": 5,
+        "status": "new"
+      },
+      {
         "id": "0d2cd062a45693b7b356992597e34406",
         "type": "regulatory_news",
         "date": "2025-09-08T19:39:17.000Z",
@@ -20760,6 +20892,39 @@
         "link": "http://www.fda.gov/vaccines-blood-biologics/news-events-biologics/whats-new-biologics",
         "source": "FDA CBER Biologics",
         "summary": "Latest news from the Center for Biologics Evaluation and Research",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "2bf235a13f58a13129a19a870355a7f7",
+        "type": "regulatory_news",
+        "date": "2025-09-08T19:36:48.000Z",
+        "title": "What's New Related to Drugs",
+        "link": "http://www.fda.gov/drugs/news-events-human-drugs/whats-new-related-drugs",
+        "source": "FDA CDER Updates",
+        "summary": "Want to know what's new on drugs from FDA? This page provides quick links to the latest on a variety of topics including: drug approvals, safety warnings, drug shortages, etc.",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "6ecbbeb699ef4c5033a09fc0f8691d0a",
+        "type": "regulatory_news",
+        "date": "2025-09-08T19:34:43.000Z",
+        "title": "E6(R3) Good Clinical Practice (GCP)",
+        "link": "http://www.fda.gov/regulatory-information/search-fda-guidance-documents/e6r3-good-clinical-practice-gcp",
+        "source": "FDA CDER Updates",
+        "summary": "The Food and Drug Administration is announcing the availability of a final guidance for industry entitled “E6(R3) Good Clinical Practice.”  This revision incorporates flexible, risk-based approaches and embraces innovations in trial design, conduct, and technology.",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "fe4525ec9606e22f3cead2d5f719f7c0",
+        "type": "regulatory_news",
+        "date": "2025-09-08T19:32:46.000Z",
+        "title": "Human Drug Compounding Outsourcing Facility Fees",
+        "link": "http://www.fda.gov/industry/fda-user-fee-programs/human-drug-compounding-outsourcing-facility-fees",
+        "source": "FDA CDER Updates",
+        "summary": "Human Drug Compounding Outsourcing Facility Fees",
         "severity": 5,
         "status": "new"
       },
@@ -20863,6 +21028,28 @@
         "status": "new"
       },
       {
+        "id": "8a1c28072c894a81b06d95856d828bf6",
+        "type": "regulatory_news",
+        "date": "2025-09-08T15:05:58.000Z",
+        "title": "Generic Drug Facilities, Sites and Organization Lists",
+        "link": "http://www.fda.gov/industry/generic-drug-user-fee-amendments/generic-drug-facilities-sites-and-organization-lists",
+        "source": "FDA CDER Updates",
+        "summary": "Generic Drug Facilities, Sites and Organization Lists",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "32607f1be9f3a6844d3201d4cdb19d40",
+        "type": "regulatory_news",
+        "date": "2025-09-08T15:02:56.000Z",
+        "title": "FDA’s Sixth Online Controlled Substances Summit - 09/11/2025",
+        "link": "http://www.fda.gov/drugs/news-events-human-drugs/fdas-sixth-online-controlled-substances-summit-09112025",
+        "source": "FDA CDER Updates",
+        "summary": "FDA, in partnership with the Reagan-Udall Foundation, will host the sixth Online Controlled Substances Summit on September 11, 2025.",
+        "severity": 5,
+        "status": "new"
+      },
+      {
         "id": "ae34f34e2a4ee0064476f566ea4df864",
         "type": "regulatory_news",
         "date": "2025-09-08T15:00:45.000Z",
@@ -20870,6 +21057,17 @@
         "link": "https://endpoints.news/wclc25-biontech-bristol-myers-tout-pd-l1xvegf-results-in-small-cell-lung-cancer/",
         "source": "Endpoints News",
         "summary": "BioNTech and Bristol Myers Squibb said their PD-L1xVEGF drug used alongside chemotherapy showed promise in a mid-stage study for an aggressive form of lung cancer.\r\n\r\n In the Phase 2 trial, the companies tested two different ...",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "0736a8e380acdfc30f8d0cecc4212539",
+        "type": "regulatory_news",
+        "date": "2025-09-08T15:00:40.000Z",
+        "title": "FDA Demurs on GLP-1 Compounding Fight, Debuts Consumer ‘Green List’ Instead",
+        "link": "https://www.biospace.com/policy/fda-demurs-on-glp-1-compounding-fight-debuts-consumer-green-list-instead",
+        "source": "BioSpace",
+        "summary": "While a win for consumers, the regulatory action did nothing to stem the manufacture of compounded versions of the popular obesity drugs that are made by Novo Nordisk and Eli Lilly. In fact, the FDA seems to be signaling that “some level of compounded product is acceptable,” according to BMO Capital Markets.",
         "severity": 5,
         "status": "new"
       },
@@ -20892,6 +21090,17 @@
         "link": "https://endpoints.news/lb-pharma-seeks-228m-in-proposed-ipo-with-hopes-to-be-industrys-first-since-february/",
         "source": "Endpoints News",
         "summary": "LB Pharmaceuticals, a biotech developing a twist on the decades-old schizophrenia treatment amisulpride, estimates it could gain net proceeds of $228 million from a Nasdaq IPO.\r\n\r\n The New York-based biotech could garnish that amount if ...",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "f06983ad4374b5c80655472e7dec7db7",
+        "type": "regulatory_news",
+        "date": "2025-09-08T14:53:24.000Z",
+        "title": "REUMA KING may be harmful due to hidden drug ingredients",
+        "link": "http://www.fda.gov/drugs/medication-health-fraud-notifications/reuma-king-may-be-harmful-due-hidden-drug-ingredients",
+        "source": "FDA CDER Updates",
+        "summary": "FDA laboratory analysis confirmed that REUMA KING contains dexamethasone, diclofenac, and methocarbamol not listed on the product label.",
         "severity": 5,
         "status": "new"
       },
@@ -20973,6 +21182,17 @@
         "status": "new"
       },
       {
+        "id": "a7a125fd36b09aa2f8cdb075fa977b3b",
+        "type": "regulatory_news",
+        "date": "2025-09-08T13:05:04.000Z",
+        "title": "Classification Categories for Certain Supplements Under BsUFA III",
+        "link": "http://www.fda.gov/regulatory-information/search-fda-guidance-documents/classification-categories-certain-supplements-under-bsufa-iii",
+        "source": "FDA CDER Updates",
+        "summary": "Classification Categories for Certain Supplements Under BsUFA III",
+        "severity": 5,
+        "status": "new"
+      },
+      {
         "id": "c92a8bc53fe7ffcac52a04e8dfc4eb87",
         "type": "regulatory_news",
         "date": "2025-09-08T13:01:00.000Z",
@@ -20980,6 +21200,39 @@
         "link": "https://news.google.com/rss/articles/CBMinwJBVV95cUxQM3FzVVFYVFdiTE53czlLRTlwNzE2YXVQYlNLS1dPUWlvaHV5SkljVE0xQnhndFc3bS1GZ3dxdlVpQVhHV1ZlbmR0N3ROUXZXU09GU19NVkcxNkNDQmlDUmhJVUg4ZlhEaUk4NWZlUDNNcFRiOTUxclc2SXJuclJQd3BoVFdBOElMeEJnZjlBX0E0Vl8xNk05MWJ2NmdPZGpkd0pFcmZqZVlYWVA3OXFhTDlDZXZpdHFULTVVMU1IbU9UUU1aLUVDMU9SZEw1bjlwbGRmeWZrM2hkYk1BbENPRVRBSUI3SGNBR1l4V0JiOTNVYTFYT0tSaV80M1FjWEdCV0NRS1NpNVY2WUZOekEtZzFXSC16bFBYajVQS1JkUQ?oc=5",
         "source": "Google News - CRLs",
         "summary": "Saol CRL Suggests Gap Between US FDA Rare Disease Flexibility Promises And Outcomes  insights.citeline.com",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "b2c6e46c27d3c6a4312734bdae2a90b6",
+        "type": "regulatory_news",
+        "date": "2025-09-08T12:58:32.000Z",
+        "title": "Development of Therapeutic Protein Biosimilars:  Comparative Analytical Assessment and Other Quality-Related Considerations   Guidance for Industry",
+        "link": "http://www.fda.gov/regulatory-information/search-fda-guidance-documents/development-therapeutic-protein-biosimilars-comparative-analytical-assessment-and-other-quality",
+        "source": "FDA CDER Updates",
+        "summary": "Development of Therapeutic Protein Biosimilars:  Comparative Analytical Assessment and Other Quality-Related Considerations   Guidance for Industry",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "e344429bdf1cb4323fd3b3fa273d22f8",
+        "type": "crl",
+        "date": "2025-09-08T12:43:00.000Z",
+        "title": "Lexicon Pharmaceuticals Submits Additional Clinical Data for Zynquista NDA Resubmission Following FDA Complete Response Letter - Quiver Quantitative",
+        "link": "https://news.google.com/rss/articles/CBMi8AFBVV95cUxPSTkzMGVqS2FrOVlsZzMzRkRPZWlBckEtSEFIYXVRTVM5Vlp2bUw5aXJXeExoaE1IdnFrUFBEa0tnRDhWRzBrZ0FUbHdwVzFHREo0WF85QjFrbXFDOTFsZGlDMjlRVWs4b0VKV0MwYlhMZkE0V04wc1FDaTdwV0syb1JhYV9sVWpfeWNYY3pfMVVQTHZES1V0bVBpNkFIejA1Wk9HSEY3OUFSUG1IOU9uSDBQb3Vudzl1OHcySWxDem1OTWNJSzFnUEQ2NW5Dd3lvcUJiRTZ4aGR4X3Y3WGo2Mzk5S2tHRWplNU1VV0Y1YWo?oc=5",
+        "source": "Google News - CRLs",
+        "summary": "Lexicon Pharmaceuticals Submits Additional Clinical Data for Zynquista NDA Resubmission Following FDA Complete Response Letter  Quiver Quantitative",
+        "severity": 9,
+        "status": "new"
+      },
+      {
+        "id": "9aba526b8f2c944b10cdae0441e369b1",
+        "type": "regulatory_news",
+        "date": "2025-09-08T12:00:00.000Z",
+        "title": "Inside pharma’s race to deliver new treatments for dwarfism",
+        "link": "https://www.pharmavoice.com/news/pharma-drug-dwarfism-tyra-biomarin-achondroplasia/759430/",
+        "source": "PharmaVoice",
+        "summary": "By targeting the underlying genetic mutation that drives the condition, researchers hope to increase height and address debilitating complications.",
         "severity": 5,
         "status": "new"
       },
@@ -21127,6 +21380,28 @@
         "status": "new"
       },
       {
+        "id": "cf149b69edfeb0b5603a18963d7faaac",
+        "type": "regulatory_news",
+        "date": "2025-09-08T06:01:00.000Z",
+        "title": "FDA Expert Panels Lack Balance in Pursuit of ‘Gold Standard Science’",
+        "link": "https://www.biospace.com/fda/fda-expert-panels-lack-balance-in-pursuit-of-gold-standard-science",
+        "source": "BioSpace",
+        "summary": "New FDA expert panels, such as recent meetings on SSRI use during pregnancy and on hormone replacement therapy during menopause, are drawing criticism for being one-sided. One leader says such panels are designed to reach a specific conclusion.",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "43e18ceb73fe2085a950cc81f74dfd68",
+        "type": "regulatory_news",
+        "date": "2025-09-08T04:02:00.000Z",
+        "title": "5 Companies Caught on a Carousel of FDA Confusion",
+        "link": "https://www.biospace.com/fda/5-companies-caught-on-a-carousel-of-fda-confusion",
+        "source": "BioSpace",
+        "summary": "Amid an unprecedented turnover in leadership at the FDA and mass layoffs of staff, communication has crumbled and uncertainty runs rampant, leaving small and medium biopharma companies without a clear path forward for their therapies.",
+        "severity": 5,
+        "status": "new"
+      },
+      {
         "id": "942be461d55bda0267c9471c38dd3945",
         "type": "regulatory_news",
         "date": "2025-09-08T02:00:04.000Z",
@@ -21189,6 +21464,72 @@
         "link": "http://www.fda.gov/news-events/press-announcements/fda-approves-expanded-use-vonvendi-von-willebrand-disease-including-certain-uses-children",
         "source": "FDA Press Announcements",
         "summary": "The U.S. Food and Drug Administration today approved expanded use of Vonvendi [von Willebrand factor (Recombinant)] for routine preventative (prophylactic) use in adults (age 18 years and older) with all types of von Willebrand disease (VWD) and on-demand and treatment of bleeding episodes and perio",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "faf827a7bbfce720f27cff281322639b",
+        "type": "regulatory_news",
+        "date": "2025-09-05T20:23:57.000Z",
+        "title": "Completed BsUFA III Deliverables",
+        "link": "http://www.fda.gov/industry/biosimilar-user-fee-amendments/completed-bsufa-iii-deliverables",
+        "source": "FDA CDER Updates",
+        "summary": "Since the passage of the Biosimilar User Fee Act (BsUFA) in 2012, user fees have played an important role in expediting the process for the review of biosimilar products.",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "555cea3461d0dad305b9c34b2e2f1ed7",
+        "type": "regulatory_news",
+        "date": "2025-09-05T20:20:55.000Z",
+        "title": "Pain and Arthritis Products Containing Hidden Ingredients",
+        "link": "http://www.fda.gov/drugs/medication-health-fraud-notifications/pain-and-arthritis-products-containing-hidden-ingredients",
+        "source": "FDA CDER Updates",
+        "summary": "Learn about the warnings for pain and arthritis products that contain hidden drugs and other hidden ingredients.",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "1ce8b4b6951bcd51104dd30786b26d82",
+        "type": "regulatory_news",
+        "date": "2025-09-05T20:18:10.000Z",
+        "title": "FTX PLUS may be harmful due to hidden drug ingredients",
+        "link": "http://www.fda.gov/drugs/medication-health-fraud-notifications/ftx-plus-may-be-harmful-due-hidden-drug-ingredients",
+        "source": "FDA CDER Updates",
+        "summary": "FDA laboratory analysis confirmed that FTX PLUS contains dexamethasone phosphate and diclofenac not listed on the product label.",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "95d06e683adb89df017e2b504d4f49bf",
+        "type": "regulatory_news",
+        "date": "2025-09-05T20:10:22.000Z",
+        "title": "Patient-Focused Drug Development: Workshop #2 to Discuss Methodologic and Other Challenges Related to Patient Experience Data - 09/18/2025",
+        "link": "http://www.fda.gov/drugs/news-events-human-drugs/patient-focused-drug-development-workshop-2-discuss-methodologic-and-other-challenges-related",
+        "source": "FDA CDER Updates",
+        "summary": "On September 18 and 19, 2025, the U.S. Food and Drug Administration (FDA) is hosting a virtual public workshop to discuss methodological challenges related to patient experience data encountered, including the submission and evaluation of patient experience data in the context of the benefit-risk assessment and product labeling, as well as other ar",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "b41021eb212ae93db55210e6f6f45757",
+        "type": "regulatory_news",
+        "date": "2025-09-05T19:55:54.000Z",
+        "title": "Condition-Specific Meeting Reports and Other Information Related to Patients' Experience",
+        "link": "http://www.fda.gov/industry/prescription-drug-user-fee-amendments/condition-specific-meeting-reports-and-other-information-related-patients-experience",
+        "source": "FDA CDER Updates",
+        "summary": "This webpage provides links to certain publicly available external reports and resources relating to patient experience data. The patient community, patient advocates, researchers, drug developers, and federal agencies may find these materials useful.",
+        "severity": 5,
+        "status": "new"
+      },
+      {
+        "id": "747ad65c9cc8d807f2eeb468651d68d9",
+        "type": "regulatory_news",
+        "date": "2025-09-05T19:55:36.000Z",
+        "title": "Upcoming EL-PFDD Meetings",
+        "link": "http://www.fda.gov/industry/prescription-drug-user-fee-amendments/upcoming-el-pfdd-meetings",
+        "source": "FDA CDER Updates",
+        "summary": "Upcoming EL-PFDD Meetings",
         "severity": 5,
         "status": "new"
       },
@@ -21356,347 +21697,6 @@
         "summary": "Plus, news about Octave Biosciences and Mineralys Therapeutics:\r\n\r\n 💵 Rapafusyn Pharmaceuticals closes $44M Series A: The molecular glue discovery company wrapped up an upsized and oversubscribed funding ...",
         "severity": 5,
         "status": "new"
-      },
-      {
-        "id": "9ba9172d4d2a881adca651586d5cd6b2",
-        "type": "regulatory_news",
-        "date": "2025-09-05T14:14:19.000Z",
-        "title": "Regenxbio trumpets one-year data for Hunter syndrome gene therapy after FDA extended its review",
-        "link": "https://endpoints.news/regenxbio-trumpets-one-year-data-for-hunter-syndrome-gene-therapy-after-fda-extended-its-review/",
-        "source": "Endpoints News",
-        "summary": "Regenxbio released new data that it hopes will get its gene therapy for a rare disease across the regulatory finish line.\r\n\r\n The company said Friday that in a one-year look at 13 patients with Hunter ...",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "d6785c76ee55cfa20d56220de0545ef2",
-        "type": "regulatory_news",
-        "date": "2025-09-05T13:49:40.000Z",
-        "title": "STAT+: Up and down the ladder: The latest comings and goings",
-        "link": "https://www.statnews.com/pharmalot/2025/09/05/jobs-biotech-pharma-ladder-sanofi-genmab-merck-icon-iqvia/?utm_campaign=rss",
-        "source": "STAT News Pharma",
-        "summary": "From new hires to departures, promotions and transfers, here are the latest comings and goings in the pharmaceutical industry.",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "e52a4d9480fabdc4fbd3a1251a050661",
-        "type": "regulatory_news",
-        "date": "2025-09-05T13:32:27.000Z",
-        "title": "STAT+: The FDA is getting more transparent about drug rejections",
-        "link": "https://www.statnews.com/2025/09/05/biotech-news-fda-lsd-gilead-pfizer/?utm_campaign=rss",
-        "source": "STAT News Pharma",
-        "summary": "And more biotech news stories brought to you by The Readout.",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "a8b9587b3ca839316447fde46eb53670",
-        "type": "regulatory_news",
-        "date": "2025-09-05T13:11:53.000Z",
-        "title": "STAT+: Pharmalittle: We’re reading about PEPFAR and a Gilead drug, the FDA’s rejection letters, and much more",
-        "link": "https://www.statnews.com/pharmalot/2025/09/05/medicare-trump-gilead-pepfar-hiv-aids-fda-crl-cvs-wegovy-zepbound-novo-lilly-jnj-bristol-india-weight-obesity/?utm_campaign=rss",
-        "source": "STAT News Pharma",
-        "summary": "The FDA said it would start releasing rejection letters soon after they are provided to drugmakers, a victory for those who wanted more transparency.",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "1bddd0687a4f3006ce10a31972ef13d8",
-        "type": "regulatory_news",
-        "date": "2025-09-05T08:54:26.000Z",
-        "title": "Biocon Biologics’ Bengaluru Unit Gets 5 US FDA Observations, Shares Up 1% - Equitypandit",
-        "link": "https://news.google.com/rss/articles/CBMiogFBVV95cUxPamxjOEVXM2RYbDhPdnpRaXNCNTk1b05RV0lCMU0tYzg2Ml9KMEZ0QURRbzVfa0xZMnR6azBOQ2xrWWdqWlNFWER2bEFLejBpRzNmMkM4NnRZX3ZtVW9zNDl6aUUwSzlOMlphQ3NRNnF3Z04zTlhRd21pemQzMlV2MGpzTllvZERZWFowTnF4VldlVENnZEZWVFJoRkdKb1ZzTXc?oc=5",
-        "source": "Google News - Form 483",
-        "summary": "Biocon Biologics’ Bengaluru Unit Gets 5 US FDA Observations, Shares Up 1%  Equitypandit",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "ca257307d704e6ace690133fbd8b6641",
-        "type": "regulatory_news",
-        "date": "2025-09-05T08:30:00.000Z",
-        "title": "STAT+: Donavon Decker knew a gene therapy experiment wouldn’t help him. To help others, he still said yes",
-        "link": "https://www.statnews.com/2025/09/05/gene-therapy-pioneer-donavon-decker-remembered/?utm_campaign=rss",
-        "source": "STAT News Biotech",
-        "summary": "Long before there was Sarepta's gene therapy for muscular dystrophy, there was Donavon Decker and his offer to test a gene therapy.",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "f4d1dbdb9d57b4a9643a996cab421b5f",
-        "type": "regulatory_news",
-        "date": "2025-09-05T04:00:00.000Z",
-        "title": "FDA Launches Green List to Protect Americans from Illegal Imported GLP-1 Drug Ingredients - fda.gov",
-        "link": "https://news.google.com/rss/articles/CBMizgFBVV95cUxOeUpYZ0JlQzltX2t3WFVraHZCLWl4VEszY2N3MDAzdnVud2xxT3B5Zi1tTGx5VEU5aGFEYVlBUndraXlTU0prcU5Sd0c1SHVQN3d2aGszX0ZOUFVzcU0tOUoyRzhySzd5NkNCVzhzNDhsT0huMkpXY2d5ZjNSdDhWYkh2OGhSQUZFemw2dFdyeGd4YkxYTTRJUFljdWtMd3VFQ1ZLQzVIdkptMW9rVW5xYTN2QmJvc3hobFRlZ00yTjA2LVpQZ3dPNGFFUDVzZw?oc=5",
-        "source": "Google News - FDA Warning Letters",
-        "summary": "FDA Launches Green List to Protect Americans from Illegal Imported GLP-1 Drug Ingredients  fda.gov",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "6e9d28b5c32dd5655ab875e539af228a",
-        "type": "regulatory_news",
-        "date": "2025-09-05T04:00:00.000Z",
-        "title": "FDA Approves Expanded Use of Vonvendi for von Willebrand Disease, Including for Certain Uses for Children - fda.gov",
-        "link": "https://news.google.com/rss/articles/CBMi2AFBVV95cUxNc25Xa2plaGx0Z0dkRlpVdm9mRjlnbmdQY25SMVYtcnN4RXJ3N21ISHRvajRDZzhXWFUyVl90UjJ6LW5XOS1WVlUydENiTFVUeEVjYy1ranE2Mk1DVkxqbm9SNGpTR2M4dEU0S3NnRi1hUk9Nemk0WDlLMFYzSU5oN2NfZmp2cFpDbUtYM0F0N2wyNnFIdUxFZDZka01xZndoMjF5UzlOdm16eHNTaDl4QXZTQW5Dc2JHVEw0S3ZLUFdMRFh4XzdDUkVsMGFudTFQcnRLc3FXNlE?oc=5",
-        "source": "Google News - FDA Warning Letters",
-        "summary": "FDA Approves Expanded Use of Vonvendi for von Willebrand Disease, Including for Certain Uses for Children  fda.gov",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "4a06df6ffd006e7bdaf6b42d768fa637",
-        "type": "crl",
-        "date": "2025-09-05T02:37:30.000Z",
-        "title": "89 Complete Response Letters For Unapproved Drugs, One Huge Leap For US FDA Transparency - insights.citeline.com",
-        "link": "https://news.google.com/rss/articles/CBMipAJBVV95cUxOcEZXX3lHVGtLX3BPSXR1UHBOdldTRzdJU0lhRlVHRDRETko2X3ZVU3pweklvQjk4cW1GWDJpeE0xbjdScVBGa2lUNWQtbGZJWHlYMkZXQmRwQVhRRnlDZkpfVklENVN3ZUNXMUExRGdNWjNwV0lJemQwZ2FZMHR3TFRadUlwYnF1TjJPQlhKdEw1cHZDSV9MS0JpckVhemtSRlJBNlJFV25IZ1dEQk9mSHUweVExYVExczlVY01ER3pqak1weWpXX2VrbjRjUVFNTEZHdXVkUnc5SldtZ2ZrUmxjVVhCX3ZFaXNNYnY0Wmhwd0VEQnhnb3hSMVRONVRzWGdwVHJuQjNTX1c3VV9VY2wtX0NhOEJXSGVYcExfd2JOVmpV?oc=5",
-        "source": "Google News - CRLs",
-        "summary": "89 Complete Response Letters For Unapproved Drugs, One Huge Leap For US FDA Transparency  insights.citeline.com",
-        "severity": 9,
-        "status": "new"
-      },
-      {
-        "id": "ee76c532be7421c18e51fa4a5fdabe67",
-        "type": "crl",
-        "date": "2025-09-05T00:09:00.000Z",
-        "title": "MAPS Statement on FDA’s Public Release of Complete Response Letter for MDMA-assisted Therapy - GlobeNewswire",
-        "link": "https://news.google.com/rss/articles/CBMi9wFBVV95cUxPbTRkZFdNRi1Sb0tNQUhQYjFuVnZZVTdJWDJYb2hpOTNLcFRBb0liQmdna1N4amdGak03bHpHVzJ1cUhXMDNyLWJKYmR0QlJGdlk5QmYzYTBpVEVJRFNSSnQzUk1oSWFvNngwZTl1SDFMZTE4VzRZcFp5X2hTRkJ1V0U0aGs4WGtRa0VocHJ3M0l4Zm5acjZNMThaQ0k5QUxrekFoUFVMSWZZTUZrUnJqakZiQTJTUXZ6dWdJOG9fTENFeE5SdGxpUmFWWUJSRlUyZlFFQWZla3l4OHNZU18xal9XWVBwR0o5VUdVbDZQWGdwcWg2dnB3?oc=5",
-        "source": "Google News - CRLs",
-        "summary": "MAPS Statement on FDA’s Public Release of Complete Response Letter for MDMA-assisted Therapy  GlobeNewswire",
-        "severity": 9,
-        "status": "new"
-      },
-      {
-        "id": "a4d5d76c7c71d2de1c852a25d6bd0d81",
-        "type": "regulatory_news",
-        "date": "2025-09-04T20:56:03.000Z",
-        "title": "STAT+: Trump administration confirms plan for PEPFAR to distribute Gilead’s new HIV prevention drug",
-        "link": "https://www.statnews.com/pharmalot/2025/09/04/gilead-hiv-aids-pepfar-trump-lenacapavir-licensing/?utm_campaign=rss",
-        "source": "STAT News Pharma",
-        "summary": "\"This is a really significant moment in the fight against HIV and AIDS.”",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "3ceb1919aabae2572383f2689a7c90bb",
-        "type": "regulatory_news",
-        "date": "2025-09-04T17:45:28.000Z",
-        "title": "FDA moves to publish drug rejection letters in real time, releases new batch including Replimune's high-profile snub - Fierce Biotech",
-        "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPcThla0JHRzd3ci1sWnVhWUluMmliSWFmeEFQUTdNaG5WREpNU2xQZHRURGNuSFV6ZEpzaTNObDZ2OWkxWHVJS3Bvd2xmS3dfNjhiNUEyb2NKMU9CQUJTd21EbVFiVWFzak5oM1ZCcllXVnNDN2VqNHoxVlFDbDc0TkJQanpNd2FQbDZsZXoyVnhvZTdMRUZiQ1FqX1BqXy1JTkJaZ2FHeUZqdEc5V1RDRWFpVUhmRlN5ZFNhQ2o5ZEJxRkF0?oc=5",
-        "source": "Google News - CRLs",
-        "summary": "FDA moves to publish drug rejection letters in real time, releases new batch including Replimune's high-profile snub  Fierce Biotech",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "435d3f386e91be803d0ca3f8c6beede4",
-        "type": "regulatory_news",
-        "date": "2025-09-04T16:34:54.000Z",
-        "title": "STAT+: In major shift, FDA to start releasing rejection letters shortly after they’re issued",
-        "link": "https://www.statnews.com/pharmalot/2025/09/04/fda-crls-rejection-letters-transparency-makary/?utm_campaign=rss",
-        "source": "STAT News Pharma",
-        "summary": "The FDA said it would start releasing rejection letters soon after they are provided to drugmakers, a victory for transparency advocates.",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "80e96641b541db257f46793a022ac3a0",
-        "type": "crl",
-        "date": "2025-09-04T16:10:06.000Z",
-        "title": "BREAKING: FDA Publishes Lykos Therapeutics’ MDMA Complete Response Letter (CRL) - Psychedelic Alpha",
-        "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxPLTd0czdNWWo3UkdpTTNsT2FLUmZpVTlWZFBjUU9oRkRwMjFQdGcyZ2pPUmRuQkNkM0M1ZjBocTBFVWtvaTR3ZUVlYU1odjBtbF93dXJEbGI1dnVWM0k3TUJkdHlPYktNRlRSLXpuZXBnY0czZjdtcnZtYXBEWXJkQnZHTjRQYjhqZjZzS2M2RnFlNTF3c3Jzc1VneklDVTVsakhEcS16ZUU5RWhBbUE?oc=5",
-        "source": "Google News - CRLs",
-        "summary": "BREAKING: FDA Publishes Lykos Therapeutics’ MDMA Complete Response Letter (CRL)  Psychedelic Alpha",
-        "severity": 9,
-        "status": "new"
-      },
-      {
-        "id": "b60575debc9a483d6eb97da8567c42a5",
-        "type": "crl",
-        "date": "2025-09-04T15:41:34.000Z",
-        "title": "Astellas receives Complete Response Letter from FDA for Izervay sNDA - MSN",
-        "link": "https://news.google.com/rss/articles/CBMi0gJBVV95cUxQNDV4NGotbFBTUmlpWXlhWUFNSTRsMENiSmlTcENtODNFRllNRlRCdF9IcmhMWTdfNndEcXlHMi12cXNkcnN3MFdQSDhDb25hTE1OQ1VTaWw2MFRiQ01xSGJHem9SZ1Jzb3N0SmI2dV9HVDlRV19FdFVSLTE0NEpaRDNsejQ5OW5icmd6WmJFOC1HUVNWbzMzM2FOOFVsdmV4NGFkUTJQWE9ZbFh4QlJTb1B1cjBBQ0RNdmdBUTRDTS1rZDkwQk9yQUN0MjgzU0U2ZDdlcFZqbGc5OFBtVG0wSGhLU2FLUUw3ZXZUZ0JJZzMxcS1yQTFRVFJSZUxnc3QycmR1MGMzNDl3ZWpIbVhBaHc3Uk9JdDBPSzc5MXIxLWFaWlpFckhvRk1EWDlTZE9mWHU1ZU5Tdl9udzY4cWtDajRzZGFfZjdtRV9RZmc5VGZHUQ?oc=5",
-        "source": "Google News - CRLs",
-        "summary": "Astellas receives Complete Response Letter from FDA for Izervay sNDA  MSN",
-        "severity": 9,
-        "status": "new"
-      },
-      {
-        "id": "6f4bbf74dab52c66f0ce0943c58d5cf4",
-        "type": "regulatory_news",
-        "date": "2025-09-04T15:35:54.000Z",
-        "title": "STAT+: Swing Therapeutics raises $11 million, adds former Pear CEO to board",
-        "link": "https://www.statnews.com/2025/09/04/swing-therapeutics-raises-11-million-adds-former-pear-ceo-to-board/?utm_campaign=rss",
-        "source": "STAT News Pharma",
-        "summary": "Former Pear CEO joins Swing board — did he invest? My colleague Allison DeAngelis spotted a familiar character pop up in a fresh SEC filing from Swing Therapeutics, developer of…",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "98bde0b210f322ed636012af03485d25",
-        "type": "regulatory_news",
-        "date": "2025-09-04T14:25:57.000Z",
-        "title": "TACHOSIL",
-        "link": "http://www.fda.gov/vaccines-blood-biologics/approved-blood-products/tachosil",
-        "source": "FDA CBER Biologics",
-        "summary": "Product approval information is indicated for use with manual compression in adult and pediatric patients as an adjunct to hemostasis in cardiovascular and hepatic surgery, when control of bleeding by standard surgical techniques (such as suture, ligature or cautery) is ineffective or impractical.",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "bad63f36ac6649cd5df3de49dc1833d2",
-        "type": "regulatory_news",
-        "date": "2025-09-04T14:19:05.000Z",
-        "title": "Biocon Biologics’ Bengaluru facility gets five observations from US FDA inspection - CNBC TV18",
-        "link": "https://news.google.com/rss/articles/CBMi5wFBVV95cUxNVFVnYzJZWm0yQTBfU2I0WHhPTndGYnZxdHVEWkRtMkh1U3Y5aVhSekhKNThkS1JZRG9BQ0VZNVBBXzVBXzRiRHctWFdtTmo0R3JTelpnQ2c2S2k0Rkt2MXVZT1J5ejRFTlV0NGQ3RWtDV0R4MW5EVFFHT2pLLXJBM2tYaWx5S1VtQW1fOE15TGhrM1hwcDhxUnRvU2FJX1ktZVhwOTJxNlVZRFN1d2YxZ2ZnM2RYZ0hfOFRJM196S3JPQmxuaHhOYjVhR2lhcHJYTjJ5eExKR3R0Qnp1VXdZdEI3X05oUlnSAewBQVVfeXFMTnJBdUlNWXR2MHhlaVpib3czQVZza0JXeXRjVVRjalpUMjY4VWRWUU9RSTFSSjkxWnVaVTlzcXBIR19PNUUzZjFnbTBKcDduMTJ6d250RVRaMDhKejZYbm54ZWlVcEtjS3MwZDgzRGM3UW5KWjZsOG45em5BOElrN0VXUm9IWlFjdjRSZ2FST0dkWTA3Tnp0bG9majdTZXZHMzZPQVIxc0UzUEx6U1lOQkNMaUZ3YnhJcWtUenNKZVcyM1Y1NTNzZXg0Yl90WV9JYnBmMGQ3ZFlmUGd1TEpVZmNWeWYyZnQ5bzZEWUk?oc=5",
-        "source": "Google News - Form 483",
-        "summary": "Biocon Biologics’ Bengaluru facility gets five observations from US FDA inspection  CNBC TV18",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "c5eea6ee4e2be2ab426d738bdc6a09ef",
-        "type": "regulatory_news",
-        "date": "2025-09-04T13:41:43.000Z",
-        "title": "STAT+: Treeline expands Series A another $200 million",
-        "link": "https://www.statnews.com/2025/09/04/biotech-news-treeline-atlas-sanofi-pfizer-agios/?utm_campaign=rss",
-        "source": "STAT News Pharma",
-        "summary": "Plus more biotech news from The Readout newsletter.",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "fab0679a19ce15348633298dea30027b",
-        "type": "crl",
-        "date": "2025-09-04T13:23:32.000Z",
-        "title": "FDA Announces Real-Time Release of Complete Response Letters, Posts Previously Unpublished Batch of 89",
-        "link": "http://www.fda.gov/news-events/press-announcements/fda-announces-real-time-release-complete-response-letters-posts-previously-unpublished-batch-89",
-        "source": "FDA Press Announcements",
-        "summary": "The U.S. Food and Drug Administration today announced that it will release future complete response letters (CRLs) promptly after they are issued to sponsors.",
-        "severity": 9,
-        "status": "new"
-      },
-      {
-        "id": "d59b8fd97948b89b5bbfeb278fd4a9f1",
-        "type": "regulatory_news",
-        "date": "2025-09-04T12:58:36.000Z",
-        "title": "STAT+: Pharmalittle: We’re reading about FDA and Covid shots, a Sanofi setback, and much more",
-        "link": "https://www.statnews.com/pharmalot/2025/09/04/pfizer-bourla-trump-covid-vaccines-nobel-sanofi-eczema-amneal-contamination-novartis-argo-cardiovascular-jobs-layoffs-fda-prasad/?utm_campaign=rss",
-        "source": "STAT News Pharma",
-        "summary": "FDA memos show that the agency’s vaccine chief overruled staff scientists who favored widespread access to Covid shots",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "242e13e0b988c56448a9571f0c2930ea",
-        "type": "regulatory_news",
-        "date": "2025-09-04T11:00:00.000Z",
-        "title": "STAT+: Biotech VC raises $400 million ‘opportunity’ fund in sign of possible industry rebound",
-        "link": "https://www.statnews.com/2025/09/04/atlas-venture-biotech-opportunity-fund/?utm_campaign=rss",
-        "source": "STAT News Biotech",
-        "summary": "Prominent biotech VC firm Atlas Venture has another $400 million to invest in drug companies.",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "108fb774abb29d9a4ba979b2fa3dff6c",
-        "type": "regulatory_news",
-        "date": "2025-09-04T10:33:01.000Z",
-        "title": "STAT+: Sanofi shares drop after disappointing trial results",
-        "link": "https://www.statnews.com/2025/09/04/sanofi-amlitelimab-immunology-atopic-dermatitis-eczema/?utm_campaign=rss",
-        "source": "STAT News Pharma",
-        "summary": "Sanofi shares slid Thursday after the company reported underwhelming results from a closely watched trial in the skin condition atopic dermatitis.",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "07be0ffc44cf2d4001cc69f60a8febf3",
-        "type": "regulatory_news",
-        "date": "2025-09-04T10:30:00.000Z",
-        "title": "STAT+: Is biotech back? Don’t jinx it, but the signs are encouraging",
-        "link": "https://www.statnews.com/2025/09/04/biotech-back-encouraging-signs/?utm_campaign=rss",
-        "source": "STAT News Biotech",
-        "summary": "Is biotech back? Industry stocks, collectively, return to positive territory for the year.",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "397954dc918c1239c36f41a97ef0020e",
-        "type": "crl",
-        "date": "2025-09-04T04:00:00.000Z",
-        "title": "FDA Announces Real-Time Release of Complete Response Letters, Posts Previously Unpublished Batch of 89 - fda.gov",
-        "link": "https://news.google.com/rss/articles/CBMi4AFBVV95cUxNVFdoVlBOSnBCeWZqcUs5by1MMXJwU29qMUlEelRwRFZXYk0yUUlrQmpPSmUtb0ZkNVU0SlRHeVk0bjNjbDRibVNKeTRyX3NmMU41UjREQ1NwQ1N4MC04WXBTRDZwelAydml6Q0RPV2hkME5paWxEWXlFOVR1dXBxWGlZRG9HMVVFeXJkT0NaOUdXSkNjQW90OTRVemszYm9BcUlsNmNXX01xRXBJZzhyX0dnNEltRkVtUnFoakxrSFdWS20yMFZvVzJyOG1BUTM3bE5QMEcyVVFnOU1NenM4Uw?oc=5",
-        "source": "Google News - FDA Warning Letters",
-        "summary": "FDA Announces Real-Time Release of Complete Response Letters, Posts Previously Unpublished Batch of 89  fda.gov",
-        "severity": 9,
-        "status": "new"
-      },
-      {
-        "id": "5eab27fc10d61018fa29855d281dbfdc",
-        "type": "regulatory_news",
-        "date": "2025-09-03T20:54:12.000Z",
-        "title": "STAT+: Amneal Pharma is scolded by FDA for using contaminated bags for a sterile injectable drug",
-        "link": "https://www.statnews.com/pharmalot/2025/09/03/amneal-infusion-sterile-epidural-injectable-fda-contamination/?utm_campaign=rss",
-        "source": "STAT News Pharma",
-        "summary": "A pharmaceuticals company relied on contaminated bags for a sterile injectable drug, among other infractions, the FDA found.",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "4f6cc22fe7da3f0dcbcde68b7afcba7f",
-        "type": "regulatory_news",
-        "date": "2025-09-03T17:59:25.000Z",
-        "title": "FDA Advances Rare Disease Drug Development with New Evidence Principles",
-        "link": "http://www.fda.gov/news-events/press-announcements/fda-advances-rare-disease-drug-development-new-evidence-principles",
-        "source": "FDA Press Announcements",
-        "summary": "FDA advanced Rare Disease Evidence Principles (RDEP) to provide greater speed and predictability for the review of therapies intended to treat rare diseases with very small patient populations with significant unmet medical need and that are driven by a known genetic defect.",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "8e4fa59dd9abc97d74e30fc97c16e666",
-        "type": "regulatory_news",
-        "date": "2025-09-03T16:03:08.000Z",
-        "title": "STAT+: Why biotech stocks did unusually well yesterday",
-        "link": "https://www.statnews.com/2025/09/03/biotech-news-xbi-index-acip-rsv-gilead/?utm_campaign=rss",
-        "source": "STAT News Pharma",
-        "summary": "And more biotech stories brought to you by The Readout.",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "cb5fce0faad2488edefd78bc84504128",
-        "type": "regulatory_news",
-        "date": "2025-09-03T15:53:06.000Z",
-        "title": "Patient Engagement Collaborative",
-        "link": "http://www.fda.gov/patients/learn-about-fda-patient-engagement/patient-engagement-collaborative",
-        "source": "FDA CBER Biologics",
-        "summary": "The Patient Engagement Collaborative (PEC) is an advancement in the FDA’s efforts to strengthen its relationship with patient communities and is being coordinated by the FDA’s Public Engagement Staff.",
-        "severity": 5,
-        "status": "new"
-      },
-      {
-        "id": "e150518909de6fb8370dbddabc0f929a",
-        "type": "recall",
-        "date": "2025-09-03T15:26:00.000Z",
-        "title": "Endico Potatoes Inc. Recalls 2.5lb Bags of Frozen “Peas And Carrots” and “Mixed Vegetables” Because of Possible Health Risk - fda.gov",
-        "link": "https://news.google.com/rss/articles/CBMi-wFBVV95cUxPeVU5TjBJMEMwSlUxLU5xODJHZDU1RlJyVjVZRFA4Z0hVZ3NBNUhOOVNXbXJaM3ladTFpS1h0UDJJWXdOakx1RThaVnhPeEcwbDBoUjAtLXY4aXBKTHVuSDYtU2tTMnlsUDgtMUxxWjVsVVlLUTc1UURzSERDR3piNGY3dFVFWEtyNVJucXkybzd4c3lyWk10b1ZwdFFOUm1aYlhjZnZVZ041dzdVTkdiZnVaYXc1dVFGaG9fUUFkRVJNNEJTRmNJb2hvVzBmRnlNa1Z1WXBTUi1JRllaRXZyQnUtcHZPdWhqT0xtaHc2N2VkcHBmSldXYk1aUQ?oc=5",
-        "source": "Google News - FDA Warning Letters",
-        "summary": "Endico Potatoes Inc. Recalls 2.5lb Bags of Frozen “Peas And Carrots” and “Mixed Vegetables” Because of Possible Health Risk  fda.gov",
-        "severity": 7,
-        "status": "new"
-      },
-      {
-        "id": "bb30618a7a5b0c0e7401f1fc69ae35ca",
-        "type": "regulatory_news",
-        "date": "2025-09-03T15:10:19.000Z",
-        "title": "STAT+: Pfizer’s CEO defends Covid vaccines, suggests Trump may deserve a Nobel Peace Prize",
-        "link": "https://www.statnews.com/2025/09/03/pfizer-responds-trump-covid-vaccine-safety-effectiveness/?utm_campaign=rss",
-        "source": "STAT News Pharma",
-        "summary": "Pfizer CEO Albert Bourla defended the development of Covid vaccines and suggested President Trump may deserve a Nobel Peace Prize because of Operation Warp Speed.",
-        "severity": 5,
-        "status": "new"
       }
     ],
     "products": [],
@@ -21705,7 +21705,7 @@
     "risk_score": 0,
     "compliance_score": 100,
     "response_times": [],
-    "last_updated": "2025-09-09T00:40:43.192Z",
+    "last_updated": "2025-09-09T12:07:54.353Z",
     "first_seen": "2025-09-09T00:18:57.805Z"
   }
 ]

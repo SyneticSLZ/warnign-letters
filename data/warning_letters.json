@@ -1,6 +1,6 @@
 [
   {
-    "id": "1a0d8e1f05ad8a2fba28f6123a63f7d7",
+    "id": "4c0f25daa5a229aa14a042a72e05b568",
     "title": "Complete Response Letter, Warning Letter and Shareholder Lawsuit Follow FDA Data Integrity Findings - JD Supra",
     "link": "https://news.google.com/rss/articles/CBMiigFBVV95cUxQUGhhVWRtUDA3TEtVa0p6VElTMGE1eXNMcl9mMG1fY3FsdU1xSFdIODBGNWdMVlUtekUxUVFDbFVtZmpxVTF5WVdEblE0MTI0aFllWHJ2ZEM0UkhRcWNYRUdwbTlibUlJUzdPMmEwOUFRdWlTVXZGc2VMa0tvS3NaRXhRRHM4SGQwZGc?oc=5",
     "date": "2025-01-15T08:00:00.000Z",
@@ -18,10 +18,10 @@
     "priority": 3
   },
   {
-    "id": "4d0dcaf33ffbcfd5b7cbbd35e6b1047d",
-    "title": "Trew Balance",
-    "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/trew-balance-709880-08252025",
-    "date": "2025-09-09T00:40:22.250Z",
+    "id": "336012dc3d4ead797a5ed9b091ee24a9",
+    "title": "Life Enthusiast Co-op",
+    "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/life-enthusiast-co-op-709315-08252025",
+    "date": "2025-09-09T12:07:38.443Z",
     "dateFormatted": "09/09/2025",
     "source": "FDA Website Direct",
     "sourceCategory": "official",
@@ -35,10 +35,10 @@
     "priority": 1
   },
   {
-    "id": "08f2933e9062ca81d28481366b8d828e",
-    "title": "Homeopathic Educational Services dba Homeopathic Family Medicine",
-    "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/homeopathic-educational-services-dba-homeopathic-family-medicine-708635-08252025",
-    "date": "2025-09-09T00:40:22.250Z",
+    "id": "3421d55eb41bf747056503047b833183",
+    "title": "Green Vitality dba Gr33n",
+    "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/green-vitality-dba-gr33n-710151-08252025",
+    "date": "2025-09-09T12:07:38.442Z",
     "dateFormatted": "09/09/2025",
     "source": "FDA Website Direct",
     "sourceCategory": "official",
@@ -52,95 +52,10 @@
     "priority": 1
   },
   {
-    "id": "978238707f9574a066fb11869a7250f0",
-    "title": "Mel Honey US",
-    "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/mel-honey-us-709535-08252025",
-    "date": "2025-09-09T00:40:22.250Z",
-    "dateFormatted": "09/09/2025",
-    "source": "FDA Website Direct",
-    "sourceCategory": "official",
-    "sourceType": "warning_letter",
-    "summary": "",
-    "company": "TBD",
-    "types": [
-      "warning_letter"
-    ],
-    "severity": 8,
-    "priority": 1
-  },
-  {
-    "id": "a89b8d6ee2ccff071fdac65438e63739",
-    "title": "chillzoneusa.com",
-    "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/chillzoneusacom-715556-08272025",
-    "date": "2025-09-09T00:40:22.249Z",
-    "dateFormatted": "09/09/2025",
-    "source": "FDA Website Direct",
-    "sourceCategory": "official",
-    "sourceType": "warning_letter",
-    "summary": "",
-    "company": "TBD",
-    "types": [
-      "warning_letter"
-    ],
-    "severity": 8,
-    "priority": 1
-  },
-  {
-    "id": "9e96eca4059582c56d1b089a87a9ad3a",
-    "title": "Synergy Animal Products, Inc.",
-    "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/synergy-animal-products-inc-712860-07162025",
-    "date": "2025-09-09T00:40:22.249Z",
-    "dateFormatted": "09/09/2025",
-    "source": "FDA Website Direct",
-    "sourceCategory": "official",
-    "sourceType": "warning_letter",
-    "summary": "",
-    "company": "TBD",
-    "types": [
-      "warning_letter"
-    ],
-    "severity": 8,
-    "priority": 1
-  },
-  {
-    "id": "6b77fc3ef2be9904babce4a27e720c46",
-    "title": "Wisconsin Pharmacal Company, LLC",
-    "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/wisconsin-pharmacal-company-llc-710329-08222025",
-    "date": "2025-09-09T00:40:22.249Z",
-    "dateFormatted": "09/09/2025",
-    "source": "FDA Website Direct",
-    "sourceCategory": "official",
-    "sourceType": "warning_letter",
-    "summary": "",
-    "company": "TBD",
-    "types": [
-      "warning_letter"
-    ],
-    "severity": 8,
-    "priority": 1
-  },
-  {
-    "id": "51ab93c65b7137af4c5f9749f08e1725",
-    "title": "Supply Center USA",
-    "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/supply-center-usa-710859-08252025",
-    "date": "2025-09-09T00:40:22.249Z",
-    "dateFormatted": "09/09/2025",
-    "source": "FDA Website Direct",
-    "sourceCategory": "official",
-    "sourceType": "warning_letter",
-    "summary": "",
-    "company": "TBD",
-    "types": [
-      "warning_letter"
-    ],
-    "severity": 8,
-    "priority": 1
-  },
-  {
-    "id": "d07702265afd81b74523ef7ff0f390a2",
+    "id": "52f4ab505441dcc29dba86b4a15142ea",
     "title": "ejuices.com",
     "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/ejuicescom-715645-08272025",
-    "date": "2025-09-09T00:40:22.248Z",
+    "date": "2025-09-09T12:07:38.442Z",
     "dateFormatted": "09/09/2025",
     "source": "FDA Website Direct",
     "sourceCategory": "official",
@@ -154,10 +69,10 @@
     "priority": 1
   },
   {
-    "id": "142720e6c7550bfed8bc6d5fcf01599d",
-    "title": "Chromatography Institute of America dba Compounder’s International Analytical Laboratory",
-    "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/chromatography-institute-america-dba-compounders-international-analytical-laboratory-708944-08202025",
-    "date": "2025-09-09T00:40:22.248Z",
+    "id": "597135f53ab8bb3b4cc47e416c6857a0",
+    "title": "HS GLOBAL DISTRIBUTION LLC, d/b/a O&Z WHOLESALE",
+    "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/hs-global-distribution-llc-dba-oz-wholesale-715189-08282025",
+    "date": "2025-09-09T12:07:38.442Z",
     "dateFormatted": "09/09/2025",
     "source": "FDA Website Direct",
     "sourceCategory": "official",
@@ -171,10 +86,10 @@
     "priority": 1
   },
   {
-    "id": "04a607730641a2542d66f094ce637f52",
+    "id": "1d6a27b48cff53d289cc33b5a3fae8fc",
     "title": "Amneal Pharmaceuticals, LLC",
     "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/amneal-pharmaceuticals-llc-709894-08272025",
-    "date": "2025-09-09T00:40:22.224Z",
+    "date": "2025-09-09T12:07:38.442Z",
     "dateFormatted": "09/09/2025",
     "source": "FDA Website Direct",
     "sourceCategory": "official",
@@ -188,7 +103,92 @@
     "priority": 1
   },
   {
-    "id": "048a7a51324b9371444a738e55a81d25",
+    "id": "2de29cd7c007a5025d1067c379c96887",
+    "title": "My Holistic Honey c/o Shenzhen Qanhai Wanb Express Supply Chain Co., LTD",
+    "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/my-holistic-honey-co-shenzhen-qanhai-wanb-express-supply-chain-co-ltd-712052-08252025",
+    "date": "2025-09-09T12:07:38.442Z",
+    "dateFormatted": "09/09/2025",
+    "source": "FDA Website Direct",
+    "sourceCategory": "official",
+    "sourceType": "warning_letter",
+    "summary": "",
+    "company": "TBD",
+    "types": [
+      "warning_letter"
+    ],
+    "severity": 8,
+    "priority": 1
+  },
+  {
+    "id": "9fafeb8e6a7ef4a54cbdd6279a2ba1d4",
+    "title": "Mel Honey US",
+    "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/mel-honey-us-709535-08252025",
+    "date": "2025-09-09T12:07:38.441Z",
+    "dateFormatted": "09/09/2025",
+    "source": "FDA Website Direct",
+    "sourceCategory": "official",
+    "sourceType": "warning_letter",
+    "summary": "",
+    "company": "TBD",
+    "types": [
+      "warning_letter"
+    ],
+    "severity": 8,
+    "priority": 1
+  },
+  {
+    "id": "6ba4d152e5315f35e93c653927468867",
+    "title": "Supply Center USA",
+    "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/supply-center-usa-710859-08252025",
+    "date": "2025-09-09T12:07:38.441Z",
+    "dateFormatted": "09/09/2025",
+    "source": "FDA Website Direct",
+    "sourceCategory": "official",
+    "sourceType": "warning_letter",
+    "summary": "",
+    "company": "TBD",
+    "types": [
+      "warning_letter"
+    ],
+    "severity": 8,
+    "priority": 1
+  },
+  {
+    "id": "299f46a6a945d7c5895b5eaf5bef48a0",
+    "title": "chillzoneusa.com",
+    "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/chillzoneusacom-715556-08272025",
+    "date": "2025-09-09T12:07:38.441Z",
+    "dateFormatted": "09/09/2025",
+    "source": "FDA Website Direct",
+    "sourceCategory": "official",
+    "sourceType": "warning_letter",
+    "summary": "",
+    "company": "TBD",
+    "types": [
+      "warning_letter"
+    ],
+    "severity": 8,
+    "priority": 1
+  },
+  {
+    "id": "9b49fd47e8791688c320ed79b633917a",
+    "title": "Wisconsin Pharmacal Company, LLC",
+    "link": "https://www.fda.gov/inspections-compliance-enforcement-and-criminal-investigations/warning-letters/wisconsin-pharmacal-company-llc-710329-08222025",
+    "date": "2025-09-09T12:07:38.357Z",
+    "dateFormatted": "09/09/2025",
+    "source": "FDA Website Direct",
+    "sourceCategory": "official",
+    "sourceType": "warning_letter",
+    "summary": "",
+    "company": "TBD",
+    "types": [
+      "warning_letter"
+    ],
+    "severity": 8,
+    "priority": 1
+  },
+  {
+    "id": "e864a9f4c09176ac29d054d78947cef8",
     "title": "Staying Ahead of Enforcement: Executive Strategies To Prevent FDA Warning Letters - Med Device Online",
     "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxOMlh0TnFnZkd6d2hLOEF3dUhfN1RKQmZQQ3J0UGl6SXdraUhiWXZYd2JZMVltRzRJRkZXUWQ0NU5ncE1UcUIyalVEcU1sQnpfQXdYZEdONzhySk9uMUJvakRGNmhtd0xYVGhMbXA4WnJmZ0RaWWF4ZE1IaVhQaEhiZmFrZEFUN0ZMcHdKdGxIdzdmY29qRHJpRXdLcGJ6VVFzWWgzd1J6VXdCWF9fVnZJdzdFZjZxVU8wMnRSellR?oc=5",
     "date": "2025-08-19T07:00:00.000Z",
@@ -205,7 +205,7 @@
     "priority": 3
   },
   {
-    "id": "43594fcdf2b2363a2830a1f27d998530",
+    "id": "30acd03bc9074176c587caab1506f5ca",
     "title": "The Warning Letter Wake-Up Call In 2025: What FDA Enforcement Is Really Telling Us - Med Device Online",
     "link": "https://news.google.com/rss/articles/CBMiuAFBVV95cUxPSWFHZV9SUHFlSUYzbS1VQVlBdURxT3dXR0k5QzlYOF9fM3VzOVZ1S250V290cE9FQ21Oa1liS2VWZkliVlVRYUJGcUhJZVFpOE1pWTNpVHZXLUg1TTJSaVU2QlBpWVpTUkZJQmVVN0NsSDBnbDNZLVJZRTRodDRWV1pLZ1E0WVZUNVhuQmdUTFpxd0QwSWd4Q3p2SWlXcm5XMWRMQzFKODBteDZMS0MtRWNLZFV3MXpW?oc=5",
     "date": "2025-08-12T07:00:00.000Z",
@@ -222,7 +222,25 @@
     "priority": 3
   },
   {
-    "id": "edc575e18c858ea7ce44e9c8f326b8bc",
+    "id": "55eb8db3f36fb36af2e4de5c62e439ca",
+    "title": "QuVa Pharma, Inc. Sugar Land, TX. Untitled Letter issued 06/18/2025",
+    "link": "http://www.fda.gov/about-fda/fda-commissioner/quva-pharma-inc-sugar-land-tx-untitled-letter-issued-06182025",
+    "date": "2025-08-11T13:13:34.000Z",
+    "dateFormatted": "11/08/2025",
+    "source": "FDA OII FOIA Electronic Reading Room",
+    "sourceCategory": "official",
+    "sourceType": "foia",
+    "summary": "Task Description Request Please post to the OII FOIA Electronic Reading Room\nRecord Date 06/18/2025\nShort Title (70 char) QuVa Pharma, Inc. Sugar Land, TX. Untitled Letter issued 06/18/2025\nFEI Number 3012053582\nFirm Name QuVa Pharma, Inc\nRecord Type Untit\nState TX\nEstablishment Type Outsourcing Fac",
+    "company": "TBD",
+    "types": [
+      "warning_letter",
+      "opdp"
+    ],
+    "severity": 8,
+    "priority": 1
+  },
+  {
+    "id": "3fa554304859ed660b928225cf7873d7",
     "title": "How to Avoid FDA Warning Letters - Quality Digest",
     "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxPUGFtcW8tNVkzQlRvell6cmZ6YU9IWlJYTkV4OHdINlcxTGRudlI1RnFLRWpXbjhYTU9fX25RbFd2UEp4dHRLcGQ2OXczNXE3eS1IWWhGMXVYRlZPS0xHOHZyVDYxQVdma19fSXBEYjhzSl9fSS1UR2dMLXJCREhReXlST2tBLTQxT2dDNGF4Z21SXy01UHZzN0R5Y05GcTI5a3Z3?oc=5",
     "date": "2025-06-17T07:00:00.000Z",
@@ -239,7 +257,7 @@
     "priority": 3
   },
   {
-    "id": "89b68ca47631a755c8d1c6279de74bfb",
+    "id": "f491c4346f1211eea7f5e896e70a6538",
     "title": "India's Aspen Biopharma Labs hit with FDA warning letter citing infrastructure, contamination and records problems - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMiwwFBVV95cUxPWjNlOVMwM2ZqWHVoYWFaRHFrYzd5bGlvNDZiTkYyTGNiaF9odWpQSGJ5RUIwNXI1RTUyRjhCZ2ZLeVVhLUdhRFppeE9XTm1RZjV5aWZTSjBrME9Mc210UXhTRzNFamlpWHYtdHFGWklpYm9qbklkdUFmSHF0NFN2RzhRaTY1T3JFNjlTSExackZHLXJMVVNYdl9zUmF1VldyS3dCNXJjVmpsZnJYZXA1a1N6dVdrZ3NUT1hGNnAxX1BzR0E?oc=5",
     "date": "2025-03-26T07:00:00.000Z",
@@ -256,7 +274,7 @@
     "priority": 3
   },
   {
-    "id": "1666eef3444a72317e0cec4d86937821",
+    "id": "c18b8c3e5d9276ca974851c56d92a50d",
     "title": "Lytgobi Untitled Letter - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1hbkNVUXl3dGVocUdqdjhfYlFRcnl1ODBPaUFsbTkwRjRaelRCWVJmWjhTcFd6T2FqemZFOS1reTMwb1lpN0RvOWVlai0tdGF1VGMw?oc=5",
     "date": "2025-03-21T07:00:00.000Z",
@@ -274,7 +292,7 @@
     "priority": 3
   },
   {
-    "id": "251f7d8513088a699b5afe38c229478e",
+    "id": "100f569412f86b86b8a236a25728384f",
     "title": "Dexcom receives warning letter based on FDA inspections of 2 plants - MedTech Dive",
     "link": "https://news.google.com/rss/articles/CBMidEFVX3lxTE1kZDFOS1BEdVY5c3h0X3NBWWxRdWhpUW1VTWRldDRSVXloWDAyUTdGUGZHcDZ0YlFhLVF6TF9vVndpaXVQR3gySWNKeXlFR0t3MG9mRU1uMzRQLXcxcngxbHkwZVZzV2FwekFnZ3JfeEdfeW1t?oc=5",
     "date": "2025-03-10T07:00:00.000Z",
@@ -291,7 +309,7 @@
     "priority": 3
   },
   {
-    "id": "9bef7702f58f2cf185b3b608dc43c93e",
+    "id": "a3c26a41596d63c7d5b2e0b3ea8a0a7d",
     "title": "FDA hits pair of Indian API makers with warning letters, import alerts - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMimgFBVV95cUxOcXZfQ0h3UUNRNHloVkowSHFBa1hyblNzMklrdGloN3NtakVTbDhlSjFVYXlxVzR2YmFVaVEyWWwzazQ4dU84RGxGd3hnYWxMVUFmNGNtbEM0T215cTEzd2NtSGZ6TE92b3ZmWGZyUlVkaHVQVktpRDBWWEx5R0lNNzh3ZWExX2NfR1o2OWw0dDlKZGx6bW9rd3BB?oc=5",
     "date": "2025-02-20T08:00:00.000Z",
@@ -309,7 +327,7 @@
     "priority": 3
   },
   {
-    "id": "84acc839fc0e0afd68de4ecb2c30f1b9",
+    "id": "804bbf12eff659be74e8474c6a1572a9",
     "title": "FDA slaps China-based API makers with separate warning letters outlining quality, testing shortfalls - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOckJqX1lIckFjTEQ1c3R3YWRlZnp4cVFfb2VtVVRoUC1SeTVMMGxFSGI3WEhXUUR1c0lVN0JHU2JKdGd0Zml6TjhXNy1wZ0hNME85d0cxaFZTemc5dXVTVS10RE9iN1FTUWprRWk0T0ZPRDR4Y3FIQWN5ZVM3Q2Q1dURDQzVTc3lhWVN1V0xxMTktRlhIM3VOSC1tdXNuRWR5UTh5TTBDb1VrOWx2bFpPOEV5TDRKRVVxSGJGWU5HSVJIajRt?oc=5",
     "date": "2025-02-11T08:00:00.000Z",
@@ -326,7 +344,7 @@
     "priority": 3
   },
   {
-    "id": "8e201fecc858aaada9c91f577e57d5f4",
+    "id": "c9a2a45a10f66431321fe3dde90f060b",
     "title": "Hemady Untitled Letter - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5kdEExSnlhODhtc0RISHdGRFNuZjlyNHNRUVcweUFTNmltY1BzXzlmV05qZkU3S1kydWwzWWEtb3BQLTNVTDQ3VnB5aFlJZFNCeU5j?oc=5",
     "date": "2025-02-03T08:00:00.000Z",
@@ -344,7 +362,7 @@
     "priority": 3
   },
   {
-    "id": "59a4d3d69ae15d7aac367ada0615c2cb",
+    "id": "3fcd9419252fdbf4a1ee137ae9e6510c",
     "title": "FDA warning letter reveals quality control, data integrity issues at Viatris plant in India - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMiwgFBVV95cUxNLVZtZVpSekVIb2VmQXJFQzJNamNBc3Z0ek83MkNMdHp3cHlhQjhuN0NIVlFNR1pxX25FR2xkNG01X0R4cjdINUNSZGZCd3llem5fWjl0S2xHVlRVaDdjYzFoVWRjYUFhRnc3alVPa193RWVNY3BjZFVzOVQwNDQ3VkVJNUVpSWNpcVNtT1A1cDZJakVqbm4xdWZtQnVJMUJETE4yM2VtRDJrdUVwWVRJQ3FNcHpCcTBteUtZYld6Vjk0Zw?oc=5",
     "date": "2025-01-06T08:00:00.000Z",
@@ -361,7 +379,7 @@
     "priority": 3
   },
   {
-    "id": "33b104eadc1fdf35ac456a99d8cb3578",
+    "id": "f03d382892f7413ff4614ad0b3e77fec",
     "title": "Viatris says India plant hit with FDA warning letter, import ban on 11 products - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMirgFBVV95cUxQU1djX0V1eHMxNzQxTnRva3Zhaldfa2VxN2Z3ckFTS20waFh3TlhfQ1ZoMnlod3pKZzJRSzdZZFA3WUhlWjZ6UlBub01SRFNyc284aTJPN0xNS3locmtnamF3SkVSSEVLdTFXOFRLTF9sYkYzYlNlQkJoY3JNS3h4R0RfY2Y2ekhsVnc2eW4zQ19wRDBrN3MtYW5laWVNTXE2N2g1RHVzaE1aNkdWWXc?oc=5",
     "date": "2024-12-23T08:00:00.000Z",
@@ -379,7 +397,7 @@
     "priority": 3
   },
   {
-    "id": "845ce3bf877a4e58dc68ce9e40d60a1c",
+    "id": "ac380bda3e541116eeead63dd3db1da0",
     "title": "Krazati Untitled Letter Close-out - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9qUEFwVmhXTDdZVjZqSmRXU2NwNk45MlpFTF9JQzdGeEFwUU9CQXJXS05tMGxMcTRRUXhlNEc0Q1NpMmZKZGVMTTd2VndlcVlUc2Yw?oc=5",
     "date": "2024-12-11T08:00:00.000Z",
@@ -397,7 +415,7 @@
     "priority": 3
   },
   {
-    "id": "cdaf0b8a54c14b9997a75e98de359c89",
+    "id": "deec9e2849613b9e3d17c7770b4338a5",
     "title": "Xeomin Untitled Letter - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE05S0tqazhsQklPTVhoYm1sVWVISXJoQXVjUFhETWlpTHZlMDR4R3pJNENqS2pCWmRtcmZRUlQ2MDRjbzk1dFR1Q1pDUVF0bDROeFo0?oc=5",
     "date": "2024-10-31T07:00:00.000Z",
@@ -415,7 +433,7 @@
     "priority": 3
   },
   {
-    "id": "35b76c1f7c822d5604c4c3e238ac2d85",
+    "id": "545145cf3a72029e94a2a3a315da0919",
     "title": "Ubrelvy Untitled Letter Close-Out - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1KRUhxeG5PM0xrZHRsQnQxOFYyc0xQNWNUNVdmYjB4MzE3OGZHZEsxV1BxQjRYenptTnNleXpNYjUwelo0OUdQVk9ET1lQaWxCc2U0?oc=5",
     "date": "2024-10-30T07:00:00.000Z",
@@ -433,7 +451,7 @@
     "priority": 3
   },
   {
-    "id": "64305409d3a9d0df549a85ccebae3f5a",
+    "id": "6e582469d0a4e9139bc8e0bcc91dd657",
     "title": "Auvi-Q Untitled Letter Close-Out - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFA1NzJybGdldjd1UVhCcmlrOGtieU1wTEJPUlFtR2hYTHItQTJER3VXNXJjeDMtVWlUbGJHcXpoclZjV0pqcUVGSTRlVHI5R0JwazNB?oc=5",
     "date": "2024-09-27T07:00:00.000Z",
@@ -451,7 +469,7 @@
     "priority": 3
   },
   {
-    "id": "47cefa4586c9aa088988123cdef3a1e0",
+    "id": "3657b2be2c5f80ec51c6e863f386ba73",
     "title": "India's Zydus hit with warning letter as FDA flags glass contamination concerns and more - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxPdUJnWl9iUGV2TDhjaVVORHBacVJMdlFzMUYxQ0tYWFJucGdxNE5hQU9NTWhYNUxub21pdEpzTF9CeWMwcldpd3h1a2tyanY4U1d1VVBJSTFpNVdiU3h2QUdTOTFGMVZVUmVLS2MtYjREMTZQdWtXV3hubkRwLTh4RjdEclpDcmhST01FQ0lleVhkdkw2NzJpc0FGUjNoenVfSVp6ZWdKbDhLRVhhSERNcE9oaw?oc=5",
     "date": "2024-09-11T07:00:00.000Z",
@@ -468,7 +486,7 @@
     "priority": 3
   },
   {
-    "id": "e3fde6a9d9b1523848e1f8eaa2ef61cc",
+    "id": "5ae7713da94f5a5c511860ae02d9a49a",
     "title": "FDA scrutiny of India’s Zydus results in warning letter - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMilgFBVV95cUxPRXZjSjVUeGNPbmx2ZFRReEFsTXVwcF9UeU1janhzR1g1LWdaV0hMRGtoaVdUUVhUYldkdU1iekxmUU5Fd1NPeWZtOW1YVTlSWDh1NlRKZW1lb2N3YVNJMFZfRmZ5ajNmR3RfaDFYS3hNb2RsamNuMTZiRjFrQUJlMkNjVEJFNjVsWGNGMGpFMWp2RDhMRnc?oc=5",
     "date": "2024-09-03T07:00:00.000Z",
@@ -485,7 +503,7 @@
     "priority": 3
   },
   {
-    "id": "c923d0b59e753f59a137dc7913e64bc5",
+    "id": "a2099fe622fd69599b1e58102014f8b4",
     "title": "Untitled Letter for Ubrelvy - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9yalJfd1ZKUUZ3cDNKbjZCdjlxb3kzZEgyWkVuLXM1UGY0UWRNS05fM2c3Zk1neXFCT1JuVDI5bllBNmJTakZSLWRvdGJQNzMyekI4?oc=5",
     "date": "2024-08-29T07:00:00.000Z",
@@ -503,7 +521,7 @@
     "priority": 3
   },
   {
-    "id": "d3a0cf25f1f4baeb241b753e4c72e966",
+    "id": "766219360550db842fc8d14fb08aac8b",
     "title": "Untitled Letter Krazati - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9lRk91bnpySjZ5ZnJEQWlzOHNxSm9uS01BVGVrVVFuZVJhTGhVYU1XYXpCU2VrclZCcnRMZm5rSWc0aktIMHZiZ1pLWDRqNWExbXdZ?oc=5",
     "date": "2024-08-01T07:00:00.000Z",
@@ -521,7 +539,7 @@
     "priority": 3
   },
   {
-    "id": "103f50aa792979ba73fcb7a4a67c7713",
+    "id": "0dad9ede689e33b0fee1441e8ac20c25",
     "title": "Untitled Letter Auvi-Q - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE12dkF5Vl9GT0NTeFhHNHNmSV9hNDZCUnBkSWlzazRBWUtVcWs0LV9KUjVlTmwzdUxkX2R2a0xUOFhZWUhXdXRQRkpsZllrblRpRHV3?oc=5",
     "date": "2024-07-17T07:00:00.000Z",
@@ -539,14 +557,14 @@
     "priority": 3
   },
   {
-    "id": "3f45056a5899da4762bca55eefd5c08a",
+    "id": "77f350078253cfcfe3c0b9b9befabcec",
     "title": "FDA Issues Warning Letters to 14 Online Retailers for Selling Unauthorized E-Cigarettes - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxPdU1HSlNGLXo1dVlyX01Ub1Bqam9zNUcxc2lncU9oOWVOdkE2WXhRT3Z4eEhRQWRUU0RxUTBWbEpSUmtkRFpkRmo5LXRUT1BVRmtNRG1mOF9wSE5aLVNQYkxPNjhDYy03d2JEdlRfZ240ZkVLUGpHbHMxTEx1TEN5NEprRGFmZXIzX2p6eTZjSnU1LWE0SXEwVS15MXZHcWcxSnRTVHdnLUwyZ25SS2F0Q1hUaEFMcWRYSWJIYlR5NUlYaE1LT1N2WGNn?oc=5",
     "date": "2024-05-01T07:00:00.000Z",
     "dateFormatted": "01/05/2024",
     "source": "Google News - FDA Warning Letters",
     "sourceCategory": "google",
-    "sourceType": "warning_letter",
+    "sourceType": "foia",
     "summary": "FDA Issues Warning Letters to 14 Online Retailers for Selling Unauthorized E-Cigarettes  fda.gov",
     "company": "TBD",
     "types": [
@@ -556,7 +574,7 @@
     "priority": 3
   },
   {
-    "id": "d64327721972f898006050ff8fb14037",
+    "id": "8fcf8da078e35e14634e98d74d53f6c6",
     "title": "Import alerts, warning letters, drug recalls — why ‘pharmacy to the world’ is facing US FDA heat - ThePrint",
     "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxOaU00YXdhQnlYNDliTWNUd1lCQ2U0ZC05dE9FS3RxbjVhVnppZWtpLV9QUnJvS3hKajVLQWpWbUczcUxlenlwT3hIR3JYVVFDWFAzeXFjLTVHbXFNZXVfQkZkV1RyODBTMmJnUVZMRnZQUHdYdl9BZTBYM3ZyM1FwbGVWOC1lcG00Qi1MbTJEcUw5OWZpTkpzcVhMYTdOQ3lIWDN5TjdheEpuRUpVdU5zd0tmUVJkX1dYbncwTmJUcnExcG1k0gHKAUFVX3lxTFBVdHRMTGxIV2FmRHBqQjRWUkhfZzh6OG8yVS1nXzY2VDJGcjhlcWxyYkdIX3dzS1czTGoxQ2dvb3ZDUTNHZkdtRnM5V2pYYndIb1g0S1BpWlltdDNwdEdWSmJPWlgxUnY2Q1Bzc19WcUZQTnNUdFFPampfOFdySmYxdnhIQk1IXzdCQkdNVk12ZDEyOGkxVWtCVTRraHlfdm56SE5RVGpjWDBjQWhHcWRBNGFuVUJIM3dqckFucXRDTVVrTWgzTEh0dnc?oc=5",
     "date": "2024-04-23T07:00:00.000Z",
@@ -575,7 +593,7 @@
     "priority": 3
   },
   {
-    "id": "f48cedda7c2b6aafc15af7e21b871a3b",
+    "id": "8cc0d770c7c1e0d640397efb12b7965a",
     "title": "Kisqali Untitled Letter Close-Out - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBDbGloT2FuMEozdXVocG9JVzJSNU5MR2E3TDdNN1R3YjE0S1JJNEZPNTR4UlBYY2p6aWJlcUxLYTlVNkJmYk5GVnJXYjlKX0M2MU53?oc=5",
     "date": "2024-03-15T07:00:00.000Z",
@@ -593,7 +611,7 @@
     "priority": 3
   },
   {
-    "id": "4eea41a7aa0c36ca6642371b18beced8",
+    "id": "1c33a026c08c4a968ce4fdca25d1b168",
     "title": "“Modernized” Food Manufacturing Enforcement: Trends in FDA Warning Letters - Food and Drug Law Institute (FDLI)",
     "link": "https://news.google.com/rss/articles/CBMiowFBVV95cUxNdkRnbllwMnU3bWxjaWFEOEE3TV9hT19oQ2RlNkh0OTBoTzRiZG01clZsWVZfWXB1UHk2SjNOUkNUSEpBcnBJdlB1YjByU3VISlpnY1ZIYWJwMWk1bHJqeUdaQl9CeEE5Q052cXp1dkNPWGV0M09NQ0UxZjEweWtQanZZTGNVN1JtZi1SSDhHZGx3eGx6cGdOQWJhV1habmc2VUFR?oc=5",
     "date": "2024-03-08T08:00:00.000Z",
@@ -610,7 +628,7 @@
     "priority": 3
   },
   {
-    "id": "6236958921eff4716cb349c2da7da3cf",
+    "id": "95c2581b837b449275ef17edd0aaec1a",
     "title": "FDA unleashes multiple warning letters targeting insanitary manufacturing and online sales of unapproved Mounjaro, Ozempic - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPaV9WcHBaQ09CSjBXQlpDMmJyVm9SX0hhU205NlRNUlhNNzFYR3dMcWt3OTRoLUdYd1VlVGUxclNTV1B2N0o2djVIcllXQUgxWEhvZGNsckh2ejNoeFdab1E1c3F6ZXY4UU4zcXpyUTJZUTJFSGJTc3Z0OGlTWF82Y2tOMWFRZTlwaEdDOFJuaU5lRnY4SDRTelVaVnNTX1VrZ2xaU1lDd2tLS2t6RXZMeWxab1hiT0NzcW9JdDlYSm91TlZ5?oc=5",
     "date": "2024-02-14T08:00:00.000Z",
@@ -627,7 +645,7 @@
     "priority": 3
   },
   {
-    "id": "f90493e10e289d7753fd00e5aeeac41c",
+    "id": "f1c56908033188b4446abe999792a971",
     "title": "Issuance of Untitled Letters - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMi2gFBVV95cUxNUEVmaE1sTE92WWpYLXUxSjE1ckxTR2NMbXVVNUNKS2lzTzVVOHpoVHJ5bHpIZDFMNjNLSjI1ZTQ0dDVRbVoydlE4LW96SnVFd2oxalJnM0VGYTdQOU1VR2lGX1k5TWo3UmVUa1JGZWt1bllOcVVRbjZuVFNrUzJZeWZDc0lIbE1VYUhHTTNaOTdYODd4b2JPTE5BQk52NFpKeWV3eW1acTU1Uk1zRUMwS3huR0E2TVlOV29URTl6SFlvbjdZRWJTR0haX1gtZFhRRTZaZndBa2FWQQ?oc=5",
     "date": "2024-02-07T08:00:00.000Z",
@@ -645,7 +663,7 @@
     "priority": 3
   },
   {
-    "id": "c05321a55f71999b7b49cb3707880ace",
+    "id": "a0e0a6e7648bf62e68394ebe2d6e8f31",
     "title": "Untitled Letter Kisqali - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1ycENkVW5IWnZVcVNjZlJ5UGJXOXp1dTkyWUxaelNrXzJsTV9xUnFENDgzNExLcmdkQUV4QlVpMVIwWmVkcTVWbmRSNDU3WnBzc0hJ?oc=5",
     "date": "2024-01-18T08:00:00.000Z",
@@ -663,7 +681,7 @@
     "priority": 3
   },
   {
-    "id": "b348e22488c76f49598784de5db6ac2a",
+    "id": "6c046ba9c8b84ead4c3ab82bb77d772e",
     "title": "Untitled Letter Close-Out Phexxi | January 2024 - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE81dnlKMHUxSko2dFcxZkp0U3c0azd4WGVfQy1Ecmo1aXFsSWJNSkJxUDdPeW9kd3FHV1hDMHl0RGtKaXgxa2xDdUJaMHlLd2p3Rkl3?oc=5",
     "date": "2024-01-05T08:00:00.000Z",
@@ -681,7 +699,7 @@
     "priority": 3
   },
   {
-    "id": "b3c03ee53032d09cbd398fd3ab23c647",
+    "id": "9afdefdea9dd933d938d2acfff5ece78",
     "title": "Untitled Letter Close-Out Rexulti - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBDNENpUzJxVnNRYUVhSkM1bFduRUNxXzlRVDlIY00wdWJtejJNbjBPRXlxVGcyN1YzMEhsaWhSc25xQl9oNTNKRlcxeFNQeWVHSnY4?oc=5",
     "date": "2023-12-20T08:00:00.000Z",
@@ -699,7 +717,7 @@
     "priority": 3
   },
   {
-    "id": "1f5e0d4cbaaefbb8b419979e03c70238",
+    "id": "456f984d3db88aaf07482ef3cd145e7c",
     "title": "Intas Pharmaceuticals Hit with Another FDA Warning Letter, Put on Import Alert - BioSpace",
     "link": "https://news.google.com/rss/articles/CBMipAFBVV95cUxPVVRudEJxcG1NTnJ1c2phcm5nQ3ZDcGRqXzVEeXdXclJMMy1Fendobk1WamNBNDFrZHZRQU9LNWFrRE92TWpUbEhvSS1FTWJCRW9YNFJnamZxN21xcF8tVmdkeFhuNjdyYnpUYkhSaTlTR1YzT3pWSEZnMkNuVWZvWTZsS1M0RkhnRjdjTlJiMG1WMjQ0bUxmMHUtQ05scHRONzVhaQ?oc=5",
     "date": "2023-11-30T08:00:00.000Z",
@@ -717,7 +735,7 @@
     "priority": 3
   },
   {
-    "id": "cc0632d9ef0e299418673cfad100d6d1",
+    "id": "880bb711d3c400cea004497bb55c0f7a",
     "title": "Intas on import alert as FDA flags data manipulation, management failures in warning letter - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMisAFBVV95cUxQLWJaYmJ6bmdjMDU1ZHl4TVU4eWxtcFZwVUhaZnQ2M1BmOEphQ1JFRE82V2NZamFNNVNPUHBNcmZvTDFHbEJkV3NKbzJBN25PTVlaZ2N6OTFZalFmYnA5ai0tcXFnVklLWEtmVjJDRDVEa19mQ2tSMkJQbkhPbmdKME02dWEzc0tfVGVZTU5HbVotTnQzc1A3T3luNkdNbjR0LWFYVnYzUjJ1U1BBZ2s1Rw?oc=5",
     "date": "2023-11-29T08:00:00.000Z",
@@ -735,7 +753,7 @@
     "priority": 3
   },
   {
-    "id": "79b11f4be558c163efdcfaaaab0d8ddf",
+    "id": "a2b97dc6547c33452ebd5c8fd8d70dc0",
     "title": "Untitled Letter Rexulti - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE01TkNQOFZyTXprWkVONXVtYnpiWk03TkMtMnNoUGNJZ3hxSEl6V09XTUtfczJMUFZxMFpwRHFjdFBJWnE3M3hpOVh2Nl9WZURUZjZJ?oc=5",
     "date": "2023-10-31T07:00:00.000Z",
@@ -753,7 +771,7 @@
     "priority": 3
   },
   {
-    "id": "0417f256819c818826df5a981d0a5eba",
+    "id": "a277a723d93821c071727713e716bd5b",
     "title": "Untitled Letter Phexxi - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9TdV92Slg0Sm5rYVdQT2RUQk1VeWVQaWxpLURlQ0E4YURvSjF0YmVOQ1dnaF9DbnhSbEI2dzE3eXNRTDZaTW1iZ0xNXzBTeDNNTm40?oc=5",
     "date": "2023-10-31T07:00:00.000Z",
@@ -771,7 +789,7 @@
     "priority": 3
   },
   {
-    "id": "ad7b0a717f1ba966b333fe92dfea5e3c",
+    "id": "212a55ba6c21ca7284278e0c484e7808",
     "title": "Office of Prescription Drug Promotion Untitled Letters - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMisgFBVV95cUxPbTF2UUdtQmpZempPSVVJZlhlS1BMMmQ4ZHdCRkpVT01KOWJ4ZEpoX00ydGxLcmJTemZTZGRzRFpMQUNaY09ZZ1FHNzFNNVBjUE92ZFNwYXNVRlNuR1pXZFQway1POGhUaTFOcDY0dElHN0Rpb250TDRsM1hidThXb1JPYXB6MmxUc0dQQ2JsY0xuR2VWT09oUG5wemJIS2FJMndUZEZqcTFodXd5YkJoSHZR?oc=5",
     "date": "2023-10-25T20:05:34.000Z",
@@ -789,7 +807,7 @@
     "priority": 3
   },
   {
-    "id": "a1b659c8903f0995b8702c7e44ca8b10",
+    "id": "e60160748eaf1f5ff171192ebeee52d8",
     "title": "Warning Letters and Notice of Violation Letters to Pharmaceutical Companies - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxQOWhBYlN5dHpxRS13ZXBES2QyLXVfRk90WDBxY2pjSGFBSW5Za3JJN2pVNHJORjVRdmRWTXBGLXFpOHE3WUxjU0hzOW43V04tMjFxUWRoUjBsMk1CdWVuZzhVRVd1VHZkNkZaUW5uN0o0QkszU21KMVRLVUYwaDVFLWJzNWt2c2lTa3h2eUhJQnJ0Sy1CQzVvQ0JpQWRMR1JnRWs1QmlvalhNWXp5ZHlBMFFGVy1lTGNOb1l4RUFscw?oc=5",
     "date": "2023-10-25T07:00:00.000Z",
@@ -806,14 +824,14 @@
     "priority": 3
   },
   {
-    "id": "2a82ac4d0b77ffd271d68071d17f98d5",
+    "id": "26b149638ad29b1b1d79f2a5b495c947",
     "title": "FDA Issues Warning Letters to Firms Marketing Unapproved Eye Products - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiugFBVV95cUxOc1VHNmJUR3dFN2lEMWtTeXF5eFduR1hpclZHd21OaHJVXzNKNFhucXdIS19LYng4cDNMMl9jd0pibXpleWFDc0Y4ZHJoSE1WUTBrdUYtcUpIZ1RjUU9iX3dqbEVNRDgxYWNjVDNXaHp4dk9HZmVYSjdrQUw1aUNqS0JYdmk3TnFKal9xa0NwY1gxLTNuN0xtdVJPN0ZPbzFOTTVJZVBpMEFvcFNjVVhBU2lwQUNCanVwRUE?oc=5",
     "date": "2023-09-12T07:00:00.000Z",
     "dateFormatted": "12/09/2023",
     "source": "Google News - FDA Warning Letters",
     "sourceCategory": "google",
-    "sourceType": "warning_letter",
+    "sourceType": "foia",
     "summary": "FDA Issues Warning Letters to Firms Marketing Unapproved Eye Products  fda.gov",
     "company": "TBD",
     "types": [
@@ -823,7 +841,7 @@
     "priority": 3
   },
   {
-    "id": "f7ef429032cb26338385f8bb5e0bead7",
+    "id": "22724957ec4742290f7c4dd7a18d5106",
     "title": "Untitled Letter for Slynd - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBtUmZzU3BteEN5WktDRHJSYU5YNkMwQzIzbUQyY1lUSHhfZGtERnZFMkZVNl85cXBEUWJIR3NmYXRGQXIzeE5UM3NSUlU4LXhDdnVZ?oc=5",
     "date": "2023-08-11T07:00:00.000Z",
@@ -841,7 +859,7 @@
     "priority": 3
   },
   {
-    "id": "0ae1647ab3d9dc2252b4393b83277add",
+    "id": "f2a4c45ddab4a403c652a4de7d119bba",
     "title": "Untitled Letter Close-Out Recorlev - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBFNk5wOW1xS2JHYVBUTFhNWFBqOHY2el9QR2tYVUx0WWtPUGdDMUZMN3hDRWMwM2FnSXdsVktrQkU3QUNZeko5bmlfcnNWQTVWcjFR?oc=5",
     "date": "2023-08-09T07:00:00.000Z",
@@ -859,7 +877,7 @@
     "priority": 3
   },
   {
-    "id": "434d47b11d1705b57fde901339af577a",
+    "id": "5a213c6e97215bd15f2a0bf23d5427d6",
     "title": "Untitled Letter Recorlev - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE1JY2dLc1UwLXlWakpqZUROeVEyU3BFaG9oYkNOelZOblh0eGo2S2xGNFNnaE0xdDN3Q2Y4Sm9QZW9senl4NDZ0NDBTQk9RMGRLUFQ4?oc=5",
     "date": "2023-07-06T07:00:00.000Z",
@@ -877,7 +895,7 @@
     "priority": 3
   },
   {
-    "id": "76f550e8dd6bae861ccaa36d2aa199c1",
+    "id": "e10c92ca9fa67d28d3d5650274a81194",
     "title": "Sun Pharma facility under an import alert handed a warning letter - Endpoints News",
     "link": "https://news.google.com/rss/articles/CBMikwFBVV95cUxORV8yakNTNHpLTi1La05mSEdOSFYzZkw4Q3EtUXlzcDAzdGxhTEpiRk5vbUd2WEVmYVd6N1FMdmU4RlJYT3BXdjRXTldna1k0bVphLXJObzlyTVFINldjMHI2dkFtUXdiOEJsWnNVTGxtQjlScnRaMk9HUnU4YlZOc2tnby1YWHZ6MWlwdUEwQ2lQckk?oc=5",
     "date": "2023-01-11T08:00:00.000Z",
@@ -895,24 +913,7 @@
     "priority": 3
   },
   {
-    "id": "01307e8e2752f43f7635eac7403b9c5b",
-    "title": "FDA Issues Two Warning Letters to Leading Manufacturer of Endoscopes - fda.gov",
-    "link": "https://news.google.com/rss/articles/CBMiygFBVV95cUxQenhLbHFNalU2dmVVakJtYXQ3TF8wT1hvV1BEV0tUWXVXTWM2aEk5Yk1UaERUcmNwTUpkbHFtSGVSWWxDY2lpWksxSW5faFQ5ak1QN1llUzJReFFvUzNtS1VBSkhMOF9BQ2hOMVV6bWU0ekgzeFlENUp2TW9rVlZ5S1lzQmNtV1RRMS1EakVIX3NhMDlBMGJacUZjUjk2Vzh2bzliTDE1Z1ltNV9HdmN3TFVsTnJjTzBocGdrUVVfVTFaTEVJNXRZODZR?oc=5",
-    "date": "2023-01-10T08:00:00.000Z",
-    "dateFormatted": "10/01/2023",
-    "source": "Google News - FDA Warning Letters",
-    "sourceCategory": "google",
-    "sourceType": "warning_letter",
-    "summary": "FDA Issues Two Warning Letters to Leading Manufacturer of Endoscopes  fda.gov",
-    "company": "TBD",
-    "types": [
-      "warning_letter"
-    ],
-    "severity": 8,
-    "priority": 3
-  },
-  {
-    "id": "e11f18da1e08137ea430d83dd654b880",
+    "id": "c949d42c2bc04aad4edbb0c9ac369b9f",
     "title": "Mexico's Glinsa suffers warning letter and import alert after refusing FDA manufacturing inspection - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxPY1NQeEVCRFFGMGdOQXg4R1E4T1pzYmFucmZFZWthX2pvY2I3RTkxQktHTlNSWHRNc2pmbGpEbmVIYUxXUjNlN0tnUFkzTUZLMXRfUDFjUENlclB6Z1hsSUhOcV9fQVlPR09iOUl6d1hoY0ZTLU9HYWVJTXNFNFRUd1ZRMTZGVDdDaXN1cFZpMkVKNDNtNjdZOHBGUUFEa2htYkNBN1BzaW82R0J0eXl3QXZjRnZpdEhFX3pKSGRCbU82N3dC?oc=5",
     "date": "2022-06-23T07:00:00.000Z",
@@ -930,7 +931,7 @@
     "priority": 3
   },
   {
-    "id": "29f2c3874bd0aedeb5ec77ee2b438ced",
+    "id": "19b43c59469eae833e0364afbac4e2ac",
     "title": "Untitled Letter Roszet - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE95R1JUMkZWRmxNU2QyalV1bkgxd1FXdEoyQWhxcGZDa05PUDVkMWp2VF9GVDZMcUZtLTJhY0gweF9tRm9iZm1pU281QUxod3ZrOFJF?oc=5",
     "date": "2022-06-02T07:00:00.000Z",
@@ -948,24 +949,7 @@
     "priority": 3
   },
   {
-    "id": "aa12023e202cf9d37a3e4ec4420cf0a5",
-    "title": "FDA Issues Warning Letters to Companies Illegally Selling CBD and Delta-8 THC Products - fda.gov",
-    "link": "https://news.google.com/rss/articles/CBMi0AFBVV95cUxPdFFOR0ZIejNFQ1RXZGtVQTl4QlE2ZXBoUHFLMmNnSnRrTUZjNjc2M1pleEhSZmtLbkxYUXRzbGZQbjRnMmlvYkZlNHpIMXdmYW5uaklub2VfS2JmanVoci1yYzNtX3ZLNExIaXRFenNUa1NOSXRkckNDbURJUVBsYkhpd0huVTA5RlYzQjQtX0JWQ1FGREc2UlF5YVZJOWRMUFIxaWVqX1BJU3NEakhzLS1vOGNJRkpBbU56TWRzaWp0d01vYnBzT3dYMzBGdnlQ?oc=5",
-    "date": "2022-05-04T07:00:00.000Z",
-    "dateFormatted": "04/05/2022",
-    "source": "Google News - FDA Warning Letters",
-    "sourceCategory": "google",
-    "sourceType": "warning_letter",
-    "summary": "FDA Issues Warning Letters to Companies Illegally Selling CBD and Delta-8 THC Products  fda.gov",
-    "company": "TBD",
-    "types": [
-      "warning_letter"
-    ],
-    "severity": 8,
-    "priority": 3
-  },
-  {
-    "id": "ac93db2be62f753c360e5fd29e45db4b",
+    "id": "1324b93d0352bee7ace111c09a4602f2",
     "title": "Untitled Letter DUOBRII - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9yeUFKQVhWNzItMUZyV0lmUkhOM2s5dTVNdGxmTW5qSWM2NE9lSFB5ZVl5RUVIZGZQdkE3WjFua1dIS1daRG5XTG5EX1RzQXdYclBJ?oc=5",
     "date": "2022-03-31T07:00:00.000Z",
@@ -983,7 +967,25 @@
     "priority": 3
   },
   {
-    "id": "366fec65247c50512385ddb42e3df1fc",
+    "id": "d2fb0d5491f560044c89d1ac57c3ebf3",
+    "title": "Untitled Letter | NEULASTA® (pegfilgrastim) injection, for subcutaneous use - fda.gov",
+    "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE9jT1pjaC1aWVJPSS1FdEQ3SU9aejhsdDJuTGlXRy1ESFBDUWhVSWVhWHdUZEZHTmdsbzRFQnRLMEdEcnp4RTdMWmljX0tlc3k3ZEI4?oc=5",
+    "date": "2022-01-11T08:00:00.000Z",
+    "dateFormatted": "11/01/2022",
+    "source": "Google News - OPDP Letters",
+    "sourceCategory": "google",
+    "sourceType": "opdp",
+    "summary": "Untitled Letter | NEULASTA® (pegfilgrastim) injection, for subcutaneous use  fda.gov",
+    "company": "TBD",
+    "types": [
+      "warning_letter",
+      "opdp"
+    ],
+    "severity": 8,
+    "priority": 3
+  },
+  {
+    "id": "c54fe660dbf854db25d34fc34d6907fa",
     "title": "RESPONSE TO UNTITLED LETTER | EMGALITY - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBlbzNtdXNnZEJLaWlwNnVWVXBWSTd2TlRaa2w3eUpFbzJDazVvNzJEMlJZcmZyTHFtT09ybDVrQUJnbGRKX0kxQklzeXd3UFVrWTgw?oc=5",
     "date": "2021-12-21T08:00:00.000Z",
@@ -1001,7 +1003,7 @@
     "priority": 3
   },
   {
-    "id": "f59775f257f807bd753a6a541ed45f82",
+    "id": "3cdb23b6d5391f8529eb76b84ea12c69",
     "title": "Emgality Untitled Letter - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBfN0szeDVZTG1TRXNKa2FhRTJkUFhhTnhmejFKa1Y1NjhYMzZRUnJ5TmI1NFR4MXM3UWxad0R5TW9VM2UyUU1fUW04Z0JtUFNJUlNV?oc=5",
     "date": "2021-12-13T08:00:00.000Z",
@@ -1019,7 +1021,7 @@
     "priority": 3
   },
   {
-    "id": "a3c3bab89678a0df894aef1a61daeff8",
+    "id": "28281e6b2c8ec9f6af31aef78136d730",
     "title": "Untitled Letter | NURTEC ODT (rimegepant) orally disintegrating tablets, for sublingual or oral use - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE5DWWhZUVQ2cldOTDdFb2tKRUl1TkhrUmdteHYwYTJIdGhzRjJXMHhNUmMzZ3ZVY3laOGppYnVqZlZWdWdNR1VNaGpmazB5Q1J1V3pR?oc=5",
     "date": "2021-11-19T08:00:00.000Z",
@@ -1037,7 +1039,7 @@
     "priority": 3
   },
   {
-    "id": "6f41f1d90b19a70d4d3e3420e234f2d7",
+    "id": "bef2b72a25f39ae028a21e14c6ad396f",
     "title": "After triggering a global valsartan recall 3 years ago, Chinese drug manufacturer overcomes FDA warning letter - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMixAFBVV95cUxNTktObVVMQXZ2QlMwWVlVNFBPakZkSEVwTDMtaVFPalBrQVA1dDhfSHpobnVMWG1JcFRCSXJubkFFRUtQb2R6UFEtaEJXLUVodnRySENkNXVvNjAteUg0NUhldmVDN3h4NlowTm5PbmxkYTlRS0dIUmlGTjA3RU90Y0tSWEtEaGN1LWsxSHJPaXBkbHZ2WmRmZzAzd0FHaTJ5X3BXeE1XQnpQV0IxbnRlb0xIdHdLa2gwRm5vaG9uMlptZU4t?oc=5",
     "date": "2021-11-15T08:00:00.000Z",
@@ -1055,7 +1057,7 @@
     "priority": 3
   },
   {
-    "id": "41b91fb206de43c3c70906702ab15b10",
+    "id": "fd7e7b688405c1492072011bc7e8e93b",
     "title": "Untitled Letter | ALKINDI® SPRINKLE (hydrocortisone) oral granules - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBtX3doR00zQVlRWGVTLS1mRXNMTDlIZWJSZ1p3RWdLS3RiU2JkLXphQjB0VFhTeWYzZEVSTlNtd29NTjJ6WExqMFpDYUFRRmlDVVdz?oc=5",
     "date": "2021-10-04T07:00:00.000Z",
@@ -1073,7 +1075,7 @@
     "priority": 3
   },
   {
-    "id": "f945df08c8e30787f109e8d90249c731",
+    "id": "83bf726a70b05960043ad3014a33fcde",
     "title": "FDA warning letters detail violations at China, Mexico drugmakers already under import alert - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMipwFBVV95cUxPdG5panZOR0dXUjZrbUh4VjM1c01NNnB2NzNvdHZzMWdiOXVHQm5tQVdJMWlneFJTSHAxUHppQU9mSWhQNlc5SEtTOERuMGo2Y0dORmRoYXBTMl9yNGMxaGt6bm1YNVBJN2RoeEpjc2RzNlBocmJlODZrOGpnYmdNSzAxUVFvMTd4UlpFeHBMem02SGxQS2hqbEdfb1NxaTJZTmNrSWVLOA?oc=5",
     "date": "2021-03-17T07:00:00.000Z",
@@ -1091,7 +1093,7 @@
     "priority": 3
   },
   {
-    "id": "cd2ad737f7220f92ced2920f558dc53f",
+    "id": "534fd18fabb410dee844850b1b329038",
     "title": "WARNING LETTER - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFBYTFRCbFBpYnp2c0JLSDhwRThuajFFZjF3Z0ZtTDl3Si1TM3k1RW9VdDhQcUQ4Q1ZYRDRyd0lqZ1JYdjZyenU0aFZpOWV5VEc2c05F?oc=5",
     "date": "2020-09-22T07:00:00.000Z",
@@ -1108,7 +1110,7 @@
     "priority": 3
   },
   {
-    "id": "ff44428809e8c59c89b6a09a3eaec216",
+    "id": "86dfaa3a1de002e9c6df370558dd3b94",
     "title": "WARNING LETTER - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTFA3eGJVXzVDSGxHclRKYTRqRDFqY1dVZE8wcEJTb1FIWW5QSmYybTNJam9vUjRKOUNjaVluRlRYeXlQSHBkNmVOTG94OFZJVnoyTTJF?oc=5",
     "date": "2019-08-16T07:00:00.000Z",
@@ -1125,7 +1127,7 @@
     "priority": 3
   },
   {
-    "id": "3279cf77e807cc5d9933f9b1a8eb01ee",
+    "id": "651823c32ae6096783d16fbbe5e2e752",
     "title": "An Analysis Of FDA FY2018 Drug GMP Warning Letters - Pharmaceutical Online",
     "link": "https://news.google.com/rss/articles/CBMilwFBVV95cUxNQV9IQVAxQWhXZnh3ZUN3cWl0aFlWZjNIN3ZmRmNfRVExM0R6U0lWbEk5R3A4OU1sN1BrWDdYazdnLXoxb19tTmJRdWtKUENVLWNnM2JiVXJYbmRRMGV5MFFFYVhFcEVJNGNlSGhMWXZVTVBxTG9fZHVyWERxb1EzNEE3aER1VkRtdnNkbldxdU1fdTNrVGJz?oc=5",
     "date": "2019-02-01T08:00:00.000Z",
@@ -1142,7 +1144,7 @@
     "priority": 3
   },
   {
-    "id": "ca2465a5ffe50dbeb6300580fa6c637d",
+    "id": "eef894f12a23642f7bf3e16ff899cc9a",
     "title": "Dear Dr. Woodcock, I am writing to bring to your attention a Warning Letter that Vanda received from the FDA on October 22, whic - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE51ZFIybzZCOG0tY3oyWVZrTGpDbEhkODNncUNYYXI0dWU4bDI5TnZYMzFYQjh0eWlNNEV2Y0lGMVUzZ2JTYUVkczE5RTJjM0NGMWtB?oc=5",
     "date": "2018-10-22T07:00:00.000Z",
@@ -1159,7 +1161,7 @@
     "priority": 3
   },
   {
-    "id": "7943f6181a0de23982f2e08de6d2f85b",
+    "id": "c62d5959b93d1b6fa7304d3ef56103b0",
     "title": "WARNING LETTER - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE10aThhZ3k1N3pKUE9xd1JhazU2dUNaQmlLamxmeWFmZGZKeFZCbGFNYzVYOVJUSFAtVlV3LTI3ZThaejBfYTVMS1hrRnl5ODF0Qzkw?oc=5",
     "date": "2018-10-22T07:00:00.000Z",
@@ -1176,7 +1178,7 @@
     "priority": 3
   },
   {
-    "id": "79b09d1604fe58e37a5c13c6337c8e30",
+    "id": "6b79eab66b82408c372d30a9f3844e4d",
     "title": "WARNING LETTER - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMiU0FVX3lxTE50czRfM05aa2dzMmluM3E0ZVg3T0cyaGppcFczeEZRalVrVWEtN2RlSkJEblFmVGRrTkdjTXlLbURkMXFXcG5BUlN4WUNsMTdVTXEw?oc=5",
     "date": "2018-10-05T07:00:00.000Z",
@@ -1193,7 +1195,7 @@
     "priority": 3
   },
   {
-    "id": "5dc440cc080ba62a8f5ad5a32d9d29fd",
+    "id": "673313d00e63c33f84ead918b9196b27",
     "title": "FDA warning letter tells India's Goran Pharma to get professional help - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMiswFBVV95cUxOcnVvdlRNOGt2dV9pa1lvS0VvT1VIQ1U2OVhXMFRUV3J6ZWJsS2RsbUdXcVo3MkNGVndBa3JCc0g5UHJrUzR0czg4TTRLRkhRbVRRSkJaN1RZVTJ2RDVvZ2JURFVRZ1NfZ0xvMDJGTjJhMkw2QnkybFNWbWN5UlhTS1hSSmstMDU2anQzQVBMYnBxYmQteEFLTWR4TndNNWd1Sk1HWDRDVlJLaW1sano2MkxHUQ?oc=5",
     "date": "2018-05-10T07:00:00.000Z",
@@ -1210,7 +1212,7 @@
     "priority": 3
   },
   {
-    "id": "9201c7ca5cfcc7e5b4b5016f2b325822",
+    "id": "f1b48f5ab8e490a7e8419d9cdefc4de1",
     "title": "FDA hits Dominican Republic drug manufacturing plant with warning letter - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMirwFBVV95cUxONF8yZEliV1J5b1EwNm1ISjc5YUF4VjhSTVdURFdKaDkySEZManc2Um5ic2g1R2ppU2ZTUkUtenlDWlFBemxOYWNDNDJHV0NnSTJxTm13NTZvdUhQRURleko0em9YaDdCWGU3aDNYSkdsWl9WdWJEcnBuQ3lfbWFHWHFNaUJGX0UtWjFnekNmRzg2dWN2U0dhd3hNWVVRS0JrZGZibk1CbFN5S0tmbnJj?oc=5",
     "date": "2018-04-03T07:00:00.000Z",
@@ -1227,7 +1229,7 @@
     "priority": 3
   },
   {
-    "id": "39ad1bce372f169b900ea6fb0bac9471",
+    "id": "de2949614274bee34671d0e8f2cb171e",
     "title": "February 27, 2018 Untitled Letter - IDELVION - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMivwFBVV95cUxPTU1UV1RVdjlHbENseVIwTXJKdnBHTEtpM1FTUWp1cUd6OVR6d2k5Xzl0RV9FM2xZdEtDT0d6SjBGdEFTbkNWUkxYYU9DdWdQRDdqdFVWamFRWDdYa3VHeWVueGdsNjZrR3RmM05aZk81ck1HOHlGbEFxTmt4UjJOR0N4dVBTSGR6TWVnOWdyU0dJbUxJdUJyRVdFSHJzSVJHamxNMS14cVp3NWRNVFA4c2h4ZEZLMVIxc0Nsb2VOdw?oc=5",
     "date": "2018-02-27T08:00:00.000Z",
@@ -1245,7 +1247,7 @@
     "priority": 3
   },
   {
-    "id": "c329ed64ac5bcf7a74c0ed2ab3c52069",
+    "id": "800f0c9c623ef23d94130e31cd49ff22",
     "title": "Lost in translation, FDA slaps Chinese drugmaker with warning letter for mixing up APIs - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMivgFBVV95cUxPbXdmN25YWDA2MURzYkhXMFNNS2YxVWRBdkZxQzBHb19oRWxHRklyQ2lJT1NwSXFvZVM3ZWtoTmNHMjc1SUJaTGZUWl9IOHYtLVZrZW9MZ1FPQXVXWVgwMEtSSFBsVXpBODhpcl9TWG1MejA5TXBjNV9WMnMyOXYyNDlBOXVabEpMU3RQVXl3dmktM1VYYVIxank2LS1EX0tvQVJHOEhGWVR6OWRmMExKbDNNUXZJRUdvRS1KVFVn?oc=5",
     "date": "2017-11-08T08:00:00.000Z",
@@ -1262,7 +1264,7 @@
     "priority": 3
   },
   {
-    "id": "1c928d0a41a59b4e992983b800960ff0",
+    "id": "0ccad4270d3d4297828c546a63b2eaf9",
     "title": "South Korean drugmaker slapped with FDA warning letter, import alert - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMiqAFBVV95cUxNUFc1MzVUdUdrNk5Ud3hFMG5qTjhrdW1uMjlocWRleTZydExIU1RidmRqM21ibjFwUkh1VG5DRXNGYzF1MUh5UmhIZTZrYnBKUEEyaGFidHExZUlTVDNNdVFJWllMZnVMQlBYTEZIbWowaGw5bjJjU2RyNVZMQkJIWUItTFV5MUdTY3hrc1dYS05BRVdXRDRHbTFfcU5iTEVldHl3bzA3MkE?oc=5",
     "date": "2017-09-21T07:00:00.000Z",
@@ -1280,7 +1282,7 @@
     "priority": 3
   },
   {
-    "id": "791794d1fdc3ea38fa3456e3de1740a4",
+    "id": "094fd4df02593120ce3ab972cfe4c163",
     "title": "Orexigen Therapeutics, Inc. (Contrave) Untitled Letter 5/18/2017 - fda.gov",
     "link": "https://news.google.com/rss/articles/CBMi6gFBVV95cUxPQ3JlRXQ1eG9BcWp1RG5iR0h1aW11blJvMkRGXzI1ZWJNZ2RCd1N0bTlwSVpCVHpISUVEWExwRWNpN013NFdIbk1MTWRxVDM0ODBHbGlQUjhMeU1YazFWdFk5d2FxbmZOYnM4NjhCOFU1dXJTVUJmODFfYzZtYXE4cUVvbVNQb3hYMTRiV2VTUUlMV1M4Mkx4WVItQzVJNndxd3B2NkY1TUY2NGZYNEFid2dfdFdMOHNJSnM5R28tdG5QUURHVkFYbTBiUmtWZllkRTBSZTZoODJtdEZZT2xzelZtQjNSVm9yeVE?oc=5",
     "date": "2017-05-23T07:00:00.000Z",
@@ -1298,7 +1300,7 @@
     "priority": 3
   },
   {
-    "id": "99ef04bb3aea7bb317789a6c5518cd8a",
+    "id": "93bd249ad2a485d0d7ac38141cce1832",
     "title": "Import ban extended as India's Pan Pharma racks up third FDA warning letter - Fierce Pharma",
     "link": "https://news.google.com/rss/articles/CBMiqwFBVV95cUxQS0RQc0FMZm5LYmRKa1dqV1ZPbVJINmxJUGVVX0w1cWJRbFVLcXZJOF9oclcwd3pZNFRZaWFtRGxVd1ZFeGM4azFaLVNKZzFkcmpjODJ6cnVaMGc4RGpFRlRuUlZGSDRhX2k2cFk1Z2hPNndCVjNxRzR5SEg3bVI4RTRoZklNbUxDWTMxZWx6QmpLblcxUXFnclg1Z3BkVkxtR095T2ZyblJpOGs?oc=5",
     "date": "2016-09-07T07:00:00.000Z",

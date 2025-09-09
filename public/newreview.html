@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>CGMP Contact Profiler</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .spinner{border:3px solid #f3f3f3;border-top:3px solid #6366f1;border-radius:50%;width:24px;height:24px;animation:spin 1s linear infinite}
+    @keyframes spin{0%{transform:rotate(0)}100%{transform:rotate(360deg)}}
+  </style>
+</head>
+<body class="bg-gray-50">
+  <div id="app" class="min-h-screen">
+    <!-- Toast -->
+    <div id="toast" class="fixed top-4 right-4 z-[60] hidden">
+      <div id="toastInner" class="px-4 py-3 rounded-lg shadow text-white text-sm"></div>
+    </div>
+
+    <!-- Header -->
+    <div class="bg-white border-b border-gray-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex justify-between items-center py-4">
+          <div class="flex items-center space-x-4">
+            <h1 class="text-2xl font-bold bg-gradient-to-r from-indigo-600 to-purple-600 bg-clip-text text-transparent">
+              CGMP Contact Profiler
+            </h1>
+            <div class="flex items-center space-x-2 text-sm text-gray-500">
+              <div class="w-2 h-2 bg-green-400 rounded-full"></div>
+              <span>Connected</span>
+            </div>
+          </div>
+          <div class="flex items-center space-x-4">
+            <div id="stats" class="flex items-center space-x-6 text-sm text-gray-600">
+              <!-- populated by JS -->
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Search -->
+    <div class="bg-white border-b border-gray-100">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-4">
+        <div class="relative">
+          <input id="searchInput" type="text" placeholder="Search contacts by name or email..."
+                 class="w-full px-4 py-3 pl-12 pr-4 text-gray-700 bg-gray-50 border border-gray-200 rounded-xl focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-transparent transition-all">
+          <svg class="absolute left-4 top-3.5 w-5 h-5 text-gray-400" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/>
+          </svg>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+      <!-- Loading -->
+      <div id="loading" class="hidden">
+        <div class="flex flex-col items-center justify-center py-12">
+          <div class="spinner mb-4"></div>
+          <p class="text-gray-500">Loading contacts...</p>
+        </div>
+      </div>
+
+      <!-- Empty -->
+      <div id="emptyState" class="hidden">
+        <div class="bg-white rounded-2xl shadow-sm border border-gray-200 p-12 text-center">
+          <svg class="mx-auto h-12 w-12 text-gray-400 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                  d="M20 13V6a2 2 0 00-2-2H6a2 2 0 00-2 2v7m16 0v5a2 2 0 01-2 2H6a2 2 0 01-2-2v-5m16 0h-2.586a1 1 0 00-.707.293l-2.414 2.414a1 1 0 01-.707.293h-3.172a1 1 0 01-.707-.293l-2.414-2.414A1 1 0 006.586 13H4"/>
+          </svg>
+          <h3 class="text-lg font-medium text-gray-900 mb-2">No contacts found</h3>
+          <p class="text-gray-500">Try adjusting your search criteria</p>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div id="contactsTable" class="bg-white rounded-2xl shadow-sm border border-gray-200 overflow-hidden">
+        <div class="overflow-x-auto">
+          <table class="min-w-full divide-y divide-gray-200">
+            <thead class="bg-gray-50">
+            <tr>
+              <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Contact</th>
+              <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Email</th>
+              <th class="px-6 py-4 text-center text-xs font-medium text-gray-500 uppercase tracking-wider">Documents</th>
+              <th class="px-6 py-4 text-left text-xs font-medium text-gray-500 uppercase tracking-wider">Recent Contributions</th>
+              <th class="px-6 py-4 text-right text-xs font-medium text-gray-500 uppercase tracking-wider">Actions</th>
+            </tr>
+            </thead>
+            <tbody id="contactsBody" class="bg-white divide-y divide-gray-200"></tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- Pagination -->
+      <div id="pagination" class="mt-6 flex items-center justify-between"></div>
+    </div>
+
+    <!-- Modal -->
+    <div id="modal" class="hidden fixed inset-0 z-50 overflow-y-auto">
+      <div class="flex items-center justify-center min-h-screen px-4 pt-4 pb-20 text-center sm:block sm:p-0">
+        <div class="fixed inset-0 transition-opacity bg-gray-500 bg-opacity-75" onclick="closeModal()"></div>
+        <div class="inline-block align-bottom bg-white rounded-2xl text-left overflow-hidden shadow-xl transform transition-all sm:my-8 sm:align-middle sm:max-w-4xl sm:w-full">
+          <div id="modalContent"><!-- populated by JS --></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    const API_URL = 'http://localhost:3000';
+    let currentPage = 1;
+    const pageSize = 20;
+    let searchTimer;
+
+    document.addEventListener('DOMContentLoaded', () => {
+      loadStats();
+      loadContacts();
+      document.getElementById('searchInput').addEventListener('input', (e) => {
+        clearTimeout(searchTimer);
+        searchTimer = setTimeout(() => {
+          currentPage = 1;
+          loadContacts();
+        }, 300);
+      });
+    });
+
+    // --- Stats ---
+    async function loadStats() {
+      try {
+        const res = await fetch(`${API_URL}/stats`);
+        const data = await res.json();
+        if (data.success) {
+          const s = data.stats;
+          document.getElementById('stats').innerHTML = `
+            <div><span class="font-semibold">${s.totalDocuments.toLocaleString()}</span> <span class="text-gray-500">Documents</span></div>
+            <div class="w-px h-4 bg-gray-300"></div>
+            <div><span class="font-semibold">${s.totalContacts.toLocaleString()}</span> <span class="text-gray-500">Contacts</span></div>
+          `;
+        }
+      } catch (e) { console.error('loadStats', e); }
+    }
+
+    // --- Contacts ---
+    async function loadContacts() {
+      const search = document.getElementById('searchInput').value;
+      showElement('loading'); hideElement('emptyState'); hideElement('contactsTable');
+      try {
+        const res = await fetch(`${API_URL}/contacts?search=${encodeURIComponent(search)}&page=${currentPage}&pageSize=${pageSize}`);
+        const data = await res.json();
+        hideElement('loading');
+        if (!data.success) throw new Error(data.error);
+        if (data.contacts.length === 0) {
+          showElement('emptyState'); hideElement('pagination');
+        } else {
+          renderContacts(data.contacts);
+          renderPagination(data.pagination);
+          showElement('contactsTable'); showElement('pagination');
+        }
+      } catch (e) {
+        console.error('loadContacts', e);
+        hideElement('loading'); showElement('emptyState');
+      }
+    }
+
+    // --- Render table ---
+    function renderContacts(contacts) {
+      const tbody = document.getElementById('contactsBody');
+      tbody.innerHTML = contacts.map(contact => {
+        const safeName = contact?.name || '—';
+        const safeEmail = contact?.email || '—';
+        const safePhone = contact?.phone || '';
+        const initial = safeName && typeof safeName === 'string'
+          ? safeName.trim().charAt(0).toUpperCase() || '?'
+          : '?';
+        const titles = Array.isArray(contact?.recentTitles) ? contact.recentTitles.filter(Boolean).map(String) : [];
+        const visible = titles.slice(0, 3);
+        const extraCount = Math.max(0, titles.length - visible.length);
+        const cid = contact?.contactId || '';
+
+        return `
+          <tr class="hover:bg-gray-50 transition-colors">
+            <td class="px-6 py-4 whitespace-nowrap">
+              <div class="flex items-center">
+                <div class="flex-shrink-0 h-10 w-10 bg-gradient-to-br from-indigo-500 to-purple-600 rounded-full flex items-center justify-center text-white font-semibold">${initial}</div>
+                <div class="ml-4">
+                  <div class="text-sm font-medium text-gray-900">${escapeHtml(safeName)}</div>
+                  ${safePhone ? `<div class="text-xs text-gray-500">${escapeHtml(safePhone)}</div>` : ''}
+                </div>
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap"><div class="text-sm text-gray-900">${escapeHtml(safeEmail)}</div></td>
+            <td class="px-6 py-4 whitespace-nowrap text-center">
+              <span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium ${
+                (contact?.docCount ?? 0) >= 10 ? 'bg-green-100 text-green-800' :
+                (contact?.docCount ?? 0) >= 5  ? 'bg-yellow-100 text-yellow-800' : 'bg-gray-100 text-gray-800'
+              }">${contact?.docCount ?? 0}</span>
+            </td>
+            <td class="px-6 py-4">
+              <div class="flex flex-wrap gap-1">
+                ${visible.map(title => {
+                  const label = String(title).split(':')[0] || title;
+                  return `<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-blue-50 text-blue-700 border border-blue-200">${escapeHtml(label)}</span>`;
+                }).join('')}
+                ${extraCount > 0 ? `<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-gray-50 text-gray-500">+${extraCount} more</span>` : ''}
+              </div>
+            </td>
+            <td class="px-6 py-4 whitespace-nowrap text-right text-sm font-medium">
+              <div class="flex items-center justify-end gap-2 flex-wrap">
+                <button onclick="openDocsModal('${cid}')" class="text-indigo-600 hover:text-indigo-900 mr-1 transition-colors" ${cid ? '' : 'disabled'}>View Docs</button>
+                <button onclick="refreshPublicData('${cid}')" class="text-blue-600 hover:text-blue-800 mr-1 transition-colors" ${cid ? '' : 'disabled'}>Refresh Public Data</button>
+                <button onclick="viewExternalIntel('${cid}')" class="text-sky-600 hover:text-sky-800 mr-1 transition-colors" ${cid ? '' : 'disabled'}>External Intel</button>
+                <button onclick="generateProfile('${cid}')" class="bg-gradient-to-r from-indigo-600 to-purple-600 text-white px-3 py-1 rounded-lg hover:from-indigo-700 hover:to-purple-700 transition-all" ${cid ? '' : 'disabled'}>AI Profile</button>
+              </div>
+            </td>
+          </tr>
+        `;
+      }).join('');
+    }
+
+    // --- Pagination ---
+    function renderPagination(pagination) {
+      const div = document.getElementById('pagination');
+      const startItem = (pagination.page - 1) * pagination.pageSize + 1;
+      const endItem = Math.min(pagination.page * pagination.pageSize, pagination.total);
+      div.innerHTML = `
+        <div class="text-sm text-gray-700">Showing <span class="font-medium">${startItem}</span> to <span class="font-medium">${endItem}</span> of <span class="font-medium">${pagination.total}</span> results</div>
+        <div class="flex items-center space-x-2">
+          <button onclick="changePage(${pagination.page - 1})" ${pagination.page === 1 ? 'disabled' : ''} class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">Previous</button>
+          <span class="px-3 py-2 text-sm font-medium text-gray-700">Page ${pagination.page} of ${pagination.totalPages}</span>
+          <button onclick="changePage(${pagination.page + 1})" ${pagination.page === pagination.totalPages ? 'disabled' : ''} class="px-3 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 disabled:opacity-50 disabled:cursor-not-allowed transition-colors">Next</button>
+        </div>
+      `;
+    }
+    function changePage(page){ currentPage = page; loadContacts(); }
+
+    // --- Docs modal ---
+    async function openDocsModal(contactId) {
+      showModal();
+      const modal = document.getElementById('modalContent');
+      modal.innerHTML = `<div class="p-6"><div class="flex items-center justify-center py-8"><div class="spinner"></div></div></div>`;
+      try {
+        const res = await fetch(`${API_URL}/contacts/${contactId}/docs?onlyCGMP=true`);
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error);
+        modal.innerHTML = `
+          <div class="bg-gray-50 px-6 py-4 border-b border-gray-200">
+            <h3 class="text-lg font-semibold text-gray-900">CGMP Guidance Documents</h3>
+            <p class="text-sm text-gray-500 mt-1">${escapeHtml(data.contact.name)} - ${escapeHtml(data.contact.email)}</p>
+          </div>
+          <div class="px-6 py-4 max-h-96 overflow-y-auto">
+            ${data.documents.length === 0 ? `<p class="text-gray-500 text-center py-8">No CGMP documents found for this contact</p>` : `
+              <div class="space-y-3">
+                ${data.documents.map(doc => `
+                  <div class="bg-white p-4 rounded-lg border border-gray-200 hover:border-indigo-300 transition-colors">
+                    <div class="flex items-start justify-between">
+                      <div class="flex-1">
+                        <h4 class="text-sm font-medium text-gray-900 mb-1">${escapeHtml(doc.title)}</h4>
+                        <p class="text-xs text-gray-600 mb-2">${escapeHtml(doc.summary)}</p>
+                        <div class="flex flex-wrap gap-1">
+                          ${doc.tags.map(tag => `
+                            <span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium ${
+                              tag === 'High' ? 'bg-red-100 text-red-800' :
+                              tag === 'Moderate' ? 'bg-yellow-100 text-yellow-800' :
+                              tag === 'Low' ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-700'
+                            }">${escapeHtml(tag)}</span>
+                          `).join('')}
+                        </div>
+                      </div>
+                    </div>
+                    <div class="mt-2 text-xs text-gray-500">${doc.filename} • ${new Date(doc.uploadedAt).toLocaleDateString()}</div>
+                  </div>
+                `).join('')}
+              </div>
+            `}
+          </div>
+          <div class="bg-gray-50 px-6 py-3 border-t border-gray-200">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500">Total: ${data.total} documents</span>
+              <button onclick="closeModal()" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50 transition-colors">Close</button>
+            </div>
+          </div>
+        `;
+      } catch (e) {
+        console.error('openDocsModal', e);
+        modal.innerHTML = errorBox(e.message);
+      }
+    }
+
+    // --- Refresh public data via external-intel ---
+    async function refreshPublicData(contactId) {
+      try {
+        const res = await fetch(`${API_URL}/external/${contactId}/search`);
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error || 'Refresh failed');
+        showToast(`Public data refreshed • ${data.artifactsCount || 0} artifacts`, 'success');
+      } catch (e) {
+        console.error('refreshPublicData', e);
+        showToast(`Refresh failed: ${e.message}`, 'error');
+      }
+    }
+
+    // --- View external intel (artifacts) ---
+    async function viewExternalIntel(contactId) {
+      showModal();
+      const modal = document.getElementById('modalContent');
+      modal.innerHTML = `<div class="p-6"><div class="flex items-center justify-center py-8"><div class="spinner"></div></div></div>`;
+      try {
+        const res = await fetch(`${API_URL}/external/${contactId}/artifacts`);
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error);
+
+        const artifacts = Array.isArray(data.artifacts) ? data.artifacts : [];
+        const bySource = groupBy(artifacts, a => a.source || 'unknown');
+
+        // Aggregate
+        const topics = uniq(artifacts.flatMap(a => (a.facets?.topics || []))).slice(0, 12);
+        const grants = artifacts.filter(a => a.source === 'nih_reporter').length;
+        const trials = artifacts.filter(a => a.source === 'ctgov').length;
+        const hasFda = artifacts.some(a => a.source === 'fda_dashboard' || a.source === 'fda_crl');
+
+        modal.innerHTML = `
+          <div class="bg-gradient-to-r from-sky-600 to-indigo-600 px-6 py-5 text-white">
+            <h3 class="text-lg font-semibold">External Intelligence</h3>
+            <p class="text-sky-100 text-sm mt-1">OpenAlex • Crossref • ORCID • ClinicalTrials.gov • NIH RePORTER • FDA</p>
+          </div>
+          <div class="px-6 py-5 space-y-6 max-h-[70vh] overflow-y-auto">
+            <div class="grid grid-cols-4 gap-4">
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <div class="text-xs text-gray-500">Artifacts</div>
+                <div class="text-2xl font-bold text-gray-900">${artifacts.length}</div>
+              </div>
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <div class="text-xs text-gray-500">NIH Grants</div>
+                <div class="text-2xl font-bold text-gray-900">${grants}</div>
+              </div>
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <div class="text-xs text-gray-500">Clinical Trials</div>
+                <div class="text-2xl font-bold text-gray-900">${trials}</div>
+              </div>
+              <div class="bg-gray-50 p-4 rounded-lg">
+                <div class="text-xs text-gray-500">Regulatory Context</div>
+                <div class="text-2xl font-bold ${hasFda ? 'text-green-600' : 'text-gray-900'}">${hasFda ? 'Yes' : 'No'}</div>
+              </div>
+            </div>
+
+            ${topics.length ? `
+              <div>
+                <h4 class="text-sm font-semibold text-gray-900 mb-2">Topics</h4>
+                <div class="flex flex-wrap gap-2">
+                  ${topics.map(t => `<span class="px-3 py-1 rounded-full text-sm bg-indigo-100 text-indigo-800">${escapeHtml(t)}</span>`).join('')}
+                </div>
+              </div>
+            ` : ''}
+
+            <div>
+              <h4 class="text-sm font-semibold text-gray-900 mb-2">Sources</h4>
+              <div class="space-y-4">
+                ${Object.keys(bySource).sort().map(src => {
+                  const items = bySource[src].slice(0, 6);
+                  return `
+                    <div>
+                      <div class="text-xs uppercase tracking-wide text-gray-500 mb-2">${escapeHtml(src)} <span class="text-gray-400">(${bySource[src].length})</span></div>
+                      <div class="space-y-2">
+                        ${items.map(a => `
+                          <div class="border border-gray-200 rounded-lg p-3 hover:border-sky-300 transition-colors">
+                            <div class="text-sm font-medium text-gray-900">${escapeHtml(a.title || '(untitled)')}</div>
+                            <div class="text-xs text-gray-500">${a.year || ''}${a.facets?.journal ? ` • ${escapeHtml(a.facets.journal)}` : ''}${a.facets?.trial_phase ? ` • Phase ${escapeHtml(a.facets.trial_phase)}` : ''}</div>
+                            ${a.url ? `<a href="${a.url}" target="_blank" class="text-xs text-sky-600 hover:text-sky-800 inline-flex items-center mt-1">Open<span class="ml-1">↗</span></a>` : ''}
+                          </div>
+                        `).join('')}
+                        ${bySource[src].length > items.length ? `<div class="text-xs text-gray-500">+${bySource[src].length - items.length} more…</div>` : ''}
+                      </div>
+                    </div>
+                  `;
+                }).join('')}
+              </div>
+            </div>
+          </div>
+          <div class="bg-gray-50 px-6 py-3 border-t border-gray-200">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500">Fetched ${new Date().toLocaleString()}</span>
+              <div class="space-x-2">
+                <button onclick="closeModal()" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">Close</button>
+              </div>
+            </div>
+          </div>
+        `;
+      } catch (e) {
+        console.error('viewExternalIntel', e);
+        document.getElementById('modalContent').innerHTML = errorBox(e.message);
+      }
+    }
+
+    // --- Generate AI profile (now triggers external refresh on server) ---
+    async function generateProfile(contactId) {
+      showModal();
+      const modal = document.getElementById('modalContent');
+      modal.innerHTML = `
+        <div class="p-8 text-center">
+          <div class="spinner mx-auto mb-4"></div>
+          <h3 class="text-lg font-semibold text-gray-900 mb-2">Generating AI Profile...</h3>
+          <p class="text-sm text-gray-500">Analyzing CGMP docs, refreshing public data, and searching PubMed</p>
+        </div>`;
+
+      try {
+        const res = await fetch(`${API_URL}/contacts/${contactId}/profile`, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ maxDocs: 15, includePubMed: true, refreshExternal: true })
+        });
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error);
+        const p = data.profile;
+
+        modal.innerHTML = `
+          <div class="bg-gradient-to-br from-indigo-600 to-purple-600 px-6 py-6 text-white">
+            <div class="flex items-center space-x-4">
+              <div class="flex-shrink-0 h-16 w-16 bg-white/20 backdrop-blur rounded-full flex items-center justify-center text-2xl font-bold">
+                ${(p.name || 'U').toString().charAt(0).toUpperCase()}
+              </div>
+              <div>
+                <h3 class="text-xl font-bold">${escapeHtml(p.name)}</h3>
+                <p class="text-indigo-100">${escapeHtml(p.email)}</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="px-6 py-6 space-y-6 max-h-[70vh] overflow-y-auto">
+            <div>
+              <h4 class="text-sm font-semibold text-gray-900 mb-2">Professional Summary</h4>
+              <p class="text-gray-700">${escapeHtml(p.summary || '')}</p>
+            </div>
+
+            <div class="grid grid-cols-4 gap-4">
+              <div class="bg-gray-50 rounded-lg p-4">
+                <div class="text-2xl font-bold text-indigo-600">${p.influence_score || 0}/100</div>
+                <div class="text-sm text-gray-500">Influence Score</div>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <div class="text-2xl font-bold text-purple-600">${p.document_count || 0}</div>
+                <div class="text-sm text-gray-500">CGMP Documents</div>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <div class="text-2xl font-bold text-blue-600">${p.publication_count || 0}</div>
+                <div class="text-sm text-gray-500">Publications</div>
+              </div>
+              <div class="bg-gray-50 rounded-lg p-4">
+                <div class="text-2xl font-bold ${p.regulatory_context ? 'text-green-600' : 'text-gray-900'}">${p.regulatory_context ? 'Yes' : 'No'}</div>
+                <div class="text-sm text-gray-500">Regulatory Context</div>
+              </div>
+            </div>
+
+            ${Number(p?.funding_summary?.nih_grant_count || 0) + Number(p?.trials_summary?.ctgov_trial_count || 0) > 0 ? `
+              <div class="grid grid-cols-2 gap-4">
+                <div class="bg-gray-50 rounded-lg p-4">
+                  <div class="text-xs text-gray-500">NIH Grants</div>
+                  <div class="text-xl font-semibold">${p.funding_summary?.nih_grant_count || 0}</div>
+                </div>
+                <div class="bg-gray-50 rounded-lg p-4">
+                  <div class="text-xs text-gray-500">Clinical Trials</div>
+                  <div class="text-xl font-semibold">${p.trials_summary?.ctgov_trial_count || 0}</div>
+                </div>
+              </div>` : ''}
+
+            ${Array.isArray(p.areas_of_expertise) && p.areas_of_expertise.length ? `
+              <div>
+                <h4 class="text-sm font-semibold text-gray-900 mb-2">Areas of Expertise</h4>
+                <div class="flex flex-wrap gap-2">
+                  ${p.areas_of_expertise.map(a => `<span class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-indigo-100 text-indigo-800">${escapeHtml(a)}</span>`).join('')}
+                </div>
+              </div>` : ''}
+
+            ${Array.isArray(p.themes) && p.themes.length ? `
+              <div>
+                <h4 class="text-sm font-semibold text-gray-900 mb-2">Common Themes</h4>
+                <div class="flex flex-wrap gap-2">
+                  ${p.themes.map(t => `<span class="inline-flex items-center px-2 py-1 rounded-md text-xs font-medium bg-purple-50 text-purple-700 border border-purple-200">${escapeHtml(t)}</span>`).join('')}
+                </div>
+              </div>` : ''}
+
+            ${Array.isArray(p.recent_publications) && p.recent_publications.length ? `
+              <div>
+                <h4 class="text-sm font-semibold text-gray-900 mb-2">Recent Publications</h4>
+                <div class="space-y-2">
+                  ${p.recent_publications.map(rp => `
+                    <div class="border border-gray-200 rounded-lg p-3 hover:border-blue-300 transition-colors">
+                      <div class="text-sm font-medium text-gray-900">${escapeHtml(rp.title || '')}</div>
+                      <div class="text-xs text-gray-500">${rp.year || ''} ${rp.url ? `• <a href="${rp.url}" target="_blank" class="text-blue-600 hover:text-blue-800">Open ↗</a>` : ''}</div>
+                    </div>`).join('')}
+                </div>
+              </div>` : ''}
+
+            ${Array.isArray(p.publications) && p.publications.length ? `
+              <div>
+                <h4 class="text-sm font-semibold text-gray-900 mb-3 flex items-center">
+                  <svg class="w-4 h-4 mr-2 text-blue-600" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 1 1 0 000 2H6a2 2 0 00-2 2v6a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-1a1 1 0 100-2 2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" clip-rule="evenodd"/></svg>
+                  Published Research (PubMed)
+                </h4>
+                <div class="space-y-3">
+                  ${p.publications.map(pub => `
+                    <div class="bg-blue-50 p-4 rounded-lg border border-blue-200">
+                      <div class="flex items-start justify-between">
+                        <div class="flex-1">
+                          <h5 class="text-sm font-medium text-gray-900 mb-1">${escapeHtml(pub.title || '')}</h5>
+                          <p class="text-xs text-gray-600 mb-1"><span class="font-medium">${escapeHtml(pub.journal || '')}</span>${pub.year ? ` (${pub.year})` : ''}</p>
+                          ${Array.isArray(pub.authors) ? `<p class="text-xs text-gray-500 mb-2">${pub.authors.slice(0,3).map(escapeHtml).join(', ')}${pub.authorCount > 3 ? ` et al. (${pub.authorCount} authors)` : ''}</p>` : ''}
+                        </div>
+                        ${pub.pubmedUrl ? `<a href="${pub.pubmedUrl}" target="_blank" class="ml-3 flex-shrink-0 text-blue-600 hover:text-blue-800">Open ↗</a>` : ''}
+                      </div>
+                      ${pub.doi ? `<div class="mt-2 text-xs text-gray-500">DOI: ${escapeHtml(pub.doi)}</div>` : ''}
+                    </div>`).join('')}
+                </div>
+              </div>` : ''}
+          </div>
+
+          <div class="bg-gray-50 px-6 py-3 border-t border-gray-200">
+            <div class="flex justify-between items-center">
+              <span class="text-xs text-gray-500">Generated: ${new Date(p.generated_at || Date.now()).toLocaleString()}</span>
+              <div class="flex space-x-2">
+                <button onclick="viewPublications('${contactId}')" class="px-4 py-2 text-sm font-medium text-indigo-600 bg-white border border-indigo-300 rounded-lg hover:bg-indigo-50">View All Publications</button>
+                <button onclick="closeModal()" class="px-4 py-2 text-sm font-medium text-white bg-gradient-to-r from-indigo-600 to-purple-600 rounded-lg hover:from-indigo-700 hover:to-purple-700">Close</button>
+              </div>
+            </div>
+          </div>
+        `;
+      } catch (e) {
+        console.error('generateProfile', e);
+        modal.innerHTML = errorBox(e.message);
+      }
+    }
+
+    // --- View all PubMed ---
+    async function viewPublications(contactId) {
+      showModal();
+      const modal = document.getElementById('modalContent');
+      modal.innerHTML = `<div class="p-6"><div class="flex items-center justify-center py-8"><div class="spinner"></div></div></div>`;
+      try {
+        const res = await fetch(`${API_URL}/contacts/${contactId}/publications?maxResults=20`);
+        const data = await res.json();
+        if (!data.success) throw new Error(data.error);
+        modal.innerHTML = `
+          <div class="bg-gradient-to-br from-blue-600 to-indigo-600 px-6 py-4 text-white">
+            <h3 class="text-lg font-semibold flex items-center">
+              <svg class="w-5 h-5 mr-2" fill="currentColor" viewBox="0 0 20 20"><path d="M9 2a1 1 0 000 2h2a1 1 0 100-2H9z"/><path fill-rule="evenodd" d="M4 5a2 2 0 012-2 1 1 0 000 2H6a2 2 0 00-2 2v6a2 2 0 002 2h8a2 2 0 002-2V7a2 2 0 00-2-2h-1a1 1 0 100-2 2 2 0 012 2v8a2 2 0 01-2 2H6a2 2 0 01-2-2V5z" clip-rule="evenodd"/></svg>
+              PubMed Publications
+            </h3>
+            <p class="text-blue-100 mt-1">${escapeHtml(data.contact.name)} - ${escapeHtml(data.contact.email)}</p>
+          </div>
+          <div class="px-6 py-4 max-h-[60vh] overflow-y-auto">
+            ${data.publications.length === 0 ? `<p class="text-gray-500 text-center py-8">No publications found</p>` : `
+              <div class="space-y-4">
+                ${data.publications.map((pub, idx) => `
+                  <div class="bg-white p-4 rounded-lg border border-gray-200 hover:border-blue-300 transition-colors">
+                    <div class="flex items-start justify-between">
+                      <div class="flex-1">
+                        <div class="flex items-center mb-2">
+                          <span class="text-sm font-semibold text-gray-400 mr-3">#${idx + 1}</span>
+                          ${pub.isFirstAuthor ? '<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-green-100 text-green-800">First Author</span>' : '<span class="inline-flex items-center px-2 py-0.5 rounded text-xs font-medium bg-gray-100 text-gray-700">Co-Author</span>'}
+                        </div>
+                        <h4 class="text-sm font-medium text-gray-900 mb-2">${escapeHtml(pub.title)}</h4>
+                        <div class="text-xs text-gray-600 space-y-1">
+                          <p><span class="font-medium">Journal:</span> ${escapeHtml(pub.journal || '')} ${pub.year ? `(${pub.year})` : ''}</p>
+                          <p><span class="font-medium">Authors:</span> ${Array.isArray(pub.authors) ? pub.authors.map(a => escapeHtml(a)).join(', ') : ''}${pub.authorCount > (pub.authors?.length || 0) ? ` ... (${pub.authorCount} total)` : ''}</p>
+                          ${pub.doi ? `<p><span class="font-medium">DOI:</span> ${escapeHtml(pub.doi)}</p>` : ''}
+                        </div>
+                        ${pub.abstract ? `
+                          <details class="mt-3">
+                            <summary class="cursor-pointer text-xs text-blue-600 hover:text-blue-800 font-medium">View Abstract</summary>
+                            <p class="mt-2 text-xs text-gray-600 leading-relaxed">${escapeHtml(pub.abstract)}</p>
+                          </details>` : ''}
+                      </div>
+                      ${pub.pubmedUrl ? `
+                        <a href="${pub.pubmedUrl}" target="_blank" class="inline-flex items-center px-3 py-1 border border-blue-300 text-xs font-medium rounded-md text-blue-700 bg-blue-50 hover:bg-blue-100 transition-colors">
+                          Open ↗
+                        </a>` : ''}
+                    </div>
+                  </div>
+                `).join('')}
+              </div>
+            `}
+          </div>
+          <div class="bg-gray-50 px-6 py-3 border-t border-gray-200">
+            <div class="flex justify-between items-center">
+              <span class="text-sm text-gray-500">Total: ${data.total} publications</span>
+              <button onclick="closeModal()" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">Close</button>
+            </div>
+          </div>
+        `;
+      } catch (e) {
+        console.error('viewPublications', e);
+        modal.innerHTML = errorBox(e.message);
+      }
+    }
+
+    // --- Modal & utils ---
+    function showModal(){ document.getElementById('modal').classList.remove('hidden'); }
+    function closeModal(){ document.getElementById('modal').classList.add('hidden'); }
+    function showElement(id){ document.getElementById(id).classList.remove('hidden'); }
+    function hideElement(id){ document.getElementById(id).classList.add('hidden'); }
+    function escapeHtml(text){ if(text===null||text===undefined) return ''; const div=document.createElement('div'); div.textContent=String(text); return div.innerHTML; }
+    function uniq(arr){ return Array.from(new Set((arr||[]).filter(Boolean))); }
+    function groupBy(arr, fn){ return (arr||[]).reduce((acc, x)=>{ const k = fn(x); (acc[k]=acc[k]||[]).push(x); return acc; }, {}); }
+    function errorBox(msg){
+      return `
+        <div class="p-6">
+          <div class="bg-red-50 border border-red-200 rounded-lg p-4">
+            <p class="text-red-800 font-medium">Error</p>
+            <p class="text-red-600 text-sm mt-1">${escapeHtml(msg)}</p>
+          </div>
+          <div class="mt-4 text-right">
+            <button onclick="closeModal()" class="px-4 py-2 text-sm font-medium text-gray-700 bg-white border border-gray-300 rounded-lg hover:bg-gray-50">Close</button>
+          </div>
+        </div>`;
+    }
+    function showToast(message, type='info'){
+      const wrap = document.getElementById('toast'); const inner = document.getElementById('toastInner');
+      inner.textContent = message;
+      inner.className = 'px-4 py-3 rounded-lg shadow text-white text-sm ' + (type==='success' ? 'bg-emerald-600' : type==='error' ? 'bg-red-600' : 'bg-gray-900');
+      wrap.classList.remove('hidden');
+      setTimeout(()=>wrap.classList.add('hidden'), 2500);
+    }
+  </script>
+</body>
+</html>
